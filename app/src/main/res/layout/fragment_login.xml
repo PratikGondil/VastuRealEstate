@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data class="LoginFragmentBinding">
+        <import type="com.vastu.realestate.appModule.login.bindingAdapter.LoginBindingAdapter"/>
+    <variable
+        name="loginViewModel"
+        type="com.vastu.realestate.appModule.login.viewModel.LoginViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".appModule.login.view.fragment.LoginFragment"
+    android:background="@color/red">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/txtSignText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{loginViewModel.title}"
+            style="@style/TextAppearance.Material3.HeadlineMedium"
+            android:layout_margin="@dimen/dimen50dp"
+            android:gravity="center"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/txtSignText"
+            android:layout_marginStart="@dimen/dimen25dp"
+            android:layout_marginTop="@dimen/dimen25dp"
+            android:layout_marginEnd="@dimen/dimen25dp"
+            android:layout_marginBottom="@dimen/dimen25dp"
+            android:background="@drawable/white_background"
+            android:backgroundTint="@color/white"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:id="@+id/llInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="@{loginViewModel.isInputLayoutVisible}">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilMobileNumLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dimen10dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:expandedHintEnabled="false"
+                    app:placeholderText="@string/enter_mobile_number_text"
+                    app:placeholderTextColor="@color/black"
+                    app:prefixText="+91"
+                    app:prefixTextAppearance="@style/TextAppearance"
+                    app:prefixTextColor="@color/black"
+                    app:startIconDrawable="@drawable/ic_india_flag"
+                    app:startIconTint="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/TextAppearance"
+                        validateMobileNo="@{loginViewModel}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/white"
+                        android:gravity="center_vertical"
+                        android:inputType="phone"
+                        android:padding="@dimen/dimen11dp"
+                        android:text="@{loginViewModel.mobileNumber}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size18sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llSignupTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:orientation="vertical"
+                android:visibility="@{loginViewModel.isVisibleSignupTextLayout}">
+
+                <TextView
+                    android:id="@+id/txtHaveAnAc"
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dimen20dp"
+                    android:gravity="center"
+                    android:text="@string/don_t_have_an_account_text" />
+
+                <TextView
+                    android:id="@+id/txtSignUp"
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/sign_up_text"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/llOtpLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="@{loginViewModel.isVisibleOtpLayout}"
+                android:layout_margin="@dimen/dimen20dp"
+                android:layout_weight="0.8"
+                >
+
+                <TextView
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/dimen10dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:text="@{loginViewModel.otpSentNumber}"
+                    android:textAlignment="center" />
+
+                <com.chaos.view.PinView
+                    android:id="@+id/pin_view"
+                    style="@style/PinWidget.PinView"
+                    verifyOtp="@{loginViewModel}"
+                    verifyFocus="@{loginViewModel}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:cursorVisible="true"
+                    android:inputType="number"
+                    android:itemBackground="#65EAEAEA"
+                    app:cursorColor="@color/black"
+                    app:hideLineWhenFilled="true"
+                    app:itemCount="4"
+                    app:itemHeight="50dp"
+                    app:itemRadius="5dp"
+                    app:itemSpacing="10dp"
+                    app:itemWidth="50dp"
+                    app:lineColor="@color/teal_200"
+                    app:lineWidth="1dp"
+                    tools:ignore="MissingClass"
+                    android:text="@{loginViewModel.otp}"/>
+
+                <TextView
+                    android:id="@+id/txtResendTimer"
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/pin_view"
+                    android:layout_margin="@dimen/dimen20dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:gravity="center"
+                    android:lineSpacingExtra="1sp"
+                    android:text="Expect otp in "
+                    android:visibility="visible" />
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rlNextBtnLayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.2"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/btnNextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_gravity="center"
+                    android:background="@drawable/round_button_background"
+                    android:src="@drawable/forward_arrow"
+                    android:onClick="@{(view)->loginViewModel.onNextBtnClick()}"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

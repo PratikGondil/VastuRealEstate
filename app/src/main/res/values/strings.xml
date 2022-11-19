@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">VastuRealEstate</string>
+    <string name="sign_in_text">Sign in</string>
+    <string name="sign_up_text">Sign Up</string>
+    <string name="don_t_have_an_account_text">Don\'t have an account?</string>
+    <string name="enter_mobile_number_text">Enter mobile number</string>
+    <string name="enter_otp_text">Enter OTP sent to </string>
+    <string name="verify_your_mobile_number">Verify your mobile number</string>
 </resources>
