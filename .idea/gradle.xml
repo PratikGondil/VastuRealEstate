@@ -11,6 +11,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/commoncore" />
+            <option value="$PROJECT_DIR$/loginCore" />
+            <option value="$PROJECT_DIR$/registrationCore" />
             <option value="$PROJECT_DIR$/serviceNetworkFramework" />
             <option value="$PROJECT_DIR$/subModulesCore" />
           </set>

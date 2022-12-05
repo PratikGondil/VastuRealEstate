@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.vastu.realestate.appModule.signUp.bindingAdapter.SignUpBindingAdapter"/>
+        <variable
+            name="signUpViewModel"
+            type="com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".appModule.signUp.view.SignUpFragment">
+    <androidx.core.widget.NestedScrollView
+
+    android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/llMainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFirstName"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dimen10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:hintEnabled="false"
+                app:placeholderText="@string/first_name_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_user"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtFirstName"
+                    style="@style/TextAppearance"
+                    validateField="@{signUpViewModel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:inputType="text"
+                    android:text="@{signUpViewModel.firstName}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size18sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilMiddleName"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dimen10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:hintEnabled="false"
+                app:placeholderText="@string/middle_name_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_user">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtMiddleName"
+                    style="@style/TextAppearance"
+                    validateField="@{signUpViewModel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:inputType="text"
+                    android:text="@{signUpViewModel.middleName}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size18sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLastName"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dimen10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:hintEnabled="false"
+                app:placeholderText="@string/last_name_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_user">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtLastName"
+                    style="@style/TextAppearance"
+                    validateField="@{signUpViewModel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:inputType="text"
+                    android:text="@{signUpViewModel.lastName}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size18sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilMobileNum"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dimen10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:hintEnabled="false"
+                app:placeholderText="@string/mobile_number_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_baseline_local_phone_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtMobileNum"
+                    style="@style/TextAppearance"
+                    validateField="@{signUpViewModel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:inputType="phone"
+                    android:text="@{signUpViewModel.mobileNumber}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size18sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilEmailId"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dimen10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:hintEnabled="false"
+                app:placeholderText="@string/email_id_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_mail">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtEmail"
+                    style="@style/TextAppearance"
+                    validateField="@{signUpViewModel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:inputType="textEmailAddress"
+                    android:text="@{signUpViewModel.mailId}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size18sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilcity"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dimen10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:hintEnabled="false"
+                app:placeholderText="@string/city_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_city">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/autoCompleteCity"
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:context="@{context}"
+                    android:dropDownHeight="136dp"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical"
+                    android:onItemClick="@{signUpViewModel}"
+                    android:text="@{signUpViewModel.city}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size18sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilSubArea"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dimen10dp"
+                android:background="@drawable/edittext_background"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:hintEnabled="false"
+                app:placeholderText="@string/sub_area_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/ic_sub_area">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/autoCompleteAreaList"
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:context="@{context}"
+                    android:dropDownHeight="136dp"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical"
+                    android:onItemClick="@{signUpViewModel}"
+                    android:text="@{signUpViewModel.subArea}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size18sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlNextBtnLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llMainLayout"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dimen20dp"
+            android:layout_marginTop="@dimen/dimen20dp"
+            android:layout_marginEnd="@dimen/dimen20dp"
+            android:layout_marginBottom="@dimen/dimen20dp"
+            android:gravity="center_horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSignUp"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:background="@drawable/round_button_background"
+                android:enabled="false"
+                context="@{context}"
+                isEnable = "@{signUpViewModel.isBtnEnable}"
+                android:clickable="true"
+                android:onClick="@{(view)->signUpViewModel.onSubmitBtnClick()}"
+                android:text="@string/submit_btn_text"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

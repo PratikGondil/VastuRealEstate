@@ -15,4 +15,14 @@
     <style name="prefix" parent="Base.TextAppearance.AppCompat.Body2">
         <item name="android:textSize">18sp</item>
     </style>
+
+    <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">@dimen/dimens20sp</item>
+        <item name="android:letterSpacing">@dimen/letterSpacing_3</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
 </resources>

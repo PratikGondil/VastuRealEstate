@@ -1,23 +1,34 @@
 package com.vastu.realestate.appModule.login.viewModel
 
 import android.app.Application
-import android.database.Observable
-import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import com.vastu.realestate.appModule.login.uiInterfaces.ILoginViewListener
+import com.vastu.realestate.logincore.callbacks.response.ILoginResponseListener
+import com.vastu.realestate.logincore.model.response.ObjLoginResponse
+import com.vastu.realestate.logincore.repository.LoginRepository
 
-class LoginViewModel(application: Application) : AndroidViewModel(application) {
+class LoginViewModel(application: Application) : AndroidViewModel(application),
+    ILoginResponseListener {
     var mobileNumber = ObservableField("")
-    var title = ObservableField("")
-    var otp = ObservableField("")
-    var isVisibleOtpLayout = ObservableField(View.GONE)
-    var isVisibleSignupTextLayout = ObservableField(View.VISIBLE)
-    var isInputLayoutVisible = ObservableField(View.VISIBLE)
-    var otpSentNumber = ObservableField("")
+    var isValidMobileNumber = ObservableField<Boolean>()
+
+
     lateinit var iLoginViewListener : ILoginViewListener
-    fun onNextBtnClick(){
-        iLoginViewListener.onNextBtnClick()
+    fun onSendOtpClick(){
+        iLoginViewListener.onSendOtpClick()
+    }
+
+    fun callLoginApi(mobilenumber:String){
+        LoginRepository.callLoginApi(mobilenumber,"login.php",this)
+    }
+
+    override fun onGetSuccessResponse(response: ObjLoginResponse) {
+        iLoginViewListener.launchOtpScreen(response)
+
+    }
+
+    override fun onGetFailureResponse(response: ObjLoginResponse) {
+        TODO("Not yet implemented")
     }
 }

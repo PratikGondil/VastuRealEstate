@@ -14,3 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "VastuRealEstate"
 include ':app',':serviceNetworkFramework',':subModulesCore'
+include ':loginCore'
+include ':registrationCore'
+include ':commoncore'

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav_graph"
+    app:startDestination="@id/SignUpAndLoginFragment">
+    <fragment
+        android:id="@+id/SignUpAndLoginFragment"
+        android:name="com.vastu.realestate.SignUpAndLoginFragment"
+        android:label="SignUpAndLoginFragment"
+        tools:layout="@layout/sign_up_and_login_fragment">
+        <action
+            android:id="@+id/action_LoginSignUpFragment_To_OTPFragment"
+            app:destination="@+id/OTPFragment"
+            />
+        <action
+            android:id="@+id/action_SignUpFragment_To_LoginFragment"
+            app:destination="@+id/LoginFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/SignUpFragment"
+        android:name="com.vastu.realestate.appModule.signUp.view.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/sign_up_fragment">
+
+    </fragment>
+    <fragment
+        android:id="@+id/LoginFragment"
+        android:name="com.vastu.realestate.appModule.login.view.fragment.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/login_fragment">
+
+    </fragment>
+    <fragment
+        android:id="@+id/OTPFragment"
+        android:name="com.vastu.realestate.appModule.otp.fragment.OTPFragment"
+        android:label="OTPFragment"
+        tools:layout="@layout/otp_fragment">
+        <action
+            android:id="@+id/action_OTPFragment_To_LoginFragment"
+            app:destination="@+id/LoginFragment"
+            />
+    </fragment>
+</navigation>
