@@ -1,5 +1,7 @@
 package com.vastu.realestate.logincore.model.request
 
+import com.google.gson.annotations.SerializedName
+
 data class ObjLoginReq(
-    var mobileNumber :String
+    @SerializedName("mobile") var mobileNumber :String
 )

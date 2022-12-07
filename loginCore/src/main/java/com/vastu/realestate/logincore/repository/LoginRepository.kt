@@ -3,17 +3,17 @@ package com.vastu.realestate.logincore.repository
 import com.google.gson.Gson
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
-import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyOtpResponseMain
 import com.vastu.realestate.commoncore.utils.ErrorCode
 import com.vastu.realestate.logincore.callbacks.request.ILoginReq
 import com.vastu.realestate.logincore.callbacks.response.ILoginResponseListener
 import com.vastu.realestate.logincore.model.request.ObjLoginReq
 import com.vastu.realestate.logincore.model.response.ObjLoginResponse
+import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
 
 object LoginRepository : ILoginReq,IOnServiceResponseListener {
     lateinit var iLoginResponseListener :ILoginResponseListener
-    override fun callLoginApi(mobileNumber: String,urlEndPoint:String,iLoginResponseListener: ILoginResponseListener) {
-        this.iLoginResponseListener = iLoginResponseListener
+    override fun callLoginApi(mobileNumber: String, urlEndPoint:String, iOnGetLoginResponse: ILoginResponseListener) {
+        this.iLoginResponseListener = iOnGetLoginResponse
         NetworkDaoBuilder.Builder
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
@@ -29,7 +29,7 @@ object LoginRepository : ILoginReq,IOnServiceResponseListener {
 
     override fun onSuccessResponse(response: String,isError:Boolean) {
         val loginResponse = parseResponse(response)
-        when(loginResponse.objResponseStatusHdr.statusCode){
+        when(loginResponse.objLoginResponse.objResponseStatusHdr.statusCode){
             ErrorCode.success->
                 iLoginResponseListener.onGetSuccessResponse(loginResponse)
             ErrorCode.error_0002->
@@ -41,10 +41,10 @@ object LoginRepository : ILoginReq,IOnServiceResponseListener {
     override fun onFailureResponse(response: String) {
         iLoginResponseListener.onGetFailureResponse(parseResponse(response))
     }
-    fun parseResponse(response: String): ObjLoginResponse {
+    fun parseResponse(response: String): ObjLoginResponseMain {
         return Gson().fromJson(
             response,
-            ObjLoginResponse::class.java
+            ObjLoginResponseMain::class.java
         )
 
     }

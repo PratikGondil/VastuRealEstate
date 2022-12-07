@@ -8,10 +8,12 @@ import com.vastu.realestate.commoncore.callbacks.otp.response.IVerifyOtpResponse
 import com.vastu.realestate.commoncore.model.otp.request.ObjVerifyOtpReq
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyOtpResponseMain
+import com.vastu.realestate.commoncore.utils.ErrorCode
 
 object VerifyOtpRequestRepository:IVerifyOtpReq ,IOnServiceResponseListener{
     lateinit var iVerifyOtpResponseListener:IVerifyOtpResponseListener
     override fun callVerifyOtpApi(objVerifyOtpReq: ObjVerifyOtpReq,urlEndPoint:String,iVerifyOtpResponseListener:IVerifyOtpResponseListener) {
+        this.iVerifyOtpResponseListener = iVerifyOtpResponseListener
         NetworkDaoBuilder.Builder
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
@@ -28,7 +30,12 @@ object VerifyOtpRequestRepository:IVerifyOtpReq ,IOnServiceResponseListener{
 
     override fun onSuccessResponse(response: String, isError: Boolean) {
         var objVerifyOtpResponseMain = parseResponse(response)
-       iVerifyOtpResponseListener.onGetVerifyOtpSuccess(objVerifyOtpResponseMain.objVerifyResponse.objVerifyDtls)
+        when(objVerifyOtpResponseMain.objVerifyResponse.objResponseStatusHdr.statusCode){
+            ErrorCode.success->
+                iVerifyOtpResponseListener.onGetVerifyOtpSuccess(objVerifyOtpResponseMain.objVerifyDtls)
+            ErrorCode.error_0001->
+                iVerifyOtpResponseListener.onGetVerifyOtpFailure(objVerifyOtpResponseMain)
+        }
     }
 
     override fun onFailureResponse(response: String) {

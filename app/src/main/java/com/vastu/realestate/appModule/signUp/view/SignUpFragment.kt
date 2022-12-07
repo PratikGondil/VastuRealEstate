@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -102,6 +103,12 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
     }
     override fun goToLogin() {
             viewPager.currentItem = 0
+
+    }
+
+    override fun onRegistrationFail(objRegisterResponseMain: ObjRegisterResponseMain) {
+        Toast.makeText(requireContext(),objRegisterResponseMain.objRegisterResponse.objResponseStatusHdr.statusDescr,
+            Toast.LENGTH_LONG).show()
 
     }
 

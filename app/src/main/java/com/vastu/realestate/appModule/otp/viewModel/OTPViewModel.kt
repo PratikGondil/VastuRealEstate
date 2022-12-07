@@ -36,6 +36,6 @@ class OTPViewModel(application: Application) : AndroidViewModel(application),IVe
     }
 
     override fun onGetVerifyOtpFailure(objVerifyOtpResponseMain: ObjVerifyOtpResponseMain) {
-        TODO("Not yet implemented")
+        iVerifyOtpViewListener.onOtpVerifyFailure(objVerifyOtpResponseMain)
     }
 }

@@ -13,8 +13,42 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".appModule.otp.fragment.OTPFragment">
+        tools:context=".appModule.otp.fragment.OTPFragment"
+        android:background="@color/gray">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintHeight_percent=".30"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/dark_brown"
+            >
+            <ImageView
+                android:layout_width="@dimen/dimen50dp"
+                android:layout_height="@dimen/dimen50dp"
+                android:src="@drawable/otp_img"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dimen10dp"
+                android:scaleType="fitCenter"
+                />
+        </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent=".80"
+        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/dimen20dp"
 
+
+        android:background="@drawable/white_background">
         <RelativeLayout
             android:id="@+id/rlMainLayout"
             android:layout_width="match_parent"
@@ -82,13 +116,13 @@
                         android:itemBackground="#65EAEAEA"
                         android:text="@{otpViewModel.otp}"
                         app:cursorColor="@color/black"
-                        app:hideLineWhenFilled="true"
-                        app:itemCount="5"
+                        app:hideLineWhenFilled="false"
+                        app:itemCount="4"
                         app:itemHeight="50dp"
                         app:itemRadius="5dp"
                         app:itemSpacing="15dp"
                         app:itemWidth="50dp"
-                        app:lineColor="@drawable/otp_item_background"
+                        app:lineColor="#f7bb4a"
                         app:lineWidth="1dp"
                         tools:ignore="MissingClass,SpeakableTextPresentCheck" />
 
@@ -153,5 +187,6 @@
             </LinearLayout>
 
         </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

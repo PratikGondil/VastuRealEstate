@@ -33,7 +33,6 @@ object OtpBindingAdapter {
     @BindingAdapter("verifyOtp")
     @JvmStatic
     fun PinView.onTextChange(viewModel: OTPViewModel){
-            setHideLineWhenFilled(true)
 
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -44,6 +43,7 @@ object OtpBindingAdapter {
                 if(charSequence.toString().length==4){
 
                     viewModel.otp.set(charSequence.toString())
+                    viewModel.isValidOTP.set(true)
                 }
             }
 

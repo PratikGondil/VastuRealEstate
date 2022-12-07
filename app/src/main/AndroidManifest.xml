@@ -16,7 +16,7 @@
         <activity
             android:name=".appModule.activity.LoginActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustPan|adjustResize"/>
+            android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".rootModule.splash.view.activity.SplashActivity"
             android:exported="true"

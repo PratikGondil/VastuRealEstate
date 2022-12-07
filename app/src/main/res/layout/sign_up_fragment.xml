@@ -235,7 +235,10 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/city_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_city">
+                app:startIconDrawable="@drawable/ic_city"
+                app:endIconDrawable="@drawable/drop_down_icon"
+                app:endIconMode="custom"
+                >
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/autoCompleteCity"
@@ -273,7 +276,9 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/sub_area_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_sub_area">
+                app:startIconDrawable="@drawable/ic_sub_area"
+                app:endIconDrawable="@drawable/drop_down_icon"
+                app:endIconMode="custom">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/autoCompleteAreaList"

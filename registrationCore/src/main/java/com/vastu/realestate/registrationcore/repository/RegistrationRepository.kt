@@ -27,6 +27,7 @@ object RegistrationRepository : ISignUpReq,IOnServiceResponseListener {
     }
 
     override fun onSuccessResponse(response: String,isError:Boolean) {
+//        val response = "{\"RegisterResponse\":{\"ResponseStatusHeader\":{\"statusDescription\":\"Register Successfully\",\"statusCode\":\"0000\"}},\"RegisterDetails\":{\"user_id\":6}}"
         val registerResponse = parseResponse(response)
         when (registerResponse.objRegisterResponse.objResponseStatusHdr.statusCode){
             ErrorCode.success->

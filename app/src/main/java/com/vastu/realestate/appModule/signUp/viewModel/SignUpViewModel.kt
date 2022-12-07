@@ -31,11 +31,11 @@ class SignUpViewModel(application: Application) : AndroidViewModel(application),
     }
 
     override fun onGetSuccessResponse(objRegisterResponseMain: ObjRegisterResponseMain) {
-        iSignUpViewListener.launchOtpScreen(objRegisterResponseMain.objRegisterResponse.objRegisterDlts)
+        iSignUpViewListener.launchOtpScreen(objRegisterResponseMain.objRegisterDlts)
     }
 
     override fun onGetFailureResponse(objRegisterResponseMain: ObjRegisterResponseMain) {
-        TODO("Not yet implemented")
+        iSignUpViewListener.onRegistrationFail(objRegisterResponseMain)
     }
 
     override fun onAlreadyExistUser(objRegisterResponseMain: ObjRegisterResponseMain) {

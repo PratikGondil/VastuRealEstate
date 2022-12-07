@@ -69,6 +69,7 @@
                         android:inputType="phone"
                         android:text="@{loginViewModel.mobileNumber}"
                         android:background="@null"
+                        android:imeOptions="actionDone"
                         />
 
                 </com.google.android.material.textfield.TextInputLayout>

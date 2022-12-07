@@ -8,11 +8,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.otp.uiListener.IVerifyOtpViewListener
 import com.vastu.realestate.appModule.otp.viewModel.OTPViewModel
 import com.vastu.realestate.commoncore.model.otp.request.ObjVerifyOtpReq
+import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyOtpResponseMain
 import com.vastu.realestate.databinding.OtpFragmentBinding
 import com.vastu.realestate.registrationcore.model.response.ObjRegisterDlts
 import com.vastu.realestate.utils.BaseConstant
@@ -23,7 +26,7 @@ class OTPFragment : Fragment(), IVerifyOtpViewListener {
 
     private lateinit var viewModel: OTPViewModel
     lateinit var otpFragmentBinding: OtpFragmentBinding
-    lateinit var objVerifyOtpReq:ObjVerifyOtpReq
+     var objVerifyOtpReq = ObjVerifyOtpReq()
     var ratetimer: Timer? = null
     var updateSyncTimer: TimerTask? = null
     val handler = Handler()
@@ -145,5 +148,13 @@ class OTPFragment : Fragment(), IVerifyOtpViewListener {
 
     override fun launchDashboard() {
         TODO("Not yet implemented")
+    }
+
+    override fun onOtpVerifyFailure(objVerifyOtpResponseMain: ObjVerifyOtpResponseMain) {
+       Toast.makeText(requireContext(),objVerifyOtpResponseMain.objVerifyResponse.objResponseStatusHdr.statusDescr,Toast.LENGTH_LONG).show()
+    }
+
+    override fun onBackClick() {
+        findNavController().navigate(R.id.action_OTPFragment_To_LoginFragment)
     }
 }

@@ -4,6 +4,6 @@ import com.google.gson.annotations.SerializedName
 import com.vastu.realestate.commoncore.model.otp.response.ObjResponseStatusHdr
 
 data class ObjRegisterResponse (
-    @SerializedName("ResponseStatusHeader") var objResponseStatusHdr: ObjResponseStatusHdr,
-    @SerializedName("RegisterDetails")  var objRegisterDlts:ObjRegisterDlts
+    @SerializedName("ResponseStatusHeader") var objResponseStatusHdr: ObjResponseStatusHdr
+
 )

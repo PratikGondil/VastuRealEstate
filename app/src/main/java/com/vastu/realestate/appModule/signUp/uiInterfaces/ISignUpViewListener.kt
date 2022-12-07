@@ -7,4 +7,5 @@ interface ISignUpViewListener {
     fun registerUser()
     fun launchOtpScreen(objRegisterDlts:ObjRegisterDlts)
     fun goToLogin()
+    fun onRegistrationFail(objRegisterResponseMain: ObjRegisterResponseMain)
 }

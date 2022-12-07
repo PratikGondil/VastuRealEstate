@@ -10,4 +10,6 @@
     <dimen name="dimens20sp">20sp</dimen>
     <dimen name="letterSpacing_3">0.03</dimen>
     <dimen name="dimen_16sp">16sp</dimen>
+    <dimen name="dimen80dp">80dp</dimen>
+    <dimen name="dimen110dp">110dp</dimen>
 </resources>
