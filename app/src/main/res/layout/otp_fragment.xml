@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+    <import type="com.vastu.realestate.appModule.otp.bindingAdapter.OtpBindingAdapter"/>
+        <variable
+            name="otpViewModel"
+            type="com.vastu.realestate.appModule.otp.viewModel.OTPViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".appModule.otp.fragment.OTPFragment"
+        android:background="@color/gray">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintHeight_percent=".30"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/dark_brown"
+            >
+            <ImageView
+                android:layout_width="@dimen/dimen50dp"
+                android:layout_height="@dimen/dimen50dp"
+                android:src="@drawable/otp_img"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/dimen10dp"
+                android:scaleType="fitCenter"
+                />
+        </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent=".80"
+        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/dimen20dp"
+
+
+        android:background="@drawable/white_background">
+        <RelativeLayout
+            android:id="@+id/rlMainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/white_background"
+            >
+
+            <LinearLayout
+                android:id="@+id/llOtpLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/dimen20dp"
+                android:orientation="vertical"
+                android:weightSum="1"
+                >
+                <TextView
+                    android:id="@+id/txtSubmitOtp"
+                    style="@style/TextAppearance.Material3.HeadlineMedium"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="top|center"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/submit_otp"
+                    android:textColor="#f7bb4a"
+                    android:textSize="@dimen/dimens20sp"
+                    android:layout_margin="@dimen/dimen10dp"
+                    android:layout_weight="0.3"
+                    />
+
+                <TextView
+                    android:id="@+id/txtSentOtp"
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/sent_otp_text"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:layout_weight="0.1"
+                    android:gravity="start"
+                    />
+                <LinearLayout
+                    android:id="@+id/llOtpAndTimerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="0.1">
+
+                    <com.chaos.view.PinView
+                        android:id="@+id/pin_view"
+                        style="@style/PinWidget.PinView"
+                        verifyFocus="@{otpViewModel}"
+                        verifyOtp="@{otpViewModel}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:cursorVisible="true"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:itemBackground="#65EAEAEA"
+                        android:text="@{otpViewModel.otp}"
+                        app:cursorColor="@color/black"
+                        app:hideLineWhenFilled="false"
+                        app:itemCount="4"
+                        app:itemHeight="50dp"
+                        app:itemRadius="5dp"
+                        app:itemSpacing="15dp"
+                        app:itemWidth="50dp"
+                        app:lineColor="#f7bb4a"
+                        app:lineWidth="1dp"
+                        tools:ignore="MissingClass,SpeakableTextPresentCheck" />
+
+                    <TextView
+                        android:id="@+id/txtTimer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_margin="5dp"
+                        android:gravity="end"
+                        android:text="@{otpViewModel.timer}" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/txtOtpReceiveConfirmation"
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/otp_not_received"
+                    android:layout_weight="0.1"/>
+
+                <TextView
+                    android:id="@+id/txtResendOtp"
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@string/resend_otp"
+
+                    android:selectAllOnFocus="false"
+                    android:linksClickable="false"
+                    android:autoLink="all"
+                    android:textColor="@color/text_color_blue"
+                    android:layout_weight="0.1"/>
+
+                <RelativeLayout
+                    android:id="@+id/rlNextBtnLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="0.3">
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnNextButton"
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/round_button_background"
+                        android:gravity="center"
+                        context="@{context}"
+                        isValidOTP="@{otpViewModel.isValidOTP}"
+                        android:layout_centerInParent="true"
+                        android:text="@string/submit_btn_text"
+                        android:textColor="@color/white"
+                        android:onClick="@{(view)->otpViewModel.onOtpSubmitClick()}"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

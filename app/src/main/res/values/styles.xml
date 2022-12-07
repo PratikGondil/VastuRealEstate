@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textColorHint">@color/black</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:letterSpacing">@dimen/letterSpacing_3</item>
+    </style>
+    <style name="hintTextApperance" >
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColorHint">@color/black</item>
+    </style>
+    <style name="prefix" parent="Base.TextAppearance.AppCompat.Body2">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">@dimen/dimens20sp</item>
+        <item name="android:letterSpacing">@dimen/letterSpacing_3</item>
+        <item name="fontFamily">@font/roboto_regular</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+
+</resources>

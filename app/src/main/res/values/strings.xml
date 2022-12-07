@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">VastuRealEstate</string>
+<!--    <login>-->
+    <string name="sign_in_text">Sign in</string>
+    <string name="sign_up_text">Sign Up</string>
+    <string name="we_will_send_otp">We will send you OneTime Password (OTP)</string>
+    <string name="mobile_number_text">Mobile Number</string>
+    <string name="enter_otp_text">Enter OTP sent to </string>
+    <string name="verify_your_mobile_number">Verify your mobile number</string>
+
+<!--    <sign up>-->
+    <string name="first_name_text">First Name</string>
+    <string name="middle_name_text">Middle Name</string>
+    <string name="last_name_text">Last Name</string>
+    <string name="email_id_text">Email Id</string>
+    <string name="city_text">City</string>
+    <string name="sub_area_text">Sub Area</string>
+    <string name="send_otp_text">Send Otp</string>
+    <string name="submit_btn_text">Submit</string>
+
+<!--    otp-->
+    <string name="timer_text">00.%1$s sec</string>
+    <string name="resend_otp"><u>Resend OTP</u></string>
+    <string name="otp_not_received">Didn\'t receive OTP?</string>
+    <string name="submit_otp">Submit OTP</string>
+    <string name="sent_otp_text">We have sent OTP on your number.</string>
 </resources>
