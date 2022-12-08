@@ -21,7 +21,7 @@ import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyOtpResponseMain
 import com.vastu.realestate.databinding.OtpFragmentBinding
 import com.vastu.realestate.registrationcore.model.response.ObjRegisterDlts
-import com.vastu.realestate.rootModule.dashboard.DashboardActivity
+import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
 import com.vastu.realestate.utils.BaseConstant
 import java.util.*
 

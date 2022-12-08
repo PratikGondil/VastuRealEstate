@@ -31,7 +31,7 @@
     <dimen name="text_size_xxlarge">28sp</dimen>
     <dimen name="text_size_xxxlarge">36sp</dimen>
 
-    <dimen name="margin_small">9dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_medium">12dp</dimen>
     <dimen name="margin_large">16dp</dimen>
     <dimen name="margin_xlarge">20dp</dimen>
@@ -41,4 +41,6 @@
     <dimen name="image_width">100dp</dimen>
     <dimen name="image_height">100dp</dimen>
     <dimen name="banner_image_height">250dp</dimen>
+    <dimen name="height_55">55dp</dimen>
+    <dimen name="button_width">150dp</dimen>
 </resources>

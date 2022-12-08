@@ -11,10 +11,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".appModule.login.view.fragment.LoginFragment"
-    >
-
-    <RelativeLayout
+   tools:context=".appModule.login.view.fragment.LoginFragment">   <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,15 +46,14 @@
                     android:layout_margin="@dimen/dimen10dp"
                     android:gravity="center"
                     android:textAlignment="center"
-                    app:hintEnabled="false"
                     android:textColorHint="@color/black"
+                    app:hintEnabled="false"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
                     app:placeholderText="@string/mobile_number_text"
                     app:placeholderTextColor="@color/black"
                     android:background="@drawable/edittext_background"
-                    app:startIconDrawable="@drawable/ic_baseline_local_phone_24"
-                   >
+                    app:startIconDrawable="@drawable/ic_baseline_local_phone_24">
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/TextAppearance"
@@ -89,7 +85,7 @@
                     android:id="@+id/txtSendOtp"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/roboto_light"
+                    android:fontFamily="@font/poppins_light"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -174,13 +170,14 @@
                     android:id="@+id/btnSendOtp"
                     context="@{context}"
                     isEnable="@{loginViewModel.isValidMobileNumber}"
-                    android:layout_width="130dp"
+                    android:layout_width="@dimen/button_width"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/round_button_background"
                     android:onClick="@{(view)->loginViewModel.onSendOtpClick()}"
                     android:text="@string/send_otp_text"
-
+                    android:textSize="@dimen/text_size_normal"
+                    android:fontFamily="@font/poppins_medium"
                     android:textColor="@color/white" />
             </RelativeLayout>
         </LinearLayout>

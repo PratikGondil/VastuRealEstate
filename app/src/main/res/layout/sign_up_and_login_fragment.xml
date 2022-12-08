@@ -9,13 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.vastu.realestate.SignUpAndLoginFragment"
-
         android:background="@color/gray">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintHeight_percent=".30"
+        app:layout_constraintHeight_percent=".40"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,26 +23,23 @@
         android:background="@color/dark_brown"
         >
         <ImageView
-            android:layout_width="@dimen/dimen50dp"
-            android:layout_height="@dimen/dimen50dp"
+            android:layout_width="@dimen/image_width"
+            android:layout_height="@dimen/image_height"
             android:src="@drawable/login_img"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/dimen10dp"
-            android:scaleType="fitCenter"
-            />
+            android:layout_margin="@dimen/margin_large"
+            android:scaleType="fitCenter"/>
     </LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent=".80"
+        app:layout_constraintHeight_percent="0.75"
         app:layout_constraintVertical_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="@dimen/dimen20dp"
-
-
         android:background="@drawable/white_background">
 
         <com.google.android.material.tabs.TabLayout
