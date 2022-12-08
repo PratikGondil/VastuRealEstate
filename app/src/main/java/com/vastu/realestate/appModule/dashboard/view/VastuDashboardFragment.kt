@@ -41,9 +41,7 @@ class VastuDashboardFragment : Fragment() {
 
             }
             imageSlider.setImageList(imageList,ScaleTypes.FIT)
-            imageSlider.startSliding(100)
-            imageSlider.startSliding()
-            imageSlider.stopSliding()
+            imageSlider.startSliding(3000)
         }
     }
 }
