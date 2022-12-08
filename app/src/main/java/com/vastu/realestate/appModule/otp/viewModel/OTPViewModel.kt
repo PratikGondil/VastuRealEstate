@@ -32,7 +32,7 @@ class OTPViewModel(application: Application) : AndroidViewModel(application),IVe
     }
 
     override fun onGetVerifyOtpSuccess(objVerifyDtls: ObjVerifyDtls) {
-        iVerifyOtpViewListener.launchDashboard()
+        iVerifyOtpViewListener.launchDashboard(objVerifyDtls)
     }
 
     override fun onGetVerifyOtpFailure(objVerifyOtpResponseMain: ObjVerifyOtpResponseMain) {

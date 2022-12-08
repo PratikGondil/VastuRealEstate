@@ -1,6 +1,8 @@
 package com.vastu.realestate.appModule.otp.fragment
 
 import android.app.Activity
+import android.content.ClipData.newIntent
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.Handler
@@ -15,9 +17,11 @@ import com.vastu.realestate.R
 import com.vastu.realestate.appModule.otp.uiListener.IVerifyOtpViewListener
 import com.vastu.realestate.appModule.otp.viewModel.OTPViewModel
 import com.vastu.realestate.commoncore.model.otp.request.ObjVerifyOtpReq
+import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyOtpResponseMain
 import com.vastu.realestate.databinding.OtpFragmentBinding
 import com.vastu.realestate.registrationcore.model.response.ObjRegisterDlts
+import com.vastu.realestate.rootModule.dashboard.DashboardActivity
 import com.vastu.realestate.utils.BaseConstant
 import java.util.*
 
@@ -146,8 +150,8 @@ class OTPFragment : Fragment(), IVerifyOtpViewListener {
         viewModel.callVerifyOtpApi(objVerifyOtpReq)
     }
 
-    override fun launchDashboard() {
-        TODO("Not yet implemented")
+    override fun launchDashboard(objVerifyDtls: ObjVerifyDtls) {
+        startActivity(DashboardActivity.newIntent(getActivity(),objVerifyDtls))
     }
 
     override fun onOtpVerifyFailure(objVerifyOtpResponseMain: ObjVerifyOtpResponseMain) {
