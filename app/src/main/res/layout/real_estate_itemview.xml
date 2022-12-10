@@ -37,11 +37,11 @@
                     android:layout_weight="0.5"
                     android:layout_height="@dimen/image_height"
                     android:scaleType="fitXY"
-                    android:src="@{realestate.image}"
+                    android:src="@drawable/flat_image_1"
                     android:layout_gravity="center"
                     android:adjustViewBounds="true"
                     app:shapeAppearanceOverlay="@style/image_custom_shape" />
-
+               <!-- android:src="@{realestate.image}"-->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_weight="1.4"

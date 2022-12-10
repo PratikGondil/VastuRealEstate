@@ -60,7 +60,7 @@
                         android:gravity="center_vertical"
                         android:inputType="text"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_small"
+                        android:textSize="@dimen/text_size_xsmall"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,11 +93,11 @@
                         android:layout_gravity="center"
                         android:background="@null"
                         android:clickable="true"
-                        android:dropDownHeight="136dp"
+                        android:dropDownHeight="@dimen/height_55"
                         android:focusableInTouchMode="true"
                         android:gravity="center_vertical"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_normal"
+                        android:textSize="@dimen/text_size_xsmall"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
