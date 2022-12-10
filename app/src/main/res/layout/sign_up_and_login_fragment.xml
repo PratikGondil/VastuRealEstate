@@ -19,15 +19,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/dark_brown"
-        >
+        android:background="@drawable/nav_background">
         <ImageView
+            android:id="@+id/image"
             android:layout_width="@dimen/image_width"
             android:layout_height="@dimen/image_height"
             android:src="@drawable/login_img"
+            android:layout_marginTop="@dimen/margin_xxxlarge"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/margin_large"
             android:scaleType="fitCenter"/>
     </LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,7 +36,6 @@
         app:layout_constraintVertical_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="@dimen/dimen20dp"
         android:background="@drawable/white_background">
@@ -47,12 +45,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="@color/text_color"
-            app:tabSelectedTextColor="@color/text_color"
-            app:tabTextColor="@color/gray"
-            app:tabIndicatorHeight="2dp"
+            app:tabIndicatorColor="@color/tab_selected_text_color"
+            app:tabSelectedTextColor="@color/tab_selected_text_color"
+            app:tabTextColor="@color/icon_color"
+            app:tabIndicatorHeight="@dimen/tab_height"
             app:tabGravity="fill"
-            android:layout_margin="6dp"
+            android:layout_margin="@dimen/margin_small"
             app:tabTextAppearance="@style/TabTextStyle"
             />
         <androidx.viewpager2.widget.ViewPager2

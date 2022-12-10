@@ -23,6 +23,8 @@
     <dimen name="padding_xlarge">20dp</dimen>
     <dimen name="padding_xxlarge">30dp</dimen>
 
+    <dimen name="text_size_menu">10sp</dimen>
+    <dimen name="text_size_xsmall">12sp</dimen>
     <dimen name="text_size_small">14sp</dimen>
     <dimen name="text_size_normal">16sp</dimen>
     <dimen name="text_size_semilarge">18sp</dimen>
@@ -31,6 +33,8 @@
     <dimen name="text_size_xxlarge">28sp</dimen>
     <dimen name="text_size_xxxlarge">36sp</dimen>
 
+    <dimen name="margin_menu">2dp</dimen>
+    <dimen name="margin_xsmall">4dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_medium">12dp</dimen>
     <dimen name="margin_large">16dp</dimen>
@@ -43,4 +47,8 @@
     <dimen name="banner_image_height">250dp</dimen>
     <dimen name="height_55">55dp</dimen>
     <dimen name="button_width">150dp</dimen>
+    <dimen name="tab_height">2dp</dimen>
+    <dimen name="card_view_height">132dp</dimen>
+    <dimen name="card_corner_radius">6dp</dimen>
+    <dimen name="navigation_view_margin_end">-64dp</dimen>
 </resources>

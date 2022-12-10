@@ -7,41 +7,43 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.denzcoskun.imageslider.constants.ScaleTypes
-import com.denzcoskun.imageslider.models.SlideModel
+import androidx.navigation.fragment.findNavController
 import com.vastu.realestate.R
-import com.vastu.realestate.appModule.dashboard.callback.IDashboardViewListener
-import com.vastu.realestate.appModule.dashboard.viewholder.DashboardViewModel
+import com.vastu.realestate.appModule.dashboard.uiInterfaces.IDashboardViewListener
+import com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewModel
 import com.vastu.realestate.databinding.FragmentVastuDashboardBinding
 
-
-class VastuDashboardFragment : Fragment() {
+class VastuDashboardFragment : Fragment(), IDashboardViewListener {
         lateinit var dashboardBinding: FragmentVastuDashboardBinding
-        lateinit var dashboardViewModel: DashboardViewModel
-        lateinit var iDashboardViewListener: IDashboardViewListener
-        val imageList = ArrayList<SlideModel>()
+        lateinit var vastuViewModel: VastuDashboardViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =ViewModelProvider(this)[DashboardViewModel::class.java]
+        vastuViewModel = ViewModelProvider(this)[VastuDashboardViewModel::class.java]
         dashboardBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_vastu_dashboard, container, false)
         dashboardBinding.lifecycleOwner = this
-        dashboardBinding.vastuViewModel = dashboardViewModel
-        initSlider()
+        dashboardBinding.vastuDashboardViewModel = vastuViewModel
+        vastuViewModel.iDashboardViewListener = this
         return dashboardBinding.root
     }
-    private fun initSlider(){
-        imageList.add(SlideModel(R.drawable.banner))
-        imageList.add(SlideModel(R.drawable.banner))
-        imageList.add(SlideModel(R.drawable.banner))
-        dashboardBinding.apply {
-            menuImageview.setOnClickListener {
 
-            }
-            imageSlider.setImageList(imageList,ScaleTypes.FIT)
-            imageSlider.startSliding(3000)
-        }
+    override fun onResume() {
+        super.onResume()
+        activity?.setTitle(getString(R.string.vastu))
     }
+
+    override fun onLoanClick() {
+        findNavController().navigate(R.id.action_VastuDashboardFragment_to_LoanFragment)
+    }
+
+    override fun onBackClick() {
+        activity?.finishAffinity()
+    }
+
+    override fun onRealEstateClick() {
+        findNavController().navigate(R.id.action_VastuDashboardFragment_to_RealEstateFragment)
+    }
+
 }

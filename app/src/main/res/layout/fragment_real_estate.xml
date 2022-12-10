@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="realEstateViewModel"
+            type="com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".appModule.dashboard.view.RealEstateFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/margin_small"
+                android:weightSum="2.5">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilSearch"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_menu"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:expandedHintEnabled="false"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/search"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/ic_search">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtSearch"
+                        style="@style/TextAppearance"
+                        android:maxLength="15"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:inputType="text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilBudget"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.2"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_menu"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:expandedHintEnabled="false"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/budget"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/ic_currency"
+                    app:endIconDrawable="@drawable/drop_down_icon"
+                    app:endIconMode="custom">
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/edtBudget"
+                        style="@style/TextAppearance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:clickable="true"
+                        android:dropDownHeight="136dp"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/img_filter"
+                    android:layout_weight="0.1"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_filter_list"
+                    android:scaleType="fitCenter" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRealEstste"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

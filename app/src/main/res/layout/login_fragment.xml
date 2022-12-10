@@ -53,7 +53,7 @@
                     app:placeholderText="@string/mobile_number_text"
                     app:placeholderTextColor="@color/black"
                     android:background="@drawable/edittext_background"
-                    app:startIconDrawable="@drawable/ic_baseline_local_phone_24">
+                    app:startIconDrawable="@drawable/ic_phone">
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/TextAppearance"
@@ -66,7 +66,7 @@
                         android:text="@{loginViewModel.mobileNumber}"
                         android:background="@null"
                         android:imeOptions="actionDone"
-                        />
+                        android:maxLength="10"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -177,7 +177,7 @@
                     android:onClick="@{(view)->loginViewModel.onSendOtpClick()}"
                     android:text="@string/send_otp_text"
                     android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/poppins_medium"
+                    app:fontFamily="@font/poppins_medium"
                     android:textColor="@color/white" />
             </RelativeLayout>
         </LinearLayout>

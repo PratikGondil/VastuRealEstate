@@ -1,4 +1,4 @@
-package com.vastu.realestate.appModule.dashboard.viewholder
+package com.vastu.realestate.appModule.dashboard.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

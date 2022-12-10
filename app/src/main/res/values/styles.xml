@@ -24,5 +24,12 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="image_custom_shape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">5%</item>
+        <item name="cornerSizeTopRight">5%</item>
+        <item name="cornerSizeBottomRight">5%</item>
+        <item name="cornerSizeBottomLeft">5%</item>
+</style>
 
 </resources>

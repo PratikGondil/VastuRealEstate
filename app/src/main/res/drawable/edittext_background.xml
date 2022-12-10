@@ -1,35 +1,14 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="350dp"
-    android:height="50dp"
-    android:viewportWidth="350"
-    android:viewportHeight="60">
-    <path
-        android:pathData="M10,0L340,0A10,10 0,0 1,350 10L350,50A10,10 0,0 1,340 60L10,60A10,10 0,0 1,0 50L0,10A10,10 0,0 1,10 0z"
-        android:strokeAlpha="0.5"
-        android:fillColor="@color/white"
-        android:fillAlpha="0.5"/>
-    <path
-        android:pathData="M10,0.5L340,0.5A9.5,9.5 0,0 1,349.5 10L349.5,50A9.5,9.5 0,0 1,340 59.5L10,59.5A9.5,9.5 0,0 1,0.5 50L0.5,10A9.5,9.5 0,0 1,10 0.5z"
-        android:strokeAlpha="0.5"
-        android:strokeWidth="1"
-        android:fillColor="@color/white"
-        android:strokeColor="@color/black"
-        android:fillAlpha="0.5"/>
-</vector>
-
-<!--
 <?xml version="1.0" encoding="utf-8"?>
 <shape
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
-    <size android:height="40dp"></size>
+    <size android:height="50dp"/>
     <solid
         android:color="@color/white"/>
     <stroke
         android:width="2dp"
-        android:color="@color/gray" />
-
+        android:color="@color/border_color" />
     <corners
-        android:radius="6dp" />
+        android:radius="5dp" />
+</shape>
 
-</shape>-->

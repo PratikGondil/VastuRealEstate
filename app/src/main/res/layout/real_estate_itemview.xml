@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="realestate"
+            type="com.vastu.realestate.appModule.dashboard.model.RealEstate" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_small">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/padding_xsmall"
+            android:background="@drawable/real_estate_background"
+            app:cardCornerRadius="@dimen/card_corner_radius"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.5"
+                    android:layout_height="@dimen/image_height"
+                    android:scaleType="fitXY"
+                    android:src="@{realestate.image}"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    app:shapeAppearanceOverlay="@style/image_custom_shape" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1.4"
+                    android:layout_margin="@dimen/margin_small"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/feature_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{realestate.propertyFeature}"
+                        android:padding="1dp"
+                        android:textSize="@dimen/text_size_menu"
+                        app:fontFamily="@font/poppins_medium"
+                        android:background="@color/feature_color" />
+
+                    <TextView
+                        android:id="@+id/property_prize_textview"
+                        android:text="@{realestate.propertyPrice}"
+                        android:textColor="@color/black"
+                        app:fontFamily="@font/poppins_bold"
+                        android:layout_width="match_parent"
+                        android:textSize="@dimen/text_size_small"
+                        android:layout_height="wrap_content" />
+
+
+                    <TextView
+                        android:id="@+id/property_details_textview"
+                        android:text="@{realestate.propertyDetails}"
+                        android:textColor="@color/black"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:maxLength="60"
+                        app:fontFamily="@font/poppins_regular"
+                        android:layout_width="match_parent"
+                        android:textSize="@dimen/text_size_xsmall"
+                        android:layout_height="wrap_content" />
+
+
+                    <TextView
+                        android:id="@+id/property_address_textview"
+                        android:text="@{realestate.propertyAddress}"
+                        android:textColor="@color/black"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:maxLength="30"
+                        android:drawablePadding="@dimen/padding_small"
+                        android:drawableStart="@drawable/ic_location_on"
+                        app:fontFamily="@font/poppins_regular"
+                        android:includeFontPadding="true"
+                        android:layout_width="match_parent"
+                        android:textSize="@dimen/text_size_xsmall"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/img_like"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.1"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/like"
+                    android:layout_gravity="end"
+                    android:scaleType="fitCenter" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

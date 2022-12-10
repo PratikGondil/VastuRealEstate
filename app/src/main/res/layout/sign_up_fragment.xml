@@ -70,7 +70,7 @@
                     android:inputType="text"
                     android:text="@{signUpViewModel.firstName}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_small"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -106,7 +106,7 @@
                     android:inputType="text"
                     android:text="@{signUpViewModel.middleName}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -142,7 +142,7 @@
                     android:inputType="text"
                     android:text="@{signUpViewModel.lastName}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -163,7 +163,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/mobile_number_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_baseline_local_phone_24">
+                app:startIconDrawable="@drawable/ic_phone">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtMobileNum"
@@ -178,7 +178,7 @@
                     android:inputType="phone"
                     android:text="@{signUpViewModel.mobileNumber}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -199,7 +199,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/email_id_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_mail">
+                app:startIconDrawable="@drawable/ic_email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtEmail"
@@ -214,7 +214,7 @@
                     android:inputType="textEmailAddress"
                     android:text="@{signUpViewModel.mailId}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -255,7 +255,7 @@
                     android:onItemClick="@{signUpViewModel}"
                     android:text="@{signUpViewModel.city}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -295,7 +295,7 @@
                     android:onItemClick="@{signUpViewModel}"
                     android:text="@{signUpViewModel.subArea}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>

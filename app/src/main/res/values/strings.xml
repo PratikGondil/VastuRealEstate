@@ -34,4 +34,27 @@
     <string name="loan">Loan</string>
     <string name="real_estate">Real Estate</string>
     <string name="vastu">Vastu</string>
+    <string name="enquiry">Enquiry</string>
+    <string name="add_property">Add Property</string>
+    <string name="personal_loan">PERSONAL LOAN</string>
+    <string name="home_loan">HOME LOAN</string>
+    <string name="car_loan">CAR LOAN</string>
+    <string name="search">Search...</string>
+    <string name="budget">Budget</string>
+    <string name="featured">FEATURED</string>
+    <string name="details">Details</string>
+    <string name="type">Type</string>
+    <string name="apartments">Apartments</string>
+    <string name="bedrooms">Bedrooms</string>
+    <string name="_1">1</string>
+    <string name="bathrooms">Bathrooms</string>
+    <string name="furnishing">Furnishing</string>
+    <string name="unfurnished">Unfurnished</string>
+    <string name="construction_status">Construction Status</string>
+    <string name="ready_to_move">Ready to Move</string>
+    <string name="listed_by">Listed By</string>
+    <string name="_700">700</string>
+    <string name="super_builtup_area_ft">Super Builtup Area (FT )</string>
+    <string name="chat">CHAT</string>
+    <string name="make_offer">MAKE OFFER</string>
 </resources>
