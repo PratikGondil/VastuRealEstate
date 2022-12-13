@@ -56,7 +56,6 @@
                     app:expandedHintEnabled="false"
                     app:placeholderText="@string/mobile_number_text"
                     app:placeholderTextColor="@color/black"
-                    android:background="@drawable/edittext_background"
                     app:startIconDrawable="@drawable/ic_phone"
                     app:helperText="@{loginViewModel.error}"
                     app:helperTextTextColor="@color/red"

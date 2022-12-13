@@ -46,7 +46,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_small"
-                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -55,7 +54,9 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/first_name_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_user">
+                app:startIconDrawable="@drawable/ic_user"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtFirstName"
@@ -65,13 +66,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@null"
+                    android:background="@drawable/edittext_background"
                     android:gravity="center_vertical"
                     android:inputType="text"
                     android:text="@{signUpViewModel.firstName}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,7 +84,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_small"
-                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -91,7 +92,9 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/middle_name_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_user">
+                app:startIconDrawable="@drawable/ic_user"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtMiddleName"
@@ -101,13 +104,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@null"
+                    android:background="@drawable/edittext_background"
                     android:gravity="center_vertical"
                     android:inputType="text"
                     android:text="@{signUpViewModel.middleName}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_normal"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,7 +123,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_small"
-                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -128,7 +131,9 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/last_name_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_user">
+                app:startIconDrawable="@drawable/ic_user"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtLastName"
@@ -137,7 +142,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@null"
+                    android:background="@drawable/edittext_background"
                     android:gravity="center_vertical"
                     android:inputType="text"
                     android:text="@{signUpViewModel.lastName}"
@@ -154,7 +159,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_small"
-                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -163,7 +167,9 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/mobile_number_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_phone">
+                app:startIconDrawable="@drawable/ic_phone"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtMobileNum"
@@ -172,7 +178,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@null"
+                    android:background="@drawable/edittext_background"
                     android:maxLength="10"
                     android:gravity="center_vertical"
                     android:inputType="phone"
@@ -190,7 +196,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_small"
-                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -199,7 +204,9 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/email_id_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_email">
+                app:startIconDrawable="@drawable/ic_email"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtEmail"
@@ -208,7 +215,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@null"
+                    android:background="@drawable/edittext_background"
                     android:maxLength="40"
                     android:gravity="center_vertical"
                     android:inputType="textEmailAddress"
@@ -226,7 +233,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_small"
-                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -238,6 +244,8 @@
                 app:startIconDrawable="@drawable/ic_city"
                 app:endIconDrawable="@drawable/drop_down_icon"
                 app:endIconMode="custom"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red"
                 >
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
@@ -246,7 +254,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@null"
+                    android:background="@drawable/edittext_background"
                     android:clickable="true"
                     android:context="@{context}"
                     android:dropDownHeight="136dp"
@@ -267,7 +275,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_small"
-                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -278,7 +285,9 @@
                 app:placeholderTextColor="@color/black"
                 app:startIconDrawable="@drawable/ic_sub_area"
                 app:endIconDrawable="@drawable/drop_down_icon"
-                app:endIconMode="custom">
+                app:endIconMode="custom"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/autoCompleteAreaList"
@@ -286,7 +295,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@null"
+                    android:background="@drawable/edittext_background"
                     android:clickable="true"
                     android:context="@{context}"
                     android:dropDownHeight="136dp"

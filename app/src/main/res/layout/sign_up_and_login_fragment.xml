@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/nav_background">
+            android:background="@drawable/gradient">
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="@dimen/image_width"
@@ -52,7 +52,7 @@
             app:tabTextColor="@color/icon_color"
             app:tabIndicatorHeight="@dimen/tab_height"
             app:tabGravity="fill"
-            android:layout_margin="@dimen/margin_small"
+            android:layout_margin="10dp"
             app:tabTextAppearance="@style/TabTextStyle"
             tools:ignore="SpeakableTextPresentCheck"
             tools:layout_editor_absoluteX="10dp" />
