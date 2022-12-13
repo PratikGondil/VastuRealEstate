@@ -36,9 +36,13 @@ class SignUpViewModel(application: Application) : AndroidViewModel(application),
     fun callRegistrationApi(objUserInfo: ObjUserInfo){
         RegistrationRepository.callRegisterUserApi(objUserInfo,"register.php",this)
     }
+    fun callCityListApi(){
+
+    }
 
     override fun onGetSuccessResponse(objRegisterResponseMain: ObjRegisterResponseMain) {
-        iSignUpViewListener.launchOtpScreen(objRegisterResponseMain.objRegisterDlts)
+//        iSignUpViewListener.launchOtpScreen(objRegisterResponseMain.objRegisterDlts)
+        iSignUpViewListener.goToLogin()
     }
 
     override fun onGetFailureResponse(objRegisterResponseMain: ObjRegisterResponseMain) {
@@ -46,6 +50,7 @@ class SignUpViewModel(application: Application) : AndroidViewModel(application),
     }
 
     override fun onAlreadyExistUser(objRegisterResponseMain: ObjRegisterResponseMain) {
+        iSignUpViewListener.onRegistrationFail(objRegisterResponseMain)
         iSignUpViewListener.goToLogin()
     }
 }

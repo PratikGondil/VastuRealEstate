@@ -6,6 +6,9 @@ import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
+import android.view.MotionEvent
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
 import androidx.annotation.DrawableRes
@@ -49,7 +52,7 @@ object SignUpBindingAdapter {
                         else
                             isValidFirstName= false
 
-                        setSelection(text!!.length)
+//                        setSelection(text!!.length)
 
                     }
 
@@ -61,7 +64,7 @@ object SignUpBindingAdapter {
                         }
                         else
                             isValidMiddleName= false
-                        setSelection(text!!.length)
+//                        setSelection(text!!.length)
 
                     }
 
@@ -72,7 +75,7 @@ object SignUpBindingAdapter {
                         }
                         else
                             isValidLastName = false
-                        setSelection(text!!.length)
+//                        setSelection(text!!.length)
 
                     }
                     R.id.edtMobileNum ->{
@@ -82,7 +85,7 @@ object SignUpBindingAdapter {
                         }
                         else
                             isValidMobileNo =false
-                        setSelection(text!!.length)
+//                        setSelection(text!!.length)
 
                     }
 
@@ -93,7 +96,7 @@ object SignUpBindingAdapter {
                         }
                         else
                             isValidEmailId = false
-                        setSelection(text!!.length)
+//                        setSelection(text!!.length)
 
                     }
 
@@ -119,20 +122,21 @@ fun isValidEmail(email:String):Boolean{
     }
     @BindingAdapter("android:onItemClick", "android:context")
     @JvmStatic
-    fun occupationListClick(
-        autoTextview: AutoCompleteTextView,
+    fun AutoCompleteTextView.autoCompleteTextClick(
         viewModel: SignUpViewModel, context: Context
     ) {
 
-        autoTextview.onItemClickListener =
+     onItemClickListener =
             AdapterView.OnItemClickListener { adapterView, view, i, l ->
-                when (autoTextview.id) {
+                val imm =context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                imm!!.hideSoftInputFromWindow(view.getWindowToken(), 0)
+                when (id) {
                     R.id.autoCompleteCity ->{
                         isValidCity = true
-                        viewModel.city.set(autoTextview.adapter.getItem(i) as String?)}
+                        viewModel.city.set(adapter.getItem(i) as String?)}
                     R.id.autoCompleteAreaList ->{
                         isValidSubArea = true
-                        viewModel.subArea.set(autoTextview.adapter.getItem(i) as String?)
+                        viewModel.subArea.set(adapter.getItem(i) as String?)
 
                     }
 

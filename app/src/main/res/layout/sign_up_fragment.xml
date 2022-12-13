@@ -246,6 +246,7 @@
                 app:endIconMode="custom"
                 app:helperText="Required*"
                 app:helperTextTextColor="@color/red"
+
                 >
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
@@ -257,6 +258,8 @@
                     android:background="@drawable/edittext_background"
                     android:clickable="true"
                     android:context="@{context}"
+                    android:editable="false"
+                    android:focusable="false"
                     android:dropDownHeight="136dp"
                     android:focusableInTouchMode="true"
                     android:gravity="center_vertical"
@@ -297,6 +300,8 @@
                     android:layout_gravity="center"
                     android:background="@drawable/edittext_background"
                     android:clickable="true"
+                    android:focusable="false"
+                    android:editable="false"
                     android:context="@{context}"
                     android:dropDownHeight="136dp"
                     android:focusableInTouchMode="true"

@@ -21,6 +21,8 @@ object RegistrationRepository : ISignUpReq,IOnServiceResponseListener {
             .build()
             .sendApiRequest(this)
     }
+
+
     fun builRequest(objUserInfo: ObjUserInfo): ByteArray {
 
         return Gson().toJson(objUserInfo).toByteArray()
@@ -36,6 +38,9 @@ object RegistrationRepository : ISignUpReq,IOnServiceResponseListener {
                 iResgisterResponseListener.onAlreadyExistUser(registerResponse)
             ErrorCode.error_0003->
                 iResgisterResponseListener.onGetFailureResponse(parseResponse(response))
+            else->
+                iResgisterResponseListener.onGetFailureResponse(parseResponse(response))
+
 
         }
     }

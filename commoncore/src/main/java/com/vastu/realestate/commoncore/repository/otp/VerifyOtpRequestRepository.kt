@@ -35,6 +35,9 @@ object VerifyOtpRequestRepository:IVerifyOtpReq ,IOnServiceResponseListener{
                 iVerifyOtpResponseListener.onGetVerifyOtpSuccess(objVerifyOtpResponseMain.objVerifyDtls)
             ErrorCode.error_0001->
                 iVerifyOtpResponseListener.onGetVerifyOtpFailure(objVerifyOtpResponseMain)
+            else->
+                iVerifyOtpResponseListener.onGetVerifyOtpFailure(objVerifyOtpResponseMain)
+
         }
     }
 

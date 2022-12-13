@@ -67,6 +67,7 @@ class LoginFragment : Fragment(), ILoginViewListener {
     }
 
     override fun onLoginFail(objLoginResponse: ObjLoginResponse) {
+        customProgressDialog.dismiss()
         Toast.makeText(requireContext(),objLoginResponse.objResponseStatusHdr.statusDescr,
             Toast.LENGTH_LONG).show()
 

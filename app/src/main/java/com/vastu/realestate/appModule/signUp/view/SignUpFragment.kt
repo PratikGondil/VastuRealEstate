@@ -82,6 +82,7 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
     }
 
     override fun registerUser(){
+        customProgressDialog.show(requireContext())
         getUserInfo()
         signUpViewModel.callRegistrationApi(objUserInfo)
     }
@@ -107,14 +108,17 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
     }
 
     fun getCityList(){
+        signUpViewModel.callCityListApi()
 
     }
     override fun goToLogin() {
+        customProgressDialog.dismiss()
             viewPager.currentItem = 0
 
     }
 
     override fun onRegistrationFail(objRegisterResponseMain: ObjRegisterResponseMain) {
+        customProgressDialog.dismiss()
         Toast.makeText(requireContext(),objRegisterResponseMain.objRegisterResponse.objResponseStatusHdr.statusDescr,
             Toast.LENGTH_LONG).show()
 
