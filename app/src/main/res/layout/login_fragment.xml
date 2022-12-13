@@ -50,13 +50,14 @@
                     android:layout_margin="@dimen/dimen10dp"
                     android:gravity="center"
                     android:textAlignment="center"
-                    app:hintEnabled="false"
                     android:textColorHint="@color/black"
+                    app:hintEnabled="false"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
                     app:placeholderText="@string/mobile_number_text"
                     app:placeholderTextColor="@color/black"
-                    app:startIconDrawable="@drawable/ic_baseline_local_phone_24"
+                    android:background="@drawable/edittext_background"
+                    app:startIconDrawable="@drawable/ic_phone"
                     app:helperText="@{loginViewModel.error}"
                     app:helperTextTextColor="@color/red"
                     >
@@ -76,7 +77,7 @@
                         android:focusable="true"
                         android:imeOptions="actionDone"
                         android:singleLine="true"
-                        />
+                        android:maxLength="10"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,7 +97,7 @@
                     android:id="@+id/txtSendOtp"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/roboto_light"
+                    android:fontFamily="@font/poppins_light"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -123,8 +124,10 @@
                     android:layout_gravity="center"
                     android:onClick="@{(view)->loginViewModel.onSendOtpClick()}"
                     android:text="@string/send_otp_text"
-                    android:textColor="@color/white"
-                    android:background="@drawable/round_button_background"/>
+                    android:background="@drawable/round_button_background"
+                    android:textSize="@dimen/text_size_normal"
+                    app:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/white" />
             </RelativeLayout>
         </LinearLayout>
 

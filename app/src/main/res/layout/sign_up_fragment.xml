@@ -14,7 +14,8 @@
     android:layout_height="match_parent"
     tools:context=".appModule.signUp.view.SignUpFragment">
     <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
+
+    android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,10 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="@dimen/margin_small"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -47,7 +45,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen10dp"
+                android:layout_margin="@dimen/margin_small"
+                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -56,25 +55,23 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/first_name_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_user"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red"
-                >
+                app:startIconDrawable="@drawable/ic_user">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtFirstName"
                     style="@style/TextAppearance"
+                    android:maxLength="15"
                     validateField="@{signUpViewModel}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/edittext_background"                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:gravity="center_vertical"
                     android:inputType="text"
                     android:text="@{signUpViewModel.firstName}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    />
+                    android:textSize="@dimen/text_size_small"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -84,7 +81,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen10dp"
+                android:layout_margin="@dimen/margin_small"
+                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -93,34 +91,35 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/middle_name_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_user"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red">
+                app:startIconDrawable="@drawable/ic_user">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtMiddleName"
                     style="@style/TextAppearance"
+                    android:maxLength="15"
                     validateField="@{signUpViewModel}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/edittext_background"
+                    android:background="@null"
                     android:gravity="center_vertical"
                     android:inputType="text"
                     android:text="@{signUpViewModel.middleName}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilLastName"
+                android:maxLength="15"
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen10dp"
+                android:layout_margin="@dimen/margin_small"
+                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -129,9 +128,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/last_name_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_user"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red">
+                app:startIconDrawable="@drawable/ic_user">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtLastName"
@@ -140,12 +137,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/edittext_background"
+                    android:background="@null"
                     android:gravity="center_vertical"
                     android:inputType="text"
                     android:text="@{signUpViewModel.lastName}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -156,7 +153,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen10dp"
+                android:layout_margin="@dimen/margin_small"
+                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -165,9 +163,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/mobile_number_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_baseline_local_phone_24"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red">
+                app:startIconDrawable="@drawable/ic_phone">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtMobileNum"
@@ -176,12 +172,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/edittext_background"
+                    android:background="@null"
+                    android:maxLength="10"
                     android:gravity="center_vertical"
                     android:inputType="phone"
                     android:text="@{signUpViewModel.mobileNumber}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -192,7 +189,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen10dp"
+                android:layout_margin="@dimen/margin_small"
+                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -201,9 +199,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/email_id_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_mail"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red">
+                app:startIconDrawable="@drawable/ic_email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtEmail"
@@ -212,12 +208,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/edittext_background"
+                    android:background="@null"
+                    android:maxLength="40"
                     android:gravity="center_vertical"
                     android:inputType="textEmailAddress"
                     android:text="@{signUpViewModel.mailId}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -228,7 +225,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen10dp"
+                android:layout_margin="@dimen/margin_small"
+                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -240,8 +238,6 @@
                 app:startIconDrawable="@drawable/ic_city"
                 app:endIconDrawable="@drawable/drop_down_icon"
                 app:endIconMode="custom"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red"
                 >
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
@@ -250,7 +246,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/edittext_background"
+                    android:background="@null"
                     android:clickable="true"
                     android:context="@{context}"
                     android:dropDownHeight="136dp"
@@ -259,7 +255,7 @@
                     android:onItemClick="@{signUpViewModel}"
                     android:text="@{signUpViewModel.city}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -270,7 +266,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen10dp"
+                android:layout_margin="@dimen/margin_small"
+                android:background="@drawable/edittext_background"
                 android:gravity="center"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
@@ -281,9 +278,7 @@
                 app:placeholderTextColor="@color/black"
                 app:startIconDrawable="@drawable/ic_sub_area"
                 app:endIconDrawable="@drawable/drop_down_icon"
-                app:endIconMode="custom"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red">
+                app:endIconMode="custom">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/autoCompleteAreaList"
@@ -291,7 +286,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/edittext_background"
+                    android:background="@null"
                     android:clickable="true"
                     android:context="@{context}"
                     android:dropDownHeight="136dp"
@@ -300,7 +295,7 @@
                     android:onItemClick="@{signUpViewModel}"
                     android:text="@{signUpViewModel.subArea}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size18sp"
+                    android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -321,12 +316,13 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSignUp"
                 context="@{context}"
-                isBtnEnable="@{signUpViewModel.isBtnEnable()}"
-                btnBackground="@{signUpViewModel.btnBackground}"
-                android:layout_width="130dp"
+                isEnable="@{signUpViewModel.isBtnEnable}"
+                android:layout_width="@dimen/button_width"
+                android:fontFamily="@font/poppins_medium"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
+                android:background="@drawable/round_button_background"
                 android:clickable="true"
                 android:enabled="false"
                 android:onClick="@{(view)->signUpViewModel.onSubmitBtnClick()}"

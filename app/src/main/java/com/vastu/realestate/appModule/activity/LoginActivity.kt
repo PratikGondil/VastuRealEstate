@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.vastu.realestate.R
-import com.vastu.realestate.appModule.login.view.fragment.LoginFragment
 import com.vastu.realestate.appModule.otp.fragment.OTPFragment
 
 
@@ -24,12 +23,9 @@ class LoginActivity : AppCompatActivity() {
         val fragment = navHostFragment!!.childFragmentManager.fragments[0]
         if (fragment is OTPFragment)
         {
-            fragment.onBackClick()
+            super.onBackPressed()
         }
-        else(
-                finishAffinity()
-
+        else(finishAffinity()
         )
-        super.onBackPressed()
     }
 }

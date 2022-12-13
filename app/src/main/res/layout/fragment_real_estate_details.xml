@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="realEstateDetailsViewModel"
+            type="com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".appModule.dashboard.view.RealEstateDetailsFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="@dimen/margin_large">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/text_size_semilarge"
+                        android:text="@string/details"
+                        android:textColor="@color/black"
+                        app:fontFamily="@font/poppins_semibold" />
+
+                    <LinearLayout
+                        android:id="@+id/typeLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginTop="@dimen/margin_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/type"
+                            android:textColor="@color/icon_color"
+                            app:fontFamily="@font/poppins_regular" />
+
+                        <TextView
+                            android:id="@+id/typeTextview"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/apartments"
+                            android:textColor="@color/text_color"
+                            app:fontFamily="@font/poppins_medium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/bedroomLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginTop="@dimen/margin_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/bedrooms"
+                            android:textColor="@color/icon_color"
+                            app:fontFamily="@font/poppins_regular" />
+
+                        <TextView
+                            android:id="@+id/bedroomTextview"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/_1"
+                            android:textColor="@color/text_color"
+                            app:fontFamily="@font/poppins_medium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/bathroomLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginTop="@dimen/margin_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/bathrooms"
+                            android:textColor="@color/icon_color"
+                            app:fontFamily="@font/poppins_regular" />
+
+                        <TextView
+                            android:id="@+id/bathroomTextview"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/_1"
+                            android:textColor="@color/text_color"
+                            app:fontFamily="@font/poppins_medium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/furnishingLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginTop="@dimen/margin_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/furnishing"
+                            android:textColor="@color/icon_color"
+                            app:fontFamily="@font/poppins_regular" />
+
+                        <TextView
+                            android:id="@+id/furnishingTextview"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/unfurnished"
+                            android:textColor="@color/text_color"
+                            app:fontFamily="@font/poppins_medium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/constructionStatusLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginTop="@dimen/margin_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/construction_status"
+                            android:textColor="@color/icon_color"
+                            app:fontFamily="@font/poppins_regular" />
+
+                        <TextView
+                            android:id="@+id/constructionStatusTextview"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/ready_to_move"
+                            android:textColor="@color/text_color"
+                            app:fontFamily="@font/poppins_medium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/listedByLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginTop="@dimen/margin_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/listed_by"
+                            android:textColor="@color/icon_color"
+                            app:fontFamily="@font/poppins_regular" />
+
+                        <TextView
+                            android:id="@+id/listedByTextview"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/ready_to_move"
+                            android:textColor="@color/text_color"
+                            app:fontFamily="@font/poppins_medium" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/areaLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginTop="@dimen/margin_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/super_builtup_area_ft"
+                            android:textColor="@color/icon_color"
+                            app:fontFamily="@font/poppins_regular" />
+
+                        <TextView
+                            android:id="@+id/areaTextview"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_semilarge"
+                            android:text="@string/_700"
+                            android:textColor="@color/text_color"
+                            app:fontFamily="@font/poppins_medium" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="@dimen/margin_xlarge"
+                    android:background="@color/icon_color" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_margin="@dimen/margin_large">
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnChat"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/round_button_background"
+                        android:text="@string/chat"
+                        android:textSize="@dimen/text_size_normal"
+                        app:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/white" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnMakeOffer"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:background="@drawable/round_button_background"
+                        android:text="@string/make_offer"
+                        android:textSize="@dimen/text_size_normal"
+                        app:fontFamily="@font/poppins_medium"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

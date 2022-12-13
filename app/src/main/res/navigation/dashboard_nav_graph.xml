@@ -7,9 +7,49 @@
 
     <fragment
         android:id="@+id/VastuDashboardFragment"
-        android:name="com.vastu.realestate.appModule.dashboard.VastuDashboardFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.VastuDashboardFragment"
         android:label="VastuDashboardFragment"
         tools:layout="@layout/fragment_vastu_dashboard">
+        <action
+            android:id="@+id/action_VastuDashboardFragment_to_LoanFragment"
+            app:destination="@id/LoanFragment" />
+        <action
+            android:id="@+id/action_VastuDashboardFragment_to_RealEstateFragment"
+            app:destination="@id/RealEstateFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/RealEstateFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.RealEstateFragment"
+        android:label="RealEstateFragment"
+        tools:layout="@layout/fragment_real_estate">
+        <action
+            android:id="@+id/action_RealEstateFragment_to_RealEstateDetailsFragment"
+            app:destination="@id/RealEstateDetailsFragment" />
+        <action
+            android:id="@+id/action_RealEstateFragment_to_VastuDashboardFragment"
+            app:destination="@id/VastuDashboardFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/RealEstateDetailsFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.RealEstateDetailsFragment"
+        android:label="RealEstateDetailsFragment"
+        tools:layout="@layout/fragment_real_estate_details">
+        <action
+            android:id="@+id/action_RealEstateDetailsFragment_to_RealEstateFragment"
+            app:destination="@id/RealEstateFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/LoanFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.LoanFragment"
+        android:label="LoanFragment"
+        tools:layout="@layout/fragment_loan">
+
+        <action
+            android:id="@+id/action_LoanFragment_to_VastuDashboardFragment"
+            app:destination="@id/VastuDashboardFragment" />
     </fragment>
 
 </navigation>

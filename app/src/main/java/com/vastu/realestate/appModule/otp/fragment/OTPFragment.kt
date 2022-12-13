@@ -24,7 +24,7 @@ import com.vastu.realestate.customProgressDialog.CustomProgressDialog
 import com.vastu.realestate.databinding.OtpFragmentBinding
 import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
 import com.vastu.realestate.registrationcore.model.response.ObjRegisterDlts
-import com.vastu.realestate.rootModule.dashboard.DashboardActivity
+import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
 import com.vastu.realestate.utils.BaseConstant
 import java.util.*
 
