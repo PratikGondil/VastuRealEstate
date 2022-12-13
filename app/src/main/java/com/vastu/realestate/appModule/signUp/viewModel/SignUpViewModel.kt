@@ -1,9 +1,11 @@
 package com.vastu.realestate.appModule.signUp.viewModel
 
 import android.app.Application
+import androidx.core.content.ContextCompat
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.vastu.realestate.R
 import com.vastu.realestate.appModule.signUp.uiInterfaces.ISignUpViewListener
 import com.vastu.realestate.registrationcore.callbacks.response.IResgisterResponseListener
 import com.vastu.realestate.registrationcore.model.request.ObjUserInfo
@@ -21,6 +23,11 @@ class SignUpViewModel(application: Application) : AndroidViewModel(application),
     var cityList =MutableLiveData<String>()
     var subAreaList = MutableLiveData<String>()
     var isBtnEnable =ObservableField(false)
+    var mContext :Application
+    init {
+        mContext =application
+    }
+    var btnBackground = ObservableField(ContextCompat.getDrawable(mContext, R.drawable.button_inactive_background))
     lateinit var iSignUpViewListener : ISignUpViewListener
     fun onSubmitBtnClick(){
         iSignUpViewListener.registerUser()

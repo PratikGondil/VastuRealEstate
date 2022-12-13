@@ -1,6 +1,7 @@
 package com.vastu.realestate.appModule.otp.bindingAdapter
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,6 +9,7 @@ import android.text.method.PasswordTransformationMethod
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.chaos.view.PinView
 import com.vastu.realestate.R
@@ -44,7 +46,13 @@ object OtpBindingAdapter {
 
                     viewModel.otp.set(charSequence.toString())
                     viewModel.isValidOTP.set(true)
+                    viewModel.btnBackground.set(ContextCompat.getDrawable(context,R.drawable.round_button_background))
                 }
+                else{
+                    viewModel.btnBackground.set(ContextCompat.getDrawable(context,R.drawable.button_inactive_background))
+
+                }
+
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -53,15 +61,16 @@ object OtpBindingAdapter {
         })
     }
     @RequiresApi(Build.VERSION_CODES.M)
-    @BindingAdapter("context","isValidOTP")
+    @BindingAdapter("context","isValidOTP","btnBackground")
     @JvmStatic
-    fun AppCompatButton.changeSubmitBtnState(context: Context,isValidOTP: Boolean) {
+    fun AppCompatButton.changeSubmitBtnState(context: Context,isValidOTP: Boolean,btnBackground:Drawable) {
         if ( isValidOTP) {
             isEnabled = true
-            setTextColor(context.getColor(R.color.white))
+            background =btnBackground
         } else {
             isEnabled = false
-            setTextColor(context.getColor(R.color.gray))
+            background =btnBackground
+
         }
     }
 }

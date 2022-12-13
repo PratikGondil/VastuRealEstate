@@ -14,33 +14,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".appModule.otp.fragment.OTPFragment"
-        android:background="@color/gray">
-        <LinearLayout
+        android:background="@color/login_background">
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:layout_constraintHeight_percent=".30"
+            app:layout_constraintHeight_percent=".40"
             app:layout_constraintVertical_bias="0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/dark_brown"
-            >
-            <ImageView
-                android:layout_width="@dimen/dimen50dp"
-                android:layout_height="@dimen/dimen50dp"
-                android:src="@drawable/otp_img"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/dimen10dp"
-                android:scaleType="fitCenter"
-                />
-        </LinearLayout>
+            android:background="@drawable/gradient"
+            />
+
+
+        <ImageView
+            android:id="@+id/ivIcon"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/login_img"
+            app:layout_constraintHeight_percent=".14"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/clMainLayout"
+
+            />
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMainLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent=".80"
-        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintHeight_percent=".70"
+        app:layout_constraintVertical_bias="1.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -77,7 +86,7 @@
                     android:gravity="top|center"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/submit_otp"
-                    android:textColor="#f7bb4a"
+                    android:textColor="@color/text_color"
                     android:textSize="@dimen/dimens20sp"
                     android:layout_margin="@dimen/dimen10dp"
                     android:layout_weight="0.3"
@@ -160,7 +169,8 @@
                     android:linksClickable="false"
                     android:autoLink="all"
                     android:textColor="@color/text_color_blue"
-                    android:layout_weight="0.1"/>
+                    android:layout_weight="0.1"
+                    android:onClick="@{(view)->otpViewModel.resendOtp()}"/>
 
                 <RelativeLayout
                     android:id="@+id/rlNextBtnLayout"
@@ -172,17 +182,17 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnNextButton"
+                        context="@{context}"
+                        isValidOTP="@{otpViewModel.isValidOTP()}"
+                        btnBackground="@{otpViewModel.btnBackground}"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/round_button_background"
-                        android:gravity="center"
-                        context="@{context}"
-                        isValidOTP="@{otpViewModel.isValidOTP}"
                         android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:onClick="@{(view)->otpViewModel.onOtpSubmitClick()}"
                         android:text="@string/submit_btn_text"
-                        android:textColor="@color/white"
-                        android:onClick="@{(view)->otpViewModel.onOtpSubmitClick()}"/>
+                        android:textColor="@color/white" />
                 </RelativeLayout>
             </LinearLayout>
 

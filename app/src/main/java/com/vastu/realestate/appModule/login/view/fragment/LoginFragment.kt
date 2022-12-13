@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.vastu.realestate.appModule.login.viewModel.LoginViewModel
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.login.uiInterfaces.ILoginViewListener
+import com.vastu.realestate.commoncore.model.otp.ObjUserData
+import com.vastu.realestate.customProgressDialog.CustomProgressDialog
 import com.vastu.realestate.databinding.LoginFragmentBinding
 import com.vastu.realestate.logincore.model.response.ObjLoginResponse
 import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
@@ -22,7 +24,8 @@ class LoginFragment : Fragment(), ILoginViewListener {
 
     lateinit var viewModel: LoginViewModel
     lateinit var binder: LoginFragmentBinding
-     var objRegisterDlts = ObjRegisterDlts()
+     var objUserData = ObjUserData()
+    lateinit var customProgressDialog :CustomProgressDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,6 +35,7 @@ class LoginFragment : Fragment(), ILoginViewListener {
         binder.lifecycleOwner = this
         binder.loginViewModel = viewModel
         viewModel.iLoginViewListener = this
+        customProgressDialog = CustomProgressDialog.getInstance()
 //        initView()
         return binder.root
     }
@@ -42,16 +46,23 @@ class LoginFragment : Fragment(), ILoginViewListener {
 //        objRegisterDlts = objRegisterDlts.copy(userId = 1)
 //        bundle.putSerializable(BaseConstant.REGISTER_DTLS_OBJ, objRegisterDlts)
 //        findNavController().navigate(R.id.action_LoginSignUpFragment_To_OTPFragment,bundle)
+        if(viewModel.isValidMobileNumber.get()!!){
+            customProgressDialog.show(requireContext())
+            viewModel.callLoginApi(viewModel.mobileNumber.get().toString())
+        }
+        else{
+//            viewModel.errorVisible.set(View.VISIBLE)
+            binder.tilMobileNumLayout.helperText= viewModel.error.get()
+        }
 
-        viewModel.callLoginApi(viewModel.mobileNumber.get().toString())
 //        if(!viewModel.mobileNumber.get().isNullOrEmpty()){
 //            setOtpView()
 //        }
     }
     override fun launchOtpScreen(objLoginResponseMain: ObjLoginResponseMain) {
         val bundle = Bundle()
-        objRegisterDlts = objRegisterDlts.copy(objLoginResponseMain.objLoginDtls.userId)
-        bundle.putSerializable(BaseConstant.REGISTER_DTLS_OBJ, objRegisterDlts)
+        objUserData = objUserData.copy(userID = objLoginResponseMain.objLoginDtls.userId,mobile = viewModel.mobileNumber.get())
+        bundle.putSerializable(BaseConstant.REGISTER_DTLS_OBJ, objUserData)
         findNavController().navigate(R.id.action_LoginSignUpFragment_To_OTPFragment,bundle)
     }
 

@@ -1,14 +1,17 @@
 package com.vastu.realestate.appModule.signUp.bindingAdapter
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
 import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
+import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputEditText
 import com.vastu.realestate.R
@@ -95,7 +98,7 @@ object SignUpBindingAdapter {
                     }
 
                 }
-               changeSubmitBtnState(signUpViewModel)
+               changeSubmitBtnState(signUpViewModel,context)
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -134,29 +137,35 @@ fun isValidEmail(email:String):Boolean{
                     }
 
                 }
-                changeSubmitBtnState(viewModel)
+                changeSubmitBtnState(viewModel,context)
             }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    @BindingAdapter("context","isEnable")
+    @BindingAdapter("context","isBtnEnable","btnBackground")
     @JvmStatic
-    fun AppCompatButton.isButtonEnable(context: Context,isBtnEnable: Boolean){
+    fun AppCompatButton.isButtonEnable(context: Context,isBtnEnable: Boolean,btnBackground: Drawable){
         if(isBtnEnable){
             isEnabled =true
-            setTextColor(context.getColor(R.color.white))
+//            setTextColor(context.getColor(R.color.white))
+            background =btnBackground
         }
         else{
             isEnabled =false
-            setTextColor(context.getColor(R.color.gray))
+//            setTextColor(context.getColor(R.color.gray))
+            background =btnBackground
+
         }
     }
 
-    fun changeSubmitBtnState(signUpViewModel: SignUpViewModel) {
+    fun changeSubmitBtnState(signUpViewModel: SignUpViewModel,context: Context) {
         if (isValidFirstName && isValidMiddleName && isValidLastName && isValidMobileNo && isValidEmailId && isValidCity && isValidSubArea) {
             signUpViewModel.isBtnEnable.set(true)
+            signUpViewModel.btnBackground.set(ContextCompat.getDrawable(context,R.drawable.round_button_background))
         } else {
             signUpViewModel.isBtnEnable.set(false)
+            signUpViewModel.btnBackground.set(ContextCompat.getDrawable(context,R.drawable.button_inactive_background))
+
         }
     }
 

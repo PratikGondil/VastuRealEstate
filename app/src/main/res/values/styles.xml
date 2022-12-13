@@ -2,15 +2,15 @@
 <resources>
     <style name="TextAppearance">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/black_text</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:textColorHint">@color/black</item>
+        <item name="android:textColorHint">@color/black_text</item>
         <item name="fontFamily">@font/roboto_regular</item>
         <item name="android:letterSpacing">@dimen/letterSpacing_3</item>
     </style>
     <style name="hintTextApperance" >
         <item name="android:textSize">20sp</item>
-        <item name="android:textColorHint">@color/black</item>
+        <item name="android:textColorHint">@color/black_text</item>
     </style>
     <style name="prefix" parent="Base.TextAppearance.AppCompat.Body2">
         <item name="android:textSize">18sp</item>
@@ -24,5 +24,9 @@
         <item name="android:gravity">center</item>
     </style>
 
-
+    <style name="errorTextApperance" >
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColorHint">@color/red</item>
+        <item name="android:layout_margin">@dimen/dimen10dp</item>
+    </style>
 </resources>

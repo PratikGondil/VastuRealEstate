@@ -17,6 +17,7 @@ import com.vastu.realestate.R
 import com.vastu.realestate.appModule.login.view.fragment.LoginFragment
 import com.vastu.realestate.appModule.signUp.uiInterfaces.ISignUpViewListener
 import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
+import com.vastu.realestate.customProgressDialog.CustomProgressDialog
 import com.vastu.realestate.databinding.SignUpFragmentBinding
 import com.vastu.realestate.registrationcore.model.request.ObjUserInfo
 import com.vastu.realestate.registrationcore.model.response.ObjRegisterDlts
@@ -29,6 +30,7 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
     lateinit var signUpFragmentBinding: SignUpFragmentBinding
     lateinit var viewPager :ViewPager2
     var objUserInfo= ObjUserInfo()
+    lateinit var customProgressDialog : CustomProgressDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,7 +48,8 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
         initView()
         observeCityList()
         observeSubAreaList()
-
+        customProgressDialog = CustomProgressDialog.getInstance()
+        customProgressDialog.dismiss()
         return signUpFragmentBinding.root
     }
 
@@ -84,6 +87,7 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
     }
 
     override fun launchOtpScreen(objRegisterDlts: ObjRegisterDlts) {
+        customProgressDialog.show(requireContext())
         val bundle = Bundle()
         bundle.putSerializable(REGISTER_DTLS_OBJ, objRegisterDlts)
         findNavController().navigate(R.id.action_LoginSignUpFragment_To_OTPFragment,bundle)
@@ -99,6 +103,10 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
         emailId = signUpViewModel.mailId.get()!!,
         userType = "1")
 
+
+    }
+
+    fun getCityList(){
 
     }
     override fun goToLogin() {

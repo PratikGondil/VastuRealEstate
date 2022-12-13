@@ -10,55 +10,63 @@
         android:layout_height="match_parent"
         tools:context="com.vastu.realestate.SignUpAndLoginFragment"
 
-        android:background="@color/gray">
-    <LinearLayout
+        android:background="@color/login_background">
+    <RelativeLayout
+        android:id="@+id/rlGradientLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintHeight_percent=".30"
+        android:orientation="horizontal"
+        app:layout_constraintHeight_percent=".40"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/dark_brown"
+        android:background="@drawable/gradient"
         >
+    </RelativeLayout>
         <ImageView
-            android:layout_width="@dimen/dimen50dp"
-            android:layout_height="@dimen/dimen50dp"
+            android:id="@+id/ivIcon"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:src="@drawable/login_img"
+            app:layout_constraintHeight_percent=".14"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/dimen10dp"
             android:scaleType="fitCenter"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/clMainLayout"
+
             />
-    </LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clMainLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintHeight_percent=".80"
-        app:layout_constraintVertical_bias="0.8"
+        app:layout_constraintHeight_percent=".70"
+        app:layout_constraintVertical_bias="1.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="@dimen/dimen20dp"
-
-
         android:background="@drawable/white_background">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tlLoginSignUpTab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabIndicatorColor="@color/text_color"
-            app:tabSelectedTextColor="@color/text_color"
-            app:tabTextColor="@color/gray"
-            app:tabIndicatorHeight="2dp"
             app:tabGravity="fill"
-            android:layout_margin="6dp"
+            app:tabIndicatorColor="@color/text_color"
+            app:tabIndicatorHeight="2dp"
+            app:tabSelectedTextColor="@color/text_color"
             app:tabTextAppearance="@style/TabTextStyle"
-            />
+            app:tabTextColor="@color/gray"
+            tools:ignore="SpeakableTextPresentCheck"
+            tools:layout_editor_absoluteX="10dp" />
         <androidx.viewpager2.widget.ViewPager2
             android:id ="@+id/vpSignUpLogin"
             android:layout_width="match_parent"
@@ -67,6 +75,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tlLoginSignUpTab"
+            android:layout_marginBottom="@dimen/dimen10dp"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
