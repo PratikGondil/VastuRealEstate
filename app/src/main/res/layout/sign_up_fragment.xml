@@ -264,7 +264,6 @@
                     android:focusableInTouchMode="true"
                     android:gravity="center_vertical"
                     android:onItemClick="@{signUpViewModel}"
-                    android:text="@{signUpViewModel.city}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -307,7 +306,6 @@
                     android:focusableInTouchMode="true"
                     android:gravity="center_vertical"
                     android:onItemClick="@{signUpViewModel}"
-                    android:text="@{signUpViewModel.subArea}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_normal"
                     tools:ignore="SpeakableTextPresentCheck" />
@@ -332,13 +330,13 @@
                 context="@{context}"
                 isEnable="@{signUpViewModel.isBtnEnable}"
                 android:layout_width="@dimen/button_width"
-                android:fontFamily="@font/poppins_medium"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:background="@drawable/round_button_background"
+                android:background="@{signUpViewModel.btnBackground}"
                 android:clickable="true"
                 android:enabled="false"
+                android:fontFamily="@font/poppins_medium"
                 android:onClick="@{(view)->signUpViewModel.onSubmitBtnClick()}"
                 android:text="@string/submit_btn_text"
                 android:textColor="@color/white" />

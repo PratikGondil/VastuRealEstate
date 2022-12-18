@@ -1,11 +1,15 @@
 package com.vastu.realestate.appModule.signUp.uiInterfaces
 
-import com.vastu.realestate.registrationcore.model.response.ObjRegisterDlts
-import com.vastu.realestate.registrationcore.model.response.ObjRegisterResponseMain
+import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaResponseMain
+import com.vastu.realestate.registrationcore.model.response.registration.ObjRegisterDlts
+import com.vastu.realestate.registrationcore.model.response.registration.ObjRegisterResponseMain
+import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
 
 interface ISignUpViewListener {
     fun registerUser()
-    fun launchOtpScreen(objRegisterDlts:ObjRegisterDlts)
+    fun launchOtpScreen(objRegisterDlts: ObjRegisterDlts)
     fun goToLogin()
     fun onRegistrationFail(objRegisterResponseMain: ObjRegisterResponseMain)
+    fun onCityListApiFailure(objTalukaResponseMain:ObjTalukaResponseMain)
+    fun onSubAreaListApiFailure(objGetCityAreaDetailResponseMain: ObjGetCityAreaDetailResponseMain)
 }

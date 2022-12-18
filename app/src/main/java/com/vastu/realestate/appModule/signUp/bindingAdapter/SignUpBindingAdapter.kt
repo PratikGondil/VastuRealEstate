@@ -6,12 +6,9 @@ import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
-import android.view.MotionEvent
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
-import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
@@ -19,10 +16,10 @@ import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputEditText
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
-import com.vastu.realestate.utils.BaseConstant.EMAIL_PATTERN
+import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaDataList
+import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData
 import com.vastu.realestate.utils.BaseConstant.MOBILE_REGEX
 import com.vastu.realestate.utils.BaseConstant.NAME_REGEX
-import java.util.regex.Pattern
 
 object SignUpBindingAdapter {
     var isValidFirstName:Boolean=false
@@ -133,10 +130,11 @@ fun isValidEmail(email:String):Boolean{
                 when (id) {
                     R.id.autoCompleteCity ->{
                         isValidCity = true
-                        viewModel.city.set(adapter.getItem(i) as String?)}
+                        viewModel.city.value = adapter.getItem(i) as ObjTalukaDataList?
+                    }
                     R.id.autoCompleteAreaList ->{
                         isValidSubArea = true
-                        viewModel.subArea.set(adapter.getItem(i) as String?)
+                        viewModel.subArea.set(adapter.getItem(i) as ObjCityAreaData?)
 
                     }
 

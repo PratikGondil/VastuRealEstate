@@ -1,8 +1,6 @@
 package com.vastu.realestate.appModule.otp.fragment
 
 import android.app.Activity
-import android.content.ClipData.newIntent
-import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.Handler
@@ -23,7 +21,6 @@ import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyOtpResponseMa
 import com.vastu.realestate.customProgressDialog.CustomProgressDialog
 import com.vastu.realestate.databinding.OtpFragmentBinding
 import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
-import com.vastu.realestate.registrationcore.model.response.ObjRegisterDlts
 import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
 import com.vastu.realestate.utils.BaseConstant
 import java.util.*

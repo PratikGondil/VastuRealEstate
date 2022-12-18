@@ -17,7 +17,6 @@ import com.vastu.realestate.customProgressDialog.CustomProgressDialog
 import com.vastu.realestate.databinding.LoginFragmentBinding
 import com.vastu.realestate.logincore.model.response.ObjLoginResponse
 import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
-import com.vastu.realestate.registrationcore.model.response.ObjRegisterDlts
 import com.vastu.realestate.utils.BaseConstant
 
 class LoginFragment : Fragment(), ILoginViewListener {
