@@ -46,10 +46,7 @@ class OTPViewModel(application: Application) : AndroidViewModel(application),IVe
     }
 
     override fun onGetVerifyOtpFailure(objVerifyOtpResponseMain: ObjVerifyOtpResponseMain) {
-//        iVerifyOtpViewListener.onOtpVerifyFailure(objVerifyOtpResponseMain)
-        var objVerifyDtls = ObjVerifyDtls(userId = "7", firstName = "Supriya", mobileNo = "8796766181", emailId = "supriyakhambe77@gmail.com")
-        iVerifyOtpViewListener.launchDashboard(objVerifyDtls)
-
+     iVerifyOtpViewListener.onOtpVerifyFailure(objVerifyOtpResponseMain)
     }
    fun  resendOtp(){
         iVerifyOtpViewListener.resendOtpReq()
