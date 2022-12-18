@@ -69,7 +69,5 @@ Napp/src/main/java/com/vastu/realestate/appModule/dashboard/model/RealEstate.kt
 Rapp/src/main/java/com/vastu/realestate/appModule/dashboard/model/RealEstateList.kt,9\7\97edf3784ace3d6379c77e55c340ea2893d95325
 p
 @app/src/main/java/com/vastu/realestate/SignUpAndLoginFragment.kt,c\8\c83b347ecb558ff810ced9f5ef602698dfaf09d7
-…
-Uapp/src/main/java/com/vastu/realestate/appModule/dashboard/view/RealEstateFragment.kt,2\5\2512a79ce20829a35be2f188a23e5facd797eb17
 ~
 Napp/src/main/java/com/vastu/realestate/appModule/signUp/view/SignUpFragment.kt,3\1\31553533d40c3d4831c787431b362e4442f6602f

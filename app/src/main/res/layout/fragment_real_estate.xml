@@ -89,6 +89,7 @@
                         android:id="@+id/edtBudget"
                         style="@style/TextAppearance"
                         android:layout_width="match_parent"
+                        android:maxLines="1"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@null"
