@@ -49,6 +49,10 @@ class DashboardActivity : AppCompatActivity() {
         activityVastuDashboardBinding = DataBindingUtil.setContentView(this,R.layout.activity_vastu_dashboard)
         activityVastuDashboardBinding.lifecycleOwner = this
         activityVastuDashboardBinding.dashboardViewModel = dashboardViewModel
+    }
+
+    override fun onStart() {
+        super.onStart()
         initNavigationMenus()
     }
     private fun initNavigationMenus(){

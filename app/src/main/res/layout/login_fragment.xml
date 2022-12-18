@@ -94,12 +94,12 @@
 
                 <TextView
                     android:id="@+id/txtSendOtp"
-                    android:textSize="14sp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/poppins_light"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:textSize="@dimen/text_size_xsmall"
                     android:text="@string/we_will_send_otp" />
 
 

@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.vastu.realestate.SignUpAndLoginFragment"
-
-        android:background="@color/login_background">
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -46,6 +45,7 @@
             android:id="@+id/tlLoginSignUpTab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@null"
             app:layout_constraintTop_toTopOf="parent"
             app:tabIndicatorColor="@color/tab_selected_text_color"
             app:tabSelectedTextColor="@color/tab_selected_text_color"

@@ -20,7 +20,7 @@
             <ImageView
                 android:id="@+id/menu_imageview"
                 android:layout_width="0dp"
-                android:layout_weight="0.15"
+                android:layout_weight="0.1"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
                 android:src="@drawable/menu_icon" />
@@ -28,7 +28,7 @@
             <TextView
                 android:id="@+id/title_textview"
                 android:layout_width="0dp"
-                android:layout_weight="0.7"
+                android:layout_weight="0.8"
                 android:gravity="start|center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_normal"
@@ -40,7 +40,7 @@
                 android:id="@+id/notification_imageview"
                 android:layout_width="0dp"
                 android:layout_gravity="center_vertical"
-                android:layout_weight="0.15"
+                android:layout_weight="0.1"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_notification" />
         </LinearLayout>
