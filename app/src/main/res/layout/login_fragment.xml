@@ -11,28 +11,32 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   tools:context=".appModule.login.view.fragment.LoginFragment">   <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-
+    tools:context=".appModule.login.view.fragment.LoginFragment"
+    >
+   <androidx.core.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       android:fillViewport="true"
+       >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
            android:layout_margin="5dp"
             android:background="@color/white"
             android:orientation="vertical"
-            android:weightSum="1">
+            android:weightSum="1"
+            onTouch ="@{loginViewModel}"
+          >
 
             <LinearLayout
                 android:id="@+id/llInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.4"
+                android:layout_weight="0.5"
                 android:gravity="center"
                 android:orientation="vertical"
                 >
@@ -52,10 +56,13 @@
                     app:expandedHintEnabled="false"
                     app:placeholderText="@string/mobile_number_text"
                     app:placeholderTextColor="@color/black"
-                    android:background="@drawable/edittext_background"
-                    app:startIconDrawable="@drawable/ic_phone">
+                    app:startIconDrawable="@drawable/ic_phone"
+                    app:helperText="@{loginViewModel.error}"
+                    app:helperTextTextColor="@color/red"
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtMobile"
                         style="@style/TextAppearance"
                         validateMobileNo="@{loginViewModel}"
                         android:layout_width="match_parent"
@@ -64,11 +71,15 @@
                         android:gravity="center_vertical"
                         android:inputType="phone"
                         android:text="@{loginViewModel.mobileNumber}"
-                        android:background="@null"
+                        android:background="@drawable/edittext_background"
+                        android:focusableInTouchMode="true"
+                        android:focusable="true"
                         android:imeOptions="actionDone"
+                        android:singleLine="true"
                         android:maxLength="10"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
+
 
             </LinearLayout>
 
@@ -76,7 +87,7 @@
                 android:id="@+id/llSignupTextLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.2"
+                android:layout_weight="0.3"
                 android:orientation="vertical"
                 android:gravity="top"
                 >
@@ -96,93 +107,29 @@
             </LinearLayout>
 
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/llOtpLayout"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="vertical"-->
-<!--                android:visibility="@{loginViewModel.isVisibleOtpLayout}"-->
-<!--                android:layout_margin="@dimen/dimen20dp"-->
-<!--                android:layout_weight="0.8"-->
-<!--                >-->
-
-<!--                <TextView-->
-<!--                    style="@style/TextAppearance"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_margin="@dimen/dimen10dp"-->
-<!--                    android:fontFamily="@font/roboto_regular"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="@{loginViewModel.otpSentNumber}"-->
-<!--                    android:textAlignment="center" />-->
-
-<!--                <com.chaos.view.PinView-->
-<!--                    android:id="@+id/pin_view"-->
-<!--                    style="@style/PinWidget.PinView"-->
-<!--                    verifyOtp="@{loginViewModel}"-->
-<!--                    verifyFocus="@{loginViewModel}"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_marginTop="30dp"-->
-<!--                    android:cursorVisible="true"-->
-<!--                    android:inputType="number"-->
-<!--                    android:itemBackground="#65EAEAEA"-->
-<!--                    app:cursorColor="@color/black"-->
-<!--                    app:hideLineWhenFilled="true"-->
-<!--                    app:itemCount="4"-->
-<!--                    app:itemHeight="50dp"-->
-<!--                    app:itemRadius="5dp"-->
-<!--                    app:itemSpacing="10dp"-->
-<!--                    app:itemWidth="50dp"-->
-<!--                    app:lineColor="@color/teal_200"-->
-<!--                    app:lineWidth="1dp"-->
-<!--                    tools:ignore="MissingClass"-->
-<!--                    android:text="@{loginViewModel.otp}"/>-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/txtResendTimer"-->
-<!--                    style="@style/TextAppearance"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:layout_below="@+id/pin_view"-->
-<!--                    android:layout_margin="@dimen/dimen20dp"-->
-<!--                    android:fontFamily="@font/roboto_regular"-->
-<!--                    android:gravity="center"-->
-<!--                    android:lineSpacingExtra="1sp"-->
-<!--                    android:text="Expect otp in "-->
-<!--                    android:visibility="visible" />-->
-
-
-<!--            </LinearLayout>-->
 
             <RelativeLayout
                 android:id="@+id/rlNextBtnLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_gravity="center"
-                android:layout_weight="0.4"
+                android:layout_weight="0.2"
                 android:gravity="center_horizontal">
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnSendOtp"
-                    context="@{context}"
-                    isEnable="@{loginViewModel.isValidMobileNumber}"
-                    android:layout_width="@dimen/button_width"
+                    android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/round_button_background"
                     android:onClick="@{(view)->loginViewModel.onSendOtpClick()}"
                     android:text="@string/send_otp_text"
+                    android:background="@drawable/round_button_background"
                     android:textSize="@dimen/text_size_normal"
                     app:fontFamily="@font/poppins_medium"
                     android:textColor="@color/white" />
             </RelativeLayout>
         </LinearLayout>
 
-    </RelativeLayout>
-
+   </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

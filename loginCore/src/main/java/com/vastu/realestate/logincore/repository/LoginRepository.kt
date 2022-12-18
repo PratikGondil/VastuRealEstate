@@ -34,6 +34,8 @@ object LoginRepository : ILoginReq,IOnServiceResponseListener {
                 iLoginResponseListener.onGetSuccessResponse(loginResponse)
             ErrorCode.error_0002->
                 iLoginResponseListener.onGetFailureResponse(loginResponse)
+            else->
+                iLoginResponseListener.onGetFailureResponse(loginResponse)
         }
 
     }

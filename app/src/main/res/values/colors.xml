@@ -30,4 +30,9 @@
     <color name="item_border_color">#E8D0B3</color>
     <color name="real_esate_cardview_border_color">#DEDEDE</color>
     <color name="feature_color">#F9DD3B</color>
+
+    <color name="button_inactive_color">#BAA42B3B</color>
+    <color name="login_background">#EFF5F8</color>
+    <color name="black_text">#313131</color>
+    <color name="border">#CECECE</color>
 </resources>

@@ -1,6 +1,7 @@
 package com.vastu.realestate.appModule.otp.viewModel
 
 import android.app.Application
+import androidx.core.content.ContextCompat
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
@@ -12,8 +13,12 @@ import com.vastu.realestate.commoncore.model.otp.request.ObjVerifyOtpReq
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyOtpResponseMain
 import com.vastu.realestate.commoncore.repository.otp.VerifyOtpRequestRepository
+import com.vastu.realestate.logincore.callbacks.response.ILoginResponseListener
+import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
+import com.vastu.realestate.logincore.repository.LoginRepository
 
-class OTPViewModel(application: Application) : AndroidViewModel(application),IVerifyOtpResponseListener {
+class OTPViewModel(application: Application) : AndroidViewModel(application),IVerifyOtpResponseListener,
+    ILoginResponseListener {
     var mContext :Application
     init{
         mContext =application
@@ -21,10 +26,15 @@ class OTPViewModel(application: Application) : AndroidViewModel(application),IVe
     var otp = ObservableField("")
     var isValidOTP=ObservableField(false)
     var timer = ObservableField(mContext.resources.getString(R.string.timer_text,"30"))
+    var btnBackground =ObservableField(ContextCompat.getDrawable(mContext,R.drawable.button_inactive_background))
+
     lateinit var iVerifyOtpViewListener: IVerifyOtpViewListener
 
     fun onOtpSubmitClick(){
         iVerifyOtpViewListener.verifyOtp()
+    }
+    fun callLoginApi(mobilenumber:String){
+        LoginRepository.callLoginApi(mobilenumber,"login.php",this)
     }
 
     fun callVerifyOtpApi(objVerifyOtpReq: ObjVerifyOtpReq){
@@ -36,6 +46,17 @@ class OTPViewModel(application: Application) : AndroidViewModel(application),IVe
     }
 
     override fun onGetVerifyOtpFailure(objVerifyOtpResponseMain: ObjVerifyOtpResponseMain) {
-        iVerifyOtpViewListener.onOtpVerifyFailure(objVerifyOtpResponseMain)
+     iVerifyOtpViewListener.onOtpVerifyFailure(objVerifyOtpResponseMain)
+    }
+   fun  resendOtp(){
+        iVerifyOtpViewListener.resendOtpReq()
+   }
+
+    override fun onGetSuccessResponse(response: ObjLoginResponseMain) {
+        iVerifyOtpViewListener.initOtpTimer()
+    }
+
+    override fun onGetFailureResponse(response: ObjLoginResponseMain) {
+        iVerifyOtpViewListener.onResenOtpFailure(response)
     }
 }

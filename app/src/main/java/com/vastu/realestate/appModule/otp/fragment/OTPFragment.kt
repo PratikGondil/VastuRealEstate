@@ -1,8 +1,6 @@
 package com.vastu.realestate.appModule.otp.fragment
 
 import android.app.Activity
-import android.content.ClipData.newIntent
-import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.Handler
@@ -16,11 +14,13 @@ import androidx.navigation.fragment.findNavController
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.otp.uiListener.IVerifyOtpViewListener
 import com.vastu.realestate.appModule.otp.viewModel.OTPViewModel
+import com.vastu.realestate.commoncore.model.otp.ObjUserData
 import com.vastu.realestate.commoncore.model.otp.request.ObjVerifyOtpReq
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyOtpResponseMain
+import com.vastu.realestate.customProgressDialog.CustomProgressDialog
 import com.vastu.realestate.databinding.OtpFragmentBinding
-import com.vastu.realestate.registrationcore.model.response.ObjRegisterDlts
+import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
 import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
 import com.vastu.realestate.utils.BaseConstant
 import java.util.*
@@ -35,7 +35,8 @@ class OTPFragment : Fragment(), IVerifyOtpViewListener {
     var updateSyncTimer: TimerTask? = null
     val handler = Handler()
     var otpCounter: Int = 30
-    lateinit var objRegisterDlts: ObjRegisterDlts
+    lateinit var customProgressDialog : CustomProgressDialog
+    lateinit var objUserData: ObjUserData
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,6 +49,8 @@ class OTPFragment : Fragment(), IVerifyOtpViewListener {
         otpFragmentBinding.lifecycleOwner = this
         getBundleData()
 //        startTimer(1000)
+        customProgressDialog = CustomProgressDialog.getInstance()
+        customProgressDialog.dismiss()
         return otpFragmentBinding.root
     }
 
@@ -55,13 +58,20 @@ class OTPFragment : Fragment(), IVerifyOtpViewListener {
         val args = arguments
         if (args != null){
             if (args.getSerializable(BaseConstant.REGISTER_DTLS_OBJ) != null) {
-                objRegisterDlts =
-                    args.getSerializable(BaseConstant.REGISTER_DTLS_OBJ) as ObjRegisterDlts
-                startTimer(1000)
+                objUserData =
+                    args.getSerializable(BaseConstant.REGISTER_DTLS_OBJ) as ObjUserData
+                initOtpTimer()
             }
         }
 
     }
+
+    override fun initOtpTimer(){
+        startTimer(1000)
+    }
+
+
+
     fun startTimer(timerDelay: Int) {
         try {
             if (ratetimer == null) {
@@ -146,7 +156,7 @@ class OTPFragment : Fragment(), IVerifyOtpViewListener {
     }
 
     override fun verifyOtp() {
-        objVerifyOtpReq = objVerifyOtpReq.copy(userId = objRegisterDlts.userId,otp=viewModel.otp.get())
+        objVerifyOtpReq = objVerifyOtpReq.copy(userId = objUserData.userID,otp=viewModel.otp.get())
         viewModel.callVerifyOtpApi(objVerifyOtpReq)
     }
 
@@ -160,5 +170,12 @@ class OTPFragment : Fragment(), IVerifyOtpViewListener {
 
     override fun onBackClick() {
         findNavController().navigate(R.id.action_OTPFragment_To_LoginFragment)
+    }
+    override fun resendOtpReq(){
+        viewModel.callLoginApi(objUserData.mobile!!)
+    }
+    override fun onResenOtpFailure(objLoginResponseMain: ObjLoginResponseMain) {
+        Toast.makeText(requireContext(),objLoginResponseMain.objLoginResponse.objResponseStatusHdr.statusDescr,Toast.LENGTH_LONG).show()
+
     }
 }

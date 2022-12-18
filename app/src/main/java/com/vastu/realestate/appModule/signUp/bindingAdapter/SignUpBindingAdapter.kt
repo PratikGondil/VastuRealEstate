@@ -1,22 +1,25 @@
 package com.vastu.realestate.appModule.signUp.bindingAdapter
 
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Patterns
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.AutoCompleteTextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputEditText
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
-import com.vastu.realestate.utils.BaseConstant.EMAIL_PATTERN
+import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaDataList
+import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData
 import com.vastu.realestate.utils.BaseConstant.MOBILE_REGEX
 import com.vastu.realestate.utils.BaseConstant.NAME_REGEX
-import java.util.regex.Pattern
 
 object SignUpBindingAdapter {
     var isValidFirstName:Boolean=false
@@ -46,7 +49,7 @@ object SignUpBindingAdapter {
                         else
                             isValidFirstName= false
 
-                        setSelection(text!!.length)
+//                        setSelection(text!!.length)
 
                     }
 
@@ -58,7 +61,7 @@ object SignUpBindingAdapter {
                         }
                         else
                             isValidMiddleName= false
-                        setSelection(text!!.length)
+//                        setSelection(text!!.length)
 
                     }
 
@@ -69,7 +72,7 @@ object SignUpBindingAdapter {
                         }
                         else
                             isValidLastName = false
-                        setSelection(text!!.length)
+//                        setSelection(text!!.length)
 
                     }
                     R.id.edtMobileNum ->{
@@ -79,7 +82,7 @@ object SignUpBindingAdapter {
                         }
                         else
                             isValidMobileNo =false
-                        setSelection(text!!.length)
+//                        setSelection(text!!.length)
 
                     }
 
@@ -90,12 +93,12 @@ object SignUpBindingAdapter {
                         }
                         else
                             isValidEmailId = false
-                        setSelection(text!!.length)
+//                        setSelection(text!!.length)
 
                     }
 
                 }
-               changeSubmitBtnState(signUpViewModel)
+               changeSubmitBtnState(signUpViewModel,context)
             }
 
             override fun afterTextChanged(p0: Editable?) {
@@ -116,47 +119,55 @@ fun isValidEmail(email:String):Boolean{
     }
     @BindingAdapter("android:onItemClick", "android:context")
     @JvmStatic
-    fun occupationListClick(
-        autoTextview: AutoCompleteTextView,
+    fun AutoCompleteTextView.autoCompleteTextClick(
         viewModel: SignUpViewModel, context: Context
     ) {
 
-        autoTextview.onItemClickListener =
+     onItemClickListener =
             AdapterView.OnItemClickListener { adapterView, view, i, l ->
-                when (autoTextview.id) {
+                val imm =context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                imm!!.hideSoftInputFromWindow(view.getWindowToken(), 0)
+                when (id) {
                     R.id.autoCompleteCity ->{
                         isValidCity = true
-                        viewModel.city.set(autoTextview.adapter.getItem(i) as String?)}
+                        viewModel.city.value = adapter.getItem(i) as ObjTalukaDataList?
+                    }
                     R.id.autoCompleteAreaList ->{
                         isValidSubArea = true
-                        viewModel.subArea.set(autoTextview.adapter.getItem(i) as String?)
+                        viewModel.subArea.set(adapter.getItem(i) as ObjCityAreaData?)
 
                     }
 
                 }
-                changeSubmitBtnState(viewModel)
+                changeSubmitBtnState(viewModel,context)
             }
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
-    @BindingAdapter("context","isEnable")
+    @BindingAdapter("context","isBtnEnable","btnBackground")
     @JvmStatic
-    fun AppCompatButton.isButtonEnable(context: Context,isBtnEnable: Boolean){
+    fun AppCompatButton.isButtonEnable(context: Context,isBtnEnable: Boolean,btnBackground: Drawable){
         if(isBtnEnable){
             isEnabled =true
-            setTextColor(context.getColor(R.color.white))
+//            setTextColor(context.getColor(R.color.white))
+            background =btnBackground
         }
         else{
             isEnabled =false
-            setTextColor(context.getColor(R.color.gray))
+//            setTextColor(context.getColor(R.color.gray))
+            background =btnBackground
+
         }
     }
 
-    fun changeSubmitBtnState(signUpViewModel: SignUpViewModel) {
+    fun changeSubmitBtnState(signUpViewModel: SignUpViewModel,context: Context) {
         if (isValidFirstName && isValidMiddleName && isValidLastName && isValidMobileNo && isValidEmailId && isValidCity && isValidSubArea) {
             signUpViewModel.isBtnEnable.set(true)
+            signUpViewModel.btnBackground.set(ContextCompat.getDrawable(context,R.drawable.round_button_background))
         } else {
             signUpViewModel.isBtnEnable.set(false)
+            signUpViewModel.btnBackground.set(ContextCompat.getDrawable(context,R.drawable.button_inactive_background))
+
         }
     }
 

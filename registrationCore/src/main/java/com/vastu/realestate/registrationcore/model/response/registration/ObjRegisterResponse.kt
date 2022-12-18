@@ -1,4 +1,4 @@
-package com.vastu.realestate.registrationcore.model.response
+package com.vastu.realestate.registrationcore.model.response.registration
 
 import com.google.gson.annotations.SerializedName
 import com.vastu.realestate.commoncore.model.otp.response.ObjResponseStatusHdr

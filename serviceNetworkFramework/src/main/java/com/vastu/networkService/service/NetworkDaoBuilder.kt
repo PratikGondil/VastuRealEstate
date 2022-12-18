@@ -56,7 +56,7 @@ class NetworkDaoBuilder private constructor(
             objRetrofit.apiNetworkServicePUT(urlEndPoint, requestBody)
         }
         else {
-            objRetrofit.myGetRequest(urlEndPoint, request as Map<String, String>)
+            objRetrofit.apiNetworkServiceGet(urlEndPoint, request as Map<String, String>)
         }
 
 
