@@ -24,7 +24,6 @@ object CustomProgressDialog{
         dialog!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog!!.setContentView(R.layout.progress_dialog)
         dialog!!.getWindow()?.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT));
-
         dialog!!.setCancelable(true)
         dialog!!.show()
     }

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="drawerViewModel"
+            type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,10 +27,22 @@
             <ImageView
                 android:id="@+id/menu_imageview"
                 android:layout_width="0dp"
-                android:layout_weight="0.1"
+                android:layout_weight="0.15"
+                android:visibility="@{drawerViewModel.isDashBoard()?View.VISIBLE:View.GONE}"
+                android:onClick="@{(view)->drawerViewModel.onMenuClick()}"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:src="@drawable/menu_icon" />
+                android:src="@drawable/menu_icon"/>
+
+            <ImageView
+                android:id="@+id/back_imageview"
+                android:layout_width="0dp"
+                android:layout_weight="0.15"
+                android:visibility="@{drawerViewModel.isDashBoard()?View.GONE:View.VISIBLE}"
+                android:onClick="@{(view)->drawerViewModel.onBackClick()}"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_arrow" />
 
             <TextView
                 android:id="@+id/title_textview"
@@ -31,19 +50,38 @@
                 android:layout_weight="0.8"
                 android:gravity="start|center"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_normal"
+                android:text="@{drawerViewModel.toolbarTitle}"
+                android:textSize="@dimen/text_size_semilarge"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
-                app:fontFamily="@font/poppins_semibold" />
+                app:fontFamily="@font/poppins_regular" />
 
-            <ImageView
-                android:id="@+id/notification_imageview"
+            <RelativeLayout
                 android:layout_width="0dp"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="0.1"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_notification" />
-        </LinearLayout>
+                android:layout_weight="0.15"
+                android:layout_gravity="center">
 
+                <ImageView
+                    android:id="@+id/notification_imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_vertical"
+                    android:onClick="@{(view)->drawerViewModel.onNotificationClick()}"
+                    android:src="@drawable/notifications" />
+
+                <TextView
+                    android:layout_width="@dimen/padding_normal"
+                    android:layout_height="@dimen/padding_normal"
+                    android:layout_toEndOf="@id/notification_imageview"
+                    android:background="@drawable/badge_background"
+                    app:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:text="@string/_5"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_menu" />
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 </layout>

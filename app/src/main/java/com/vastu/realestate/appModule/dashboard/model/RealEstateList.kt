@@ -10,7 +10,7 @@ object RealEstateList {
             val estate1 = RealEstate(
                 "1",
                 R.drawable.flat_image_1,
-                "FFEATURED",
+                "FEATURED",
                 "ABC",
                 "₹ 19.00,000",
                 "1 BHK FLATS FOR SALE WITH AM.. 1 Bds - 1 Ba - 700 ft2",

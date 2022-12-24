@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VastuRealEstate</string>
+    <string name="app_name">Vastu</string>
     <!--    <login>-->
     <string name="sign_in_text">Sign in</string>
     <string name="sign_up_text">Sign Up</string>
@@ -42,7 +42,7 @@
     <string name="search">Search...</string>
     <string name="budget">Budget</string>
     <string name="featured">FEATURED</string>
-    <string name="details">Details</string>
+    <string name="details">Property Details</string>
     <string name="type">Type</string>
     <string name="apartments">Apartments</string>
     <string name="bedrooms">Bedrooms</string>
@@ -57,4 +57,18 @@
     <string name="super_builtup_area_ft">Super Builtup Area (FT )</string>
     <string name="chat">CHAT</string>
     <string name="make_offer">MAKE OFFER</string>
+    <string name="title">Title</string>
+    <string name="sell_type">Sell Type</string>
+    <string name="kitchen">Kitchen</string>
+    <string name="garage">Garage</string>
+    <string name="balcony">Balcony</string>
+    <string name="swimming_pool">Swimming Pool</string>
+    <string name="floors">Floors</string>
+    <string name="price">Price</string>
+    <string name="booking_amount">Booking Amount</string>
+    <string name="state">State</string>
+    <string name="brochure">Brochure</string>
+    <string name="description">Description</string>
+    <string name="_5">5</string>
+    <string name="please_wait">Please wait...</string>
 </resources>

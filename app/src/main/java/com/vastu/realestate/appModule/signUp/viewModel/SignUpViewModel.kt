@@ -20,6 +20,9 @@ import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAr
 import com.vastu.realestate.registrationcore.repository.CityListRequestRepository
 import com.vastu.realestate.registrationcore.repository.RegistrationRepository
 import com.vastu.realestate.registrationcore.repository.SubAreaRequestRepository
+import com.vastu.realestate.utils.ApiUrlEndPoints.GET_CITIES
+import com.vastu.realestate.utils.ApiUrlEndPoints.GET_SUB_CITY
+import com.vastu.realestate.utils.ApiUrlEndPoints.REGISTER
 
 class SignUpViewModel(application: Application) : AndroidViewModel(application),IResgisterResponseListener,ITalukaResponseListener ,ISubAreaResponseListener{
     var firstName = ObservableField("")
@@ -43,14 +46,14 @@ class SignUpViewModel(application: Application) : AndroidViewModel(application),
     }
 
     fun callRegistrationApi(objUserInfo: ObjUserInfo){
-        RegistrationRepository.callRegisterUserApi(objUserInfo,"register.php",this)
+        RegistrationRepository.callRegisterUserApi(objUserInfo, REGISTER,this)
     }
     fun callCityListApi(){
-        CityListRequestRepository.callCityListApi("get_cities.php",this)
+        CityListRequestRepository.callCityListApi(GET_CITIES,this)
     }
 
     fun callSubAreaList(talukaId: ObjSubAreaReq){
-        SubAreaRequestRepository.callSubAreaListApi(talukaId,"get_subcity.php",this)
+        SubAreaRequestRepository.callSubAreaListApi(talukaId,GET_SUB_CITY,this)
     }
     override fun onGetSuccessResponse(objRegisterResponseMain: ObjRegisterResponseMain) {
 //        iSignUpViewListener.launchOtpScreen(objRegisterResponseMain.objRegisterDlts)

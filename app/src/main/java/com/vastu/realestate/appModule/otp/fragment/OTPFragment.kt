@@ -1,6 +1,7 @@
 package com.vastu.realestate.appModule.otp.fragment
 
 import android.app.Activity
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.Handler
@@ -23,6 +24,9 @@ import com.vastu.realestate.databinding.OtpFragmentBinding
 import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
 import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
 import com.vastu.realestate.utils.BaseConstant
+import com.vastu.realestate.utils.PreferenceKEYS.IS_LOGIN
+import com.vastu.realestate.utils.PreferenceKEYS.USER
+import com.vastu.realestate.utils.PreferenceManger
 import java.util.*
 
 class OTPFragment : Fragment(), IVerifyOtpViewListener {
@@ -161,7 +165,9 @@ class OTPFragment : Fragment(), IVerifyOtpViewListener {
     }
 
     override fun launchDashboard(objVerifyDtls: ObjVerifyDtls) {
-        startActivity(DashboardActivity.newIntent(getActivity(),objVerifyDtls))
+        PreferenceManger.put(objVerifyDtls,USER)
+        PreferenceManger.put(true, IS_LOGIN)
+        startActivity(Intent(activity, DashboardActivity::class.java))
     }
 
     override fun onOtpVerifyFailure(objVerifyOtpResponseMain: ObjVerifyOtpResponseMain) {

@@ -3,14 +3,15 @@ package com.vastu.realestate.appModule.dashboard.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.vastu.realestate.appModule.dashboard.model.RealEstate
 import com.vastu.realestate.databinding.RealEstateItemviewBinding
+import com.vastu.realestatecore.model.response.PropertyData
 
 
-class RealEstateAdapter(private val realEstateList: List<RealEstate>
+class RealEstateAdapter(private val itemClick:OnItemClickListener,private val realEstateList: List<PropertyData>
 ) : RecyclerView.Adapter<RealEstateViewHolder>() {
 
     private lateinit var binding: RealEstateItemviewBinding
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RealEstateViewHolder {
         binding = RealEstateItemviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -18,17 +19,25 @@ class RealEstateAdapter(private val realEstateList: List<RealEstate>
     }
 
     override fun onBindViewHolder(holder: RealEstateViewHolder, position: Int) {
-        val largeNews = realEstateList[position]
-        holder.bind(largeNews)
+        val property = realEstateList[position]
+        holder.bind(property)
+        holder.itemView.setOnClickListener {
+            itemClick.onItemClick(property)
+        }
     }
 
     override fun getItemCount(): Int = realEstateList.size
 
+    interface OnItemClickListener{
+        fun onItemClick(propertyData: PropertyData)
+    }
+
 }
-    class RealEstateViewHolder(private val binding: RealEstateItemviewBinding
+    class RealEstateViewHolder(val binding: RealEstateItemviewBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(realEstate: RealEstate) {
-            binding.realestate = realEstate
+        fun bind(propertyData: PropertyData) {
+            binding.propertyData = propertyData
         }
     }
+
 

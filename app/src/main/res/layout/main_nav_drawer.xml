@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="drawerViewModel"
+            type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,6 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/margin_small"
+                    android:onClick="@{(view)->drawerViewModel.onCloseClick()}"
                     android:layout_marginTop="@dimen/margin_xxxlarge"
                     android:layout_gravity="end|top"
                     android:src="@drawable/ic_close" />
@@ -45,7 +52,7 @@
                         android:id="@+id/user_profile_imageview"
                         android:padding="@dimen/padding_menu"
                         android:layout_width="@dimen/image_width"
-                        android:src="@drawable/ic_user_icon"
+                        android:src="@drawable/user"
                         android:layout_height="@dimen/image_height"
                         android:layout_gravity="center_horizontal" />
 
@@ -62,7 +69,7 @@
                             android:layout_gravity="center_vertical"
                             app:fontFamily="@font/poppins_medium"
                             android:textColor="@color/white"
-                            android:text="@string/mukul_joshi"
+                            android:text="@{drawerViewModel.userName}"
                             android:textSize="@dimen/text_size_semilarge" />
 
                         <TextView
@@ -73,7 +80,7 @@
                             android:layout_gravity="center_vertical"
                             app:fontFamily="@font/poppins_medium"
                             android:textColor="@color/white"
-                            android:text="8956107887"
+                            android:text="@{drawerViewModel.mobileNo}"
                             android:textSize="@dimen/text_size_normal" />
 
                     </LinearLayout>
@@ -86,6 +93,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1"
+                android:onClick="@{(view)->drawerViewModel.onEnquiryClick()}"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginTop="@dimen/margin_xxlarge">
@@ -95,7 +103,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_contact_us"
+                    android:src="@drawable/contact_us"
                     android:scaleType="centerInside" />
 
                 <TextView
@@ -115,6 +123,7 @@
                 android:orientation="horizontal"
                 android:weightSum="1"
                 android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onAddPropertyClick()}"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginTop="@dimen/margin_xxlarge">
 
@@ -144,6 +153,7 @@
                 android:orientation="horizontal"
                 android:weightSum="1"
                 android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onContactUsClick()}"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginTop="@dimen/margin_xxlarge">
 
@@ -152,7 +162,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_contact_us"
+                    android:src="@drawable/contact_us"
                     android:scaleType="centerInside" />
 
                 <TextView
@@ -172,6 +182,7 @@
                 android:orientation="horizontal"
                 android:weightSum="1"
                 android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onSettingsClick()}"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginTop="@dimen/margin_xxlarge">
 
@@ -180,7 +191,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_settings"
+                    android:src="@drawable/settings"
                     android:scaleType="centerInside" />
 
                 <TextView
@@ -200,6 +211,7 @@
                 android:orientation="horizontal"
                 android:weightSum="1"
                 android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onLogoutClick()}"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginTop="@dimen/margin_xxlarge">
 
@@ -208,7 +220,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_logout"
+                    android:src="@drawable/log_out"
                     android:scaleType="centerInside" />
 
                 <TextView

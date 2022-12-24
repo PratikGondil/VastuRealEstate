@@ -56,7 +56,7 @@
                     app:expandedHintEnabled="false"
                     app:placeholderText="@string/mobile_number_text"
                     app:placeholderTextColor="@color/black"
-                    app:startIconDrawable="@drawable/ic_phone"
+                    app:startIconDrawable="@drawable/phone"
                     app:helperText="@{loginViewModel.error}"
                     app:helperTextTextColor="@color/red"
                     >
@@ -123,7 +123,7 @@
                     android:layout_gravity="center"
                     android:onClick="@{(view)->loginViewModel.onSendOtpClick()}"
                     android:text="@string/send_otp_text"
-                    android:background="@drawable/round_button_background"
+                    android:background="@{loginViewModel.btnBackground}"
                     android:textSize="@dimen/text_size_normal"
                     app:fontFamily="@font/poppins_medium"
                     android:textColor="@color/white" />

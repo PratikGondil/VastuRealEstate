@@ -7,9 +7,9 @@ import androidx.lifecycle.AndroidViewModel
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.login.uiInterfaces.ILoginViewListener
 import com.vastu.realestate.logincore.callbacks.response.ILoginResponseListener
-import com.vastu.realestate.logincore.model.response.ObjLoginResponse
 import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
 import com.vastu.realestate.logincore.repository.LoginRepository
+import com.vastu.realestate.utils.ApiUrlEndPoints.LOGIN
 
 class LoginViewModel(application: Application) : AndroidViewModel(application),
     ILoginResponseListener {
@@ -28,7 +28,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application),
     }
 
     fun callLoginApi(mobilenumber:String){
-        LoginRepository.callLoginApi(mobilenumber,"login.php",this)
+        LoginRepository.callLoginApi(mobilenumber,LOGIN,this)
     }
 
     override fun onGetSuccessResponse(response: ObjLoginResponseMain) {

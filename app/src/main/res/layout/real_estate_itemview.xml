@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
-            name="realestate"
-            type="com.vastu.realestate.appModule.dashboard.model.RealEstate" />
+            name="propertyData"
+            type="com.vastu.realestatecore.model.response.PropertyData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,7 +52,7 @@
                         android:id="@+id/feature_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{realestate.propertyFeature}"
+                        android:text="@{propertyData.propertyTitle}"
                         android:padding="1dp"
                         android:textSize="@dimen/text_size_menu"
                         app:fontFamily="@font/poppins_medium"
@@ -61,7 +60,7 @@
 
                     <TextView
                         android:id="@+id/property_prize_textview"
-                        android:text="@{realestate.propertyPrice}"
+                        android:text="@{propertyData.price}"
                         android:textColor="@color/black"
                         app:fontFamily="@font/poppins_bold"
                         android:layout_width="match_parent"
@@ -71,7 +70,7 @@
 
                     <TextView
                         android:id="@+id/property_details_textview"
-                        android:text="@{realestate.propertyDetails}"
+                        android:text="@{propertyData.area}"
                         android:textColor="@color/black"
                         android:ellipsize="end"
                         android:maxLines="2"
@@ -84,7 +83,7 @@
 
                     <TextView
                         android:id="@+id/property_address_textview"
-                        android:text="@{realestate.propertyAddress}"
+                        android:text="@{propertyData.city}"
                         android:textColor="@color/black"
                         android:ellipsize="end"
                         android:maxLines="1"

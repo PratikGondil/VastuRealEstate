@@ -54,7 +54,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/first_name_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_user"
+                app:startIconDrawable="@drawable/first_name"
                 app:helperText="Required*"
                 app:helperTextTextColor="@color/red">
 
@@ -92,7 +92,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/middle_name_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_user"
+                app:startIconDrawable="@drawable/first_name"
                 app:helperText="Required*"
                 app:helperTextTextColor="@color/red">
 
@@ -131,7 +131,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/last_name_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_user"
+                app:startIconDrawable="@drawable/first_name"
                 app:helperText="Required*"
                 app:helperTextTextColor="@color/red">
 
@@ -167,7 +167,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/mobile_number_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_phone"
+                app:startIconDrawable="@drawable/phone"
                 app:helperText="Required*"
                 app:helperTextTextColor="@color/red">
 
@@ -204,7 +204,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/email_id_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_email"
+                app:startIconDrawable="@drawable/email"
                 app:helperText="Required*"
                 app:helperTextTextColor="@color/red">
 
@@ -241,7 +241,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/city_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_city"
+                app:startIconDrawable="@drawable/city"
                 app:endIconDrawable="@drawable/drop_down_icon"
                 app:endIconMode="custom"
                 app:helperText="Required*"
@@ -285,7 +285,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/sub_area_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/ic_sub_area"
+                app:startIconDrawable="@drawable/sub_area"
                 app:endIconDrawable="@drawable/drop_down_icon"
                 app:endIconMode="custom"
                 app:helperText="Required*"

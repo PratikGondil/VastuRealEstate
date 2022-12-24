@@ -32,11 +32,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/dimen20dp"
-                    android:fontFamily="@font/roboto_regular"
+                    app:fontFamily="@font/poppins_regular"
                     android:gravity="center"
-                    android:text="Please wait..."
+                    android:text="@string/please_wait"
                     android:textColor="@color/black_text"
-                    android:textSize="@dimen/text_size_xlarge"
+                    android:textSize="@dimen/text_size_large"
                     android:letterSpacing="0.03"/>
 
             </LinearLayout>

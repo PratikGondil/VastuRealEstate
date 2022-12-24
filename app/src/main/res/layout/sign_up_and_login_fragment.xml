@@ -19,12 +19,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/gradient">
+            android:background="@drawable/background">
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="@dimen/image_width"
                 android:layout_height="@dimen/image_height"
-                android:src="@drawable/login_img"
+                android:src="@drawable/mobile"
                 android:layout_marginTop="@dimen/margin_xxxlarge"
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"/>
