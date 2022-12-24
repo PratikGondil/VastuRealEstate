@@ -150,6 +150,7 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
 
     override fun onSuccessPropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
         hideProgressDialog()
+        imageList.clear()
         getPropertySliderImagesResponse = propertySliderResponseMain.getPropertySliderImagesResponse
         for( slider in getPropertySliderImagesResponse.propertySliderImages!!){
             imageList.add(SlideModel(slider.image))

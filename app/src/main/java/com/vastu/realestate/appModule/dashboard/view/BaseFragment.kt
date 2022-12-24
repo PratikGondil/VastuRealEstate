@@ -16,5 +16,8 @@ open class BaseFragment : Fragment() {
      fun hideProgressDialog(){
         getVastuActivity()?.hideProgressDialog()
     }
+    fun showFailureDialog(message:String){
+        getVastuActivity()?.showFailureDialog(message)
+    }
 
 }

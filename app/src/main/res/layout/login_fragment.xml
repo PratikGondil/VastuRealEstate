@@ -25,10 +25,11 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-           android:layout_margin="5dp"
+            android:layout_margin="5dp"
             android:background="@color/white"
             android:orientation="vertical"
             android:weightSum="1"
+            android:padding="@dimen/padding_xlarge"
             onTouch ="@{loginViewModel}"
           >
 
@@ -47,7 +48,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="@dimen/dimen10dp"
                     android:gravity="center"
                     android:textAlignment="center"
                     android:textColorHint="@color/black"
@@ -95,11 +95,11 @@
                 <TextView
                     android:id="@+id/txtSendOtp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/poppins_light"
+                    app:fontFamily="@font/poppins_light"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="@dimen/text_size_xsmall"
+                    android:textSize="@dimen/text_size_small"
                     android:text="@string/we_will_send_otp" />
 
 

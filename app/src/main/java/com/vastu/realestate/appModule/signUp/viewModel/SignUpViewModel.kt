@@ -82,6 +82,6 @@ class SignUpViewModel(application: Application) : AndroidViewModel(application),
     }
 
     override fun onGetSubAreaResponseFailure(responseMain: ObjGetCityAreaDetailResponseMain) {
-        TODO("Not yet implemented")
+        iSignUpViewListener.onSubAreaListApiFailure(responseMain)
     }
 }

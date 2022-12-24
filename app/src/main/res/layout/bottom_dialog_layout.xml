@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dialog_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="bottom"
+    android:background="@drawable/dialog_background"
+    android:layout_gravity="bottom"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/messageTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/margin_xxlarge"
+            android:layout_marginTop="@dimen/margin_xlarge"
+            android:layout_marginEnd="@dimen/margin_xxlarge"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:gravity="center_horizontal"
+            android:maxLines="4"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/text_size_small"
+            app:fontFamily="@font/poppins_medium" />
+
+
+        <Button
+            android:id="@+id/btnOkay"
+            android:layout_width="@dimen/button_width"
+            style="@style/primaryColorButtonStyle"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/margin_xxlarge"
+            android:clickable="false"
+            android:text="@string/okay"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/white"
+            app:fontFamily="@font/poppins_medium" />
+    </LinearLayout>
+</LinearLayout>

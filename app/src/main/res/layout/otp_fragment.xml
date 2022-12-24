@@ -84,9 +84,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="top|center"
-                    android:fontFamily="@font/roboto_bold"
+                    app:fontFamily="@font/poppins_medium"
                     android:text="@string/submit_otp"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/colorSecondary"
                     android:textSize="@dimen/dimens20sp"
                     android:layout_margin="@dimen/dimen10dp"
                     android:layout_weight="0.3"
@@ -100,9 +100,9 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/sent_otp_text"
-                    android:textSize="@dimen/dimen_16sp"
+                    android:textSize="@dimen/text_size_small"
                     android:layout_weight="0.1"
-                    android:gravity="start"
+                    android:gravity="center"
                     />
                 <LinearLayout
                     android:id="@+id/llOtpAndTimerLayout"
@@ -120,6 +120,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:cursorVisible="true"
+                        android:textColor="@color/colorSecondary"
                         android:gravity="center"
                         android:inputType="number"
                         android:itemBackground="#65EAEAEA"
@@ -153,6 +154,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:textColor="@color/black_text"
                     android:text="@string/otp_not_received"
                     android:layout_weight="0.1"/>
 

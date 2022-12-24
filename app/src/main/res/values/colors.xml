@@ -10,8 +10,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#d42008</color>
     <color name="dark_brown">#c23304</color>
-    <color name="text_color_blue">#03A9F4</color>
-    <color name="tab_selected_text_color">#eda92b</color>
+    <color name="text_color_blue">#0171F1</color>
+    <color name="tab_selected_text_color">#ED9318</color>
     <color name="gray">#CFD8DC</color>
     <color name="colorPrimary">#A22837</color>
     <color name="colorPrimaryDark">#CC4354</color>
@@ -22,7 +22,7 @@
     <color name="icon_color">#4d4d4d</color>
     <color name="border_color">#CECECE</color>
     <color name="button_color">#A42B38</color>
-    <color name="text_color">#2B2B2B</color><!--#242424-->
+    <color name="text_color">#242424</color><!--#242424-->
     <color name="real_estate_background_color">#E8E8FF</color>
     <color name="loan_background_color">#FFF0DB</color>
     <color name="loan_itemview_color">#FCF0E2</color>

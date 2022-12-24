@@ -36,6 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:padding="@dimen/padding_xlarge"
             android:layout_margin="@dimen/margin_small"
             android:orientation="vertical">
 
@@ -51,17 +52,16 @@
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:expandedHintEnabled="false"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red"
                 app:hintEnabled="false"
                 app:placeholderText="@string/first_name_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/first_name"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red">
+                app:startIconDrawable="@drawable/first_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtFirstName"
                     style="@style/TextAppearance"
-                    android:maxLength="15"
                     validateField="@{signUpViewModel}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -69,11 +69,11 @@
                     android:background="@drawable/edittext_background"
                     android:gravity="center_vertical"
                     android:inputType="text"
+                    android:maxLength="15"
                     android:text="@{signUpViewModel.firstName}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    />
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -89,17 +89,16 @@
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:expandedHintEnabled="false"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red"
                 app:hintEnabled="false"
                 app:placeholderText="@string/middle_name_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/first_name"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red">
+                app:startIconDrawable="@drawable/first_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtMiddleName"
                     style="@style/TextAppearance"
-                    android:maxLength="15"
                     validateField="@{signUpViewModel}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -107,33 +106,33 @@
                     android:background="@drawable/edittext_background"
                     android:gravity="center_vertical"
                     android:inputType="text"
+                    android:maxLength="15"
                     android:text="@{signUpViewModel.middleName}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_normal"
-                    tools:ignore="SpeakableTextPresentCheck"
-                    />
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilLastName"
-                android:maxLength="15"
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/margin_small"
                 android:gravity="center"
+                android:maxLength="15"
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:expandedHintEnabled="false"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red"
                 app:hintEnabled="false"
                 app:placeholderText="@string/last_name_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/first_name"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red">
+                app:startIconDrawable="@drawable/first_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtLastName"
@@ -164,12 +163,12 @@
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:expandedHintEnabled="false"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red"
                 app:hintEnabled="false"
                 app:placeholderText="@string/mobile_number_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/phone"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red">
+                app:startIconDrawable="@drawable/phone">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtMobileNum"
@@ -179,9 +178,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/edittext_background"
-                    android:maxLength="10"
                     android:gravity="center_vertical"
                     android:inputType="phone"
+                    android:maxLength="10"
                     android:text="@{signUpViewModel.mobileNumber}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_normal"
@@ -201,12 +200,12 @@
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:expandedHintEnabled="false"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red"
                 app:hintEnabled="false"
                 app:placeholderText="@string/email_id_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/email"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red">
+                app:startIconDrawable="@drawable/email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtEmail"
@@ -216,9 +215,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/edittext_background"
-                    android:maxLength="40"
                     android:gravity="center_vertical"
                     android:inputType="textEmailAddress"
+                    android:maxLength="40"
                     android:text="@{signUpViewModel.mailId}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_normal"
@@ -237,15 +236,15 @@
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
+                app:endIconDrawable="@drawable/drop_down_icon"
+                app:endIconMode="custom"
                 app:expandedHintEnabled="false"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red"
                 app:hintEnabled="false"
                 app:placeholderText="@string/city_text"
                 app:placeholderTextColor="@color/black"
                 app:startIconDrawable="@drawable/city"
-                app:endIconDrawable="@drawable/drop_down_icon"
-                app:endIconMode="custom"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red"
 
                 >
 
@@ -258,9 +257,9 @@
                     android:background="@drawable/edittext_background"
                     android:clickable="true"
                     android:context="@{context}"
+                    android:dropDownHeight="136dp"
                     android:editable="false"
                     android:focusable="false"
-                    android:dropDownHeight="136dp"
                     android:focusableInTouchMode="true"
                     android:gravity="center_vertical"
                     android:onItemClick="@{signUpViewModel}"
@@ -281,15 +280,15 @@
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
+                app:endIconDrawable="@drawable/drop_down_icon"
+                app:endIconMode="custom"
                 app:expandedHintEnabled="false"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/red"
                 app:hintEnabled="false"
                 app:placeholderText="@string/sub_area_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/sub_area"
-                app:endIconDrawable="@drawable/drop_down_icon"
-                app:endIconMode="custom"
-                app:helperText="Required*"
-                app:helperTextTextColor="@color/red">
+                app:startIconDrawable="@drawable/sub_area">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/autoCompleteAreaList"
@@ -299,10 +298,10 @@
                     android:layout_gravity="center"
                     android:background="@drawable/edittext_background"
                     android:clickable="true"
-                    android:focusable="false"
-                    android:editable="false"
                     android:context="@{context}"
                     android:dropDownHeight="136dp"
+                    android:editable="false"
+                    android:focusable="false"
                     android:focusableInTouchMode="true"
                     android:gravity="center_vertical"
                     android:onItemClick="@{signUpViewModel}"

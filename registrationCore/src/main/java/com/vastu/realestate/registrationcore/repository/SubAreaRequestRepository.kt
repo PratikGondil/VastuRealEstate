@@ -33,10 +33,12 @@ object SubAreaRequestRepository : ISubAreaListReq , IOnServiceResponseListener {
     }
 
     override fun onSuccessResponse(response: String, isError: Boolean) {
-        var response = parseResponse(response)
+        val response = parseResponse(response)
         when(response.objCityAreaResponse.objResponseStatusHdr.statusCode){
             ErrorCode.success ->
                 iSubAreaResponseListener.onGetSubAreaResponseSuccess(response)
+            ErrorCode.error_0001 ->
+                iSubAreaResponseListener.onGetSubAreaResponseFailure(response)
             else->
                 iSubAreaResponseListener.onGetSubAreaResponseFailure(response)
         }

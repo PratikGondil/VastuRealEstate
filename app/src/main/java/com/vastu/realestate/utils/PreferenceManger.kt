@@ -26,7 +26,7 @@ object PreferenceManger {
         return GsonBuilder().create().fromJson(value,T::class.java)
     }
     fun clearPreferences(){
-       preferences.edit().remove(PREFERENCE_FILE_NAME).apply()
+       preferences.edit().remove(PREFERENCE_FILE_NAME).clear().apply()
     }
 
     fun saveSlider(sliderList: GetPropertySliderImagesResponse, key:String) {
@@ -34,7 +34,6 @@ object PreferenceManger {
             .putString(key, gson.toJson(sliderList))
             .apply()
     }
-
 
     fun getSlider(key:String):GetPropertySliderImagesResponse {
         val sliderList = preferences.getString(key, null)
