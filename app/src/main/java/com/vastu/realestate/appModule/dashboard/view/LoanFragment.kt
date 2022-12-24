@@ -62,10 +62,10 @@ class LoanFragment : BaseFragment(),IToolbarListener {
     }
 
     override fun onClickMenu() {
-        TODO("Not yet implemented")
+
     }
 
     override fun onClickNotification() {
-        TODO("Not yet implemented")
+
     }
 }
