@@ -402,7 +402,7 @@
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
-                    app:helperText="@{addPropertyViewModel.budget}"
+                    app:helperText="@{addPropertyViewModel.bud}"
                     app:helperTextTextColor="@color/red"
                     app:hintEnabled="false"
                     app:placeholderText="@string/budget_text"
