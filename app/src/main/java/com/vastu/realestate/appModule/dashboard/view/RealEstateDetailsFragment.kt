@@ -85,7 +85,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
         realEstateDetailsBinding.apply {
-            //propertyData = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
+            propertyData = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
 
             val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
             spannable.setSpan(BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
@@ -96,12 +96,11 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
             //highlightsTextview.text = spannable
             highlightsTextview.text = Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
         }
-
-
     }
 
     override fun onFailureGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
+        showDialog(propertyDataResponseMain.propertyIdResponse.responseStatusHeader.statusDescription,false)
     }
 
     override fun onSuccessPropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
