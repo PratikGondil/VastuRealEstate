@@ -48,6 +48,10 @@ object SubAreaRequestRepository : ISubAreaListReq , IOnServiceResponseListener {
         iSubAreaResponseListener.onGetSubAreaResponseFailure(parseResponse(response))
     }
 
+    override fun onUserNotConnected() {
+
+    }
+
     fun parseResponse(response: String): ObjGetCityAreaDetailResponseMain {
         return Gson().fromJson(
             response,

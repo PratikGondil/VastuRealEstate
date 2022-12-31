@@ -1,5 +1,6 @@
 package com.vastu.realestate.registrationcore.repository
 
+import android.annotation.SuppressLint
 import com.google.gson.Gson
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
@@ -23,6 +24,7 @@ object CityListRequestRepository : ICityListReq,IOnServiceResponseListener {
             .sendApiRequest(this)
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onSuccessResponse(response: String, isError: Boolean) {
         val talukaResponseMain = parseTalukaResponse(response)
            when (talukaResponseMain.objTalukaResponse.objResponseStatusHdr.statusCode){
@@ -36,6 +38,10 @@ object CityListRequestRepository : ICityListReq,IOnServiceResponseListener {
     override fun onFailureResponse(response: String) {
         iTalukaResponseListener.onTalukaListFailureResponse(parseTalukaResponse(response))
     }
+
+    override fun onUserNotConnected() {
+    }
+
     fun parseTalukaResponse(response: String): ObjTalukaResponseMain {
         return Gson().fromJson(
             response,

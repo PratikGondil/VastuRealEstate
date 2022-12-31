@@ -43,7 +43,12 @@ object LoginRepository : ILoginReq,IOnServiceResponseListener {
     override fun onFailureResponse(response: String) {
         iLoginResponseListener.onGetFailureResponse(parseResponse(response))
     }
-    fun parseResponse(response: String): ObjLoginResponseMain {
+
+    override fun onUserNotConnected() {
+        TODO("Not yet implemented")
+    }
+
+    private fun parseResponse(response: String): ObjLoginResponseMain {
         return Gson().fromJson(
             response,
             ObjLoginResponseMain::class.java

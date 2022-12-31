@@ -12,8 +12,10 @@
     <string name="first_name_text">First Name</string>
     <string name="middle_name_text">Middle Name</string>
     <string name="last_name_text">Last Name</string>
+    <string name="address_name_text">Address Name</string>
     <string name="email_id_text">Email Id</string>
     <string name="city_text">City</string>
+    <string name="address_text">Address</string>
     <string name="sub_area_text">Sub Area</string>
     <string name="send_otp_text">Send Otp</string>
     <string name="submit_btn_text">Submit</string>
@@ -72,4 +74,45 @@
     <string name="_5">5</string>
     <string name="please_wait">Please wait...</string>
     <string name="okay">Okay</string>
+    <string name="availability">Availability</string>
+    <string name="build_year">Build Year</string>
+    <string name="highlights">Highlights</string>
+    <string name="slug">Slug</string>
+
+    <string name="occupation_text">Occupation</string>
+    <string name="property_interested_in_text">Property Interested In</string>
+    <string name="ownership_text">Ownership</string>
+    <string name="area_text">Area</string>
+    <string name="budget_text">Budget</string>
+
+    <string name="loan_interested_in_text">Loan Interested In</string>
+    <string name="preferred_bank_text">Preferred Bank</string>
+    <string name="loan_amount_text">Loan Amount</string>
+    <string name="loan_term_year_text">Loan Term Year</string>
+
+    <string name="banks_text">Banks</string>
+    <string name="loan_text">Loan</string>
+    <string name="property_text">Property</string>
+    <string name="loan_enquiry">Loan Enquiry</string>
+    <string name="property_enquiry">Property Enquiry</string>
+    <string name="required">Required*</string>
+    <string name="no_connection">No Connection</string>
+    <string name="first_name_error">Please enter first name</string>
+    <string name="middle_name_error">Please enter middle name</string>
+    <string name="last_name_error">Please enter last name</string>
+    <string name="mobile_number_error">Please enter mobile number</string>
+    <string name="address_error">Please enter address</string>
+    <string name="occupation_error">Please select occupation</string>
+    <string name="loan_interested_in_error">Please select loan</string>
+    <string name="bank_error">Please select bank</string>
+    <string name="amount_error">Please enter loan amount</string>
+    <string name="loan_term_year_error">Please enter loan term year</string>
+    <string name="property_interested_in_error">Please select property</string>
+    <string name="ownership_error">Please select ownership</string>
+    <string name="area_error">Please enter valid area</string>
+    <string name="budget_error">Please enter valid budget</string>
+    <string name="full_name">Full Name</string>
+    <string name="preferred_bank">Preferred Bank</string>
+
+
 </resources>

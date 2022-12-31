@@ -16,7 +16,7 @@ object PropertyListRepository: IGetPropertyListReq,IOnServiceResponseListener {
         urlEndPoint: String,
         iGetPropertyListResListener: IGetPropertyListResListener
     ) {
-       PropertyListRepository.iGetPropertyListResListener = iGetPropertyListResListener
+      this.iGetPropertyListResListener = iGetPropertyListResListener
         NetworkDaoBuilder.Builder
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
@@ -44,6 +44,10 @@ object PropertyListRepository: IGetPropertyListReq,IOnServiceResponseListener {
 
     override fun onFailureResponse(response: String) {
       iGetPropertyListResListener.getPropertyListFailureResponse(parseResponse( response))
+    }
+
+    override fun onUserNotConnected() {
+       iGetPropertyListResListener.networkFailure()
     }
 
     private fun parseResponse(response: String): ObjGetPropertyListResMain {

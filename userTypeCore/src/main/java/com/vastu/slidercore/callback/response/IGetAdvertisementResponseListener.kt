@@ -1,0 +1,9 @@
+package com.vastu.slidercore.callback.response
+
+import com.vastu.slidercore.model.response.advertisement.GetAdvertisementSliderMainResponse
+import com.vastu.usertypecore.callbacks.response.NetworkFailedListener
+
+interface IGetAdvertisementResponseListener:NetworkFailedListener {
+    fun onGetAdvertisementSuccessResponse(getAdvertisementSliderMainResponse: GetAdvertisementSliderMainResponse)
+    fun onGetAdvertisementFailureResponse(getAdvertisementSliderMainResponse: GetAdvertisementSliderMainResponse)
+}

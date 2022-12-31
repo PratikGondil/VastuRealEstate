@@ -17,7 +17,7 @@ object PropertyDetailsRepository :IGetPropertyDetailsRequest,IOnServiceResponseL
         urlEndPoint: String,
         iGetPropertyDetailsResponseListener: IGetPropertyDetailsResponseListener
     ) {
-      PropertyDetailsRepository.iGetPropertyDetailsResponseListener = iGetPropertyDetailsResponseListener;
+      this.iGetPropertyDetailsResponseListener = iGetPropertyDetailsResponseListener;
         NetworkDaoBuilder.Builder
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
@@ -47,6 +47,11 @@ object PropertyDetailsRepository :IGetPropertyDetailsRequest,IOnServiceResponseL
     override fun onFailureResponse(response: String) {
         iGetPropertyDetailsResponseListener.getPropertyDetailsFailureResponse(parseResponse(response))
     }
+
+    override fun onUserNotConnected() {
+      iGetPropertyDetailsResponseListener.networkFailure()
+    }
+
     private fun parseResponse(response: String): PropertyDataResponseMain {
         return Gson().fromJson(
             response,

@@ -89,7 +89,7 @@
                         android:maxLines="1"
                         android:maxLength="30"
                         android:drawablePadding="@dimen/padding_small"
-                        android:drawableStart="@drawable/ic_location_on"
+                        android:drawableStart="@drawable/location"
                         app:fontFamily="@font/poppins_regular"
                         android:includeFontPadding="true"
                         android:layout_width="match_parent"
@@ -102,7 +102,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.1"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/like"
+                    android:src="@drawable/un_like"
                     android:layout_gravity="end"
                     android:scaleType="fitCenter" />
 

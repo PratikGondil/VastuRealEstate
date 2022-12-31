@@ -45,6 +45,10 @@ object VerifyOtpRequestRepository:IVerifyOtpReq ,IOnServiceResponseListener{
        iVerifyOtpResponseListener.onGetVerifyOtpFailure(parseResponse(response))
     }
 
+    override fun onUserNotConnected() {
+
+    }
+
     fun parseResponse(response: String):ObjVerifyOtpResponseMain{
         return Gson().fromJson(
             response,

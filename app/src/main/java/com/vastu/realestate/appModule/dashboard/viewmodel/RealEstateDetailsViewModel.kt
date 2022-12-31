@@ -10,7 +10,7 @@ import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertySliderList
 import com.vastu.realestate.utils.ApiUrlEndPoints.GET_PROPERTY
 import com.vastu.realestate.utils.ApiUrlEndPoints.PROPERTY_SLIDER
 import com.vastu.slidercore.callback.response.IGetPropertySliderByIdResponse
-import com.vastu.slidercore.model.response.PropertySliderResponseMain
+import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
 import com.vastu.slidercore.repository.PropertySliderRepository
 
 class RealEstateDetailsViewModel(application: Application) : AndroidViewModel(application),
@@ -42,5 +42,10 @@ class RealEstateDetailsViewModel(application: Application) : AndroidViewModel(ap
 
     override fun getPropertySliderByIdFailureResponse(propertySliderResponseMain: PropertySliderResponseMain) {
        iPropertySliderListener.onFailurePropertySliderById(propertySliderResponseMain)
+    }
+
+    override fun networkFailure() {
+        iPropertyDetailsListener.onUserNotConnected()
+        iPropertyDetailsListener.onUserNotConnected()
     }
 }

@@ -1,8 +1,10 @@
 package com.vastu.realestate.appModule.dashboard.uiInterfaces
 
+import com.vastu.realestate.appModule.enquirylist.uiinterfaces.INetworkFailListener
 import com.vastu.realestatecore.model.response.ObjGetPropertyListResMain
 
-interface IRealEstateListener {
+interface IRealEstateListener:INetworkFailListener {
+    fun fabAddPropertyEnquiry()
     fun onSuccessGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain)
     fun onFailureGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain)
 }

@@ -6,7 +6,7 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import com.vastu.slidercore.model.response.GetPropertySliderImagesResponse
+import com.vastu.slidercore.model.response.property.GetPropertySliderImagesResponse
 
 object PreferenceManger {
     lateinit var preferences: SharedPreferences
@@ -35,7 +35,7 @@ object PreferenceManger {
             .apply()
     }
 
-    fun getSlider(key:String):GetPropertySliderImagesResponse {
+    fun getSlider(key:String): GetPropertySliderImagesResponse {
         val sliderList = preferences.getString(key, null)
         val type = object : TypeToken<GetPropertySliderImagesResponse>() {}.type
         return gson.fromJson(sliderList, type)

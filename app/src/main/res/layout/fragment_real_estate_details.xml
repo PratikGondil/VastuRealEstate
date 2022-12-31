@@ -63,6 +63,13 @@
                         android:textColor="@color/black"
                         app:fontFamily="@font/poppins_semibold" />
 
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:background="@color/border_color" />
+
 
                     <LinearLayout
                         android:id="@+id/titleLayout"
@@ -79,7 +86,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/title"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/titleTextview"
@@ -89,7 +96,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.propertyTitle}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/typeLayout"
@@ -106,7 +113,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/type"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/typeTextview"
@@ -116,7 +123,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.propertyType}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
                     <LinearLayout
@@ -134,7 +141,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/sell_type"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/sellTypeTextview"
@@ -144,7 +151,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.sellType}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
                     <LinearLayout
@@ -162,7 +169,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/bedrooms"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                            app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/bedroomTextview"
@@ -172,7 +179,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.bedroom}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
                     <LinearLayout
@@ -190,7 +197,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/bathrooms"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/bathroomTextview"
@@ -200,7 +207,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.bedroom}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
                     <LinearLayout
@@ -218,7 +225,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/kitchen"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/kitchenTextview"
@@ -228,7 +235,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.kitchen}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
                     <LinearLayout
@@ -246,7 +253,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/balcony"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/balconyTextview"
@@ -256,7 +263,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.balcony}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
                     <LinearLayout
@@ -274,7 +281,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/garage"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/garageTextview"
@@ -284,7 +291,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.garage}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
                     <LinearLayout
@@ -302,7 +309,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/swimming_pool"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/swimmingPoolTextView"
@@ -312,7 +319,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.swimmingPool}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
                     <LinearLayout
@@ -330,7 +337,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/floors"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/floorsTextview"
@@ -340,7 +347,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.floors}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
 
@@ -360,7 +367,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/furnishing"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/furnishingTextview"
@@ -370,7 +377,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/unfurnished"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
 
@@ -389,7 +396,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/price"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/priceTextview"
@@ -399,7 +406,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.price}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
                     <LinearLayout
@@ -417,7 +424,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/booking_amount"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/bookingAmountTextview"
@@ -427,8 +434,9 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.bookingAmount}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
+
 
                     <LinearLayout
                         android:id="@+id/cityLayout"
@@ -445,7 +453,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/city_text"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/cityTextview"
@@ -455,7 +463,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.city}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
                     <LinearLayout
@@ -473,7 +481,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/state"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/stateTextview"
@@ -483,7 +491,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.state}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
 
@@ -502,7 +510,7 @@
                                android:textSize="@dimen/text_size_small"
                             android:text="@string/construction_status"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/constructionStatusTextview"
@@ -512,7 +520,7 @@
                                android:textSize="@dimen/text_size_small"
                             android:text="@string/ready_to_move"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
                     <LinearLayout
@@ -530,7 +538,7 @@
                                android:textSize="@dimen/text_size_small"
                             android:text="@string/listed_by"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/listedByTextview"
@@ -540,7 +548,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/ready_to_move"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
                     <LinearLayout
@@ -558,7 +566,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/super_builtup_area_ft"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/areaTextview"
@@ -568,8 +576,123 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.area}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/propertyareaLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginTop="@dimen/margin_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="@string/super_builtup_area_ft"
+                            android:textColor="@color/icon_color"
+                              app:fontFamily="@font/poppins_light" />
+
+                        <TextView
+                            android:id="@+id/propertyareaTextview"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="@{propertyData.propertyArea}"
+                            android:textColor="@color/text_color"
+                             app:fontFamily="@font/poppins_regular"  />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/availabilityLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginTop="@dimen/margin_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="@string/availability"
+                            android:textColor="@color/icon_color"
+                              app:fontFamily="@font/poppins_light" />
+
+                        <TextView
+                            android:id="@+id/avilibilityTextview"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="@{propertyData.availability}"
+                            android:textColor="@color/text_color"
+                             app:fontFamily="@font/poppins_regular"  />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/buildYearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginTop="@dimen/margin_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="@string/build_year"
+                            android:textColor="@color/icon_color"
+                              app:fontFamily="@font/poppins_light" />
+
+                        <TextView
+                            android:id="@+id/buildYearTextview"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="@{propertyData.buildYear}"
+                            android:textColor="@color/text_color"
+                             app:fontFamily="@font/poppins_regular"  />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/slugLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:layout_marginTop="@dimen/margin_small">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="@string/slug"
+                            android:textColor="@color/icon_color"
+                            app:fontFamily="@font/poppins_light" />
+
+                        <TextView
+                            android:id="@+id/slugTextview"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="test"
+                            android:textColor="@color/text_color"
+                            app:fontFamily="@font/poppins_regular"  />
+                    </LinearLayout>
+
+
                     <LinearLayout
                         android:id="@+id/brochureLayout"
                         android:layout_width="match_parent"
@@ -586,7 +709,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/brochure"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                              app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/brochureTextview"
@@ -596,38 +719,79 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@{propertyData.brochure}"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                            app:fontFamily="@font/poppins_regular" />
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/margin_xlarge"
+                        android:background="@color/border_color" />
+
                     <LinearLayout
                         android:id="@+id/descriptionLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="2"
-                        android:visibility="gone"
+                        android:orientation="vertical"
                         android:layout_marginTop="@dimen/margin_small">
 
                         <TextView
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/description"
                             android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_regular" />
+                            app:fontFamily="@font/poppins_semibold" />
 
                         <TextView
                             android:id="@+id/descriptionTextview"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_marginStart="@dimen/margin_small"
+                            android:ellipsize="end"
+                            android:minLines="2"
+                            android:maxLines="10"
+                            android:text="@{propertyData.description}"
+                            android:textColor="@color/text_color"
+                             app:fontFamily="@font/poppins_regular"  />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:background="@color/border_color" />
+
+                    <LinearLayout
+                        android:id="@+id/highlightsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/margin_small">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/text_size_small"
+                            android:text="@string/highlights"
+                            android:textColor="@color/icon_color"
+                            app:fontFamily="@font/poppins_semibold" />
+
+                        <TextView
+                            android:id="@+id/highlightsTextview"
+                            android:layout_width="match_parent"
+                            android:layout_marginStart="@dimen/margin_large"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_small"
                             android:ellipsize="end"
                             android:minLines="2"
-                            android:maxLines="6"
-                            android:text="@{propertyData.description}"
+                            android:maxLines="10"
                             android:textColor="@color/text_color"
-                            app:fontFamily="@font/poppins_medium" />
+                             app:fontFamily="@font/poppins_regular"  />
+                        <!--android:text="@{propertyData.highlights}"-->
                     </LinearLayout>
                 </LinearLayout>
 
@@ -635,42 +799,45 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="@dimen/margin_xlarge"
-                    android:background="@color/icon_color" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    android:layout_margin="@dimen/margin_large">
-
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnChat"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/round_button_background"
-                        android:text="@string/chat"
-                        android:textSize="@dimen/text_size_small"
-                        app:fontFamily="@font/poppins_medium"
-                        android:textColor="@color/white" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btnMakeOffer"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/margin_small"
-                        android:background="@drawable/round_button_background"
-                        android:text="@string/make_offer"
-                        android:textSize="@dimen/text_size_small"
-                        app:fontFamily="@font/poppins_medium"
-                        android:textColor="@color/white" />
-                </LinearLayout>
+                    android:background="@color/border_color" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:padding="@dimen/padding_large"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnChat"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/round_button_background"
+                android:text="@string/chat"
+                android:textSize="@dimen/text_size_small"
+                app:fontFamily="@font/poppins_regular"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnMakeOffer"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_small"
+                android:background="@drawable/round_button_background"
+                android:text="@string/make_offer"
+                android:textSize="@dimen/text_size_small"
+                app:fontFamily="@font/poppins_regular"
+                android:textColor="@color/white" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

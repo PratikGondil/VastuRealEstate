@@ -84,6 +84,8 @@ class NetworkDaoBuilder private constructor(
                     listener.onFailureResponse(response.errorBody()!!.string())
                 } else if (!response.isSuccessful && response.body() == null) {
                     listener.onFailureResponse(response.errorBody()!!.string())
+                }else{
+                    listener.onUserNotConnected()
                 }
 //                if (response.isSuccessful()) {
 //
@@ -102,7 +104,6 @@ class NetworkDaoBuilder private constructor(
                 clearBuilderDetails()
                 listener.onFailureResponse(t.toString())
             }
-
         })
 
     }

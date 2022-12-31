@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.vastu.realestate.appModule.enquiry.bindingadapter.AddPropertyBindingAdapter"/>
+
+       <variable
+           name="addPropertyViewModel"
+           type="com.vastu.realestate.appModule.enquiry.viewModel.AddPropertyEnquiryViewModel" />
+
+        <variable
+            name="drawerViewModel"
+            type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".appModule.enquiry.view.AddPropertyEnquiryFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include
+                    layout="@layout/toolbar_layout"
+                    bind:drawerViewModel="@{drawerViewModel}" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="@dimen/margin_large">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilFirstName"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:expandedHintEnabled="false"
+                    app:helperTextTextColor="@color/red"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/first_name_text"
+                    app:helperText="@{addPropertyViewModel.fName}"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/first_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtFirstName"
+                        style="@style/TextAppearance"
+                        valid="@{addPropertyViewModel}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edittext_background"
+                        android:gravity="center_vertical"
+                        android:inputType="text"
+                        android:maxLength="15"
+                        android:text="@{addPropertyViewModel.firstName}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilMiddleName"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:expandedHintEnabled="false"
+                    app:helperTextTextColor="@color/red"
+                    app:hintEnabled="false"
+                    app:helperText="@{addPropertyViewModel.mName}"
+                    app:placeholderText="@string/middle_name_text"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/first_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtMiddleName"
+                        style="@style/TextAppearance"
+                        valid="@{addPropertyViewModel}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edittext_background"
+                        android:gravity="center_vertical"
+                        android:inputType="text"
+                        android:maxLength="15"
+                        android:text="@{addPropertyViewModel.middleName}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilLastName"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:gravity="center"
+                    android:maxLength="15"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:expandedHintEnabled="false"
+                    app:helperText="@{addPropertyViewModel.lName}"
+                    app:helperTextTextColor="@color/red"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/last_name_text"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/first_name">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtLastName"
+                        style="@style/TextAppearance"
+                        valid="@{addPropertyViewModel}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edittext_background"
+                        android:gravity="center_vertical"
+                        android:inputType="text"
+                        android:text="@{addPropertyViewModel.lastName}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilMobileNum"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:expandedHintEnabled="false"
+                    app:helperText="@{addPropertyViewModel.mobile}"
+                    app:helperTextTextColor="@color/red"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/mobile_number_text"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/phone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtMobileNum"
+                        style="@style/TextAppearance"
+                        valid="@{addPropertyViewModel}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edittext_background"
+                        android:gravity="center_vertical"
+                        android:inputType="phone"
+                        android:maxLength="10"
+                        android:text="@{addPropertyViewModel.mobileNumber}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilAddress"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:gravity="center"
+                    android:maxLength="15"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:expandedHintEnabled="false"
+                    app:helperText="@{addPropertyViewModel.add}"
+                    app:helperTextTextColor="@color/red"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/address_text"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/sub_area">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtAddress"
+                        style="@style/TextAppearance"
+                        valid="@{addPropertyViewModel}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edittext_background"
+                        android:gravity="center_vertical"
+                        android:minLines="3"
+                        android:maxLines="3"
+                        android:inputType="textMultiLine"
+                        android:text="@{addPropertyViewModel.address}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilOccupation"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:endIconDrawable="@drawable/drop_down_icon"
+                    app:endIconMode="custom"
+                    app:expandedHintEnabled="false"
+                    app:helperText="@{addPropertyViewModel.occ}"
+                    app:helperTextTextColor="@color/red"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/occupation_text"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/city">
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/autoCompleteOccupationList"
+                        style="@style/TextAppearance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edittext_background"
+                        android:clickable="true"
+                        android:context="@{context}"
+                        android:dropDownHeight="136dp"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center_vertical"
+                        android:onItemClick="@{addPropertyViewModel}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilPropertyList"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:endIconDrawable="@drawable/drop_down_icon"
+                    app:endIconMode="custom"
+                    app:expandedHintEnabled="false"
+                    app:helperText="@{addPropertyViewModel.property}"
+                    app:helperTextTextColor="@color/red"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/property_interested_in_text"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/city">
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/autoCompletePropertyList"
+                        style="@style/TextAppearance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edittext_background"
+                        android:clickable="true"
+                        android:context="@{context}"
+                        android:dropDownHeight="136dp"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center_vertical"
+                        android:onItemClick="@{addPropertyViewModel}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilOwnershipList"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:endIconDrawable="@drawable/drop_down_icon"
+                    app:endIconMode="custom"
+                    app:expandedHintEnabled="false"
+                    app:helperText="@{addPropertyViewModel.ownership}"
+                    app:helperTextTextColor="@color/red"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/ownership_text"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/city">
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/autoCompleteOwnershipList"
+                        style="@style/TextAppearance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edittext_background"
+                        android:clickable="true"
+                        android:context="@{context}"
+                        android:dropDownHeight="136dp"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center_vertical"
+                        android:onItemClick="@{addPropertyViewModel}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:ignore="SpeakableTextPresentCheck"  />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilArea"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:expandedHintEnabled="false"
+                    app:helperText="@{addPropertyViewModel.era}"
+                    app:helperTextTextColor="@color/red"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/area_text"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/phone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtArea"
+                        style="@style/TextAppearance"
+                        valid="@{addPropertyViewModel}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edittext_background"
+                        android:gravity="center_vertical"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:text="@{addPropertyViewModel.area}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilBudget"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:expandedHintEnabled="false"
+                    app:helperText="@{addPropertyViewModel.budget}"
+                    app:helperTextTextColor="@color/red"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/budget_text"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/phone">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtBudget"
+                        style="@style/TextAppearance"
+                        valid="@{addPropertyViewModel}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edittext_background"
+                        android:gravity="center_vertical"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:text="@{addPropertyViewModel.budget}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnPropertyEnquiry"
+                    context="@{context}"
+                    isEnable="@{addPropertyViewModel.isBtnEnable}"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@{addPropertyViewModel.btnBackground}"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:enabled="false"
+                    android:fontFamily="@font/poppins_medium"
+                    android:onClick="@{(view)->addPropertyViewModel.onSubmitPropertyEnquiry()}"
+                    android:text="@string/submit_btn_text"
+                    android:textColor="@color/white" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

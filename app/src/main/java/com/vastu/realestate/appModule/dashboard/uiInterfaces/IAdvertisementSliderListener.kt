@@ -1,0 +1,9 @@
+package com.vastu.realestate.appModule.dashboard.uiInterfaces
+
+import com.vastu.realestate.appModule.enquirylist.uiinterfaces.INetworkFailListener
+import com.vastu.slidercore.model.response.advertisement.GetAdvertisementSliderMainResponse
+
+interface IAdvertisementSliderListener :INetworkFailListener{
+    fun onSuccessAdvertisementSlider(advertisementSliderMainResponse: GetAdvertisementSliderMainResponse)
+    fun onFailureAdvertisementSlider(advertisementSliderMainResponse: GetAdvertisementSliderMainResponse)
+}

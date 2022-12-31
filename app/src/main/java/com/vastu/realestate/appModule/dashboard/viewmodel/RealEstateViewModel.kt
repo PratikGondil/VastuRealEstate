@@ -16,6 +16,9 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
     fun getPropertyList(userId:String){
         PropertyListRepository.callGetPropertyList(userId,GET_PROPERTY_LIST,this)
     }
+    fun onClickAddPropertyEnquiry(){
+        iRealEstateListener.fabAddPropertyEnquiry()
+    }
 
     override fun getPropertyListSuccessResponse(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         iRealEstateListener.onSuccessGetRealEstateList(objGetPropertyListResMain)
@@ -23,6 +26,10 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
 
     override fun getPropertyListFailureResponse(objGetPropertyListResMain: ObjGetPropertyListResMain) {
        iRealEstateListener.onFailureGetRealEstateList(objGetPropertyListResMain)
+    }
+
+    override fun networkFailure() {
+      iRealEstateListener.onUserNotConnected()
     }
 
 }

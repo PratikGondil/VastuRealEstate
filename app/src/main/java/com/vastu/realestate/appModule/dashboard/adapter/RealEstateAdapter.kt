@@ -3,11 +3,12 @@ package com.vastu.realestate.appModule.dashboard.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.vastu.realestate.appModule.enquirylist.view.LoanEnquiryListFragment
 import com.vastu.realestate.databinding.RealEstateItemviewBinding
 import com.vastu.realestatecore.model.response.PropertyData
 
 
-class RealEstateAdapter(private val itemClick:OnItemClickListener,private val realEstateList: List<PropertyData>
+class RealEstateAdapter(private val itemClick: OnItemClickListener, private val realEstateList: List<PropertyData>
 ) : RecyclerView.Adapter<RealEstateViewHolder>() {
 
     private lateinit var binding: RealEstateItemviewBinding

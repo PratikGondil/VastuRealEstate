@@ -57,13 +57,13 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
         return signUpFragmentBinding.root
     }
 
-    fun initView(){
+    private fun initView(){
         signUpFragmentBinding.autoCompleteCity.setOnTouchListener(this)
         signUpFragmentBinding.autoCompleteAreaList.setOnTouchListener(this)
         val subAreaList = arrayOf("Nigdi","Kalewadi","Hinjewadi","Chinchwad","Kothrud")
 
     }
-    fun observeCityList(){
+    private fun observeCityList(){
         signUpViewModel.cityList.observe(viewLifecycleOwner) { cityList ->
 //            val cityListAdapter =
 //                arrayOf("pune", "PCMC","Mumbai", "Nagpur", "Thane", "Nashik", "Kalyan-Dombivli", "Aurangabad", "Jalgaon")
@@ -78,7 +78,7 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
             )
         }
     }
-    fun observeCity(){
+    private fun observeCity(){
         signUpViewModel.city.observe(viewLifecycleOwner){city->
             if (city != null) {
                   callSubAreaList(city.talukaId!!)
@@ -86,7 +86,7 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
 
         }
     }
-    fun observeSubAreaList(){
+    private fun observeSubAreaList(){
         signUpViewModel.subAreaList.observe(viewLifecycleOwner){subAreaList->
             val adapter: ArrayList<ObjCityAreaData> =subAreaList
             signUpFragmentBinding.autoCompleteAreaList.setAdapter(
@@ -135,14 +135,13 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
         signUpViewModel.callCityListApi()
 
     }
-    fun callSubAreaList(talukaId: String) {
+    private fun callSubAreaList(talukaId: String) {
         objSubAreaReq = ObjSubAreaReq().copy(talukaId = talukaId )
         signUpViewModel.callSubAreaList(objSubAreaReq)
     }
     override fun goToLogin() {
         customProgressDialog.dismiss()
             viewPager.currentItem = 0
-
     }
 
     override fun onRegistrationFail(objRegisterResponseMain: ObjRegisterResponseMain) {

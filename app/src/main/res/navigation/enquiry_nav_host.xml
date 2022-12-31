@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/enquity_nav_host"
+    app:startDestination="@id/EnquiryFragment">
+
+    <fragment
+        android:id="@+id/EnquiryFragment"
+        android:name="com.vastu.realestate.appModule.enquirylist.view.EnquiryFragment"
+        android:label="EnquiryFragment"
+        tools:layout="@layout/fragment_enquiry">
+    </fragment>
+
+    <fragment
+        android:id="@+id/LoanEnquiryListFragment"
+        android:name="com.vastu.realestate.appModule.enquirylist.view.LoanEnquiryListFragment"
+        android:label="LoanEnquiryListFragment"
+        tools:layout="@layout/fragment_loan_enquiry_list"/>
+
+    <fragment
+        android:id="@+id/PropertyEnquiryListFragment"
+        android:name="com.vastu.realestate.appModule.enquirylist.view.PropertyEnquiryListFragment"
+        android:label="PropertyEnquiryListFragment"
+        tools:layout="@layout/fragment_property_enquiry_list"/>
+
+
+
+</navigation>

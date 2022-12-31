@@ -13,9 +13,9 @@
     <color name="text_color_blue">#0171F1</color>
     <color name="tab_selected_text_color">#ED9318</color>
     <color name="gray">#CFD8DC</color>
-    <color name="colorPrimary">#A22837</color>
+    <color name="colorPrimary">#FFA42A37</color>
     <color name="colorPrimaryDark">#CC4354</color>
-    <color name="colorSecondary">#ED9318</color>
+    <color name="colorSecondary">#FFEC9119</color>
     <color name="colorSecondaryDark">#F3A336</color>
     <color name="user_background">#FDD094</color>
     <color name="nav_text_color">#4D4D4D</color>

@@ -19,7 +19,7 @@
 
     <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
-        <item name="android:textSize">@dimen/text_size_semilarge</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
         <item name="android:letterSpacing">@dimen/letterSpacing_3</item>
         <item name="fontFamily">@font/poppins_medium</item>
         <item name="android:gravity">center</item>

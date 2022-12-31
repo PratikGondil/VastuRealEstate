@@ -66,7 +66,7 @@
                     app:hintEnabled="false"
                     app:placeholderText="@string/search"
                     app:placeholderTextColor="@color/black"
-                    app:startIconDrawable="@drawable/ic_search">
+                    app:startIconDrawable="@drawable/search">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtSearch"
@@ -102,7 +102,7 @@
                     app:hintEnabled="false"
                     app:placeholderText="@string/budget"
                     app:placeholderTextColor="@color/black"
-                    app:startIconDrawable="@drawable/ic_currency"
+                    app:startIconDrawable="@drawable/currency"
                     app:endIconDrawable="@drawable/drop_down_icon"
                     app:endIconMode="custom">
 
@@ -130,7 +130,7 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_filter_list"
+                    android:src="@drawable/filter"
                     android:scaleType="fitCenter" />
             </LinearLayout>
 
@@ -139,7 +139,22 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-
         </LinearLayout>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/floatPropertyEnquiry"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@string/property_enquiry"
+            app:fontFamily="@font/poppins_medium"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal"
+            app:icon="@drawable/ic_add"
+            app:iconTint="@color/white"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/margin_large"
+            android:onClick="@{(view)->realEstateViewModel.onClickAddPropertyEnquiry()}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

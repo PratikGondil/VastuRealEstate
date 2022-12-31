@@ -54,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:weightSum="1"
                     android:gravity="center"
+
                     android:layout_marginTop="@dimen/margin_xlarge"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:padding="@dimen/padding_medium"
@@ -187,5 +188,23 @@
 
             </LinearLayout>
         </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/floatLoanEnquiry"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_margin="@dimen/margin_small"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:text="@string/loan_enquiry"
+            app:fontFamily="@font/poppins_regular"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_size_normal"
+            app:icon="@drawable/ic_add"
+            app:iconTint="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:onClick="@{(view)->loanViewModel.onClickAddLoanEnquiry()}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

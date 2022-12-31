@@ -7,7 +7,7 @@ import com.vastu.realestate.commoncore.utils.ErrorCode
 import com.vastu.slidercore.callback.request.IGetPropertySliderByIdRequest
 import com.vastu.slidercore.callback.response.IGetPropertySliderByIdResponse
 import com.vastu.slidercore.model.request.PropertySliderRequest
-import com.vastu.slidercore.model.response.PropertySliderResponseMain
+import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
 
 object PropertySliderRepository:IGetPropertySliderByIdRequest,IOnServiceResponseListener {
 
@@ -18,7 +18,7 @@ object PropertySliderRepository:IGetPropertySliderByIdRequest,IOnServiceResponse
         urlEndPoint: String,
         iGetPropertySliderByIdResponse: IGetPropertySliderByIdResponse
     ) {
-        PropertySliderRepository.iGetPropertySliderByIdResponse = iGetPropertySliderByIdResponse
+       this.iGetPropertySliderByIdResponse = iGetPropertySliderByIdResponse
         NetworkDaoBuilder.Builder
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
@@ -47,6 +47,10 @@ object PropertySliderRepository:IGetPropertySliderByIdRequest,IOnServiceResponse
 
     override fun onFailureResponse(response: String) {
         iGetPropertySliderByIdResponse.getPropertySliderByIdFailureResponse(parseResponse(response))
+    }
+
+    override fun onUserNotConnected() {
+       iGetPropertySliderByIdResponse.networkFailure()
     }
 
     private fun parseResponse(response: String): PropertySliderResponseMain {

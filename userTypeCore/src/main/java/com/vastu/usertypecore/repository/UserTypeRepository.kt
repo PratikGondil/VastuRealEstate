@@ -16,7 +16,7 @@ object UserTypeRepository: IGetUserTypeReq,IOnServiceResponseListener {
         urlEndPoint: String,
         iGetUserTypeResListener: IGetUserTypeResListener
     ) {
-       UserTypeRepository.iGetUserTypeResListener = iGetUserTypeResListener
+      this.iGetUserTypeResListener = iGetUserTypeResListener
         NetworkDaoBuilder.Builder
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
@@ -45,6 +45,11 @@ object UserTypeRepository: IGetUserTypeReq,IOnServiceResponseListener {
     override fun onFailureResponse(response: String) {
         iGetUserTypeResListener.getUserTypeFailureResponse(parseResponse(response))
     }
+
+    override fun onUserNotConnected() {
+       iGetUserTypeResListener.networkFailure()
+    }
+
     private fun parseResponse(response: String): ObjGetUserTypeResMain {
         return Gson().fromJson(
             response,

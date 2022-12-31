@@ -4,6 +4,9 @@
 
     <data>
         <variable
+            name="viewModel"
+            type="com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewModel" />
+        <variable
             name="drawerViewModel"
             type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
     </data>
@@ -27,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@drawable/nav_background">
+                android:background="@drawable/site_menu_bg">
 
                 <ImageView
                     android:id="@+id/close_imageview"

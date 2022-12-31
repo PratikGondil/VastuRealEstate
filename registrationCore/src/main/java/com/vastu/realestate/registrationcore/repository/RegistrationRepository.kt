@@ -47,6 +47,11 @@ object RegistrationRepository : ISignUpReq,IOnServiceResponseListener {
     override fun onFailureResponse(response: String) {
         iResgisterResponseListener.onGetFailureResponse(parseResponse(response))
     }
+
+    override fun onUserNotConnected() {
+
+    }
+
     fun parseResponse(response: String): ObjRegisterResponseMain {
         return Gson().fromJson(
             response,
