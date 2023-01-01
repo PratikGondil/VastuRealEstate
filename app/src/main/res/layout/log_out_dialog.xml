@@ -10,9 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:background="@color/white"
-        android:layout_marginStart="@dimen/margin_large"
-        android:layout_marginEnd="@dimen/margin_large"
-        android:layout_marginTop="@dimen/margin_xxlarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,10 +19,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_xlarge"
+            android:layout_marginBottom="@dimen/margin_small"
             android:text="@string/are_you_sure_you_want_to_logout"
             android:fontFamily="@font/poppins_regular"
-            android:textSize="@dimen/text_size_normal"
+            android:textSize="@dimen/text_size_small"
             android:gravity="center"/>
 
         <View
