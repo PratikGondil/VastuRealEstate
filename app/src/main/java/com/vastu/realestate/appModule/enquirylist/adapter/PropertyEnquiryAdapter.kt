@@ -14,6 +14,7 @@ class PropertyEnquiryAdapter(private val propertyDataList: List<EnquiryData>
     override fun onBindViewHolder(holder:PropertyEnquiryListViewHolder, position: Int) {
         val propertyData = propertyDataList[position]
         holder.bind(propertyData)
+        binding.propertyNameTextview.text = propertyData.firstName+" "+propertyData.middleName+" "+propertyData.lastName
     }
 
     override fun getItemCount(): Int = propertyDataList.size

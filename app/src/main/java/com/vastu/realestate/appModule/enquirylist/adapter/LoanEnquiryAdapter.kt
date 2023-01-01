@@ -19,6 +19,7 @@ class LoanEnquiryAdapter(private val loanDataList :List<LoanData>):
     override fun onBindViewHolder(holder: LoanEnquiryViewHolder, position: Int) {
         val loan = loanDataList[position]
         holder.bind(loan)
+        binding.loanNameTextview.text = loan.firstName+" "+loan.middleName+" "+loan.lastName
 
     }
 

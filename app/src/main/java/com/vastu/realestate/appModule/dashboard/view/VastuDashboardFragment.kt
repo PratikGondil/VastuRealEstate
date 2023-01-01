@@ -22,6 +22,7 @@ import com.vastu.realestate.appModule.enquirylist.view.EnquiryActivity
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.databinding.FragmentVastuDashboardBinding
 import com.vastu.realestate.utils.PreferenceKEYS
+import com.vastu.realestate.utils.PreferenceKEYS.DASHBOARD_SLIDER_LIST
 import com.vastu.realestate.utils.PreferenceKEYS.IS_LOGIN
 import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.realestate.utils.PreferenceManger.clearPreferences
@@ -112,6 +113,8 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
         for( slider in advertisementSliderMainResponse.getAdvertiseDetailsResponse.advertiseData){
             imageList.add(SlideModel(slider.adSlider))
         }
+        PreferenceManger.saveAdvertisementSlider(advertisementSliderMainResponse.getAdvertiseDetailsResponse,
+            DASHBOARD_SLIDER_LIST)
         dashboardBinding.apply {
             imageSlider.setImageList(imageList, ScaleTypes.FIT)
             imageSlider.startSliding(3000)

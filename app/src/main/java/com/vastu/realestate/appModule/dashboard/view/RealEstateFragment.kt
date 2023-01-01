@@ -24,6 +24,7 @@ import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.BaseConstant.STATUS
 import com.vastu.realestate.utils.PreferenceKEYS
 import com.vastu.realestate.utils.PreferenceKEYS.DASHBOARD_SLIDER_LIST
+import com.vastu.realestate.utils.PreferenceKEYS.PROPERTY_SLIDER_LIST
 import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.realestatecore.model.response.ObjGetPropertyListResMain
 import com.vastu.realestatecore.model.response.PropertyData
@@ -116,7 +117,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
         for( slider in getPropertySliderImagesResponse.propertySliderImages){
             imageList.add(SlideModel(slider.image))
         }
-        PreferenceManger.saveSlider(getPropertySliderImagesResponse, DASHBOARD_SLIDER_LIST)
+        PreferenceManger.saveSlider(getPropertySliderImagesResponse, PROPERTY_SLIDER_LIST)
          realEstateBinding.apply {
              imageSlider.setImageList(imageList, ScaleTypes.FIT)
              imageSlider.startSliding(3000)
@@ -124,7 +125,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     }
 
     private fun setSliderData(){
-        getPropertySliderImagesResponse = PreferenceManger.getSlider(DASHBOARD_SLIDER_LIST)
+        getPropertySliderImagesResponse = PreferenceManger.getSlider(PROPERTY_SLIDER_LIST)
         realEstateBinding.apply {
             for( slider in getPropertySliderImagesResponse.propertySliderImages){
                 imageList.add(SlideModel(slider.image))

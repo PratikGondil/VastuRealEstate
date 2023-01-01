@@ -20,6 +20,7 @@ import com.vastu.realestate.databinding.FragmentLoanBinding
 import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.PreferenceKEYS
 import com.vastu.realestate.utils.PreferenceManger
+import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
 import com.vastu.slidercore.model.response.property.GetPropertySliderImagesResponse
 
 class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener {
@@ -27,7 +28,7 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener {
     private lateinit var loanBinding: FragmentLoanBinding
     private lateinit var loanViewModel: LoanViewModel
     private lateinit var drawerViewModel: DrawerViewModel
-    private lateinit var getPropertySliderImagesResponse: GetPropertySliderImagesResponse
+    private lateinit var getAdvertisementSlider: GetAdvertiseDetailsResponse
     private val imageList = ArrayList<SlideModel>()
     private lateinit var enquiryMainResponse: EnquiryMainResponse
 
@@ -48,10 +49,10 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener {
     }
 
     private fun setSliderData(){
-        getPropertySliderImagesResponse = PreferenceManger.getSlider(PreferenceKEYS.DASHBOARD_SLIDER_LIST)
+        getAdvertisementSlider = PreferenceManger.getAdvertisementSlider(PreferenceKEYS.DASHBOARD_SLIDER_LIST)
         loanBinding.apply {
-            for( slider in getPropertySliderImagesResponse.propertySliderImages){
-                imageList.add(SlideModel(slider.image))
+            for( slider in getAdvertisementSlider.advertiseData){
+                imageList.add(SlideModel(slider.adSlider))
             }
             imageSlider.setImageList(imageList, ScaleTypes.FIT)
             imageSlider.startSliding(3000)

@@ -44,6 +44,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/banner_image_height"
                     app:iss_auto_cycle="true"
+                    app:iss_error_image="@drawable/vastu_logo_splash"
+                    app:iss_placeholder="@color/loan_background_color"
                     app:iss_selected_dot="@drawable/default_selected_dot"
                     app:iss_unselected_dot="@drawable/default_unselected_dot"
                     app:iss_period="1000"

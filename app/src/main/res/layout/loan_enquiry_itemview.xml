@@ -12,7 +12,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_margin="@dimen/margin_xsmall"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_small"
             android:gravity="center_vertical|center_horizontal"
             android:background="@drawable/real_estate_background"
             app:cardCornerRadius="@dimen/card_corner_radius">
@@ -41,7 +43,6 @@
                     <TextView
                         android:id="@+id/loan_name_textview"
                         android:layout_height="wrap_content"
-                        android:text="@{loanData.firstName+loanData.mobile+loanData.lastName}"
                         android:maxLines="1"
                         android:maxLength="25"
                         android:layout_width="0dp"

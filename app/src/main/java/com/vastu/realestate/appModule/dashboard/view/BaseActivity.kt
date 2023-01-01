@@ -1,12 +1,11 @@
 package com.vastu.realestate.appModule.dashboard.view
 
-import android.app.Dialog
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.vastu.realestate.R
 import com.vastu.realestate.customProgressDialog.CustomProgressDialog
 import de.hdodenhof.circleimageview.CircleImageView
@@ -28,34 +27,23 @@ open class BaseActivity : AppCompatActivity() {
     }
     open fun showDialog(message: String?,isSuccess:Boolean) {
 
-        val fullScreenInformationDialog = Dialog(this)
-        fullScreenInformationDialog.setContentView(R.layout.bottom_dialog_layout)
+        val bottomSheetDialog = BottomSheetDialog(this,android.R.style.Theme_Translucent_NoTitleBar)
+        bottomSheetDialog.setContentView(R.layout.bottom_dialog_layout)
 
-        val successImageView:CircleImageView = fullScreenInformationDialog.findViewById<CircleImageView>(R.id.success)
-        val detailTextView: TextView =fullScreenInformationDialog.findViewById<TextView>(R.id.messageTextview)
+        val successImageView = bottomSheetDialog.findViewById<CircleImageView>(R.id.success)
+        val detailTextView =bottomSheetDialog.findViewById<TextView>(R.id.messageTextview)
+        val okBtn = bottomSheetDialog.findViewById<Button>(R.id.btnOkay)
 
         if(isSuccess)
-            successImageView.visibility = View.VISIBLE
+            successImageView?.visibility = View.VISIBLE
         else
-            successImageView.visibility = View.GONE
+            successImageView?.visibility = View.GONE
 
-        val okBtn: Button = fullScreenInformationDialog.findViewById<Button>(R.id.btnOkay)
-        detailTextView.text = message
-        okBtn.setOnClickListener { v: View? -> fullScreenInformationDialog.hide() }
-        fullScreenInformationDialog.setCancelable(true)
-        fullScreenInformationDialog.setCanceledOnTouchOutside(true)
-        fullScreenInformationDialog.show()
-    }
 
-    fun onBackNavigation() {
-        try {
-            if (supportFragmentManager.backStackEntryCount > 1) {
-                supportFragmentManager.popBackStack()
-            } else {
-                finish()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        detailTextView?.text = message
+        okBtn?.setOnClickListener { v: View? -> bottomSheetDialog.hide() }
+        bottomSheetDialog.setCancelable(true)
+        bottomSheetDialog.setCanceledOnTouchOutside(true)
+        bottomSheetDialog.show()
     }
 }

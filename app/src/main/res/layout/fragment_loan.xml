@@ -36,6 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/banner_image_height"
                 app:iss_auto_cycle="true"
+                app:iss_error_image="@drawable/vastu_logo_splash"
+                app:iss_placeholder="@color/loan_background_color"
                 app:iss_selected_dot="@drawable/default_selected_dot"
                 app:iss_unselected_dot="@drawable/default_unselected_dot"
                 app:iss_period="1000"
@@ -91,7 +93,7 @@
                         android:gravity="start"
                         app:fontFamily="@font/poppins_medium"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_size_normal"
+                        android:textSize="@dimen/text_size_small"
                         android:textColor="@color/text_color"
                         android:text="@string/personal_loan"/>
 
@@ -136,7 +138,7 @@
                         android:gravity="start"
                         app:fontFamily="@font/poppins_medium"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_size_normal"
+                        android:textSize="@dimen/text_size_small"
                         android:textColor="@color/text_color"
                         android:text="@string/home_loan"/>
 
@@ -180,7 +182,7 @@
                         android:gravity="start"
                         app:fontFamily="@font/poppins_medium"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_size_normal"
+                        android:textSize="@dimen/text_size_small"
                         android:textColor="@color/text_color"
                         android:text="@string/car_loan"/>
 
@@ -193,14 +195,13 @@
             android:id="@+id/floatLoanEnquiry"
             android:layout_width="wrap_content"
             android:gravity="center"
-            android:layout_margin="@dimen/margin_small"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_large"
+            android:layout_margin="@dimen/margin_large"
             android:text="@string/loan_enquiry"
             app:fontFamily="@font/poppins_regular"
             android:textColor="@color/white"
             android:textAllCaps="false"
-            android:textSize="@dimen/text_size_normal"
+            android:textSize="@dimen/text_size_small"
             app:icon="@drawable/ic_add"
             app:iconTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
