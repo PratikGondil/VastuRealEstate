@@ -36,17 +36,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/banner_image_height"
                 app:iss_auto_cycle="true"
+                app:iss_delay="0"
                 app:iss_error_image="@drawable/vastu_logo_splash"
+                app:iss_period="1000"
                 app:iss_placeholder="@color/loan_background_color"
                 app:iss_selected_dot="@drawable/default_selected_dot"
-                app:iss_unselected_dot="@drawable/default_unselected_dot"
-                app:iss_period="1000"
-                app:iss_delay="0" />
+                app:iss_unselected_dot="@drawable/default_unselected_dot" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_large"
                 android:layout_marginStart="@dimen/margin_large"
                 android:layout_marginEnd="@dimen/margin_large">
 
@@ -55,18 +56,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="1"
+                    android:foreground="@drawable/ripple_effect"
                     android:gravity="center"
-
-                    android:layout_marginTop="@dimen/margin_xlarge"
+                    android:layout_marginTop="@dimen/margin_large"
                     android:layout_gravity="center_horizontal|center_vertical"
-                    android:padding="@dimen/padding_medium"
+                    android:padding="@dimen/padding_small"
+                    android:clickable="true"
                     android:background="@drawable/itemview_background"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_weight="0.2"
                         android:layout_width="0dp"
-                        android:scaleType="fitCenter"
+                        android:scaleType="center"
                         android:layout_height="@dimen/dimen50dp"
                         android:src="@drawable/personal_loan"/>
 
@@ -87,7 +89,7 @@
                         android:layout_height="@dimen/dimen50dp" />
 
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="0dp"
                         android:layout_weight="0.7"
                         android:gravity="start"
@@ -106,7 +108,9 @@
                     android:layout_height="wrap_content"
                     android:weightSum="1"
                     android:gravity="center"
-                    android:layout_marginTop="@dimen/margin_xlarge"
+                    android:foreground="@drawable/ripple_effect"
+                    android:clickable="true"
+                    android:layout_marginTop="@dimen/margin_large"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:padding="@dimen/padding_small"
                     android:background="@drawable/itemview_background"
@@ -115,7 +119,7 @@
                     <ImageView
                         android:layout_weight="0.2"
                         android:layout_width="0dp"
-                        android:scaleType="fitCenter"
+                        android:scaleType="center"
                         android:layout_height="@dimen/dimen50dp"
                         android:src="@drawable/home_loan"/>
                     <View
@@ -132,7 +136,7 @@
                         android:layout_weight="0.05"
                         android:layout_height="@dimen/dimen50dp" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="0dp"
                         android:layout_weight="0.7"
                         android:gravity="start"
@@ -150,7 +154,9 @@
                     android:layout_height="wrap_content"
                     android:weightSum="1"
                     android:gravity="center"
-                    android:layout_marginTop="@dimen/margin_xlarge"
+                    android:foreground="@drawable/ripple_effect"
+                    android:clickable="true"
+                    android:layout_marginTop="@dimen/margin_large"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:padding="@dimen/padding_small"
                     android:background="@drawable/itemview_background"
@@ -159,7 +165,7 @@
                     <ImageView
                         android:layout_weight="0.2"
                         android:layout_width="0dp"
-                        android:scaleType="fitCenter"
+                        android:scaleType="center"
                         android:layout_height="@dimen/dimen50dp"
                         android:src="@drawable/car_loan"/>
                     <View
@@ -176,7 +182,7 @@
                         android:layout_weight="0.05"
                         android:layout_height="@dimen/dimen50dp" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="0dp"
                         android:layout_weight="0.7"
                         android:gravity="start"

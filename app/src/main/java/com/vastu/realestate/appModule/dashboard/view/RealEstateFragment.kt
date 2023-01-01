@@ -86,6 +86,12 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     }
 
     private fun getRealEstateDetails(realEstate:List<PropertyData>) {
+        realEstateBinding.apply {
+            if(realEstate.isNotEmpty())
+                floatPropertyEnquiry.visibility = View.VISIBLE
+            else
+                floatPropertyEnquiry.visibility = View.GONE
+        }
         val recyclerViewRealEstate = realEstateBinding.rvRealEstste
         //val realEstates = RealEstateList.getRealEstateData(requireContext())
         val realEstateAdapter = RealEstateAdapter(this,realEstate)

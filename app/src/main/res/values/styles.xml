@@ -51,4 +51,16 @@
         <item name="android:layout_height">@dimen/height_55</item>
     </style>
 
+    <style name="whiteColorButtonStyle">
+        <item name="android:background">@color/white</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/padding_small</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
+        <item name="android:textColor">@color/black_text</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_55</item>
+    </style>
+
 </resources>

@@ -1,10 +1,12 @@
 package com.vastu.realestate.appModule.dashboard.view
 
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
@@ -153,7 +155,6 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
     }
     override fun onClickEnquiry() {
         startActivity(Intent(activity, EnquiryActivity::class.java))
-        closeDrawer()
     }
     override fun onClickAddProperty() {
         closeDrawer()
@@ -166,6 +167,22 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
     }
 
     override fun onClickLogout() {
+        closeDrawer()
+        showLogoutDialog()
+    }
+
+    private fun showLogoutDialog(){
+        val dialog = Dialog(requireContext())
+        dialog.setContentView(R.layout.log_out_dialog)
+        dialog.findViewById<TextView>(R.id.tvYes).setOnClickListener {
+            logOut()
+        }
+        dialog.findViewById<TextView>(R.id.tvNo).setOnClickListener {
+            dialog.hide()
+        }
+        dialog.show()
+    }
+    private fun logOut(){
         clearPreferences()
         activity?.finishAffinity()
         startActivity(Intent(activity, LoginActivity::class.java))

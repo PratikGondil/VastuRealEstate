@@ -22,7 +22,11 @@
         android:id="@+id/PropertyEnquiryListFragment"
         android:name="com.vastu.realestate.appModule.enquirylist.view.PropertyEnquiryListFragment"
         android:label="PropertyEnquiryListFragment"
-        tools:layout="@layout/fragment_property_enquiry_list"/>
+        tools:layout="@layout/fragment_property_enquiry_list">
+        <action
+            android:id="@+id/action_PropertyEnquiryListFragment_to_LoanEnquiryListFragment"
+            app:destination="@id/LoanEnquiryListFragment" />
+    </fragment>
 
 
 

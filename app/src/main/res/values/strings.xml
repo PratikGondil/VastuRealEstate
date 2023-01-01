@@ -112,6 +112,9 @@
     <string name="budget_error">Please enter valid budget</string>
     <string name="full_name">Full Name</string>
     <string name="preferred_bank">Preferred Bank</string>
+    <string name="are_you_sure_you_want_to_logout">Are you sure, you want to logout?</string>
+    <string name="no">NO</string>
+    <string name="yes">YES</string>
 
 
 </resources>
