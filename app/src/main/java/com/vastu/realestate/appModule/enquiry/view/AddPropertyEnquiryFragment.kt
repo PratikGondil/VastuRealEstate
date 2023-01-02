@@ -107,15 +107,15 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
     }
 
     override fun onOccupationListFailure(occupationMainResponse: OccupationMainResponse) {
-        showDialog(occupationMainResponse.occupationResponse.responseStatusHeader.statusDescription,false)
+        showDialog(occupationMainResponse.occupationResponse.responseStatusHeader.statusDescription,false,false)
     }
 
     override fun onPropertyInterestedInListFailure(propertyInterestMainResponse: PropertyInterestMainResponse) {
-        showDialog(propertyInterestMainResponse.interestedInResponse.responseStatusHeader.statusDescription,false)
+        showDialog(propertyInterestMainResponse.interestedInResponse.responseStatusHeader.statusDescription,false,false)
     }
 
     override fun onOwnershipListFailure(ownershipMainResponse: OwnershipMainResponse) {
-        showDialog(ownershipMainResponse.ownershipResponse.responseStatusHeader.statusDescription,false)
+        showDialog(ownershipMainResponse.ownershipResponse.responseStatusHeader.statusDescription,false,false)
     }
 
     override fun onAddPropertyEnquiryFailure(enquiryMainResponse: EnquiryMainResponse) {
@@ -124,7 +124,7 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
         bundle.putSerializable(BaseConstant.ENQUIRY_RESPONSE, enquiryMainResponse)
         bundle.putBoolean(BaseConstant.STATUS,false)
         clearAllFields()
-        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,false)
+        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
         //findNavController().navigate(R.id.action_AddPropertyEnquiryFragment_to_RealEstateFragment,bundle)
     }
 
@@ -134,12 +134,13 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
       bundle.putSerializable(BaseConstant.ENQUIRY_RESPONSE, enquiryMainResponse)
       bundle.putBoolean(BaseConstant.STATUS,true)
       clearAllFields()
-      showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,true)
+      showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,true,false)
       //findNavController().navigate(R.id.action_AddPropertyEnquiryFragment_to_RealEstateFragment,bundle)
     }
 
     override fun onUserNotConnected() {
         hideProgressDialog()
+        showDialog("",false,true)
     }
 
     override fun onClickAddPropertyEnquiry() {

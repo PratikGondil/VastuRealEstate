@@ -32,7 +32,6 @@ android {
 
 dependencies {
     implementation project(":serviceNetworkFramework")
-    implementation project(":commoncore")
     implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'

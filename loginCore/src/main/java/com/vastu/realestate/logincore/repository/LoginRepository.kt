@@ -1,5 +1,6 @@
 package com.vastu.realestate.logincore.repository
 
+import android.content.Context
 import com.google.gson.Gson
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
@@ -12,17 +13,18 @@ import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
 
 object LoginRepository : ILoginReq,IOnServiceResponseListener {
     lateinit var iLoginResponseListener :ILoginResponseListener
-    override fun callLoginApi(mobileNumber: String, urlEndPoint:String, iOnGetLoginResponse: ILoginResponseListener) {
+    override fun callLoginApi(context: Context,mobileNumber: String, urlEndPoint:String, iOnGetLoginResponse: ILoginResponseListener) {
         this.iLoginResponseListener = iOnGetLoginResponse
         NetworkDaoBuilder.Builder
+            .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
-            .setRequest(builRequest(mobileNumber))
+            .setRequest(buildRequest(mobileNumber))
             .setUrlEndPoint(urlEndPoint)
             .build()
             .sendApiRequest(this)
     }
-    fun builRequest(request: String): ByteArray {
+    fun buildRequest(request: String): ByteArray {
         var objLoginReq = ObjLoginReq(request)
         return Gson().toJson(objLoginReq).toByteArray()
     }
@@ -45,7 +47,7 @@ object LoginRepository : ILoginReq,IOnServiceResponseListener {
     }
 
     override fun onUserNotConnected() {
-        TODO("Not yet implemented")
+       iLoginResponseListener.networkFailure()
     }
 
     private fun parseResponse(response: String): ObjLoginResponseMain {

@@ -134,7 +134,7 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
         bundle.putSerializable(BaseConstant.ENQUIRY_RESPONSE, enquiryMainResponse)
         bundle.putBoolean(STATUS,false)
         clearAllFields()
-        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,false)
+        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
         //findNavController().navigate(R.id.action_AddPropertyEnquiryFragment_to_RealEstateFragment,bundle)
     }
 
@@ -144,24 +144,25 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
         bundle.putSerializable(BaseConstant.ENQUIRY_RESPONSE, enquiryMainResponse)
         bundle.putBoolean(STATUS,true)
         clearAllFields()
-        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,true)
+        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,true,false)
         //findNavController().navigate(R.id.action_AddLoanEnquiryFragment_to_LoanFragment,bundle)
     }
 
     override fun onUserNotConnected() {
         hideProgressDialog()
+        showDialog("",false,true)
     }
 
     override fun onOccupationListFailure(occupationMainResponse: OccupationMainResponse) {
-        showDialog(occupationMainResponse.occupationResponse.responseStatusHeader.statusDescription,false)
+        showDialog(occupationMainResponse.occupationResponse.responseStatusHeader.statusDescription,false,false)
     }
 
     override fun onLoanInterestedInLListFailure(loanInterestMainResponse: LoanInterestMainResponse) {
-        showDialog(loanInterestMainResponse.loanInterstedResponse.responseStatusHeader.statusDescription,false)
+        showDialog(loanInterestMainResponse.loanInterstedResponse.responseStatusHeader.statusDescription,false,false)
     }
 
     override fun onBankListFailure(bankResponseMain: BankResponseMain) {
-        showDialog(bankResponseMain.bankResponse.responseStatusHeader.statusDescription,false)
+        showDialog(bankResponseMain.bankResponse.responseStatusHeader.statusDescription,false,false)
     }
 
     override fun onClickBack() {

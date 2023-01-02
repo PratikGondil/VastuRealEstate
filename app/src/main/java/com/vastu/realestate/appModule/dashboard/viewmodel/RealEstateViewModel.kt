@@ -13,8 +13,13 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
 
     lateinit var iRealEstateListener: IRealEstateListener
 
+    var mContext :Application
+    init {
+        mContext = application
+    }
+
     fun getPropertyList(userId:String){
-        PropertyListRepository.callGetPropertyList(userId,GET_PROPERTY_LIST,this)
+        PropertyListRepository.callGetPropertyList(mContext,userId,GET_PROPERTY_LIST,this)
     }
     fun onClickAddPropertyEnquiry(){
         iRealEstateListener.fabAddPropertyEnquiry()

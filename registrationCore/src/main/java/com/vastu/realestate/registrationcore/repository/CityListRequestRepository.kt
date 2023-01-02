@@ -1,6 +1,7 @@
 package com.vastu.realestate.registrationcore.repository
 
 import android.annotation.SuppressLint
+import android.content.Context
 import com.google.gson.Gson
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
@@ -12,9 +13,10 @@ import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaRe
 object CityListRequestRepository : ICityListReq,IOnServiceResponseListener {
     lateinit var iTalukaResponseListener: ITalukaResponseListener
 
-     override fun callCityListApi(urlEndPoint:String, iTalukaResponseListener: ITalukaResponseListener){
+     override fun callCityListApi(context: Context,urlEndPoint:String, iTalukaResponseListener: ITalukaResponseListener){
         this.iTalukaResponseListener = iTalukaResponseListener
         NetworkDaoBuilder.Builder
+            .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(false)
             .setIsRequestPut(false)
@@ -40,7 +42,9 @@ object CityListRequestRepository : ICityListReq,IOnServiceResponseListener {
     }
 
     override fun onUserNotConnected() {
+       iTalukaResponseListener.networkFailure()
     }
+
 
     fun parseTalukaResponse(response: String): ObjTalukaResponseMain {
         return Gson().fromJson(

@@ -1,4 +1,4 @@
-package com.vastu.realestate.commoncore.utils
+package com.vastu.utils
 
 object ErrorCode {
  var success = "0000"

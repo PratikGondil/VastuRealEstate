@@ -1,5 +1,10 @@
 package com.vastu.networkService.service
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
+import android.provider.BaseColumns
 import android.util.Log
 import com.vastu.networkService.client.RetrofitClient
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
@@ -12,8 +17,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class NetworkDaoBuilder private constructor(
-    private var  isRequestPost:Boolean,
-    private var  isRequestPut:Boolean,
+    private val context: Context,
+    private var isRequestPost:Boolean,
+    private var isRequestPut:Boolean,
     private var isContentTypeJSON :Boolean,
     private var request:Any,
     private val urlEndPoint:String
@@ -84,30 +90,22 @@ class NetworkDaoBuilder private constructor(
                     listener.onFailureResponse(response.errorBody()!!.string())
                 } else if (!response.isSuccessful && response.body() == null) {
                     listener.onFailureResponse(response.errorBody()!!.string())
-                }else{
-                    listener.onUserNotConnected()
                 }
-//                if (response.isSuccessful()) {
-//
-//                    Log.d("cateogry","success")
-//                    // CategoryAdapter myAdapter = new CategoryAdapter(getActivity(), categoryList);
-//                    //      mRecyclerView.setAdapter(new CategoryAdapter(category, R.layout.category_item_view, ));
-//                    // mRecyclerView.setAdapter(myAdapter);
-//                }
-//                else
-//                //  ApiErrorUtils.parseError(response);
-//                    Log.d("Api hata", "failure")
-
             }
-
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 clearBuilderDetails()
-                listener.onFailureResponse(t.toString())
+                if (!hasConnectivity(context)) {
+                      listener.onUserNotConnected()
+                }else{
+                 listener.onFailureResponse(t.toString())
+                }
             }
         })
 
     }
     object Builder{
+        lateinit var context:Context
+        private set
         var urlEndPoint :String =""
             private set
         var isRequestPost :Boolean = false
@@ -118,12 +116,13 @@ class NetworkDaoBuilder private constructor(
             private set
         var setRequest :Any = ""
             private set
+        fun setContext(mCtx: Context) =  run { apply {this.context = mCtx}}
         fun setUrlEndPoint(endpoint :String)= run { apply { this.urlEndPoint = endpoint } }
         fun setIsRequestPost(isRequestPost: Boolean)= apply { this.isRequestPost = isRequestPost }
         fun setIsRequestPut(isRequestPut: Boolean)= apply { this.isRequestPut = isRequestPut }
         fun setIsContentTypeJSON(isContentTypeJSON: Boolean) = apply { this.isContentTypeJSON =isContentTypeJSON }
         fun setRequest(request: Any) = apply { this.setRequest = request }
-        fun build() = NetworkDaoBuilder(isRequestPost, isRequestPut,isContentTypeJSON, setRequest, urlEndPoint)
+        fun build() = NetworkDaoBuilder(context,isRequestPost, isRequestPut,isContentTypeJSON, setRequest, urlEndPoint)
     }
 
     fun clearBuilderDetails() {
@@ -132,8 +131,22 @@ class NetworkDaoBuilder private constructor(
         Builder.setIsRequestPut(false)
         Builder.setIsContentTypeJSON(true)
         Builder.setRequest("")
-
     }
 
-
+    fun hasConnectivity(context: Context?): Boolean {
+        val connectivityManager =
+            context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val nw = connectivityManager.activeNetwork ?: return false
+            val actNw = connectivityManager.getNetworkCapabilities(nw)
+            actNw != null && (actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || actNw.hasTransport(
+                NetworkCapabilities.TRANSPORT_CELLULAR
+            ) || actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) || actNw.hasTransport(
+                NetworkCapabilities.TRANSPORT_BLUETOOTH
+            ))
+        } else {
+            val nwInfo = connectivityManager.activeNetworkInfo
+            nwInfo != null && nwInfo.isConnected
+        }
+    }
 }

@@ -1,22 +1,25 @@
 package com.vastu.loanenquirycore.repository
 
+import android.content.Context
 import com.google.gson.Gson
 import com.vastu.loanenquirycore.callbacks.request.IGetOwnershipRequest
 import com.vastu.loanenquirycore.callbacks.response.IGetOwnershipResponseListener
 import com.vastu.loanenquirycore.model.response.ownership.OwnershipMainResponse
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
-import com.vastu.realestate.commoncore.utils.ErrorCode
+import com.vastu.utils.ErrorCode
 
 object OwnershipRepository:IGetOwnershipRequest,IOnServiceResponseListener {
     private lateinit var iGetOwnershipResListener: IGetOwnershipResponseListener
 
     override fun callGetOwnership(
+        context: Context,
         urlEndPoint: String,
         iGetOwnershipResListener: IGetOwnershipResponseListener
     ) {
        this.iGetOwnershipResListener = iGetOwnershipResListener
         NetworkDaoBuilder.Builder
+            .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(false)
             .setIsRequestPut(false)

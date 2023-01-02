@@ -20,11 +20,16 @@ class VastuDashboardViewModel(application: Application) : AndroidViewModel(appli
     lateinit var iDashboardViewListener : IDashboardViewListener
     lateinit var iAdvertisementSliderListener: IAdvertisementSliderListener
 
+    var mContext :Application
+    init {
+        mContext = application
+    }
+
     fun getUserType(userId:String){
-        UserTypeRepository.callGetUserType(userId,GET_USER_TYPE ,this)
+        UserTypeRepository.callGetUserType(mContext,userId,GET_USER_TYPE ,this)
     }
     fun getAdvertisementSlider(){
-        GetAdvertisementSliderRepository.callGetAdvertisementSlider(ApiUrlEndPoints.GET_ADVERTISEMENT_SLIDER,this)
+        GetAdvertisementSliderRepository.callGetAdvertisementSlider(mContext,ApiUrlEndPoints.GET_ADVERTISEMENT_SLIDER,this)
     }
     fun onClickRealEstate(){
         iDashboardViewListener.onRealEstateClick()

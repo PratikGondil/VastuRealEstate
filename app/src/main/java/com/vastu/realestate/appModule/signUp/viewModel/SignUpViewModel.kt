@@ -46,14 +46,14 @@ class SignUpViewModel(application: Application) : AndroidViewModel(application),
     }
 
     fun callRegistrationApi(objUserInfo: ObjUserInfo){
-        RegistrationRepository.callRegisterUserApi(objUserInfo, REGISTER,this)
+        RegistrationRepository.callRegisterUserApi(mContext,objUserInfo, REGISTER,this)
     }
     fun callCityListApi(){
-        CityListRequestRepository.callCityListApi(GET_CITIES,this)
+        CityListRequestRepository.callCityListApi(mContext,GET_CITIES,this)
     }
 
     fun callSubAreaList(talukaId: ObjSubAreaReq){
-        SubAreaRequestRepository.callSubAreaListApi(talukaId,GET_SUB_CITY,this)
+        SubAreaRequestRepository.callSubAreaListApi(mContext,talukaId,GET_SUB_CITY,this)
     }
     override fun onGetSuccessResponse(objRegisterResponseMain: ObjRegisterResponseMain) {
 //        iSignUpViewListener.launchOtpScreen(objRegisterResponseMain.objRegisterDlts)
@@ -83,5 +83,9 @@ class SignUpViewModel(application: Application) : AndroidViewModel(application),
 
     override fun onGetSubAreaResponseFailure(responseMain: ObjGetCityAreaDetailResponseMain) {
         iSignUpViewListener.onSubAreaListApiFailure(responseMain)
+    }
+
+    override fun networkFailure() {
+        iSignUpViewListener.onUserNotConnected()
     }
 }

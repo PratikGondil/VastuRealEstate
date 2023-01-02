@@ -12,8 +12,12 @@ class LoanEnquiryViewModel(application: Application) : AndroidViewModel(applicat
 
     lateinit var iLoanListListener: ILoanListListener
 
+    var mContext :Application
+    init {
+        mContext = application
+    }
     fun callGetLoanEnquiry(){
-        GetLoanEnquiryRepository.callGetLoanEnquiryList(GET_LOAN_ENQUIRY_LIST,this)
+        GetLoanEnquiryRepository.callGetLoanEnquiryList(mContext,GET_LOAN_ENQUIRY_LIST,this)
     }
 
     override fun getLoanEnquiryListSuccess(iGetLoanEnquiryListMainResponse: GetLoanEnquiryListMainResponse) {

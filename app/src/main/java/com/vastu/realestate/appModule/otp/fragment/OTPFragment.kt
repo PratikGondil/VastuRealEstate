@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.otp.uiListener.IVerifyOtpViewListener
 import com.vastu.realestate.appModule.otp.viewModel.OTPViewModel
 import com.vastu.realestate.commoncore.model.otp.ObjUserData
@@ -29,7 +30,7 @@ import com.vastu.realestate.utils.PreferenceKEYS.USER
 import com.vastu.realestate.utils.PreferenceManger
 import java.util.*
 
-class OTPFragment : Fragment(), IVerifyOtpViewListener {
+class OTPFragment : BaseFragment(), IVerifyOtpViewListener {
 
 
     private lateinit var viewModel: OTPViewModel
@@ -180,8 +181,13 @@ class OTPFragment : Fragment(), IVerifyOtpViewListener {
     override fun resendOtpReq(){
         viewModel.callLoginApi(objUserData.mobile!!)
     }
-    override fun onResenOtpFailure(objLoginResponseMain: ObjLoginResponseMain) {
+    override fun onResendOtpFailure(objLoginResponseMain: ObjLoginResponseMain) {
         Toast.makeText(requireContext(),objLoginResponseMain.objLoginResponse.objResponseStatusHdr.statusDescr,Toast.LENGTH_LONG).show()
 
+    }
+
+    override fun onUserNotConnected() {
+        hideProgressDialog()
+        showDialog("",false,true)
     }
 }

@@ -13,8 +13,7 @@ open class BaseFragment : Fragment() {
      fun hideProgressDialog(){
         getVastuActivity()?.hideProgressDialog()
     }
-    fun showDialog(message:String,isSuccess:Boolean){
-        getVastuActivity()?.showDialog(message,isSuccess)
+    fun showDialog(message:String,isSuccess:Boolean,isNetworkFailure:Boolean){
+        getVastuActivity()?.showDialog(message,isSuccess,isNetworkFailure)
     }
-
 }

@@ -53,10 +53,11 @@ class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener{
 
     override fun onFailureGetPropertyEnquiry(getPropertyEnquiryListMainResponse: GetPropertyEnquiryListMainResponse) {
        hideProgressDialog()
-       showDialog(getPropertyEnquiryListMainResponse.enquiryDataResponse.responseStatusHeader.statusDescription,false)
+       showDialog(getPropertyEnquiryListMainResponse.enquiryDataResponse.responseStatusHeader.statusDescription,false,false)
     }
 
     override fun onUserNotConnected() {
-
+        hideProgressDialog()
+        showDialog("",false,true)
     }
 }

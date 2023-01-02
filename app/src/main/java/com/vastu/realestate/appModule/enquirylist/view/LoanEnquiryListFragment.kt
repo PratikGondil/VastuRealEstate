@@ -58,12 +58,12 @@ class LoanEnquiryListFragment : BaseFragment(), ILoanListListener{
 
     override fun onFailureGetLoanEnquiry(getLoanEnquiryListMainResponse: GetLoanEnquiryListMainResponse) {
         hideProgressDialog()
-        showDialog(getLoanEnquiryListMainResponse.loanDataResponse.responseStatusHeader.statusDescription,false)
+        showDialog(getLoanEnquiryListMainResponse.loanDataResponse.responseStatusHeader.statusDescription,false,false)
     }
 
     override fun onUserNotConnected() {
         hideProgressDialog()
-        showDialog(getString(R.string.no_connection),false)
+        showDialog("",false,true)
     }
 
 }

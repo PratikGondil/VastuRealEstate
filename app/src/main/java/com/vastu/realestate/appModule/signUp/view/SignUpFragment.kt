@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.signUp.uiInterfaces.ISignUpViewListener
 import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
 import com.vastu.realestate.customProgressDialog.CustomProgressDialog
@@ -25,7 +26,7 @@ import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaD
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
 import com.vastu.realestate.utils.BaseConstant.REGISTER_DTLS_OBJ
 
-class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
+class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener {
 
     private lateinit var signUpViewModel: SignUpViewModel
     lateinit var signUpFragmentBinding: SignUpFragmentBinding
@@ -162,6 +163,12 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
         Toast.makeText(requireContext(),objGetCityAreaDetailResponseMain.objCityAreaResponse.objResponseStatusHdr.statusDescr,
             Toast.LENGTH_LONG).show()
     }
+
+    override fun onUserNotConnected() {
+        hideProgressDialog()
+        showDialog("",false,true)
+    }
+
     fun onShowStateDropDown(view: View){
         (view as AutoCompleteTextView).showDropDown()
     }

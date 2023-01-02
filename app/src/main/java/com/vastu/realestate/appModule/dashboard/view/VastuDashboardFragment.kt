@@ -128,7 +128,8 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
     }
 
     override fun onUserNotConnected() {
-
+        hideProgressDialog()
+        showDialog("",false,true)
     }
 
     override fun onRealEstateClick() {
@@ -155,6 +156,7 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
     }
     override fun onClickEnquiry() {
         startActivity(Intent(activity, EnquiryActivity::class.java))
+        closeDrawer()
     }
     override fun onClickAddProperty() {
         closeDrawer()

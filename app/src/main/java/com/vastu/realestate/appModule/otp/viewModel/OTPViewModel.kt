@@ -33,12 +33,12 @@ class OTPViewModel(application: Application) : AndroidViewModel(application),IVe
     fun onOtpSubmitClick(){
         iVerifyOtpViewListener.verifyOtp()
     }
-    fun callLoginApi(mobilenumber:String){
-        LoginRepository.callLoginApi(mobilenumber,LOGIN,this)
+    fun callLoginApi(mobileNumber:String){
+        LoginRepository.callLoginApi(mContext,mobileNumber,LOGIN,this)
     }
 
     fun callVerifyOtpApi(objVerifyOtpReq: ObjVerifyOtpReq){
-        VerifyOtpRequestRepository.callVerifyOtpApi(objVerifyOtpReq,VERIFY_OTP,this)
+        VerifyOtpRequestRepository.callVerifyOtpApi(mContext,objVerifyOtpReq,VERIFY_OTP,this)
     }
 
     override fun onGetVerifyOtpSuccess(objVerifyDtls: ObjVerifyDtls) {
@@ -57,6 +57,10 @@ class OTPViewModel(application: Application) : AndroidViewModel(application),IVe
     }
 
     override fun onGetFailureResponse(response: ObjLoginResponseMain) {
-        iVerifyOtpViewListener.onResenOtpFailure(response)
+        iVerifyOtpViewListener.onResendOtpFailure(response)
+    }
+
+    override fun networkFailure() {
+      iVerifyOtpViewListener.onUserNotConnected()
     }
 }

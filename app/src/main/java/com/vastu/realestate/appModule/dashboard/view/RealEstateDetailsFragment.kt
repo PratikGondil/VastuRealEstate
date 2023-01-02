@@ -100,7 +100,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
 
     override fun onFailureGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
-        showDialog(propertyDataResponseMain.propertyIdResponse.responseStatusHeader.statusDescription,false)
+        showDialog(propertyDataResponseMain.propertyIdResponse.responseStatusHeader.statusDescription,false,false)
     }
 
     override fun onSuccessPropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
@@ -120,6 +120,8 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     }
 
     override fun onUserNotConnected() {
+        hideProgressDialog()
+        showDialog("",false,true)
     }
 
     override fun onClickBack() {

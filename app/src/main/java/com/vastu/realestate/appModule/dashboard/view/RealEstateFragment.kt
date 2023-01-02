@@ -76,7 +76,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
             if (args.getSerializable(BaseConstant.ENQUIRY_RESPONSE) != null) {
                 enquiryMainResponse = args.getSerializable(BaseConstant.ENQUIRY_RESPONSE) as EnquiryMainResponse
                 val status = args.getBoolean(STATUS,false)
-                showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,status)
+                showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,status,false)
             }
         }
     }
@@ -111,7 +111,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
 
     override fun onFailureGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         hideProgressDialog()
-        showDialog(objGetPropertyListResMain.propertyResponse.responseStatusHeader.statusDescription,false)
+        showDialog(objGetPropertyListResMain.propertyResponse.responseStatusHeader.statusDescription,false,false)
        /* Toast.makeText(requireContext(),objGetPropertyListResMain.propertyResponse.responseStatusHeader.statusDescription,
             Toast.LENGTH_LONG).show()*/
     }
@@ -146,7 +146,8 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     }
 
     override fun onUserNotConnected() {
-
+        hideProgressDialog()
+        showDialog("",false,true)
     }
 
 

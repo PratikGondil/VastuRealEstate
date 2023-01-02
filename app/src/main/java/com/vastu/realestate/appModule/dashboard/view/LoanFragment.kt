@@ -72,7 +72,7 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener {
             if (args.getSerializable(BaseConstant.ENQUIRY_RESPONSE) != null) {
                 enquiryMainResponse = args.getSerializable(BaseConstant.ENQUIRY_RESPONSE) as EnquiryMainResponse
                 val status = args.getBoolean(BaseConstant.STATUS,false)
-                showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,status)
+                showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,status,false)
             }
         }
     }

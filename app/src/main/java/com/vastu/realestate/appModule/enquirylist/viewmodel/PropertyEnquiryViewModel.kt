@@ -12,8 +12,13 @@ class PropertyEnquiryViewModel(application: Application) : AndroidViewModel(appl
 
     lateinit var iPropertyListListener: IPropertyListListener
 
+    var mContext :Application
+    init {
+        mContext = application
+    }
+
     fun callGetPropertyEnquiry(){
-        GetPropertyEnquiryRepository.callGetPropertyEnquiryList(GET_PROPERTY_ENQUIRY_LIST,this)
+        GetPropertyEnquiryRepository.callGetPropertyEnquiryList(mContext,GET_PROPERTY_ENQUIRY_LIST,this)
     }
 
     override fun getPropertyEnquiryListSuccess(getPropertyEnquiryListMainResponse: GetPropertyEnquiryListMainResponse) {

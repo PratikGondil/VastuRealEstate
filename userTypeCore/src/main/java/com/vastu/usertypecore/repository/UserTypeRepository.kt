@@ -1,5 +1,6 @@
 package com.vastu.usertypecore.repository
 
+import android.content.Context
 import com.vastu.usertypecore.callbacks.request.IGetUserTypeReq
 import com.vastu.usertypecore.callbacks.response.IGetUserTypeResListener
 import com.vastu.usertypecore.model.request.ObjGetUserTypeReq
@@ -7,17 +8,19 @@ import com.vastu.usertypecore.model.response.ObjGetUserTypeResMain
 import com.google.gson.Gson
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
-import com.vastu.realestate.commoncore.utils.ErrorCode
+import com.vastu.utils.ErrorCode
 
 object UserTypeRepository: IGetUserTypeReq,IOnServiceResponseListener {
     lateinit var iGetUserTypeResListener: IGetUserTypeResListener
     override fun callGetUserType(
+        context: Context,
         userId: String,
         urlEndPoint: String,
         iGetUserTypeResListener: IGetUserTypeResListener
     ) {
       this.iGetUserTypeResListener = iGetUserTypeResListener
         NetworkDaoBuilder.Builder
+            .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
             .setRequest(buildRequest(userId))

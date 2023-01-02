@@ -27,8 +27,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application),
         iLoginViewListener.onSendOtpClick()
     }
 
-    fun callLoginApi(mobilenumber:String){
-        LoginRepository.callLoginApi(mobilenumber,LOGIN,this)
+    fun callLoginApi(mobileNumber:String){
+        LoginRepository.callLoginApi(mContext,mobileNumber,LOGIN,this)
     }
 
     override fun onGetSuccessResponse(response: ObjLoginResponseMain) {
@@ -38,5 +38,9 @@ class LoginViewModel(application: Application) : AndroidViewModel(application),
 
     override fun onGetFailureResponse(response: ObjLoginResponseMain) {
        iLoginViewListener.onLoginFail(response.objLoginResponse)
+    }
+
+    override fun networkFailure() {
+       iLoginViewListener.onUserNotConnected()
     }
 }

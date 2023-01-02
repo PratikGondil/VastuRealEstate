@@ -66,16 +66,16 @@ class AddPropertyEnquiryViewModel(application: Application) :AndroidViewModel(ap
     lateinit var iAddPropertyEnquiryListener: IAddPropertyEnquiryListener
 
      fun callGetOccupation(){
-        OccupationRepository.callGetOccupation(GET_OCCUPATION,this)
+        OccupationRepository.callGetOccupation(mContext,GET_OCCUPATION,this)
     }
     fun callGetPropertyInterestedIn(){
-        PropertyInterestRepository.callGetPropertyInterest(PROPERTY_INTERESTED_IN,this )
+        PropertyInterestRepository.callGetPropertyInterest(mContext,PROPERTY_INTERESTED_IN,this )
     }
     fun callGetOwnerShip(){
-        OwnershipRepository.callGetOwnership(GET_OWNERSHIP,this)
+        OwnershipRepository.callGetOwnership(mContext,GET_OWNERSHIP,this)
     }
     fun callAddPropertyEnquiry(addPropertyRequest: AddPropertyEnquiryRequest){
-        AddPropertyEnquiryRepository.callAddPropertyEnquiry(ADD_PROPERTY_ENQUIRY,addPropertyRequest,this)
+        AddPropertyEnquiryRepository.callAddPropertyEnquiry(mContext,ADD_PROPERTY_ENQUIRY,addPropertyRequest,this)
     }
     fun onSubmitPropertyEnquiry(){
         iAddPropertyEnquiryListener.onClickAddPropertyEnquiry()

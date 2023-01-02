@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.transition.Visibility
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.vastu.realestate.R
 import com.vastu.realestate.customProgressDialog.CustomProgressDialog
@@ -26,7 +27,7 @@ open class BaseActivity : AppCompatActivity() {
     fun hideProgressDialog() {
         customProgressDialog.dismiss()
     }
-    open fun showDialog(message: String?,isSuccess:Boolean) {
+    open fun showDialog(message: String?,isSuccess:Boolean,isNetworkFailure:Boolean) {
 
         val bottomSheetDialog = BottomSheetDialog(this,android.R.style.Theme_Translucent_NoTitleBar)
         bottomSheetDialog.setContentView(R.layout.bottom_dialog_layout)
@@ -41,7 +42,14 @@ open class BaseActivity : AppCompatActivity() {
             successImageView?.visibility = View.GONE
 
 
-        detailTextView?.text = message
+
+        if(isNetworkFailure){
+            detailTextView?.text = getString(R.string.no_connection)
+            okBtn?.visibility = View.GONE
+        }else {
+            okBtn?.visibility = View.VISIBLE
+            detailTextView?.text = message
+        }
         okBtn?.setOnClickListener { v: View? -> bottomSheetDialog.hide() }
         bottomSheetDialog.setCancelable(true)
         bottomSheetDialog.setCanceledOnTouchOutside(true)

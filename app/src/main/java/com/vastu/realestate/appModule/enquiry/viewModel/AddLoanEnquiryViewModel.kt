@@ -67,21 +67,21 @@ class AddLoanEnquiryViewModel(application: Application) : AndroidViewModel(appli
 
 
     fun callGetOccupation() {
-        OccupationRepository.callGetOccupation(GET_OCCUPATION, this)
+        OccupationRepository.callGetOccupation(mContext,GET_OCCUPATION, this)
     }
 
     fun callLoanInterestedIn(){
-        LoanInterestRepository.callGetLoanInterest(LOAN_INTERESTED_IN,this)
+        LoanInterestRepository.callGetLoanInterest(mContext,LOAN_INTERESTED_IN,this)
     }
     fun callGetBanks(){
-        BankRepository.callGetBanks(GET_BANKS,this)
+        BankRepository.callGetBanks(mContext,GET_BANKS,this)
     }
     fun onSubmitLoanEnquiry(){
         iAddLoanEnquiryListener.onClickAddLoanEnquiry()
     }
 
     fun callAddLoanEnquiry(addLoanRequest: AddLoanEnquiryRequest){
-        AddLoanEnquiryRepository.callAddLoanEnquiry(ADD_LOAN_ENQUIRY,addLoanRequest,this)
+        AddLoanEnquiryRepository.callAddLoanEnquiry(mContext,ADD_LOAN_ENQUIRY,addLoanRequest,this)
     }
 
     override fun getOccupationSuccessResponse(occupationMainResponse: OccupationMainResponse) {

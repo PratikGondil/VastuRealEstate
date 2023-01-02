@@ -17,15 +17,19 @@ class RealEstateDetailsViewModel(application: Application) : AndroidViewModel(ap
     IGetPropertyDetailsResponseListener,
     IGetPropertySliderByIdResponse{
 
+    var mContext :Application
+    init {
+        mContext = application
+    }
     lateinit var iPropertyDetailsListener: IPropertyDetailsListener
     lateinit var iPropertySliderListener: IPropertySliderListener
 
     fun getPropertySlider(propertyId:String){
-        PropertySliderRepository.callGetPropertySliderById(propertyId,PROPERTY_SLIDER,this)
+        PropertySliderRepository.callGetPropertySliderById(mContext,propertyId,PROPERTY_SLIDER,this)
     }
 
     fun getPropertyDetails(userId:String,propertyId:String){
-        PropertyDetailsRepository.callGetPropertyDetails(userId,propertyId,GET_PROPERTY,this)
+        PropertyDetailsRepository.callGetPropertyDetails(mContext,userId,propertyId,GET_PROPERTY,this)
     }
 
     override fun getPropertyDetailsSuccessResponse(propertyDataResponseMain: PropertyDataResponseMain) {

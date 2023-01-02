@@ -1,25 +1,28 @@
 package com.vastu.slidercore.repository
 
+import android.content.Context
 import com.google.gson.Gson
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
-import com.vastu.realestate.commoncore.utils.ErrorCode
 import com.vastu.slidercore.callback.request.IGetPropertySliderByIdRequest
 import com.vastu.slidercore.callback.response.IGetPropertySliderByIdResponse
 import com.vastu.slidercore.model.request.PropertySliderRequest
 import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
+import com.vastu.utils.ErrorCode
 
 object PropertySliderRepository:IGetPropertySliderByIdRequest,IOnServiceResponseListener {
 
    lateinit var iGetPropertySliderByIdResponse: IGetPropertySliderByIdResponse
 
     override fun callGetPropertySliderById(
+        context: Context,
         propertyId: String,
         urlEndPoint: String,
         iGetPropertySliderByIdResponse: IGetPropertySliderByIdResponse
     ) {
        this.iGetPropertySliderByIdResponse = iGetPropertySliderByIdResponse
         NetworkDaoBuilder.Builder
+            .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
             .setRequest(buildRequest(propertyId))

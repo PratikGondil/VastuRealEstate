@@ -1,23 +1,26 @@
 package com.vastu.loanenquirycore.repository
 
+import android.content.Context
 import com.google.gson.Gson
 import com.vastu.loanenquirycore.callbacks.request.IGetLoanInterestRequest
 import com.vastu.loanenquirycore.callbacks.response.IGetLoanInterestResponseListener
 import com.vastu.loanenquirycore.model.response.interest.loan.LoanInterestMainResponse
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
-import com.vastu.realestate.commoncore.utils.ErrorCode
+import com.vastu.utils.ErrorCode
 
 object LoanInterestRepository:IGetLoanInterestRequest,IOnServiceResponseListener {
 
     private lateinit var iGetLoanInterestResponseListener: IGetLoanInterestResponseListener
 
     override fun callGetLoanInterest(
+        context: Context,
         urlEndPoint: String,
         iGetLoanInterestResponseListener: IGetLoanInterestResponseListener
     ) {
        this.iGetLoanInterestResponseListener = iGetLoanInterestResponseListener
         NetworkDaoBuilder.Builder
+            .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(false)
             .setIsRequestPut(false)
