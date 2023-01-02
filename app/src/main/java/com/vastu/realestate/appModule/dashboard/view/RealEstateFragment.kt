@@ -127,8 +127,6 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     override fun onFailureGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         hideProgressDialog()
         showDialog(objGetPropertyListResMain.propertyResponse.responseStatusHeader.statusDescription,false,false)
-       /* Toast.makeText(requireContext(),objGetPropertyListResMain.propertyResponse.responseStatusHeader.statusDescription,
-            Toast.LENGTH_LONG).show()*/
     }
 
     override fun onSuccessPropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
