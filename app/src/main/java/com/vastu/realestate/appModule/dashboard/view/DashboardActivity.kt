@@ -30,8 +30,12 @@ class DashboardActivity : BaseActivity() {
     override fun onBackPressed() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.dashboardNavHost) as NavHostFragment?
         val fragment = navHostFragment!!.childFragmentManager.fragments[0]
-        if (fragment is LoanFragment || fragment is RealEstateFragment || fragment is RealEstateDetailsFragment) {
+        if (fragment is LoanFragment || fragment is RealEstateDetailsFragment) {
             super.onBackPressed()
+        }
+        else if( fragment is RealEstateFragment)
+        {
+            fragment.onBackClick()
         }else {
             finishAffinity()
         }

@@ -7,4 +7,6 @@ object BaseConstant {
 
   var REGISTER_DTLS_OBJ = "verifyotp"
   var PROPERTY_DETAILS = "PROPERTY_DETAILS"
+  var AMOUNTFORMAT = "#,###,###"
+  var FILTERTYPELIST = "FilterTypeList.json"
 }

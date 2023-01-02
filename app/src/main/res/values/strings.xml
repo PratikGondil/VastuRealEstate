@@ -72,4 +72,68 @@
     <string name="_5">5</string>
     <string name="please_wait">Please wait...</string>
     <string name="okay">Okay</string>
+
+
+<!--    filter-->
+    <string name="filters_and_sort">FILTERS &amp; SORT</string>
+    <string name="choose_a_range_below">Choose a range below</string>
+    <string name="choose_from_below_options">Choose from below options</string>
+    <string name="choose_a_range_below_per_Sq">Choose a range below (Rs/Sq Ft)</string>
+    <string name="choose_a_range_below_Sq">Choose a range below (Sq Ft)</string>
+    <string name="select_from_below_options">Select from the options below</string>
+    <string name="budget_lower_limit">0</string>
+    <string name="budget_upper_limit">10000000</string>
+    <string name="SqFt_upper_limit">500000</string>
+    <string name="buildup_area_upper_limit">10000</string>
+    <string name="houses_and_Villas">Houses &amp; Villas</string>
+    <string name="builder_floors">Builder Floors</string>
+    <string name="farmhouses">Farm Houses</string>
+    <string name="onebedroom">1 + bedroom</string>
+    <string name="twobedrooms">2 + bedrooms</string>
+    <string name="threebedrooms">3 + bedrooms</string>
+    <string name="fourbedrooms">4 + bedrooms</string>
+    <string name="onebathroom">1 + bathroom</string>
+    <string name="twobathrooms">2 + bathrooms</string>
+    <string name="threebathrooms">3 + bathrooms</string>
+    <string name="fourbathrooms">4 + bathrooms</string>
+    <string name="furnished">Furnished</string>
+    <string name="semi_furnished">Semi-Furnished</string>
+    <string name="under_const">Under Construction</string>
+    <string name="new_launch">New Launch</string>
+    <string name="owner">Owner</string>
+    <string name="dealer">Dealer</string>
+    <string name="builder">Builder</string>
+    <string name="date_published">Date Published</string>
+    <string name="relevance">Relevance</string>
+    <string name="price_low_to_high">Price:Low to High</string>
+    <string name="price_high_to_low">Price:High to Low</string>
+    <string name="distance">Distance</string>
+
+
+    <!--filter Types-->
+    <string name="by_budget">By Budget</string>
+    <string name="by_property_type">By Property Type</string>
+    <string name="by_price_per_sq_ft">By Price Per sq.Ft.</string>
+    <string name="by_bedrooms">By Bedrooms</string>
+    <string name="by_bathrooms">By Bathrooms</string>
+    <string name="by_furnishing">By Furnishing</string>
+    <string name="by_constr_status">By Construction status</string>
+    <string name="by_listed_by">By Listed By</string>
+    <string name="by_buildup_area">By Super Buildup Area</string>
+    <string name="change_sort">Change sort</string>
+
+    <string-array name="rangeSliderValues" >
+    <item>0</item>
+    <item>10000000</item>
+    </string-array>
+
+    <string-array name="rsPerSqSliderValues" >
+        <item>0</item>
+        <item>500000</item>
+    </string-array>
+
+    <string-array name="buildupAreaSliderValues" >
+        <item>0</item>
+        <item>10000</item>
+    </string-array>
 </resources>

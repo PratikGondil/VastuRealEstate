@@ -1,0 +1,36 @@
+{
+  "filtertypelist": [
+    {
+      "filtertype": "By Budget"
+    },
+    {
+      "filtertype": "By Property Type"
+    },
+    {
+      "filtertype": "By Price Per sq.Ft."
+
+    },
+    {
+      "filtertype": "By Bedrooms"
+    },
+    {
+      "filtertype": "By Bathrooms"
+    },
+
+    {
+      "filtertype": "By Furnishing"
+    },
+    {
+      "filtertype": "By Construction status"
+    },
+    {
+      "filtertype": "By Listed By"
+    },
+    {
+      "filtertype": "By Super Buildup Area"
+    },
+    {
+      "filtertype": "Change sort"
+    }
+  ]
+}
