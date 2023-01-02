@@ -161,8 +161,6 @@ kuserTypeCore/src/main/java/com/vastu/slidercore/model/response/advertisement/Ge
 ]userTypeCore/src/main/java/com/vastu/slidercore/model/response/advertisement/AdvertiseData.kt,6\7\675f26ee5f87adace940f892a7c2b8573ffd5050
 Š
 Zapp/src/main/java/com/vastu/realestate/appModule/enquirylist/adapter/LoanEnquiryAdapter.kt,e\e\ee12cce68df6a11af85059ee16635e13310fd237
-p
-@app/src/main/java/com/vastu/realestate/utils/PreferenceManger.kt,b\f\bfaa19cfea25338082ff957a28344d1bedb3d890
 Ž
 ^app/src/main/java/com/vastu/realestate/appModule/enquirylist/adapter/PropertyEnquiryAdapter.kt,a\a\aa082cbb9932249ca49b0d50c02c9557ec45ac18
 „

@@ -28,6 +28,7 @@ import com.vastu.realestate.utils.PreferenceKEYS.PROPERTY_SLIDER_LIST
 import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.realestatecore.model.response.ObjGetPropertyListResMain
 import com.vastu.realestatecore.model.response.PropertyData
+import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
 import com.vastu.slidercore.model.response.property.GetPropertySliderImagesResponse
 import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
 
@@ -38,7 +39,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     private lateinit var realEstateViewModel: RealEstateViewModel
     private lateinit var drawerViewModel: DrawerViewModel
     private lateinit var getPropertySliderImagesResponse: GetPropertySliderImagesResponse
-    private lateinit var realEstateDetailsViewModel: RealEstateDetailsViewModel
+    private lateinit var getAdvertisementSlider: GetAdvertiseDetailsResponse
     private val imageList = ArrayList<SlideModel>()
     private lateinit var enquiryMainResponse: EnquiryMainResponse
 
@@ -46,7 +47,6 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        realEstateDetailsViewModel = ViewModelProvider(this)[RealEstateDetailsViewModel::class.java]
         realEstateViewModel = ViewModelProvider(this)[RealEstateViewModel::class.java]
         drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
         realEstateBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_real_estate, container, false)
@@ -55,14 +55,26 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
         realEstateBinding.drawerViewModel= drawerViewModel
         realEstateViewModel.iRealEstateListener = this
         drawerViewModel.iToolbarListener = this
-        realEstateDetailsViewModel.iPropertySliderListener = this
         getPropertySlider()
         return realEstateBinding.root
     }
     private fun getPropertySlider(){
         showProgressDialog()
-        realEstateDetailsViewModel.getPropertySlider("1")
+        setSliderData()
     }
+
+    private fun setSliderData(){
+        imageList.clear()
+        getAdvertisementSlider = PreferenceManger.getAdvertisementSlider(PreferenceKEYS.DASHBOARD_SLIDER_LIST)
+        realEstateBinding.apply {
+            for( slider in getAdvertisementSlider.advertiseData){
+                imageList.add(SlideModel(slider.adSlider))
+            }
+            imageSlider.setImageList(imageList, ScaleTypes.FIT)
+            imageSlider.startSliding(3000)
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         drawerViewModel.toolbarTitle.set(getString(R.string.real_estate))
@@ -87,10 +99,13 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
 
     private fun getRealEstateDetails(realEstate:List<PropertyData>) {
         realEstateBinding.apply {
-            if(realEstate.isNotEmpty())
+            if(realEstate.isNotEmpty()) {
+                searchFilterLayout.visibility = View.VISIBLE
                 floatPropertyEnquiry.visibility = View.VISIBLE
-            else
+            }else {
+                searchFilterLayout.visibility = View.GONE
                 floatPropertyEnquiry.visibility = View.GONE
+            }
         }
         val recyclerViewRealEstate = realEstateBinding.rvRealEstste
         //val realEstates = RealEstateList.getRealEstateData(requireContext())
@@ -128,17 +143,6 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
              imageSlider.setImageList(imageList, ScaleTypes.FIT)
              imageSlider.startSliding(3000)
          }
-    }
-
-    private fun setSliderData(){
-        getPropertySliderImagesResponse = PreferenceManger.getSlider(PROPERTY_SLIDER_LIST)
-        realEstateBinding.apply {
-            for( slider in getPropertySliderImagesResponse.propertySliderImages){
-                imageList.add(SlideModel(slider.image))
-            }
-            imageSlider.setImageList(imageList, ScaleTypes.FIT)
-            imageSlider.startSliding(3000)
-        }
     }
 
     override fun onFailurePropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {

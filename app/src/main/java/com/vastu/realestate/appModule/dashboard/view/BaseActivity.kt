@@ -45,9 +45,7 @@ open class BaseActivity : AppCompatActivity() {
 
         if(isNetworkFailure){
             detailTextView?.text = getString(R.string.no_connection)
-            okBtn?.visibility = View.GONE
         }else {
-            okBtn?.visibility = View.VISIBLE
             detailTextView?.text = message
         }
         okBtn?.setOnClickListener { v: View? -> bottomSheetDialog.hide() }

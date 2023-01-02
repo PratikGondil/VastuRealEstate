@@ -49,6 +49,7 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener {
     }
 
     private fun setSliderData(){
+        imageList.clear()
         getAdvertisementSlider = PreferenceManger.getAdvertisementSlider(PreferenceKEYS.DASHBOARD_SLIDER_LIST)
         loanBinding.apply {
             for( slider in getAdvertisementSlider.advertiseData){

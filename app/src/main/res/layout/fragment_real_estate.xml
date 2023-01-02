@@ -45,10 +45,12 @@
 
 
             <LinearLayout
+                android:id="@+id/search_filter_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_margin="@dimen/margin_small"
+                android:visibility="gone"
                 android:weightSum="2.5">
 
                 <com.google.android.material.textfield.TextInputLayout

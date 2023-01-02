@@ -17,12 +17,13 @@ class RealEstateDetailsViewModel(application: Application) : AndroidViewModel(ap
     IGetPropertyDetailsResponseListener,
     IGetPropertySliderByIdResponse{
 
+    lateinit var iPropertyDetailsListener: IPropertyDetailsListener
+    lateinit var iPropertySliderListener: IPropertySliderListener
+
     var mContext :Application
     init {
         mContext = application
     }
-    lateinit var iPropertyDetailsListener: IPropertyDetailsListener
-    lateinit var iPropertySliderListener: IPropertySliderListener
 
     fun getPropertySlider(propertyId:String){
         PropertySliderRepository.callGetPropertySliderById(mContext,propertyId,PROPERTY_SLIDER,this)
@@ -50,6 +51,6 @@ class RealEstateDetailsViewModel(application: Application) : AndroidViewModel(ap
 
     override fun networkFailure() {
         iPropertyDetailsListener.onUserNotConnected()
-        iPropertyDetailsListener.onUserNotConnected()
+        iPropertySliderListener.onUserNotConnected()
     }
 }
