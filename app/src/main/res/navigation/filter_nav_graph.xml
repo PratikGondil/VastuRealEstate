@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/filter_nav_graph">
+    <fragment
+        android:id="@+id/FilterViewFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.VastuDashboardFragment"
+        android:label="VastuDashboardFragment"
+        tools:layout="@layout/fragment_vastu_dashboard"/>
+</navigation>

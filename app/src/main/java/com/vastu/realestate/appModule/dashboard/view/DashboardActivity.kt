@@ -136,11 +136,15 @@ class DashboardActivity : AppCompatActivity() {
         val navHostFragment: NavHostFragment? =
             supportFragmentManager.findFragmentById(R.id.dashboardNavHost) as NavHostFragment?
         val fragment = navHostFragment!!.childFragmentManager.fragments[0]
-        if (fragment is LoanFragment || fragment is RealEstateFragment || fragment is RealEstateDetailsFragment) {
+        if (fragment is LoanFragment || fragment is RealEstateDetailsFragment) {
             super.onBackPressed()
         }else if(activityVastuDashboardBinding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
            closeDrawer()
-        }else {
+        }else if( fragment is RealEstateFragment)
+        {
+            fragment.onBackClick()
+        }
+        else {
             finishAffinity()
         }
     }

@@ -6,4 +6,6 @@ object BaseConstant {
   var MOBILE_REGEX ="^[6-9]\\d{9}\$"
 
   var REGISTER_DTLS_OBJ = "verifyotp"
+  var AMOUNTFORMAT = "#,###,###"
+  var FILTERTYPELIST = "FilterTypeList.json"
 }

@@ -51,5 +51,11 @@
             android:id="@+id/action_LoanFragment_to_VastuDashboardFragment"
             app:destination="@id/VastuDashboardFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/filter_fragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreen"
+        android:label="filterFragment"
+        tools:layout="@layout/multiple_filters">
 
+    </fragment>
 </navigation>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="budget_lower_limit">0</integer>
+    <integer name="budget_upper_limit">10000000</integer>
+    <integer name="SqFt_upper_limit">500000</integer>
+    <integer name="buildup_area_upper_limit">10000</integer>
+</resources>
