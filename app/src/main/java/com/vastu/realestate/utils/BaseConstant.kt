@@ -1,9 +1,20 @@
 package com.vastu.realestate.utils
 
+import android.app.Activity
 import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
-import android.os.Build
+import android.graphics.drawable.Drawable
+import android.os.Handler
+import android.os.Looper
+import android.text.TextUtils
+import android.widget.ImageView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.R
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.Target
 
 object BaseConstant {
   var  EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
@@ -15,20 +26,4 @@ object BaseConstant {
   var ENQUIRY_RESPONSE = "ENQUIRY_RESPONSE"
   var STATUS = "STATUS"
 
-  fun hasConnectivity(context: Context): Boolean {
-    val connectivityManager =
-      context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-      val nw = connectivityManager.activeNetwork ?: return false
-      val actNw = connectivityManager.getNetworkCapabilities(nw)
-      actNw != null && (actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || actNw.hasTransport(
-        NetworkCapabilities.TRANSPORT_CELLULAR
-      ) || actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) || actNw.hasTransport(
-        NetworkCapabilities.TRANSPORT_BLUETOOTH
-      ))
-    } else {
-      val nwInfo = connectivityManager.activeNetworkInfo
-      nwInfo != null && nwInfo.isConnected
-    }
-  }
 }

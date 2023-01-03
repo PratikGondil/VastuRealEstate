@@ -34,11 +34,12 @@
                 android:weightSum="2">
 
                 <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/property_image"
                     android:layout_width="0dp"
                     android:layout_weight="0.5"
                     android:layout_height="@dimen/image_height"
                     android:scaleType="fitXY"
-                    android:src="@drawable/flat_image_1"
+                    android:src="@{propertyData.propertyThumbnail}"
                     android:layout_gravity="center"
                     android:adjustViewBounds="true"
                     app:shapeAppearanceOverlay="@style/image_custom_shape" />
@@ -62,9 +63,8 @@
 
                     <TextView
                         android:id="@+id/property_prize_textview"
-                        android:text="@{propertyData.price}"
                         android:textColor="@color/black"
-                        app:fontFamily="@font/poppins_bold"
+                        app:fontFamily="@font/poppins_medium"
                         android:layout_width="match_parent"
                         android:textSize="@dimen/text_size_small"
                         android:layout_height="wrap_content" />
@@ -72,7 +72,6 @@
 
                     <TextView
                         android:id="@+id/property_details_textview"
-                        android:text="@{propertyData.area}"
                         android:textColor="@color/black"
                         android:ellipsize="end"
                         android:maxLines="2"
@@ -85,7 +84,7 @@
 
                     <TextView
                         android:id="@+id/property_address_textview"
-                        android:text="@{propertyData.city}"
+                        android:text="@{propertyData.address}"
                         android:textColor="@color/black"
                         android:ellipsize="end"
                         android:maxLines="1"

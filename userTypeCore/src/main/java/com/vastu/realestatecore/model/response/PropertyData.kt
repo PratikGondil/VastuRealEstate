@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class PropertyData(
+    @SerializedName("address")
+    val address: String?,
     @SerializedName("area")
     val area: String?,
     @SerializedName("availability")

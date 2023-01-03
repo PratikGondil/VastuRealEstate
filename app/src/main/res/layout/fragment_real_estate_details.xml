@@ -22,13 +22,14 @@
         tools:context=".appModule.dashboard.view.RealEstateDetailsFragment">
 
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:scrollbars="none"
+            android:layout_marginBottom="@dimen/margin_xlarge"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -54,8 +55,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_margin="@dimen/margin_large">
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -72,6 +72,12 @@
                         android:layout_marginBottom="@dimen/margin_small"
                         android:background="@color/border_color" />
 
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="@dimen/margin_large">
 
                     <LinearLayout
                         android:id="@+id/titleLayout"
@@ -255,7 +261,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:text="@string/balcony"
                             android:textColor="@color/icon_color"
-                              app:fontFamily="@font/poppins_light" />
+                            app:fontFamily="@font/poppins_light" />
 
                         <TextView
                             android:id="@+id/balconyTextview"
@@ -795,51 +801,50 @@
                              app:fontFamily="@font/poppins_regular"  />
                         <!--android:text="@{propertyData.highlights}"-->
                     </LinearLayout>
-                </LinearLayout>
+                    </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="@dimen/margin_xlarge"
-                    android:background="@color/border_color" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/margin_xlarge"
+                        android:background="@color/border_color" />
+
+                    <LinearLayout
+                        android:id="@+id/chat_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2"
+                        android:padding="@dimen/padding_large"
+                        android:background="@color/white">
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnChat"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/round_button_background"
+                            android:text="@string/chat"
+                            android:textSize="@dimen/text_size_small"
+                            app:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/white" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnMakeOffer"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/margin_small"
+                            android:background="@drawable/round_button_background"
+                            android:text="@string/make_offer"
+                            android:textSize="@dimen/text_size_small"
+                            app:fontFamily="@font/poppins_regular"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2"
-            android:padding="@dimen/padding_large"
-            android:background="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnChat"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/round_button_background"
-                android:text="@string/chat"
-                android:textSize="@dimen/text_size_small"
-                app:fontFamily="@font/poppins_regular"
-                android:textColor="@color/white" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnMakeOffer"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/margin_small"
-                android:background="@drawable/round_button_background"
-                android:text="@string/make_offer"
-                android:textSize="@dimen/text_size_small"
-                app:fontFamily="@font/poppins_regular"
-                android:textColor="@color/white" />
-        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

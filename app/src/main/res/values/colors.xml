@@ -37,4 +37,5 @@
     <color name="border">#CECECE</color>
     <color name="badge_color">#F36538</color>
     <color name="shimmer_background_color">#F0EFF5</color>
+    <color name="transparent">#00000000</color>
 </resources>

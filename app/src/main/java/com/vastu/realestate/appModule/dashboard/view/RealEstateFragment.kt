@@ -13,6 +13,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
+import com.vastu.realestate.appModule.dashboard.model.RealEstateList
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IRealEstateListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
@@ -99,7 +100,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
 
     private fun getRealEstateDetails(realEstate:List<PropertyData>) {
         val recyclerViewRealEstate = realEstateBinding.rvRealEstste
-        //val realEstates = RealEstateList.getRealEstateData(requireContext())
+        val realEstates = RealEstateList.getRealEstateData(requireContext())
         val realEstateAdapter = RealEstateAdapter(this,realEstate)
         recyclerViewRealEstate.adapter = realEstateAdapter
         recyclerViewRealEstate.layoutManager = LinearLayoutManager(activity)
