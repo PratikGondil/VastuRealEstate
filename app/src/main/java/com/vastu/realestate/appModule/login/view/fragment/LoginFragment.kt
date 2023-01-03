@@ -25,7 +25,6 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
     lateinit var viewModel: LoginViewModel
     lateinit var binder: LoginFragmentBinding
      var objUserData = ObjUserData()
-    lateinit var customProgressDialog :CustomProgressDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,8 +34,7 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
         binder.lifecycleOwner = this
         binder.loginViewModel = viewModel
         viewModel.iLoginViewListener = this
-        customProgressDialog = CustomProgressDialog.getInstance()
-//        initView()
+       //initView()
         return binder.root
     }
 
@@ -47,7 +45,7 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
 //        bundle.putSerializable(BaseConstant.REGISTER_DTLS_OBJ, objRegisterDlts)
 //        findNavController().navigate(R.id.action_LoginSignUpFragment_To_OTPFragment,bundle)
         if(viewModel.isValidMobileNumber.get()!!){
-            customProgressDialog.show(requireContext())
+            showProgressDialog()
             viewModel.callLoginApi(viewModel.mobileNumber.get().toString())
         }
         else{
@@ -60,6 +58,7 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
 //        }
     }
     override fun launchOtpScreen(objLoginResponseMain: ObjLoginResponseMain) {
+        hideProgressDialog()
         val bundle = Bundle()
         objUserData = objUserData.copy(userID = objLoginResponseMain.objLoginDtls.userId,mobile = viewModel.mobileNumber.get())
         bundle.putSerializable(BaseConstant.REGISTER_DTLS_OBJ, objUserData)
@@ -67,10 +66,8 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
     }
 
     override fun onLoginFail(objLoginResponse: ObjLoginResponse) {
-        customProgressDialog.dismiss()
-        Toast.makeText(requireContext(),objLoginResponse.objResponseStatusHdr.statusDescr,
-            Toast.LENGTH_LONG).show()
-
+        hideProgressDialog()
+        showDialog(objLoginResponse.objResponseStatusHdr.statusDescr,false,false)
     }
 
     override fun onUserNotConnected() {

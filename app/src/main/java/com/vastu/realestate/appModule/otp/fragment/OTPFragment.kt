@@ -162,27 +162,32 @@ class OTPFragment : BaseFragment(), IVerifyOtpViewListener {
 
     override fun verifyOtp() {
         objVerifyOtpReq = objVerifyOtpReq.copy(userId = objUserData.userID,otp=viewModel.otp.get())
+        showProgressDialog()
         viewModel.callVerifyOtpApi(objVerifyOtpReq)
     }
 
     override fun launchDashboard(objVerifyDtls: ObjVerifyDtls) {
+        hideProgressDialog()
         PreferenceManger.put(objVerifyDtls,USER)
         PreferenceManger.put(true, IS_LOGIN)
         startActivity(Intent(activity, DashboardActivity::class.java))
     }
 
     override fun onOtpVerifyFailure(objVerifyOtpResponseMain: ObjVerifyOtpResponseMain) {
-       Toast.makeText(requireContext(),objVerifyOtpResponseMain.objVerifyResponse.objResponseStatusHdr.statusDescr,Toast.LENGTH_LONG).show()
+       hideProgressDialog()
+       showDialog(objVerifyOtpResponseMain.objVerifyResponse.objResponseStatusHdr.statusDescr,false,false)
     }
 
     override fun onBackClick() {
         findNavController().navigate(R.id.action_OTPFragment_To_LoginFragment)
     }
     override fun resendOtpReq(){
+        showProgressDialog()
         viewModel.callLoginApi(objUserData.mobile!!)
     }
     override fun onResendOtpFailure(objLoginResponseMain: ObjLoginResponseMain) {
-        Toast.makeText(requireContext(),objLoginResponseMain.objLoginResponse.objResponseStatusHdr.statusDescr,Toast.LENGTH_LONG).show()
+        hideProgressDialog()
+       showDialog(objLoginResponseMain.objLoginResponse.objResponseStatusHdr.statusDescr,false,false)
 
     }
 

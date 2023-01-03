@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
@@ -14,7 +12,6 @@ import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.signUp.uiInterfaces.ISignUpViewListener
 import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
-import com.vastu.realestate.customProgressDialog.CustomProgressDialog
 import com.vastu.realestate.databinding.SignUpFragmentBinding
 import com.vastu.realestate.registrationcore.model.request.ObjSubAreaReq
 import com.vastu.realestate.registrationcore.model.request.ObjUserInfo
@@ -33,7 +30,6 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
     lateinit var viewPager :ViewPager2
     var objUserInfo= ObjUserInfo()
     var objSubAreaReq = ObjSubAreaReq()
-    lateinit var customProgressDialog : CustomProgressDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,8 +49,6 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         observeCityList()
         observeCity()
         observeSubAreaList()
-        customProgressDialog = CustomProgressDialog.getInstance()
-        customProgressDialog.dismiss()
         return signUpFragmentBinding.root
     }
 
@@ -62,7 +56,6 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         signUpFragmentBinding.autoCompleteCity.setOnTouchListener(this)
         signUpFragmentBinding.autoCompleteAreaList.setOnTouchListener(this)
         val subAreaList = arrayOf("Nigdi","Kalewadi","Hinjewadi","Chinchwad","Kothrud")
-
     }
     private fun observeCityList(){
         signUpViewModel.cityList.observe(viewLifecycleOwner) { cityList ->
@@ -84,7 +77,6 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
             if (city != null) {
                   callSubAreaList(city.talukaId!!)
                 }
-
         }
     }
     private fun observeSubAreaList(){
@@ -106,20 +98,20 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
     }
 
     override fun registerUser(){
-        customProgressDialog.show(requireContext())
+        showProgressDialog()
         getUserInfo()
         signUpViewModel.callRegistrationApi(objUserInfo)
     }
 
     override fun launchOtpScreen(objRegisterDlts: ObjRegisterDlts) {
-        customProgressDialog.show(requireContext())
+        hideProgressDialog()
         val bundle = Bundle()
         bundle.putSerializable(REGISTER_DTLS_OBJ, objRegisterDlts)
         findNavController().navigate(R.id.action_LoginSignUpFragment_To_OTPFragment,bundle)
     }
 
     private fun getUserInfo(){
-         objUserInfo =objUserInfo.copy(firstName = signUpViewModel.firstName.get()!!,
+        objUserInfo =objUserInfo.copy(firstName = signUpViewModel.firstName.get()!!,
         middleName = signUpViewModel.middleName.get()!!,
         lastName = signUpViewModel.lastName.get()!!,
         mobile = signUpViewModel.mobileNumber.get()!!,
@@ -127,12 +119,9 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         subArea = signUpViewModel.subArea.get()!!.subArea!!,
         emailId = signUpViewModel.mailId.get()!!,
         userType = "2")
-
-
     }
 
-    fun getCityList(){
-//        customProgressDialog.show(requireContext())
+    private fun getCityList(){
         signUpViewModel.callCityListApi()
 
     }
@@ -141,27 +130,21 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         signUpViewModel.callSubAreaList(objSubAreaReq)
     }
     override fun goToLogin() {
-        customProgressDialog.dismiss()
+            hideProgressDialog()
             viewPager.currentItem = 0
     }
 
     override fun onRegistrationFail(objRegisterResponseMain: ObjRegisterResponseMain) {
-        customProgressDialog.dismiss()
-        Toast.makeText(requireContext(),objRegisterResponseMain.objRegisterResponse.objResponseStatusHdr.statusDescr,
-            Toast.LENGTH_LONG).show()
-
+       hideProgressDialog()
+       showDialog(objRegisterResponseMain.objRegisterResponse.objResponseStatusHdr.statusDescr,false,false)
     }
 
     override fun onCityListApiFailure(objTalukaResponseMain: ObjTalukaResponseMain) {
-        customProgressDialog.dismiss()
-        Toast.makeText(requireContext(),objTalukaResponseMain.objTalukaResponse.objResponseStatusHdr.statusDescr,
-            Toast.LENGTH_LONG).show()
+       showDialog(objTalukaResponseMain.objTalukaResponse.objResponseStatusHdr.statusDescr,false,false)
     }
 
     override fun onSubAreaListApiFailure(objGetCityAreaDetailResponseMain: ObjGetCityAreaDetailResponseMain) {
-        customProgressDialog.dismiss()
-        Toast.makeText(requireContext(),objGetCityAreaDetailResponseMain.objCityAreaResponse.objResponseStatusHdr.statusDescr,
-            Toast.LENGTH_LONG).show()
+        showDialog(objGetCityAreaDetailResponseMain.objCityAreaResponse.objResponseStatusHdr.statusDescr,false,false)
     }
 
     override fun onUserNotConnected() {
@@ -186,6 +169,4 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         }
         return true
     }
-
-
 }

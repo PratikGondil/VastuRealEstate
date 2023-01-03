@@ -193,10 +193,6 @@ aapp/src/main/java/com/vastu/realestate/appModule/enquirylist/uiinterfaces/INetw
 sregistrationCore/src/main/java/com/vastu/realestate/registrationcore/callbacks/response/ISubAreaResponseListener.kt,5\9\59352dcf2a5d5c292b5a7a4311aa72cb6ad5de08
 z
 Japp/src/main/java/com/vastu/realestate/appModule/activity/LoginActivity.kt,c\3\c3e7e4bc295bace8dd95f516e62f6be25e28ce7c
-ã
-[app/src/main/java/com/vastu/realestate/appModule/signUp/uiInterfaces/ISignUpViewListener.kt,7\1\71dd9473bd05f7247d605c21f4918b06522d23d2
-Ñ
-Tapp/src/main/java/com/vastu/realestate/appModule/signUp/viewModel/SignUpViewModel.kt,7\b\7b2118bc94412d9d0d222912b72e692d9751c44d
 ü
 oserviceNetworkFramework/src/main/java/com/vastu/networkService/serviceResListener/IOnServiceResponseListener.kt,1\3\13366da215e6c4425609d8ec125440dc7d99ad11
 •
@@ -223,12 +219,6 @@ mcommoncore/src/main/java/com/vastu/realestate/commoncore/callbacks/otp/response
 _commoncore/src/main/java/com/vastu/realestate/commoncore/callbacks/otp/request/IVerifyOtpReq.kt,9\4\94687702b9cef73f99f0c3f436b73e90773aa8e0
 ~
 Napp/src/main/java/com/vastu/realestate/appModule/otp/viewModel/OTPViewModel.kt,c\2\c2aa22bce15a4fc99afbf1d98250fb270f0bb189
-Ö
-Uapp/src/main/java/com/vastu/realestate/appModule/login/view/fragment/LoginFragment.kt,4\1\410b53e82b5a89500f8bf60c44c1f4a5de58bcad
-|
-Lapp/src/main/java/com/vastu/realestate/appModule/otp/fragment/OTPFragment.kt,9\7\973d57e0ad0c61d0e2ce8d76e2d6c52d7de9acdd
-~
-Napp/src/main/java/com/vastu/realestate/appModule/signUp/view/SignUpFragment.kt,3\1\31553533d40c3d4831c787431b362e4442f6602f
 ï
 ecommoncore/src/main/java/com/vastu/realestate/commoncore/repository/otp/VerifyOtpRequestRepository.kt,1\f\1fe22ab18cec6a3dce35f2ea1fb778037243ef5d
 ú
@@ -279,8 +269,6 @@ euserTypeCore/src/main/java/com/vastu/enquiry/property/callbacks/request/IGetPro
 \userTypeCore/src/main/java/com/vastu/enquiry/loan/callback/request/IGetLoanEnquiryRequest.kt,4\4\44916a0f3bf5b566d03cebeb4313f9cbcb04abba
 Ñ
 TloginCore/src/main/java/com/vastu/realestate/logincore/repository/LoginRepository.kt,c\a\ca5708148357b31e7a9de316288ace2a756b9eeb
-Ç
-Rapp/src/main/java/com/vastu/realestate/appModule/login/viewModel/LoginViewModel.kt,0\9\09a33a5f0f4f786cbc5365888ebadc94c05d7572
 à
 XuserTypeCore/src/main/java/com/vastu/enquiry/loan/repository/GetLoanEnquiryRepository.kt,f\8\f8c7ce308b1fcd49cbdfd092199d4262b59811b1
 ê
@@ -324,8 +312,6 @@ YuserTypeCore/src/main/java/com/vastu/loanenquirycore/repository/LoanInterestRep
 ã
 [serviceNetworkFramework/src/main/java/com/vastu/networkService/service/NetworkDaoBuilder.kt,0\c\0cd1aca8081736894cc5f2a284351fcfd6e327f7
 
-Oapp/src/main/java/com/vastu/realestate/appModule/dashboard/view/BaseActivity.kt,2\8\2869226275153a6739faf982837fcc57c0adb5ab
-
 Oapp/src/main/java/com/vastu/realestate/appModule/dashboard/view/BaseFragment.kt,b\1\b1b298665987cbdebe56fb07dfa11f0b0049f3cf
 å
 \app/src/main/java/com/vastu/realestate/appModule/dashboard/view/RealEstateDetailsFragment.kt,e\4\e4285e0c3792c851a2a8725299208725f4d9e981
@@ -337,3 +323,13 @@ Wapp/src/main/java/com/vastu/realestate/appModule/enquiry/view/AddLoanEnquiryFra
 ]app/src/main/java/com/vastu/realestate/appModule/enquiry/viewModel/AddLoanEnquiryViewModel.kt,1\7\17ad23dad3979a2042ad4ad485f1960c33656dba
 Å
 QuserTypeCore/src/main/java/com/vastu/loanenquirycore/repository/BankRepository.kt,a\7\a702550b3722a342c17e48a6a0abff9434653335
+â
+Yapp/src/main/java/com/vastu/realestate/appModule/dashboard/view/VastuDashboardFragment.kt,7\9\79f408917179b75121b28b61317f54189b7d151e
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+í
+bapp/src/main/java/com/vastu/realestate/appModule/dashboard/viewmodel/RealEstateDetailsViewModel.kt,6\2\627d2df8c097decee82b7a40f73b0b9eaffb3151
+í
+bapp/src/main/java/com/vastu/realestate/appModule/dashboard/uiInterfaces/IPropertySliderListener.kt,b\1\b14ffc26bfd3071bfddf47b4ac52df40f05d41e4
+é
+^app/src/main/java/com/vastu/realestate/appModule/enquirylist/viewmodel/LoanEnquiryViewModel.kt,9\b\9b672df5b2e690623b545248ddcad1d53b33f837
