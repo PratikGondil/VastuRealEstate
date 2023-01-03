@@ -36,4 +36,5 @@
     <color name="black_text">#313131</color>
     <color name="border">#CECECE</color>
     <color name="badge_color">#F36538</color>
+    <color name="shimmer_background_color">#F0EFF5</color>
 </resources>

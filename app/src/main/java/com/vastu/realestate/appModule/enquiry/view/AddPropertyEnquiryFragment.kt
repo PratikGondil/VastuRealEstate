@@ -48,11 +48,7 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
         propertyViewBinding.drawerViewModel= drawerViewModel
         initView()
         callOccupationList()
-        callPropertyInterestedIn()
-        callGetOwnership()
         observeOccupationList()
-        observePropertyList()
-        observeOwnershipList()
         return propertyViewBinding.root
     }
     private fun initView(){
@@ -76,6 +72,10 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
                     ArrayAdapter(
                         requireContext(),
                         R.layout.drop_down_item, adapter))
+            if(occList.isNotEmpty()){
+                callPropertyInterestedIn()
+                observePropertyList()
+            }
         }
     }
     private fun callPropertyInterestedIn(){
@@ -89,6 +89,10 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
                 ArrayAdapter(
                     requireContext(),
                     R.layout.drop_down_item, adapter))
+                if(propertyList.isNotEmpty()){
+                    callGetOwnership()
+                    observeOwnershipList()
+                }
             }
         }
 

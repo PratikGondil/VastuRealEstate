@@ -71,31 +71,6 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     private fun getPropertySlider(){
         showProgressDialog()
         propertyId?.let { realEstateDetailsViewModel.getPropertySlider(it) }
-        getPropertyDetails()
-    }
-    private fun getPropertyDetails(){
-        hideProgressDialog()
-        userId?.let {
-            propertyId?.let { it1 ->
-            realEstateDetailsViewModel.getPropertyDetails(it,it1)
-         }
-        }
-    }
-
-    override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
-        hideProgressDialog()
-        realEstateDetailsBinding.apply {
-            propertyData = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
-
-            val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
-            spannable.setSpan(BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
-                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            spannable.setSpan(BulletSpan(50, resources.getColor(R.color.black)), 20,  spannable.length,
-                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-            //highlightsTextview.text = spannable
-            highlightsTextview.text = Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
-        }
     }
 
     override fun onFailureGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
@@ -113,10 +88,36 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
             imageSlider.setImageList(imageList, ScaleTypes.FIT)
             imageSlider.startSliding(3000)
         }
+        getPropertyDetails()
     }
 
     override fun onFailurePropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
         hideProgressDialog()
+    }
+
+    private fun getPropertyDetails(){
+        hideProgressDialog()
+        userId?.let {
+            propertyId?.let { it1 ->
+                realEstateDetailsViewModel.getPropertyDetails(it,it1)
+            }
+        }
+    }
+
+    override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
+        hideProgressDialog()
+        realEstateDetailsBinding.apply {
+            propertyData = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
+
+            val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
+            spannable.setSpan(BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            spannable.setSpan(BulletSpan(50, resources.getColor(R.color.black)), 20,  spannable.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+            //highlightsTextview.text = spannable
+            highlightsTextview.text = Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
+        }
     }
 
     override fun onUserNotConnected() {

@@ -49,11 +49,7 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
         loanViewBinding.drawerViewModel= drawerViewModel
         initView()
         callOccupationList()
-        callLoanInterestedIn()
-        callGetBank()
         observeOccupationList()
-        observeLoanInterestedList()
-        observeBankList()
         return loanViewBinding.root
     }
     private fun initView(){
@@ -78,6 +74,10 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
                     requireContext(),
                     R.layout.drop_down_item, adapter)
             )
+            if(occList.isNotEmpty()){
+                callLoanInterestedIn()
+                observeLoanInterestedList()
+            }
         }
     }
 
@@ -92,6 +92,10 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
                     requireContext(),
                     R.layout.drop_down_item, adapter)
             )
+            if(loanList.isNotEmpty()){
+                callGetBank()
+                observeBankList()
+            }
         }
     }
 

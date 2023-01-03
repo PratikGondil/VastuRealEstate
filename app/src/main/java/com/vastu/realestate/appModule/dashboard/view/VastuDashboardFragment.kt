@@ -76,7 +76,6 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
             drawerViewModel.userName.set(objVerifyDetails.firstName!!)
             DashboardActivity.userId = objVerifyDetails.userId!!
         }
-        getAdvertisementSlider()
     }
 
      private fun getUserType(){
@@ -95,6 +94,7 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
     override fun onSuccessGetUserType(objGetUserTypeResMain: ObjGetUserTypeResMain) {
        hideProgressDialog()
         userType = objGetUserTypeResMain.getUserTypeDataDetailsResponse.userTypeData.get(0).userType
+        getAdvertisementSlider()
     }
 
     override fun onFailGetUserType(objGetUserTypeResMain: ObjGetUserTypeResMain) {

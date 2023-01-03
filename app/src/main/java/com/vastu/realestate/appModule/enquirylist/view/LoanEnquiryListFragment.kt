@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.vastu.enquiry.loan.model.response.GetLoanEnquiryListMainResponse
 import com.vastu.enquiry.loan.model.response.LoanData
 import com.vastu.realestate.R
@@ -16,7 +17,8 @@ import com.vastu.realestate.appModule.enquirylist.uiinterfaces.ILoanListListener
 import com.vastu.realestate.appModule.enquirylist.viewmodel.LoanEnquiryViewModel
 import com.vastu.realestate.databinding.FragmentLoanEnquiryListBinding
 
-class LoanEnquiryListFragment : BaseFragment(), ILoanListListener{
+class LoanEnquiryListFragment : BaseFragment(), ILoanListListener,
+    SwipeRefreshLayout.OnRefreshListener {
 
     private lateinit var loanEnquiryViewModel: LoanEnquiryViewModel
     private lateinit var loanEnquiryBinding:FragmentLoanEnquiryListBinding
@@ -30,23 +32,31 @@ class LoanEnquiryListFragment : BaseFragment(), ILoanListListener{
         loanEnquiryBinding.lifecycleOwner = this
         loanEnquiryViewModel.iLoanListListener = this
         loanEnquiryBinding.loanEnquiryViewModel = loanEnquiryViewModel
+        loanEnquiryBinding.swipeContainer.setOnRefreshListener(this)
+        loanEnquiryBinding.swipeContainer.setColorSchemeResources(R.color.button_color)
+        getLoanEnquiry()
         return loanEnquiryBinding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        getLoanEnquiry()
-    }
-
     private fun getLoanEnquiry(){
-        showProgressDialog()
+        loanEnquiryBinding.loadingLayout.startShimmerAnimation()
         loanEnquiryViewModel.callGetLoanEnquiry()
     }
 
     override fun onSuccessGetLoanEnquiry(getLoanEnquiryListMainResponse: GetLoanEnquiryListMainResponse) {
-        hideProgressDialog()
         val loanList = getLoanEnquiryListMainResponse.getloanDetailsResponse.loanData
-        getLoanList(loanList)
+        if(loanList.isNotEmpty()) {
+            stopShimmerAnimation()
+            loanEnquiryBinding.rvLoanList.visibility = View.VISIBLE
+            getLoanList(loanList)
+        }else{
+            stopShimmerAnimation()
+            loanEnquiryBinding.rvLoanList.visibility = View.GONE
+        }
+    }
+    private fun stopShimmerAnimation(){
+        loanEnquiryBinding.loadingLayout.stopShimmerAnimation()
+        loanEnquiryBinding.loadingLayout.visibility = View.GONE
     }
 
     private fun getLoanList(loanList:List<LoanData>) {
@@ -57,13 +67,17 @@ class LoanEnquiryListFragment : BaseFragment(), ILoanListListener{
     }
 
     override fun onFailureGetLoanEnquiry(getLoanEnquiryListMainResponse: GetLoanEnquiryListMainResponse) {
-        hideProgressDialog()
+        stopShimmerAnimation()
         showDialog(getLoanEnquiryListMainResponse.loanDataResponse.responseStatusHeader.statusDescription,false,false)
     }
 
     override fun onUserNotConnected() {
-        hideProgressDialog()
+        stopShimmerAnimation()
         showDialog("",false,true)
+    }
+    override fun onRefresh() {
+       loanEnquiryBinding.swipeContainer.isRefreshing = false
+       getLoanEnquiry()
     }
 
 }

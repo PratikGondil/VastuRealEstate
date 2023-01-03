@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.vastu.enquiry.property.model.response.EnquiryData
 import com.vastu.enquiry.property.model.response.GetPropertyEnquiryListMainResponse
 import com.vastu.realestate.R
@@ -16,7 +17,8 @@ import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IPropertyListList
 import com.vastu.realestate.appModule.enquirylist.viewmodel.PropertyEnquiryViewModel
 import com.vastu.realestate.databinding.FragmentPropertyEnquiryListBinding
 
-class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener{
+class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener,
+    SwipeRefreshLayout.OnRefreshListener {
 
     private lateinit var propertyEnquiryViewModel: PropertyEnquiryViewModel
     private lateinit var propertyEnquiryViewBinding:FragmentPropertyEnquiryListBinding
@@ -31,17 +33,34 @@ class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener{
         propertyEnquiryViewBinding.propertyEnquiryViewModel = propertyEnquiryViewModel
         propertyEnquiryViewModel.iPropertyListListener = this
         getPropertyEnquiry()
+        propertyEnquiryViewBinding.swipeContainer.setOnRefreshListener(this)
+        propertyEnquiryViewBinding.swipeContainer.setColorSchemeResources(R.color.button_color)
         return propertyEnquiryViewBinding.root
     }
     private fun getPropertyEnquiry(){
-        showProgressDialog()
+        propertyEnquiryViewBinding.loadingLayout.startShimmerAnimation()
         propertyEnquiryViewModel.callGetPropertyEnquiry()
     }
 
     override fun onSuccessGetPropertyEnquiry(getPropertyEnquiryListMainResponse: GetPropertyEnquiryListMainResponse) {
-        hideProgressDialog()
-        val propertyEnquiryList = getPropertyEnquiryListMainResponse.getEnquiryDetailsResponse.enquiryData
-        setPropertyEnquiryDetails(propertyEnquiryList)
+        stopShimmerAnimation()
+        val propertyEnquiryList =
+            getPropertyEnquiryListMainResponse.getEnquiryDetailsResponse.enquiryData
+        if (propertyEnquiryList.isNotEmpty()) {
+            stopShimmerAnimation()
+            propertyEnquiryViewBinding.rvPropertyEnquiry.visibility = View.VISIBLE
+            setPropertyEnquiryDetails(propertyEnquiryList)
+        }else{
+            stopShimmerAnimation()
+            propertyEnquiryViewBinding.rvPropertyEnquiry.visibility = View.GONE
+        }
+    }
+
+    private fun stopShimmerAnimation(){
+        propertyEnquiryViewBinding.apply {
+            loadingLayout.visibility = View.GONE
+            loadingLayout.stopShimmerAnimation()
+        }
     }
     private fun setPropertyEnquiryDetails(propertyEnquiryList:List<EnquiryData>){
         val recyclerviewPropertyEnquiry = propertyEnquiryViewBinding.rvPropertyEnquiry
@@ -52,12 +71,17 @@ class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener{
     }
 
     override fun onFailureGetPropertyEnquiry(getPropertyEnquiryListMainResponse: GetPropertyEnquiryListMainResponse) {
-       hideProgressDialog()
+       stopShimmerAnimation()
        showDialog(getPropertyEnquiryListMainResponse.enquiryDataResponse.responseStatusHeader.statusDescription,false,false)
     }
 
     override fun onUserNotConnected() {
-        hideProgressDialog()
+        stopShimmerAnimation()
         showDialog("",false,true)
+    }
+
+    override fun onRefresh() {
+        propertyEnquiryViewBinding.swipeContainer.isRefreshing = false
+        getPropertyEnquiry()
     }
 }
