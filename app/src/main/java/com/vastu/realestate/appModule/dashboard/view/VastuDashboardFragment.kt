@@ -161,6 +161,11 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
     override fun onClickAddProperty() {
         closeDrawer()
     }
+
+    override fun onClickOffers() {
+        TODO("Not yet implemented")
+    }
+
     override fun onClickContactUs() {
         closeDrawer()
     }

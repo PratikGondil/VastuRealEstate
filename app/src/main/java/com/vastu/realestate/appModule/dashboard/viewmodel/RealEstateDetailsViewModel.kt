@@ -16,13 +16,18 @@ import com.vastu.slidercore.repository.PropertySliderRepository
 class RealEstateDetailsViewModel(application: Application) : AndroidViewModel(application),
     IGetPropertyDetailsResponseListener,
     IGetPropertySliderByIdResponse{
-
     lateinit var iPropertyDetailsListener: IPropertyDetailsListener
     lateinit var iPropertySliderListener: IPropertySliderListener
 
     var mContext :Application
     init {
         mContext = application
+    }
+    fun onClickPropertyEnquiry(){
+        iPropertyDetailsListener.addPropertyEnquiry()
+    }
+    fun onClickChat(){
+        iPropertyDetailsListener.chatEnquiry()
     }
 
     fun getPropertySlider(propertyId:String){

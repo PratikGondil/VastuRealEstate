@@ -34,21 +34,17 @@ open class BaseActivity : AppCompatActivity() {
 
         val successImageView = bottomSheetDialog.findViewById<CircleImageView>(R.id.success)
         val detailTextView =bottomSheetDialog.findViewById<TextView>(R.id.messageTextview)
-        val okBtn = bottomSheetDialog.findViewById<Button>(R.id.btnOkay)
 
         if(isSuccess)
             successImageView?.visibility = View.VISIBLE
         else
             successImageView?.visibility = View.GONE
 
-
-
         if(isNetworkFailure){
             detailTextView?.text = getString(R.string.no_connection)
         }else {
             detailTextView?.text = message
         }
-        okBtn?.setOnClickListener { v: View? -> bottomSheetDialog.hide() }
         bottomSheetDialog.setCancelable(true)
         bottomSheetDialog.setCanceledOnTouchOutside(true)
         bottomSheetDialog.show()

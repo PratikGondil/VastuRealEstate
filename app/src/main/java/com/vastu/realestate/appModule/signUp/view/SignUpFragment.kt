@@ -118,7 +118,7 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         city = signUpViewModel.city.value!!.taluka,
         subArea = signUpViewModel.subArea.get()!!.subArea!!,
         emailId = signUpViewModel.mailId.get()!!,
-        userType = "2")
+        userType = "3")
     }
 
     private fun getCityList(){

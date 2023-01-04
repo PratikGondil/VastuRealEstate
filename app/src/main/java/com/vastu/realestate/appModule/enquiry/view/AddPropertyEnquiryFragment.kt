@@ -167,7 +167,8 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
     }
 
     override fun onClickBack() {
-        findNavController().navigate(R.id.action_AddPropertyEnquiryFragment_to_RealEstateFragment)
+
+        activity?.onBackPressed()
     }
 
     override fun onClickMenu() {

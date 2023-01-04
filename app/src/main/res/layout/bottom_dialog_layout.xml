@@ -34,25 +34,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="@dimen/margin_xxlarge"
+            android:layout_margin="@dimen/margin_xlarge"
             android:gravity="center_horizontal"
             android:maxLines="4"
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_normal"
             app:fontFamily="@font/poppins_regular" />
-
-
-        <Button
-            android:id="@+id/btnOkay"
-            android:layout_width="@dimen/button_width"
-            style="@style/primaryColorButtonStyle"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_marginBottom="@dimen/margin_xlarge"
-            android:clickable="false"
-            android:text="@string/okay"
-            android:textSize="@dimen/text_size_normal"
-            android:textColor="@color/white"
-            app:fontFamily="@font/poppins_medium" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

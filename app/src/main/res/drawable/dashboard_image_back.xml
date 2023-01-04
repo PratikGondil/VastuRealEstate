@@ -1,9 +1,6 @@
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="122dp"
-    android:height="150dp"
-    android:viewportWidth="122"
-    android:viewportHeight="122">
-    <path
-        android:pathData="M10,0L112,0A10,10 0,0 1,122 10L122,112A10,10 0,0 1,112 122L10,122A10,10 0,0 1,0 112L0,10A10,10 0,0 1,10 0z"
-        android:fillColor="@color/white"/>
-</vector>
+<shape android:shape="rectangle"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/real_estate_background_color"/>
+    <corners android:radius="@dimen/dimen_16sp"/>
+    <size android:height="@dimen/dimen150dp" android:width="@dimen/dimen150dp"/>
+</shape>

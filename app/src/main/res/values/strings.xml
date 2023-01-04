@@ -116,7 +116,8 @@
     <string name="no">NO</string>
     <string name="yes">YES</string>
     <string name="rupee">\u20B9</string>
-
+    <string name="offers">Offers</string>
+    <string name="st_ft">Sq.feet</string>
 
 
 </resources>

@@ -21,9 +21,6 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
     fun getPropertyList(userId:String){
         PropertyListRepository.callGetPropertyList(mContext,userId,GET_PROPERTY_LIST,this)
     }
-    fun onClickAddPropertyEnquiry(){
-        iRealEstateListener.fabAddPropertyEnquiry()
-    }
 
     override fun getPropertyListSuccessResponse(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         iRealEstateListener.onSuccessGetRealEstateList(objGetPropertyListResMain)

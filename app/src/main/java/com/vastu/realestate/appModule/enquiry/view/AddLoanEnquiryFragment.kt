@@ -170,7 +170,7 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
     }
 
     override fun onClickBack() {
-      findNavController().navigate(R.id.action_AddLoanEnquiryFragment_to_LoanFragment)
+     activity?.onBackPressed()
     }
 
     override fun onClickMenu() {

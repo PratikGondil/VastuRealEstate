@@ -36,9 +36,9 @@
                             android:textColor="@color/black"
                             app:fontFamily="@font/poppins_light"
                             android:layout_width="0dp"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.5"
                             android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_xsmall"
+                            android:textSize="@dimen/text_size_small"
                             android:layout_height="wrap_content" />
 
                     <TextView
@@ -48,7 +48,7 @@
                         android:inputType="textCapWords"
                         android:maxLength="25"
                         android:layout_width="0dp"
-                        android:layout_weight="0.6"
+                        android:layout_weight="0.5"
                         android:gravity="start"
                         android:textSize="@dimen/text_size_small"
                         app:fontFamily="@font/poppins_medium"/>
@@ -65,8 +65,8 @@
                             android:textColor="@color/black"
                             app:fontFamily="@font/poppins_light"
                             android:layout_width="0dp"
-                            android:layout_weight="0.4"
-                            android:textSize="@dimen/text_size_xsmall"
+                            android:layout_weight="0.5"
+                            android:textSize="@dimen/text_size_small"
                             android:gravity="center_vertical"
                             android:layout_height="wrap_content" />
 
@@ -78,7 +78,7 @@
                         android:maxLength="25"
                         app:fontFamily="@font/poppins_regular"
                         android:layout_width="0dp"
-                        android:layout_weight="0.6"
+                        android:layout_weight="0.5"
                         android:gravity="start"
                         android:textSize="@dimen/text_size_small"
                         android:layout_height="wrap_content" />
@@ -95,9 +95,9 @@
                             android:textColor="@color/black"
                             app:fontFamily="@font/poppins_light"
                             android:layout_width="0dp"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.5"
                             android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_xsmall"
+                            android:textSize="@dimen/text_size_small"
                             android:layout_height="wrap_content" />
 
                         <TextView
@@ -110,7 +110,7 @@
                             android:maxLength="25"
                             app:fontFamily="@font/poppins_regular"
                             android:layout_width="0dp"
-                            android:layout_weight="0.6"
+                            android:layout_weight="0.5"
                             android:gravity="start"
                             android:textSize="@dimen/text_size_small"
                             android:layout_height="wrap_content" />
@@ -129,9 +129,9 @@
                             android:textColor="@color/black"
                             app:fontFamily="@font/poppins_light"
                             android:layout_width="0dp"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.5"
                             android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_xsmall"
+                            android:textSize="@dimen/text_size_small"
                             android:layout_height="wrap_content" />
 
                         <TextView
@@ -147,7 +147,7 @@
                             app:fontFamily="@font/poppins_regular"
                             android:includeFontPadding="true"
                             android:layout_width="0dp"
-                            android:layout_weight="0.6"
+                            android:layout_weight="0.5"
                             android:gravity="start"
                             android:textSize="@dimen/text_size_small"
                             android:layout_height="wrap_content"/>
@@ -170,8 +170,8 @@
                             android:textColor="@color/black"
                             app:fontFamily="@font/poppins_light"
                             android:layout_width="0dp"
-                            android:layout_weight="0.4"
-                            android:textSize="@dimen/text_size_xsmall"
+                            android:layout_weight="0.5"
+                            android:textSize="@dimen/text_size_small"
                             android:gravity="center_vertical"
                             android:layout_height="wrap_content" />
 
@@ -185,7 +185,7 @@
                             android:maxLength="25"
                             app:fontFamily="@font/poppins_regular"
                             android:layout_width="0dp"
-                            android:layout_weight="0.6"
+                            android:layout_weight="0.5"
                             android:gravity="start"
                             android:textSize="@dimen/text_size_small"
                             android:layout_height="wrap_content" />
@@ -202,8 +202,8 @@
                             android:textColor="@color/black"
                             app:fontFamily="@font/poppins_light"
                             android:layout_width="0dp"
-                            android:layout_weight="0.4"
-                            android:textSize="@dimen/text_size_xsmall"
+                            android:layout_weight="0.5"
+                            android:textSize="@dimen/text_size_small"
                             android:gravity="center_vertical"
                             android:layout_height="wrap_content" />
 
@@ -218,7 +218,7 @@
                         android:inputType="textCapWords"
                         app:fontFamily="@font/poppins_regular"
                         android:layout_width="0dp"
-                        android:layout_weight="0.6"
+                        android:layout_weight="0.5"
                         android:gravity="start"
                         android:textSize="@dimen/text_size_small"
                         android:layout_height="wrap_content" />
@@ -235,9 +235,9 @@
                             android:textColor="@color/black"
                             app:fontFamily="@font/poppins_light"
                             android:layout_width="0dp"
-                            android:layout_weight="0.4"
+                            android:layout_weight="0.5"
                             android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_xsmall"
+                            android:textSize="@dimen/text_size_small"
                             android:layout_height="wrap_content" />
 
                     <TextView
@@ -249,7 +249,7 @@
                         android:maxLength="25"
                         app:fontFamily="@font/poppins_regular"
                         android:layout_width="0dp"
-                        android:layout_weight="0.6"
+                        android:layout_weight="0.5"
                         android:gravity="start"
                         android:textSize="@dimen/text_size_small"
                         android:layout_height="wrap_content" />
@@ -266,8 +266,8 @@
                             android:textColor="@color/black"
                             app:fontFamily="@font/poppins_light"
                             android:layout_width="0dp"
-                            android:layout_weight="0.4"
-                            android:textSize="@dimen/text_size_xsmall"
+                            android:layout_weight="0.5"
+                            android:textSize="@dimen/text_size_small"
                             android:gravity="center_vertical"
                             android:layout_height="wrap_content" />
 
@@ -280,7 +280,7 @@
                         android:maxLength="25"
                         app:fontFamily="@font/poppins_regular"
                         android:layout_width="0dp"
-                        android:layout_weight="0.6"
+                        android:layout_weight="0.5"
                         android:gravity="start"
                         android:textSize="@dimen/text_size_small"
                         android:layout_height="wrap_content" />

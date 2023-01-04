@@ -72,6 +72,7 @@ class OTPFragment : BaseFragment(), IVerifyOtpViewListener {
     }
 
     override fun initOtpTimer(){
+        hideProgressDialog()
         startTimer(1000)
     }
 

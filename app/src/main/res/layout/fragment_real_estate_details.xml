@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none"
-            android:layout_marginBottom="@dimen/margin_xlarge"
+            android:layout_marginBottom="@dimen/margin_small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -60,9 +60,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_size_small"
+                        android:layout_marginTop="@dimen/margin_large"
+                        android:textSize="@dimen/text_size_normal"
                         android:text="@string/details"
-                        android:textColor="@color/black"
+                        android:textColor="@color/black_text"
+                        android:layout_marginStart="@dimen/margin_small"
                         app:fontFamily="@font/poppins_semibold" />
 
                     <View
@@ -84,8 +86,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:weightSum="2"
-                        android:layout_marginTop="@dimen/margin_small">
+                        android:weightSum="2">
 
                         <TextView
                             android:layout_width="0dp"
@@ -746,24 +747,26 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/text_size_small"
+                            android:layout_height="0dp"
+                            android:includeFontPadding="false"
+                            android:textSize="@dimen/text_size_normal"
                             android:text="@string/description"
-                            android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_semibold" />
+                            android:textColor="@color/black"
+                            app:fontFamily="@font/poppins_medium" />
 
                         <TextView
                             android:id="@+id/descriptionTextview"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_small"
+                            android:layout_marginTop="@dimen/margin_menu"
                             android:layout_marginStart="@dimen/margin_small"
                             android:ellipsize="end"
                             android:minLines="2"
                             android:maxLines="10"
                             android:text="@{propertyData.description}"
                             android:textColor="@color/text_color"
-                             app:fontFamily="@font/poppins_regular"  />
+                             app:fontFamily="@font/poppins_light"  />
                     </LinearLayout>
 
                     <View
@@ -783,11 +786,11 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/text_size_small"
+                            android:textSize="@dimen/text_size_normal"
+                            android:includeFontPadding="false"
                             android:text="@string/highlights"
-                            android:textColor="@color/icon_color"
-                            app:fontFamily="@font/poppins_semibold" />
-
+                            android:textColor="@color/black"
+                            app:fontFamily="@font/poppins_medium" />
                         <TextView
                             android:id="@+id/highlightsTextview"
                             android:layout_width="match_parent"
@@ -798,7 +801,7 @@
                             android:minLines="2"
                             android:maxLines="10"
                             android:textColor="@color/text_color"
-                             app:fontFamily="@font/poppins_regular"  />
+                             app:fontFamily="@font/poppins_light"  />
                         <!--android:text="@{propertyData.highlights}"-->
                     </LinearLayout>
                     </LinearLayout>
@@ -826,6 +829,7 @@
                             android:layout_gravity="center"
                             android:background="@drawable/round_button_background"
                             android:text="@string/chat"
+                            android:onClick="@{(view)->realEstateDetailsViewModel.onClickChat()}"
                             android:textSize="@dimen/text_size_small"
                             app:fontFamily="@font/poppins_regular"
                             android:textColor="@color/white" />
@@ -836,6 +840,7 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:onClick="@{(view)->realEstateDetailsViewModel.onClickPropertyEnquiry()}"
                             android:layout_marginStart="@dimen/margin_small"
                             android:background="@drawable/round_button_background"
                             android:text="@string/make_offer"

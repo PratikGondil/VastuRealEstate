@@ -33,5 +33,4 @@ class DashboardActivity : BaseActivity() {
             finishAffinity()
         }
     }
-
 }

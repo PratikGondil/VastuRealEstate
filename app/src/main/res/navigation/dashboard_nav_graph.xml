@@ -32,9 +32,6 @@
         <action
             android:id="@+id/action_RealEstateFragment_to_VastuDashboardFragment"
             app:destination="@id/VastuDashboardFragment" />
-        <action
-            android:id="@+id/action_RealEstateFragment_to_AddPropertyEnquiryFragment"
-            app:destination="@id/addPropertyEnquiryFragment" />
     </fragment>
 
     <fragment
@@ -45,6 +42,10 @@
         <action
             android:id="@+id/action_RealEstateDetailsFragment_to_RealEstateFragment"
             app:destination="@id/RealEstateFragment" />
+
+        <action
+            android:id="@+id/action_RealEstateDetailsFragment_to_AddPropertyEnquiryFragment"
+            app:destination="@id/addPropertyEnquiryFragment" />
 
     </fragment>
 

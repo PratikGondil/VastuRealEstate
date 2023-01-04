@@ -75,23 +75,16 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
         realEstateBinding.loadingLayout.startShimmerAnimation()
         DashboardActivity.userId?.let { realEstateViewModel.getPropertyList(it) }
     }
-
-    override fun fabAddPropertyEnquiry() {
-        findNavController().navigate(R.id.action_RealEstateFragment_to_AddPropertyEnquiryFragment)
-    }
-
     override fun onSuccessGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         val realEstates = objGetPropertyListResMain.getPropertyDetailsResponse.propertyData
         realEstateBinding.apply {
             if(realEstates.isNotEmpty()) {
                 searchFilterLayout.visibility = View.VISIBLE
-                floatPropertyEnquiry.visibility = View.VISIBLE
                 rvRealEstste.visibility = View.VISIBLE
                 stopShimmerAnimation()
                 getRealEstateDetails(realEstates)
             }else {
                 searchFilterLayout.visibility = View.GONE
-                floatPropertyEnquiry.visibility = View.GONE
                 rvRealEstste.visibility = View.GONE
                 stopShimmerAnimation()
             }

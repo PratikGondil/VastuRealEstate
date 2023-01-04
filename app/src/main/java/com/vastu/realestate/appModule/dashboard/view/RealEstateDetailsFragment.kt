@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
@@ -104,10 +105,20 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         }
     }
 
+    override fun addPropertyEnquiry() {
+        findNavController().navigate(R.id.action_RealEstateDetailsFragment_to_AddPropertyEnquiryFragment)
+    }
+
+    override fun chatEnquiry() {
+        TODO("Not yet implemented")
+    }
+
     override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
         realEstateDetailsBinding.apply {
             propertyData = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
+
+            descriptionTextview.text =  propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).description.replace("<p></p>...","")
 
             val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
             spannable.setSpan(BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
@@ -116,7 +127,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
 
             //highlightsTextview.text = spannable
-            highlightsTextview.text = Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
+            highlightsTextview.text = Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights.trim())
         }
     }
 

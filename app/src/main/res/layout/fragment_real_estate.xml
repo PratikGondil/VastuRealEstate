@@ -51,7 +51,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_margin="@dimen/margin_small"
-                android:visibility="gone"
                 android:weightSum="2.5">
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -86,7 +85,7 @@
                         android:gravity="center_vertical"
                         android:inputType="text"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_xmenu"
+                        android:textSize="@dimen/text_size_menu"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,7 +124,7 @@
                         android:focusableInTouchMode="true"
                         android:gravity="center_vertical"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_xmenu"
+                        android:textSize="@dimen/text_size_menu"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -175,22 +174,5 @@
 
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         </LinearLayout>
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/floatPropertyEnquiry"
-            android:layout_width="wrap_content"
-            android:gravity="center"
-            android:visibility="gone"
-            android:layout_height="wrap_content"
-            android:text="@string/property_enquiry"
-            app:fontFamily="@font/poppins_medium"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_small"
-            app:icon="@drawable/ic_add"
-            app:iconTint="@color/white"
-            android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="@dimen/margin_large"
-            android:onClick="@{(view)->realEstateViewModel.onClickAddPropertyEnquiry()}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
