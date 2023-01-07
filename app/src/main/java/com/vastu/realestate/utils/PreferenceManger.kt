@@ -6,7 +6,9 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import com.vastu.slidercore.model.response.GetPropertySliderImagesResponse
+import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
+import com.vastu.slidercore.model.response.advertisement.GetAdvertisementSliderMainResponse
+import com.vastu.slidercore.model.response.property.GetPropertySliderImagesResponse
 
 object PreferenceManger {
     lateinit var preferences: SharedPreferences
@@ -35,9 +37,21 @@ object PreferenceManger {
             .apply()
     }
 
-    fun getSlider(key:String):GetPropertySliderImagesResponse {
+    fun getSlider(key:String): GetPropertySliderImagesResponse {
         val sliderList = preferences.getString(key, null)
         val type = object : TypeToken<GetPropertySliderImagesResponse>() {}.type
         return gson.fromJson(sliderList, type)
+    }
+
+    fun saveAdvertisementSlider(advertisementSliderList:  GetAdvertiseDetailsResponse, key:String) {
+        preferences.edit()
+            .putString(key, gson.toJson(advertisementSliderList))
+            .apply()
+    }
+
+    fun getAdvertisementSlider(key:String): GetAdvertiseDetailsResponse {
+        val advertisementSliderList = preferences.getString(key, null)
+        val type = object : TypeToken<GetAdvertiseDetailsResponse>() {}.type
+        return gson.fromJson(advertisementSliderList, type)
     }
 }

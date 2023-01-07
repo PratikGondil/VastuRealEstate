@@ -2,8 +2,11 @@ package com.vastu.realestatecore.model.response
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class PropertyData(
+    @SerializedName("address")
+    val address: String?,
     @SerializedName("area")
     val area: String?,
     @SerializedName("availability")
@@ -46,4 +49,4 @@ data class PropertyData(
     val state: String?,
     @SerializedName("swimming_pool")
     val swimmingPool: String?
-):java.io.Serializable
+): Serializable

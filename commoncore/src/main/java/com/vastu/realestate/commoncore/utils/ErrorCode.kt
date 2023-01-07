@@ -6,6 +6,4 @@ object ErrorCode {
  var error_0002 ="0002"
  var error_0003 ="0003"
 
-
-
 }

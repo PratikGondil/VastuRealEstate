@@ -35,6 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/banner_image_height"
             app:iss_auto_cycle="true"
+            app:iss_error_image="@drawable/vastu_logo_splash"
+            app:iss_placeholder="@color/loan_background_color"
             app:iss_selected_dot="@drawable/default_selected_dot"
             app:iss_unselected_dot="@drawable/default_unselected_dot"
             app:iss_period="1000"
@@ -49,6 +51,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:gravity="center"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -56,8 +59,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2"
-                android:layout_margin="@dimen/margin_xlarge">
+                android:weightSum="2.2"
+                android:layout_marginStart="@dimen/margin_xlarge"
+                android:layout_marginEnd="@dimen/margin_xlarge">
 
                 <LinearLayout
                     android:id="@+id/real_estate_layout"
@@ -79,12 +83,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/real_estate"
+                        android:layout_marginTop="@dimen/margin_small"
                         android:textColor="@color/black"
                         android:gravity="center"
                         android:includeFontPadding="true"
-                        app:fontFamily="@font/poppins_regular"
+                        app:fontFamily="@font/poppins_medium"
                         android:textSize="@dimen/text_size_normal"/>
                 </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_height="150dp"/>
 
                 <LinearLayout
                     android:id="@+id/loan_layout"
@@ -108,10 +118,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/loan"
+                    android:layout_marginTop="@dimen/margin_small"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:includeFontPadding="true"
-                    app:fontFamily="@font/poppins_regular"
+                    app:fontFamily="@font/poppins_medium"
                     android:textSize="@dimen/text_size_normal"/>
             </LinearLayout>
             </LinearLayout>

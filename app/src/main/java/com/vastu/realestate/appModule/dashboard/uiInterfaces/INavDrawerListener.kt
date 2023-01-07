@@ -4,6 +4,7 @@ interface INavDrawerListener {
     fun onClickClose()
     fun onClickEnquiry()
     fun onClickAddProperty()
+    fun onClickOffers()
     fun onClickContactUs()
     fun onClickSettings()
     fun onClickLogout()

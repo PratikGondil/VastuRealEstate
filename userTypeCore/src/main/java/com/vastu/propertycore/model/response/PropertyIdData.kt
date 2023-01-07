@@ -4,12 +4,16 @@ package com.vastu.propertycore.model.response
 import com.google.gson.annotations.SerializedName
 
 data class PropertyIdData(
+    @SerializedName("address")
+    val address: String,
     @SerializedName("area")
     val area: String,
     @SerializedName("availability")
     val availability: String,
     @SerializedName("balcony")
     val balcony: String,
+    @SerializedName("bathroom")
+    val bathroom: String,
     @SerializedName("bedroom")
     val bedroom: String,
     @SerializedName("booking_amount")
@@ -32,6 +36,8 @@ data class PropertyIdData(
     val kitchen: String,
     @SerializedName("price")
     val price: String,
+    @SerializedName("property_area")
+    val propertyArea: String,
     @SerializedName("property_id")
     val propertyId: String,
     @SerializedName("property_thumbnail")
@@ -46,4 +52,4 @@ data class PropertyIdData(
     val state: String,
     @SerializedName("swimming_pool")
     val swimmingPool: String
-)
+):java.io.Serializable

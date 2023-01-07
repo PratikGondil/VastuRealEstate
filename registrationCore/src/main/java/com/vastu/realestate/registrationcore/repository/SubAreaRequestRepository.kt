@@ -1,5 +1,6 @@
 package com.vastu.realestate.registrationcore.repository
 
+import android.content.Context
 import com.google.gson.Gson
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
@@ -13,12 +14,14 @@ object SubAreaRequestRepository : ISubAreaListReq , IOnServiceResponseListener {
  lateinit var iSubAreaResponseListener: ISubAreaResponseListener
 
     override fun callSubAreaListApi(
+        context: Context,
         objSubAreaReq: ObjSubAreaReq,
         urlEndPoint: String,
         iSubAreaResponseListener: ISubAreaResponseListener
     ) {
         this.iSubAreaResponseListener = iSubAreaResponseListener
         NetworkDaoBuilder.Builder
+            .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
             .setIsRequestPut(false)
@@ -46,6 +49,10 @@ object SubAreaRequestRepository : ISubAreaListReq , IOnServiceResponseListener {
 
     override fun onFailureResponse(response: String) {
         iSubAreaResponseListener.onGetSubAreaResponseFailure(parseResponse(response))
+    }
+
+    override fun onUserNotConnected() {
+        iSubAreaResponseListener.networkFailure()
     }
 
     fun parseResponse(response: String): ObjGetCityAreaDetailResponseMain {

@@ -1,5 +1,6 @@
 package com.vastu.realestatecore.repository
 
+import android.content.Context
 import com.vastu.realestatecore.callback.request.IGetPropertyListReq
 import com.vastu.realestatecore.callback.response.IGetPropertyListResListener
 import com.vastu.usertypecore.model.request.ObjGetUserTypeReq
@@ -7,17 +8,19 @@ import com.vastu.realestatecore.model.response.ObjGetPropertyListResMain
 import com.google.gson.Gson
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
-import com.vastu.realestate.commoncore.utils.ErrorCode
+import com.vastu.utils.ErrorCode
 
 object PropertyListRepository: IGetPropertyListReq,IOnServiceResponseListener {
     lateinit var iGetPropertyListResListener: IGetPropertyListResListener
     override fun callGetPropertyList(
+        context: Context,
         userId: String,
         urlEndPoint: String,
         iGetPropertyListResListener: IGetPropertyListResListener
     ) {
-       PropertyListRepository.iGetPropertyListResListener = iGetPropertyListResListener
+      this.iGetPropertyListResListener = iGetPropertyListResListener
         NetworkDaoBuilder.Builder
+            .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
             .setRequest(buildRequest(userId))
@@ -44,6 +47,10 @@ object PropertyListRepository: IGetPropertyListReq,IOnServiceResponseListener {
 
     override fun onFailureResponse(response: String) {
       iGetPropertyListResListener.getPropertyListFailureResponse(parseResponse( response))
+    }
+
+    override fun onUserNotConnected() {
+       iGetPropertyListResListener.networkFailure()
     }
 
     private fun parseResponse(response: String): ObjGetPropertyListResMain {

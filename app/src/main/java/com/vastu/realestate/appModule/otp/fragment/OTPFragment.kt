@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.otp.uiListener.IVerifyOtpViewListener
 import com.vastu.realestate.appModule.otp.viewModel.OTPViewModel
 import com.vastu.realestate.commoncore.model.otp.ObjUserData
@@ -29,7 +30,7 @@ import com.vastu.realestate.utils.PreferenceKEYS.USER
 import com.vastu.realestate.utils.PreferenceManger
 import java.util.*
 
-class OTPFragment : Fragment(), IVerifyOtpViewListener {
+class OTPFragment : BaseFragment(), IVerifyOtpViewListener {
 
 
     private lateinit var viewModel: OTPViewModel
@@ -71,6 +72,7 @@ class OTPFragment : Fragment(), IVerifyOtpViewListener {
     }
 
     override fun initOtpTimer(){
+        hideProgressDialog()
         startTimer(1000)
     }
 
@@ -161,27 +163,37 @@ class OTPFragment : Fragment(), IVerifyOtpViewListener {
 
     override fun verifyOtp() {
         objVerifyOtpReq = objVerifyOtpReq.copy(userId = objUserData.userID,otp=viewModel.otp.get())
+        showProgressDialog()
         viewModel.callVerifyOtpApi(objVerifyOtpReq)
     }
 
     override fun launchDashboard(objVerifyDtls: ObjVerifyDtls) {
+        hideProgressDialog()
         PreferenceManger.put(objVerifyDtls,USER)
         PreferenceManger.put(true, IS_LOGIN)
         startActivity(Intent(activity, DashboardActivity::class.java))
     }
 
     override fun onOtpVerifyFailure(objVerifyOtpResponseMain: ObjVerifyOtpResponseMain) {
-       Toast.makeText(requireContext(),objVerifyOtpResponseMain.objVerifyResponse.objResponseStatusHdr.statusDescr,Toast.LENGTH_LONG).show()
+       hideProgressDialog()
+       showDialog(objVerifyOtpResponseMain.objVerifyResponse.objResponseStatusHdr.statusDescr,false,false)
     }
 
     override fun onBackClick() {
         findNavController().navigate(R.id.action_OTPFragment_To_LoginFragment)
     }
     override fun resendOtpReq(){
+        showProgressDialog()
         viewModel.callLoginApi(objUserData.mobile!!)
     }
-    override fun onResenOtpFailure(objLoginResponseMain: ObjLoginResponseMain) {
-        Toast.makeText(requireContext(),objLoginResponseMain.objLoginResponse.objResponseStatusHdr.statusDescr,Toast.LENGTH_LONG).show()
+    override fun onResendOtpFailure(objLoginResponseMain: ObjLoginResponseMain) {
+        hideProgressDialog()
+       showDialog(objLoginResponseMain.objLoginResponse.objResponseStatusHdr.statusDescr,false,false)
 
+    }
+
+    override fun onUserNotConnected() {
+        hideProgressDialog()
+        showDialog("",false,true)
     }
 }

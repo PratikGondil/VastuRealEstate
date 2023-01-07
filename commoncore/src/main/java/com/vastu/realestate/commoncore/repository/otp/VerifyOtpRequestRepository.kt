@@ -1,5 +1,6 @@
 package com.vastu.realestate.commoncore.repository.otp
 
+import android.content.Context
 import com.google.gson.Gson
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
@@ -12,9 +13,10 @@ import com.vastu.realestate.commoncore.utils.ErrorCode
 
 object VerifyOtpRequestRepository:IVerifyOtpReq ,IOnServiceResponseListener{
     lateinit var iVerifyOtpResponseListener:IVerifyOtpResponseListener
-    override fun callVerifyOtpApi(objVerifyOtpReq: ObjVerifyOtpReq,urlEndPoint:String,iVerifyOtpResponseListener:IVerifyOtpResponseListener) {
+    override fun callVerifyOtpApi(context: Context,objVerifyOtpReq: ObjVerifyOtpReq,urlEndPoint:String,iVerifyOtpResponseListener:IVerifyOtpResponseListener) {
         this.iVerifyOtpResponseListener = iVerifyOtpResponseListener
         NetworkDaoBuilder.Builder
+            .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
             .setRequest(builRequest(objVerifyOtpReq))
@@ -43,6 +45,10 @@ object VerifyOtpRequestRepository:IVerifyOtpReq ,IOnServiceResponseListener{
 
     override fun onFailureResponse(response: String) {
        iVerifyOtpResponseListener.onGetVerifyOtpFailure(parseResponse(response))
+    }
+
+    override fun onUserNotConnected() {
+        iVerifyOtpResponseListener.networkFailure()
     }
 
     fun parseResponse(response: String):ObjVerifyOtpResponseMain{

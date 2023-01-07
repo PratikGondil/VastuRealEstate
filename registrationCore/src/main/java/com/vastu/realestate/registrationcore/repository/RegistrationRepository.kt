@@ -1,5 +1,6 @@
 package com.vastu.realestate.registrationcore.repository
 
+import android.content.Context
 import com.google.gson.Gson
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
@@ -11,21 +12,21 @@ import com.vastu.realestate.registrationcore.model.response.registration.ObjRegi
 
 object RegistrationRepository : ISignUpReq,IOnServiceResponseListener {
     lateinit var iResgisterResponseListener : IResgisterResponseListener
-    override fun callRegisterUserApi(objUserInfo: ObjUserInfo,urlEndPoint:String,iResgisterResponseListener:IResgisterResponseListener) {
+    override fun callRegisterUserApi(context: Context,objUserInfo: ObjUserInfo,urlEndPoint:String,iResgisterResponseListener:IResgisterResponseListener) {
        this.iResgisterResponseListener = iResgisterResponseListener
         NetworkDaoBuilder.Builder
+            .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
             .setIsRequestPut(false)
-            .setRequest(builRequest(objUserInfo))
+            .setRequest(buildRequest(objUserInfo))
             .setUrlEndPoint(urlEndPoint)
             .build()
             .sendApiRequest(this)
     }
 
 
-    fun builRequest(objUserInfo: ObjUserInfo): ByteArray {
-
+    fun buildRequest(objUserInfo: ObjUserInfo): ByteArray {
         return Gson().toJson(objUserInfo).toByteArray()
     }
 
@@ -47,6 +48,11 @@ object RegistrationRepository : ISignUpReq,IOnServiceResponseListener {
     override fun onFailureResponse(response: String) {
         iResgisterResponseListener.onGetFailureResponse(parseResponse(response))
     }
+
+    override fun onUserNotConnected() {
+        iResgisterResponseListener.networkFailure()
+    }
+
     fun parseResponse(response: String): ObjRegisterResponseMain {
         return Gson().fromJson(
             response,

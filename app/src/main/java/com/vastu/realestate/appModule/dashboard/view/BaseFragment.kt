@@ -1,9 +1,6 @@
 package com.vastu.realestate.appModule.dashboard.view
 
-import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.Fragment
-import com.vastu.realestate.customProgressDialog.CustomProgressDialog
 
 open class BaseFragment : Fragment() {
 
@@ -16,8 +13,7 @@ open class BaseFragment : Fragment() {
      fun hideProgressDialog(){
         getVastuActivity()?.hideProgressDialog()
     }
-    fun showFailureDialog(message:String){
-        getVastuActivity()?.showFailureDialog(message)
+    fun showDialog(message:String,isSuccess:Boolean,isNetworkFailure:Boolean){
+        getVastuActivity()?.showDialog(message,isSuccess,isNetworkFailure)
     }
-
 }

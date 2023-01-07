@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.vastu.realestate.appModule.login.viewModel.LoginViewModel
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.login.uiInterfaces.ILoginViewListener
 import com.vastu.realestate.commoncore.model.otp.ObjUserData
 import com.vastu.realestate.customProgressDialog.CustomProgressDialog
@@ -19,12 +20,11 @@ import com.vastu.realestate.logincore.model.response.ObjLoginResponse
 import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
 import com.vastu.realestate.utils.BaseConstant
 
-class LoginFragment : Fragment(), ILoginViewListener {
+class LoginFragment : BaseFragment(), ILoginViewListener {
 
     lateinit var viewModel: LoginViewModel
     lateinit var binder: LoginFragmentBinding
      var objUserData = ObjUserData()
-    lateinit var customProgressDialog :CustomProgressDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,8 +34,7 @@ class LoginFragment : Fragment(), ILoginViewListener {
         binder.lifecycleOwner = this
         binder.loginViewModel = viewModel
         viewModel.iLoginViewListener = this
-        customProgressDialog = CustomProgressDialog.getInstance()
-//        initView()
+       //initView()
         return binder.root
     }
 
@@ -46,7 +45,7 @@ class LoginFragment : Fragment(), ILoginViewListener {
 //        bundle.putSerializable(BaseConstant.REGISTER_DTLS_OBJ, objRegisterDlts)
 //        findNavController().navigate(R.id.action_LoginSignUpFragment_To_OTPFragment,bundle)
         if(viewModel.isValidMobileNumber.get()!!){
-            customProgressDialog.show(requireContext())
+            showProgressDialog()
             viewModel.callLoginApi(viewModel.mobileNumber.get().toString())
         }
         else{
@@ -59,6 +58,7 @@ class LoginFragment : Fragment(), ILoginViewListener {
 //        }
     }
     override fun launchOtpScreen(objLoginResponseMain: ObjLoginResponseMain) {
+        hideProgressDialog()
         val bundle = Bundle()
         objUserData = objUserData.copy(userID = objLoginResponseMain.objLoginDtls.userId,mobile = viewModel.mobileNumber.get())
         bundle.putSerializable(BaseConstant.REGISTER_DTLS_OBJ, objUserData)
@@ -66,9 +66,12 @@ class LoginFragment : Fragment(), ILoginViewListener {
     }
 
     override fun onLoginFail(objLoginResponse: ObjLoginResponse) {
-        customProgressDialog.dismiss()
-        Toast.makeText(requireContext(),objLoginResponse.objResponseStatusHdr.statusDescr,
-            Toast.LENGTH_LONG).show()
+        hideProgressDialog()
+        showDialog(objLoginResponse.objResponseStatusHdr.statusDescr,false,false)
+    }
 
+    override fun onUserNotConnected() {
+        hideProgressDialog()
+        showDialog("",false,true)
     }
 }

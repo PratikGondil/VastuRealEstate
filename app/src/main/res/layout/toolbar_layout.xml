@@ -22,7 +22,7 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_weight="1"
             android:theme="@style/ThemeOverlay.AppCompat.Dark"
-            android:background="@drawable/nav_background">
+            android:background="@drawable/site_menu_bg">
 
             <ImageView
                 android:id="@+id/menu_imageview"
@@ -32,7 +32,7 @@
                 android:onClick="@{(view)->drawerViewModel.onMenuClick()}"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:src="@drawable/menu_icon"/>
+                android:src="@drawable/menu"/>
 
             <ImageView
                 android:id="@+id/back_imageview"

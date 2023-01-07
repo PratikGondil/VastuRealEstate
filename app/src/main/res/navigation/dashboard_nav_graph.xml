@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_VastuDashboardFragment_to_RealEstateFragment"
             app:destination="@id/RealEstateFragment" />
+        <action
+            android:id="@+id/action_VastuDashboardFragment_to_EnquiryFragment"
+            app:destination="@id/EnquiryFragment" />
     </fragment>
 
     <fragment
@@ -39,6 +42,11 @@
         <action
             android:id="@+id/action_RealEstateDetailsFragment_to_RealEstateFragment"
             app:destination="@id/RealEstateFragment" />
+
+        <action
+            android:id="@+id/action_RealEstateDetailsFragment_to_AddPropertyEnquiryFragment"
+            app:destination="@id/addPropertyEnquiryFragment" />
+
     </fragment>
 
     <fragment
@@ -46,10 +54,28 @@
         android:name="com.vastu.realestate.appModule.dashboard.view.LoanFragment"
         android:label="LoanFragment"
         tools:layout="@layout/fragment_loan">
-
         <action
             android:id="@+id/action_LoanFragment_to_VastuDashboardFragment"
             app:destination="@id/VastuDashboardFragment" />
+        <action
+            android:id="@+id/action_LoanFragment_to_AddLoanEnquiryFragment"
+            app:destination="@id/addLoanEnquiryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addLoanEnquiryFragment"
+        android:name="com.vastu.realestate.appModule.enquiry.view.AddLoanEnquiryFragment"
+        android:label="AddLoanEnquiryFragment">
+        <action
+            android:id="@+id/action_AddLoanEnquiryFragment_to_LoanFragment"
+            app:destination="@id/LoanFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPropertyEnquiryFragment"
+        android:name="com.vastu.realestate.appModule.enquiry.view.AddPropertyEnquiryFragment"
+        android:label="AddPropertyEnquiryFragment">
+        <action
+            android:id="@+id/action_AddPropertyEnquiryFragment_to_RealEstateFragment"
+            app:destination="@id/RealEstateFragment" />
     </fragment>
     <fragment
         android:id="@+id/filter_fragment"

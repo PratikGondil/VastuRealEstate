@@ -10,22 +10,32 @@ import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertySliderList
 import com.vastu.realestate.utils.ApiUrlEndPoints.GET_PROPERTY
 import com.vastu.realestate.utils.ApiUrlEndPoints.PROPERTY_SLIDER
 import com.vastu.slidercore.callback.response.IGetPropertySliderByIdResponse
-import com.vastu.slidercore.model.response.PropertySliderResponseMain
+import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
 import com.vastu.slidercore.repository.PropertySliderRepository
 
 class RealEstateDetailsViewModel(application: Application) : AndroidViewModel(application),
     IGetPropertyDetailsResponseListener,
     IGetPropertySliderByIdResponse{
-
     lateinit var iPropertyDetailsListener: IPropertyDetailsListener
     lateinit var iPropertySliderListener: IPropertySliderListener
 
+    var mContext :Application
+    init {
+        mContext = application
+    }
+    fun onClickPropertyEnquiry(){
+        iPropertyDetailsListener.addPropertyEnquiry()
+    }
+    fun onClickChat(){
+        iPropertyDetailsListener.chatEnquiry()
+    }
+
     fun getPropertySlider(propertyId:String){
-        PropertySliderRepository.callGetPropertySliderById(propertyId,PROPERTY_SLIDER,this)
+        PropertySliderRepository.callGetPropertySliderById(mContext,propertyId,PROPERTY_SLIDER,this)
     }
 
     fun getPropertyDetails(userId:String,propertyId:String){
-        PropertyDetailsRepository.callGetPropertyDetails(userId,propertyId,GET_PROPERTY,this)
+        PropertyDetailsRepository.callGetPropertyDetails(mContext,userId,propertyId,GET_PROPERTY,this)
     }
 
     override fun getPropertyDetailsSuccessResponse(propertyDataResponseMain: PropertyDataResponseMain) {
@@ -42,5 +52,10 @@ class RealEstateDetailsViewModel(application: Application) : AndroidViewModel(ap
 
     override fun getPropertySliderByIdFailureResponse(propertySliderResponseMain: PropertySliderResponseMain) {
        iPropertySliderListener.onFailurePropertySliderById(propertySliderResponseMain)
+    }
+
+    override fun networkFailure() {
+        iPropertyDetailsListener.onUserNotConnected()
+        iPropertySliderListener.onUserNotConnected()
     }
 }

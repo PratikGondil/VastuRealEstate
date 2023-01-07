@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_small"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="@dimen/padding_xsmall"
+        android:background="@drawable/real_estate_background"
+        app:cardCornerRadius="@dimen/card_corner_radius">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight=".3"
+                android:layout_height="wrap_content"
+                android:background="@color/shimmer_background_color" />
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="@dimen/dimen20dp"
+                android:background="@color/white"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.6"
+                android:layout_height="wrap_content"
+                android:background="@color/shimmer_background_color" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/padding_xsmall"
+            android:weightSum="1">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight=".3"
+                android:layout_height="wrap_content"
+                android:background="@color/shimmer_background_color" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="@dimen/dimen20dp"
+                android:background="@color/white"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:background="@color/shimmer_background_color" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/padding_xsmall"
+            android:weightSum="1">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight=".3"
+                android:layout_height="@dimen/dimen20dp"
+                android:background="@color/shimmer_background_color" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="@dimen/dimen20dp"
+                android:background="@color/white"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.4"
+                android:layout_height="@dimen/dimen20dp"
+                android:background="@color/shimmer_background_color" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_xsmall"
+            android:orientation="horizontal"
+            android:weightSum="1">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight=".3"
+                android:layout_height="@dimen/dimen20dp"
+                android:background="@color/shimmer_background_color" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="@dimen/dimen20dp"
+                android:background="@color/white"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="@dimen/dimen20dp"
+                android:background="@color/shimmer_background_color" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

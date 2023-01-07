@@ -1,11 +1,16 @@
 package com.vastu.realestate.appModule.dashboard.view
 
 import android.os.Bundle
+import android.text.Html
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.BulletSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
@@ -19,8 +24,8 @@ import com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateDetailsViewM
 import com.vastu.realestate.databinding.FragmentRealEstateDetailsBinding
 import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestatecore.model.response.PropertyData
-import com.vastu.slidercore.model.response.PropertySliderImage
-import com.vastu.slidercore.model.response.PropertySliderResponseMain
+import com.vastu.slidercore.model.response.property.PropertySliderImage
+import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
 
 class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPropertySliderListener,
     IToolbarListener {
@@ -67,24 +72,11 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     private fun getPropertySlider(){
         showProgressDialog()
         propertyId?.let { realEstateDetailsViewModel.getPropertySlider(it) }
-        getPropertyDetails()
-    }
-    private fun getPropertyDetails(){
-        hideProgressDialog()
-        userId?.let {
-            propertyId?.let { it1 ->
-            realEstateDetailsViewModel.getPropertyDetails(it,it1)
-         }
-        }
-    }
-
-    override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
-        hideProgressDialog()
-        realEstateDetailsBinding.propertyData = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
     }
 
     override fun onFailureGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
+        showDialog(propertyDataResponseMain.propertyIdResponse.responseStatusHeader.statusDescription,false,false)
     }
 
     override fun onSuccessPropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
@@ -97,10 +89,51 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
             imageSlider.setImageList(imageList, ScaleTypes.FIT)
             imageSlider.startSliding(3000)
         }
+        getPropertyDetails()
     }
 
     override fun onFailurePropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
         hideProgressDialog()
+    }
+
+    private fun getPropertyDetails(){
+        hideProgressDialog()
+        userId?.let {
+            propertyId?.let { it1 ->
+                realEstateDetailsViewModel.getPropertyDetails(it,it1)
+            }
+        }
+    }
+
+    override fun addPropertyEnquiry() {
+        findNavController().navigate(R.id.action_RealEstateDetailsFragment_to_AddPropertyEnquiryFragment)
+    }
+
+    override fun chatEnquiry() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
+        hideProgressDialog()
+        realEstateDetailsBinding.apply {
+            propertyData = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
+
+            descriptionTextview.text =  propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).description.replace("<p></p>...","")
+
+            val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
+            spannable.setSpan(BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            spannable.setSpan(BulletSpan(50, resources.getColor(R.color.black)), 20,  spannable.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+            //highlightsTextview.text = spannable
+            highlightsTextview.text = Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights.trim())
+        }
+    }
+
+    override fun onUserNotConnected() {
+        hideProgressDialog()
+        showDialog("",false,true)
     }
 
     override fun onClickBack() {

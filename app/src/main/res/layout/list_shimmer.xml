@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="@dimen/margin_small"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical|center_horizontal"
+        android:padding="@dimen/padding_xsmall"
+        android:background="@drawable/real_estate_background"
+        app:cardCornerRadius="@dimen/card_corner_radius">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="@dimen/image_height"
+                android:scaleType="fitXY"
+                android:background="@color/shimmer_background_color"
+                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                app:shapeAppearanceOverlay="@style/image_custom_shape" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1.4"
+                android:layout_margin="@dimen/margin_small"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/shimmer_background_color" />
+
+                <TextView
+                    android:layout_marginTop="@dimen/padding_xsmall"
+                    android:background="@color/shimmer_background_color"
+                    android:layout_width="@dimen/dimen200dp"
+                    android:layout_height="@dimen/dimen20dp" />
+
+                <TextView
+                    android:background="@color/shimmer_background_color"
+                    android:layout_width="@dimen/dimen150dp"
+                    android:layout_marginTop="@dimen/padding_xsmall"
+                    android:layout_height="@dimen/dimen20dp" />
+
+                <TextView
+                    android:ellipsize="end"
+                    android:background="@color/shimmer_background_color"
+                    android:layout_width="@dimen/dimen80dp"
+                    android:layout_marginTop="@dimen/padding_xsmall"
+                    android:layout_height="@dimen/dimen20dp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/img_like"
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="17dp"
+                android:background="@color/shimmer_background_color"
+                android:layout_gravity="end"
+                android:scaleType="fitCenter" />
+
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

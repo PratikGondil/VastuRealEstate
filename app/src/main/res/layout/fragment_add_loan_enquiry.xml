@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.vastu.realestate.appModule.enquiry.bindingadapter.AddLoanBindingAdapter"/>
+        <variable
+            name="addLoanViewModel"
+            type="com.vastu.realestate.appModule.enquiry.viewModel.AddLoanEnquiryViewModel" />
+        <variable
+            name="drawerViewModel"
+            type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".appModule.enquiry.view.AddLoanEnquiryFragment">
+
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <include
+                layout="@layout/toolbar_layout"
+                bind:drawerViewModel="@{drawerViewModel}" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/margin_large">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilFirstName"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_small"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:helperText="@{addLoanViewModel.fName}"
+                app:helperTextTextColor="@color/red"
+                app:hintEnabled="false"
+                app:placeholderText="@string/first_name_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/first_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtFirstName"
+                    style="@style/TextAppearance"
+                    valid="@{addLoanViewModel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:text="@{addLoanViewModel.firstName}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilMiddleName"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_small"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:helperText="@{addLoanViewModel.mName}"
+                app:helperTextTextColor="@color/red"
+                app:hintEnabled="false"
+                app:placeholderText="@string/middle_name_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/first_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtMiddleName"
+                    style="@style/TextAppearance"
+                    valid="@{addLoanViewModel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:inputType="text"
+                    android:maxLength="15"
+                    android:text="@{addLoanViewModel.middleName}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLastName"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_small"
+                android:gravity="center"
+                android:maxLength="15"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:helperText="@{addLoanViewModel.lName}"
+                app:helperTextTextColor="@color/red"
+                app:hintEnabled="false"
+                app:placeholderText="@string/last_name_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/first_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtLastName"
+                    style="@style/TextAppearance"
+                    valid="@{addLoanViewModel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:inputType="text"
+                    android:text="@{addLoanViewModel.lastName}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilMobileNum"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_small"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:helperText="@{addLoanViewModel.mobile}"
+                app:helperTextTextColor="@color/red"
+                app:hintEnabled="false"
+                app:placeholderText="@string/mobile_number_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtMobileNum"
+                    style="@style/TextAppearance"
+                    valid="@{addLoanViewModel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:text="@{addLoanViewModel.mobileNumber}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAddress"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_small"
+                android:gravity="center"
+                android:maxLength="15"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:helperText="@{addLoanViewModel.add}"
+                app:helperTextTextColor="@color/red"
+                app:hintEnabled="false"
+                app:placeholderText="@string/address_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/sub_area">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtAddress"
+                    style="@style/TextAppearance"
+                    valid="@{addLoanViewModel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:minLines="3"
+                    android:maxLines="3"
+                    android:inputType="textMultiLine"
+                    android:text="@{addLoanViewModel.address}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilOccupation"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_small"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:endIconDrawable="@drawable/drop_down_icon"
+                app:endIconMode="custom"
+                app:expandedHintEnabled="false"
+                app:helperText="@{addLoanViewModel.occ}"
+                app:helperTextTextColor="@color/red"
+                app:hintEnabled="false"
+                app:placeholderText="@string/occupation_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/city">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/autoCompleteOccupationList"
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edittext_background"
+                    android:clickable="true"
+                    android:context="@{context}"
+                    android:onItemClick="@{addLoanViewModel}"
+                    android:editable="false"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLoanInterestedIn"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_small"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:endIconDrawable="@drawable/drop_down_icon"
+                app:endIconMode="custom"
+                app:expandedHintEnabled="false"
+                app:helperText="@{addLoanViewModel.loan}"
+                app:helperTextTextColor="@color/red"
+                app:hintEnabled="false"
+                app:placeholderText="@string/loan_interested_in_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/city">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/autoCompleteLoanInterestedIn"
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edittext_background"
+                    android:clickable="true"
+                    android:context="@{context}"
+                    android:dropDownHeight="@dimen/dimen150dp"
+                    android:onItemClick="@{addLoanViewModel}"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPreferredBank"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_small"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:endIconDrawable="@drawable/drop_down_icon"
+                app:endIconMode="custom"
+                app:expandedHintEnabled="false"
+                app:helperText="@{addLoanViewModel.bank}"
+                app:helperTextTextColor="@color/red"
+                app:hintEnabled="false"
+                app:placeholderText="@string/preferred_bank_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/city">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/autoCompletePreferredBank"
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edittext_background"
+                    android:clickable="true"
+                    android:context="@{context}"
+                    android:onItemClick="@{addLoanViewModel}"
+                    android:dropDownHeight="@dimen/dimen150dp"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLoanAmount"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_small"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:helperText="@{addLoanViewModel.amount}"
+                app:helperTextTextColor="@color/red"
+                app:hintEnabled="false"
+                app:placeholderText="@string/loan_amount_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtLoanAmount"
+                    style="@style/TextAppearance"
+                    valid="@{addLoanViewModel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:text="@{addLoanViewModel.loanAmount}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLoanTermYear"
+                style="@style/Widget.Design.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/margin_small"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:helperText="@{addLoanViewModel.year}"
+                app:helperTextTextColor="@color/red"
+                app:hintEnabled="false"
+                app:placeholderText="@string/loan_term_year_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/phone">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtLoanTermYear"
+                    style="@style/TextAppearance"
+                    valid="@{addLoanViewModel}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:text="@{addLoanViewModel.loanTermYear}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:ignore="SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPropertyEnquiry"
+                context="@{context}"
+                isEnable="@{addLoanViewModel.isBtnEnable}"
+                android:layout_width="@dimen/button_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@{addLoanViewModel.btnBackground}"
+                android:focusable="true"
+                android:clickable="true"
+                android:enabled="false"
+                android:fontFamily="@font/poppins_medium"
+                android:onClick="@{(view)->addLoanViewModel.onSubmitLoanEnquiry()}"
+                android:text="@string/submit_btn_text"
+                android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

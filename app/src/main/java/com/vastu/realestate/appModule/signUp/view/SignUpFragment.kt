@@ -4,16 +4,14 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.signUp.uiInterfaces.ISignUpViewListener
 import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
-import com.vastu.realestate.customProgressDialog.CustomProgressDialog
 import com.vastu.realestate.databinding.SignUpFragmentBinding
 import com.vastu.realestate.registrationcore.model.request.ObjSubAreaReq
 import com.vastu.realestate.registrationcore.model.request.ObjUserInfo
@@ -25,14 +23,13 @@ import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaD
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
 import com.vastu.realestate.utils.BaseConstant.REGISTER_DTLS_OBJ
 
-class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
+class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener {
 
     private lateinit var signUpViewModel: SignUpViewModel
     lateinit var signUpFragmentBinding: SignUpFragmentBinding
     lateinit var viewPager :ViewPager2
     var objUserInfo= ObjUserInfo()
     var objSubAreaReq = ObjSubAreaReq()
-    lateinit var customProgressDialog : CustomProgressDialog
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,18 +49,16 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
         observeCityList()
         observeCity()
         observeSubAreaList()
-        customProgressDialog = CustomProgressDialog.getInstance()
-        customProgressDialog.dismiss()
         return signUpFragmentBinding.root
     }
 
-    fun initView(){
+    private fun initView(){
         signUpFragmentBinding.autoCompleteCity.setOnTouchListener(this)
         signUpFragmentBinding.autoCompleteAreaList.setOnTouchListener(this)
 //        val subAreaList = arrayOf("Nigdi","Kalewadi","Hinjewadi","Chinchwad","Kothrud")
 
     }
-    fun observeCityList(){
+    private fun observeCityList(){
         signUpViewModel.cityList.observe(viewLifecycleOwner) { cityList ->
 //            val cityListAdapter =
 //                arrayOf("pune", "PCMC","Mumbai", "Nagpur", "Thane", "Nashik", "Kalyan-Dombivli", "Aurangabad", "Jalgaon")
@@ -78,15 +73,14 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
             )
         }
     }
-    fun observeCity(){
+    private fun observeCity(){
         signUpViewModel.city.observe(viewLifecycleOwner){city->
             if (city != null) {
                   callSubAreaList(city.talukaId!!)
                 }
-
         }
     }
-    fun observeSubAreaList(){
+    private fun observeSubAreaList(){
         signUpViewModel.subAreaList.observe(viewLifecycleOwner){subAreaList->
             val adapter: ArrayList<ObjCityAreaData> =subAreaList
             signUpFragmentBinding.autoCompleteAreaList.setAdapter(
@@ -105,64 +99,60 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
     }
 
     override fun registerUser(){
-        customProgressDialog.show(requireContext())
+        showProgressDialog()
         getUserInfo()
         signUpViewModel.callRegistrationApi(objUserInfo)
     }
 
     override fun launchOtpScreen(objRegisterDlts: ObjRegisterDlts) {
-        customProgressDialog.show(requireContext())
+        hideProgressDialog()
         val bundle = Bundle()
         bundle.putSerializable(REGISTER_DTLS_OBJ, objRegisterDlts)
         findNavController().navigate(R.id.action_LoginSignUpFragment_To_OTPFragment,bundle)
     }
 
     private fun getUserInfo(){
-         objUserInfo =objUserInfo.copy(firstName = signUpViewModel.firstName.get()!!,
+        objUserInfo =objUserInfo.copy(firstName = signUpViewModel.firstName.get()!!,
         middleName = signUpViewModel.middleName.get()!!,
         lastName = signUpViewModel.lastName.get()!!,
         mobile = signUpViewModel.mobileNumber.get()!!,
         city = signUpViewModel.city.value!!.taluka,
         subArea = signUpViewModel.subArea.get()!!.subArea!!,
         emailId = signUpViewModel.mailId.get()!!,
-        userType = "2")
-
-
+        userType = "3")
     }
 
-    fun getCityList(){
-//        customProgressDialog.show(requireContext())
+    private fun getCityList(){
         signUpViewModel.callCityListApi()
 
     }
-    fun callSubAreaList(talukaId: String) {
+    private fun callSubAreaList(talukaId: String) {
         objSubAreaReq = ObjSubAreaReq().copy(talukaId = talukaId )
         signUpViewModel.callSubAreaList(objSubAreaReq)
     }
     override fun goToLogin() {
-        customProgressDialog.dismiss()
+            hideProgressDialog()
             viewPager.currentItem = 0
-
     }
 
     override fun onRegistrationFail(objRegisterResponseMain: ObjRegisterResponseMain) {
-        customProgressDialog.dismiss()
-        Toast.makeText(requireContext(),objRegisterResponseMain.objRegisterResponse.objResponseStatusHdr.statusDescr,
-            Toast.LENGTH_LONG).show()
-
+       hideProgressDialog()
+       showDialog(objRegisterResponseMain.objRegisterResponse.objResponseStatusHdr.statusDescr,false,false)
     }
 
     override fun onCityListApiFailure(objTalukaResponseMain: ObjTalukaResponseMain) {
-        customProgressDialog.dismiss()
-        Toast.makeText(requireContext(),objTalukaResponseMain.objTalukaResponse.objResponseStatusHdr.statusDescr,
-            Toast.LENGTH_LONG).show()
+       showDialog(objTalukaResponseMain.objTalukaResponse.objResponseStatusHdr.statusDescr,false,false)
     }
 
     override fun onSubAreaListApiFailure(objGetCityAreaDetailResponseMain: ObjGetCityAreaDetailResponseMain) {
-        customProgressDialog.dismiss()
-        Toast.makeText(requireContext(),objGetCityAreaDetailResponseMain.objCityAreaResponse.objResponseStatusHdr.statusDescr,
-            Toast.LENGTH_LONG).show()
+        showDialog(objGetCityAreaDetailResponseMain.objCityAreaResponse.objResponseStatusHdr.statusDescr,false,false)
     }
+
+    override fun onUserNotConnected() {
+        hideProgressDialog()
+        showDialog("",false,true)
+    }
+
     fun onShowStateDropDown(view: View){
         (view as AutoCompleteTextView).showDropDown()
     }
@@ -180,6 +170,4 @@ class SignUpFragment : Fragment(),View.OnTouchListener, ISignUpViewListener {
         }
         return true
     }
-
-
 }
