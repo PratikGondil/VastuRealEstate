@@ -3,12 +3,13 @@
     <data>
         <variable
             name="filterList"
-            type="com.vastu.realestate.registrationcore.model.ObjFilterTypeList" />
+            type="com.vastu.realestatecore.model.filter.ObjFilterTypeList" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/real_estate_background">
     <LinearLayout
         android:id="@+id/llFilterTypeLayout"
         android:layout_width="match_parent"

@@ -4,6 +4,7 @@ import android.app.Application
 import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
+import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterClickListener
 import com.vastu.realestatecore.callback.response.IGetPropertyListResListener
 import com.vastu.realestatecore.model.response.ObjGetPropertyListResMain
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IRealEstateListener

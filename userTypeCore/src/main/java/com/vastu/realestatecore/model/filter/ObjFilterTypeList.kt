@@ -1,4 +1,4 @@
-package com.vastu.realestate.registrationcore.model
+package com.vastu.realestatecore.model.filter
 
 import com.google.gson.annotations.SerializedName
 

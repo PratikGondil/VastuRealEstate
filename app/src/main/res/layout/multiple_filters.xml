@@ -36,15 +36,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/header"
         />
+    <HorizontalScrollView
+        android:id="@+id/svChiplayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dividerView">
+
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/cgFilterGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxHeight="@dimen/dimen110dp"
+        android:visibility="gone"
+        />
+    </HorizontalScrollView>
+    <View
+        android:id="@+id/filterViewDivider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dividerView"
-        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/svChiplayout"
         />
     <LinearLayout
         android:id="@+id/llfiltertype"
@@ -54,17 +69,22 @@
         android:background="@color/real_estate_background_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/llFilterView"
-        app:layout_constraintTop_toBottomOf="@+id/cgFilterGroup"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filterViewDivider"
+        app:layout_constraintBottom_toTopOf="@+id/llButtonLayout"
         android:layout_marginTop="@dimen/dimen5dp"
         app:layout_constraintHorizontal_weight="0.3">
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/filterType"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:listitem="@layout/sorting_type_item"
+        android:orientation="vertical"
 
        />
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
    <LinearLayout
        android:id="@+id/llFilterView"
@@ -72,14 +92,14 @@
        android:layout_height="0dp"
        app:layout_constraintStart_toEndOf="@+id/llfiltertype"
        app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/cgFilterGroup"
-       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/filterViewDivider"
+       app:layout_constraintBottom_toTopOf="@+id/llButtonLayout"
        app:layout_constraintHorizontal_weight="0.7"
        android:gravity="top"
        android:layout_marginTop="@dimen/dimen5dp"
        >
        <include
-           android:id="@+id/slectedFilterView"
+           android:id="@+id/selectedFilterView"
            layout="@layout/filter_view_fargment"
            bind:filterViewModel="@{filterViewModel}"/>
    </LinearLayout>
@@ -117,8 +137,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="horizontal"
+        android:layout_margin="@dimen/dimen10dp"
         android:weightSum="1"
-        android:background="@color/white">
+        android:background="@color/white"
+        >
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnClearFilter"
             android:layout_width="wrap_content"
@@ -139,7 +161,8 @@
             android:textSize="@dimen/text_size_semilarge"
             android:fontFamily="@font/poppins_bold"
             android:layout_margin="@dimen/dimen10dp"
-            android:layout_weight="0.7"/>
+            android:layout_weight="0.7"
+            android:onClick="@{(view)->filterViewModel.applyFilters()}"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

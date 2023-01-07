@@ -1,6 +1,9 @@
 {
   "filtertypelist": [
     {
+      "filtertype": "By Area"
+    },
+    {
       "filtertype": "By Budget"
     },
     {

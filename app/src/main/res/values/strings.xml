@@ -76,6 +76,7 @@
 
 <!--    filter-->
     <string name="filters_and_sort">FILTERS &amp; SORT</string>
+    <string name="choose_area">Choose area from below options</string>
     <string name="choose_a_range_below">Choose a range below</string>
     <string name="choose_from_below_options">Choose from below options</string>
     <string name="choose_a_range_below_per_Sq">Choose a range below (Rs/Sq Ft)</string>
@@ -88,14 +89,12 @@
     <string name="houses_and_Villas">Houses &amp; Villas</string>
     <string name="builder_floors">Builder Floors</string>
     <string name="farmhouses">Farm Houses</string>
-    <string name="onebedroom">1 + bedroom</string>
-    <string name="twobedrooms">2 + bedrooms</string>
-    <string name="threebedrooms">3 + bedrooms</string>
-    <string name="fourbedrooms">4 + bedrooms</string>
-    <string name="onebathroom">1 + bathroom</string>
-    <string name="twobathrooms">2 + bathrooms</string>
-    <string name="threebathrooms">3 + bathrooms</string>
-    <string name="fourbathrooms">4 + bathrooms</string>
+    <string name="onebedroom">1 bedroom</string>
+    <string name="twobedrooms">2 bedrooms</string>
+    <string name="threebedrooms">3 bedrooms</string>
+    <string name="fourbedrooms">4 bedrooms</string>
+    <string name="onebathroom">1 bathroom</string>
+    <string name="twobathrooms">2 bathrooms</string>
     <string name="furnished">Furnished</string>
     <string name="semi_furnished">Semi-Furnished</string>
     <string name="under_const">Under Construction</string>
@@ -108,9 +107,12 @@
     <string name="price_low_to_high">Price:Low to High</string>
     <string name="price_high_to_low">Price:High to Low</string>
     <string name="distance">Distance</string>
-
+    <string name="chip_text_budget">Budget:</string>
+    <string name="chip_text_price_per_sq">Price Per Sq.Ft:</string>
+    <string name="chip_text_builtup_area">Super Builtup area(ft):</string>
 
     <!--filter Types-->
+    <string name="by_area">By Area</string>
     <string name="by_budget">By Budget</string>
     <string name="by_property_type">By Property Type</string>
     <string name="by_price_per_sq_ft">By Price Per sq.Ft.</string>

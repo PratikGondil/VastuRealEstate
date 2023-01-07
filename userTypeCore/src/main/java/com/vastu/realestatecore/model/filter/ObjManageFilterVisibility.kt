@@ -1,10 +1,11 @@
-package com.vastu.realestate.registrationcore.model
+package com.vastu.realestatecore.model.filter
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class ObjManageFilterVisibility(
-    @SerializedName("isVisibleBudgetLayout") var isVisibleBudgetLayout:Boolean = true,
+    @SerializedName("isVisibleSubAreaLayout") var isVisibleSubAreaLayout:Boolean = true,
+    @SerializedName("isVisibleBudgetLayout") var isVisibleBudgetLayout:Boolean = false,
     @SerializedName("isVisiblePropertyLayout") var isVisiblePropertyLayout:Boolean = false,
     @SerializedName("isVisiblePricePerSqFtLayout") var isVisiblePricePerSqFtLayout:Boolean = false,
     @SerializedName("isVisibleByBedroomsLayout") var isVisibleByBedroomsLayout:Boolean = false,

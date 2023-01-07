@@ -35,7 +35,7 @@ class DashboardActivity : BaseActivity() {
         }
         else if( fragment is RealEstateFragment)
         {
-            fragment.onBackClick()
+            fragment.onClickBack()
         }else {
             finishAffinity()
         }

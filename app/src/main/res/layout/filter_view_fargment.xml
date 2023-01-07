@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <import type="com.vastu.realestate.appModule.dashboard.bindingAdapter.FiletrBindingAdapter"/>
         <variable
@@ -33,7 +34,24 @@
             android:textColor="@color/icon_color"
             />
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/llSubAreaLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llTitle"
+        setVisibility="@{filterViewModel.isVisibleSubAreaLayout}"
+        >
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rlAreaListRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/sub_area_list_adapter" />
+
+
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/llBudgetLayout"
         android:layout_width="match_parent"
@@ -42,7 +60,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llTitle"
+        app:layout_constraintTop_toBottomOf="@+id/llSubAreaLayout"
         setVisibility="@{filterViewModel.isVisibleBudgetLayout}"
       >
 
@@ -113,7 +131,7 @@
 
         >
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckHouses"
+            android:id="@+id/checkHouses"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/houses_and_Villas"
@@ -121,24 +139,27 @@
             isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isHousesSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckApartment"
+            android:id="@+id/checkApartment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/apartments"
             android:textAppearance="@style/TextAppearance"
+            isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isApartmentSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckBuilderFloor"
+            android:id="@+id/checkBuilderFloor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/builder_floors"
             android:textAppearance="@style/TextAppearance"
+            isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isBuilerFloorSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckFarmHouse"
+            android:id="@+id/check_farm_house"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/farmhouses"
+            isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isFarmHousesSelected}"
             android:textAppearance="@style/TextAppearance"/>
 
@@ -293,27 +314,6 @@
             android:background="@drawable/filter_option_background_on_disselect"
             viewmodel="@{filterViewModel}"
             />
-        <TextView
-            android:id="@+id/txtBathroomThree"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/threebathrooms"
-            android:padding="@dimen/dimen10dp"
-            android:layout_margin="@dimen/dimen5dp"
-            android:background="@drawable/filter_option_background_on_disselect"
-            viewmodel="@{filterViewModel}"
-            />
-        <TextView
-            android:id="@+id/txtBathroomFour"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/fourbathrooms"
-            android:padding="@dimen/dimen10dp"
-            android:layout_margin="@dimen/dimen5dp"
-            android:background="@drawable/filter_option_background_on_disselect"
-            viewmodel="@{filterViewModel}"
-            />
-
 
     </LinearLayout>
     <LinearLayout
@@ -330,25 +330,28 @@
 
         >
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckFurnished"
+            android:id="@+id/checkFurnished"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/furnished"
             android:textAppearance="@style/TextAppearance"
+            isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isHousesSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckUnfurnished"
+            android:id="@+id/checkUnfurnished"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/unfurnished"
             android:textAppearance="@style/TextAppearance"
+            isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isApartmentSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckSemiFurnished"
+            android:id="@+id/checkSemiFurnished"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/semi_furnished"
             android:textAppearance="@style/TextAppearance"
+            isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isBuilerFloorSelected}"/>
 
 
@@ -367,25 +370,28 @@
 
         >
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckUnderConst"
+            android:id="@+id/checkUnderConst"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/under_const"
             android:textAppearance="@style/TextAppearance"
+            isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isHousesSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckReadyToMove"
+            android:id="@+id/checkReadyToMove"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ready_to_move"
             android:textAppearance="@style/TextAppearance"
+            isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isApartmentSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckNewLaunch"
+            android:id="@+id/checkNewLaunch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/new_launch"
             android:textAppearance="@style/TextAppearance"
+            isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isBuilerFloorSelected}"/>
 
 
@@ -404,25 +410,28 @@
 
         >
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckOwner"
+            android:id="@+id/check_owner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/owner"
             android:textAppearance="@style/TextAppearance"
+            isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isHousesSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckDealer"
+            android:id="@+id/check_dealer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dealer"
             android:textAppearance="@style/TextAppearance"
+            isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isApartmentSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/CheckBuilder"
+            android:id="@+id/check_builder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/builder"
             android:textAppearance="@style/TextAppearance"
+            isChecked="@{filterViewModel}"
             android:checked="@{filterViewModel.isBuilerFloorSelected}"/>
 
 

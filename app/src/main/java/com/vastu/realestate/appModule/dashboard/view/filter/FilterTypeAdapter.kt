@@ -1,22 +1,17 @@
 package com.vastu.realestate.appModule.dashboard.view.filter
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.annotation.Nullable
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterTypeClickListener
-import com.vastu.realestate.appModule.dashboard.viewmodel.FilterViewModel
 import com.vastu.realestate.databinding.SortingTypeItemBinding
-import com.vastu.realestate.registrationcore.model.ObjFilterTypeList
+import com.vastu.realestatecore.model.filter.ObjFilterTypeList
 
-class FilterTypeAdapter(var context :Context,var itemsList: ArrayList<ObjFilterTypeList>, var filterTypeClickListener: IFilterTypeClickListener): RecyclerView.Adapter<FilterTypeAdapter.FilterTypeViewHolder>() {
+class FilterTypeAdapter(var context :Context, var itemsList: ArrayList<ObjFilterTypeList>, var filterTypeClickListener: IFilterTypeClickListener): RecyclerView.Adapter<FilterTypeAdapter.FilterTypeViewHolder>() {
     var previousHolder: FilterTypeViewHolder? = null
     var selectedItemPosition :Int = 0
     override fun onCreateViewHolder(

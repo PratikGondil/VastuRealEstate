@@ -1,5 +1,6 @@
 package com.vastu.realestate.appModule.dashboard.bindingAdapter
 
+import android.content.Context
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -26,7 +27,8 @@ object FiletrBindingAdapter {
             override fun onStopTrackingTouch(slider: RangeSlider) {
 
                 setValueToLimits(filterViewModel,id,values)
-                addChip(filterViewModel,id)
+                filterViewModel.removeChip(id)
+                addChip(context,filterViewModel,id)
             }
 
         })
@@ -54,18 +56,18 @@ object FiletrBindingAdapter {
         }
     }
 
-    fun addChip(filterViewModel: FilterViewModel,id: Int){
+    fun addChip(context: Context,filterViewModel: FilterViewModel,id: Int){
         when(id){
             R.id.budgetRangeSlider->{
-                filterViewModel.addChip("Budget:"+filterViewModel.lowerLimit.get() +"-"+filterViewModel.upperLimit.get())
+                filterViewModel.addChip(context.getString(R.string.chip_text_budget)+filterViewModel.lowerLimit.get() +"-"+filterViewModel.upperLimit.get())
 
             }
             R.id.rangeSliderForSqFt->{
-                filterViewModel.addChip("Price Per Sq.Ft:"+filterViewModel.lowerLimitForPerSq.get()+"-"+filterViewModel.upperLimitForPerSq.get())
+                filterViewModel.addChip(context.getString(R.string.chip_text_price_per_sq)+filterViewModel.lowerLimitForPerSq.get()+"-"+filterViewModel.upperLimitForPerSq.get())
 
             }
             R.id.rangeSliderForBuildupAr->{
-                filterViewModel.addChip("Super Builtup area(ft):"+filterViewModel.lowerLimitForBuildupArea.get()+"-"+filterViewModel.upperLimitForBuildupArea.get())
+                filterViewModel.addChip(context.getString(R.string.chip_text_builtup_area)+filterViewModel.lowerLimitForBuildupArea.get()+"-"+filterViewModel.upperLimitForBuildupArea.get())
 
             }
         }
@@ -76,14 +78,14 @@ object FiletrBindingAdapter {
         setOnClickListener(object:View.OnClickListener{
             override fun onClick(p0: View?) {
                 when(id){
-                    R.id.CheckHouses->{
+                    R.id.checkHouses->{
                         if(isChecked){
                             filterViewModel.addChip(text as String)
                         }
                         else
                             filterViewModel.removeChip(id)
                     }
-                    R.id.CheckApartment->{
+                    R.id.checkApartment->{
                         if(isChecked){
                             filterViewModel.addChip(text as String)
                         }
@@ -91,77 +93,77 @@ object FiletrBindingAdapter {
                             filterViewModel.removeChip(id)
                     }
 
-                    R.id.CheckBuilderFloor->{
+                    R.id.checkBuilderFloor->{
                     if(isChecked){
                         filterViewModel.addChip(text as String)
                     }
                     else
                         filterViewModel.removeChip(id)
                 }
-                    R.id.CheckFarmHouse->{
+                    R.id.check_farm_house->{
                         if(isChecked){
                             filterViewModel.addChip(text as String)
                         }
                         else
                             filterViewModel.removeChip(id)
                     }
-                    R.id.CheckFurnished->{
+                    R.id.checkFurnished->{
                         if(isChecked){
                             filterViewModel.addChip(text as String)
                         }
                         else
                             filterViewModel.removeChip(id)
                     }
-                    R.id.CheckUnfurnished ->{
+                    R.id.checkUnfurnished ->{
                         if(isChecked){
                             filterViewModel.addChip(text as String)
                         }
                         else
                             filterViewModel.removeChip(id)
                     }
-                    R.id.CheckSemiFurnished ->{
+                    R.id.checkSemiFurnished ->{
                         if(isChecked){
                             filterViewModel.addChip(text as String)
                         }
                         else
                             filterViewModel.removeChip(id)
                     }
-                    R.id.CheckUnderConst->{
+                    R.id.checkUnderConst->{
                         if(isChecked){
                             filterViewModel.addChip(text as String)
                         }
                         else
                             filterViewModel.removeChip(id)
                     }
-                    R.id.CheckReadyToMove ->{
+                    R.id.checkReadyToMove ->{
                         if(isChecked){
                             filterViewModel.addChip(text as String)
                         }
                         else
                             filterViewModel.removeChip(id)
                     }
-                    R.id.CheckNewLaunch ->{
+                    R.id.checkNewLaunch ->{
                         if(isChecked){
                             filterViewModel.addChip(text as String)
                         }
                         else
                             filterViewModel.removeChip(id)
                     }
-                    R.id.CheckOwner ->{
+                    R.id.check_owner ->{
                         if(isChecked){
                             filterViewModel.addChip(text as String)
                         }
                         else
                             filterViewModel.removeChip(id)
                     }
-                    R.id.CheckDealer->{
+                    R.id.check_dealer->{
                         if(isChecked){
                             filterViewModel.addChip(text as String)
                         }
                         else
                             filterViewModel.removeChip(id)
                     }
-                    R.id.CheckBuilder->{
+                    R.id.check_builder->{
                         if(isChecked){
                             filterViewModel.addChip(text as String)
                         }
@@ -200,6 +202,8 @@ object FiletrBindingAdapter {
     @JvmStatic
     fun LinearLayout.setVisibility(view: Boolean){
         when(id){
+            R.id.llSubAreaLayout->
+                visibility = manageVisibility(view)
             R.id.llBudgetLayout->
                 visibility = manageVisibility(view)
             R.id.llProprtyType->

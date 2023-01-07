@@ -17,6 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".appModule.dashboard.view.RealEstateFragment">
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
         <LinearLayout
             android:id="@+id/ll2FAFragmentContainer"
             android:layout_width="match_parent"
@@ -159,14 +162,15 @@
                 android:layout_height="match_parent" />
 
         </LinearLayout>
+   </androidx.constraintlayout.widget.ConstraintLayout>
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/filter_fragment"
             app:behavior_hideable="true"
             app:behavior_peekHeight="0dp"
-            android:layout_marginTop="@dimen/dimen20dp"
+            android:layout_marginTop="@dimen/dimen30dp"
             android:padding="@dimen/dimen10dp"
             app:behavior_skipCollapsed="true"
-            android:background="@drawable/white_background"
+            android:background="@drawable/filter_background"
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
             android:layout_height="match_parent"
             android:layout_width="match_parent"
