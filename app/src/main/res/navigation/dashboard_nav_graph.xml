@@ -20,10 +20,21 @@
             android:id="@+id/action_VastuDashboardFragment_to_EnquiryFragment"
             app:destination="@id/EnquiryFragment" />
         <action
+            android:id="@+id/action_VastuDashboardFragment_to_OfferFragment"
+            app:destination="@id/OfferFragment" />
+        <action
             android:id="@+id/action_VastuDashboardFragment_to_addPropertyFragment"
             app:destination="@id/addPropertyFragment" />
     </fragment>
-
+    <fragment
+        android:id="@+id/OfferFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.offers.OffersFragment"
+        android:label="OfferFragment"
+        tools:layout="@layout/offers_fragment">
+        <action
+            android:id="@+id/action_OfferFragment_to_VastuDashboardFragment"
+            app:destination="@id/VastuDashboardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/RealEstateFragment"
         android:name="com.vastu.realestate.appModule.dashboard.view.RealEstateFragment"
@@ -69,4 +80,16 @@
         android:name="com.vastu.realestate.appModule.dashboard.view.AddPropertyFragment"
         android:label="AddPropertyFragment"/>
 
+        android:label="AddPropertyEnquiryFragment">
+        <action
+            android:id="@+id/action_AddPropertyEnquiryFragment_to_RealEstateFragment"
+            app:destination="@id/RealEstateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filter_fragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreen"
+        android:label="filterFragment"
+        tools:layout="@layout/multiple_filters">
+
+    </fragment>
 </navigation>

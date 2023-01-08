@@ -14,10 +14,13 @@
             type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".appModule.dashboard.view.RealEstateFragment">
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        tools:context=".appModule.dashboard.view.RealEstateFragment">-->
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -26,7 +29,8 @@
             android:gravity="top"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{realEstateViewModel.isRealEstateVisible}">
 
             <include
                 layout="@layout/toolbar_layout"
@@ -135,7 +139,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/filter"
-                    android:scaleType="fitCenter" />
+                    android:scaleType="fitCenter"
+                    android:onClick="@{(view)->realEstateViewModel.filterClick()}"/>
             </LinearLayout>
 
             <com.facebook.shimmer.ShimmerFrameLayout
@@ -175,5 +180,19 @@
 
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            android:id="@+id/filter_fragment"-->
+<!--            app:behavior_hideable="true"-->
+<!--            app:behavior_peekHeight="0dp"-->
+<!--            android:layout_marginTop="@dimen/dimen30dp"-->
+<!--            android:padding="@dimen/dimen10dp"-->
+<!--            app:behavior_skipCollapsed="true"-->
+<!--            android:background="@drawable/filter_background"-->
+<!--            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:name="com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreen" />-->
+<!--    </androidx.coordinatorlayout.widget.CoordinatorLayout>-->
 </layout>

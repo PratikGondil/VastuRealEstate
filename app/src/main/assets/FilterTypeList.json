@@ -1,0 +1,29 @@
+{
+  "filtertypelist": [
+    {
+      "filtertype": "By Area"
+    },
+    {
+      "filtertype": "By Budget"
+    },
+    {
+      "filtertype": "By Property Type"
+    },
+
+    {
+      "filtertype": "By Bedrooms"
+    },
+    {
+      "filtertype": "By Bathrooms"
+    },
+    {
+      "filtertype": "By Listed By"
+    },
+    {
+      "filtertype": "By Super Buildup Area"
+    },
+    {
+      "filtertype": "Change sort"
+    }
+  ]
+}

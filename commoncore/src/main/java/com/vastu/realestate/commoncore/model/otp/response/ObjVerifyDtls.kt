@@ -7,5 +7,6 @@ data class ObjVerifyDtls (
     @SerializedName ("user_id") var userId : String?,
     @SerializedName ("first_name") var firstName : String?,
     @SerializedName ("mobile") var mobileNo: String?,
-    @SerializedName ("email") var emailId :String?
+    @SerializedName ("email") var emailId :String?,
+    @SerializedName("city") var city :String?
         ): Serializable

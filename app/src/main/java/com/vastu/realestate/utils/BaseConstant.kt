@@ -24,6 +24,8 @@ object BaseConstant {
   var REGISTER_DTLS_OBJ = "verifyotp"
   var PROPERTY_DETAILS = "PROPERTY_DETAILS"
   var PROPERTY_ID = "PROPERTY_ID"
+  var AMOUNTFORMAT = "#,###,###"
+  var FILTERTYPELIST = "FilterTypeList.json"
   var ENQUIRY_RESPONSE = "ENQUIRY_RESPONSE"
   var STATUS = "STATUS"
   var IS_FROM_PROPERTY_LIST = "IS_FROM_PROPERTY_LIST"

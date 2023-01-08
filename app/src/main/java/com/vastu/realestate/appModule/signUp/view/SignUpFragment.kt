@@ -56,7 +56,8 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
     private fun initView(){
         signUpFragmentBinding.autoCompleteCity.setOnTouchListener(this)
         signUpFragmentBinding.autoCompleteAreaList.setOnTouchListener(this)
-        val subAreaList = arrayOf("Nigdi","Kalewadi","Hinjewadi","Chinchwad","Kothrud")
+//        val subAreaList = arrayOf("Nigdi","Kalewadi","Hinjewadi","Chinchwad","Kothrud")
+
     }
     private fun observeCityList(){
         signUpViewModel.cityList.observe(viewLifecycleOwner) { cityList ->
