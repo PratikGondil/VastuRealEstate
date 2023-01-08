@@ -13,7 +13,7 @@ class DashboardActivity : BaseActivity() {
 
     private lateinit var activityDashboardBinding: ActivityVastuDashboardBinding
 
-    companion object{
+    companion object {
         var userId: String? = null
     }
 
@@ -26,16 +26,13 @@ class DashboardActivity : BaseActivity() {
     override fun onBackPressed() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.dashboardNavHost) as NavHostFragment?
         val fragment = navHostFragment!!.childFragmentManager.fragments[0]
-        if (fragment is LoanFragment || fragment is RealEstateDetailsFragment) {
-        if (fragment is LoanFragment || fragment is RealEstateDetailsFragment
-            || fragment is AddLoanEnquiryFragment || fragment is AddPropertyEnquiryFragment) {
-            super.onBackPressed()
-        }
-        else if( fragment is RealEstateFragment)
-        {
-            fragment.onClickBack()
-        }else {
-            finishAffinity()
-        }
+            if (fragment is LoanFragment || fragment is RealEstateFragment||fragment is RealEstateDetailsFragment
+                || fragment is AddLoanEnquiryFragment || fragment is AddPropertyEnquiryFragment
+            ) {
+                super.onBackPressed()
+            } else {
+                finishAffinity()
+            }
+
     }
 }

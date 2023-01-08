@@ -6,8 +6,8 @@
     <data>
         <import type="com.vastu.realestate.appModule.dashboard.bindingAdapter.FiletrBindingAdapter"/>
         <variable
-            name="filterViewModel"
-            type="com.vastu.realestate.appModule.dashboard.viewmodel.FilterViewModel" />
+            name="realEstateViewModel"
+            type="com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             android:id="@+id/txt_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{filterViewModel.title}"
+            android:text="@{realEstateViewModel.title}"
             android:textSize="@dimen/text_size_small"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/icon_color"
@@ -41,7 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llTitle"
-        setVisibility="@{filterViewModel.isVisibleSubAreaLayout}"
+        setVisibility="@{realEstateViewModel.isVisibleSubAreaLayout}"
         >
 
         <androidx.recyclerview.widget.RecyclerView
@@ -61,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llSubAreaLayout"
-        setVisibility="@{filterViewModel.isVisibleBudgetLayout}"
+        setVisibility="@{realEstateViewModel.isVisibleBudgetLayout}"
       >
 
         <ImageView
@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:src="@{filterViewModel.range}" />
+            android:src="@{realEstateViewModel.range}" />
 <LinearLayout
     android:id="@+id/llLimitBar"
     android:layout_width="match_parent"
@@ -85,7 +85,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
             android:gravity="start"
-            android:text="@{filterViewModel.lowerLimit}"
+            android:text="@{realEstateViewModel.lowerLimit}"
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_small"
             android:layout_weight="0.5"
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
             android:gravity="end"
-            android:text="@{filterViewModel.upperLimit}"
+            android:text="@{realEstateViewModel.upperLimit}"
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_small"
             android:layout_weight="0.5"
@@ -105,7 +105,7 @@
 </LinearLayout>
         <com.google.android.material.slider.RangeSlider
             android:id="@+id/budgetRangeSlider"
-            viewmodel="@{filterViewModel}"
+            viewmodel="@{realEstateViewModel}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/llLimitBar"
@@ -114,7 +114,8 @@
             android:valueTo="@integer/budget_upper_limit"
             app:haloColor="@color/white"
             app:labelBehavior="gone"
-            app:values="@array/rangeSliderValues" />
+            app:values="@array/rangeSliderValues"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -127,7 +128,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/dimen10dp"
-        setVisibility="@{filterViewModel.isVisiblePropertyLayout}"
+        setVisibility="@{realEstateViewModel.isVisiblePropertyLayout}"
 
         >
         <androidx.appcompat.widget.AppCompatCheckBox
@@ -136,32 +137,37 @@
             android:layout_height="wrap_content"
             android:text="@string/houses_and_Villas"
             android:textAppearance="@style/TextAppearance"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isHousesSelected}"/>
+            android:textColor="@color/black"
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isHousesSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkApartment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/apartments"
             android:textAppearance="@style/TextAppearance"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isApartmentSelected}"/>
+            android:textColor="@color/black"
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isApartmentSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkBuilderFloor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/builder_floors"
             android:textAppearance="@style/TextAppearance"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isBuilerFloorSelected}"/>
+            android:textColor="@color/black"
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isBuilerFloorSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/check_farm_house"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/farmhouses"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isFarmHousesSelected}"
-            android:textAppearance="@style/TextAppearance"/>
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isFarmHousesSelected}"
+            android:textAppearance="@style/TextAppearance"
+            android:textColor="@color/black"
+            />
 
     </LinearLayout>
     <LinearLayout
@@ -173,7 +179,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llProprtyType"
-        setVisibility="@{filterViewModel.isVisiblePricePerSqFtLayout}"
+        setVisibility="@{realEstateViewModel.isVisiblePricePerSqFtLayout}"
         >
 
         <ImageView
@@ -197,7 +203,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="start"
-                android:text="@{filterViewModel.lowerLimitForPerSq}"
+                android:text="@{realEstateViewModel.lowerLimitForPerSq}"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/text_size_small"
                 android:layout_weight="0.5"/>
@@ -208,14 +214,14 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="end"
-                android:text="@{filterViewModel.upperLimitForPerSq}"
+                android:text="@{realEstateViewModel.upperLimitForPerSq}"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/text_size_small"
                 android:layout_weight="0.5"/>
         </LinearLayout>
         <com.google.android.material.slider.RangeSlider
             android:id="@+id/rangeSliderForSqFt"
-            viewmodel="@{filterViewModel}"
+            viewmodel="@{realEstateViewModel}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/llSqFtLimitBar"
@@ -236,7 +242,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llPricePerSqFtLayout"
-        setVisibility="@{filterViewModel.isVisibleByBedroomsLayout}"
+        setVisibility="@{realEstateViewModel.isVisibleByBedroomsLayout}"
         android:orientation="vertical"
         >
         <TextView
@@ -244,10 +250,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/onebedroom"
+            style="@style/TextAppearance"
+            android:textColor="@color/black"
             android:padding="@dimen/dimen10dp"
             android:layout_margin="@dimen/dimen5dp"
             android:background="@drawable/filter_option_background_on_disselect"
-            viewmodel="@{filterViewModel}"
+            viewmodel="@{realEstateViewModel}"
             />
         <TextView
             android:id="@+id/txtBedroomTwo"
@@ -257,7 +265,8 @@
             android:background="@drawable/filter_option_background_on_disselect"
             android:padding="@dimen/dimen10dp"
             android:text="@string/twobedrooms"
-            viewmodel="@{filterViewModel}"
+            style="@style/TextAppearance"
+            viewmodel="@{realEstateViewModel}"
             />
         <TextView
         android:id="@+id/txtBedroomThree"
@@ -266,8 +275,9 @@
         android:text="@string/threebedrooms"
         android:padding="@dimen/dimen10dp"
         android:layout_margin="@dimen/dimen5dp"
+        style="@style/TextAppearance"
         android:background="@drawable/filter_option_background_on_disselect"
-        viewmodel="@{filterViewModel}"
+        viewmodel="@{realEstateViewModel}"
 
             />
         <TextView
@@ -277,8 +287,9 @@
         android:text="@string/fourbedrooms"
         android:padding="@dimen/dimen10dp"
         android:layout_margin="@dimen/dimen5dp"
+        style="@style/TextAppearance"
         android:background="@drawable/filter_option_background_on_disselect"
-        viewmodel="@{filterViewModel}"
+        viewmodel="@{realEstateViewModel}"
             />
 
 
@@ -291,7 +302,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llNoOfBedroom"
-        setVisibility="@{filterViewModel.isVisibleByBathroomsLayout}"
+        setVisibility="@{realEstateViewModel.isVisibleByBathroomsLayout}"
         android:orientation="vertical"
         >
         <TextView
@@ -301,8 +312,9 @@
             android:text="@string/onebathroom"
             android:padding="@dimen/dimen10dp"
             android:layout_margin="@dimen/dimen5dp"
+            style="@style/TextAppearance"
             android:background="@drawable/filter_option_background_on_disselect"
-            viewmodel="@{filterViewModel}"
+            viewmodel="@{realEstateViewModel}"
             />
         <TextView
             android:id="@+id/txtBathroomTwo"
@@ -311,8 +323,9 @@
             android:text="@string/twobathrooms"
             android:padding="@dimen/dimen10dp"
             android:layout_margin="@dimen/dimen5dp"
+            style="@style/TextAppearance"
             android:background="@drawable/filter_option_background_on_disselect"
-            viewmodel="@{filterViewModel}"
+            viewmodel="@{realEstateViewModel}"
             />
 
     </LinearLayout>
@@ -326,7 +339,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/dimen10dp"
-        setVisibility="@{filterViewModel.isVisibleByFurnishingLayout}"
+        setVisibility="@{realEstateViewModel.isVisibleByFurnishingLayout}"
 
         >
         <androidx.appcompat.widget.AppCompatCheckBox
@@ -335,24 +348,27 @@
             android:layout_height="wrap_content"
             android:text="@string/furnished"
             android:textAppearance="@style/TextAppearance"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isHousesSelected}"/>
+            android:textColor="@color/black"
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isHousesSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkUnfurnished"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/unfurnished"
             android:textAppearance="@style/TextAppearance"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isApartmentSelected}"/>
+            android:textColor="@color/black"
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isApartmentSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkSemiFurnished"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/semi_furnished"
             android:textAppearance="@style/TextAppearance"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isBuilerFloorSelected}"/>
+            android:textColor="@color/black"
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isBuilerFloorSelected}"/>
 
 
     </LinearLayout>
@@ -366,7 +382,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/dimen10dp"
-        setVisibility="@{filterViewModel.isVisibleConstructionStsLayout()}"
+        setVisibility="@{realEstateViewModel.isVisibleConstructionStsLayout()}"
 
         >
         <androidx.appcompat.widget.AppCompatCheckBox
@@ -375,24 +391,27 @@
             android:layout_height="wrap_content"
             android:text="@string/under_const"
             android:textAppearance="@style/TextAppearance"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isHousesSelected}"/>
+            android:textColor="@color/black"
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isHousesSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkReadyToMove"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ready_to_move"
             android:textAppearance="@style/TextAppearance"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isApartmentSelected}"/>
+            android:textColor="@color/black"
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isApartmentSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkNewLaunch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/new_launch"
             android:textAppearance="@style/TextAppearance"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isBuilerFloorSelected}"/>
+            android:textColor="@color/black"
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isBuilerFloorSelected}"/>
 
 
     </LinearLayout>
@@ -406,7 +425,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/dimen10dp"
-        setVisibility="@{filterViewModel.isVisibleListedLayout()}"
+        setVisibility="@{realEstateViewModel.isVisibleListedLayout()}"
 
         >
         <androidx.appcompat.widget.AppCompatCheckBox
@@ -415,24 +434,27 @@
             android:layout_height="wrap_content"
             android:text="@string/owner"
             android:textAppearance="@style/TextAppearance"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isHousesSelected}"/>
+            android:textColor="@color/black"
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isHousesSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/check_dealer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dealer"
             android:textAppearance="@style/TextAppearance"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isApartmentSelected}"/>
+            android:textColor="@color/black"
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isApartmentSelected}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/check_builder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/builder"
             android:textAppearance="@style/TextAppearance"
-            isChecked="@{filterViewModel}"
-            android:checked="@{filterViewModel.isBuilerFloorSelected}"/>
+            android:textColor="@color/black"
+            isChecked="@{realEstateViewModel}"
+            android:checked="@{realEstateViewModel.isBuilerFloorSelected}"/>
 
 
     </LinearLayout>
@@ -445,7 +467,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llListedBy"
-        setVisibility="@{filterViewModel.isVisibleBuildupAreaLayout()}"
+        setVisibility="@{realEstateViewModel.isVisibleBuildupAreaLayout()}"
         >
         <LinearLayout
             android:id="@+id/llLimitValue"
@@ -461,7 +483,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="start"
-                android:text="@{filterViewModel.lowerLimitForBuildupArea}"
+                android:text="@{realEstateViewModel.lowerLimitForBuildupArea}"
                 android:textColor="@color/icon_color"
                 android:textSize="@dimen/text_size_small"
                 android:layout_weight="0.5"/>
@@ -472,14 +494,14 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="end"
-                android:text="@{filterViewModel.upperLimitForBuildupArea}"
+                android:text="@{realEstateViewModel.upperLimitForBuildupArea}"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/text_size_small"
                 android:layout_weight="0.5"/>
         </LinearLayout>
         <com.google.android.material.slider.RangeSlider
             android:id="@+id/rangeSliderForBuildupAr"
-            viewmodel="@{filterViewModel}"
+            viewmodel="@{realEstateViewModel}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/llLimitValue"
@@ -498,7 +520,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llBuildupAreaLayout"
-        setVisibility="@{filterViewModel.isVisibleChangeSortLayout}"
+        setVisibility="@{realEstateViewModel.isVisibleChangeSortLayout}"
         android:orientation="vertical"
         >
         <TextView
@@ -506,50 +528,55 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/date_published"
+            style="@style/TextAppearance"
             android:padding="@dimen/dimen10dp"
             android:layout_margin="@dimen/dimen5dp"
             android:background="@drawable/filter_option_background_on_disselect"
-            viewmodel="@{filterViewModel}"
+            viewmodel="@{realEstateViewModel}"
             />
         <TextView
             android:id="@+id/txtRelevance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/relevance"
+            style="@style/TextAppearance"
             android:padding="@dimen/dimen10dp"
             android:layout_margin="@dimen/dimen5dp"
             android:background="@drawable/filter_option_background_on_disselect"
-            viewmodel="@{filterViewModel}"
+            viewmodel="@{realEstateViewModel}"
             />
         <TextView
             android:id="@+id/txtPriceIncr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/price_low_to_high"
+            style="@style/TextAppearance"
             android:padding="@dimen/dimen10dp"
             android:layout_margin="@dimen/dimen5dp"
             android:background="@drawable/filter_option_background_on_disselect"
-            viewmodel="@{filterViewModel}"
+            viewmodel="@{realEstateViewModel}"
             />
         <TextView
             android:id="@+id/txtPriceDecr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/price_high_to_low"
+            style="@style/TextAppearance"
             android:padding="@dimen/dimen10dp"
             android:layout_margin="@dimen/dimen5dp"
             android:background="@drawable/filter_option_background_on_disselect"
-            viewmodel="@{filterViewModel}"
+            viewmodel="@{realEstateViewModel}"
             />
         <TextView
             android:id="@+id/txtDistance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/distance"
+            style="@style/TextAppearance"
             android:padding="@dimen/dimen10dp"
             android:layout_margin="@dimen/dimen5dp"
             android:background="@drawable/filter_option_background_on_disselect"
-            viewmodel="@{filterViewModel}"
+            viewmodel="@{realEstateViewModel}"
             />
 
     </LinearLayout>

@@ -9,166 +9,166 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.slider.RangeSlider
 import com.vastu.realestate.R
-import com.vastu.realestate.appModule.dashboard.viewmodel.FilterViewModel
+import com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateViewModel
 import com.vastu.realestate.appModule.utils.BaseUtils
 import java.util.*
 
 object FiletrBindingAdapter {
     @BindingAdapter("viewmodel")
     @JvmStatic
-    fun RangeSlider.setLimits(filterViewModel: FilterViewModel){
+    fun RangeSlider.setLimits(realEstateViewModel: RealEstateViewModel){
         addOnSliderTouchListener(object :RangeSlider.OnSliderTouchListener{
 
             override fun onStartTrackingTouch(slider: RangeSlider) {
-                setValueToLimits(filterViewModel,id,values)
+                setValueToLimits(realEstateViewModel,id,values)
 
             }
 
             override fun onStopTrackingTouch(slider: RangeSlider) {
 
-                setValueToLimits(filterViewModel,id,values)
-                filterViewModel.removeChip(id)
-                addChip(context,filterViewModel,id)
+                setValueToLimits(realEstateViewModel,id,values)
+                realEstateViewModel.removeChip(id)
+                addChip(context,realEstateViewModel,id)
             }
 
         })
         addOnChangeListener(object :RangeSlider.OnChangeListener{
             override fun onValueChange(slider: RangeSlider, value: Float, fromUser: Boolean) {
-                setValueToLimits(filterViewModel,id,values)
+                setValueToLimits(realEstateViewModel,id,values)
             }
 
         })
     }
-    fun setValueToLimits(filterViewModel:FilterViewModel,id:Int,values:List<Float>){
+    fun setValueToLimits(realEstateViewModel:RealEstateViewModel,id:Int,values:List<Float>){
         when(id){
             R.id.budgetRangeSlider->{
-                filterViewModel.lowerLimit.set(BaseUtils.amountFormatter(values[0].toInt()))
-                filterViewModel.upperLimit.set(BaseUtils.amountFormatter(values[1].toInt()))
+                realEstateViewModel.lowerLimit.set(BaseUtils.amountFormatter(values[0].toInt()))
+                realEstateViewModel.upperLimit.set(BaseUtils.amountFormatter(values[1].toInt()))
             }
             R.id.rangeSliderForSqFt->{
-                filterViewModel.lowerLimitForPerSq.set(BaseUtils.amountFormatter(values[0].toInt()))
-                filterViewModel.upperLimitForPerSq.set(BaseUtils.amountFormatter(values[1].toInt()))
+                realEstateViewModel.lowerLimitForPerSq.set(BaseUtils.amountFormatter(values[0].toInt()))
+                realEstateViewModel.upperLimitForPerSq.set(BaseUtils.amountFormatter(values[1].toInt()))
             }
             R.id.rangeSliderForBuildupAr->{
-                filterViewModel.lowerLimitForBuildupArea.set(BaseUtils.amountFormatter(values[0].toInt()))
-                filterViewModel.upperLimitForBuildupArea.set(BaseUtils.amountFormatter(values[1].toInt()))
+                realEstateViewModel.lowerLimitForBuildupArea.set(BaseUtils.amountFormatter(values[0].toInt()))
+                realEstateViewModel.upperLimitForBuildupArea.set(BaseUtils.amountFormatter(values[1].toInt()))
             }
         }
     }
 
-    fun addChip(context: Context,filterViewModel: FilterViewModel,id: Int){
+    fun addChip(context: Context,realEstateViewModel: RealEstateViewModel,id: Int){
         when(id){
             R.id.budgetRangeSlider->{
-                filterViewModel.addChip(context.getString(R.string.chip_text_budget)+filterViewModel.lowerLimit.get() +"-"+filterViewModel.upperLimit.get())
+                realEstateViewModel.addChip(context.getString(R.string.chip_text_budget)+realEstateViewModel.lowerLimit.get() +"-"+realEstateViewModel.upperLimit.get())
 
             }
             R.id.rangeSliderForSqFt->{
-                filterViewModel.addChip(context.getString(R.string.chip_text_price_per_sq)+filterViewModel.lowerLimitForPerSq.get()+"-"+filterViewModel.upperLimitForPerSq.get())
+                realEstateViewModel.addChip(context.getString(R.string.chip_text_price_per_sq)+realEstateViewModel.lowerLimitForPerSq.get()+"-"+realEstateViewModel.upperLimitForPerSq.get())
 
             }
             R.id.rangeSliderForBuildupAr->{
-                filterViewModel.addChip(context.getString(R.string.chip_text_builtup_area)+filterViewModel.lowerLimitForBuildupArea.get()+"-"+filterViewModel.upperLimitForBuildupArea.get())
+                realEstateViewModel.addChip(context.getString(R.string.chip_text_builtup_area)+realEstateViewModel.lowerLimitForBuildupArea.get()+"-"+realEstateViewModel.upperLimitForBuildupArea.get())
 
             }
         }
     }
     @BindingAdapter("isChecked")
     @JvmStatic
-    fun AppCompatCheckBox.isSelected(filterViewModel: FilterViewModel){
+    fun AppCompatCheckBox.isSelected(realEstateViewModel: RealEstateViewModel){
         setOnClickListener(object:View.OnClickListener{
             override fun onClick(p0: View?) {
                 when(id){
                     R.id.checkHouses->{
                         if(isChecked){
-                            filterViewModel.addChip(text as String)
+                            realEstateViewModel.addChip(text as String)
                         }
                         else
-                            filterViewModel.removeChip(id)
+                            realEstateViewModel.removeChip(id)
                     }
                     R.id.checkApartment->{
                         if(isChecked){
-                            filterViewModel.addChip(text as String)
+                            realEstateViewModel.addChip(text as String)
                         }
                         else
-                            filterViewModel.removeChip(id)
+                            realEstateViewModel.removeChip(id)
                     }
 
                     R.id.checkBuilderFloor->{
                     if(isChecked){
-                        filterViewModel.addChip(text as String)
+                        realEstateViewModel.addChip(text as String)
                     }
                     else
-                        filterViewModel.removeChip(id)
+                        realEstateViewModel.removeChip(id)
                 }
                     R.id.check_farm_house->{
                         if(isChecked){
-                            filterViewModel.addChip(text as String)
+                            realEstateViewModel.addChip(text as String)
                         }
                         else
-                            filterViewModel.removeChip(id)
+                            realEstateViewModel.removeChip(id)
                     }
                     R.id.checkFurnished->{
                         if(isChecked){
-                            filterViewModel.addChip(text as String)
+                            realEstateViewModel.addChip(text as String)
                         }
                         else
-                            filterViewModel.removeChip(id)
+                            realEstateViewModel.removeChip(id)
                     }
                     R.id.checkUnfurnished ->{
                         if(isChecked){
-                            filterViewModel.addChip(text as String)
+                            realEstateViewModel.addChip(text as String)
                         }
                         else
-                            filterViewModel.removeChip(id)
+                            realEstateViewModel.removeChip(id)
                     }
                     R.id.checkSemiFurnished ->{
                         if(isChecked){
-                            filterViewModel.addChip(text as String)
+                            realEstateViewModel.addChip(text as String)
                         }
                         else
-                            filterViewModel.removeChip(id)
+                            realEstateViewModel.removeChip(id)
                     }
                     R.id.checkUnderConst->{
                         if(isChecked){
-                            filterViewModel.addChip(text as String)
+                            realEstateViewModel.addChip(text as String)
                         }
                         else
-                            filterViewModel.removeChip(id)
+                            realEstateViewModel.removeChip(id)
                     }
                     R.id.checkReadyToMove ->{
                         if(isChecked){
-                            filterViewModel.addChip(text as String)
+                            realEstateViewModel.addChip(text as String)
                         }
                         else
-                            filterViewModel.removeChip(id)
+                            realEstateViewModel.removeChip(id)
                     }
                     R.id.checkNewLaunch ->{
                         if(isChecked){
-                            filterViewModel.addChip(text as String)
+                            realEstateViewModel.addChip(text as String)
                         }
                         else
-                            filterViewModel.removeChip(id)
+                            realEstateViewModel.removeChip(id)
                     }
                     R.id.check_owner ->{
                         if(isChecked){
-                            filterViewModel.addChip(text as String)
+                            realEstateViewModel.addChip(text as String)
                         }
                         else
-                            filterViewModel.removeChip(id)
+                            realEstateViewModel.removeChip(id)
                     }
                     R.id.check_dealer->{
                         if(isChecked){
-                            filterViewModel.addChip(text as String)
+                            realEstateViewModel.addChip(text as String)
                         }
                         else
-                            filterViewModel.removeChip(id)
+                            realEstateViewModel.removeChip(id)
                     }
                     R.id.check_builder->{
                         if(isChecked){
-                            filterViewModel.addChip(text as String)
+                            realEstateViewModel.addChip(text as String)
                         }
                         else
-                            filterViewModel.removeChip(id)
+                            realEstateViewModel.removeChip(id)
                     }
 
                 }
@@ -181,16 +181,16 @@ object FiletrBindingAdapter {
     }
     @BindingAdapter("viewmodel")
     @JvmStatic
-    fun TextView.changeBackground(filterViewModel:FilterViewModel){
+    fun TextView.changeBackground(realEstateViewModel:RealEstateViewModel){
         setOnClickListener(object :View.OnClickListener{
             override fun onClick(p0: View?) {
                 if (Objects.equals(getBackground().getConstantState(), ContextCompat.getDrawable(context,R.drawable.filter_option_background_on_disselect)!!.getConstantState())) {
                     setBackgroundResource(R.drawable.filter_option_background_onselect)
-                    filterViewModel.addChip(text as String)
+                    realEstateViewModel.addChip(text as String)
                 }
                 else{
                     setBackgroundResource(R.drawable.filter_option_background_on_disselect)
-                    filterViewModel.removeChip(id)
+                    realEstateViewModel.removeChip(id)
                 }
 
 

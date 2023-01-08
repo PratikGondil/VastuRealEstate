@@ -40,22 +40,16 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
 
 
     override fun onSendOtpClick() {
-//        val bundle = Bundle()
-//        objRegisterDlts = objRegisterDlts.copy(userId = 1)
-//        bundle.putSerializable(BaseConstant.REGISTER_DTLS_OBJ, objRegisterDlts)
-//        findNavController().navigate(R.id.action_LoginSignUpFragment_To_OTPFragment,bundle)
+
         if(viewModel.isValidMobileNumber.get()!!){
             showProgressDialog()
             viewModel.callLoginApi(viewModel.mobileNumber.get().toString())
         }
         else{
-//            viewModel.errorVisible.set(View.VISIBLE)
             binder.tilMobileNumLayout.helperText= viewModel.error.get()
         }
 
-//        if(!viewModel.mobileNumber.get().isNullOrEmpty()){
-//            setOtpView()
-//        }
+
     }
     override fun launchOtpScreen(objLoginResponseMain: ObjLoginResponseMain) {
         hideProgressDialog()

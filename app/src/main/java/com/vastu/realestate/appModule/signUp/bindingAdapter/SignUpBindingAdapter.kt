@@ -14,6 +14,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
 import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaDataList
@@ -31,9 +32,9 @@ object SignUpBindingAdapter {
     var isValidSubArea:Boolean=false
 
 
-    @BindingAdapter("validateField")
+    @BindingAdapter("validateField","tilLayout")
     @JvmStatic
-    fun TextInputEditText.validateUserData(signUpViewModel: SignUpViewModel) {
+    fun TextInputEditText.validateUserData(signUpViewModel: SignUpViewModel,parentLayout: TextInputLayout) {
         addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -45,11 +46,11 @@ object SignUpBindingAdapter {
                         if(isValidName(input.toString().trim())) {
                             isValidFirstName= true
                             signUpViewModel.firstName.set(input!!.toString().trim())
+                            parentLayout.helperText = ""
                         }
-                        else
+                        else{
                             isValidFirstName= false
-
-//                        setSelection(text!!.length)
+                            parentLayout.helperText = context.getString(R.string.required)}
 
                     }
 
@@ -58,31 +59,33 @@ object SignUpBindingAdapter {
                         if(isValidName(input.toString())){
                             isValidMiddleName = true
                             signUpViewModel.middleName.set(input!!.toString().trim())
+                            parentLayout.helperText = ""
                         }
-                        else
+                        else{
                             isValidMiddleName= false
-//                        setSelection(text!!.length)
-
+                            parentLayout.helperText = context.getString(R.string.required)}
                     }
 
                     R.id.edtLastName ->{
                         if(isValidName(input.toString())) {
                             isValidLastName = true
                             signUpViewModel.lastName.set(input!!.toString().trim())
+                            parentLayout.helperText = ""
                         }
-                        else
+                        else{
                             isValidLastName = false
-//                        setSelection(text!!.length)
+                            parentLayout.helperText = context.getString(R.string.required)}
 
                     }
                     R.id.edtMobileNum ->{
                         if(isValidMobile(input.toString())) {
                             isValidMobileNo = true
                             signUpViewModel.mobileNumber.set(input!!.toString().trim())
+                            parentLayout.helperText = ""
                         }
-                        else
+                        else{
                             isValidMobileNo =false
-//                        setSelection(text!!.length)
+                            parentLayout.helperText = context.getString(R.string.required)}
 
                     }
 
@@ -90,10 +93,11 @@ object SignUpBindingAdapter {
                         if(isValidEmail(input.toString())){
                             isValidEmailId = true
                             signUpViewModel.mailId.set(input!!.toString().trim())
+                            parentLayout.helperText = ""
                         }
-                        else
+                        else{
                             isValidEmailId = false
-//                        setSelection(text!!.length)
+                            parentLayout.helperText = context.getString(R.string.required)}
 
                     }
 
@@ -117,10 +121,10 @@ fun isValidEmail(email:String):Boolean{
     fun isValidMobile(mobileNo:String):Boolean{
         return MOBILE_REGEX.toRegex().containsMatchIn(mobileNo)
     }
-    @BindingAdapter("android:onItemClick", "android:context")
+    @BindingAdapter("android:onItemClick", "android:context","tilLayout")
     @JvmStatic
     fun AutoCompleteTextView.autoCompleteTextClick(
-        viewModel: SignUpViewModel, context: Context
+        viewModel: SignUpViewModel, context: Context,parentLayout: TextInputLayout
     ) {
 
      onItemClickListener =
@@ -131,11 +135,12 @@ fun isValidEmail(email:String):Boolean{
                     R.id.autoCompleteCity ->{
                         isValidCity = true
                         viewModel.city.value = adapter.getItem(i) as ObjTalukaDataList?
+                        parentLayout.helperText = ""
                     }
                     R.id.autoCompleteAreaList ->{
                         isValidSubArea = true
                         viewModel.subArea.set(adapter.getItem(i) as ObjCityAreaData?)
-
+                        parentLayout.helperText = ""
                     }
 
                 }

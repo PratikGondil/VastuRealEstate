@@ -163,7 +163,7 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
     }
 
     override fun onClickOffers() {
-        TODO("Not yet implemented")
+       findNavController().navigate(R.id.action_VastuDashboardFragment_to_OfferFragment)
     }
 
     override fun onClickContactUs() {

@@ -171,6 +171,9 @@
     <string name="by_listed_by">By Listed By</string>
     <string name="by_buildup_area">By Super Buildup Area</string>
     <string name="change_sort">Change sort</string>
+    <string name="apply_btn_text">Apply</string>
+    <string name="clear_btn_text">Clear all</string>
+    <string name="coming_soon_text">Coming soon</string>
 
     <string-array name="rangeSliderValues" >
     <item>0</item>

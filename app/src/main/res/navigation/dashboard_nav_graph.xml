@@ -19,8 +19,19 @@
         <action
             android:id="@+id/action_VastuDashboardFragment_to_EnquiryFragment"
             app:destination="@id/EnquiryFragment" />
+        <action
+            android:id="@+id/action_VastuDashboardFragment_to_OfferFragment"
+            app:destination="@id/OfferFragment" />
     </fragment>
-
+    <fragment
+        android:id="@+id/OfferFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.offers.OffersFragment"
+        android:label="OfferFragment"
+        tools:layout="@layout/offers_fragment">
+        <action
+            android:id="@+id/action_OfferFragment_to_VastuDashboardFragment"
+            app:destination="@id/VastuDashboardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/RealEstateFragment"
         android:name="com.vastu.realestate.appModule.dashboard.view.RealEstateFragment"

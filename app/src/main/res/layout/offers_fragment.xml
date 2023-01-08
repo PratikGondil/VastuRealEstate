@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="drawerViewModel"
+        type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
+
+    <variable
+        name="offerViewModel"
+        type="com.vastu.realestate.appModule.dashboard.viewmodel.offer.OfferViewModel" />
+</data>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/llToolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+    <include
+        layout="@layout/toolbar_layout"
+        bind:drawerViewModel="@{drawerViewModel}" />
+    </LinearLayout>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvGbpView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen110dp"
+        app:cardCornerRadius="@dimen/dimen20dp"
+        android:layout_marginTop="@dimen/dimen20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llToolbarLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="@dimen/dimen10dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@drawable/offer_gradient"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/offer_icon"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/dimen20dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/coming_soon_text"
+                android:textSize="@dimen/text_size_xxxlarge"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppins_extrabold"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_margin="@dimen/dimen10dp"
+               />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

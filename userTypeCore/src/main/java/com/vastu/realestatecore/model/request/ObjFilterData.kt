@@ -6,7 +6,7 @@ data class ObjFilterData(
     @SerializedName("subArea")
     var subAreaId:ArrayList<String> = arrayListOf(),
     @SerializedName("budget")
-    var budget:ObjBudgetLimits? = null,
+    var budget:ArrayList<String> = arrayListOf(),
     @SerializedName("propertyType")
     var propertyType: ArrayList<String> = arrayListOf(),
     @SerializedName("pricePerSqFt")
@@ -22,7 +22,7 @@ data class ObjFilterData(
     @SerializedName("listedBy")
     var listedBy: ArrayList<String> = arrayListOf(),
     @SerializedName("buildUpArea")
-    var buildUpArea:ObjBuildUpAreaLimits? = null,
+    var buildUpArea:ArrayList<String> = arrayListOf(),
     @SerializedName("sortBy")
     var sortBy: ArrayList<String> = arrayListOf(),
 )
