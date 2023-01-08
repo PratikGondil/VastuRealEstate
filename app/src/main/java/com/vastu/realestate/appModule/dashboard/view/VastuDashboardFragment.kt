@@ -3,6 +3,7 @@ package com.vastu.realestate.appModule.dashboard.view
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +24,12 @@ import com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewMode
 import com.vastu.realestate.appModule.enquirylist.view.EnquiryActivity
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.databinding.FragmentVastuDashboardBinding
+import com.vastu.realestate.databinding.MainNavDrawerBinding
 import com.vastu.realestate.utils.BaseConstant
+import com.vastu.realestate.utils.BaseConstant.ADMIN
+import com.vastu.realestate.utils.BaseConstant.BUILDER
+import com.vastu.realestate.utils.BaseConstant.CUSTOMER
+import com.vastu.realestate.utils.BaseConstant.EMPLOYEES
 import com.vastu.realestate.utils.BaseConstant.IS_FROM_PROPERTY_LIST
 import com.vastu.realestate.utils.PreferenceKEYS
 import com.vastu.realestate.utils.PreferenceKEYS.DASHBOARD_SLIDER_LIST
@@ -36,6 +42,7 @@ import com.vastu.usertypecore.model.response.ObjGetUserTypeResMain
 class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListener,
     INavDrawerListener, IAdvertisementSliderListener {
         private lateinit var dashboardBinding: FragmentVastuDashboardBinding
+        private lateinit var navBinding:MainNavDrawerBinding
         private lateinit var viewModel: VastuDashboardViewModel
         private lateinit var drawerViewModel: DrawerViewModel
         private lateinit var objVerifyDetails:ObjVerifyDtls
@@ -52,6 +59,7 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
     ): View? {
         drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
         viewModel = ViewModelProvider(this)[VastuDashboardViewModel::class.java]
+        navBinding = DataBindingUtil.inflate(inflater,R.layout.main_nav_drawer,container,false)
         dashboardBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_vastu_dashboard, container, false)
         dashboardBinding.lifecycleOwner = this
         dashboardBinding.vastuDashboardViewModel = viewModel
@@ -97,6 +105,7 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
     override fun onSuccessGetUserType(objGetUserTypeResMain: ObjGetUserTypeResMain) {
        hideProgressDialog()
         userType = objGetUserTypeResMain.getUserTypeDataDetailsResponse.userTypeData.get(0).userType
+        layoutChange()
         getAdvertisementSlider()
     }
 
@@ -110,6 +119,30 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
         super.onResume()
         drawerViewModel.toolbarTitle.set(getString(R.string.vastu))
         drawerViewModel.isDashBoard.set(true)
+    }
+    private fun layoutChange(){
+        navBinding.apply {
+            when(userType){
+                ADMIN->{
+                    navEnquiry.visibility = View.VISIBLE
+                    navProperties.visibility = View.VISIBLE
+                    dashboardBinding.floatAddProperty.visibility = View.VISIBLE
+                }
+                CUSTOMER->{
+                    navEnquiry.visibility = View.GONE
+                    navProperties.visibility = View.GONE
+                    dashboardBinding.floatAddProperty.visibility = View.GONE
+                }
+                BUILDER->{
+                    navEnquiry.visibility = View.GONE
+                    navProperties.visibility = View.VISIBLE
+                    dashboardBinding.floatAddProperty.visibility = View.VISIBLE
+                }
+                EMPLOYEES->{
+
+                }
+            }
+        }
     }
 
     override fun onSuccessAdvertisementSlider(advertisementSliderMainResponse: GetAdvertisementSliderMainResponse) {
