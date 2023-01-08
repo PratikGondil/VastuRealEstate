@@ -16,11 +16,13 @@
         android:layout_marginTop="@dimen/margin_small">
 
         <LinearLayout
+            android:id="@+id/layoutContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_vertical|center_horizontal"
             android:padding="@dimen/padding_xsmall"
+            android:clickable="true"
             android:background="@drawable/real_estate_background"
             app:cardCornerRadius="@dimen/card_corner_radius"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +30,6 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:id="@+id/itemViewContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -37,7 +38,7 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/property_image"
                     android:layout_width="0dp"
-                    android:layout_weight="0.6"
+                    android:layout_weight="0.65"
                     android:layout_marginStart="@dimen/margin_small"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:layout_height="@dimen/image_height"
@@ -50,7 +51,7 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1.4"
+                    android:layout_weight="1.35"
                     android:layout_margin="@dimen/margin_small"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">

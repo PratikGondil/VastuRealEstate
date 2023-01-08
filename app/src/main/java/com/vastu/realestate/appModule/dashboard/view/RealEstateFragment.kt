@@ -16,6 +16,7 @@ import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
 import com.vastu.realestate.appModule.dashboard.model.RealEstateList
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IRealEstateListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
+import com.vastu.realestate.appModule.dashboard.view.VastuDashboardFragment.Companion.userId
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateViewModel
 import com.vastu.realestate.databinding.FragmentRealEstateBinding
@@ -73,7 +74,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
 
     private fun getRealEstateList(){
         realEstateBinding.loadingLayout.startShimmerAnimation()
-        DashboardActivity.userId?.let { realEstateViewModel.getPropertyList(it) }
+        userId?.let { realEstateViewModel.getPropertyList(it) }
     }
     override fun onSuccessGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         val realEstates = objGetPropertyListResMain.getPropertyDetailsResponse.propertyData

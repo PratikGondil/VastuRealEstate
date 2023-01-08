@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName
 data class PropertyIdData(
     @SerializedName("address")
     val address: String,
+    @SerializedName("amenities")
+    val amenities: Any,
     @SerializedName("area")
     val area: String,
     @SerializedName("availability")

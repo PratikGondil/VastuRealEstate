@@ -120,7 +120,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/nav_add_property"
+                android:id="@+id/nav_properties"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -135,7 +135,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_add_property"
+                    android:src="@drawable/city"
                     android:scaleType="centerInside" />
 
                 <TextView
@@ -145,7 +145,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_normal"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="@string/add_property" />
+                    android:text="@string/properties" />
             </LinearLayout>
 
             <LinearLayout

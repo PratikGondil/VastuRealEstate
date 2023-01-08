@@ -18,7 +18,7 @@ import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertyDetailsListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertySliderListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
-import com.vastu.realestate.appModule.dashboard.view.DashboardActivity.Companion.userId
+import com.vastu.realestate.appModule.dashboard.view.VastuDashboardFragment.Companion.userId
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateDetailsViewModel
 import com.vastu.realestate.databinding.FragmentRealEstateDetailsBinding
@@ -80,6 +80,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     }
 
     override fun onSuccessPropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
+        imageList.clear()
         hideProgressDialog()
         sliderList = propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages
         for( slider in sliderList!!){
@@ -106,28 +107,33 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     }
 
     override fun addPropertyEnquiry() {
-        findNavController().navigate(R.id.action_RealEstateDetailsFragment_to_AddPropertyEnquiryFragment)
+        val bundle = Bundle()
+        bundle.putSerializable(BaseConstant.PROPERTY_ID, propertyId)
+        findNavController().navigate(R.id.action_RealEstateDetailsFragment_to_AddPropertyEnquiryFragment,bundle)
     }
 
     override fun chatEnquiry() {
-        TODO("Not yet implemented")
+
     }
 
     override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
         realEstateDetailsBinding.apply {
-            propertyData = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
+            val property = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
+            propertyData = property
+            val htmlPattern = "<[^>]*>"
 
-            descriptionTextview.text =  propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).description.replace("<p></p>...","")
-
-            val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
-            spannable.setSpan(BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
-                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            spannable.setSpan(BulletSpan(50, resources.getColor(R.color.black)), 20,  spannable.length,
-                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-            //highlightsTextview.text = spannable
-            highlightsTextview.text = Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights.trim())
+            if(property.highlights.length>20){
+                val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
+                spannable.setSpan(BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannable.setSpan(BulletSpan(50, resources.getColor(R.color.black)), 20,  spannable.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                highlightsTextview.text = Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights.trim())
+            }else{
+                highlightsTextview.text = property.highlights
+            }
+            descriptionTextview.text =  property.description.replace(htmlPattern," ",ignoreCase = false)
         }
     }
 

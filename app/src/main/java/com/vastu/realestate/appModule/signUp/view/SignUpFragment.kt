@@ -21,6 +21,7 @@ import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaDa
 import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaResponseMain
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
+import com.vastu.realestate.utils.BaseConstant.CUSTOMER
 import com.vastu.realestate.utils.BaseConstant.REGISTER_DTLS_OBJ
 
 class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener {
@@ -115,10 +116,10 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         middleName = signUpViewModel.middleName.get()!!,
         lastName = signUpViewModel.lastName.get()!!,
         mobile = signUpViewModel.mobileNumber.get()!!,
-        city = signUpViewModel.city.value!!.taluka,
-        subArea = signUpViewModel.subArea.get()!!.subArea!!,
+        city = signUpViewModel.city.value!!.talukaId,
+        subArea = signUpViewModel.subArea.get()!!.areaId!!,
         emailId = signUpViewModel.mailId.get()!!,
-        userType = "3")
+        userType = CUSTOMER)
     }
 
     private fun getCityList(){

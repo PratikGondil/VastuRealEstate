@@ -23,6 +23,8 @@ import com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewMode
 import com.vastu.realestate.appModule.enquirylist.view.EnquiryActivity
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.databinding.FragmentVastuDashboardBinding
+import com.vastu.realestate.utils.BaseConstant
+import com.vastu.realestate.utils.BaseConstant.IS_FROM_PROPERTY_LIST
 import com.vastu.realestate.utils.PreferenceKEYS
 import com.vastu.realestate.utils.PreferenceKEYS.DASHBOARD_SLIDER_LIST
 import com.vastu.realestate.utils.PreferenceKEYS.IS_LOGIN
@@ -41,6 +43,7 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
 
         companion object{
             var userType:String? = null
+            var userId: String? = null
         }
 
     override fun onCreateView(
@@ -74,13 +77,13 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
             objVerifyDetails = PreferenceManger.get<ObjVerifyDtls>(PreferenceKEYS.USER)!!
             drawerViewModel.mobileNo.set(objVerifyDetails.mobileNo!!)
             drawerViewModel.userName.set(objVerifyDetails.firstName!!)
-            DashboardActivity.userId = objVerifyDetails.userId!!
+            userId = objVerifyDetails.userId!!
         }
     }
 
      private fun getUserType(){
         showProgressDialog()
-        DashboardActivity.userId?.let { viewModel.getUserType(it) }
+        userId?.let { viewModel.getUserType(it) }
     }
     private fun getAdvertisementSlider(){
         showProgressDialog()
@@ -158,12 +161,20 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
         startActivity(Intent(activity, EnquiryActivity::class.java))
         closeDrawer()
     }
+
+    override fun onClickProperties() {
+        //findNavController().navigate(R.id.action)
+    }
+
     override fun onClickAddProperty() {
+        val bundle = Bundle()
+        bundle.putSerializable(IS_FROM_PROPERTY_LIST, false)
+        findNavController().navigate(R.id.action_VastuDashboardFragment_to_addPropertyFragment,bundle)
         closeDrawer()
     }
 
     override fun onClickOffers() {
-        TODO("Not yet implemented")
+
     }
 
     override fun onClickContactUs() {

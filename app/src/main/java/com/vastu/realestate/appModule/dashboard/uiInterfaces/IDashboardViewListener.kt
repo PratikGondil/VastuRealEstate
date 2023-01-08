@@ -8,4 +8,5 @@ interface IDashboardViewListener {
     fun onFailGetUserType(objGetUserTypeResMain: ObjGetUserTypeResMain)
     fun onRealEstateClick()
     fun onLoanClick()
+    fun onClickAddProperty()
 }

@@ -134,22 +134,14 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
 
     override fun onAddLoanEnquiryFailure(enquiryMainResponse: EnquiryMainResponse) {
         hideProgressDialog()
-        val bundle = Bundle()
-        bundle.putSerializable(BaseConstant.ENQUIRY_RESPONSE, enquiryMainResponse)
-        bundle.putBoolean(STATUS,false)
         clearAllFields()
         showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
-        //findNavController().navigate(R.id.action_AddPropertyEnquiryFragment_to_RealEstateFragment,bundle)
     }
 
     override fun onGotoDashboard(enquiryMainResponse: EnquiryMainResponse) {
         hideProgressDialog()
-        val bundle = Bundle()
-        bundle.putSerializable(BaseConstant.ENQUIRY_RESPONSE, enquiryMainResponse)
-        bundle.putBoolean(STATUS,true)
         clearAllFields()
         showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,true,false)
-        //findNavController().navigate(R.id.action_AddLoanEnquiryFragment_to_LoanFragment,bundle)
     }
 
     override fun onUserNotConnected() {

@@ -28,7 +28,7 @@ class RealEstateAdapter(private val itemClick: OnItemClickListener, private val 
         holder.binding.propertyPrizeTextview.text = context.getString(R.string.rupee)+" "+property.price
         holder.binding.propertyDetailsTextview.text = property.area+" "+ context.getString(R.string.st_ft)
         showImageFromURL(context,property.propertyThumbnail, holder.binding.propertyImage)
-        holder.itemView.setOnClickListener {
+        holder.binding.layoutContainer.setOnClickListener {
             itemClick.onItemClick(property)
         }
     }
@@ -40,7 +40,7 @@ class RealEstateAdapter(private val itemClick: OnItemClickListener, private val 
     }
 
 }
-    class RealEstateViewHolder(val binding: RealEstateItemviewBinding
+    class RealEstateViewHolder(val binding:RealEstateItemviewBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(propertyData: PropertyData) {
             binding.propertyData = propertyData

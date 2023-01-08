@@ -31,15 +31,6 @@
                         android:orientation="horizontal"
                         android:weightSum="1">
 
-                        <TextView
-                            android:text="@string/full_name"
-                            android:textColor="@color/black"
-                            app:fontFamily="@font/poppins_light"
-                            android:layout_width="0dp"
-                            android:layout_weight="0.5"
-                            android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_xsmall"
-                            android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/loan_name_textview"
@@ -52,7 +43,21 @@
                         android:gravity="start"
                         android:textSize="@dimen/text_size_small"
                         app:fontFamily="@font/poppins_medium"/>
+
+                        <TextView
+                            android:id="@+id/loan_mobile_textview"
+                            android:text="@{loanData.mobile}"
+                            android:textColor="@color/black"
+                            android:maxLines="1"
+                            android:maxLength="25"
+                            app:fontFamily="@font/poppins_regular"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -60,45 +65,6 @@
                         android:orientation="horizontal"
                         android:weightSum="1">
 
-                        <TextView
-                            android:text="@string/mobile_number_text"
-                            android:textColor="@color/black"
-                            app:fontFamily="@font/poppins_light"
-                            android:layout_width="0dp"
-                            android:layout_weight="0.5"
-                            android:textSize="@dimen/text_size_xsmall"
-                            android:gravity="center_vertical"
-                            android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/loan_mobile_textview"
-                        android:text="@{loanData.mobile}"
-                        android:textColor="@color/black"
-                        android:maxLines="1"
-                        android:maxLength="25"
-                        app:fontFamily="@font/poppins_regular"
-                        android:layout_width="0dp"
-                        android:layout_weight="0.5"
-                        android:gravity="start"
-                        android:textSize="@dimen/text_size_small"
-                        android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:text="@string/occupation_text"
-                            android:textColor="@color/black"
-                            app:fontFamily="@font/poppins_light"
-                            android:layout_width="0dp"
-                            android:layout_weight="0.5"
-                            android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_xsmall"
-                            android:layout_height="wrap_content" />
 
                         <TextView
                             android:id="@+id/loan_occupation_textview"
@@ -114,49 +80,26 @@
                             android:gravity="start"
                             android:textSize="@dimen/text_size_small"
                             android:layout_height="wrap_content" />
-                    </LinearLayout>
 
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_menu"
-                        android:orientation="horizontal"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:text="@string/address_text"
-                            android:textColor="@color/black"
-                            app:fontFamily="@font/poppins_light"
-                            android:layout_width="0dp"
-                            android:layout_weight="0.5"
-                            android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_xsmall"
-                            android:layout_height="wrap_content" />
 
                         <TextView
                             android:id="@+id/loan_address_textview"
                             android:text="@{loanData.address}"
                             android:textColor="@color/black"
-                            android:ellipsize="end"
+                            android:gravity="start|center_vertical"
+                            android:includeFontPadding="true"
+                            android:lines="2"
                             android:maxLines="2"
-                            android:maxLength="40"
-                            android:inputType="textCapWords"
+                            android:singleLine="false"
                             android:drawablePadding="@dimen/padding_small"
                             android:drawableStart="@drawable/location"
                             app:fontFamily="@font/poppins_regular"
-                            android:includeFontPadding="true"
                             android:layout_width="0dp"
                             android:layout_weight="0.5"
-                            android:gravity="start"
                             android:textSize="@dimen/text_size_small"
                             android:layout_height="wrap_content"/>
                     </LinearLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/ruler_color"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -165,15 +108,6 @@
                         android:orientation="horizontal"
                         android:weightSum="1">
 
-                        <TextView
-                            android:text="@string/loan_interested_in_text"
-                            android:textColor="@color/black"
-                            app:fontFamily="@font/poppins_light"
-                            android:layout_width="0dp"
-                            android:layout_weight="0.5"
-                            android:textSize="@dimen/text_size_xsmall"
-                            android:gravity="center_vertical"
-                            android:layout_height="wrap_content" />
 
                         <TextView
                             android:id="@+id/loan_interested_in_textview"
@@ -189,6 +123,21 @@
                             android:gravity="start"
                             android:textSize="@dimen/text_size_small"
                             android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/loan_bank_textview"
+                            android:text="@{loanData.preferredBank}"
+                            android:textColor="@color/black"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:maxLength="25"
+                            android:inputType="textCapWords"
+                            app:fontFamily="@font/poppins_regular"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.5"
+                            android:gravity="start"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -196,49 +145,6 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:weightSum="1">
-
-                        <TextView
-                            android:text="@string/preferred_bank"
-                            android:textColor="@color/black"
-                            app:fontFamily="@font/poppins_light"
-                            android:layout_width="0dp"
-                            android:layout_weight="0.5"
-                            android:textSize="@dimen/text_size_xsmall"
-                            android:gravity="center_vertical"
-                            android:layout_height="wrap_content" />
-
-
-                    <TextView
-                        android:id="@+id/loan_bank_textview"
-                        android:text="@{loanData.preferredBank}"
-                        android:textColor="@color/black"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:maxLength="25"
-                        android:inputType="textCapWords"
-                        app:fontFamily="@font/poppins_regular"
-                        android:layout_width="0dp"
-                        android:layout_weight="0.5"
-                        android:gravity="start"
-                        android:textSize="@dimen/text_size_small"
-                        android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="1">
-
-                        <TextView
-                            android:text="@string/loan_amount_text"
-                            android:textColor="@color/black"
-                            app:fontFamily="@font/poppins_light"
-                            android:layout_width="0dp"
-                            android:layout_weight="0.5"
-                            android:gravity="center_vertical"
-                            android:textSize="@dimen/text_size_xsmall"
-                            android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/loan_amount_textview"
@@ -253,37 +159,20 @@
                         android:gravity="start"
                         android:textSize="@dimen/text_size_small"
                         android:layout_height="wrap_content" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="1">
 
                         <TextView
-                            android:text="@string/loan_term_year_text"
+                            android:id="@+id/loan_term_year_textview"
+                            android:text="@{loanData.loanTermYear}"
                             android:textColor="@color/black"
-                            app:fontFamily="@font/poppins_light"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:maxLength="25"
+                            app:fontFamily="@font/poppins_regular"
                             android:layout_width="0dp"
                             android:layout_weight="0.5"
-                            android:textSize="@dimen/text_size_xsmall"
-                            android:gravity="center_vertical"
+                            android:gravity="start"
+                            android:textSize="@dimen/text_size_small"
                             android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:id="@+id/loan_term_year_textview"
-                        android:text="@{loanData.loanTermYear}"
-                        android:textColor="@color/black"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:maxLength="25"
-                        app:fontFamily="@font/poppins_regular"
-                        android:layout_width="0dp"
-                        android:layout_weight="0.5"
-                        android:gravity="start"
-                        android:textSize="@dimen/text_size_small"
-                        android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

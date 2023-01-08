@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.vastu.loanenquirycore.model.request.AddPropertyEnquiryRequest
 import com.vastu.loanenquirycore.model.response.enquiry.EnquiryMainResponse
 import com.vastu.loanenquirycore.model.response.interest.property.InterestedInData
@@ -33,6 +32,7 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
     private lateinit var addPropertyEnquiryViewModel: AddPropertyEnquiryViewModel
     private var addPropertyEnquiryRequest = AddPropertyEnquiryRequest()
     private lateinit var drawerViewModel: DrawerViewModel
+    private var propertyId : String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,7 +42,7 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
         addPropertyEnquiryViewModel = ViewModelProvider(this)[AddPropertyEnquiryViewModel::class.java]
         propertyViewBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_add_property_enquiry,container,false)
         propertyViewBinding.lifecycleOwner = this
-        propertyViewBinding.addPropertyViewModel = addPropertyEnquiryViewModel
+        propertyViewBinding.addPropertyEnquiryViewModel = addPropertyEnquiryViewModel
         addPropertyEnquiryViewModel.iAddPropertyEnquiryListener = this
         drawerViewModel.iToolbarListener = this
         propertyViewBinding.drawerViewModel= drawerViewModel
@@ -55,7 +55,15 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
         propertyViewBinding.autoCompleteOccupationList.setOnTouchListener(this)
         propertyViewBinding.autoCompletePropertyList.setOnTouchListener(this)
         propertyViewBinding.autoCompleteOwnershipList.setOnTouchListener(this)
-
+        getBundleData()
+    }
+    private fun getBundleData(){
+        val args = this.arguments
+        if (args != null){
+            if (args.getSerializable(BaseConstant.PROPERTY_ID) != null) {
+                propertyId =  args.getSerializable(BaseConstant.PROPERTY_ID) as String
+            }
+        }
     }
     override fun onResume() {
         super.onResume()
@@ -124,22 +132,14 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
 
     override fun onAddPropertyEnquiryFailure(enquiryMainResponse: EnquiryMainResponse) {
         hideProgressDialog()
-        val bundle = Bundle()
-        bundle.putSerializable(BaseConstant.ENQUIRY_RESPONSE, enquiryMainResponse)
-        bundle.putBoolean(BaseConstant.STATUS,false)
         clearAllFields()
         showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
-        //findNavController().navigate(R.id.action_AddPropertyEnquiryFragment_to_RealEstateFragment,bundle)
     }
 
     override fun onGotoDashboard(enquiryMainResponse: EnquiryMainResponse) {
       hideProgressDialog()
-      val bundle = Bundle()
-      bundle.putSerializable(BaseConstant.ENQUIRY_RESPONSE, enquiryMainResponse)
-      bundle.putBoolean(BaseConstant.STATUS,true)
       clearAllFields()
       showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,true,false)
-      //findNavController().navigate(R.id.action_AddPropertyEnquiryFragment_to_RealEstateFragment,bundle)
     }
 
     override fun onUserNotConnected() {
@@ -153,6 +153,7 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
     }
     private fun getPropertyEnquiryInfo():AddPropertyEnquiryRequest{
         addPropertyEnquiryRequest = addPropertyEnquiryRequest.copy(
+            propertyId = propertyId,
             firstName = addPropertyEnquiryViewModel.firstName.get(),
             middleName =addPropertyEnquiryViewModel.middleName.get(),
             lastName = addPropertyEnquiryViewModel.lastName.get(),

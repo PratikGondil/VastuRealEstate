@@ -127,6 +127,22 @@
             </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/floatAddProperty"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@string/add_property"
+            app:fontFamily="@font/poppins_medium"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_small"
+            app:icon="@drawable/ic_add"
+            app:iconTint="@color/white"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/margin_large"
+            android:onClick="@{(view)->vastuDashboardViewModel.onClickAddProperty()}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 

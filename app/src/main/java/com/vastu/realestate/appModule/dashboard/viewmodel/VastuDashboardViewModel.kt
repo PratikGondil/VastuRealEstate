@@ -20,6 +20,7 @@ class VastuDashboardViewModel(application: Application) : AndroidViewModel(appli
     lateinit var iDashboardViewListener : IDashboardViewListener
     lateinit var iAdvertisementSliderListener: IAdvertisementSliderListener
 
+
     var mContext :Application
     init {
         mContext = application
@@ -36,6 +37,9 @@ class VastuDashboardViewModel(application: Application) : AndroidViewModel(appli
     }
     fun onClickLoan(){
         iDashboardViewListener.onLoanClick()
+    }
+    fun onClickAddProperty(){
+        iDashboardViewListener.onClickAddProperty()
     }
 
     override fun getUserTypeSuccessResponse(objGetUserTypeResMain: ObjGetUserTypeResMain) {

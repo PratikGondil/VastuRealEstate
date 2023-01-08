@@ -82,7 +82,7 @@
     <string name="occupation_text">Occupation</string>
     <string name="property_interested_in_text">Property Interested In</string>
     <string name="ownership_text">Ownership</string>
-    <string name="area_text">Area</string>
+    <string name="area_text">Area(Sq.Ft.)</string>
     <string name="budget_text">Budget</string>
     <string name="loan_interested_in_text">Loan Interested In</string>
     <string name="preferred_bank_text">Preferred Bank</string>
@@ -118,6 +118,33 @@
     <string name="rupee">\u20B9</string>
     <string name="offers">Offers</string>
     <string name="st_ft">Sq.feet</string>
-
+    <string name="fill_up_the_property_details">Fill up the property details</string>
+    <string name="property_title">Property Title</string>
+    <string name="property_type">Property Type</string>
+    <string name="property_address">Property Address</string>
+    <string name="property_thumbnail_1080_800">Property Thumbnail(1080 * 800)</string>
+    <string name="choose_file">Choose File</string>
+    <string name="no_file_chosen">No file chosen</string>
+    <string name="brochure_pdf">Brochure(PDF)</string>
+    <string name="select_image">Select Image</string>
+    <string name="images">Images*</string>
+    <string name="upload">Upload</string>
+    <string name="property_title_error">Please enter property title</string>
+    <string name="state_error">Please enter state</string>
+    <string name="post_property">Post Property</string>
+    <string name="description_error">Please enter description</string>
+    <string name="highlights_error">Please enter highlights</string>
+    <string name="property_amount_error">Please enter property amount</string>
+    <string name="property_price_error">Please enter property price</string>
+    <string name="image_string">image</string>
+    <string name="video_string">video</string>
+    <string name="audio_string">audio</string>
+    <string name="id_string">_id=?</string>
+    <string name="content_string">content</string>
+    <string name="file_string">file</string>
+    <string name="data_string">_data</string>
+    <string name="slash">/</string>
+    <string name="property_id">Property ID</string>
+    <string name="properties">Properties</string>
 
 </resources>

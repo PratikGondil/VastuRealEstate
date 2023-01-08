@@ -13,10 +13,6 @@ class DashboardActivity : BaseActivity() {
 
     private lateinit var activityDashboardBinding: ActivityVastuDashboardBinding
 
-    companion object{
-        var userId: String? = null
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityDashboardBinding = DataBindingUtil.setContentView(this,R.layout.activity_vastu_dashboard)
@@ -27,7 +23,7 @@ class DashboardActivity : BaseActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.dashboardNavHost) as NavHostFragment?
         val fragment = navHostFragment!!.childFragmentManager.fragments[0]
         if (fragment is LoanFragment || fragment is RealEstateFragment || fragment is RealEstateDetailsFragment
-            || fragment is AddLoanEnquiryFragment || fragment is AddPropertyEnquiryFragment) {
+            || fragment is AddLoanEnquiryFragment || fragment is AddPropertyEnquiryFragment || fragment is AddPropertyFragment) {
             super.onBackPressed()
         }else {
             finishAffinity()
