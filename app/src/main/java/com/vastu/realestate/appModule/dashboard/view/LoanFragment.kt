@@ -4,13 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.loanenquirycore.model.response.enquiry.EnquiryMainResponse
+import com.vastu.loanenquirycore.model.response.interest.loan.LoanInterestMainResponse
+import com.vastu.loanenquirycore.model.response.interest.loan.LoanInterstedData
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.adapter.LoanAdapter
+import com.vastu.realestate.appModule.dashboard.adapter.OnItemClickListener
+import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
+import com.vastu.realestate.appModule.dashboard.model.RealEstateList
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.ILoanListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
@@ -18,12 +26,13 @@ import com.vastu.realestate.appModule.dashboard.viewmodel.LoanViewModel
 import com.vastu.realestate.commoncore.model.otp.ObjUserData
 import com.vastu.realestate.databinding.FragmentLoanBinding
 import com.vastu.realestate.utils.BaseConstant
+import com.vastu.realestate.utils.BaseConstant.LOAN_DATA
 import com.vastu.realestate.utils.PreferenceKEYS
 import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
 import com.vastu.slidercore.model.response.property.GetPropertySliderImagesResponse
 
-class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener {
+class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener, OnItemClickListener {
 
     private lateinit var loanBinding: FragmentLoanBinding
     private lateinit var loanViewModel: LoanViewModel
@@ -57,6 +66,16 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener {
             }
             imageSlider.setImageList(imageList, ScaleTypes.FIT)
             imageSlider.startSliding(3000)
+        }
+        getLoanList()
+    }
+
+    private fun getLoanList(){
+        try {
+           showProgressDialog()
+           loanViewModel.callLoanInterestedIn()
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
@@ -102,7 +121,38 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener {
         //onClickCarLoan
     }
 
+    override fun onLoanInterestedInListSuccess(loanInterestMainResponse: LoanInterestMainResponse) {
+        hideProgressDialog()
+        setLoanDetails(loanInterestMainResponse.getloanInterstedDetailsResponse.loanInterstedData)
+    }
+    private fun setLoanDetails(loanList:List<LoanInterstedData>){
+        try {
+            val recyclerViewLoan = loanBinding.loanRecyclerview
+            val loanAdapter = LoanAdapter(this,loanList)
+            recyclerViewLoan.adapter = loanAdapter
+            recyclerViewLoan.layoutManager = LinearLayoutManager(activity)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onLoanInterestedInListFailure(loanInterestMainResponse: LoanInterestMainResponse) {
+        hideProgressDialog()
+        showDialog(loanInterestMainResponse.loanInterstedResponse.responseStatusHeader.statusDescription,false,false)
+    }
+
+    override fun onUserNotConnected() {
+        hideProgressDialog()
+        showDialog("",false,true)
+    }
+
+    override fun onItemClick(loanData: LoanInterstedData) {
+        val bundle = Bundle()
+        bundle.putSerializable(LOAN_DATA, loanData)
+        findNavController().navigate(R.id.action_LoanFragment_to_AddLoanEnquiryFragment,bundle)
+    }
+
     override fun fabAddLoanEnquiry() {
-        findNavController().navigate(R.id.action_LoanFragment_to_AddLoanEnquiryFragment)
+       //remove
     }
 }

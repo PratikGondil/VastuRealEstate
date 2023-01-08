@@ -3,11 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <size android:height="@dimen/dimen60dp"/>
-    <solid
-        android:color="@color/loan_itemview_color"/>
+
+    <solid android:color="@color/real_esate_cardview_border_color" />
     <stroke
         android:width="2dp"
         android:color="@color/item_border_color" />
     <corners android:radius="@dimen/dimen10dp" />
 </shape>
-

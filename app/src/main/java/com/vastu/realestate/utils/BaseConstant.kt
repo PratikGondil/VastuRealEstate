@@ -27,6 +27,7 @@ object BaseConstant {
   var AMOUNTFORMAT = "#,###,###"
   var FILTERTYPELIST = "FilterTypeList.json"
   var ENQUIRY_RESPONSE = "ENQUIRY_RESPONSE"
+  var LOAN_DATA = "LOAN_DATA"
   var STATUS = "STATUS"
   var IS_FROM_PROPERTY_LIST = "IS_FROM_PROPERTY_LIST"
 

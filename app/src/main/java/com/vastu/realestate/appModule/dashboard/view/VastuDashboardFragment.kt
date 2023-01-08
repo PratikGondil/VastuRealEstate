@@ -196,7 +196,8 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
     }
 
     override fun onClickProperties() {
-        //findNavController().navigate(R.id.action)
+        //open PropertyList
+        closeDrawer()
     }
 
     override fun onClickAddProperty() {
@@ -207,8 +208,8 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
     }
 
     override fun onClickOffers() {
-
        findNavController().navigate(R.id.action_VastuDashboardFragment_to_OfferFragment)
+       closeDrawer()
     }
 
     override fun onClickContactUs() {

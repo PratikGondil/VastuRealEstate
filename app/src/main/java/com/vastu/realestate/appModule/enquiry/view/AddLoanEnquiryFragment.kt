@@ -26,6 +26,7 @@ import com.vastu.realestate.appModule.enquiry.uiinterfaces.IAddLoanEnquiryListen
 import com.vastu.realestate.appModule.enquiry.viewModel.AddLoanEnquiryViewModel
 import com.vastu.realestate.databinding.FragmentAddLoanEnquiryBinding
 import com.vastu.realestate.utils.BaseConstant
+import com.vastu.realestate.utils.BaseConstant.LOAN_DATA
 import com.vastu.realestate.utils.BaseConstant.STATUS
 
 
@@ -34,6 +35,7 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
     private lateinit var loanViewBinding: FragmentAddLoanEnquiryBinding
     private var addLoanEnquiryRequest = AddLoanEnquiryRequest()
     private lateinit var drawerViewModel: DrawerViewModel
+    private lateinit var loanData: LoanInterstedData
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,15 +49,25 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
         loanEnquiryViewModel.iAddLoanEnquiryListener = this
         drawerViewModel.iToolbarListener = this
         loanViewBinding.drawerViewModel= drawerViewModel
+        getBundleData()
         initView()
         callOccupationList()
         observeOccupationList()
         return loanViewBinding.root
     }
+    private fun getBundleData(){
+        val args = this.arguments
+        if (args != null){
+            if (args.getSerializable(LOAN_DATA) != null) {
+                loanData =  args.getSerializable(LOAN_DATA) as LoanInterstedData
+            }
+        }
+    }
     private fun initView(){
         loanViewBinding.autoCompleteOccupationList.setOnTouchListener(this)
         loanViewBinding.autoCompleteLoanInterestedIn.setOnTouchListener(this)
         loanViewBinding.autoCompletePreferredBank.setOnTouchListener(this)
+        loanViewBinding.loanInterestedFor.text = loanData.loanName.toString()
 
     }
     override fun onResume() {
@@ -125,7 +137,7 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
             mobile = loanEnquiryViewModel.mobileNumber.get(),
             address = loanEnquiryViewModel.address.get(),
             occupation = loanEnquiryViewModel.occupationName.value!!.occupationName,
-            interestedIn = loanEnquiryViewModel.loanName.value!!.loanName,
+            interestedIn = loanViewBinding.loanInterestedFor.text.toString(),//loanEnquiryViewModel.loanName.value!!.loanName,
             preferredBank = loanEnquiryViewModel.bankName.value!!.bankName,
             loanAmount = loanEnquiryViewModel.loanAmount.get(),
             loanTermYear = loanEnquiryViewModel.loanTermYear.get())

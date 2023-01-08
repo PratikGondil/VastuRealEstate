@@ -55,7 +55,7 @@ object SubAreaRequestRepository : ISubAreaListReq , IOnServiceResponseListener {
         iSubAreaResponseListener.networkFailure()
     }
 
-    fun parseResponse(response: String): ObjGetCityAreaDetailResponseMain {
+    private fun parseResponse(response: String): ObjGetCityAreaDetailResponseMain {
         return Gson().fromJson(
             response,
             ObjGetCityAreaDetailResponseMain::class.java

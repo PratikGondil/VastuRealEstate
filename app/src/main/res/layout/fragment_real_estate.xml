@@ -20,7 +20,8 @@
 <!--        tools:context=".appModule.dashboard.view.RealEstateFragment">-->
    <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="match_parent"
-       android:layout_height="match_parent">
+       android:layout_height="match_parent"
+       android:layout_marginBottom="@dimen/margin_xlarge">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -175,8 +176,7 @@
                 android:visibility="gone"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_large"/>
+                android:layout_height="wrap_content"/>
 
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         </LinearLayout>

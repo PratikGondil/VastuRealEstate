@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="@{realEstateViewModel.title}"
             android:textSize="@dimen/text_size_small"
-            android:fontFamily="@font/poppins_regular"
+            app:fontFamily="@font/poppins_regular"
             android:textColor="@color/icon_color"
             />
     </LinearLayout>

@@ -27,7 +27,7 @@ object AddLoanBindingAdapter {
     var isValidMobileNo:Boolean=false
     var isValidAddress:Boolean=false
     var isValidOccupation:Boolean=false
-    var isValidInterestedIn:Boolean=false
+    var isValidInterestedIn:Boolean=true
     var isValidPreferredBank:Boolean=false
     var isValidLoanAmount:Boolean=false
     var isValidLoanTermYear:Boolean=false
@@ -163,11 +163,11 @@ object AddLoanBindingAdapter {
                         viewModel.occupationName.value = adapter.getItem(i) as OccupationData
                         viewModel.occ.set("")
                     }
-                    R.id.autoCompleteLoanInterestedIn ->{
+                   /* R.id.autoCompleteLoanInterestedIn ->{
                         isValidInterestedIn  = true
                         viewModel.loanName.value = adapter.getItem(i) as LoanInterstedData
                         viewModel.loan.set("")
-                    }
+                    }*/
                     R.id.autoCompletePreferredBank->{
                         isValidPreferredBank  = true
                         viewModel.bankName.value = adapter.getItem(i) as BankData

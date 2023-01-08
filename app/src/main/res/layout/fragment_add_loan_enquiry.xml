@@ -223,8 +223,9 @@
                     android:background="@drawable/edittext_background"
                     android:gravity="center_vertical"
                     android:minLines="3"
+                    android:lines="3"
                     android:maxLines="3"
-                    android:inputType="textMultiLine"
+                    android:inputType="textCapSentences"
                     android:text="@{addLoanViewModel.address}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_normal"
@@ -271,26 +272,44 @@
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilLoanInterestedIn"
-                style="@style/Widget.Design.TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/margin_small"
-                android:gravity="center"
-                android:textAlignment="center"
-                android:textColorHint="@color/black"
-                app:boxStrokeColor="@color/black"
-                app:endIconDrawable="@drawable/drop_down_icon"
-                app:endIconMode="custom"
-                app:expandedHintEnabled="false"
-                app:helperText="@{addLoanViewModel.loan}"
-                app:helperTextTextColor="@color/red"
-                app:hintEnabled="false"
-                app:placeholderText="@string/loan_interested_in_text"
-                app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/city">
+
+                <TextView
+                    android:id="@+id/loanInterestedFor"
+                    style="@style/TextAppearance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableStart="@drawable/currency"
+                    android:background="@drawable/edittext_background"
+                    android:gravity="center_vertical"
+                    android:drawablePadding="@dimen/margin_small"
+                    android:paddingStart="@dimen/margin_medium"
+                    android:textColor="@color/black"
+                    android:layout_margin="@dimen/margin_small"
+                    android:textSize="@dimen/text_size_normal"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilLoanInterestedIn"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:endIconDrawable="@drawable/drop_down_icon"
+                    app:endIconMode="custom"
+                    android:visibility="gone"
+                    app:expandedHintEnabled="false"
+                    app:helperText="@{addLoanViewModel.loan}"
+                    app:helperTextTextColor="@color/red"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/loan_interested_in_text"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/city">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/autoCompleteLoanInterestedIn"

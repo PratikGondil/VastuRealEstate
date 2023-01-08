@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
+
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.DialogFragment
+
 import androidx.fragment.app.FragmentContainerView
-import androidx.fragment.app.FragmentTransaction
+
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +16,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
@@ -96,7 +95,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     private fun getRealEstateList(){
         try {
             realEstateBinding.loadingLayout.startShimmerAnimation()
-            DashboardActivity.userId?.let { realEstateViewModel.getPropertyList(it) }
+            userId?.let { realEstateViewModel.getPropertyList(it) }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -124,7 +123,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     private fun getRealEstateDetails(realEstate:List<PropertyData>) {
         try {
             val recyclerViewRealEstate = realEstateBinding.rvRealEstste
-            val realEstates = RealEstateList.getRealEstateData(requireContext())
+            //val realEstates = RealEstateList.getRealEstateData(requireContext())
             val realEstateAdapter = RealEstateAdapter(this,realEstate)
             recyclerViewRealEstate.adapter = realEstateAdapter
             recyclerViewRealEstate.layoutManager = LinearLayoutManager(activity)

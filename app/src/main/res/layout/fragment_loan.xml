@@ -16,6 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/margin_xlarge"
         tools:context=".appModule.dashboard.view.LoanFragment">
 
 
@@ -51,146 +52,12 @@
                 android:layout_marginStart="@dimen/margin_large"
                 android:layout_marginEnd="@dimen/margin_large">
 
-                <LinearLayout
-                    android:id="@+id/personal_loan_layout"
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/loanRecyclerview"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:weightSum="1"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/margin_large"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:padding="@dimen/padding_small"
-                    android:clickable="true"
-                    android:background="@drawable/itemview_background"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_weight="0.2"
-                        android:layout_width="0dp"
-                        android:scaleType="center"
-                        android:layout_height="@dimen/dimen50dp"
-                        android:src="@drawable/personal_loan"/>
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_weight="0.05"
-                        android:layout_height="@dimen/dimen50dp" />
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_weight="0.0001"
-                        android:layout_height="@dimen/dimen50dp"
-                        android:background="@color/ruler_color"/>
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_weight="0.05"
-                        android:layout_height="@dimen/dimen50dp" />
-
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="0dp"
-                        android:layout_weight="0.7"
-                        android:gravity="start"
-                        app:fontFamily="@font/poppins_medium"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_size_small"
-                        android:textColor="@color/text_color"
-                        android:text="@string/personal_loan"/>
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:id="@+id/home_loan_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:weightSum="1"
-                    android:gravity="center"
-                    android:clickable="true"
-                    android:layout_marginTop="@dimen/margin_large"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:padding="@dimen/padding_small"
-                    android:background="@drawable/itemview_background"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_weight="0.2"
-                        android:layout_width="0dp"
-                        android:scaleType="center"
-                        android:layout_height="@dimen/dimen50dp"
-                        android:src="@drawable/home_loan"/>
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_weight="0.05"
-                        android:layout_height="@dimen/dimen50dp" />
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_weight="0.0001"
-                        android:layout_height="@dimen/dimen50dp"
-                        android:background="@color/ruler_color"/>
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_weight="0.05"
-                        android:layout_height="@dimen/dimen50dp" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="0dp"
-                        android:layout_weight="0.7"
-                        android:gravity="start"
-                        app:fontFamily="@font/poppins_medium"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_size_small"
-                        android:textColor="@color/text_color"
-                        android:text="@string/home_loan"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/car_loan_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:weightSum="1"
-                    android:gravity="center"
-                    android:clickable="true"
-                    android:layout_marginTop="@dimen/margin_large"
-                    android:layout_gravity="center_horizontal|center_vertical"
-                    android:padding="@dimen/padding_small"
-                    android:background="@drawable/itemview_background"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_weight="0.2"
-                        android:layout_width="0dp"
-                        android:scaleType="center"
-                        android:layout_height="@dimen/dimen50dp"
-                        android:src="@drawable/car_loan"/>
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_weight="0.05"
-                        android:layout_height="@dimen/dimen50dp" />
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_weight="0.0001"
-                        android:layout_height="@dimen/dimen50dp"
-                        android:background="@color/ruler_color"/>
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_weight="0.05"
-                        android:layout_height="@dimen/dimen50dp" />
-
-                    <com.google.android.material.textview.MaterialTextView
-                        android:layout_width="0dp"
-                        android:layout_weight="0.7"
-                        android:gravity="start"
-                        app:fontFamily="@font/poppins_medium"
-                        android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_size_small"
-                        android:textColor="@color/text_color"
-                        android:text="@string/car_loan"/>
-
-                </LinearLayout>
-
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -207,6 +74,7 @@
             android:textSize="@dimen/text_size_small"
             app:icon="@drawable/ic_add"
             app:iconTint="@color/white"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:onClick="@{(view)->loanViewModel.onClickAddLoanEnquiry()}" />

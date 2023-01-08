@@ -51,14 +51,14 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/text_size_semilarge"/>
 
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPropertyTitle"
-                android:background="@null"
-                android:layout_marginTop="@dimen/margin_small"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                app:expandedHintEnabled="false"
+                app:hintEnabled="true"
                 app:placeholderText="@string/property_title"
                 app:helperTextTextColor="@color/red"
                 app:helperText="@{addPropertyViewModel.propertyTitleValid}"
@@ -69,13 +69,12 @@
                     android:id="@+id/edtPropertyTitle"
                     style="@style/TextAppearance"
                     android:paddingLeft="@dimen/padding_small"
-                    android:hint="@string/property_title"
                     valid="@{addPropertyViewModel}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/edittext_background"
-                    android:inputType="textAutoComplete"
+                    android:inputType="textCapSentences"
                     android:drawablePadding="@dimen/margin_small"
                     android:maxLength="50"
                     android:text="@{addPropertyViewModel.propertyTitle}"
@@ -188,7 +187,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@drawable/edittext_background"
-                        android:inputType="textCapWords"
+                        android:inputType="textCapSentences"
                         android:drawablePadding="@dimen/margin_small"
                         android:maxLength="30"
                         android:text="@{addPropertyViewModel.state}"
@@ -1049,21 +1048,18 @@
                     android:text="@string/post_property"
                     android:textColor="@color/white" />
             </LinearLayout>
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatEditProperty"
-                android:layout_width="wrap_content"
-                android:gravity="center"
-                android:visibility="gone"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/ic_edit"
-                app:iconTint="@color/white"
-                android:textAllCaps="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_margin="@dimen/margin_large"
-                android:onClick="@{(view)->addPropertyViewModel.onClickEdit()}" />
         </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatEditProperty"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/ic_edit"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/margin_large"
+            android:onClick="@{(view)->addPropertyViewModel.onClickEdit()}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

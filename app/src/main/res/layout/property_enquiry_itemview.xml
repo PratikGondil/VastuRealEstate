@@ -9,34 +9,33 @@
     </data>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_small"
+        android:orientation="vertical"
         android:layout_marginEnd="@dimen/margin_small"
+        android:background="@drawable/real_estate_background"
         android:layout_marginBottom="@dimen/margin_small"
         app:cardCornerRadius="@dimen/card_corner_radius">
+
+        <TextView
+            android:id="@+id/propertyIdtextview"
+            android:layout_width="@dimen/dimen30dp"
+            android:layout_height="@dimen/dimen30dp"
+            android:background="@color/colorSecondary"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="@{enquiryData.propertyId}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_small"
+            app:fontFamily="@font/poppins_semibold" />
 
         <LinearLayout
             android:id="@+id/main_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/padding_small"
-            android:background="@drawable/real_estate_background"
-            android:orientation="vertical">
-
-
-                <TextView
-                    android:id="@+id/propertyIdtextview"
-                    android:layout_width="@dimen/dimen30dp"
-                    android:layout_height="@dimen/dimen30dp"
-                    android:background="@drawable/badge_background"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:paddingBottom="@dimen/padding_xsmall"
-                    android:text="@{enquiryData.propertyId}"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/poppins_semibold" />
+            android:orientation="vertical"
+            android:padding="@dimen/padding_small">
 
 
             <LinearLayout
@@ -157,6 +156,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_marginTop="@dimen/margin_small"
                 android:weightSum="1">
 
                 <TextView
@@ -188,5 +188,5 @@
                     app:fontFamily="@font/poppins_regular" />
             </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 </layout>

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
@@ -40,12 +39,14 @@ class OffersFragment:Fragment(), IToolbarListener {
     }
 
     override fun onClickBack() {
-        findNavController().navigate(R.id.action_OfferFragment_to_VastuDashboardFragment)
+        activity?.onBackPressed()
     }
 
     override fun onClickMenu() {
+        //to be..
     }
 
     override fun onClickNotification() {
+        //to be..
     }
 }

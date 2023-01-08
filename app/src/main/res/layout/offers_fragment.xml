@@ -51,14 +51,14 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/offer_icon"
                 android:layout_gravity="center_vertical"
-                android:layout_margin="@dimen/dimen20dp" />
+                android:layout_margin="@dimen/margin_small" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/coming_soon_text"
-                android:textSize="@dimen/text_size_xxxlarge"
+                android:textSize="@dimen/text_size_xxlarge"
                 android:textColor="@color/white"
-                android:fontFamily="@font/poppins_extrabold"
+                app:fontFamily="@font/poppins_extrabold"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_margin="@dimen/dimen10dp"
