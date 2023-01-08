@@ -1,4 +1,4 @@
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    android:color="@color/colorSecondary"
-    android:radius="@dimen/margin_xlarge">
+    android:color="@color/border_color"
+    android:radius="@dimen/margin_large">
 </ripple>
