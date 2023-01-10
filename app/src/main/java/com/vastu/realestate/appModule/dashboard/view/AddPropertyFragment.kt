@@ -16,6 +16,7 @@ import android.os.Environment
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.util.Base64
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -405,13 +406,16 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 try {
                     if (uri != null) {
                         var filePath = getPath(requireContext(), uri)
-                        filePath = filePath?.let { saveBitmapToFile(requireContext(), it, false) }
+                        val bitmap = uriToBitmap(uri)
+                        //val bitmap = getBitmap(filePath)//uri?.let { uriToBitmap(it) }//MediaStore.Images.Media.getBitmap(requireContext()?.contentResolver, uri)
+                        filePath?.let { setImagePath(it,bitmap) }
+                        /*filePath = filePath?.let { saveBitmapToFile(requireContext(), it, false) }
                         if (checkFileSize(filePath)) {
                             val bitmap = getBitmap(filePath)//uri?.let { uriToBitmap(it) }//MediaStore.Images.Media.getBitmap(requireContext()?.contentResolver, uri)
                             filePath?.let { setImagePath(it,bitmap) }
                         } else {
                             showDialog("File must be less than 2MB",false,false)
-                        }
+                        }*/
                     }
                 } catch (e: IOException) {
                     e.printStackTrace()
@@ -426,22 +430,27 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 1->{
                     imagePath1.text = filePath
                     image1 = convertToBase64(bitmap)
+                    Log.e("IMAGE1",image1)
                 }
                 2->{
                     imagePath2.text = filePath
                     image2 = convertToBase64(bitmap)
+                    Log.e("IMAGE2",image2)
                 }
                 3->{
                     imagePath3.text = filePath
                     image3 = convertToBase64(bitmap)
+                    Log.e("IMAGE3",image3)
                 }
                 4->{
                     imagePath4.text = filePath
                     image4 = convertToBase64(bitmap)
+                    Log.e("IMAGE4",image4)
                 }
                 5->{
                     imagePath5.text = filePath
                     image5 = convertToBase64(bitmap)
+                    Log.e("IMAGE5",image5)
                 }
                 6->{
                     brouchePath.text = filePath
@@ -450,6 +459,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 else->{
                     thumbnailImage.setImageBitmap(bitmap)
                     thumbnail = convertToBase64(bitmap)
+                    Log.e("Thumbnail",thumbnail)
                 }
             }
         }
@@ -473,7 +483,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             ).toInt()
         }
         options.inJustDecodeBounds = false
-        options.inTempStorage = ByteArray(512)
+        options.inTempStorage = ByteArray(1024)
         return BitmapFactory.decodeFile(filePath, options)
     }
     private fun uriToBitmap(selectedFileUri: Uri): Bitmap? {
