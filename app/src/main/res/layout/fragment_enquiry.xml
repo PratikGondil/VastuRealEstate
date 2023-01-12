@@ -33,15 +33,13 @@
                 android:id="@+id/tab_layoutEnquiry"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen60dp"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:background="@color/white"
                 app:tabGravity="fill"
-                app:tabIndicatorColor="@color/tab_selected_text_color"
+                android:background="@drawable/site_menu_bg"
+                app:tabIndicatorColor="@color/white"
                 app:tabIndicatorHeight="@dimen/tab_height"
-                app:tabSelectedTextColor="@color/tab_selected_text_color"
+                app:tabSelectedTextColor="@color/white"
                 app:tabTextAppearance="@style/TabTextStyle"
-                app:tabTextColor="@color/icon_color"
-                tools:ignore="SpeakableTextPresentCheck" />
+                app:tabTextColor="@color/black"/>
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPagerEnquiry"

@@ -5,7 +5,7 @@
     android:id="@+id/filter_nav_graph">
     <fragment
         android:id="@+id/FilterViewFragment"
-        android:name="com.vastu.realestate.appModule.dashboard.view.VastuDashboardFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.DashboardFragment"
         android:label="VastuDashboardFragment"
         tools:layout="@layout/fragment_vastu_dashboard"/>
 </navigation>

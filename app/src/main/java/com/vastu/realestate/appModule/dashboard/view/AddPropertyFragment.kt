@@ -8,11 +8,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
 import android.graphics.*
-import android.media.ExifInterface
 import android.net.Uri
-import android.os.Build
-import android.os.Bundle
-import android.os.Environment
+import android.os.*
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.util.Base64
@@ -34,8 +31,8 @@ import com.vastu.editproperty.model.response.EditPropertyMainResponse
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IAddPropertyListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
-import com.vastu.realestate.appModule.dashboard.view.VastuDashboardFragment.Companion.userId
-import com.vastu.realestate.appModule.dashboard.view.VastuDashboardFragment.Companion.userType
+import com.vastu.realestate.appModule.dashboard.view.DashboardActivity.Companion.userId
+import com.vastu.realestate.appModule.dashboard.view.DashboardActivity.Companion.userType
 import com.vastu.realestate.appModule.dashboard.viewmodel.AddPropertyViewModel
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.databinding.FragmentAddPropertyBinding
@@ -44,11 +41,9 @@ import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaDa
 import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaResponseMain
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
-import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.BaseConstant.ADD_PROPERTY_STATUS
 import com.vastu.realestate.utils.BaseConstant.IS_FROM_PROPERTY_LIST
 import com.vastu.realestate.utils.BaseConstant.PICK_FROM_GALLERY
-import com.vastu.realestatecore.model.response.PropertyData
 import java.io.*
 import java.net.URISyntaxException
 import java.util.*
@@ -61,13 +56,13 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     private var objSubAreaReq = ObjSubAreaReq()
     private var addPropertyRequest = AddPropertyRequest()
     private var ediPropertyRequest = EditPropertyRequest()
-    private lateinit var image1:String
-    private lateinit var image2:String
-    private lateinit var image3:String
-    private lateinit var image4:String
-    private lateinit var image5:String
-    private lateinit var thumbnail:String
-    private lateinit var brouche :String
+    private var image1=String()
+    private var image2=String()
+    private var image3=String()
+    private var image4=String()
+    private var image5=String()
+    private var thumbnail=String()
+    private var brouche =String()
     private var stepImage:Int = 0
     private var isEdit:Boolean = false
 
@@ -195,7 +190,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     }
 
     override fun onEditProperty() {
-       isEdit = true;
+       isEdit = true
     }
 
     override fun onClickUploadImage(image:Int) {
@@ -217,14 +212,15 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     override fun onFailureEditProperty(editPropertyMainResponse: EditPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(editPropertyMainResponse.editPropertyResponse.responseStatusHeader.statusDescription,false,false)
-
+        showDialog(editPropertyMainResponse.editPropertyResponse.responseStatusHeader.statusDescription, isSuccess = false, isNetworkFailure = false)
+        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
     override fun onSuccessEditProperty(editPropertyMainResponse: EditPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(editPropertyMainResponse.editPropertyResponse.responseStatusHeader.statusDescription,true,false)
+        showDialog(editPropertyMainResponse.editPropertyResponse.responseStatusHeader.statusDescription, isSuccess = true, isNetworkFailure = false)
+        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
     private fun getEditPropertyData():EditPropertyRequest {
@@ -305,28 +301,30 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     override fun onSuccessAddProperty(addPropertyMainResponse: AddPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription,true,false)
+        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription, isSuccess = true, isNetworkFailure = false)
+        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
     override fun onFailureAddProperty(addPropertyMainResponse: AddPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription, isSuccess = false, isNetworkFailure = false)
+        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
     override fun onCityListApiFailure(objTalukaResponseMain: ObjTalukaResponseMain) {
       hideProgressDialog()
-      showDialog(objTalukaResponseMain.objTalukaResponse.objResponseStatusHdr.statusDescr,false,false)
+      showDialog(objTalukaResponseMain.objTalukaResponse.objResponseStatusHdr.statusDescr, isSuccess = false, isNetworkFailure = false)
     }
 
     override fun onSubAreaListApiFailure(objGetCityAreaDetailResponseMain: ObjGetCityAreaDetailResponseMain) {
       hideProgressDialog()
-      showDialog(objGetCityAreaDetailResponseMain.objCityAreaResponse.objResponseStatusHdr.statusDescr,false,false)
+      showDialog(objGetCityAreaDetailResponseMain.objCityAreaResponse.objResponseStatusHdr.statusDescr, isSuccess = false, isNetworkFailure = false)
     }
 
     override fun onUserNotConnected() {
         hideProgressDialog()
-        showDialog("",false,true)
+        showDialog("", isSuccess = false, isNetworkFailure = true)
     }
     private fun clearAllFields(){
        addPropertyBinding.apply {
@@ -405,17 +403,9 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 val uri: Uri? = data.data
                 try {
                     if (uri != null) {
-                        var filePath = getPath(requireContext(), uri)
+                        val filePath = getPath(requireContext(), uri)
                         val bitmap = uriToBitmap(uri)
-                        //val bitmap = getBitmap(filePath)//uri?.let { uriToBitmap(it) }//MediaStore.Images.Media.getBitmap(requireContext()?.contentResolver, uri)
                         filePath?.let { setImagePath(it,bitmap) }
-                        /*filePath = filePath?.let { saveBitmapToFile(requireContext(), it, false) }
-                        if (checkFileSize(filePath)) {
-                            val bitmap = getBitmap(filePath)//uri?.let { uriToBitmap(it) }//MediaStore.Images.Media.getBitmap(requireContext()?.contentResolver, uri)
-                            filePath?.let { setImagePath(it,bitmap) }
-                        } else {
-                            showDialog("File must be less than 2MB",false,false)
-                        }*/
                     }
                 } catch (e: IOException) {
                     e.printStackTrace()
@@ -430,27 +420,27 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 1->{
                     imagePath1.text = filePath
                     image1 = convertToBase64(bitmap)
-                    Log.e("IMAGE1",image1)
+                    //Log.e("IMAGE1",image1)
                 }
                 2->{
                     imagePath2.text = filePath
                     image2 = convertToBase64(bitmap)
-                    Log.e("IMAGE2",image2)
+                    //Log.e("IMAGE2",image2)
                 }
                 3->{
                     imagePath3.text = filePath
                     image3 = convertToBase64(bitmap)
-                    Log.e("IMAGE3",image3)
+                    //Log.e("IMAGE3",image3)
                 }
                 4->{
                     imagePath4.text = filePath
                     image4 = convertToBase64(bitmap)
-                    Log.e("IMAGE4",image4)
+                    //Log.e("IMAGE4",image4)
                 }
                 5->{
                     imagePath5.text = filePath
                     image5 = convertToBase64(bitmap)
-                    Log.e("IMAGE5",image5)
+                    //Log.e("IMAGE5",image5)
                 }
                 6->{
                     brouchePath.text = filePath
@@ -459,32 +449,11 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 else->{
                     thumbnailImage.setImageBitmap(bitmap)
                     thumbnail = convertToBase64(bitmap)
-                    Log.e("Thumbnail",thumbnail)
+                    //Log.e("Thumbnail",thumbnail)
                 }
             }
         }
 
-    }
-
-    private fun getBitmap(filePath: String?): Bitmap? {
-        val options = BitmapFactory.Options()
-        options.inJustDecodeBounds = true
-        BitmapFactory.decodeFile(filePath, options)
-        val scaleByHeight: Boolean =
-            Math.abs(options.outHeight - 100) >= Math
-                .abs(options.outWidth - 100)
-        if (options.outHeight * options.outWidth * 2 >= 16384) {
-            val sampleSize: Double =
-                if (scaleByHeight) (options.outHeight / 100).toDouble() else (options.outWidth / 100).toDouble()
-            options.inSampleSize = Math.pow(
-                2.0, Math.floor(
-                    Math.log(sampleSize) / Math.log(2.0)
-                )
-            ).toInt()
-        }
-        options.inJustDecodeBounds = false
-        options.inTempStorage = ByteArray(1024)
-        return BitmapFactory.decodeFile(filePath, options)
     }
     private fun uriToBitmap(selectedFileUri: Uri): Bitmap? {
         try {
@@ -553,174 +522,6 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         return true
     }
 
-    private fun saveBitmapToFile(context: Context, imageUri: String, isPNG: Boolean): String? {
-        val filePath = getRealPathFromURI(context, imageUri)
-        var scaledBitmap: Bitmap? = null
-        val options = BitmapFactory.Options()
-        options.inJustDecodeBounds = true
-        var bmp = BitmapFactory.decodeFile(filePath, options)
-        var actualHeight = options.outHeight
-        var actualWidth = options.outWidth
-        val maxHeight = 816.0f
-        val maxWidth = 612.0f
-        var imgRatio = actualWidth.toFloat() / actualHeight
-        val maxRatio = maxWidth / maxHeight
-        if (actualHeight > maxHeight || actualWidth > maxWidth) {
-            if (imgRatio < maxRatio) {
-                imgRatio = maxHeight / actualHeight
-                actualWidth = (imgRatio * actualWidth).toInt()
-                actualHeight = maxHeight.toInt()
-            } else if (imgRatio > maxRatio) {
-                imgRatio = maxWidth / actualWidth
-                actualHeight = (imgRatio * actualHeight).toInt()
-                actualWidth = maxWidth.toInt()
-            } else {
-                actualHeight = maxHeight.toInt()
-                actualWidth = maxWidth.toInt()
-            }
-        }
-        options.inSampleSize = calculateInSampleSize(
-            options,
-            actualWidth,
-            actualHeight
-        )
-        options.inJustDecodeBounds = false
-        options.inPurgeable = true
-        options.inInputShareable = true
-        options.inTempStorage = ByteArray(16 * 1024)
-        try {
-            bmp = BitmapFactory.decodeFile(filePath, options)
-        } catch (exception: OutOfMemoryError) {
-            exception.printStackTrace()
-        }
-        try {
-            scaledBitmap = Bitmap.createBitmap(actualWidth, actualHeight, Bitmap.Config.ARGB_8888)
-        } catch (exception: OutOfMemoryError) {
-            exception.printStackTrace()
-        }
-        val ratioX = actualWidth / options.outWidth.toFloat()
-        val ratioY = actualHeight / options.outHeight.toFloat()
-        val middleX = actualWidth / 2.0f
-        val middleY = actualHeight / 2.0f
-        val scaleMatrix = Matrix()
-        scaleMatrix.setScale(ratioX, ratioY, middleX, middleY)
-        var canvas: Canvas? = null
-        try {
-            if (scaledBitmap != null) {
-                canvas = Canvas(scaledBitmap)
-            }
-            canvas!!.setMatrix(scaleMatrix)
-            canvas.drawBitmap(
-                bmp,
-                (middleX - bmp.width.toDouble() / 2).toFloat(),
-                middleY - (bmp.height.toDouble() / 2).toFloat(),
-                Paint(
-                    Paint.FILTER_BITMAP_FLAG
-                )
-            )
-        } catch (e: NullPointerException) {
-            e.printStackTrace()
-        }
-        val exif: ExifInterface
-        val matrix = Matrix()
-        try {
-            if (!isPNG) {
-                exif = ExifInterface(filePath!!)
-                val orientation = exif.getAttributeInt(
-                    ExifInterface.TAG_ORIENTATION, 0
-                )
-                if (orientation == 6) {
-                    matrix.postRotate(90f)
-                } else if (orientation == 3) {
-                    matrix.postRotate(180f)
-                } else if (orientation == 8) {
-                    matrix.postRotate(270f)
-                }
-            }
-            scaledBitmap = Bitmap.createBitmap(
-                scaledBitmap!!,
-                0,
-                0,
-                scaledBitmap.width,
-                scaledBitmap.height,
-                matrix,
-                true
-            )
-        } catch (ex: NullPointerException) {
-            ex.printStackTrace()
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-        var out: FileOutputStream? = null
-        val filename: String? = getFilename()
-        try {
-            out = FileOutputStream(filename)
-            if (isPNG) {
-                scaledBitmap!!.compress(Bitmap.CompressFormat.PNG, 100, out)
-            } else {
-                scaledBitmap!!.compress(Bitmap.CompressFormat.JPEG, 80, out)
-            }
-        } catch (ex: NullPointerException) {
-            ex.printStackTrace()
-        } catch (e: FileNotFoundException) {
-            e.printStackTrace()
-        }
-        return filename
-    }
-
-    private fun getRealPathFromURI(context: Context, contentURI: String): String? {
-        val contentUri = Uri.parse(contentURI)
-        val cursor = context.contentResolver.query(contentUri, null, null, null, null)
-        return if (cursor == null) {
-            contentUri.path
-        } else {
-            cursor.moveToFirst()
-            val index = cursor.getColumnIndex(MediaStore.MediaColumns.DATA)
-            cursor.getString(index)
-        }
-    }
-    private fun getFilename(): String? {
-        var file: File? = null
-        file = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) File(
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
-            "Vastu/Images"
-        ) else File(Environment.getExternalStorageDirectory().path, "Vastu/Images")
-        if (!file.exists()) {
-            try {
-                file.mkdirs()
-                file.createNewFile()
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
-        return file.absolutePath + "/" + System.currentTimeMillis() + ".jpg"
-    }
-
-    private fun checkFileSize(fileName: String?): Boolean {
-        val recFIle = File(fileName)
-        if (recFIle.exists()) {
-            val length = recFIle.length()
-            return length > 0 && length < 2000001
-        }
-        return false
-    }
-    private fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
-        val height = options.outHeight
-        val width = options.outWidth
-        var inSampleSize = 1
-        if (height > reqHeight || width > reqWidth) {
-            val heightRatio = Math.round(height.toFloat() / reqHeight.toFloat())
-            val widthRatio = Math.round(width.toFloat() / reqWidth.toFloat())
-            inSampleSize = if (heightRatio < widthRatio) heightRatio else widthRatio
-        }
-        val totalPixels = width.toFloat() * height
-        val totalReqPixelsCap = reqWidth.toFloat() * reqHeight * 2
-        while (totalPixels / (inSampleSize * inSampleSize) > totalReqPixelsCap) {
-            inSampleSize++
-        }
-        return inSampleSize
-    }
-
     @Throws(URISyntaxException::class)
     private fun getPath(context: Context, uri: Uri): String? {
         var uri = uri
@@ -742,18 +543,22 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 val docId = DocumentsContract.getDocumentId(uri)
                 val split = docId.split(":").toTypedArray()
                 val type = split[0]
-                if (getString(R.string.image_string).equals(type)) {
-                    uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-                } else if (getString(R.string.video_string).equals(type)) {
-                    uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
-                } else if (getString(R.string.audio_string).equals(type)) {
-                    uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+                when (type) {
+                    getString(R.string.image_string) -> {
+                        uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                    }
+                    getString(R.string.video_string) -> {
+                        uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                    }
+                    getString(R.string.audio_string) -> {
+                        uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+                    }
                 }
                 selection = getString(R.string.id_string)
                 selectionArgs = arrayOf(split[1])
             }
         }
-        if (getString(R.string.content_string).equals(uri.scheme)) {
+        if (getString(R.string.content_string) == uri.scheme) {
             val projection = arrayOf(MediaStore.Images.Media.DATA)
             var cursor: Cursor? = null
             try {
@@ -766,7 +571,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-        } else if (getString(R.string.file_string).equals(uri.scheme)) {
+        } else if (getString(R.string.file_string) == uri.scheme) {
             return uri.path
         }
         return null

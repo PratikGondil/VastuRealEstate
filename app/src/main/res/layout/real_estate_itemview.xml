@@ -97,7 +97,6 @@
                             android:maxLength="35"
                             android:ellipsize="end"
                             android:minLines="1"
-                            android:inputType="textCapWords"
                             app:fontFamily="@font/poppins_medium"/>
 
 
@@ -110,7 +109,6 @@
                         android:maxLength="35"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:inputType="textCapWords"
                         android:layout_height="wrap_content" />
 
 
@@ -119,7 +117,6 @@
                         android:textColor="@color/black"
                         android:ellipsize="end"
                         android:maxLines="2"
-                        android:inputType="textCapWords"
                         android:maxLength="60"
                         app:fontFamily="@font/poppins_regular"
                         android:layout_width="match_parent"
@@ -134,7 +131,6 @@
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:maxLength="35"
-                        android:inputType="textCapWords"
                         android:drawablePadding="@dimen/padding_small"
                         android:drawableStart="@drawable/location"
                         app:fontFamily="@font/poppins_regular"

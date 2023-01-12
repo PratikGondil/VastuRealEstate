@@ -200,13 +200,13 @@ object AddPropertyBindingAdapter {
         return room.length == 1
     }
     fun isValidArea(area:String):Boolean{
-        return area.length in 3..5
+        return area.length in 3..10
     }
     fun isValidAmount(budget:String):Boolean{
-        return budget.length in 2..10
+        return budget.length in 2..15
     }
     fun isValidAddress(address:String):Boolean{
-        return address.length >10
+        return BaseConstant.ADDRESS_REGEX.toRegex().containsMatchIn(address)
     }
     fun isValidName(name:String):Boolean{
         return name.length > 6

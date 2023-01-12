@@ -36,12 +36,12 @@
                         android:id="@+id/loan_name_textview"
                         android:layout_height="wrap_content"
                         android:maxLines="1"
-                        android:inputType="textCapWords"
                         android:maxLength="25"
                         android:layout_width="0dp"
                         android:layout_weight="0.5"
                         android:gravity="start"
                         android:textSize="@dimen/text_size_small"
+                        android:text="@{loanData.firstName +' '+ loanData.middleName+' '+loanData.lastName}"
                         app:fontFamily="@font/poppins_medium"/>
 
                         <TextView
@@ -88,9 +88,9 @@
                             android:textColor="@color/black"
                             android:gravity="start|center_vertical"
                             android:includeFontPadding="true"
-                            android:lines="2"
-                            android:maxLines="2"
-                            android:singleLine="false"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:maxLength="25"
                             android:drawablePadding="@dimen/padding_small"
                             android:drawableStart="@drawable/location"
                             app:fontFamily="@font/poppins_regular"
@@ -144,7 +144,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginTop="@dimen/margin_small"
                         android:weightSum="1">
 
                     <TextView

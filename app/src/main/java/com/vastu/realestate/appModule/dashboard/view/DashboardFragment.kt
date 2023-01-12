@@ -3,55 +3,51 @@ package com.vastu.realestate.appModule.dashboard.view
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.provider.ContactsContract.Data
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
-import com.vastu.enquiry.property.model.response.EnquiryData
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.activity.LoginActivity
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.*
+import com.vastu.realestate.appModule.dashboard.view.DashboardActivity.Companion.userType
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewModel
 import com.vastu.realestate.appModule.enquirylist.view.EnquiryActivity
-import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.databinding.FragmentVastuDashboardBinding
-import com.vastu.realestate.databinding.MainNavDrawerBinding
-import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.BaseConstant.ADMIN
 import com.vastu.realestate.utils.BaseConstant.BUILDER
 import com.vastu.realestate.utils.BaseConstant.CUSTOMER
 import com.vastu.realestate.utils.BaseConstant.EMPLOYEES
 import com.vastu.realestate.utils.BaseConstant.IS_FROM_PROPERTY_LIST
 import com.vastu.realestate.utils.PreferenceKEYS
-import com.vastu.realestate.utils.PreferenceKEYS.DASHBOARD_SLIDER_LIST
-import com.vastu.realestate.utils.PreferenceKEYS.IS_LOGIN
 import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.realestate.utils.PreferenceManger.clearPreferences
-import com.vastu.slidercore.model.response.advertisement.GetAdvertisementSliderMainResponse
-import com.vastu.usertypecore.model.response.ObjGetUserTypeResMain
+import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
+import com.vastu.slidercore.model.response.mainpage.GetMainSliderDetailsResponse
 
-class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListener,
-    INavDrawerListener, IAdvertisementSliderListener {
+class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListener,
+    INavDrawerListener {
         private lateinit var dashboardBinding: FragmentVastuDashboardBinding
-        private lateinit var navBinding:MainNavDrawerBinding
         private lateinit var viewModel: VastuDashboardViewModel
         private lateinit var drawerViewModel: DrawerViewModel
-        private lateinit var objVerifyDetails:ObjVerifyDtls
         private val imageList = ArrayList<SlideModel>()
+        private lateinit var getAdvertisementSlider: GetAdvertiseDetailsResponse
+        private lateinit var getMainSliderDetailsResponse: GetMainSliderDetailsResponse
 
-        companion object{
-            var userType:String? = null
-            var userId: String? = null
-        }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        layoutChange()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +55,6 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
     ): View? {
         drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
         viewModel = ViewModelProvider(this)[VastuDashboardViewModel::class.java]
-        navBinding = DataBindingUtil.inflate(inflater,R.layout.main_nav_drawer,container,false)
         dashboardBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_vastu_dashboard, container, false)
         dashboardBinding.lifecycleOwner = this
         dashboardBinding.vastuDashboardViewModel = viewModel
@@ -71,48 +66,51 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
 
         drawerViewModel.iNavDrawerListener = this
 
-        viewModel.iAdvertisementSliderListener = this
-
-        getUserDetails()
-        getUserType()
+        setUserDetails()
 
         return dashboardBinding.root
     }
+    private fun setUserDetails(){
+        drawerViewModel.apply {
+          mobileNo.set(DashboardActivity.objVerifyDetails.mobileNo!!)
+          userName.set(DashboardActivity.objVerifyDetails.firstName!!)
+        }
+        Handler(Looper.getMainLooper()).postDelayed({setSliderData() }, 1000)
+        //Handler(Looper.getMainLooper()).postDelayed({ setMainSliderData() }, 1000)
+    }
 
-    private fun getUserDetails(){
-        val isLogin = PreferenceManger.get<Boolean>(IS_LOGIN)
-        if(isLogin!!){
-            objVerifyDetails = PreferenceManger.get<ObjVerifyDtls>(PreferenceKEYS.USER)!!
-            drawerViewModel.mobileNo.set(objVerifyDetails.mobileNo!!)
-            drawerViewModel.userName.set(objVerifyDetails.firstName!!)
-            userId = objVerifyDetails.userId!!
+    private fun setSliderData(){
+        imageList.clear()
+        getAdvertisementSlider = PreferenceManger.getAdvertisementSlider(PreferenceKEYS.DASHBOARD_SLIDER_LIST)
+        if(getAdvertisementSlider.advertiseData.isNotEmpty()) {
+            dashboardBinding.apply {
+                for (slider in getAdvertisementSlider.advertiseData) {
+                    imageList.add(SlideModel(slider.adSlider))
+                }
+                imageSlider.setImageList(imageList, ScaleTypes.FIT)
+                imageSlider.startSliding(3000)
+            }
         }
     }
 
-     private fun getUserType(){
-        showProgressDialog()
-        userId?.let { viewModel.getUserType(it) }
-    }
-    private fun getAdvertisementSlider(){
-        showProgressDialog()
-        viewModel.getAdvertisementSlider()
-    }
+    private fun setMainSliderData(){
+        imageList.clear()
+        getMainSliderDetailsResponse = PreferenceManger.getSlider(PreferenceKEYS.MAIN_SLIDER_LIST)
+        if(getMainSliderDetailsResponse.propertyData.isNotEmpty()) {
+            getMainSliderDetailsResponse = PreferenceManger.getSlider(PreferenceKEYS.MAIN_SLIDER_LIST)
+            dashboardBinding.apply {
+                for( slider in getMainSliderDetailsResponse.propertyData){
+                    imageList.add(SlideModel(slider.propertyImage))
+                }
+                imageSlider.setImageList(imageList, ScaleTypes.FIT)
+                imageSlider.startSliding(3000)
+            }
+        }
 
+    }
     override fun onLoanClick() {
+        showProgressDialog()
         findNavController().navigate(R.id.action_VastuDashboardFragment_to_LoanFragment)
-    }
-
-    override fun onSuccessGetUserType(objGetUserTypeResMain: ObjGetUserTypeResMain) {
-       hideProgressDialog()
-        userType = objGetUserTypeResMain.getUserTypeDataDetailsResponse.userTypeData.get(0).userType
-        layoutChange()
-        getAdvertisementSlider()
-    }
-
-    override fun onFailGetUserType(objGetUserTypeResMain: ObjGetUserTypeResMain) {
-        hideProgressDialog()
-        Toast.makeText(requireContext(),objGetUserTypeResMain.userTypeResponse.responseStatusHeader.statusDescription,
-            Toast.LENGTH_LONG).show()
     }
 
     override fun onResume() {
@@ -121,52 +119,29 @@ class VastuDashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarLi
         drawerViewModel.isDashBoard.set(true)
     }
     private fun layoutChange(){
-        navBinding.apply {
             when(userType){
                 ADMIN->{
-                    navEnquiry.visibility = View.VISIBLE
-                    navProperties.visibility = View.VISIBLE
-                    dashboardBinding.floatAddProperty.visibility = View.VISIBLE
-                }
-                CUSTOMER->{
-                    navEnquiry.visibility = View.GONE
-                    navProperties.visibility = View.GONE
-                    dashboardBinding.floatAddProperty.visibility = View.GONE
+                    viewModel.enquiry.set(View.VISIBLE)
+                    viewModel.properties.set(View.VISIBLE)
                 }
                 BUILDER->{
-                    navEnquiry.visibility = View.GONE
-                    navProperties.visibility = View.VISIBLE
-                    dashboardBinding.floatAddProperty.visibility = View.VISIBLE
+                    viewModel.enquiry.set(View.GONE)
+                    viewModel.properties.set(View.VISIBLE)
                 }
                 EMPLOYEES->{
-
+                    viewModel.enquiry.set(View.GONE)
+                    viewModel.properties.set(View.VISIBLE)
+                }
+                CUSTOMER->{
+                    viewModel.enquiry.set(View.GONE)
+                    viewModel.properties.set(View.GONE)
+                    dashboardBinding.floatAddProperty.visibility = View.GONE
                 }
             }
-        }
     }
 
-    override fun onSuccessAdvertisementSlider(advertisementSliderMainResponse: GetAdvertisementSliderMainResponse) {
-        hideProgressDialog()
-        imageList.clear()
-        for( slider in advertisementSliderMainResponse.getAdvertiseDetailsResponse.advertiseData){
-            imageList.add(SlideModel(slider.adSlider))
-        }
-        PreferenceManger.saveAdvertisementSlider(advertisementSliderMainResponse.getAdvertiseDetailsResponse,
-            DASHBOARD_SLIDER_LIST)
-        dashboardBinding.apply {
-            imageSlider.setImageList(imageList, ScaleTypes.FIT)
-            imageSlider.startSliding(3000)
-        }
-    }
 
-    override fun onFailureAdvertisementSlider(advertisementSliderMainResponse: GetAdvertisementSliderMainResponse) {
-        hideProgressDialog()
-    }
 
-    override fun onUserNotConnected() {
-        hideProgressDialog()
-        showDialog("",false,true)
-    }
 
     override fun onRealEstateClick() {
         findNavController().navigate(R.id.action_VastuDashboardFragment_to_RealEstateFragment)

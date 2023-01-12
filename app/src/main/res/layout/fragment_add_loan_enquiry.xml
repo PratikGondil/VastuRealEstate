@@ -75,7 +75,7 @@
                     android:background="@drawable/edittext_background"
                     android:gravity="center_vertical"
                     android:inputType="text"
-                    android:maxLength="15"
+                    android:maxLength="20"
                     android:text="@{addLoanViewModel.firstName}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
@@ -112,7 +112,7 @@
                     android:background="@drawable/edittext_background"
                     android:gravity="center_vertical"
                     android:inputType="text"
-                    android:maxLength="15"
+                    android:maxLength="20"
                     android:text="@{addLoanViewModel.middleName}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_normal"
@@ -150,6 +150,7 @@
                     android:background="@drawable/edittext_background"
                     android:gravity="center_vertical"
                     android:inputType="text"
+                    android:maxLength="20"
                     android:text="@{addLoanViewModel.lastName}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_normal"
@@ -223,9 +224,8 @@
                     android:background="@drawable/edittext_background"
                     android:gravity="center_vertical"
                     android:minLines="3"
-                    android:lines="3"
-                    android:maxLines="3"
-                    android:inputType="textCapSentences"
+                    android:maxLength="150"
+                    android:inputType="textMultiLine|textPostalAddress"
                     android:text="@{addLoanViewModel.address}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_normal"
@@ -286,7 +286,7 @@
                     android:paddingStart="@dimen/margin_medium"
                     android:textColor="@color/black"
                     android:layout_margin="@dimen/margin_small"
-                    android:textSize="@dimen/text_size_normal"
+                    android:textSize="@dimen/text_size_small"
                     tools:ignore="SpeakableTextPresentCheck" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -327,7 +327,7 @@
                     android:focusableInTouchMode="true"
                     android:gravity="center_vertical"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_normal"
+                    android:textSize="@dimen/text_size_small"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -389,7 +389,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/loan_amount_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/phone">
+                app:startIconDrawable="@drawable/currency">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtLoanAmount"
@@ -400,7 +400,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/edittext_background"
                     android:gravity="center_vertical"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:text="@{addLoanViewModel.loanAmount}"
                     android:textColor="@color/black"
@@ -425,7 +425,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/loan_term_year_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/phone">
+                app:startIconDrawable="@drawable/currency">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtLoanTermYear"

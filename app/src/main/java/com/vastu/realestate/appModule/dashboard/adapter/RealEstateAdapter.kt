@@ -26,7 +26,7 @@ class RealEstateAdapter(private val itemClick: OnItemClickListener, private val 
         val property = realEstateList[position]
         holder.bind(property)
         holder.binding.propertyPrizeTextview.text = context.getString(R.string.rupee)+" "+property.price
-        holder.binding.propertyDetailsTextview.text = property.area+" "+ context.getString(R.string.st_ft)
+        holder.binding.propertyDetailsTextview.text = property.propertyArea+" "+ context.getString(R.string.st_ft)
         showImageFromURL(context,property.propertyThumbnail, holder.binding.propertyImage)
         holder.binding.layoutContainer.setOnClickListener {
             itemClick.onItemClick(property)

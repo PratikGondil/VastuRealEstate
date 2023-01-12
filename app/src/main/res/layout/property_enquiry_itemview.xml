@@ -50,13 +50,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:gravity="start"
-                    android:inputType="textCapWords"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:padding="1dp"
                     android:textColor="@color/black_text"
                     android:textSize="@dimen/text_size_small"
+                    android:text="@{enquiryData.firstName +' '+ enquiryData.middleName+' '+enquiryData.lastName}"
                     app:fontFamily="@font/poppins_medium" />
+
 
 
                 <TextView
@@ -106,9 +107,8 @@
                     android:ellipsize="end"
                     android:gravity="start|center_vertical"
                     android:includeFontPadding="true"
-                    android:lines="2"
-                    android:maxLines="2"
-                    android:singleLine="false"
+                    android:singleLine="true"
+                    android:maxLength="25"
                     android:text="@{enquiryData.address.toUpperCase()}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
@@ -156,7 +156,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="@dimen/margin_small"
                 android:weightSum="1">
 
                 <TextView

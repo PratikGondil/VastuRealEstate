@@ -112,6 +112,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.8"
+                    android:visibility="@{viewModel.enquiry}"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_normal"
@@ -141,6 +142,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.8"
+                    android:visibility="@{viewModel.properties}"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_normal"

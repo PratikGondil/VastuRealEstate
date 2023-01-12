@@ -74,7 +74,7 @@
                         android:background="@drawable/edittext_background"
                         android:gravity="center_vertical"
                         android:inputType="text"
-                        android:maxLength="15"
+                        android:maxLength="20"
                         android:text="@{addPropertyEnquiryViewModel.firstName}"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_small"
@@ -111,7 +111,7 @@
                         android:background="@drawable/edittext_background"
                         android:gravity="center_vertical"
                         android:inputType="text"
-                        android:maxLength="15"
+                        android:maxLength="20"
                         android:text="@{addPropertyEnquiryViewModel.middleName}"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_normal"
@@ -149,6 +149,7 @@
                         android:background="@drawable/edittext_background"
                         android:gravity="center_vertical"
                         android:inputType="text"
+                        android:maxLength="20"
                         android:text="@{addPropertyEnquiryViewModel.lastName}"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_normal"
@@ -217,8 +218,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/edittext_background"
                         android:minLines="3"
-                        android:maxLength="50"
-                        android:inputType="textMultiLine"
+                        android:maxLength="150"
+                        android:inputType="textMultiLine|textPostalAddress"
                         android:text="@{addPropertyEnquiryViewModel.address}"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_normal"
@@ -366,7 +367,7 @@
                     app:hintEnabled="false"
                     app:placeholderText="@string/area_text"
                     app:placeholderTextColor="@color/black"
-                    app:startIconDrawable="@drawable/phone">
+                    app:startIconDrawable="@drawable/location">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtArea"
@@ -377,8 +378,8 @@
                         android:layout_gravity="center"
                         android:background="@drawable/edittext_background"
                         android:gravity="center_vertical"
-                        android:inputType="number"
-                        android:maxLength="6"
+                        android:inputType="numberDecimal"
+                        android:maxLength="10"
                         android:text="@{addPropertyEnquiryViewModel.area}"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_normal"
@@ -402,7 +403,7 @@
                     app:hintEnabled="false"
                     app:placeholderText="@string/budget_text"
                     app:placeholderTextColor="@color/black"
-                    app:startIconDrawable="@drawable/phone">
+                    app:startIconDrawable="@drawable/currency">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtBudget"
@@ -413,7 +414,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/edittext_background"
                         android:gravity="center_vertical"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:maxLength="10"
                         android:text="@{addPropertyEnquiryViewModel.budget}"
                         android:textColor="@color/black"

@@ -139,7 +139,7 @@ object AddLoanBindingAdapter {
         return termYear.length in 1..3
     }
     fun isValidAddress(address:String):Boolean{
-        return BaseConstant.NAME_REGEX.toRegex().containsMatchIn(address)
+        return BaseConstant.ADDRESS_REGEX.toRegex().containsMatchIn(address)
     }
     fun isValidName(name:String):Boolean{
         return BaseConstant.NAME_REGEX.toRegex().containsMatchIn(name)

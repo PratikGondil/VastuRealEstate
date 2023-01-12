@@ -4,9 +4,9 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class ObjVerifyDtls (
-    @SerializedName ("user_id") var userId : String?,
-    @SerializedName ("first_name") var firstName : String?,
-    @SerializedName ("mobile") var mobileNo: String?,
-    @SerializedName ("email") var emailId :String?,
-    @SerializedName("city") var city :String?
+    @SerializedName ("user_id") var userId : String?=null,
+    @SerializedName ("first_name") var firstName : String?=null,
+    @SerializedName ("mobile") var mobileNo: String?=null,
+    @SerializedName ("email") var emailId :String?=null,
+    @SerializedName("city") var city :String?=null
         ): Serializable

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:bind="http://schemas.android.com/tools"
-    tools:context=".appModule.dashboard.view.VastuDashboardFragment">
+    tools:context=".appModule.dashboard.view.DashboardFragment">
 
     <data>
         <variable
@@ -133,6 +133,7 @@
             android:gravity="center"
             android:layout_height="wrap_content"
             android:text="@string/add_property"
+            android:visibility="visible"
             app:fontFamily="@font/poppins_medium"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_small"

@@ -8,6 +8,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
 import com.vastu.slidercore.model.response.advertisement.GetAdvertisementSliderMainResponse
+import com.vastu.slidercore.model.response.mainpage.GetMainSliderDetailsResponse
 import com.vastu.slidercore.model.response.property.GetPropertySliderImagesResponse
 
 object PreferenceManger {
@@ -31,15 +32,15 @@ object PreferenceManger {
        preferences.edit().remove(PREFERENCE_FILE_NAME).clear().apply()
     }
 
-    fun saveSlider(sliderList: GetPropertySliderImagesResponse, key:String) {
+    fun saveSlider(sliderList: GetMainSliderDetailsResponse, key:String) {
           preferences.edit()
             .putString(key, gson.toJson(sliderList))
             .apply()
     }
 
-    fun getSlider(key:String): GetPropertySliderImagesResponse {
+    fun getSlider(key:String): GetMainSliderDetailsResponse{
         val sliderList = preferences.getString(key, null)
-        val type = object : TypeToken<GetPropertySliderImagesResponse>() {}.type
+        val type = object : TypeToken<GetMainSliderDetailsResponse>() {}.type
         return gson.fromJson(sliderList, type)
     }
 

@@ -18,7 +18,7 @@ import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertyDetailsListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertySliderListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
-import com.vastu.realestate.appModule.dashboard.view.VastuDashboardFragment.Companion.userId
+import com.vastu.realestate.appModule.dashboard.view.DashboardActivity.Companion.userId
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateDetailsViewModel
 import com.vastu.realestate.databinding.FragmentRealEstateDetailsBinding

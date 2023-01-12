@@ -1,6 +1,8 @@
 package com.vastu.realestate.appModule.enquiry.view
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -134,12 +136,14 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
         hideProgressDialog()
         clearAllFields()
         showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
+        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
     override fun onGotoDashboard(enquiryMainResponse: EnquiryMainResponse) {
       hideProgressDialog()
       clearAllFields()
       showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,true,false)
+      Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
     override fun onUserNotConnected() {

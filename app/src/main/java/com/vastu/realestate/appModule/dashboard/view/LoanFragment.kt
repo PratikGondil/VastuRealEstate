@@ -72,7 +72,7 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener, OnItemClickL
 
     private fun getLoanList(){
         try {
-           showProgressDialog()
+           //showProgressDialog()
            loanViewModel.callLoanInterestedIn()
         } catch (e: Exception) {
             e.printStackTrace()

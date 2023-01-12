@@ -132,13 +132,13 @@ object AddPropertyBindingAdapter {
         })
     }
     fun isValidArea(area:String):Boolean{
-        return area.length in 4..6
+        return area.length in 4..8
     }
     fun isValidBudget(budget:String):Boolean{
         return budget.length in 6..10
     }
     fun isValidAddress(address:String):Boolean{
-        return BaseConstant.NAME_REGEX.toRegex().containsMatchIn(address)
+        return BaseConstant.ADDRESS_REGEX.toRegex().containsMatchIn(address)
     }
     fun isValidName(name:String):Boolean{
         return BaseConstant.NAME_REGEX.toRegex().containsMatchIn(name)

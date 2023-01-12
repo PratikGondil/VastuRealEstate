@@ -1,6 +1,8 @@
 package com.vastu.realestate.appModule.enquiry.view
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -9,7 +11,6 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.vastu.loanenquirycore.model.request.AddLoanEnquiryRequest
 import com.vastu.loanenquirycore.model.response.bank.BankData
 import com.vastu.loanenquirycore.model.response.bank.BankResponseMain
@@ -25,9 +26,7 @@ import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.enquiry.uiinterfaces.IAddLoanEnquiryListener
 import com.vastu.realestate.appModule.enquiry.viewModel.AddLoanEnquiryViewModel
 import com.vastu.realestate.databinding.FragmentAddLoanEnquiryBinding
-import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.BaseConstant.LOAN_DATA
-import com.vastu.realestate.utils.BaseConstant.STATUS
 
 
 class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarListener,View.OnTouchListener {
@@ -148,12 +147,15 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
         hideProgressDialog()
         clearAllFields()
         showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
+        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
     override fun onGotoDashboard(enquiryMainResponse: EnquiryMainResponse) {
         hideProgressDialog()
         clearAllFields()
         showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,true,false)
+        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
+
     }
 
     override fun onUserNotConnected() {
