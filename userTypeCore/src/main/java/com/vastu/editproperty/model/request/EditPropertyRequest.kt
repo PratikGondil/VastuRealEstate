@@ -7,7 +7,7 @@ data class EditPropertyRequest(
     @SerializedName("property_id")val propertyId:String?=null,
 
     @SerializedName("user_id")val userId: String?=null,
-    @SerializedName("user_type")val userType: String?=null,
+    //@SerializedName("user_type")val userType: String?=null,
 
     @SerializedName("property_title")val propertyTitle: String?=null,
     @SerializedName("property_type")val propertyType: String?=null,
@@ -32,7 +32,7 @@ data class EditPropertyRequest(
     @SerializedName("floors")val floors: String?=null,
 
     @SerializedName("brochure")val brochure: String?=null,
-    @SerializedName("thumbnail")val thumbnail:String?=null,
+    //@SerializedName("thumbnail")val thumbnail:String?=null,
 
     @SerializedName("description")val description: String?=null,
     @SerializedName("highlights")val highlights: String?=null,
@@ -40,8 +40,8 @@ data class EditPropertyRequest(
     @SerializedName("availability")val availability: String?=null,
     @SerializedName("amenities") val amenities: String?=null,
 
-    @SerializedName("slug")val slug:String?=null,
-    @SerializedName("status")val status:String?=null,
+    /*@SerializedName("slug")val slug:String?=null,
+    @SerializedName("status")val status:String?=null,*/
 
     @SerializedName("img1")val img1: String?=null,
     @SerializedName("img2")val img2: String?=null,

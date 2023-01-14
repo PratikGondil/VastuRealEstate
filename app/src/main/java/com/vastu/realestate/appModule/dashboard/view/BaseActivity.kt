@@ -15,6 +15,7 @@ import de.hdodenhof.circleimageview.CircleImageView
 open class BaseActivity : AppCompatActivity() {
 
     private lateinit var customProgressDialog : CustomProgressDialog
+    private lateinit var bottomSheetDialog :BottomSheetDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +28,14 @@ open class BaseActivity : AppCompatActivity() {
     fun hideProgressDialog() {
         customProgressDialog.dismiss()
     }
+    fun hideDialog(){
+        if(bottomSheetDialog.isShowing){
+            bottomSheetDialog.hide()
+        }
+    }
     open fun showDialog(message: String?,isSuccess:Boolean,isNetworkFailure:Boolean) {
 
-        val bottomSheetDialog = BottomSheetDialog(this,android.R.style.Theme_Translucent_NoTitleBar)
+        bottomSheetDialog = BottomSheetDialog(this,android.R.style.Theme_Translucent_NoTitleBar)
         bottomSheetDialog.setContentView(R.layout.bottom_dialog_layout)
 
         val successImageView = bottomSheetDialog.findViewById<CircleImageView>(R.id.success)

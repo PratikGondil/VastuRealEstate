@@ -30,6 +30,7 @@ object SignUpBindingAdapter {
     var isValidEmailId:Boolean=false
     var isValidCity:Boolean=false
     var isValidSubArea:Boolean=false
+    var isValidAddress:Boolean = false
 
 
     @BindingAdapter("validateField","tilLayout")
@@ -98,9 +99,13 @@ object SignUpBindingAdapter {
                         else{
                             isValidEmailId = false
                             parentLayout.helperText = context.getString(R.string.required)}
-
                     }
-
+                    R.id.tvAddress->{
+                        if(isValidAddress(input.toString())) {
+                            isValidAddress = true
+                            signUpViewModel.address.set(input.toString().trim())
+                        }
+                    }
                 }
                changeSubmitBtnState(signUpViewModel,context)
             }
@@ -120,6 +125,9 @@ fun isValidEmail(email:String):Boolean{
 
     fun isValidMobile(mobileNo:String):Boolean{
         return MOBILE_REGEX.toRegex().containsMatchIn(mobileNo)
+    }
+    fun isValidAddress(address:String):Boolean{
+        return address.length>10
     }
     @BindingAdapter("android:onItemClick", "android:context","tilLayout")
     @JvmStatic

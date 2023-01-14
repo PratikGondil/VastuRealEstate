@@ -171,7 +171,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
     }
 
     override fun onClickProperties() {
-        //open PropertyList
+        findNavController().navigate(R.id.action_DashBoardFragment_to_PropertiesFragment)
         closeDrawer()
     }
 

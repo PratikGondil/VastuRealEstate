@@ -30,6 +30,10 @@
             android:id="@+id/action_VastuDashboardFragment_to_addPropertyFragment"
             app:destination="@id/addPropertyFragment"
             app:enterAnim="@anim/enter_from_right"/>
+        <action
+            android:id="@+id/action_DashBoardFragment_to_PropertiesFragment"
+            app:destination="@id/PropertiesFragment"
+            app:enterAnim="@anim/enter_from_right"/>
     </fragment>
 
     <fragment
@@ -92,4 +96,14 @@
         android:label="filterFragment"
         tools:layout="@layout/multiple_filters"/>
 
+    <fragment
+        android:id="@+id/PropertiesFragment"
+        android:name="com.vastu.realestate.appModule.properties.view.PropertiesFragment"
+        android:label="PropertiesFragment"
+        tools:layout="@layout/fragment_properties">
+    <action
+        android:id="@+id/action_PropertiesFragment_to_AddPropertyFragment"
+        app:destination="@id/addPropertyFragment"
+        app:enterAnim="@anim/enter_from_right"/>
+    </fragment>
 </navigation>
