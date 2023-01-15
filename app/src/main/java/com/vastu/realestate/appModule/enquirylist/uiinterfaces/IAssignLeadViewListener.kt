@@ -1,0 +1,8 @@
+package com.vastu.realestate.appModule.enquirylist.uiinterfaces
+
+import com.vastu.enquiry.employee.model.response.ObjEmployeeResponse
+
+interface IAssignLeadViewListener {
+    fun callAssignApi()
+    fun onEmpListFailure(objEmployeeResponse: ObjEmployeeResponse)
+}

@@ -41,6 +41,9 @@ class DrawerViewModel(application: Application) : AndroidViewModel(application) 
     fun onAddPropertyClick(){
         iNavDrawerListener.onClickProperties()
     }
+    fun onEmployessClick(){
+        iNavDrawerListener.onEmployessClick()
+    }
     fun onOffersClick(){
         iNavDrawerListener.onClickOffers()
     }

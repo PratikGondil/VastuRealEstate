@@ -92,7 +92,7 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener, OnItemClickL
             if (args.getSerializable(BaseConstant.ENQUIRY_RESPONSE) != null) {
                 enquiryMainResponse = args.getSerializable(BaseConstant.ENQUIRY_RESPONSE) as EnquiryMainResponse
                 val status = args.getBoolean(BaseConstant.STATUS,false)
-                showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,status,false)
+                showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription!!,status,false)
             }
         }
     }
@@ -138,7 +138,7 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener, OnItemClickL
 
     override fun onLoanInterestedInListFailure(loanInterestMainResponse: LoanInterestMainResponse) {
         hideProgressDialog()
-        showDialog(loanInterestMainResponse.loanInterstedResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(loanInterestMainResponse.loanInterstedResponse.responseStatusHeader.statusDescription!!,false,false)
     }
 
     override fun onUserNotConnected() {

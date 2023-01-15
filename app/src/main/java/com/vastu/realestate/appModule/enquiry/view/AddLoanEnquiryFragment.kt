@@ -146,14 +146,14 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
     override fun onAddLoanEnquiryFailure(enquiryMainResponse: EnquiryMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription!!,false,false)
         Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
     override fun onGotoDashboard(enquiryMainResponse: EnquiryMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,true,false)
+        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription!!,true,false)
         Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
 
     }
@@ -164,15 +164,15 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
     }
 
     override fun onOccupationListFailure(occupationMainResponse: OccupationMainResponse) {
-        showDialog(occupationMainResponse.occupationResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(occupationMainResponse.occupationResponse.responseStatusHeader.statusDescription!!,false,false)
     }
 
     override fun onLoanInterestedInLListFailure(loanInterestMainResponse: LoanInterestMainResponse) {
-        showDialog(loanInterestMainResponse.loanInterstedResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(loanInterestMainResponse.loanInterstedResponse.responseStatusHeader.statusDescription!!,false,false)
     }
 
     override fun onBankListFailure(bankResponseMain: BankResponseMain) {
-        showDialog(bankResponseMain.bankResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(bankResponseMain.bankResponse.responseStatusHeader.statusDescription!!,false,false)
     }
 
     override fun onClickBack() {

@@ -143,7 +143,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
 
     override fun onFailureGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         stopShimmerAnimation()
-        showDialog(objGetPropertyListResMain.propertyResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(objGetPropertyListResMain.propertyResponse.responseStatusHeader.statusDescription!!,false,false)
     }
 
     override fun onFilterPropertyListSuccess(objGetFilterDataResponse: ObjGetFilterDataResponse) {
@@ -151,7 +151,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     }
 
     override fun onFilterPropertyListFailure(objFilterDataResponseMain: ObjFilterDataResponseMain) {
-        showDialog(objFilterDataResponseMain.objfilterDataResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(objFilterDataResponseMain.objfilterDataResponse.responseStatusHeader.statusDescription!!,false,false)
 
     }
 

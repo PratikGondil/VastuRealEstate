@@ -212,14 +212,14 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     override fun onFailureEditProperty(editPropertyMainResponse: EditPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(editPropertyMainResponse.editPropertyResponse.responseStatusHeader.statusDescription, isSuccess = false, isNetworkFailure = false)
+        showDialog(editPropertyMainResponse.editPropertyResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
     override fun onSuccessEditProperty(editPropertyMainResponse: EditPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(editPropertyMainResponse.editPropertyResponse.responseStatusHeader.statusDescription, isSuccess = true, isNetworkFailure = false)
+        showDialog(editPropertyMainResponse.editPropertyResponse.responseStatusHeader.statusDescription!!, isSuccess = true, isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
@@ -301,14 +301,14 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     override fun onSuccessAddProperty(addPropertyMainResponse: AddPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription, isSuccess = true, isNetworkFailure = false)
+        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = true, isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
     override fun onFailureAddProperty(addPropertyMainResponse: AddPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription, isSuccess = false, isNetworkFailure = false)
+        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 

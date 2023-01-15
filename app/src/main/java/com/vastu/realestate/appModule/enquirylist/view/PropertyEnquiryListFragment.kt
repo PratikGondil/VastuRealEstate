@@ -8,16 +8,19 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.vastu.enquiry.loan.model.response.LoanData
 import com.vastu.enquiry.property.model.response.EnquiryData
 import com.vastu.enquiry.property.model.response.GetPropertyEnquiryListMainResponse
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.enquirylist.adapter.PropertyEnquiryAdapter
+import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListener
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IPropertyListListener
 import com.vastu.realestate.appModule.enquirylist.viewmodel.PropertyEnquiryViewModel
 import com.vastu.realestate.databinding.FragmentPropertyEnquiryListBinding
 
-class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener,
+class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener, IAssignLeadListener,
     SwipeRefreshLayout.OnRefreshListener {
 
     private lateinit var propertyEnquiryViewModel: PropertyEnquiryViewModel
@@ -64,7 +67,7 @@ class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener,
     }
     private fun setPropertyEnquiryDetails(propertyEnquiryList:List<EnquiryData>){
         val recyclerviewPropertyEnquiry = propertyEnquiryViewBinding.rvPropertyEnquiry
-        val propertyEnquiryAdapter = PropertyEnquiryAdapter(propertyEnquiryList)
+        val propertyEnquiryAdapter = PropertyEnquiryAdapter(propertyEnquiryList,this)
         recyclerviewPropertyEnquiry.layoutManager = LinearLayoutManager(activity)
         recyclerviewPropertyEnquiry.setHasFixedSize(true)
         recyclerviewPropertyEnquiry.adapter = propertyEnquiryAdapter
@@ -72,7 +75,7 @@ class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener,
 
     override fun onFailureGetPropertyEnquiry(getPropertyEnquiryListMainResponse: GetPropertyEnquiryListMainResponse) {
        stopShimmerAnimation()
-       showDialog(getPropertyEnquiryListMainResponse.enquiryDataResponse.responseStatusHeader.statusDescription,false,false)
+       showDialog(getPropertyEnquiryListMainResponse.enquiryDataResponse.responseStatusHeader.statusDescription!!,false,false)
     }
 
     override fun onUserNotConnected() {
@@ -83,5 +86,25 @@ class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener,
     override fun onRefresh() {
         propertyEnquiryViewBinding.swipeContainer.isRefreshing = false
         getPropertyEnquiry()
+    }
+
+    override fun assignLoanLeadToEmployee(loanData: LoanData) {
+
+    }
+
+    override fun assignPropertyLeadToEmployee(PropertyData: EnquiryData) {
+        try{
+            val modalbottomSheetFragment = AssignLeadsFragment(this)
+            modalbottomSheetFragment.setStyle(
+                BottomSheetDialogFragment.STYLE_NORMAL,android.R.style.Theme_Translucent_NoTitleBar
+            )
+            modalbottomSheetFragment.show(requireActivity().supportFragmentManager,modalbottomSheetFragment.tag)
+        }catch (e : Exception){
+            e.printStackTrace()
+        }
+    }
+
+    override fun onEmpListFailure(message: String, isSuccess: Boolean, isNetworkFailure: Boolean) {
+        showDialog(message,isSuccess,isNetworkFailure)
     }
 }

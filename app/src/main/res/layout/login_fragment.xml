@@ -121,12 +121,12 @@
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:background="@{loginViewModel.btnBackground}"
                     android:onClick="@{(view)->loginViewModel.onSendOtpClick()}"
                     android:text="@string/send_otp_text"
-                    android:background="@{loginViewModel.btnBackground}"
+                    android:textColor="@color/white"
                     android:textSize="@dimen/text_size_normal"
-                    app:fontFamily="@font/poppins_medium"
-                    android:textColor="@color/white" />
+                    app:fontFamily="@font/poppins_medium" />
             </RelativeLayout>
         </LinearLayout>
 

@@ -97,12 +97,6 @@ override fun onCreateView(
     fun iniView(){
         getSubAreaList()
         observeSubAreaList()
-//        val recyclerView: RecyclerView = multipleFiltersBinding.filterType
-//        itemsList =  prepareItems()
-//        customAdapter = FilterTypeAdapter(requireContext(),itemsList,this)
-//        val layoutManager = LinearLayoutManager(requireContext())
-//        recyclerView.layoutManager = layoutManager
-//        recyclerView.adapter = customAdapter
     }
     fun setFilterView(){
         val recyclerView: RecyclerView = multipleFiltersBinding.filterType

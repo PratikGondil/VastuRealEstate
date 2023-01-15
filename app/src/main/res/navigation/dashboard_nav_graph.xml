@@ -13,23 +13,27 @@
         <action
             android:id="@+id/action_VastuDashboardFragment_to_LoanFragment"
             app:destination="@id/LoanFragment"
-            app:enterAnim="@anim/enter_from_right"/>
+            app:enterAnim="@anim/slide_in_right"/>
         <action
             android:id="@+id/action_VastuDashboardFragment_to_RealEstateFragment"
             app:destination="@id/RealEstateFragment"
-            app:enterAnim="@anim/enter_from_right"/>
+            app:enterAnim="@anim/slide_in_right"/>
         <action
             android:id="@+id/action_VastuDashboardFragment_to_EnquiryFragment"
             app:destination="@id/EnquiryFragment"
-            app:enterAnim="@anim/enter_from_right"/>
+            app:enterAnim="@anim/slide_in_right"/>
         <action
             android:id="@+id/action_VastuDashboardFragment_to_OfferFragment"
             app:destination="@id/OfferFragment"
-            app:enterAnim="@anim/enter_from_right"/>
+            app:enterAnim="@anim/slide_in_right"/>
         <action
             android:id="@+id/action_VastuDashboardFragment_to_addPropertyFragment"
             app:destination="@id/addPropertyFragment"
-            app:enterAnim="@anim/enter_from_right"/>
+            app:enterAnim="@anim/slide_in_right"/>
+        <action
+            android:id="@+id/action_VastuDashboardFragment_to_EmployeeListFragment"
+            app:destination="@id/EmployeeListFragment"
+            app:enterAnim="@anim/slide_in_right"/>
     </fragment>
 
     <fragment
@@ -37,6 +41,32 @@
         android:name="com.vastu.realestate.appModule.dashboard.view.offers.OffersFragment"
         android:label="OfferFragment"
         tools:layout="@layout/offers_fragment"/>
+    <fragment
+        android:id="@+id/EmployeeListFragment"
+        android:name="com.vastu.realestate.appModule.employee.fragment.EmployeeListFragment"
+        android:label="EmployeeListFragment"
+        tools:layout="@layout/employee_list_fragment">
+        <action
+            android:id="@+id/action_EmployeeListFragment_to_EmployeeDetailsFragment"
+            app:destination="@id/EmployeeDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"/>
+        <action
+            android:id="@+id/action_EmployeeListFragment_to_VastuDashboardFragment"
+            app:destination="@id/VastuDashboardFragment"
+            app:enterAnim="@anim/slide_in_left"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/EmployeeDetailsFragment"
+        android:name="com.vastu.realestate.appModule.employee.fragment.EmployeeDetailsFragment"
+        android:label="EmployeeDetailsFragment"
+        tools:layout="@layout/employee_details_fragment">
+        <action
+            android:id="@+id/action_EmployeeDetailsFragment_to_EmployeeListFragment"
+            app:destination="@id/EmployeeListFragment"
+            app:enterAnim="@anim/slide_in_left"/>
+
+    </fragment>
 
     <fragment
         android:id="@+id/RealEstateFragment"

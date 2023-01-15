@@ -174,8 +174,12 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         //open PropertyList
         closeDrawer()
     }
+   override fun onEmployessClick(){
+       findNavController().navigate(R.id.action_VastuDashboardFragment_to_EmployeeListFragment)
+       closeDrawer()
 
-    override fun onClickAddProperty() {
+
+   }    override fun onClickAddProperty() {
         val bundle = Bundle()
         bundle.putSerializable(IS_FROM_PROPERTY_LIST, false)
         findNavController().navigate(R.id.action_VastuDashboardFragment_to_addPropertyFragment,bundle)

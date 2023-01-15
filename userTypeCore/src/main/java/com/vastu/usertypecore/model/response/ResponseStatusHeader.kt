@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class ResponseStatusHeader(
     @SerializedName("statusCode")
-    val statusCode: String,
+    val statusCode: String? = null,
     @SerializedName("statusDescription")
-    val statusDescription: String
+    val statusDescription: String?=null
 )

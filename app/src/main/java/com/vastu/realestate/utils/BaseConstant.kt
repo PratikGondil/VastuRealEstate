@@ -40,5 +40,6 @@ object BaseConstant {
   const val EMPLOYEES ="4"
 
   const val ADD_PROPERTY_STATUS="1"
+  const val EMPLOYEE_ID ="EMPLOYEE ID"
 
 }

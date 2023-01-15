@@ -146,8 +146,8 @@
     <string name="slash">/</string>
     <string name="property_id">Property ID</string>
     <string name="properties">Properties</string>
-
-
+    <string name="assign">Assign</string>
+    <string name="employees">Employees</string>
 
 <!--    filter-->
     <string name="filters_and_sort">FILTERS &amp; SORT</string>

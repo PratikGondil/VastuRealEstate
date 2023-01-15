@@ -121,28 +121,28 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
     }
 
     override fun onOccupationListFailure(occupationMainResponse: OccupationMainResponse) {
-        showDialog(occupationMainResponse.occupationResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(occupationMainResponse.occupationResponse.responseStatusHeader.statusDescription!!,false,false)
     }
 
     override fun onPropertyInterestedInListFailure(propertyInterestMainResponse: PropertyInterestMainResponse) {
-        showDialog(propertyInterestMainResponse.interestedInResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(propertyInterestMainResponse.interestedInResponse.responseStatusHeader.statusDescription!!,false,false)
     }
 
     override fun onOwnershipListFailure(ownershipMainResponse: OwnershipMainResponse) {
-        showDialog(ownershipMainResponse.ownershipResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(ownershipMainResponse.ownershipResponse.responseStatusHeader.statusDescription!!,false,false)
     }
 
     override fun onAddPropertyEnquiryFailure(enquiryMainResponse: EnquiryMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription!!,false,false)
         Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
     override fun onGotoDashboard(enquiryMainResponse: EnquiryMainResponse) {
       hideProgressDialog()
       clearAllFields()
-      showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription,true,false)
+      showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription!!,true,false)
       Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 

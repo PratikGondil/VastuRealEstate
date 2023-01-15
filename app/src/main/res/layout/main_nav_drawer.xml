@@ -149,7 +149,35 @@
                     android:fontFamily="@font/poppins_regular"
                     android:text="@string/properties" />
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/nav_employee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onEmployessClick()}"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="@dimen/margin_xxlarge">
 
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/first_name"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:visibility="@{viewModel.properties}"
+                    android:textColor="@color/nav_text_color"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/employees" />
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/nav_offers"
                 android:layout_width="match_parent"

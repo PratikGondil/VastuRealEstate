@@ -13,6 +13,8 @@ import com.vastu.realestate.appModule.dashboard.uiInterfaces.IAdvertisementSlide
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IDashboardViewListener
 import com.vastu.realestate.appModule.dashboard.view.offers.OffersFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewModel
+import com.vastu.realestate.appModule.employee.fragment.EmployeeDetailsFragment
+import com.vastu.realestate.appModule.employee.fragment.EmployeeListFragment
 import com.vastu.realestate.appModule.enquiry.view.AddLoanEnquiryFragment
 import com.vastu.realestate.appModule.enquiry.view.AddPropertyEnquiryFragment
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
@@ -116,7 +118,7 @@ class DashboardActivity : BaseActivity(),  IAdvertisementSliderListener {
         val fragment = navHostFragment!!.childFragmentManager.fragments[0]
         if (fragment is LoanFragment || fragment is RealEstateFragment || fragment is RealEstateDetailsFragment
             || fragment is AddLoanEnquiryFragment || fragment is AddPropertyEnquiryFragment
-            || fragment is AddPropertyFragment || fragment is OffersFragment) {
+            || fragment is AddPropertyFragment || fragment is OffersFragment||fragment is EmployeeDetailsFragment || fragment is EmployeeListFragment) {
             super.onBackPressed()
         }else {
             finishAffinity()

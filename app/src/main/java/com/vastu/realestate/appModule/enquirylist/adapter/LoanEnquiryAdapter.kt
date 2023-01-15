@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.enquiry.loan.model.response.LoanData
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListener
 import com.vastu.realestate.databinding.LoanEnquiryItemviewBinding
 
-class LoanEnquiryAdapter(private val loanDataList :List<LoanData>):
+class LoanEnquiryAdapter(private val loanDataList :List<LoanData>,var iAssignLeadListener: IAssignLeadListener):
     RecyclerView.Adapter<LoanEnquiryViewHolder>() {
     private lateinit var context: Context
 
@@ -24,6 +25,10 @@ class LoanEnquiryAdapter(private val loanDataList :List<LoanData>):
         val loan = loanDataList[position]
         holder.bind(loan)
         binding.loanNameTextview.text = context.getString(R.string.username,loan.firstName,loan.middleName,loan.lastName)
+        holder.binding.btnAssignLead.setOnClickListener {
+            iAssignLeadListener.assignLoanLeadToEmployee(loan)
+
+        }
 
     }
 
