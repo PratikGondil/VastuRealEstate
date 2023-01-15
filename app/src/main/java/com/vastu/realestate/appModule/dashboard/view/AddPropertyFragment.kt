@@ -326,7 +326,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         clearAllFields()
         showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = true, isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
-        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription, isSuccess = true, isNetworkFailure = false)
+        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = true, isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({
             onClickBack()
             hideDialog()}, 1000)
@@ -337,7 +337,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         clearAllFields()
         showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
-        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription, isSuccess = false, isNetworkFailure = false)
+        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({
             onClickBack()
             hideDialog()}, 1000)
@@ -681,14 +681,14 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
 
     override fun onFailureGetImages(getImageMainResponse: GetImageMainResponse) {
         hideProgressDialog()
-        showDialog(getImageMainResponse.imageResponse.responseStatusHeader.statusDescription, isSuccess = false,isNetworkFailure = false)
+        showDialog(getImageMainResponse.imageResponse.responseStatusHeader.statusDescription!!, isSuccess = false,isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({
             hideDialog()}, 1000)
     }
 
     override fun onFailureGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
-        showDialog(propertyDataResponseMain.propertyIdResponse.responseStatusHeader.statusDescription, isSuccess = false,isNetworkFailure = false)
+        showDialog(propertyDataResponseMain.propertyIdResponse.responseStatusHeader.statusDescription!!, isSuccess = false,isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({
             hideDialog()}, 1000)
     }
@@ -701,13 +701,13 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     }
     override fun onSuccessDeleteImage(deleteImageMainResponse: DeleteImageMainResponse) {
         hideProgressDialog()
-        showDialog(deleteImageMainResponse.imageDeleteResponse.responseStatusHeader.statusDescription, isSuccess = true,isNetworkFailure = false)
+        showDialog(deleteImageMainResponse.imageDeleteResponse.responseStatusHeader.statusDescription!!, isSuccess = true,isNetworkFailure = false)
         getImages()
     }
 
     override fun onFailureDeleteImage(deleteImageMainResponse: DeleteImageMainResponse) {
         hideProgressDialog()
-        showDialog(deleteImageMainResponse.imageDeleteResponse.responseStatusHeader.statusDescription, isSuccess = false,isNetworkFailure = false)
+        showDialog(deleteImageMainResponse.imageDeleteResponse.responseStatusHeader.statusDescription!!, isSuccess = false,isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({
             hideDialog()}, 1000)
     }
