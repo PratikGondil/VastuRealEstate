@@ -8,6 +8,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.signUp.uiInterfaces.ISignUpViewListener
@@ -15,14 +17,16 @@ import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
 import com.vastu.realestate.databinding.SignUpFragmentBinding
 import com.vastu.realestate.registrationcore.model.request.ObjSubAreaReq
 import com.vastu.realestate.registrationcore.model.request.ObjUserInfo
-import com.vastu.realestate.registrationcore.model.response.registration.ObjRegisterDlts
-import com.vastu.realestate.registrationcore.model.response.registration.ObjRegisterResponseMain
 import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaDataList
 import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaResponseMain
+import com.vastu.realestate.registrationcore.model.response.registration.ObjRegisterDlts
+import com.vastu.realestate.registrationcore.model.response.registration.ObjRegisterResponseMain
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
 import com.vastu.realestate.utils.BaseConstant.CUSTOMER
 import com.vastu.realestate.utils.BaseConstant.REGISTER_DTLS_OBJ
+import java.util.*
+
 
 class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener {
 
@@ -31,6 +35,10 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
     lateinit var viewPager :ViewPager2
     var objUserInfo= ObjUserInfo()
     var objSubAreaReq = ObjSubAreaReq()
+    private var latitude: String?=null
+    private var longitude :String?=null
+    private var address : String?=null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -120,7 +128,11 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         city = signUpViewModel.city.value!!.talukaId,
         subArea = signUpViewModel.subArea.get()!!.areaId!!,
         emailId = signUpViewModel.mailId.get()!!,
-        userType = CUSTOMER)
+        userType = CUSTOMER,
+        latitude = latitude.toString(),
+        longitude = longitude.toString(),
+        address = signUpViewModel.address.get()
+        )
     }
 
     private fun getCityList(){

@@ -207,14 +207,16 @@
     <item>10000000</item>
     </string-array>
 
-    <string-array name="rsPerSqSliderValues" >
+    <string-array name="rsPerSqSliderValues">
         <item>0</item>
         <item>500000</item>
     </string-array>
 
-    <string-array name="buildupAreaSliderValues" >
+    <string-array name="buildupAreaSliderValues">
         <item>0</item>
         <item>10000</item>
     </string-array>
     <string name="username">%1$s %2$s %3$s</string>
+    <string name="edit_property">Edit Property</string>
+    <string name="delete">Delete</string>
 </resources>

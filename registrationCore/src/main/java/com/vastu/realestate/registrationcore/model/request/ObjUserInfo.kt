@@ -11,5 +11,8 @@ data class ObjUserInfo(
     @SerializedName("city")var city :String? = null,
     @SerializedName("sub_area")var subArea :String?=null,
     @SerializedName("email") var emailId :String?=null,
-    @SerializedName("user_type") var userType:String?=null
+    @SerializedName("user_type") var userType:String?=null,
+    @SerializedName("lat") var latitude:String?=null,
+    @SerializedName("long") var longitude:String?=null,
+    @SerializedName("address") var address:String?=null
 ): Serializable

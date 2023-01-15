@@ -16,6 +16,8 @@ object ApiUrlEndPoints {
     const val GET_PROPERTY = "property_by_id.php"
     const val ADD_PROPERTY = "add_property.php"
     const val EDIT_PROPERTY = "edit_property.php"
+    const val GET_IMAGES = "get_images.php";
+    const val DELETE_IMAGES= "delete_images.php"
 
     const val GET_BANKS = "get_banks.php"
     const val GET_OCCUPATION = "get_occupation.php"

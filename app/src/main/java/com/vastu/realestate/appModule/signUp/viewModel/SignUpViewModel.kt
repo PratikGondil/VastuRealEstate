@@ -30,6 +30,7 @@ class SignUpViewModel(application: Application) : AndroidViewModel(application),
     var lastName = ObservableField("")
     var mobileNumber = ObservableField("")
     var mailId = ObservableField("")
+    var address = ObservableField("")
     var city = MutableLiveData<ObjTalukaDataList>()
     var subArea = ObservableField<ObjCityAreaData>()
     var cityList =MutableLiveData<ArrayList<ObjTalukaDataList>>()

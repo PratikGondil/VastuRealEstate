@@ -17,6 +17,7 @@ import com.vastu.realestate.appModule.employee.fragment.EmployeeDetailsFragment
 import com.vastu.realestate.appModule.employee.fragment.EmployeeListFragment
 import com.vastu.realestate.appModule.enquiry.view.AddLoanEnquiryFragment
 import com.vastu.realestate.appModule.enquiry.view.AddPropertyEnquiryFragment
+import com.vastu.realestate.appModule.properties.view.PropertiesFragment
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.databinding.ActivityVastuDashboardBinding
 import com.vastu.realestate.utils.PreferenceKEYS
@@ -110,7 +111,7 @@ class DashboardActivity : BaseActivity(),  IAdvertisementSliderListener {
 
     override fun onUserNotConnected() {
         hideProgressDialog()
-        showDialog("",false,true)
+        showDialog("", isSuccess = false, isNetworkFailure = true)
     }
 
     override fun onBackPressed() {
@@ -118,7 +119,9 @@ class DashboardActivity : BaseActivity(),  IAdvertisementSliderListener {
         val fragment = navHostFragment!!.childFragmentManager.fragments[0]
         if (fragment is LoanFragment || fragment is RealEstateFragment || fragment is RealEstateDetailsFragment
             || fragment is AddLoanEnquiryFragment || fragment is AddPropertyEnquiryFragment
-            || fragment is AddPropertyFragment || fragment is OffersFragment||fragment is EmployeeDetailsFragment || fragment is EmployeeListFragment) {
+            || fragment is AddPropertyFragment || fragment is OffersFragment
+            ||fragment is PropertiesFragment || fragment is AddPropertyFragment || fragment is OffersFragment||fragment is EmployeeDetailsFragment || fragment is EmployeeListFragment) {
+
             super.onBackPressed()
         }else {
             finishAffinity()

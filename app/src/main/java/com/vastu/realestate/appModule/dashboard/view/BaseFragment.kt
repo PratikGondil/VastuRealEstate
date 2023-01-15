@@ -13,6 +13,9 @@ open class BaseFragment : Fragment() {
      fun hideProgressDialog(){
         getVastuActivity()?.hideProgressDialog()
     }
+    fun hideDialog(){
+        getVastuActivity()?.hideDialog()
+    }
     fun showDialog(message:String,isSuccess:Boolean,isNetworkFailure:Boolean){
         getVastuActivity()?.showDialog(message,isSuccess,isNetworkFailure)
     }

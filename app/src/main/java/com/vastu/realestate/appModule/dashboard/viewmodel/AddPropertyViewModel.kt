@@ -9,12 +9,25 @@ import com.vastu.addproperty.callback.response.IAddPropertyResponseListener
 import com.vastu.addproperty.model.request.AddPropertyRequest
 import com.vastu.addproperty.model.response.AddPropertyMainResponse
 import com.vastu.addproperty.repository.AddPropertyRepository
+import com.vastu.deleteimage.callbacks.response.IDeleteImageResponseListener
+import com.vastu.deleteimage.model.request.DeleteImageRequest
+import com.vastu.deleteimage.model.response.DeleteImageMainResponse
+import com.vastu.deleteimage.repository.DeleteImageRepository
 import com.vastu.editproperty.callbacks.response.IEditPropertyResponseListener
 import com.vastu.editproperty.model.request.EditPropertyRequest
 import com.vastu.editproperty.model.response.EditPropertyMainResponse
 import com.vastu.editproperty.repository.EditPropertyRepository
+import com.vastu.getimages.callbacks.response.IGetImagesResponseListener
+import com.vastu.getimages.model.request.GetImageRequest
+import com.vastu.getimages.model.response.GetImageMainResponse
+import com.vastu.getimages.repository.GetImageRepository
+import com.vastu.propertycore.callback.request.response.IGetPropertyDetailsResponseListener
+import com.vastu.propertycore.model.response.PropertyDataResponseMain
+import com.vastu.propertycore.repository.PropertyDetailsRepository
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IAddPropertyListener
+import com.vastu.realestate.appModule.dashboard.uiInterfaces.IGetImagesListener
+import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertyDetailsListener
 import com.vastu.realestate.registrationcore.callbacks.response.ISubAreaResponseListener
 import com.vastu.realestate.registrationcore.callbacks.response.ITalukaResponseListener
 import com.vastu.realestate.registrationcore.model.request.ObjSubAreaReq
@@ -28,7 +41,8 @@ import com.vastu.realestate.utils.ApiUrlEndPoints
 import com.vastu.realestate.utils.ApiUrlEndPoints.EDIT_PROPERTY
 
 class AddPropertyViewModel(application: Application):AndroidViewModel(application),
-    ITalukaResponseListener, ISubAreaResponseListener,IAddPropertyResponseListener,IEditPropertyResponseListener {
+    ITalukaResponseListener, ISubAreaResponseListener,IAddPropertyResponseListener,IEditPropertyResponseListener,
+    IGetPropertyDetailsResponseListener,IGetImagesResponseListener,IDeleteImageResponseListener{
 
     var city = MutableLiveData<ObjTalukaDataList>()
     var subArea =  MutableLiveData<ObjCityAreaData>()
@@ -63,6 +77,8 @@ class AddPropertyViewModel(application: Application):AndroidViewModel(applicatio
         mContext = application
     }
     lateinit var iAddPropertyListener: IAddPropertyListener
+    lateinit var iPropertyDetailsListener:IPropertyDetailsListener
+    lateinit var iGetImagesListener:IGetImagesListener
 
     var isBtnEnable = ObservableField(false)
     var btnBackground = ObservableField(ContextCompat.getDrawable(mContext, R.drawable.button_inactive_background))
@@ -85,9 +101,6 @@ class AddPropertyViewModel(application: Application):AndroidViewModel(applicatio
     var descriptionValid = ObservableField(mContext.getString(R.string.required))
     var highlightsValid = ObservableField(mContext.getString(R.string.required))
 
-    fun onClickEdit(){
-        iAddPropertyListener.onEditProperty()
-    }
     fun onClickThumbnail(){
         iAddPropertyListener.onClickUploadImage(0)
     }
@@ -124,7 +137,13 @@ class AddPropertyViewModel(application: Application):AndroidViewModel(applicatio
     fun callEditPropertyApi(editPropertyRequest: EditPropertyRequest){
         EditPropertyRepository.callEditProperty(mContext,EDIT_PROPERTY,editPropertyRequest,this)
     }
-
+    fun getPropertyImages(getImageRequest: GetImageRequest){
+        GetImageRepository.callGetImagesApi(mContext,getImageRequest,ApiUrlEndPoints.GET_IMAGES,this)
+    }
+    fun deleteImage(deleteImageRequest: DeleteImageRequest){
+        DeleteImageRepository.callDeleteImage(mContext,deleteImageRequest,ApiUrlEndPoints.DELETE_IMAGES,this
+        )
+    }
     fun callCityListApi(){
         CityListRequestRepository.callCityListApi(mContext, ApiUrlEndPoints.GET_CITIES,this)
     }
@@ -166,7 +185,36 @@ class AddPropertyViewModel(application: Application):AndroidViewModel(applicatio
        iAddPropertyListener.onFailureEditProperty(editPropertyMainResponse)
     }
 
+    override fun onGetImagesSuccess(getImageMainResponse: GetImageMainResponse) {
+        iGetImagesListener.onSuccessGetImages(getImageMainResponse)
+    }
+
+    override fun onGetImageFailure(getImageMainResponse: GetImageMainResponse) {
+        iGetImagesListener.onFailureGetImages(getImageMainResponse)
+    }
+
+    override fun onDeleteImageSuccess(deleteImageMainResponse: DeleteImageMainResponse) {
+       iGetImagesListener.onSuccessDeleteImage(deleteImageMainResponse)
+    }
+
+    override fun onDeleteImageFailure(deleteImageMainResponse: DeleteImageMainResponse) {
+       iGetImagesListener.onFailureDeleteImage(deleteImageMainResponse)
+    }
+
     override fun networkFailure() {
        iAddPropertyListener.onUserNotConnected()
     }
+    fun getPropertyDetails(userId:String,propertyId:String){
+        PropertyDetailsRepository.callGetPropertyDetails(mContext,userId,propertyId,
+            ApiUrlEndPoints.GET_PROPERTY,this)
+    }
+
+    override fun getPropertyDetailsSuccessResponse(propertyDataResponseMain: PropertyDataResponseMain) {
+        iPropertyDetailsListener.onSuccessGetPropertyDetails(propertyDataResponseMain)
+    }
+
+    override fun getPropertyDetailsFailureResponse(propertyDataResponseMain: PropertyDataResponseMain) {
+        iPropertyDetailsListener.onFailureGetPropertyDetails(propertyDataResponseMain)
+    }
+
 }

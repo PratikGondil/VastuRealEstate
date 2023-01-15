@@ -764,6 +764,7 @@
 
 
                 <LinearLayout
+                    android:id="@+id/thumbnailLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/gray"
@@ -787,6 +788,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/broucheLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -809,6 +811,19 @@
                     android:weightSum="1">
 
                     <TextView
+                        android:id="@+id/brouchePath"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.7"
+                        android:maxLength="25"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:paddingStart="@dimen/margin_small"
+                        android:text="@string/no_file_chosen"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
                         android:layout_width="0dp"
                         android:layout_weight="0.3"
                         android:textSize="@dimen/text_size_small"
@@ -818,24 +833,11 @@
                         android:onClick="@{(view)->addPropertyViewModel.onClickBrochurePdf()}"
                         android:background="@color/gray"
                         android:layout_height="wrap_content"/>
-
-                    <TextView
-                        android:id="@+id/brouchePath"
-                        android:layout_width="0dp"
-                        android:layout_weight="0.6"
-                        android:maxLength="25"
-                        android:ellipsize="end"
-                        android:gravity="start"
-                        android:paddingStart="@dimen/margin_small"
-                        android:text="@string/no_file_chosen"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_small"
-                        android:layout_height="wrap_content"/>
                 </LinearLayout>
                 </LinearLayout>
-
 
                 <LinearLayout
+                    android:id="@+id/imageLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -851,6 +853,14 @@
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/text_size_small"/>
 
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/imagesGridView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:horizontalSpacing="6dp"
+                        android:numColumns="2"
+                        android:verticalSpacing="6dp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -859,11 +869,25 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/image1Layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:padding="@dimen/padding_small"
                         android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/imagePath1"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.7"
+                            android:ellipsize="end"
+                            android:background="@color/white"
+                            android:gravity="start"
+                            android:paddingStart="@dimen/margin_small"
+                            android:text="@string/no_file_chosen"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
                             android:id="@+id/chooseImage1"
@@ -877,27 +901,28 @@
                             android:background="@color/gray"
                             android:layout_height="wrap_content"/>
 
-                        <TextView
-                            android:id="@+id/imagePath1"
-                            android:layout_width="0dp"
-                            android:layout_weight="0.6"
-                            android:ellipsize="end"
-                            android:background="@color/white"
-                            android:gravity="start"
-                            android:paddingStart="@dimen/margin_small"
-                            android:text="@string/no_file_chosen"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_small"
-                            android:layout_height="wrap_content"/>
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/image2Layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginTop="@dimen/padding_xsmall"
                         android:padding="@dimen/padding_small"
                         android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/imagePath2"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.7"
+                            android:gravity="start"
+                            android:background="@color/white"
+                            android:paddingStart="@dimen/margin_small"
+                            android:text="@string/no_file_chosen"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
                             android:id="@+id/chooseImage2"
@@ -910,11 +935,21 @@
                             android:onClick="@{(view)->addPropertyViewModel.onClickImage2()}"
                             android:background="@color/gray"
                             android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/image3Layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="@dimen/padding_xsmall"
+                        android:padding="@dimen/padding_small"
+                        android:weightSum="1">
 
                         <TextView
-                            android:id="@+id/imagePath2"
+                            android:id="@+id/imagePath3"
                             android:layout_width="0dp"
-                            android:layout_weight="0.6"
+                            android:layout_weight="0.7"
                             android:gravity="start"
                             android:background="@color/white"
                             android:paddingStart="@dimen/margin_small"
@@ -922,15 +957,6 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
                             android:layout_height="wrap_content"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="@dimen/padding_xsmall"
-                        android:padding="@dimen/padding_small"
-                        android:weightSum="1">
 
                         <TextView
                             android:id="@+id/chooseImage3"
@@ -943,27 +969,28 @@
                             android:onClick="@{(view)->addPropertyViewModel.onClickImage3()}"
                             android:background="@color/gray"
                             android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:id="@+id/imagePath3"
-                            android:layout_width="0dp"
-                            android:layout_weight="0.6"
-                            android:gravity="start"
-                            android:background="@color/white"
-                            android:paddingStart="@dimen/margin_small"
-                            android:text="@string/no_file_chosen"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_small"
-                            android:layout_height="wrap_content"/>
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/image4Layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginTop="@dimen/padding_xsmall"
                         android:padding="@dimen/padding_small"
                         android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/imagePath4"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.7"
+                            android:background="@color/white"
+                            android:gravity="start"
+                            android:paddingStart="@dimen/margin_small"
+                            android:text="@string/no_file_chosen"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
                             android:id="@+id/chooseImage4"
@@ -976,27 +1003,28 @@
                             android:onClick="@{(view)->addPropertyViewModel.onClickImage4()}"
                             android:background="@color/gray"
                             android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:id="@+id/imagePath4"
-                            android:layout_width="0dp"
-                            android:layout_weight="0.6"
-                            android:background="@color/white"
-                            android:gravity="start"
-                            android:paddingStart="@dimen/margin_small"
-                            android:text="@string/no_file_chosen"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_small"
-                            android:layout_height="wrap_content"/>
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/image5Layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:layout_marginTop="@dimen/padding_xsmall"
                         android:padding="@dimen/padding_small"
                         android:weightSum="1">
+
+                        <TextView
+                            android:id="@+id/imagePath5"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.7"
+                            android:gravity="start"
+                            android:background="@color/white"
+                            android:paddingStart="@dimen/margin_small"
+                            android:text="@string/no_file_chosen"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_small"
+                            android:layout_height="wrap_content"/>
 
                         <TextView
                             android:id="@+id/chooseImage5"
@@ -1010,22 +1038,12 @@
                             android:background="@color/gray"
                             android:layout_height="wrap_content"/>
 
-                        <TextView
-                            android:id="@+id/imagePath5"
-                            android:layout_width="0dp"
-                            android:layout_weight="0.6"
-                            android:gravity="start"
-                            android:background="@color/white"
-                            android:paddingStart="@dimen/margin_small"
-                            android:text="@string/no_file_chosen"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_small"
-                            android:layout_height="wrap_content"/>
+
                     </LinearLayout>
                 </LinearLayout>
                 </LinearLayout>
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnSignUp"
+                    android:id="@+id/btnPostProperty"
                     context="@{context}"
                     isEnable="@{addPropertyViewModel.isBtnEnable}"
                     android:layout_width="@dimen/button_width"
@@ -1044,16 +1062,5 @@
             </LinearLayout>
         </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatEditProperty"
-            android:layout_width="wrap_content"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            app:icon="@drawable/ic_edit"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="@dimen/margin_large"
-            android:onClick="@{(view)->addPropertyViewModel.onClickEdit()}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -13,7 +13,6 @@ import android.os.*
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.util.Base64
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -24,12 +23,22 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.vastu.addproperty.model.request.AddPropertyRequest
 import com.vastu.addproperty.model.response.AddPropertyMainResponse
+import com.vastu.deleteimage.model.request.DeleteImageRequest
+import com.vastu.deleteimage.model.response.DeleteImageMainResponse
 import com.vastu.editproperty.model.request.EditPropertyRequest
 import com.vastu.editproperty.model.response.EditPropertyMainResponse
+import com.vastu.getimages.model.request.GetImageRequest
+import com.vastu.getimages.model.response.GetImageMainResponse
+import com.vastu.getimages.model.response.ImageData
+import com.vastu.propertycore.model.response.PropertyDataResponseMain
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.adapter.PropertyImagesAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IAddPropertyListener
+import com.vastu.realestate.appModule.dashboard.uiInterfaces.IGetImagesListener
+import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertyDetailsListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.DashboardActivity.Companion.userId
 import com.vastu.realestate.appModule.dashboard.view.DashboardActivity.Companion.userType
@@ -41,21 +50,28 @@ import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaDa
 import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaResponseMain
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
+import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.BaseConstant.ADD_PROPERTY_STATUS
 import com.vastu.realestate.utils.BaseConstant.IS_FROM_PROPERTY_LIST
 import com.vastu.realestate.utils.BaseConstant.PICK_FROM_GALLERY
+import com.vastu.realestatecore.model.response.PropertyData
 import java.io.*
 import java.net.URISyntaxException
 import java.util.*
+import kotlin.collections.ArrayList
 
 
-class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListener,View.OnTouchListener  {
+class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListener,View.OnTouchListener,IPropertyDetailsListener,IGetImagesListener,
+    PropertyImagesAdapter.OnItemClickListener {
     private lateinit var addPropertyViewModel: AddPropertyViewModel
     private lateinit var addPropertyBinding:FragmentAddPropertyBinding
     private lateinit var drawerViewModel: DrawerViewModel
     private var objSubAreaReq = ObjSubAreaReq()
     private var addPropertyRequest = AddPropertyRequest()
     private var ediPropertyRequest = EditPropertyRequest()
+    private var getImageRequest = GetImageRequest()
+    private var deleteImageRequest = DeleteImageRequest()
+    private lateinit var imageList :List<ImageData>
     private var image1=String()
     private var image2=String()
     private var image3=String()
@@ -65,6 +81,8 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     private var brouche =String()
     private var stepImage:Int = 0
     private var isEdit:Boolean = false
+    private var isValid:Boolean = false
+    private var propertyId : String? = null
 
 
     override fun onCreateView(
@@ -77,6 +95,8 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         addPropertyBinding.lifecycleOwner = this
         drawerViewModel.iToolbarListener = this
         addPropertyViewModel.iAddPropertyListener = this
+        addPropertyViewModel.iPropertyDetailsListener = this
+        addPropertyViewModel.iGetImagesListener = this
         addPropertyBinding.addPropertyViewModel = addPropertyViewModel
         addPropertyBinding.drawerViewModel = drawerViewModel
         getBundleData()
@@ -84,14 +104,24 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         return addPropertyBinding.root
     }
 
-    private fun getBundleData(){
+    private fun getBundleData() {
         val args = this.arguments
-        if (args != null){
+        if (args != null) {
             if (args.getSerializable(IS_FROM_PROPERTY_LIST) != null) {
-                isEdit =  args.getSerializable(IS_FROM_PROPERTY_LIST) as Boolean
+                isEdit = args.getSerializable(IS_FROM_PROPERTY_LIST) as Boolean
+                if (isEdit) {
+                    if (args.getSerializable(BaseConstant.PROPERTY_DETAILS) != null) {
+                        val property =
+                            args.getSerializable(BaseConstant.PROPERTY_DETAILS) as PropertyData
+                        propertyId = property.propertyId
+                        addPropertyBinding.btnPostProperty.setText(getString(R.string.edit_property))
+                        getPropertyDetails()
+                    }
+                }
             }
         }
     }
+
     private fun initViewsList(){
             addPropertyBinding.autoCompletePropertyType.setOnTouchListener(this)
             addPropertyBinding.autoCompleteSellType.setOnTouchListener(this)
@@ -189,10 +219,6 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         }
     }
 
-    override fun onEditProperty() {
-       isEdit = true
-    }
-
     override fun onClickUploadImage(image:Int) {
         if(checkRequestPermissions(PICK_FROM_GALLERY)){
              stepImage = image
@@ -202,7 +228,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
 
     override fun onClickAddProperty() {
         showProgressDialog()
-        if(isEdit){
+        if(isEdit && isValid){
             addPropertyViewModel.callEditPropertyApi(getEditPropertyData())
         }else {
             addPropertyViewModel.callAddPropertyApi(getAddPropertyData())
@@ -225,8 +251,8 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
 
     private fun getEditPropertyData():EditPropertyRequest {
         ediPropertyRequest = ediPropertyRequest.copy(
+            propertyId = propertyId,
             userId = userId,
-            userType = userType,
             propertyTitle = addPropertyViewModel.propertyTitle.get(),
             propertyType = addPropertyViewModel.propertyType.get(),
             sellType = addPropertyViewModel.sellType.get(),
@@ -246,13 +272,10 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             garage = addPropertyViewModel.garage.get(),
             floors = addPropertyViewModel.floors.get(),
             brochure = addPropertyViewModel.brochurePdf.get(),
-            thumbnail = thumbnail,
             description = addPropertyViewModel.description.get(),
             highlights = addPropertyViewModel.highlights.get(),
             availability = addPropertyViewModel.availability.get(),
             amenities = addPropertyViewModel.amenties.get(),
-            slug = "",
-            status = ADD_PROPERTY_STATUS,
             img1 = image1,
             img2 = image2,
             img3 = image3,
@@ -303,6 +326,10 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         clearAllFields()
         showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = true, isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
+        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription, isSuccess = true, isNetworkFailure = false)
+        Handler(Looper.getMainLooper()).postDelayed({
+            onClickBack()
+            hideDialog()}, 1000)
     }
 
     override fun onFailureAddProperty(addPropertyMainResponse: AddPropertyMainResponse) {
@@ -310,6 +337,10 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         clearAllFields()
         showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
         Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
+        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription, isSuccess = false, isNetworkFailure = false)
+        Handler(Looper.getMainLooper()).postDelayed({
+            onClickBack()
+            hideDialog()}, 1000)
     }
 
     override fun onCityListApiFailure(objTalukaResponseMain: ObjTalukaResponseMain) {
@@ -418,42 +449,37 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         addPropertyBinding.apply {
             when(stepImage){
                 1->{
-                    imagePath1.text = filePath
+                    imagePath1.text = getImageName(filePath)
                     image1 = convertToBase64(bitmap)
-                    //Log.e("IMAGE1",image1)
                 }
                 2->{
-                    imagePath2.text = filePath
+                    imagePath2.text = getImageName(filePath)
                     image2 = convertToBase64(bitmap)
-                    //Log.e("IMAGE2",image2)
                 }
                 3->{
-                    imagePath3.text = filePath
+                    imagePath3.text = getImageName(filePath)
                     image3 = convertToBase64(bitmap)
-                    //Log.e("IMAGE3",image3)
                 }
                 4->{
-                    imagePath4.text = filePath
+                    imagePath4.text = getImageName(filePath)
                     image4 = convertToBase64(bitmap)
-                    //Log.e("IMAGE4",image4)
                 }
                 5->{
-                    imagePath5.text = filePath
+                    imagePath5.text = getImageName(filePath)
                     image5 = convertToBase64(bitmap)
-                    //Log.e("IMAGE5",image5)
                 }
                 6->{
-                    brouchePath.text = filePath
-                    //image5 = convertToBase64(bitmap)
+                    brouchePath.text = getImageName(filePath)
                 }
                 else->{
                     thumbnailImage.setImageBitmap(bitmap)
                     thumbnail = convertToBase64(bitmap)
-                    //Log.e("Thumbnail",thumbnail)
                 }
             }
         }
-
+    }
+    private fun getImageName(path:String):String{
+     return path.substring(path.lastIndexOf("/") + 1)
     }
     private fun uriToBitmap(selectedFileUri: Uri): Bitmap? {
         try {
@@ -586,5 +612,110 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
 
    private fun isMediaDocument(uri: Uri): Boolean {
         return "com.android.providers.media.documents" == uri.authority
+    }
+
+
+    private fun getPropertyDetails(){
+        hideProgressDialog()
+        userId?.let {
+            propertyId?.let { it1 ->
+                addPropertyViewModel.getPropertyDetails(it,it1)
+            }
+        }
+    }
+
+    override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
+        hideProgressDialog()
+
+        getImages()
+
+        addPropertyBinding.apply {
+            val property = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
+            edtPropertyTitle.setText(property.propertyTitle)
+            edtPropertyAddress.setText(property.address)
+            edtStates.setText(property.state)
+            edtHighlights.setText(property.highlights)
+            edtDescription.setText(property.description)
+            edtBedroom.setText(property.bedroom)
+            edtBathroom.setText(property.bathroom)
+            edtKitchen.setText(property.kitchen)
+            edtSwimmingPool.setText(property.swimmingPool)
+            edtArea.setText(property.propertyArea)
+            edtPrice.setText(property.price)
+            edtBookingAmount.setText(property.bookingAmount)
+            edtBalcony.setText(property.balcony)
+            edtGarage.setText(property.garage)
+            edtFloors.setText(property.floors)
+            autoCompleteSellType.setText(property.sellType)
+            autoCompletePropertyType.setText(property.propertyType)
+            autoCompleteCity.setText(property.city)
+            autoCompleteSubAreaList.setText(property.area)
+            autoCompleteAvailability.setText(property.availability)
+            autoCompleteBuildYear.setText(property.buildYear)
+            isValid = true
+        }
+     }
+    private fun getImages(){
+        getImageRequest = getImageRequest.copy(propertyId=propertyId)
+        showProgressDialog()
+        addPropertyViewModel.getPropertyImages(getImageRequest)
+    }
+
+    override fun onSuccessGetImages(getImageMainResponse: GetImageMainResponse) {
+        hideProgressDialog()
+        if(getImageMainResponse.getImageDetailsResponse.imageData.isNotEmpty()){
+            imageList = getImageMainResponse.getImageDetailsResponse.imageData
+            setImages(imageList)
+        }
+    }
+    private fun setImages(images: List<ImageData>){
+        try {
+            val imagesRecyclerView = addPropertyBinding.imagesGridView
+            val imageAdapter = PropertyImagesAdapter(this,images)
+            imagesRecyclerView.setLayoutManager(GridLayoutManager(activity, 2))
+            imagesRecyclerView.adapter = imageAdapter
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    override fun onFailureGetImages(getImageMainResponse: GetImageMainResponse) {
+        hideProgressDialog()
+        showDialog(getImageMainResponse.imageResponse.responseStatusHeader.statusDescription, isSuccess = false,isNetworkFailure = false)
+        Handler(Looper.getMainLooper()).postDelayed({
+            hideDialog()}, 1000)
+    }
+
+    override fun onFailureGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
+        hideProgressDialog()
+        showDialog(propertyDataResponseMain.propertyIdResponse.responseStatusHeader.statusDescription, isSuccess = false,isNetworkFailure = false)
+        Handler(Looper.getMainLooper()).postDelayed({
+            hideDialog()}, 1000)
+    }
+
+    override fun onItemClick(images: ImageData) {
+           showProgressDialog()
+           deleteImageRequest = deleteImageRequest.copy(propertyId=images.propertyId, imageId = images.imageId)
+           addPropertyViewModel.deleteImage(deleteImageRequest)
+
+    }
+    override fun onSuccessDeleteImage(deleteImageMainResponse: DeleteImageMainResponse) {
+        hideProgressDialog()
+        showDialog(deleteImageMainResponse.imageDeleteResponse.responseStatusHeader.statusDescription, isSuccess = true,isNetworkFailure = false)
+        getImages()
+    }
+
+    override fun onFailureDeleteImage(deleteImageMainResponse: DeleteImageMainResponse) {
+        hideProgressDialog()
+        showDialog(deleteImageMainResponse.imageDeleteResponse.responseStatusHeader.statusDescription, isSuccess = false,isNetworkFailure = false)
+        Handler(Looper.getMainLooper()).postDelayed({
+            hideDialog()}, 1000)
+    }
+
+    override fun addPropertyEnquiry() {
+
+    }
+
+    override fun chatEnquiry() {
     }
 }
