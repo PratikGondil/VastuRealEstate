@@ -17,8 +17,6 @@ Japp/src/main/java/com/vastu/realestate/appModule/dashboard/model/Slider.kt,1\f
 SloginCore/src/main/java/com/vastu/realestate/logincore/model/request/ObjLoginReq.kt,4\f\4f5f4a60ff4109fc92f555e8ea0b60cbd5e31fe1
 â
 YloginCore/src/main/java/com/vastu/realestate/logincore/model/response/ObjLoginResponse.kt,5\e\5e663d03abab5a7d20f51d09334847b1cb64debf
-ç
-]loginCore/src/main/java/com/vastu/realestate/logincore/model/response/ObjLoginResponseMain.kt,7\9\79971022db4b7bbe9b888bb4d9855d705c88aaca
 à
 XuserTypeCore/src/main/java/com/vastu/usertypecore/model/response/ResponseStatusHeader.kt,3\c\3c2fce6e88901b1f2ce844d14a065bc12d27ee5f
 Ä
@@ -101,8 +99,6 @@ z
 Japp/src/main/java/com/vastu/realestate/appModule/activity/LoginActivity.kt,c\3\c3e7e4bc295bace8dd95f516e62f6be25e28ce7c
 Ö
 UloginCore/src/main/java/com/vastu/realestate/logincore/callbacks/request/ILoginReq.kt,b\a\ba91b98b5d00162c5c9c8f21790ef2efc6786da9
-â
-Yapp/src/main/java/com/vastu/realestate/appModule/login/uiInterfaces/ILoginViewListener.kt,2\e\2eeb1c9050168c42b47fd297e9c4ec1909a31f62
 â
 Yapp/src/main/java/com/vastu/realestate/appModule/otp/uiListener/IVerifyOtpViewListener.kt,0\6\0646c6598215e3625e61a4b9392df550c21c685f
 ì

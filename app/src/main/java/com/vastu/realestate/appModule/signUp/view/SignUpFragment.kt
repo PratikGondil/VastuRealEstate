@@ -8,6 +8,7 @@ import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
+import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.*
@@ -205,7 +206,11 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         val bundle = Bundle()
         bundle.putSerializable(REGISTER_DTLS_OBJ, objRegisterDlts)
         clearAllFields()
+        showDialog(getString(R.string.register_successfully),isSuccess = true,isNetworkFailure = false)
         findNavController().navigate(R.id.action_LoginSignUpFragment_To_OTPFragment,bundle)
+        Handler(Looper.getMainLooper()).postDelayed({
+            hideDialog()
+            hideDialog()}, 1000)
     }
 
     private fun getUserInfo(){
@@ -237,9 +242,13 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
     }
 
     override fun onRegistrationFail(objRegisterResponseMain: ObjRegisterResponseMain) {
-       hideProgressDialog()
-       clearAllFields()
-       showDialog(objRegisterResponseMain.objRegisterResponse.objResponseStatusHdr.statusDescr,false,false)
+        hideProgressDialog()
+        clearAllFields()
+        showDialog(objRegisterResponseMain.objRegisterResponse.objResponseStatusHdr.statusDescr,false,false)
+        Handler(Looper.getMainLooper()).postDelayed({
+            hideDialog()
+            hideDialog()}, 1000)
+
     }
 
     override fun onCityListApiFailure(objTalukaResponseMain: ObjTalukaResponseMain) {
