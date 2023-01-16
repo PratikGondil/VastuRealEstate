@@ -245,6 +245,7 @@
                 android:maxLength="150"
                 android:paddingStart="@dimen/padding_small"
                 android:text="@string/address_text"
+                android:layout_margin="@dimen/margin_small"
                 android:drawableStart="@drawable/sub_area"
                 android:drawablePadding="@dimen/margin_small"
                 android:layout_height="wrap_content"
