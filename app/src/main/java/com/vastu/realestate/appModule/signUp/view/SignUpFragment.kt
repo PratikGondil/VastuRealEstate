@@ -85,10 +85,6 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         return signUpFragmentBinding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        getLastLocation()
-    }
     @SuppressLint("MissingPermission")
     private fun getLastLocation(){
         if(checkPermissions()){
