@@ -144,7 +144,7 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         val geoCoder = Geocoder(activity,Locale.getDefault())
         val add = geoCoder.getFromLocation(latitude,longitude,1)
         city = add.get(0).getAddressLine(0)
-        return city;
+        return city
     }
 
     override fun onRequestPermissionsResult(
@@ -238,6 +238,7 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
 
     override fun onRegistrationFail(objRegisterResponseMain: ObjRegisterResponseMain) {
        hideProgressDialog()
+       clearAllFields()
        showDialog(objRegisterResponseMain.objRegisterResponse.objResponseStatusHdr.statusDescr,false,false)
     }
 
