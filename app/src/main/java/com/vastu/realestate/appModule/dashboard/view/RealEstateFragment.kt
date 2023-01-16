@@ -22,7 +22,7 @@ import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterClickListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IRealEstateListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
-import com.vastu.realestate.appModule.dashboard.view.DashboardActivity.Companion.userId
+import com.vastu.realestate.appModule.dashboard.view.DashboardFragment.Companion.userId
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreen
 import com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateViewModel

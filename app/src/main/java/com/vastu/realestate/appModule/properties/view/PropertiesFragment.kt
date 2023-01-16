@@ -16,6 +16,7 @@ import com.vastu.realestate.appModule.dashboard.uiInterfaces.IRealEstateListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
+import com.vastu.realestate.appModule.dashboard.view.DashboardFragment.Companion.userId
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.properties.viewmodel.PropertiesViewModel
 import com.vastu.realestate.databinding.FragmentPropertiesBinding
@@ -56,7 +57,7 @@ class PropertiesFragment : BaseFragment(),IRealEstateListener, RealEstateAdapter
     private fun getProperties(){
         try {
             propertiesDataBinding.loadingLayout.startShimmerAnimation()
-            DashboardActivity.userId?.let { propertiesViewModel.getPropertyList(it) }
+            userId?.let { propertiesViewModel.getPropertyList(it) }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -111,6 +112,7 @@ class PropertiesFragment : BaseFragment(),IRealEstateListener, RealEstateAdapter
 
     override fun onFilterPropertyListFailure(objFilterDataResponseMain: ObjFilterDataResponseMain) {
        hideProgressDialog()
+        showDialog(objFilterDataResponseMain.objfilterDataResponse.responseStatusHeader.statusDescription,isSuccess = false,isNetworkFailure = false)
     }
 
     override fun onUserNotConnected() {
@@ -130,8 +132,10 @@ class PropertiesFragment : BaseFragment(),IRealEstateListener, RealEstateAdapter
     }
 
     override fun onClickMenu() {
+        //menu
     }
 
     override fun onClickNotification() {
+        //notification
     }
 }

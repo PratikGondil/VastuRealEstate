@@ -1,15 +1,24 @@
 package com.vastu.realestate.appModule.signUp.view
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.pm.PackageManager
+import android.location.Geocoder
+import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
+import android.os.Looper
+import android.util.Log
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.*
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.signUp.uiInterfaces.ISignUpViewListener
@@ -35,9 +44,21 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
     lateinit var viewPager :ViewPager2
     var objUserInfo= ObjUserInfo()
     var objSubAreaReq = ObjSubAreaReq()
-    private var latitude: String?=null
-    private var longitude :String?=null
+    private var lat: Double?=null
+    private var long :Double?=null
     private var address : String?=null
+
+    private var PERMISSION_ID = 52
+    lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+    lateinit var locationRequest:LocationRequest
+
+    private val locationCallback = object:LocationCallback(){
+        override fun onLocationResult(p0: LocationResult) {
+            val lastLocation =p0.lastLocation
+            lat = lastLocation?.latitude
+            long = lastLocation?.longitude
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +74,8 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         requireActivity().window.setSoftInputMode(
             WindowManager.LayoutParams
             .SOFT_INPUT_STATE_VISIBLE or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext())
+        getLastLocation()
         initView()
         getCityList()
         observeCityList()
@@ -61,19 +84,89 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         return signUpFragmentBinding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        getLastLocation()
+    }
+    @SuppressLint("MissingPermission")
+    private fun getLastLocation(){
+        if(checkPermissions()){
+            if(isLocationEnabled()){
+                fusedLocationProviderClient.lastLocation.addOnCompleteListener { task->
+                    var location :Location? = task.result
+                    if (location==null){
+                        getNewLocation()
+                    }else{
+                        lat = location.latitude
+                        long = location.longitude
+                        signUpFragmentBinding.edtAddress.setText(getAddress(lat!!, long!!))
+                        address = signUpFragmentBinding.edtAddress.text.toString()
+                    }
+                }
+            }else{
+                showDialog("Please enable your location service",isSuccess = false,isNetworkFailure = false)
+            }
+        }else{
+            requestPermission()
+        }
+    }
+    @SuppressLint("MissingPermission")
+    private fun getNewLocation(){
+        locationRequest= LocationRequest()
+        locationRequest.priority =LocationRequest.PRIORITY_HIGH_ACCURACY
+        locationRequest.interval = 0
+        locationRequest.fastestInterval =0
+        locationRequest.numUpdates =2
+        fusedLocationProviderClient.requestLocationUpdates(
+            locationRequest,locationCallback,Looper.myLooper()
+        )
+    }
+
+    private fun checkPermissions():Boolean{
+        if(ActivityCompat.checkSelfPermission(requireContext(),android.Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED ||
+           ActivityCompat.checkSelfPermission(requireContext(),android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            return true;
+        }
+        return false
+    }
+
+    private fun requestPermission(){
+        ActivityCompat.requestPermissions(requireActivity(),
+        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_FINE_LOCATION),PERMISSION_ID)
+    }
+
+    private fun isLocationEnabled():Boolean{
+        val locationManager:LocationManager = requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
+    }
+    private fun getAddress(latitude:Double,longitude:Double):String{
+        var city = ""
+        val geoCoder = Geocoder(activity,Locale.getDefault())
+        val add = geoCoder.getFromLocation(latitude,longitude,1)
+        city = add.get(0).getAddressLine(0)
+        return city;
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        if(requestCode == PERMISSION_ID){
+            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Log.d("Debug","You have th permissions")
+            }
+        }
+    }
+
     private fun initView(){
         signUpFragmentBinding.autoCompleteCity.setOnTouchListener(this)
         signUpFragmentBinding.autoCompleteAreaList.setOnTouchListener(this)
-//        val subAreaList = arrayOf("Nigdi","Kalewadi","Hinjewadi","Chinchwad","Kothrud")
 
     }
     private fun observeCityList(){
         signUpViewModel.cityList.observe(viewLifecycleOwner) { cityList ->
-//            val cityListAdapter =
-//                arrayOf("pune", "PCMC","Mumbai", "Nagpur", "Thane", "Nashik", "Kalyan-Dombivli", "Aurangabad", "Jalgaon")
-
             val adapter: ArrayList<ObjTalukaDataList> =cityList
-
             signUpFragmentBinding.autoCompleteCity.setAdapter(
                 ArrayAdapter(
                     requireContext(),
@@ -99,12 +192,6 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
                 )
             )
         }
-//        val subAreaListAdapter = arrayOf("Nigdi","Kalewadi","Hinjewadi","Chinchwad","Kotharud")
-//        val adapter: ArrayAdapter<String> =
-//            ArrayAdapter<String>(requireContext(), R.layout.drop_down_item, subAreaListAdapter)
-//        signUpFragmentBinding.autoCompleteAreaList.setAdapter(
-//            adapter
-//        )
     }
 
     override fun registerUser(){
@@ -117,6 +204,7 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         hideProgressDialog()
         val bundle = Bundle()
         bundle.putSerializable(REGISTER_DTLS_OBJ, objRegisterDlts)
+        clearAllFields()
         findNavController().navigate(R.id.action_LoginSignUpFragment_To_OTPFragment,bundle)
     }
 
@@ -129,9 +217,9 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         subArea = signUpViewModel.subArea.get()!!.areaId!!,
         emailId = signUpViewModel.mailId.get()!!,
         userType = CUSTOMER,
-        latitude = latitude.toString(),
-        longitude = longitude.toString(),
-        address = signUpViewModel.address.get()
+        latitude = lat.toString(),
+        longitude = long.toString(),
+        address = address
         )
     }
 
@@ -182,5 +270,15 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
             }
         }
         return true
+    }
+    private fun clearAllFields(){
+       signUpFragmentBinding.apply {
+            edtFirstName.text?.clear()
+            edtMiddleName.text?.clear()
+            edtLastName.text?.clear()
+            edtMobileNum.text?.clear()
+            edtEmail.text?.clear()
+            edtAddress.text?.clear()
+        }
     }
 }
