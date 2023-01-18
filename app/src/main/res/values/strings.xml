@@ -219,4 +219,5 @@
     <string name="username">%1$s %2$s %3$s</string>
     <string name="edit_property">Edit Property</string>
     <string name="delete">Delete</string>
+    <string name="register_successfully">Register Successfully</string>
 </resources>

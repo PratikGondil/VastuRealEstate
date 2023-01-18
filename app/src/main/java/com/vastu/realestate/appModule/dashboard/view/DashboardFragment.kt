@@ -3,8 +3,6 @@ package com.vastu.realestate.appModule.dashboard.view
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,10 +16,10 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.activity.LoginActivity
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.*
-import com.vastu.realestate.appModule.dashboard.view.DashboardActivity.Companion.userType
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewModel
 import com.vastu.realestate.appModule.enquirylist.view.EnquiryActivity
+import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.databinding.FragmentVastuDashboardBinding
 import com.vastu.realestate.utils.BaseConstant.ADMIN
 import com.vastu.realestate.utils.BaseConstant.BUILDER
@@ -31,12 +29,17 @@ import com.vastu.realestate.utils.BaseConstant.IS_FROM_PROPERTY_LIST
 import com.vastu.realestate.utils.PreferenceKEYS
 import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.realestate.utils.PreferenceManger.clearPreferences
+import com.vastu.slidercore.model.request.MainPagerSliderRequest
 import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
+import com.vastu.slidercore.model.response.advertisement.GetAdvertisementSliderMainResponse
 import com.vastu.slidercore.model.response.mainpage.GetMainSliderDetailsResponse
+import com.vastu.slidercore.model.response.mainpage.MainPageSliderResponse
+import com.vastu.usertypecore.model.response.ObjGetUserTypeResMain
 
 class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListener,
-    INavDrawerListener {
+    INavDrawerListener,IAdvertisementSliderListener {
         private lateinit var dashboardBinding: FragmentVastuDashboardBinding
+        private var mainPagerSliderRequest = MainPagerSliderRequest()
         private lateinit var viewModel: VastuDashboardViewModel
         private lateinit var drawerViewModel: DrawerViewModel
         private val imageList = ArrayList<SlideModel>()
@@ -44,11 +47,12 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         private lateinit var getMainSliderDetailsResponse: GetMainSliderDetailsResponse
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        layoutChange()
+    companion object{
+        var userType:String? = null
+        var userId: String? = null
+        var areaId:String?=null
+        var objVerifyDetails = ObjVerifyDtls()
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,24 +63,92 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         dashboardBinding.lifecycleOwner = this
         dashboardBinding.vastuDashboardViewModel = viewModel
         dashboardBinding.drawerViewModel= drawerViewModel
-
+        viewModel.iAdvertisementSliderListener = this
         viewModel.iDashboardViewListener = this
 
         drawerViewModel.iToolbarListener = this
 
         drawerViewModel.iNavDrawerListener = this
 
-        setUserDetails()
+        getUserDetails()
 
         return dashboardBinding.root
     }
+    private fun getUserDetails(){
+        val isLogin = PreferenceManger.get<Boolean>(PreferenceKEYS.IS_LOGIN)
+        if(isLogin!!){
+           objVerifyDetails = PreferenceManger.get<ObjVerifyDtls>(PreferenceKEYS.USER)!!
+           userId = objVerifyDetails.userId!!
+           areaId = objVerifyDetails.city
+        }
+        setUserDetails()
+        getUserType()
+    }
+
+    private fun getUserType(){
+        showProgressDialog()
+        userId?.let { viewModel.getUserType(it) }
+    }
+
+    override fun onSuccessGetUserType(objGetUserTypeResMain: ObjGetUserTypeResMain) {
+        hideProgressDialog()
+        userType = objGetUserTypeResMain.getUserTypeDataDetailsResponse.userTypeData.get(0).userType
+        layoutChange()
+        getAdvertisementSlider()
+    }
+    private fun getAdvertisementSlider(){
+        showProgressDialog()
+        viewModel.getAdvertisementSlider()
+    }
+
+    override fun onFailGetUserType(objGetUserTypeResMain: ObjGetUserTypeResMain) {
+        hideProgressDialog()
+        showDialog(objGetUserTypeResMain.userTypeResponse.responseStatusHeader.statusDescription, isSuccess = false, isNetworkFailure = false)
+    }
+
+    override fun onSuccessMainSlider(mainPageSliderResponse: MainPageSliderResponse) {
+        hideProgressDialog()
+        PreferenceManger.saveSlider(mainPageSliderResponse.getMainSliderDetailsResponse,
+            PreferenceKEYS.MAIN_SLIDER_LIST
+        )
+        getMainSlider()
+    }
+
+    override fun onFailureAdvertisementSlider(advertisementSliderMainResponse: GetAdvertisementSliderMainResponse) {
+        hideProgressDialog()
+        showDialog(advertisementSliderMainResponse.advertiseResponse.responseStatusHeader.statusDescription, isSuccess = false, isNetworkFailure = false)
+    }
+
+    private fun getMainSlider(){
+        showProgressDialog()
+        mainPagerSliderRequest = mainPagerSliderRequest.copy(areaId = areaId,
+            userId= userId)
+        viewModel.getMainSlider(mainPagerSliderRequest)
+    }
+
+    override fun onSuccessAdvertisementSlider(advertisementSliderMainResponse: GetAdvertisementSliderMainResponse) {
+        hideProgressDialog()
+        PreferenceManger.saveAdvertisementSlider(advertisementSliderMainResponse.getAdvertiseDetailsResponse,
+            PreferenceKEYS.DASHBOARD_SLIDER_LIST
+        )
+        setSliderData()
+    }
+
+    override fun onFailureMainSlider(mainPageSliderResponse: MainPageSliderResponse) {
+        hideProgressDialog()
+        showDialog(mainPageSliderResponse.mainSliderResponse.responseStatusHeader.statusDescription, isSuccess = false, isNetworkFailure = false)
+    }
+
+    override fun onUserNotConnected() {
+        hideProgressDialog()
+        showDialog("", isSuccess = false, isNetworkFailure = true)
+    }
+
     private fun setUserDetails(){
         drawerViewModel.apply {
-          mobileNo.set(DashboardActivity.objVerifyDetails.mobileNo!!)
-          userName.set(DashboardActivity.objVerifyDetails.firstName!!)
+          mobileNo.set(objVerifyDetails.mobileNo!!)
+          userName.set(objVerifyDetails.firstName!!)
         }
-        Handler(Looper.getMainLooper()).postDelayed({setSliderData() }, 1000)
-        //Handler(Looper.getMainLooper()).postDelayed({ setMainSliderData() }, 1000)
     }
 
     private fun setSliderData(){

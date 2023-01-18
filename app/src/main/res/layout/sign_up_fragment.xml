@@ -111,7 +111,7 @@
                     android:maxLength="15"
                     android:text="@{signUpViewModel.middleName}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_normal"
+                    android:textSize="@dimen/text_size_small"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -149,7 +149,7 @@
                     android:inputType="text"
                     android:text="@{signUpViewModel.lastName}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_normal"
+                    android:textSize="@dimen/text_size_small"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -187,7 +187,7 @@
                     android:maxLength="10"
                     android:text="@{signUpViewModel.mobileNumber}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_normal"
+                    android:textSize="@dimen/text_size_small"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -225,24 +225,29 @@
                     android:maxLength="40"
                     android:text="@{signUpViewModel.mailId}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_normal"
+                    android:textSize="@dimen/text_size_small"
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <TextView
-                android:id="@+id/tvAddress"
+            <EditText
+                android:id="@+id/edtAddress"
                 android:fontFamily="@font/poppins_regular"
                 android:textSize="@dimen/text_size_small"
+                android:editable="false"
+                android:clickable="false"
                 android:layout_marginTop="@dimen/margin_small"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
-                android:maxLines="2"
-                android:lines="2"
-                android:minLines="2"
-                android:maxLength="100"
+                android:maxLines="3"
+                android:lines="3"
+                android:minLines="3"
+                android:maxLength="150"
                 android:paddingStart="@dimen/padding_small"
                 android:text="@string/address_text"
+                android:layout_margin="@dimen/margin_small"
+                android:drawableStart="@drawable/sub_area"
+                android:drawablePadding="@dimen/margin_small"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edittext_background"/>
 
@@ -286,7 +291,7 @@
                     android:onItemClick="@{signUpViewModel}"
                     tilLayout="@{tilcity}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_normal"
+                    android:textSize="@dimen/text_size_small"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -329,7 +334,7 @@
                     android:onItemClick="@{signUpViewModel}"
                     tilLayout="@{tilSubArea}"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_normal"
+                    android:textSize="@dimen/text_size_small"
                     tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>

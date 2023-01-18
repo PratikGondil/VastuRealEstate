@@ -40,8 +40,8 @@ import com.vastu.realestate.appModule.dashboard.uiInterfaces.IAddPropertyListene
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IGetImagesListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertyDetailsListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
-import com.vastu.realestate.appModule.dashboard.view.DashboardActivity.Companion.userId
-import com.vastu.realestate.appModule.dashboard.view.DashboardActivity.Companion.userType
+import com.vastu.realestate.appModule.dashboard.view.DashboardFragment.Companion.userId
+import com.vastu.realestate.appModule.dashboard.view.DashboardFragment.Companion.userType
 import com.vastu.realestate.appModule.dashboard.viewmodel.AddPropertyViewModel
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.databinding.FragmentAddPropertyBinding
@@ -174,7 +174,10 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     }
     override fun onResume() {
         super.onResume()
-        drawerViewModel.toolbarTitle.set(getString(R.string.add_property))
+        if(isEdit)
+            drawerViewModel.toolbarTitle.set(getString(R.string.edit_property))
+        else
+            drawerViewModel.toolbarTitle.set(getString(R.string.add_property))
         drawerViewModel.isDashBoard.set(false)
     }
 

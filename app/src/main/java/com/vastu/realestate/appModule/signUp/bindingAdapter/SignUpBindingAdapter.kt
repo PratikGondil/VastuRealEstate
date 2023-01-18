@@ -100,7 +100,7 @@ object SignUpBindingAdapter {
                             isValidEmailId = false
                             parentLayout.helperText = context.getString(R.string.required)}
                     }
-                    R.id.tvAddress->{
+                    R.id.edtAddress->{
                         if(isValidAddress(input.toString())) {
                             isValidAddress = true
                             signUpViewModel.address.set(input.toString().trim())
