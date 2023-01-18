@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +20,7 @@ import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListen
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IPropertyListListener
 import com.vastu.realestate.appModule.enquirylist.viewmodel.PropertyEnquiryViewModel
 import com.vastu.realestate.databinding.FragmentPropertyEnquiryListBinding
+import com.vastu.realestate.utils.BaseConstant
 
 class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener, IAssignLeadListener,
     SwipeRefreshLayout.OnRefreshListener {
@@ -98,10 +100,16 @@ class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener, IAssi
             modalbottomSheetFragment.setStyle(
                 BottomSheetDialogFragment.STYLE_NORMAL,android.R.style.Theme_Translucent_NoTitleBar
             )
+            modalbottomSheetFragment.arguments = bundleOf(BaseConstant.PROPERTY_DATA to PropertyData)
+
             modalbottomSheetFragment.show(requireActivity().supportFragmentManager,modalbottomSheetFragment.tag)
         }catch (e : Exception){
             e.printStackTrace()
         }
+    }
+
+    override fun onAssignLeadSuccess() {
+        onRefresh()
     }
 
     override fun onEmpListFailure(message: String, isSuccess: Boolean, isNetworkFailure: Boolean) {

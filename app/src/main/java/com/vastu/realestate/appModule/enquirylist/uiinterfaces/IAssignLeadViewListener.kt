@@ -4,5 +4,6 @@ import com.vastu.enquiry.employee.model.response.ObjEmployeeResponse
 
 interface IAssignLeadViewListener {
     fun callAssignApi()
-    fun onEmpListFailure(objEmployeeResponse: ObjEmployeeResponse)
+    fun onEmpListFailure(errorResponse: String)
+    fun onLeadAssignSuccess()
 }

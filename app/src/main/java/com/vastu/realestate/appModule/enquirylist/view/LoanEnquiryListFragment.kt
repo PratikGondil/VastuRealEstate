@@ -5,6 +5,7 @@ import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +23,7 @@ import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListen
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.ILoanListListener
 import com.vastu.realestate.appModule.enquirylist.viewmodel.LoanEnquiryViewModel
 import com.vastu.realestate.databinding.FragmentLoanEnquiryListBinding
+import com.vastu.realestate.utils.BaseConstant
 
 class LoanEnquiryListFragment : BaseFragment(), ILoanListListener, IAssignLeadListener,
     SwipeRefreshLayout.OnRefreshListener {
@@ -92,6 +94,8 @@ class LoanEnquiryListFragment : BaseFragment(), ILoanListListener, IAssignLeadLi
             modalbottomSheetFragment.setStyle(
                 BottomSheetDialogFragment.STYLE_NORMAL,android.R.style.Theme_Translucent_NoTitleBar
             )
+            val bundle = Bundle()
+            modalbottomSheetFragment.arguments = bundleOf(BaseConstant.LOAN_DATA to loanData)
             modalbottomSheetFragment.show(requireActivity().supportFragmentManager,modalbottomSheetFragment.tag)
         }catch (e : Exception){
             e.printStackTrace()
@@ -99,6 +103,10 @@ class LoanEnquiryListFragment : BaseFragment(), ILoanListListener, IAssignLeadLi
     }
 
     override fun assignPropertyLeadToEmployee(PropertyData: EnquiryData) {
+    }
+
+    override fun onAssignLeadSuccess() {
+       onRefresh()
     }
 
     override fun onEmpListFailure(message: String, isSuccess:Boolean, isNetworkFailure:Boolean)

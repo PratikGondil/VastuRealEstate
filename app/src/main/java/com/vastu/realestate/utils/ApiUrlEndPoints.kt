@@ -31,4 +31,6 @@ object ApiUrlEndPoints {
     const val GET_LOAN_ENQUIRY_LIST = "get_loan_enquiry.php"
     const val GET_EMPLOYEE_LIST ="get_employee_list.php"
     const val  GET_EMPLOYEE_DETAILS= "get_employee_detail.php"
+    const val ASSIGN_LOAN_ENQUIRY = "assign_loan_enquiry.php"
+    const val ASSIGN_PROPERTY_ENQUIRY ="assign_property_enquiry.php"
 }

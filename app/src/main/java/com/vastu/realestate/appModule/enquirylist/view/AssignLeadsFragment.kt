@@ -3,29 +3,38 @@ package com.vastu.realestate.appModule.enquirylist.view
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.vastu.enquiry.employee.model.response.ObjEmployeeData
 import com.vastu.enquiry.employee.model.response.ObjEmployeeResponse
+import com.vastu.enquiry.loan.model.request.assignEnquiry.ObjAssignLoanEnquiryReq
+import com.vastu.enquiry.loan.model.response.LoanData
+import com.vastu.enquiry.property.model.request.assignEnquiry.ObjAssignPropertyEnquiryReq
+import com.vastu.enquiry.property.model.response.EnquiryData
 import com.vastu.realestate.R
-import com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateViewModel
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListener
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadViewListener
 import com.vastu.realestate.appModule.enquirylist.viewmodel.AssignLeadsViewModel
 import com.vastu.realestate.databinding.AssignLeadsFragmentBinding
-import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaDataList
+import com.vastu.realestate.utils.BaseConstant
+import com.vastu.realestatecore.model.response.PropertyData
 
-class AssignLeadsFragment(var listerner: IAssignLeadListener): BottomSheetDialogFragment(),
+class AssignLeadsFragment(var listerner: IAssignLeadListener): BottomSheetDialogFragment(),View.OnTouchListener,
     IAssignLeadViewListener {
     lateinit var assignLeadsBinding :AssignLeadsFragmentBinding
     lateinit var assignLeadsViewModel: AssignLeadsViewModel
+    lateinit var loanData :LoanData
+    lateinit var propertyData:EnquiryData
+     var objAssignLoanEnquiryReq = ObjAssignLoanEnquiryReq()
+    var objAssignPropertyEnquiryReq = ObjAssignPropertyEnquiryReq()
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = BottomSheetDialog(requireContext(), theme)
         dialog.setOnShowListener {
@@ -62,12 +71,35 @@ class AssignLeadsFragment(var listerner: IAssignLeadListener): BottomSheetDialog
         assignLeadsBinding.lifecycleOwner = this
         assignLeadsBinding.assignLeadsViewModel = assignLeadsViewModel
         assignLeadsViewModel.iAssignLeadViewListener = this
-        getEmployeeList()
+        getBundleData()
         observeEmpList()
         return assignLeadsBinding.root
     }
+    fun getBundleData(){
+        try {
+            val args = arguments
+            if(args!=null) {
+                if(args.getSerializable(BaseConstant.LOAN_DATA)!=null) {
+                    loanData =
+                        args.getSerializable(BaseConstant.LOAN_DATA) as LoanData
 
+                }
+                else if(args.getSerializable(BaseConstant.PROPERTY_DATA)!=null) {
+                    propertyData =
+                        args.getSerializable(BaseConstant.PROPERTY_DATA) as EnquiryData
+
+                }
+
+            }
+            getEmployeeList()
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+
+    }
     fun getEmployeeList(){
+        assignLeadsBinding.autoCompEmpName.setOnTouchListener(this)
+
         assignLeadsViewModel.callEmployeeListApi()
     }
 
@@ -86,10 +118,35 @@ class AssignLeadsFragment(var listerner: IAssignLeadListener): BottomSheetDialog
     }
 
     override fun callAssignApi() {
-    //assign
+        if(this::loanData.isInitialized){
+            objAssignLoanEnquiryReq = objAssignLoanEnquiryReq.copy(loan_enq_id = loanData.loanId,
+                emp_id = (assignLeadsViewModel.empName.value as ObjEmployeeData).empId)
+            assignLeadsViewModel.callAssignLoanLeadApi(objAssignLoanEnquiryReq)
+        }
+        else  if(this::propertyData.isInitialized){
+            objAssignPropertyEnquiryReq = objAssignPropertyEnquiryReq.copy( property_enq_id= propertyData.propertyId,
+                emp_id = (assignLeadsViewModel.empName.value as ObjEmployeeData).empId)
+            assignLeadsViewModel.callAssignPropertyLeadApi(objAssignPropertyEnquiryReq)
+        }
     }
-    override fun onEmpListFailure(objEmployeeResponse: ObjEmployeeResponse){
-        listerner.onEmpListFailure(objEmployeeResponse.ResponseStatusHeader!!.statusDescription!!,false,false)
+    override fun onEmpListFailure(error: String){
+        listerner.onEmpListFailure(error,false,false)
 
     }
+    override fun onLeadAssignSuccess(){
+        listerner.onAssignLeadSuccess()
+    }
+
+    override fun onTouch(view: View?, p1: MotionEvent?): Boolean {
+        if (view == assignLeadsBinding.autoCompEmpName) {
+            view.let {
+                onShowStateDropDown(it!!)
+            }
+        }
+        return true
+    }
+    fun onShowStateDropDown(view: View){
+        (view as AutoCompleteTextView).showDropDown()
+    }
+
 }

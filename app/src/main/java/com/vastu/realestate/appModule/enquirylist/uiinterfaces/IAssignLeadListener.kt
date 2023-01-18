@@ -6,6 +6,6 @@ import com.vastu.enquiry.property.model.response.EnquiryData
 interface IAssignLeadListener {
     fun assignLoanLeadToEmployee(loanData: LoanData)
     fun assignPropertyLeadToEmployee(PropertyData: EnquiryData)
-
+    fun onAssignLeadSuccess()
     fun onEmpListFailure(message: String,isSuccess:Boolean,isNetworkFailure:Boolean)
 }
