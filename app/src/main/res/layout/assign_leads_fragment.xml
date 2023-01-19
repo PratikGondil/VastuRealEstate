@@ -65,7 +65,6 @@
                 android:textAlignment="center"
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
-                app:endIconMode="custom"
                 app:expandedHintEnabled="false"
                 app:helperText="@string/required"
                 app:helperTextTextColor="@color/red"

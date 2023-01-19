@@ -37,11 +37,14 @@ object BaseConstant {
 
   const val ADMIN ="1"
   const val CUSTOMER ="2"
-  const val BUILDER ="3"
-  const val EMPLOYEES ="4"
+  const val EMPLOYEES ="3"
+  const val BUILDER ="4"
 
   const val ADD_PROPERTY_STATUS="1"
   const val EMPLOYEE_ID ="EMPLOYEE ID"
   const val PROPERTY_DATA = "PROPERTY_DATA"
 
+  const val TO_DO = "1"
+  const val INPROGRSS ="2"
+  const val COMPLETE = "3"
 }

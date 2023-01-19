@@ -4,7 +4,7 @@ package com.vastu.enquiry.loan.model.response
 import com.google.gson.annotations.SerializedName
 
 data class LoanData(
-    @SerializedName("loan_id")val loanId: String?,
+    @SerializedName("loan_enq_id")val loanId: String?,
     @SerializedName("first_name") val firstName: String?,
     @SerializedName("middle_name")val middleName: String?,
     @SerializedName("last_name") val lastName: String?,
@@ -15,5 +15,7 @@ data class LoanData(
     @SerializedName("preferred_bank")val preferredBank: String?,
     @SerializedName("loan_amount")val loanAmount: String?,
     @SerializedName("loan_term_year")val loanTermYear: String?,
-    @SerializedName("created_at")val createdAt: String?
+    @SerializedName("created_at")val createdAt: String?,
+    @SerializedName("emp_name") val assignee :String?=null,
+    @SerializedName("status_name") val status :String?= null
 ):java.io.Serializable

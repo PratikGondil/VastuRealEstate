@@ -112,7 +112,7 @@ class PropertiesFragment : BaseFragment(),IRealEstateListener, RealEstateAdapter
 
     override fun onFilterPropertyListFailure(objFilterDataResponseMain: ObjFilterDataResponseMain) {
        hideProgressDialog()
-        showDialog(objFilterDataResponseMain.objfilterDataResponse.responseStatusHeader.statusDescription,isSuccess = false,isNetworkFailure = false)
+        showDialog(objFilterDataResponseMain.objfilterDataResponse.responseStatusHeader.statusDescription!!,isSuccess = false,isNetworkFailure = false)
     }
 
     override fun onUserNotConnected() {

@@ -2,14 +2,20 @@ package com.vastu.realestate.appModule.enquirylist.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.enquiry.loan.model.response.LoanData
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListener
 import com.vastu.realestate.databinding.LoanEnquiryItemviewBinding
+import com.vastu.realestate.utils.BaseConstant
 
-class LoanEnquiryAdapter(private val loanDataList :List<LoanData>,var iAssignLeadListener: IAssignLeadListener):
+class LoanEnquiryAdapter(
+    private val loanDataList: List<LoanData>,
+    var iAssignLeadListener: IAssignLeadListener,
+    var userType: String?
+):
     RecyclerView.Adapter<LoanEnquiryViewHolder>() {
     private lateinit var context: Context
 
@@ -25,6 +31,20 @@ class LoanEnquiryAdapter(private val loanDataList :List<LoanData>,var iAssignLea
         val loan = loanDataList[position]
         holder.bind(loan)
         binding.loanNameTextview.text = context.getString(R.string.username,loan.firstName,loan.middleName,loan.lastName)
+
+        if (loan.assignee?.isNotEmpty() == true){
+            binding.llAssigneeLayout.visibility = View.VISIBLE
+            if(userType!!.equals(BaseConstant.ADMIN))
+            binding.btnAssignLead.text = context.getString(R.string.reassign)
+
+            else
+                binding.btnAssignLead.text = "Update status"
+
+        }
+        else{
+            binding.llAssigneeLayout.visibility = View.GONE
+        }
+
         holder.binding.btnAssignLead.setOnClickListener {
             iAssignLeadListener.assignLoanLeadToEmployee(loan)
 

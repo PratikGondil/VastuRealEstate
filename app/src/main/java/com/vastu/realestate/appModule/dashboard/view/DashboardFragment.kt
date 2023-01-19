@@ -103,7 +103,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
 
     override fun onFailGetUserType(objGetUserTypeResMain: ObjGetUserTypeResMain) {
         hideProgressDialog()
-        showDialog(objGetUserTypeResMain.userTypeResponse.responseStatusHeader.statusDescription, isSuccess = false, isNetworkFailure = false)
+        showDialog(objGetUserTypeResMain.userTypeResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
     }
 
     override fun onSuccessMainSlider(mainPageSliderResponse: MainPageSliderResponse) {
@@ -116,7 +116,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
 
     override fun onFailureAdvertisementSlider(advertisementSliderMainResponse: GetAdvertisementSliderMainResponse) {
         hideProgressDialog()
-        showDialog(advertisementSliderMainResponse.advertiseResponse.responseStatusHeader.statusDescription, isSuccess = false, isNetworkFailure = false)
+        showDialog(advertisementSliderMainResponse.advertiseResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
     }
 
     private fun getMainSlider(){
@@ -136,7 +136,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
 
     override fun onFailureMainSlider(mainPageSliderResponse: MainPageSliderResponse) {
         hideProgressDialog()
-        showDialog(mainPageSliderResponse.mainSliderResponse.responseStatusHeader.statusDescription, isSuccess = false, isNetworkFailure = false)
+        showDialog(mainPageSliderResponse.mainSliderResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
     }
 
     override fun onUserNotConnected() {
@@ -193,20 +193,20 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
     private fun layoutChange(){
             when(userType){
                 ADMIN->{
-                    viewModel.enquiry.set(View.VISIBLE)
-                    viewModel.properties.set(View.VISIBLE)
+                    drawerViewModel.enquiry.set(View.VISIBLE)
+                    drawerViewModel.properties.set(View.VISIBLE)
                 }
                 BUILDER->{
-                    viewModel.enquiry.set(View.GONE)
-                    viewModel.properties.set(View.VISIBLE)
+                    drawerViewModel.enquiry.set(View.GONE)
+                    drawerViewModel.properties.set(View.VISIBLE)
                 }
                 EMPLOYEES->{
-                    viewModel.enquiry.set(View.GONE)
-                    viewModel.properties.set(View.VISIBLE)
+                    drawerViewModel.enquiry.set(View.VISIBLE)
+                    drawerViewModel.properties.set(View.VISIBLE)
                 }
                 CUSTOMER->{
-                    viewModel.enquiry.set(View.GONE)
-                    viewModel.properties.set(View.GONE)
+                    drawerViewModel.enquiry.set(View.GONE)
+                    drawerViewModel.properties.set(View.GONE)
                     dashboardBinding.floatAddProperty.visibility = View.GONE
                 }
             }

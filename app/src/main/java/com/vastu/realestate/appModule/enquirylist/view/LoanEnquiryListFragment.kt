@@ -1,7 +1,6 @@
 package com.vastu.realestate.appModule.enquirylist.view
 
 import android.os.Bundle
-import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +9,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.vastu.enquiry.loan.model.response.GetLoanEnquiryListMainResponse
 import com.vastu.enquiry.loan.model.response.LoanData
 import com.vastu.enquiry.property.model.response.EnquiryData
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
-import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreen
+import com.vastu.realestate.appModule.dashboard.view.DashboardFragment.Companion.userType
 import com.vastu.realestate.appModule.enquirylist.adapter.LoanEnquiryAdapter
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListener
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.ILoanListListener
@@ -69,7 +67,7 @@ class LoanEnquiryListFragment : BaseFragment(), ILoanListListener, IAssignLeadLi
 
     private fun getLoanList(loanList:List<LoanData>) {
         val loanRecyclerview = loanEnquiryBinding.rvLoanList
-        val loanAdapter = LoanEnquiryAdapter(loanList,this)
+        val loanAdapter = LoanEnquiryAdapter(loanList,this,userType)
         loanRecyclerview.layoutManager = LinearLayoutManager(activity)
         loanRecyclerview.adapter = loanAdapter
     }

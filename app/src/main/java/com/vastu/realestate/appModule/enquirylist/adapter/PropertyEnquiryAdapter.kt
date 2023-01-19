@@ -2,6 +2,7 @@ package com.vastu.realestate.appModule.enquirylist.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.enquiry.property.model.response.EnquiryData
@@ -19,6 +20,13 @@ class PropertyEnquiryAdapter(private val propertyDataList: List<EnquiryData>,var
         val propertyData = propertyDataList[position]
         holder.bind(propertyData)
         binding.propertyNameTextview.text = context.getString(R.string.username,propertyData.firstName,propertyData.middleName,propertyData.lastName)
+        if (propertyData.assignee?.isNotEmpty() == true){
+            binding.llAssigneeLayout.visibility = View.VISIBLE
+            binding.btnAssignLead.text = context.getString(R.string.reassign)
+        }
+        else{
+            binding.llAssigneeLayout.visibility = View.GONE
+        }
         holder.binding.btnAssignLead.setOnClickListener {
             iAssignLeadListener.assignPropertyLeadToEmployee(propertyData)
 
@@ -38,6 +46,7 @@ class PropertyEnquiryListViewHolder(val binding:PropertyEnquiryItemviewBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(enquiryData: EnquiryData) {
       binding.enquiryData = enquiryData
+
     }
 }
 

@@ -96,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1"
+                android:visibility="@{drawerViewModel.enquiry}"
                 android:onClick="@{(view)->drawerViewModel.onEnquiryClick()}"
                 android:gravity="center"
                 android:layout_gravity="center_horizontal|center_vertical"
@@ -112,7 +113,6 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.8"
-                    android:visibility="@{viewModel.enquiry}"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_normal"
@@ -127,6 +127,7 @@
                 android:orientation="horizontal"
                 android:weightSum="1"
                 android:gravity="center"
+                android:visibility="@{drawerViewModel.properties}"
                 android:onClick="@{(view)->drawerViewModel.onAddPropertyClick()}"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginTop="@dimen/margin_xxlarge">
@@ -142,7 +143,6 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.8"
-                    android:visibility="@{viewModel.properties}"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_normal"
@@ -156,6 +156,7 @@
                 android:orientation="horizontal"
                 android:weightSum="1"
                 android:gravity="center"
+                android:visibility="@{drawerViewModel.properties}"
                 android:onClick="@{(view)->drawerViewModel.onEmployessClick()}"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_marginTop="@dimen/margin_xxlarge">
@@ -171,7 +172,6 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.8"
-                    android:visibility="@{viewModel.properties}"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_normal"

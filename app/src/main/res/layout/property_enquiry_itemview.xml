@@ -186,18 +186,75 @@
                     android:textSize="@dimen/text_size_small"
                     app:fontFamily="@font/poppins_regular" />
             </LinearLayout>
+
         </LinearLayout>
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAssignLead"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/llAssigneeLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:background="@drawable/round_button_background"
-            android:text="@string/assign"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_small"
-            android:padding="@dimen/dimen10dp"
-            app:fontFamily="@font/poppins_medium" />
+            >
+
+            <TextView
+                android:id="@+id/txtAssignee"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:text="@{enquiryData.assignee}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small"
+                app:fontFamily="@font/poppins_regular"
+                app:layout_constraintWidth_percent="0.37"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/txtStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:maxLength="25"
+                android:maxLines="1"
+                android:text="@{enquiryData.status}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small"
+                app:fontFamily="@font/poppins_regular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txtAssignee"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:layout_constraintWidth_percent="0.37"
+               />
+            <TextView
+                android:id="@+id/btnAssignLead"
+                style="@style/TextAppearance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:autoLink="all"
+                android:linksClickable="false"
+                android:selectAllOnFocus="false"
+                android:text="@string/assign"
+                android:textColor="@color/colorPrimaryDark"
+                app:fontFamily="@font/poppins_medium"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintWidth_percent="0.25"
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="5.0"
+                android:shadowDy="5.0"
+                android:shadowRadius="3.0"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     </LinearLayout>
 </layout>

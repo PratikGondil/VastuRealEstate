@@ -31,8 +31,6 @@ class VastuDashboardViewModel(application: Application) : AndroidViewModel(appli
     init {
         mContext = application
     }
-    var enquiry = ObservableField(View.VISIBLE)
-    var properties = ObservableField(View.VISIBLE)
 
     fun getUserType(userId:String){
         UserTypeRepository.callGetUserType(mContext,userId,GET_USER_TYPE ,this)

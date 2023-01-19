@@ -1,6 +1,7 @@
 package com.vastu.realestate.appModule.dashboard.viewmodel
 
 import android.app.Application
+import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import com.vastu.realestate.R
@@ -21,6 +22,8 @@ class DrawerViewModel(application: Application) : AndroidViewModel(application) 
 
     var isDashBoard = ObservableField<Boolean>(true)
     var toolbarTitle = ObservableField(mContext.getString(R.string.vastu))
+    var enquiry = ObservableField(View.VISIBLE)
+    var properties = ObservableField(View.VISIBLE)
 
     fun onCloseClick(){
         iNavDrawerListener.onClickClose()

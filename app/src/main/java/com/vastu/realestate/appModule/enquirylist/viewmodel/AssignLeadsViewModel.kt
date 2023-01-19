@@ -15,12 +15,25 @@ import com.vastu.enquiry.loan.model.response.assignEnquiry.ObjAssignEnquiryRepon
 import com.vastu.enquiry.loan.repository.AssignLoanEnquiryRepository
 import com.vastu.enquiry.property.model.request.assignEnquiry.ObjAssignPropertyEnquiryReq
 import com.vastu.enquiry.property.repository.AssignPropertyEnquiryRepository
+import com.vastu.enquiry.statusUpdate.enquiryStatus.callbacks.IGetEnquiryStatusResponse
+import com.vastu.enquiry.statusUpdate.enquiryStatus.model.response.ObjEnquiryStatusResponseMain
+import com.vastu.enquiry.statusUpdate.enquiryStatus.repository.EnquiryStatusRequestRepository
+import com.vastu.enquiry.statusUpdate.loanEnquiryStatus.callbacks.IUpdateLoanEnqStatusResposne
+import com.vastu.enquiry.statusUpdate.loanEnquiryStatus.model.request.ObjLoanStatusUpdateReq
+import com.vastu.enquiry.statusUpdate.loanEnquiryStatus.model.response.ObjLoanEnqStatusResponseMain
+import com.vastu.enquiry.statusUpdate.loanEnquiryStatus.repository.UpdateLoanEnquiryStatus
+import com.vastu.enquiry.statusUpdate.proEnquiryStatus.callbacks.IUpdatePropEnqStatusResponse
+import com.vastu.enquiry.statusUpdate.proEnquiryStatus.model.request.ObjPropStatusUpdateReq
+import com.vastu.enquiry.statusUpdate.proEnquiryStatus.model.response.ObjPropEnqStatusResponseMain
+import com.vastu.enquiry.statusUpdate.proEnquiryStatus.repository.UpdatePropertyEnquiryStatus
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadViewListener
 import com.vastu.realestate.utils.ApiUrlEndPoints
 
 class AssignLeadsViewModel(application: Application):AndroidViewModel(application),
-    IAssignLeadResponse,IGetEmpListResponse {
+    IAssignLeadResponse,IGetEmpListResponse, IGetEnquiryStatusResponse,
+    IUpdatePropEnqStatusResponse,
+    IUpdateLoanEnqStatusResposne {
     lateinit var iAssignLeadViewListener: IAssignLeadViewListener
     var mContext:Application
     init {
@@ -39,6 +52,17 @@ class AssignLeadsViewModel(application: Application):AndroidViewModel(applicatio
    }
     fun callAssignPropertyLeadApi(objAssignPropertyEnquiryReq: ObjAssignPropertyEnquiryReq){
         AssignPropertyEnquiryRepository.assignPropertyLead(mContext,ApiUrlEndPoints.ASSIGN_PROPERTY_ENQUIRY,objAssignPropertyEnquiryReq,this)
+    }
+    fun callEnquiryStatusList(){
+        EnquiryStatusRequestRepository.getEnquiryStatusList(mContext,ApiUrlEndPoints.ENQUIRY_STATUS,this)
+    }
+
+    fun updateLoanEnqStatus(objLoanStatusUpdateReq: ObjLoanStatusUpdateReq){
+        UpdateLoanEnquiryStatus.updateLoanEnqStatus(mContext,objLoanStatusUpdateReq,ApiUrlEndPoints.UPDATE_LOAN_STATUS,this)
+    }
+
+    fun updatePropEnqStatus(objPropStatusUpdateReq: ObjPropStatusUpdateReq){
+        UpdatePropertyEnquiryStatus.updatePropEnqStatus(mContext,objPropStatusUpdateReq,ApiUrlEndPoints.UPDATE_ENQUIRY_STATUS,this)
     }
     override fun onEmpListSuccessResponse(objEmployeeListResponse: ObjEmployeeListResponse) {
         employeeList.value = objEmployeeListResponse.objGetEmployeeResponse!!.EmployeeData
@@ -60,5 +84,31 @@ class AssignLeadsViewModel(application: Application):AndroidViewModel(applicatio
 
     override fun onFailureAssignLoanLead(objAssignEnquiryReponse: ObjAssignEnquiryReponse) {
         iAssignLeadViewListener.onEmpListFailure(objAssignEnquiryReponse.objPropertyEmpAssignResponse?.objResponseStatusHeader?.statusDescription.toString())
+    }
+
+    override fun onGetEnquirySuccessResponse(objEnquiryStatusResponseMain: ObjEnquiryStatusResponseMain) {
+        iAssignLeadViewListener.onGetEnquirySuccessResponse()
+    }
+
+    override fun onGetEnquiryFailure(objEnquiryStatusResponseMain: ObjEnquiryStatusResponseMain) {
+        iAssignLeadViewListener.onEmpListFailure(objEnquiryStatusResponseMain.objEnquiryStatusResponse.responseStatusHeader?.statusDescription!!)
+    }
+
+    override fun onUpdateLoanEnqStatusSuccess(objLoanEnqStatusResponseMain: ObjLoanEnqStatusResponseMain) {
+        iAssignLeadViewListener.updateEnquiryStatusSuccess()
+    }
+
+    override fun onUpdateLoanEnqStatusFailure(objLoanEnqStatusResponseMain: ObjLoanEnqStatusResponseMain) {
+        iAssignLeadViewListener.onEmpListFailure(objLoanEnqStatusResponseMain.statusLoanEmpAssignResponse!!.responseStatusHeader?.statusDescription!!)
+
+    }
+
+    override fun onUpdatePropEnqStatusSuccess(objPropEnqStatusResponseMain: ObjPropEnqStatusResponseMain) {
+        iAssignLeadViewListener.updateEnquiryStatusSuccess()
+    }
+
+    override fun onUpdatePropEnqStatusFailure(objPropEnqStatusResponseMain: ObjPropEnqStatusResponseMain) {
+        iAssignLeadViewListener.onEmpListFailure(objPropEnqStatusResponseMain.statusEmpAssignResponse!!.responseStatusHeader?.statusDescription!!)
+
     }
 }

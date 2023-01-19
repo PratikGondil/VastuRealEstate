@@ -147,6 +147,7 @@
     <string name="property_id">Property ID</string>
     <string name="properties">Properties</string>
     <string name="assign">Assign</string>
+    <string name="reassign">Re-Assign</string>
     <string name="employees">Employees</string>
 
 <!--    filter-->
