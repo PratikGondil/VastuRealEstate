@@ -12,6 +12,7 @@ class LoanAdapter(private val itemClick:OnItemClickListener, private val loanLis
 ) : RecyclerView.Adapter<LoanViewHolder>() {
     private lateinit var context: Context
     private lateinit var binding: LoanItemViewBinding
+    private var selectedItemPosition: Int = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LoanViewHolder {
         context = parent.context
@@ -22,9 +23,15 @@ class LoanAdapter(private val itemClick:OnItemClickListener, private val loanLis
     override fun onBindViewHolder(holder: LoanViewHolder, position: Int) {
         val loan = loanList[position]
         holder.bind(loan)
-        holder.binding.loanLayout.setOnClickListener {
-            itemClick.onItemClick(loan)
-        }
+            holder.binding.loanLayout.setOnClickListener {
+                selectedItemPosition = position
+                itemClick.onItemClick(loan)
+                notifyDataSetChanged()
+            }
+        if (selectedItemPosition == position)
+            holder.binding.loanLayout.setBackgroundResource(R.drawable.item_selection_background)
+        else
+            holder.binding.loanLayout.setBackgroundResource(R.drawable.itemview_background)
     }
 
     override fun getItemCount(): Int = loanList.size
@@ -34,8 +41,8 @@ class LoanAdapter(private val itemClick:OnItemClickListener, private val loanLis
         fun onItemClick(loanData: LoanInterstedData)
     }
 
-    class LoanViewHolder(val binding:LoanItemViewBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(loanData: LoanInterstedData){
+     class LoanViewHolder(val binding:LoanItemViewBinding):RecyclerView.ViewHolder(binding.root){
+       fun bind(loanData: LoanInterstedData){
             binding.loanIntersetedData = loanData
         }
     }

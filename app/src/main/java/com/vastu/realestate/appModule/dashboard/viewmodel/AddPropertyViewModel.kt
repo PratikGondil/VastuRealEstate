@@ -120,7 +120,7 @@ class AddPropertyViewModel(application: Application):AndroidViewModel(applicatio
         iAddPropertyListener.onClickUploadImage(5)
     }
     fun onClickBrochurePdf(){
-        iAddPropertyListener.onClickUploadImage(6)
+        iAddPropertyListener.onClickBrochure()
     }
 
     fun onSubmitAddProperty(){

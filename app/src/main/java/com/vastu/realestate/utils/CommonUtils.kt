@@ -24,6 +24,7 @@ companion object {
         context: Context?,
         urlPath: String?,
         imgFile: ImageView,
+        placeholder:Int
     ) {
         try {
             if (context != null && urlPath != null && !TextUtils.isEmpty(urlPath)) {
@@ -34,7 +35,7 @@ companion object {
                     if (isValidContextForGlide(context)) {
                         Glide.with(context)
                             .load(urlPath)
-                            .placeholder(R.color.ripple_material_light)
+                            .placeholder(placeholder)
                             .apply(
                                 RequestOptions()
                                     .override(

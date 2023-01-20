@@ -27,7 +27,7 @@ class RealEstateAdapter(private val itemClick: OnItemClickListener, private val 
         holder.bind(property)
         holder.binding.propertyPrizeTextview.text = context.getString(R.string.rupee)+" "+property.price
         holder.binding.propertyDetailsTextview.text = property.propertyArea+" "+ context.getString(R.string.st_ft)
-        showImageFromURL(context,property.propertyThumbnail, holder.binding.propertyImage)
+        showImageFromURL(context,property.propertyThumbnail, holder.binding.propertyImage,R.drawable.vastu_logo_splash)
         holder.binding.layoutContainer.setOnClickListener {
             itemClick.onItemClick(property)
         }

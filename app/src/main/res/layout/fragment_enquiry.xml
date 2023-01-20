@@ -34,10 +34,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen60dp"
                 app:tabGravity="fill"
-                android:background="@drawable/site_menu_bg"
-                app:tabIndicatorColor="@color/white"
+                android:background="@color/white"
+                app:tabIndicatorColor="@color/black"
                 app:tabIndicatorHeight="@dimen/tab_height"
-                app:tabSelectedTextColor="@color/white"
+                app:tabSelectedTextColor="@color/colorSecondary"
                 app:tabTextAppearance="@style/TabTextStyle"
                 app:tabTextColor="@color/black"/>
 

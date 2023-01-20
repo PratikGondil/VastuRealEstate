@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -17,20 +16,16 @@ import com.vastu.loanenquirycore.model.response.interest.loan.LoanInterstedData
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.LoanAdapter
 import com.vastu.realestate.appModule.dashboard.adapter.OnItemClickListener
-import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
-import com.vastu.realestate.appModule.dashboard.model.RealEstateList
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.ILoanListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.dashboard.viewmodel.LoanViewModel
-import com.vastu.realestate.commoncore.model.otp.ObjUserData
 import com.vastu.realestate.databinding.FragmentLoanBinding
 import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.BaseConstant.LOAN_DATA
 import com.vastu.realestate.utils.PreferenceKEYS
 import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
-import com.vastu.slidercore.model.response.property.GetPropertySliderImagesResponse
 
 class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener, OnItemClickListener {
 
@@ -40,6 +35,7 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener, OnItemClickL
     private lateinit var getAdvertisementSlider: GetAdvertiseDetailsResponse
     private val imageList = ArrayList<SlideModel>()
     private lateinit var enquiryMainResponse: EnquiryMainResponse
+    private var loan = LoanInterstedData()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -147,12 +143,17 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener, OnItemClickL
     }
 
     override fun onItemClick(loanData: LoanInterstedData) {
-        val bundle = Bundle()
-        bundle.putSerializable(LOAN_DATA, loanData)
-        findNavController().navigate(R.id.action_LoanFragment_to_AddLoanEnquiryFragment,bundle)
+        loan = loanData
+        if(loan.loanName!=null) {
+            loanBinding.floatLoanEnquiry.visibility = View.VISIBLE
+        }else{
+            showDialog("Please Select Loan",isSuccess = false,isNetworkFailure = false)
+        }
     }
 
     override fun fabAddLoanEnquiry() {
-       //remove
+        val bundle = Bundle()
+        bundle.putSerializable(LOAN_DATA, loan)
+        findNavController().navigate(R.id.action_LoanFragment_to_AddLoanEnquiryFragment, bundle)
     }
 }

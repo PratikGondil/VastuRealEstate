@@ -7,11 +7,16 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
-import android.graphics.*
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.*
 import android.provider.DocumentsContract
 import android.provider.MediaStore
+import android.text.Html
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.BulletSpan
 import android.util.Base64
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -21,6 +26,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -53,9 +59,13 @@ import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAr
 import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.BaseConstant.ADD_PROPERTY_STATUS
 import com.vastu.realestate.utils.BaseConstant.IS_FROM_PROPERTY_LIST
+import com.vastu.realestate.utils.BaseConstant.PDF_SELECTION
 import com.vastu.realestate.utils.BaseConstant.PICK_FROM_GALLERY
+import com.vastu.realestate.utils.CommonUtils
 import com.vastu.realestatecore.model.response.PropertyData
-import java.io.*
+import java.io.ByteArrayOutputStream
+import java.io.FileDescriptor
+import java.io.IOException
 import java.net.URISyntaxException
 import java.util.*
 import kotlin.collections.ArrayList
@@ -110,6 +120,9 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             if (args.getSerializable(IS_FROM_PROPERTY_LIST) != null) {
                 isEdit = args.getSerializable(IS_FROM_PROPERTY_LIST) as Boolean
                 if (isEdit) {
+                    addPropertyBinding.tvPropertyTitle.text =
+                        getString(R.string.edit_up_the_property_details)
+                    editPropertyImages()
                     if (args.getSerializable(BaseConstant.PROPERTY_DETAILS) != null) {
                         val property =
                             args.getSerializable(BaseConstant.PROPERTY_DETAILS) as PropertyData
@@ -122,6 +135,9 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         }
     }
 
+    private fun editPropertyImages(){
+        addPropertyBinding.uploadImageLayout.setVisibility(View.GONE)
+    }
     private fun initViewsList(){
             addPropertyBinding.autoCompletePropertyType.setOnTouchListener(this)
             addPropertyBinding.autoCompleteSellType.setOnTouchListener(this)
@@ -221,6 +237,19 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             )
         }
     }
+
+    override fun onClickBrochure() {
+        if(checkRequestPermissions(PICK_FROM_GALLERY)) {
+           pdfSelection()
+        }
+    }
+    private fun pdfSelection(){
+        val pdfIntent = Intent(Intent.ACTION_GET_CONTENT)
+        pdfIntent.type = "application/pdf"
+        pdfIntent.addCategory(Intent.CATEGORY_OPENABLE)
+        activity?.startActivityForResult(pdfIntent, 12)
+    }
+
 
     override fun onClickUploadImage(image:Int) {
         if(checkRequestPermissions(PICK_FROM_GALLERY)){
@@ -442,6 +471,8 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                     Toast.makeText(activity, "Failed to select image!", Toast.LENGTH_SHORT).show()
                 }
             }
+        }else if(resultCode == PDF_SELECTION){
+
         }
     }
     private fun setImagePath(filePath:String,bitmap: Bitmap?){
@@ -466,11 +497,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 5->{
                     imagePath5.text = getImageName(filePath)
                     image5 = convertToBase64(bitmap)
-                }
-                6->{
-                    brouchePath.text = getImageName(filePath)
-                }
-                else->{
+                }else->{
                     thumbnailImage.setImageBitmap(bitmap)
                     thumbnail = convertToBase64(bitmap)
                 }
@@ -499,10 +526,22 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     }
 
     private fun checkRequestPermissions(permissionID: Int): Boolean {
-        val permissions = Manifest.permission.WRITE_EXTERNAL_STORAGE
+        val permissionCamera =
+            ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA)
+        val readExternalPermission =
+            ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
+        val writeExternalPermission = ContextCompat.checkSelfPermission(
+            requireActivity(),
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
         val listPermissionsNeeded: MutableList<String> = ArrayList()
-        if (!hasPermissions(activity, permissions)) {
+        if (permissionCamera != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.CAMERA)
+        }
+        if (readExternalPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+        if (writeExternalPermission != PackageManager.PERMISSION_GRANTED) {
             listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
         }
         if (!listPermissionsNeeded.isEmpty()) {
@@ -520,13 +559,18 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         val perms: MutableMap<String, Int> = HashMap()
         perms[Manifest.permission.CAMERA] = PackageManager.PERMISSION_GRANTED
         perms[Manifest.permission.WRITE_EXTERNAL_STORAGE] = PackageManager.PERMISSION_GRANTED
+        perms[Manifest.permission.READ_EXTERNAL_STORAGE] = PackageManager.PERMISSION_GRANTED
         if (grantResults.size > 0) {
             for (i in permissions.indices) perms[permissions[i]] = grantResults[i]
             if (perms[Manifest.permission.CAMERA] == PackageManager.PERMISSION_GRANTED
+                && perms[Manifest.permission.READ_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED
                 && perms[Manifest.permission.WRITE_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED
             ) {
                 if(checkRequestPermissions(PICK_FROM_GALLERY)){
                     chooseImageFromGallery()
+                }
+                if(checkRequestPermissions(PDF_SELECTION)){
+                    pdfSelection()
                 }
             }
         }
@@ -625,7 +669,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
 
     override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
-
+        val htmlPattern = "<[^>]*>"
         getImages()
 
         addPropertyBinding.apply {
@@ -633,8 +677,8 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             edtPropertyTitle.setText(property.propertyTitle)
             edtPropertyAddress.setText(property.address)
             edtStates.setText(property.state)
-            edtHighlights.setText(property.highlights)
-            edtDescription.setText(property.description)
+            //edtHighlights.setText(property.highlights)
+            //edtDescription.setText(property.description)
             edtBedroom.setText(property.bedroom)
             edtBathroom.setText(property.bathroom)
             edtKitchen.setText(property.kitchen)
@@ -651,7 +695,28 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             autoCompleteSubAreaList.setText(property.area)
             autoCompleteAvailability.setText(property.availability)
             autoCompleteBuildYear.setText(property.buildYear)
+            CommonUtils.showImageFromURL(
+                context,
+                property.propertyThumbnail,
+                thumbnailImage,
+                R.drawable.vastu_logo_splash
+            )
+
+            if(property.highlights.length>20){
+                val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
+                spannable.setSpan(
+                    BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannable.setSpan(
+                    BulletSpan(50, resources.getColor(R.color.black)), 20,  spannable.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                edtHighlights.setText(Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights.trim()))
+            }else{
+                edtHighlights.setText(property.highlights)
+            }
+           edtDescription.setText(property.description.replace(htmlPattern," ",ignoreCase = false))
             isValid = true
+
         }
      }
     private fun getImages(){
