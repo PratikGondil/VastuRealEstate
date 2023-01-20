@@ -34,6 +34,7 @@ object BaseConstant {
   var IS_FROM_PROPERTIES = "IS_FROM_PROPERTIES"
 
   const val PICK_FROM_GALLERY = 100
+  const val PDF_SELECTION = 101
 
   const val ADMIN ="1"
   const val CUSTOMER ="2"

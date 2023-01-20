@@ -38,4 +38,9 @@
         <item name="android:background">@drawable/filter_background</item>
     </style>
 
+    <style name="lableStyle">
+        <item name="android:textSize">@dimen/text_size_menu</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
 </resources>

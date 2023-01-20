@@ -119,6 +119,7 @@
     <string name="offers">Offers</string>
     <string name="st_ft">Sq.feet</string>
     <string name="fill_up_the_property_details">Fill up the property details</string>
+    <string name="edit_up_the_property_details">Edit the property details</string>
     <string name="property_title">Property Title</string>
     <string name="property_type">Property Type</string>
     <string name="property_address">Property Address</string>
@@ -224,5 +225,8 @@
     <string name="edit_property">Edit Property</string>
     <string name="delete">Delete</string>
     <string name="register_successfully">Register Successfully</string>
-
+    <string name="off">OFF</string>
+    <string name="reject">Reject</string>
+    <string name="terms_condition"><![CDATA[Please accept terms & condition]]></string>
+    <string name="accept">Accept</string>
 </resources>

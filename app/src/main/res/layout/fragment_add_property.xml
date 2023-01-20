@@ -44,6 +44,7 @@
                 android:layout_margin="@dimen/margin_large">
 
             <TextView
+                android:id="@+id/tvPropertyTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/fill_up_the_property_details"
@@ -51,14 +52,21 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/text_size_semilarge"/>
 
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/property_title"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPropertyTitle"
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
                 app:expandedHintEnabled="false"
-                app:hintEnabled="true"
+                app:hintEnabled="false"
                 app:placeholderText="@string/property_title"
                 app:helperTextTextColor="@color/red"
                 app:helperText="@{addPropertyViewModel.propertyTitleValid}"
@@ -83,13 +91,18 @@
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/property_type"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilPropertyType"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:endIconDrawable="@drawable/drop_down_icon"
@@ -124,12 +137,18 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/sell_type"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilSellType"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:endIconDrawable="@drawable/drop_down_icon"
@@ -163,13 +182,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/state"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilState"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     app:expandedHintEnabled="false"
                     app:hintEnabled="false"
                     app:placeholderText="@string/state"
@@ -196,13 +220,19 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/city_text"/>
+
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilcity"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:endIconDrawable="@drawable/drop_down_icon"
@@ -235,12 +265,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/sub_area_text"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilSubArea"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:endIconDrawable="@drawable/drop_down_icon"
@@ -271,12 +307,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/property_address"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilPropertyAddress"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textAlignment="center"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
@@ -304,12 +346,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/price"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilPrice"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -335,12 +383,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/booking_amount"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilBookingAmount"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -366,12 +420,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/area_text"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilArea"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -397,12 +457,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/bedrooms"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilBedroom"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -428,12 +494,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/bathrooms"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilBathroom"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -459,12 +531,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/kitchen"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilKitchen"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -490,14 +568,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/garage"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilGarage"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -521,12 +603,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/swimming_pool"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilSwimmingPool"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -550,12 +638,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/balcony"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilBalcony"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -579,12 +673,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/floors"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilFloors"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -608,12 +708,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/availability"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilAvailability"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:endIconDrawable="@drawable/drop_down_icon"
@@ -647,13 +753,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/build_year"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilBiildYear"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:endIconDrawable="@drawable/drop_down_icon"
@@ -686,12 +797,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/description"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilDecription"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -712,7 +829,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/edittext_background"
                         android:minLines="5"
-                        android:maxLength="350"
+                        android:ellipsize="end"
+                        android:maxLength="500"
                         android:inputType="textMultiLine"
                         android:text="@{addPropertyViewModel.description}"
                         android:textColor="@color/black"
@@ -720,12 +838,18 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/lableStyle"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:text="@string/highlights"/>
+
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilHighlights"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -746,7 +870,8 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/edittext_background"
                         android:minLines="5"
-                        android:maxLength="350"
+                        android:ellipsize="end"
+                        android:maxLength="500"
                         android:inputType="textMultiLine"
                         android:text="@{addPropertyViewModel.highlights}"
                         android:textColor="@color/black"
@@ -754,21 +879,23 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:layout_height="wrap_content"
-                    android:text="@string/property_thumbnail_1080_800"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_size_small"/>
-
 
                 <LinearLayout
                     android:id="@+id/thumbnailLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/gray"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:background="@drawable/edittext_background"
                     android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginStart="@dimen/margin_small"
+                        android:text="@string/property_thumbnail_1080_800"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_size_small"/>
 
 
                     <ImageView
@@ -800,6 +927,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/brochure_pdf"
                     android:layout_marginStart="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_small"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/text_size_small"/>
 
@@ -862,6 +990,7 @@
                         android:verticalSpacing="6dp" />
 
                 <LinearLayout
+                    android:id="@+id/uploadImageLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:weightSum="3"

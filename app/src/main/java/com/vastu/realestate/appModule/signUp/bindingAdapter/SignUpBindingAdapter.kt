@@ -30,7 +30,6 @@ object SignUpBindingAdapter {
     var isValidEmailId:Boolean=false
     var isValidCity:Boolean=false
     var isValidSubArea:Boolean=false
-    var isValidAddress:Boolean = false
 
 
     @BindingAdapter("validateField","tilLayout")
@@ -99,12 +98,6 @@ object SignUpBindingAdapter {
                         else{
                             isValidEmailId = false
                             parentLayout.helperText = context.getString(R.string.required)}
-                    }
-                    R.id.edtAddress->{
-                        if(isValidAddress(input.toString())) {
-                            isValidAddress = true
-                            signUpViewModel.address.set(input.toString().trim())
-                        }
                     }
                 }
                changeSubmitBtnState(signUpViewModel,context)
