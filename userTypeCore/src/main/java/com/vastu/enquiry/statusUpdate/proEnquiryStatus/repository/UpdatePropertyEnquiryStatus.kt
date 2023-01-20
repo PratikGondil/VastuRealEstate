@@ -36,7 +36,7 @@ object UpdatePropertyEnquiryStatus:IUpdatePropEnqStatusReq,IOnServiceResponseLis
 
     override fun onSuccessResponse(response: String, isError: Boolean) {
         var propEnqStatusResponse = parseResponse(response)
-        if (propEnqStatusResponse.statusEmpAssignResponse!!.responseStatusHeader!!.equals(
+        if (propEnqStatusResponse.statusEmpAssignResponse!!.responseStatusHeader!!.statusCode.equals(
                 ErrorCode.success)){
             iUpdatePropEnqStatusResponse.onUpdatePropEnqStatusSuccess(propEnqStatusResponse)
         }

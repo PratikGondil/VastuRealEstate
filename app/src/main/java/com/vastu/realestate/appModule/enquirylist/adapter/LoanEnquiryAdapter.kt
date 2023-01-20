@@ -33,7 +33,9 @@ class LoanEnquiryAdapter(
         binding.loanNameTextview.text = context.getString(R.string.username,loan.firstName,loan.middleName,loan.lastName)
 
         if (loan.assignee?.isNotEmpty() == true){
-            binding.llAssigneeLayout.visibility = View.VISIBLE
+            binding.txtAssignee.visibility = View.VISIBLE
+            binding.txtStatus.visibility = View.VISIBLE
+
             if(userType!!.equals(BaseConstant.ADMIN))
             binding.btnAssignLead.text = context.getString(R.string.reassign)
 
@@ -42,7 +44,9 @@ class LoanEnquiryAdapter(
 
         }
         else{
-            binding.llAssigneeLayout.visibility = View.GONE
+            binding.txtAssignee.visibility = View.GONE
+            binding.txtStatus.visibility = View.GONE
+
         }
 
         holder.binding.btnAssignLead.setOnClickListener {

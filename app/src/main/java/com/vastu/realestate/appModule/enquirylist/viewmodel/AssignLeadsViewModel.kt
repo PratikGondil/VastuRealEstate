@@ -16,6 +16,7 @@ import com.vastu.enquiry.loan.repository.AssignLoanEnquiryRepository
 import com.vastu.enquiry.property.model.request.assignEnquiry.ObjAssignPropertyEnquiryReq
 import com.vastu.enquiry.property.repository.AssignPropertyEnquiryRepository
 import com.vastu.enquiry.statusUpdate.enquiryStatus.callbacks.IGetEnquiryStatusResponse
+import com.vastu.enquiry.statusUpdate.enquiryStatus.model.response.ObjEnquiryStatusData
 import com.vastu.enquiry.statusUpdate.enquiryStatus.model.response.ObjEnquiryStatusResponseMain
 import com.vastu.enquiry.statusUpdate.enquiryStatus.repository.EnquiryStatusRequestRepository
 import com.vastu.enquiry.statusUpdate.loanEnquiryStatus.callbacks.IUpdateLoanEnqStatusResposne
@@ -39,7 +40,11 @@ class AssignLeadsViewModel(application: Application):AndroidViewModel(applicatio
     init {
         mContext=application
     }
+    var title = ObservableField(mContext.getString(R.string.assign_lead_text))
+    var isAssignLead = ObservableField(true)
+    var btnText = ObservableField(mContext.getString(R.string.assign_lead_text))
     var empName =MutableLiveData<ObjEmployeeData?>()
+    var status = MutableLiveData<ObjEnquiryStatusData>()
     var employeeList = MutableLiveData<ArrayList<ObjEmployeeData>>()
     var isBtnEnable =ObservableField(false)
     var btnBackground = ObservableField(ContextCompat.getDrawable(mContext, R.drawable.button_inactive_background))
@@ -75,7 +80,7 @@ class AssignLeadsViewModel(application: Application):AndroidViewModel(applicatio
     override fun networkFailure() {
     }
     fun assignLeadToEmp(){
-        iAssignLeadViewListener.callAssignApi()
+        iAssignLeadViewListener.proceedToNext()
     }
 
     override fun onSuccessAssignLoanLead(objAssignEnquiryReponse: ObjAssignEnquiryReponse) {
@@ -87,7 +92,7 @@ class AssignLeadsViewModel(application: Application):AndroidViewModel(applicatio
     }
 
     override fun onGetEnquirySuccessResponse(objEnquiryStatusResponseMain: ObjEnquiryStatusResponseMain) {
-        iAssignLeadViewListener.onGetEnquirySuccessResponse()
+        iAssignLeadViewListener.onGetEnquirySuccessResponse(objEnquiryStatusResponseMain)
     }
 
     override fun onGetEnquiryFailure(objEnquiryStatusResponseMain: ObjEnquiryStatusResponseMain) {

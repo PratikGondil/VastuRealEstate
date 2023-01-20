@@ -47,4 +47,5 @@ object BaseConstant {
   const val TO_DO = "1"
   const val INPROGRSS ="2"
   const val COMPLETE = "3"
+  const val USER_TYPE= "USER TYPE"
 }

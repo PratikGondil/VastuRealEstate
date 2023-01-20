@@ -15,6 +15,7 @@ import com.vastu.enquiry.property.model.response.EnquiryData
 import com.vastu.enquiry.property.model.response.GetPropertyEnquiryListMainResponse
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
+import com.vastu.realestate.appModule.dashboard.view.DashboardFragment.Companion.userType
 import com.vastu.realestate.appModule.enquirylist.adapter.PropertyEnquiryAdapter
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListener
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IPropertyListListener
@@ -69,7 +70,7 @@ class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener, IAssi
     }
     private fun setPropertyEnquiryDetails(propertyEnquiryList:List<EnquiryData>){
         val recyclerviewPropertyEnquiry = propertyEnquiryViewBinding.rvPropertyEnquiry
-        val propertyEnquiryAdapter = PropertyEnquiryAdapter(propertyEnquiryList,this)
+        val propertyEnquiryAdapter = PropertyEnquiryAdapter(propertyEnquiryList,this,userType)
         recyclerviewPropertyEnquiry.layoutManager = LinearLayoutManager(activity)
         recyclerviewPropertyEnquiry.setHasFixedSize(true)
         recyclerviewPropertyEnquiry.adapter = propertyEnquiryAdapter
@@ -100,7 +101,7 @@ class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener, IAssi
             modalbottomSheetFragment.setStyle(
                 BottomSheetDialogFragment.STYLE_NORMAL,android.R.style.Theme_Translucent_NoTitleBar
             )
-            modalbottomSheetFragment.arguments = bundleOf(BaseConstant.PROPERTY_DATA to PropertyData)
+            modalbottomSheetFragment.arguments = bundleOf(BaseConstant.PROPERTY_DATA to PropertyData,BaseConstant.USER_TYPE to userType)
 
             modalbottomSheetFragment.show(requireActivity().supportFragmentManager,modalbottomSheetFragment.tag)
         }catch (e : Exception){

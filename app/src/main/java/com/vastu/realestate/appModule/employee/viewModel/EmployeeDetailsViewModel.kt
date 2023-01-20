@@ -22,7 +22,7 @@ class EmployeeDetailsViewModel(application: Application):AndroidViewModel(applic
     var mobile = ObservableField("")
     var email = ObservableField("")
     var address = ObservableField("")
-    var rating = ObservableField(3.5)
+    var rating = ObservableField("0")
     fun getEmpoyeeDetails(employeeId:String)
     {
         EmployeeDetailReqRepository.getEmpDetails(mContext,employeeId,ApiUrlEndPoints.GET_EMPLOYEE_DETAILS,this)

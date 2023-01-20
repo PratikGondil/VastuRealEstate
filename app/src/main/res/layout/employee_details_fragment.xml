@@ -2,6 +2,7 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:bind="http://schemas.android.com/tools">
     <data>
+        <import type="com.vastu.realestate.appModule.employee.bindingAdapter.EmployeeDetailsBindingAdapter"/>
         <variable
             name="drawerViewModel"
             type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
@@ -287,7 +288,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
-            android:rating="3.5"
+            android:rating="@{empDetailsViewModel.rating}"
             android:progressTint="@color/colorSecondary"
             />
     </LinearLayout>

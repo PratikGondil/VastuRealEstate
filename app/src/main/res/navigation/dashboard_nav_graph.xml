@@ -38,6 +38,10 @@
             android:id="@+id/action_DashBoardFragment_to_PropertiesFragment"
             app:destination="@id/PropertiesFragment"
             app:enterAnim="@anim/enter_from_right"/>
+        <action
+            android:id="@+id/action_vastuDashboardFragment_to_EmployeeDetailsFragment"
+            app:destination="@id/EmployeeDetailsFragment"
+            app:enterAnim="@anim/slide_in_right"/>
 
     </fragment>
 
@@ -69,6 +73,10 @@
         <action
             android:id="@+id/action_EmployeeDetailsFragment_to_EmployeeListFragment"
             app:destination="@id/EmployeeListFragment"
+            app:enterAnim="@anim/slide_in_left"/>
+        <action
+            android:id="@+id/action_employeeDetailsFragment_to_vastuDashboardFragment"
+            app:destination="@id/VastuDashboardFragment"
             app:enterAnim="@anim/slide_in_left"/>
 
     </fragment>

@@ -24,9 +24,14 @@ class DrawerViewModel(application: Application) : AndroidViewModel(application) 
     var toolbarTitle = ObservableField(mContext.getString(R.string.vastu))
     var enquiry = ObservableField(View.VISIBLE)
     var properties = ObservableField(View.VISIBLE)
+    var employess = ObservableField(View.GONE)
+    var offer = ObservableField(View.GONE)
 
     fun onCloseClick(){
         iNavDrawerListener.onClickClose()
+    }
+    fun displayProfile(){
+        iNavDrawerListener.goToUserProfile()
     }
     fun onBackClick(){
         iToolbarListener.onClickBack()

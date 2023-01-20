@@ -1,6 +1,7 @@
 package com.vastu.realestate.appModule.utils
 
 import android.content.Context
+import com.vastu.enquiry.statusUpdate.enquiryStatus.model.response.ObjEnquiryStatusData
 import com.vastu.realestate.utils.BaseConstant
 import org.json.JSONObject
 import java.io.IOException
@@ -27,5 +28,18 @@ object BaseUtils {
             ioException.printStackTrace()
         }
         return json!!
+    }
+
+    fun getPreviousStatus(
+        currentStatus: String,
+        listOfLookupData: ArrayList<ObjEnquiryStatusData>
+    ): Int {
+        var reason: Int = 0
+        for (i in listOfLookupData.indices) {
+            if (listOfLookupData[i].statusName.equals(currentStatus, ignoreCase = true)) {
+                reason = i
+            }
+        }
+        return reason
     }
 }

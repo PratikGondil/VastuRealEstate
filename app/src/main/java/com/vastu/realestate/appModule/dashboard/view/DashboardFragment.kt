@@ -193,20 +193,17 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
     private fun layoutChange(){
             when(userType){
                 ADMIN->{
-                    drawerViewModel.enquiry.set(View.VISIBLE)
-                    drawerViewModel.properties.set(View.VISIBLE)
+                    drawerViewModel.employess.set(View.VISIBLE)
                 }
                 BUILDER->{
                     drawerViewModel.enquiry.set(View.GONE)
-                    drawerViewModel.properties.set(View.VISIBLE)
                 }
                 EMPLOYEES->{
-                    drawerViewModel.enquiry.set(View.VISIBLE)
-                    drawerViewModel.properties.set(View.VISIBLE)
                 }
                 CUSTOMER->{
                     drawerViewModel.enquiry.set(View.GONE)
                     drawerViewModel.properties.set(View.GONE)
+                    drawerViewModel.offer.set(View.VISIBLE)
                     dashboardBinding.floatAddProperty.visibility = View.GONE
                 }
             }
@@ -237,6 +234,12 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
     override fun onClickClose() {
         closeDrawer()
     }
+
+    override fun goToUserProfile() {
+        findNavController().navigate(R.id.action_vastuDashboardFragment_to_EmployeeDetailsFragment)
+        closeDrawer()
+    }
+
     override fun onClickEnquiry() {
         startActivity(Intent(activity, EnquiryActivity::class.java))
         closeDrawer()

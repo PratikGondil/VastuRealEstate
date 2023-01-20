@@ -17,7 +17,7 @@
     <string name="city_text">City</string>
     <string name="address_text">Address</string>
     <string name="sub_area_text">Sub Area</string>
-    <string name="send_otp_text">Send Otp</string>
+    <string name="send_otp_text">Send OTP</string>
     <string name="submit_btn_text">Submit</string>
 
     <!--    otp-->
@@ -149,8 +149,11 @@
     <string name="assign">Assign</string>
     <string name="reassign">Re-Assign</string>
     <string name="employees">Employees</string>
-
-<!--    filter-->
+    <string name="employee_name">Employee Name</string>
+    <string name="assign_lead_text">Assign Lead</string>
+    <string name="update_status">Update Status</string>
+    <string name="profile">My Profile</string>
+    <!--    filter-->
     <string name="filters_and_sort">FILTERS &amp; SORT</string>
     <string name="choose_area">Choose area from below options</string>
     <string name="choose_a_range_below">Choose a range below</string>
@@ -221,4 +224,5 @@
     <string name="edit_property">Edit Property</string>
     <string name="delete">Delete</string>
     <string name="register_successfully">Register Successfully</string>
+
 </resources>

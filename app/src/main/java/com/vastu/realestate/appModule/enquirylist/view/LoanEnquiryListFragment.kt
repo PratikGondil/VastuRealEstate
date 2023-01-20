@@ -93,7 +93,7 @@ class LoanEnquiryListFragment : BaseFragment(), ILoanListListener, IAssignLeadLi
                 BottomSheetDialogFragment.STYLE_NORMAL,android.R.style.Theme_Translucent_NoTitleBar
             )
             val bundle = Bundle()
-            modalbottomSheetFragment.arguments = bundleOf(BaseConstant.LOAN_DATA to loanData)
+            modalbottomSheetFragment.arguments = bundleOf(BaseConstant.LOAN_DATA to loanData,BaseConstant.USER_TYPE to userType)
             modalbottomSheetFragment.show(requireActivity().supportFragmentManager,modalbottomSheetFragment.tag)
         }catch (e : Exception){
             e.printStackTrace()

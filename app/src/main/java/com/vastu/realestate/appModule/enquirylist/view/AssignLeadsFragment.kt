@@ -18,17 +18,25 @@ import com.vastu.enquiry.loan.model.request.assignEnquiry.ObjAssignLoanEnquiryRe
 import com.vastu.enquiry.loan.model.response.LoanData
 import com.vastu.enquiry.property.model.request.assignEnquiry.ObjAssignPropertyEnquiryReq
 import com.vastu.enquiry.property.model.response.EnquiryData
+import com.vastu.enquiry.statusUpdate.enquiryStatus.model.response.ObjEnquiryStatusData
+import com.vastu.enquiry.statusUpdate.enquiryStatus.model.response.ObjEnquiryStatusResponseMain
 import com.vastu.enquiry.statusUpdate.loanEnquiryStatus.model.request.ObjLoanStatusUpdateReq
 import com.vastu.enquiry.statusUpdate.proEnquiryStatus.model.request.ObjPropStatusUpdateReq
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.view.DashboardFragment
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListener
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadViewListener
 import com.vastu.realestate.appModule.enquirylist.viewmodel.AssignLeadsViewModel
+import com.vastu.realestate.appModule.utils.BaseUtils
+import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.customProgressDialog.CustomProgressDialog
 import com.vastu.realestate.databinding.AssignLeadsFragmentBinding
 import com.vastu.realestate.utils.BaseConstant
+import com.vastu.realestate.utils.PreferenceKEYS
+import com.vastu.realestate.utils.PreferenceKEYS.USER
+import com.vastu.realestate.utils.PreferenceManger
 
-class AssignLeadsFragment(var listerner: IAssignLeadListener): BottomSheetDialogFragment(),
+class AssignLeadsFragment(var listerner: IAssignLeadListener): BottomSheetDialogFragment(),View.OnTouchListener,
     IAssignLeadViewListener {
     lateinit var assignLeadsBinding :AssignLeadsFragmentBinding
     lateinit var assignLeadsViewModel: AssignLeadsViewModel
@@ -39,6 +47,7 @@ class AssignLeadsFragment(var listerner: IAssignLeadListener): BottomSheetDialog
     var objPropStatusUpdateReq = ObjPropStatusUpdateReq()
     var objAssignLoanEnquiryReq = ObjAssignLoanEnquiryReq()
     var objAssignPropertyEnquiryReq = ObjAssignPropertyEnquiryReq()
+    var usertype :String = ""
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = BottomSheetDialog(requireContext(), theme)
         dialog.setOnShowListener {
@@ -96,17 +105,29 @@ class AssignLeadsFragment(var listerner: IAssignLeadListener): BottomSheetDialog
                         args.getSerializable(BaseConstant.PROPERTY_DATA) as EnquiryData
 
                 }
+                usertype = args.getString(BaseConstant.USER_TYPE).toString()
 
             }
-            getEmployeeList()
+
+            checkUserTypeToCtn()
         }catch (e:Exception){
             e.printStackTrace()
         }
 
     }
-    fun getEmployeeList(){
-//        assignLeadsBinding.autoCompEmpName.setOnTouchListener(this)
 
+    fun checkUserTypeToCtn(){
+        if(usertype.equals(BaseConstant.ADMIN))
+            getEmployeeList()
+        else {
+            getEnquiryStatusList()
+            assignLeadsBinding.autoCompEmpName.setOnTouchListener(this)
+            assignLeadsViewModel.title.set(requireContext().resources.getString(R.string.update_status))
+            assignLeadsViewModel.btnText.set(requireContext().resources.getString(R.string.update_status))
+        }
+    }    fun getEmployeeList(){
+
+//        assignLeadsBinding.autoCompEmpName.setOnTouchListener(this)
         assignLeadsViewModel.callEmployeeListApi()
     }
 
@@ -124,7 +145,26 @@ class AssignLeadsFragment(var listerner: IAssignLeadListener): BottomSheetDialog
         }
 
     }
+override fun proceedToNext(){
+    if (usertype.equals(BaseConstant.ADMIN))
+        callAssignApi()
+    else{
+        val userDetails = PreferenceManger.get<ObjVerifyDtls>(PreferenceKEYS.USER)!!
+        if(this::loanData.isInitialized){
+            objLoanStatusUpdateReq = objLoanStatusUpdateReq.copy(emp_id = userDetails.userId, loan_enq_id = loanData.loanId,
+                status = (assignLeadsViewModel.status.value as ObjEnquiryStatusData).statusId)
+            assignLeadsViewModel.updateLoanEnqStatus(objLoanStatusUpdateReq)
+        }
+        else{
+            objPropStatusUpdateReq = objPropStatusUpdateReq.copy(emp_id = userDetails.userId,
+                pro_enq_id =propertyData.propertyId, status = (assignLeadsViewModel.status.value as ObjEnquiryStatusData).statusId)
+            updateEnquiryStatus(objPropStatusUpdateReq)
 
+        }
+
+    }
+
+}
     override fun callAssignApi() {
         if(this::loanData.isInitialized){
             objAssignLoanEnquiryReq = objAssignLoanEnquiryReq.copy(loan_enq_id = loanData.loanId,
@@ -161,20 +201,52 @@ class AssignLeadsFragment(var listerner: IAssignLeadListener): BottomSheetDialog
         this.dismiss()
     }
 
-//    override fun onTouch(view: View?, p1: MotionEvent?): Boolean {
-//        if (view == assignLeadsBinding.autoCompEmpName) {
-//            view.let {
-//                onShowStateDropDown(it!!)
-//            }
-//        }
-//        return true
-//    }
-//    fun onShowStateDropDown(view: View){
-//        (view as AutoCompleteTextView).showDropDown()
-//    }
+    override fun onTouch(view: View?, p1: MotionEvent?): Boolean {
+        if (view == assignLeadsBinding.autoCompEmpName) {
+            view.let {
+                onShowStateDropDown(it)
+            }
+        }
+        return true
+    }
+    fun onShowStateDropDown(view: View){
+        (view as AutoCompleteTextView).showDropDown()
+    }
 
-    override fun onGetEnquirySuccessResponse(){
+    override fun onGetEnquirySuccessResponse(objEnquiryStatusResponseMain: ObjEnquiryStatusResponseMain) {
+        if (usertype.equals(BaseConstant.EMPLOYEES)) {
+            setEnqStatusListToAdapter(objEnquiryStatusResponseMain.objGetEnquiryStatusDetailsResponse.objEnquiryStatusData)
+            assignLeadsViewModel.isAssignLead.set(false)
+        }
         customProgressDialog.dismiss()
+
+    }
+    fun setEnqStatusListToAdapter(statusList: ArrayList<ObjEnquiryStatusData>) {
+//        val adapter: ArrayList<ObjEnquiryStatusData> = statusList
+        assignLeadsBinding.autoCompEmpName.setAdapter(
+            ArrayAdapter(
+                requireContext(),
+                R.layout.drop_down_item, statusList
+            )
+        )
+    assignLeadsBinding.autoCompEmpName.setText(assignLeadsBinding.autoCompEmpName.adapter.getItem(BaseUtils.getPreviousStatus(loanData.status!!,statusList)).toString(),false)
+    val index = BaseUtils.getPreviousStatus(
+            loanData.status!!,
+        statusList
+        )
+        setPreselectedPaymentReason(index)
+    }
+
+    fun setPreselectedPaymentReason(index: Int) {
+        try {
+            assignLeadsViewModel.status.value = (
+                assignLeadsBinding.autoCompEmpName.adapter!!.getItem(
+                    index
+                ) as ObjEnquiryStatusData
+            )
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
     }
     fun  getEnquiryStatusList(){
         assignLeadsViewModel.callEnquiryStatusList()

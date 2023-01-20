@@ -9,8 +9,10 @@ import com.vastu.enquiry.property.model.response.EnquiryData
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListener
 import com.vastu.realestate.databinding.PropertyEnquiryItemviewBinding
+import com.vastu.realestate.utils.BaseConstant
 
-class PropertyEnquiryAdapter(private val propertyDataList: List<EnquiryData>,var iAssignLeadListener: IAssignLeadListener
+class PropertyEnquiryAdapter(private val propertyDataList: List<EnquiryData>,
+                             var iAssignLeadListener: IAssignLeadListener, var userType: String?
 ) : RecyclerView.Adapter<PropertyEnquiryListViewHolder>() {
     private lateinit var context:Context
 
@@ -21,11 +23,19 @@ class PropertyEnquiryAdapter(private val propertyDataList: List<EnquiryData>,var
         holder.bind(propertyData)
         binding.propertyNameTextview.text = context.getString(R.string.username,propertyData.firstName,propertyData.middleName,propertyData.lastName)
         if (propertyData.assignee?.isNotEmpty() == true){
-            binding.llAssigneeLayout.visibility = View.VISIBLE
-            binding.btnAssignLead.text = context.getString(R.string.reassign)
+            binding.txtAssignee.visibility = View.VISIBLE
+            binding.txtStatus.visibility = View.VISIBLE
+
+            if(userType!!.equals(BaseConstant.ADMIN))
+                binding.btnAssignLead.text = context.getString(R.string.reassign)
+
+            else
+                binding.btnAssignLead.text = "Update status"
+
         }
         else{
-            binding.llAssigneeLayout.visibility = View.GONE
+            binding.txtAssignee.visibility = View.GONE
+            binding.txtStatus.visibility = View.GONE
         }
         holder.binding.btnAssignLead.setOnClickListener {
             iAssignLeadListener.assignPropertyLeadToEmployee(propertyData)
