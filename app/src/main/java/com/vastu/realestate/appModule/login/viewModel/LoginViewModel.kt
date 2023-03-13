@@ -31,6 +31,11 @@ class LoginViewModel(application: Application) : AndroidViewModel(application),
         LoginRepository.callLoginApi(mContext,mobileNumber,LOGIN,this)
     }
 
+    fun calltermsConditionsAPI()
+    {
+
+    }
+
     override fun onGetSuccessResponse(response: ObjLoginResponseMain) {
         iLoginViewListener.launchOtpScreen(response)
 

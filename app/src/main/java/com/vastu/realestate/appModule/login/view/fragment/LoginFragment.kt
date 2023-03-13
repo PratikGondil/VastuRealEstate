@@ -1,11 +1,14 @@
 package com.vastu.realestate.appModule.login.view.fragment
 
+import android.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.CheckBox
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
@@ -40,7 +43,13 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
 
 
     override fun onSendOtpClick() {
+        createDialog()
 
+
+    }
+
+    fun redirectedToAPIAfterTerms()
+    {
         if(viewModel.isValidMobileNumber.get()!!){
             showProgressDialog()
             viewModel.callLoginApi(viewModel.mobileNumber.get().toString())
@@ -48,9 +57,21 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
         else{
             binder.tilMobileNumLayout.helperText= viewModel.error.get()
         }
-
-
     }
+    private fun createDialog() {
+        val builder = AlertDialog.Builder(requireContext(),R.style.CustomAlertDialog)
+            .create()
+        val view = layoutInflater.inflate(R.layout.custom_dialog,null)
+        val  checkbox = view.findViewById<CheckBox>(R.id.termsCheck)
+        builder.setView(view)
+        checkbox.setOnClickListener {
+            builder.dismiss()
+            redirectedToAPIAfterTerms()
+        }
+        builder.setCanceledOnTouchOutside(false)
+        builder.show()
+    }
+
     override fun launchOtpScreen(objLoginResponseMain: ObjLoginResponseMain) {
         hideProgressDialog()
         val bundle = Bundle()

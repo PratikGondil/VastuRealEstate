@@ -157,7 +157,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         if(getAdvertisementSlider.advertiseData.isNotEmpty()) {
             dashboardBinding.apply {
                 for (slider in getAdvertisementSlider.advertiseData) {
-                    imageList.add(SlideModel(slider.adSlider))
+                    imageList.add(SlideModel(slider.adSlider,slider.ad_text,ScaleTypes.FIT))
                 }
                 imageSlider.setImageList(imageList, ScaleTypes.FIT)
                 imageSlider.startSliding(3000)

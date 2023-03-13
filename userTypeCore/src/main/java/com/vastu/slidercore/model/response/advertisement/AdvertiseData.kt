@@ -7,5 +7,8 @@ data class AdvertiseData(
     @SerializedName("ad_slider")
     val adSlider: String,
     @SerializedName("ad_slider_id")
-    val adSliderId: String
+    val adSliderId: String,
+    @SerializedName("ad_text")
+    val ad_text: String
+
 )
