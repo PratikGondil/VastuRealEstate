@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="com.vastu.realestate.appModule.employee.bindingAdapter.EmployeeDetailsBindingAdapter"/>
+        <variable
+            name="drawerViewModel"
+            type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
+        <variable
+            name="ContactUsViewModel"
+            type="com.vastu.realestate.appModule.contactus.ContactUsViewModel" />
+    </data>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <include
+        layout="@layout/toolbar_layout"
+        bind:drawerViewModel="@{drawerViewModel}" />
+
+    <ImageView
+        android:id="@+id/Imgvvastu"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/dimen200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/vastu_logo_splash"
+        />
+
+    <TextView
+        android:id="@+id/txtTiltle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/dimen_16sp"
+        android:layout_marginTop="@dimen/dimen50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/Imgvvastu"
+        android:text="@string/getintouch"
+      />
+
+    <TextView
+        android:id="@+id/txtFeelFree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/dimen_16sp"
+        android:layout_marginTop="@dimen/dimen10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txtTiltle"
+        android:text="@string/feel_free"
+        />
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/dimen_16sp"
+        android:layout_marginTop="@dimen/dimen10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txtFeelFree"
+        android:text="@string/email"
+        />
+
+    <TextView
+        android:id="@+id/txtEmailValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/dimen_16sp"
+        android:layout_marginTop="@dimen/dimen10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txtEmail"
+        android:textStyle="bold"
+        android:autoLink="web|email"
+        android:textColor="@color/design_default_color_primary_variant"
+        android:text="@string/email_add_value"
+        />
+</RelativeLayout>
+</layout>

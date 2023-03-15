@@ -43,8 +43,42 @@
             app:destination="@id/EmployeeDetailsFragment"
             app:enterAnim="@anim/slide_in_right"/>
 
+        <action
+            android:id="@+id/action_vastuDashboardFragment_to_ContactUs"
+            app:destination="@id/ContactUs"
+            app:enterAnim="@anim/slide_in_right"/>
+
+        <action
+            android:id="@+id/action_vastuDashboardFragment_to_Notification"
+            app:destination="@id/NotificationFragment"
+            app:enterAnim="@anim/slide_in_right"/>
+
     </fragment>
 
+    <fragment
+        android:id="@+id/NotificationFragment"
+        android:name="com.vastu.realestate.notification.NotificationFragment"
+        android:label="Notification"
+        >
+
+        <action
+            android:id="@+id/action_notificationFragment_to_Dashboard"
+            app:destination="@id/VastuDashboardFragment"
+            app:enterAnim="@anim/slide_in_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/ContactUs"
+        android:name="com.vastu.realestate.appModule.contactus.ContactUsFragment"
+        android:label="ContactUS"
+        tools:layout="@layout/fragment_contact_us">
+
+        <action
+            android:id="@+id/action_ContactUs_to_Dashboard"
+            app:destination="@id/VastuDashboardFragment"
+            app:enterAnim="@anim/slide_in_right"/>
+
+
+    </fragment>
     <fragment
         android:id="@+id/OfferFragment"
         android:name="com.vastu.realestate.appModule.dashboard.view.offers.OffersFragment"

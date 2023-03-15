@@ -48,6 +48,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".rootModule.splash.view.activity.SplashActivity"
+            android:launchMode="singleTop"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

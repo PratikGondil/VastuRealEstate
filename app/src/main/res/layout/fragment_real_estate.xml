@@ -40,7 +40,7 @@
             <com.denzcoskun.imageslider.ImageSlider
                 android:id="@+id/image_slider"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/banner_image_height"
+                android:layout_height="@dimen/dimen200dp"
                 app:iss_auto_cycle="true"
                 app:iss_error_image="@drawable/vastu_logo_splash"
                 app:iss_placeholder="@color/loan_background_color"

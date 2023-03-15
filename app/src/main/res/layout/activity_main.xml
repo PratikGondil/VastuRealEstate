@@ -8,8 +8,8 @@
     tools:context=".rootModule.splash.view.activity.SplashActivity">
 
     <ImageView
-        android:layout_width="@dimen/dimen200dp"
-        android:layout_height="@dimen/dimen200dp"
+        android:layout_width="@dimen/dimen150dp"
+        android:layout_height="@dimen/dimen150dp"
         android:src="@drawable/vastu_logo_splash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

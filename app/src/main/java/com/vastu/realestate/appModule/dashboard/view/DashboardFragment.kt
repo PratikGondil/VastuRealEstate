@@ -229,7 +229,8 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         openDrawer()
     }
     override fun onClickNotification() {
-        //openNotificationFragment
+        findNavController().navigate(R.id.action_vastuDashboardFragment_to_Notification)
+
     }
     override fun onClickClose() {
         closeDrawer()
@@ -267,6 +268,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
     }
 
     override fun onClickContactUs() {
+        findNavController().navigate(R.id.action_vastuDashboardFragment_to_ContactUs)
         closeDrawer()
     }
     override fun onClickSettings() {
