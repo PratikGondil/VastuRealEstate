@@ -821,22 +821,10 @@
                         android:padding="@dimen/padding_large"
                         android:background="@color/white">
 
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/btnChat"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:background="@drawable/round_button_background"
-                            android:text="@string/chat"
-                            android:onClick="@{(view)->realEstateDetailsViewModel.onClickChat()}"
-                            android:textSize="@dimen/text_size_small"
-                            app:fontFamily="@font/poppins_regular"
-                            android:textColor="@color/white" />
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/btnMakeOffer"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"

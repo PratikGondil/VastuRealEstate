@@ -43,7 +43,7 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
 
 
     override fun onSendOtpClick() {
-        createDialog()
+        createDialog(this)
 
 
     }
@@ -58,19 +58,7 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
             binder.tilMobileNumLayout.helperText= viewModel.error.get()
         }
     }
-    private fun createDialog() {
-        val builder = AlertDialog.Builder(requireContext(),R.style.CustomAlertDialog)
-            .create()
-        val view = layoutInflater.inflate(R.layout.custom_dialog,null)
-        val  checkbox = view.findViewById<CheckBox>(R.id.termsCheck)
-        builder.setView(view)
-        checkbox.setOnClickListener {
-            builder.dismiss()
-            redirectedToAPIAfterTerms()
-        }
-        builder.setCanceledOnTouchOutside(false)
-        builder.show()
-    }
+
 
     override fun launchOtpScreen(objLoginResponseMain: ObjLoginResponseMain) {
         hideProgressDialog()

@@ -140,10 +140,10 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
     }
 
     override fun onGotoDashboard(enquiryMainResponse: EnquiryMainResponse) {
-      hideProgressDialog()
-      clearAllFields()
-      showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription!!,true,false)
-      Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
+        hideProgressDialog()
+        clearAllFields()
+        showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription!!,true,false)
+        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
     }
 
     override fun onUserNotConnected() {
@@ -152,6 +152,11 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
     }
 
     override fun onClickAddPropertyEnquiry() {
+        createDialog(this)
+    }
+
+   fun redirectedAfterAPITerms()
+    {
         showProgressDialog()
         addPropertyEnquiryViewModel.callAddPropertyEnquiry(getPropertyEnquiryInfo())
     }
