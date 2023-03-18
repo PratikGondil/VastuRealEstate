@@ -5,6 +5,7 @@ import android.widget.Button
 import android.widget.CheckBox
 import androidx.fragment.app.Fragment
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.enquiry.view.AddLoanEnquiryFragment
 import com.vastu.realestate.appModule.enquiry.view.AddPropertyEnquiryFragment
 import com.vastu.realestate.appModule.login.view.fragment.LoginFragment
 
@@ -38,6 +39,9 @@ open class BaseFragment : Fragment() {
             }else if(fragment is AddPropertyEnquiryFragment)
             {
                 fragment.redirectedAfterAPITerms()
+            }else if (fragment is AddLoanEnquiryFragment)
+            {
+                fragment.redirectedAfterTermsLoan()
             }
         }
         builder.setCanceledOnTouchOutside(false)

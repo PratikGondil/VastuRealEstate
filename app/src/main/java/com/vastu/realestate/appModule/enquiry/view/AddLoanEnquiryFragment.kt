@@ -125,6 +125,11 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
     }
 
     override fun onClickAddLoanEnquiry() {
+        createDialog(this)
+
+    }
+    fun redirectedAfterTermsLoan()
+    {
         showProgressDialog()
         loanEnquiryViewModel.callAddLoanEnquiry(getLoanEnquiryInfo())
     }
