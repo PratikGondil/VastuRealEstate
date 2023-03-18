@@ -4,8 +4,8 @@ import android.content.Context
 import com.google.gson.Gson
 import com.vastu.enquiry.employee.callbacks.request.IEmpDetailsRequest
 import com.vastu.enquiry.employee.callbacks.response.IGetEmpDetailsResponse
-import com.vastu.enquiry.employee.model.response.employeeDetails.ObjEmpDetailsResponseMain
-import com.vastu.enquiry.employee.model.response.employeeDetails.request.ObjEmpDetailRequest
+import com.vastu.enquiry.employee.model.employeeDetails.ObjEmpDetailsResponseMain
+import com.vastu.enquiry.employee.model.employeeDetails.request.ObjEmpDetailRequest
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
 import com.vastu.utils.ErrorCode

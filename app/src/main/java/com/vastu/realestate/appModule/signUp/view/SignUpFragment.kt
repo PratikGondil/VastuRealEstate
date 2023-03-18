@@ -285,7 +285,7 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
     }
 
     override fun onFailureTermsCondition(termsConditionMainResponse: TermsConditionMainResponse) {
-        showDialog(termsConditionMainResponse.termsConditionResponse.responseStatusHeader.statusDescription,isSuccess = false,isNetworkFailure = false)
+        showDialog(termsConditionMainResponse.termsConditionResponse.responseStatusHeader.statusDescription!!,isSuccess = false,isNetworkFailure = false)
     }
 
     override fun onSuccessTerms() {

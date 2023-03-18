@@ -39,8 +39,6 @@ class LoanEnquiryAdapter(
             if(userType!!.equals(BaseConstant.ADMIN))
             binding.btnAssignLead.text = context.getString(R.string.reassign)
 
-            else
-                binding.btnAssignLead.text = "Update status"
 
         }
         else{

@@ -9,12 +9,17 @@
     {
       "filtertype": "By Property Type"
     },
-
     {
       "filtertype": "By Bedrooms"
     },
     {
       "filtertype": "By Bathrooms"
+    },
+    {
+      "filtertype": "By Furnishing"
+    },
+    {
+      "filtertype": "By Construction status"
     },
     {
       "filtertype": "By Listed By"

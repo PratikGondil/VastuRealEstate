@@ -6,9 +6,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.view.size
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -44,7 +45,7 @@ class SortAndFilterScreen(var callback:RealEstateFragment): BottomSheetDialogFra
     lateinit var itemsList : ArrayList<ObjFilterTypeList>
     lateinit var customAdapter: FilterTypeAdapter
     lateinit var chipGroup :ChipGroup
-    var objFilterData = ObjFilterData()
+    lateinit var objFilterData:ObjFilterData
      var furnishingStatus:ArrayList<String> = arrayListOf()
      var constructionStatus:ArrayList<String> = arrayListOf()
 
@@ -105,6 +106,13 @@ override fun onCreateView(
         val layoutManager = LinearLayoutManager(requireContext())
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = customAdapter
+
+        if(PreferenceManger.get<ObjFilterData>(PreferenceKEYS.FILTERDATA)!= null) {
+            objFilterData = PreferenceManger.get<ObjFilterData>(PreferenceKEYS.FILTERDATA)!!
+            if (this::objFilterData.isInitialized) {
+                setPreviousData(objFilterData)
+            }
+        }
     }
 
    fun getSubAreaList(){
@@ -144,11 +152,11 @@ override fun onCreateView(
             resources.getString(R.string.by_bathrooms)->
                 objManageFilterVisibility = ObjManageFilterVisibility(isVisibleSubAreaLayout = false, isVisibleByBathroomsLayout = true ,title = resources.getString(R.string.choose_from_below_options))
 
-//            resources.getString(R.string.by_furnishing)->
-//                objManageFilterVisibility = ObjManageFilterVisibility(isVisibleSubAreaLayout = false, isVisibleByFurnishingLayout = true,title = resources.getString(R.string.choose_from_below_options))
-//
-//            resources.getString(R.string.by_constr_status)->
-//                objManageFilterVisibility = ObjManageFilterVisibility(isVisibleSubAreaLayout = false, isVisibleConstructionStsLayout = true ,title = resources.getString(R.string.choose_from_below_options))
+            resources.getString(R.string.by_furnishing)->
+                objManageFilterVisibility = ObjManageFilterVisibility(isVisibleSubAreaLayout = false, isVisibleByFurnishingLayout = true,title = resources.getString(R.string.choose_from_below_options))
+
+            resources.getString(R.string.by_constr_status)->
+                objManageFilterVisibility = ObjManageFilterVisibility(isVisibleSubAreaLayout = false, isVisibleConstructionStsLayout = true ,title = resources.getString(R.string.choose_from_below_options))
 
             resources.getString(R.string.by_listed_by)->
                 objManageFilterVisibility = ObjManageFilterVisibility(isVisibleSubAreaLayout = false, isVisibleListedLayout = true,title = resources.getString(R.string.choose_from_below_options))
@@ -171,36 +179,53 @@ override fun onCreateView(
         val chip = Chip(requireContext())
 
         chip.text = text
-        chip.isCloseIconVisible = true
-        chip.setOnCloseIconClickListener{
-            chipGroup.removeView(chip)
-    }
-        chipGroup.addView(chip)
+        chip.isCloseIconVisible = false
+//        chip.setOnCloseIconClickListener{
+//            chipGroup.removeView(chip)
+//    }
         if(chipGroup.childCount>0){
             chipGroup.visibility = View.VISIBLE
         }
-
-        updateFilterData(chip)
+        if(!checkIsAlreadyExist(text)){
+          chipGroup.addView(chip)
+          updateFilterData(chip)}
 
 
     }
+    fun checkIsAlreadyExist(text: String): Boolean {
+        val chipsList = multipleFiltersBinding.cgFilterGroup
+        var isExist=false
+        if(chipsList.size > 0){
+            for(i in 1 until chipsList.size){
+                var key = (chipsList.getChildAt(i) as Chip).text.toString()
+                if(key.equals(text)){
+//                    ||key.contains(resources.getString(R.string.chip_text_budget)) || key.contains(resources.getString(R.string.chip_text_builtup_area))) {
+                    isExist =true
+
+                }
+            }
+
+        }
+        return isExist
+    }
     fun updateFilterData(chip: Chip){
         when(chip.text){
+
             multipleFiltersBinding.selectedFilterView.checkHouses.text, multipleFiltersBinding.selectedFilterView.checkApartment.text,
             multipleFiltersBinding.selectedFilterView.checkBuilderFloor.text,multipleFiltersBinding.selectedFilterView.checkFarmHouse.text->{
                     filterViewModel.propertyType.add(chip.text as String)
             }
 
-//            multipleFiltersBinding.selectedFilterView.checkFurnished.text,multipleFiltersBinding.selectedFilterView.checkUnfurnished.text,
-//            multipleFiltersBinding.selectedFilterView.checkSemiFurnished.text->{
-//             furnishingStatus!!.add(chip.text as String)
-//            }
+            multipleFiltersBinding.selectedFilterView.checkFurnished.text,multipleFiltersBinding.selectedFilterView.checkUnfurnished.text,
+            multipleFiltersBinding.selectedFilterView.checkSemiFurnished.text->{
+             furnishingStatus!!.add(chip.text as String)
+            }
 
 
-//            multipleFiltersBinding.selectedFilterView.checkUnderConst.text,multipleFiltersBinding.selectedFilterView.checkReadyToMove.text,
-//            multipleFiltersBinding.selectedFilterView.checkNewLaunch.text->{
-//               constructionStatus!!.add(chip.text as String)
-//            }
+            multipleFiltersBinding.selectedFilterView.checkUnderConst.text,multipleFiltersBinding.selectedFilterView.checkReadyToMove.text,
+            multipleFiltersBinding.selectedFilterView.checkNewLaunch.text->{
+               constructionStatus!!.add(chip.text as String)
+            }
 
             multipleFiltersBinding.selectedFilterView.checkOwner.text,multipleFiltersBinding.selectedFilterView.checkDealer.text,
             multipleFiltersBinding.selectedFilterView.checkBuilder.text->{
@@ -224,9 +249,19 @@ override fun onCreateView(
             }
 
             else->{
-                for (area in filterViewModel.subAreaList.value!!){
-                    if(area.subArea.equals(chip.text as String))
+                if(chip.text.contains(resources.getString(R.string.chip_text_budget))){
+                    filterViewModel.budgetLimit.add(filterViewModel.lowerLimit.get()!!)
+                    filterViewModel.budgetLimit.add(filterViewModel.upperLimit.get()!!)
+                }
+                else if(chip.text.contains(resources.getString(R.string.chip_text_builtup_area))){
+                    filterViewModel.buildUpAreaLimits.add(filterViewModel.lowerLimitForBuildupArea.get()!!)
+                    filterViewModel.buildUpAreaLimits.add( filterViewModel.upperLimitForBuildupArea.get()!!)
+                }
+                else{
+                for (area in filterViewModel.subAreaList.value!!) {
+                    if (area.subArea.equals(chip.text as String))
                         filterViewModel.cityList.add(area.areaId)
+                }
 
                 }
             }
@@ -237,184 +272,290 @@ override fun onCreateView(
     }
     override fun removeChip(id: Int) {
         val chipsList = multipleFiltersBinding.cgFilterGroup.childCount
+        if(chipsList > 0) {
+            for (i in 1 until chipsList) {
+                val filterText = (chipGroup.getChildAt(i) as Chip).text.toString()
 
-        for(i in 0 until chipsList){
-            val filterText = (chipGroup.getChildAt(i) as Chip).text.toString()
-
-            when(id){
-                R.id.checkHouses->{
-                    if( multipleFiltersBinding.selectedFilterView.checkHouses.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.propertyType.remove(filterText)
+                when (id) {
+                    R.id.checkHouses -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkHouses.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.propertyType.remove(filterText)
+                            break
+                        }
                     }
-                }
-                R.id.checkApartment->{
-                    if( multipleFiltersBinding.selectedFilterView.checkApartment.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.propertyType.remove(filterText)
+                    R.id.checkApartment -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkApartment.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.propertyType.remove(filterText)
+                            break
+                        }
                     }
-                }
-                R.id.checkBuilderFloor->{
-                    if( multipleFiltersBinding.selectedFilterView.checkBuilderFloor.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.propertyType.remove(filterText)
+                    R.id.checkBuilderFloor -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkBuilderFloor.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.propertyType.remove(filterText)
+                            break
+                        }
                     }
-                }
-                R.id.check_farm_house->{
-                    if( multipleFiltersBinding.selectedFilterView.checkFarmHouse.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.propertyType.remove(filterText)
+                    R.id.check_farm_house -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkFarmHouse.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.propertyType.remove(filterText)
+                            break
+                        }
                     }
-                }
-//                 R.id.checkFurnished->{
-//                    if( multipleFiltersBinding.selectedFilterView.checkFurnished.text.equals(filterText))
-//                        chipGroup.removeView(chipGroup.getChildAt(i))
-//                     furnishingStatus.remove(filterText)
-//                }
-//                R.id.checkUnfurnished ->{
-//                    if( multipleFiltersBinding.selectedFilterView.checkUnfurnished.text.equals(filterText))
-//                        chipGroup.removeView(chipGroup.getChildAt(i))
-//                    furnishingStatus.remove(filterText)
-//
-//                }
-//                R.id.checkSemiFurnished ->{
-//                    if( multipleFiltersBinding.selectedFilterView.checkSemiFurnished.text.equals(filterText))
-//                        chipGroup.removeView(chipGroup.getChildAt(i))
-//                    furnishingStatus.remove(filterText)
-//
-//                }
-//                R.id.checkUnderConst->{
-//                    if( multipleFiltersBinding.selectedFilterView.checkUnderConst.text.equals(filterText))
-//                        chipGroup.removeView(chipGroup.getChildAt(i))
-//                    constructionStatus.remove(filterText)
-//
-//                }
-//                R.id.checkReadyToMove->{
-//                    if( multipleFiltersBinding.selectedFilterView.checkReadyToMove.text.equals(filterText))
-//                        chipGroup.removeView(chipGroup.getChildAt(i))
-//                    constructionStatus.remove(filterText)
-//
-//                }
-//                R.id.checkNewLaunch->{
-//                    if( multipleFiltersBinding.selectedFilterView.checkNewLaunch.text.equals(filterText))
-//                        chipGroup.removeView(chipGroup.getChildAt(i))
-//                    constructionStatus.remove(filterText)
-//
-//                }
-                R.id.check_owner->{
-                    if( multipleFiltersBinding.selectedFilterView.checkOwner.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.listedBy.remove(filterText)
+                    R.id.checkFurnished -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkFurnished.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            furnishingStatus.remove(filterText)
+                            break
+                        }
+                    }
+                    R.id.checkUnfurnished -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkUnfurnished.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            furnishingStatus.remove(filterText)
+                            break
+                        }
+
+                    }
+                    R.id.checkSemiFurnished -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkSemiFurnished.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            furnishingStatus.remove(filterText)
+                            break
+                        }
+
+                    }
+                    R.id.checkUnderConst -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkUnderConst.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            constructionStatus.remove(filterText)
+                            break
+                        }
+
+                    }
+                    R.id.checkReadyToMove -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkReadyToMove.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            constructionStatus.remove(filterText)
+                            break
+                        }
+                    }
+                    R.id.checkNewLaunch -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkNewLaunch.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            constructionStatus.remove(filterText)
+                            break
+                        }
+
+                    }
+                    R.id.check_owner -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkOwner.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.listedBy.remove(filterText)
+                            break
+                        }
+
+                    }
+                    R.id.check_dealer -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkDealer.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.listedBy.remove(filterText)
+                            break
+                        }
+
+                    }
+                    R.id.check_builder -> {
+                        if (multipleFiltersBinding.selectedFilterView.checkBuilder.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.listedBy.remove(filterText)
+                            break
+                        }
+
+                    }
+                    R.id.txtBedroomOne -> {
+                        if (multipleFiltersBinding.selectedFilterView.txtBedroomOne.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.noOfBedrooms.remove(filterText)
+                            break
+                        }
+
+                    }
+                    R.id.txtBedroomTwo -> {
+                        if (multipleFiltersBinding.selectedFilterView.txtBedroomTwo.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.noOfBedrooms.remove(filterText)
+                            break
+                        }
+
+                    }
+                    R.id.txtBedroomThree -> {
+                        if (multipleFiltersBinding.selectedFilterView.txtBedroomThree.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.noOfBedrooms.remove(filterText)
+                            break
+                        }
+
+                    }
+                    R.id.txtBedroomFour -> {
+                        if (multipleFiltersBinding.selectedFilterView.txtBedroomFour.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.noOfBedrooms.remove(filterText)
+                            break
+                        }
+
+                    }
+                    R.id.txtBathroomOne -> {
+                        if (multipleFiltersBinding.selectedFilterView.txtBathroomOne.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.noOfBathRooms.remove(filterText)
+                            break
+                        }
+
+                    }
+                    R.id.txtBathroomTwo -> {
+                        if (multipleFiltersBinding.selectedFilterView.txtBathroomTwo.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.noOfBathRooms.remove(filterText)
+                            break
+                        }
+
                     }
 
-                }
-                R.id.check_dealer->{
-                    if( multipleFiltersBinding.selectedFilterView.checkDealer.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.listedBy.remove(filterText)
+                    R.id.txtDatePublished -> {
+                        if (multipleFiltersBinding.selectedFilterView.txtDatePublished.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.sortBy.remove(filterText)
+                            break
+                        }
+
                     }
+                    R.id.txtRelevance -> {
+                        if (multipleFiltersBinding.selectedFilterView.txtRelevance.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.sortBy.remove(filterText)
+                            break
+                        }
 
-                }
-                R.id.check_builder->{
-                if( multipleFiltersBinding.selectedFilterView.checkBuilder.text.equals(filterText)) {
-                    chipGroup.removeView(chipGroup.getChildAt(i))
-                    filterViewModel.listedBy.remove(filterText)
-                }
-
-                }
-                R.id.txtBedroomOne ->{
-                    if( multipleFiltersBinding.selectedFilterView.txtBedroomOne.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.noOfBedrooms.remove(filterText)
                     }
+                    R.id.txtPriceIncr -> {
+                        if (multipleFiltersBinding.selectedFilterView.txtPriceIncr.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.sortBy.remove(filterText)
+                            break
 
-                }
-                R.id.txtBedroomTwo->{
-                    if( multipleFiltersBinding.selectedFilterView.txtBedroomTwo.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.noOfBedrooms.remove(filterText)
+                        }
+
                     }
+                    R.id.txtPriceDecr -> {
+                        if (multipleFiltersBinding.selectedFilterView.txtPriceDecr.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.sortBy.remove(filterText)
+                            break
+                        }
 
-                }
-                R.id.txtBedroomThree->{
-                    if( multipleFiltersBinding.selectedFilterView.txtBedroomThree.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.noOfBedrooms.remove(filterText)
                     }
+                    R.id.txtDistance -> {
+                        if (multipleFiltersBinding.selectedFilterView.txtDistance.text.equals(
+                                filterText
+                            )
+                        ) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            filterViewModel.sortBy.remove(filterText)
+                            break
+                        }
 
-                }
-                R.id.txtBedroomFour ->{
-                    if( multipleFiltersBinding.selectedFilterView.txtBedroomFour.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.noOfBedrooms.remove(filterText)
                     }
-
-                }
-                R.id.txtBathroomOne ->{
-                    if( multipleFiltersBinding.selectedFilterView.txtBathroomOne.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.noOfBathRooms.remove(filterText)
+                    R.id.budgetRangeSlider -> {
+                        if (filterText.contains(resources.getString(R.string.chip_text_budget))) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            break
+                        }
                     }
-
-                }
-                R.id.txtBathroomTwo ->{
-                    if( multipleFiltersBinding.selectedFilterView.txtBathroomTwo.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.noOfBathRooms.remove(filterText)
+                    R.id.rangeSliderForSqFt -> {
+                        if (filterText.contains(resources.getString(R.string.chip_text_price_per_sq))) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            break
+                        }
                     }
+                    R.id.rangeSliderForBuildupAr -> {
+                        if (filterText.contains(resources.getString(R.string.chip_text_builtup_area))) {
+                            chipGroup.removeView(chipGroup.getChildAt(i))
+                            break
+                        }
 
-                }
-
-                R.id.txtDatePublished->{
-                    if( multipleFiltersBinding.selectedFilterView.txtDatePublished.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.sortBy.remove(filterText)
                     }
-
-                }
-                R.id.txtRelevance ->{
-                    if( multipleFiltersBinding.selectedFilterView.txtRelevance.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.sortBy.remove(filterText)
-                    }
-
-                }
-                R.id.txtPriceIncr ->{
-                    if( multipleFiltersBinding.selectedFilterView.txtPriceIncr.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.sortBy.remove(filterText)
-                    }
-
-                }
-                R.id.txtPriceDecr ->{
-                    if( multipleFiltersBinding.selectedFilterView.txtPriceDecr.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.sortBy.remove(filterText)
-                    }
-
-                }
-                R.id.txtDistance ->{
-                    if( multipleFiltersBinding.selectedFilterView.txtDistance.text.equals(filterText)) {
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-                        filterViewModel.sortBy.remove(filterText)
-                    }
-
-                }
-                R.id.budgetRangeSlider->{
-                    if(filterText.contains(resources.getString(R.string.chip_text_budget)))
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-
-                }
-                R.id.rangeSliderForSqFt->{
-                    if(filterText.contains(resources.getString(R.string.chip_text_price_per_sq)))
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-
-                }
-                R.id.rangeSliderForBuildupAr->{
-                    if(filterText.contains(resources.getString(R.string.chip_text_builtup_area)))
-                        chipGroup.removeView(chipGroup.getChildAt(i))
-
-                }
 //                else->{
 //                    for (area in filterViewModel.subAreaList.value!!){
 //                        if(area.subArea.equals(filterText))
@@ -424,6 +565,7 @@ override fun onCreateView(
 //                }
 
                 }
+            }
         }
     }
 
@@ -491,5 +633,184 @@ override fun onCreateView(
 
     }
 
+    fun setPreviousData(objFilterData: ObjFilterData?) {
+        filterViewModel.lowerLimit.set(objFilterData!!.budget[0])
+        filterViewModel.upperLimit.set(objFilterData.budget[1])
+        filterViewModel.lowerLimitForBuildupArea.set(objFilterData.buildUpArea[0])
+        filterViewModel.upperLimitForBuildupArea.set(objFilterData.buildUpArea[1])
+        setListValues(objFilterData.subAreaId, filterViewModel.cityList)
+        setListValues(objFilterData.propertyType,filterViewModel.propertyType)
+//        for (i in 0 until objFilterData.subAreaId.size){
+//            filterViewModel.cityList.add(objFilterData.subAreaId[i])
+//        }
+        setListValues(objFilterData.noOfBathrooms, filterViewModel.noOfBathRooms)
+        setListValues(objFilterData.noOfBedrooms, filterViewModel.noOfBedrooms)
+        setListValues(objFilterData.listedBy, filterViewModel.listedBy)
+        setListValues(objFilterData.sortBy, filterViewModel.sortBy)
+        setSelectedSubarea()
+        setChecks(filterViewModel.propertyType)
+        setNoOfBathRooms(filterViewModel.noOfBathRooms)
+        setNoOfBedRooms(filterViewModel.noOfBedrooms)
+        setChecks(filterViewModel.listedBy)
+        setChecks(filterViewModel.sortBy)
+    }
+    fun setListValues(source :ArrayList<String>,destination:ArrayList<String>){
+        for (i in 0 until source.size){
+            destination.add(source[i])
+        }
+
+    }
+    fun setSelectedSubarea(){
+
+        for(i in 0 until  filterViewModel.cityList.size){
+            for(area in filterViewModel.subAreaList.value!!){
+                if(filterViewModel.cityList[i].equals(area.areaId))
+                    addFilterChip(area.subArea)
+            }
+        }
+    }
+    fun setChecks (list:ArrayList<String>) {
+        for (i in 0 until list.size) {
+            when(list[i]){
+                multipleFiltersBinding.selectedFilterView.checkHouses.text-> {
+                    filterViewModel.isHousesSelected.set(true)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.checkApartment.text-> {
+                    filterViewModel.isApartmentSelected.set(true)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.checkBuilderFloor.text-> {
+                    filterViewModel.isBuilerFloorSelected.set(true)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.checkFarmHouse.text-> {
+                    filterViewModel.isFarmHousesSelected.set(true)
+                    addFilterChip(list[i])
+                }
+
+                multipleFiltersBinding.selectedFilterView.checkFurnished.text-> {
+                    filterViewModel.isFurnished.set(true)
+                    addFilterChip(list[i])
+                }
+
+                multipleFiltersBinding.selectedFilterView.checkUnfurnished.text-> {
+                    filterViewModel.isUnfurnished.set(true)
+                    addFilterChip(list[i])
+                }
+
+                multipleFiltersBinding.selectedFilterView.checkSemiFurnished.text-> {
+                    filterViewModel.isSemiFurnished.set(true)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.checkUnderConst.text-> {
+                    filterViewModel.isUnderConst.set(true)
+                    addFilterChip(list[i])
+                }
+
+                multipleFiltersBinding.selectedFilterView.checkReadyToMove.text-> {
+                    filterViewModel.isReadyToMove.set(true)
+                    addFilterChip(list[i])
+                }
+
+                multipleFiltersBinding.selectedFilterView.checkNewLaunch.text-> {
+                    filterViewModel.isNewLaunch.set(true)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.checkOwner.text-> {
+                    filterViewModel.isOwner.set(true)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.checkDealer.text-> {
+                    filterViewModel.isDealer.set(true)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.checkBuilder.text-> {
+                    filterViewModel.isBuilder.set(true)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.txtBedroomOne.text->{
+                    multipleFiltersBinding.selectedFilterView.txtBedroomOne.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.txtBedroomTwo.text ->{
+                    multipleFiltersBinding.selectedFilterView.txtBedroomTwo.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.txtBedroomThree.text->{
+                    multipleFiltersBinding.selectedFilterView.txtBedroomThree.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                    addFilterChip(list[i])
+                }multipleFiltersBinding.selectedFilterView.txtBedroomFour.text->{
+                multipleFiltersBinding.selectedFilterView.txtBedroomFour.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.txtBathroomOne.text->{
+                    multipleFiltersBinding.selectedFilterView.txtBathroomOne.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.txtBathroomTwo.text ->{
+                    multipleFiltersBinding.selectedFilterView.txtBathroomTwo.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.txtDatePublished.text->{
+                    multipleFiltersBinding.selectedFilterView.txtDatePublished.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                    addFilterChip(list[i])
+                }
+                    multipleFiltersBinding.selectedFilterView.txtRelevance.text->{
+                        multipleFiltersBinding.selectedFilterView.txtRelevance.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                        addFilterChip(list[i])
+                    }
+
+                multipleFiltersBinding.selectedFilterView.txtPriceIncr.text->{
+                    multipleFiltersBinding.selectedFilterView.txtPriceIncr.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.txtPriceDecr.text->{
+                    multipleFiltersBinding.selectedFilterView.txtPriceDecr.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                    addFilterChip(list[i])
+                }
+                multipleFiltersBinding.selectedFilterView.txtDistance.text->{
+                    multipleFiltersBinding.selectedFilterView.txtDistance.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                    addFilterChip(list[i])
+                }
+
+            }
+
+
+        }
+
+    }
+    fun setNoOfBathRooms(list: ArrayList<String> /* = java.util.ArrayList<kotlin.String> */){
+        for (i in 0 until list.size){
+            if(multipleFiltersBinding.selectedFilterView.txtBathroomOne.text.contains(list[i])){
+                multipleFiltersBinding.selectedFilterView.txtBathroomOne.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                addFilterChip(multipleFiltersBinding.selectedFilterView.txtBathroomOne.text as String)
+            }
+            else if(multipleFiltersBinding.selectedFilterView.txtBathroomTwo.text.contains(list[i])){
+                multipleFiltersBinding.selectedFilterView.txtBathroomTwo.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                addFilterChip(multipleFiltersBinding.selectedFilterView.txtBathroomTwo.text.toString())
+            }
+        }
+    }
+    fun setNoOfBedRooms(list: ArrayList<String>){
+        for (i in 0 until list.size){
+            if(multipleFiltersBinding.selectedFilterView.txtBedroomOne.text.contains(list[i])){
+                multipleFiltersBinding.selectedFilterView.txtBedroomOne.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                addFilterChip(multipleFiltersBinding.selectedFilterView.txtBedroomOne.text as String)
+            }
+            else if(multipleFiltersBinding.selectedFilterView.txtBedroomTwo.text.contains(list[i])){
+                multipleFiltersBinding.selectedFilterView.txtBedroomTwo.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                addFilterChip(multipleFiltersBinding.selectedFilterView.txtBedroomTwo.text as String)
+            }
+            else if(multipleFiltersBinding.selectedFilterView.txtBedroomThree.text.contains(list[i])){
+                multipleFiltersBinding.selectedFilterView.txtBedroomThree.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                addFilterChip(multipleFiltersBinding.selectedFilterView.txtBedroomThree.text as String)
+            }
+            if(multipleFiltersBinding.selectedFilterView.txtBedroomFour.text.contains(list[i])){
+                multipleFiltersBinding.selectedFilterView.txtBedroomFour.setBackgroundResource(R.drawable.filter_option_background_onselect)
+                addFilterChip(multipleFiltersBinding.selectedFilterView.txtBedroomFour.text as String)
+            }
+        }
+    }
 
 }

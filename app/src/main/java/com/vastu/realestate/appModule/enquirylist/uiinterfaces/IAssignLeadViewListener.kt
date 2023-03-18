@@ -10,5 +10,5 @@ interface IAssignLeadViewListener {
     fun onLeadAssignSuccess()
     fun updateEnquiryStatusSuccess()
     fun onGetEnquirySuccessResponse(objEnquiryStatusResponseMain: ObjEnquiryStatusResponseMain)
-
+    fun closeAssignLead()
 }

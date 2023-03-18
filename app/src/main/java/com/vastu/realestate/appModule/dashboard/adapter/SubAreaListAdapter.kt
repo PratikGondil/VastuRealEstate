@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterViewHandler
 import com.vastu.realestate.databinding.SubAreaListAdapterBinding
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData
+import com.vastu.realestate.utils.PreferenceKEYS
+import com.vastu.realestate.utils.PreferenceManger
+import com.vastu.realestatecore.model.request.ObjFilterData
 
 class SubAreaListAdapter(
    var talukaDataList: ArrayList<ObjCityAreaData>?,
     var iFilterViewHandler: IFilterViewHandler
 ): RecyclerView.Adapter<SubAreaListAdapter.SubAreaListViewHolder>() {
-    private var previousHolder: SubAreaListViewHolder? = null
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -26,16 +28,20 @@ class SubAreaListAdapter(
 
     override fun onBindViewHolder(holder: SubAreaListViewHolder, position: Int) {
         val currentArea = talukaDataList?.get(position)
-        previousHolder = holder
-
+        if(PreferenceManger.get<ObjFilterData>(PreferenceKEYS.FILTERDATA)!= null) {
+            val objFilterData = PreferenceManger.get<ObjFilterData>(PreferenceKEYS.FILTERDATA)!!
+            if (objFilterData != null) {
+                for (i in 0 until objFilterData.subAreaId.size) {
+                    if (objFilterData.subAreaId[i].equals(currentArea!!.areaId))
+                        holder.binding.checkboxCity.isChecked = true
+                }
+            }
+        }
         if (currentArea != null) {
             holder.bind(currentArea)
         }
         holder.binding.checkboxCity.setOnClickListener {
-            if (previousHolder != null) {
-                previousHolder = null
-            }
-            previousHolder = holder
+
             if (holder.binding.checkboxCity.isChecked) {
                iFilterViewHandler.onSubAreaClickListener(currentArea!!,true)
             }

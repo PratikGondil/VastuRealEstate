@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import com.vastu.enquiry.employee.callbacks.response.IGetEmpDetailsResponse
-import com.vastu.enquiry.employee.model.response.employeeDetails.ObjEmpDetailsResponseMain
+import com.vastu.enquiry.employee.model.employeeDetails.ObjEmpDetailsResponseMain
 import com.vastu.enquiry.employee.repository.EmployeeDetailReqRepository
 import com.vastu.realestate.appModule.employee.uiListener.IEmpDetailsViewListener
 import com.vastu.realestate.utils.ApiUrlEndPoints

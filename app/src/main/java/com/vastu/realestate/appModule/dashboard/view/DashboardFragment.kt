@@ -236,7 +236,8 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
     }
 
     override fun goToUserProfile() {
-        findNavController().navigate(R.id.action_vastuDashboardFragment_to_EmployeeDetailsFragment)
+        if(userType.equals(EMPLOYEES)|| userType.equals(CUSTOMER))
+             findNavController().navigate(R.id.action_vastuDashboardFragment_to_EmployeeDetailsFragment)
         closeDrawer()
     }
 

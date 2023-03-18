@@ -38,4 +38,6 @@ object ApiUrlEndPoints {
     const val ENQUIRY_STATUS = "enquiry_status.php"
     const val UPDATE_ENQUIRY_STATUS = "update_enquiry_status.php"
     const val UPDATE_LOAN_STATUS = "update_loan_status.php"
+    const val GET_ASSINGED_LOAD_ENQUIRES = "get_assigned_loan_enquires.php"
+    const val GET_ASSIGNED_PROPERTY_ENQUIRES = "get_assigned_property_enquires.php"
 }

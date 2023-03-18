@@ -71,7 +71,7 @@ class OffersFragment:BaseFragment(), IToolbarListener,IOffersListener {
 
     override fun onFailureGetOffers(offersMainResponse: OffersMainResponse) {
         hideProgressDialog()
-        showDialog(offersMainResponse.offerResponse.responseStatusHeader.statusDescription,isSuccess = false,isNetworkFailure = false)
+        showDialog(offersMainResponse.offerResponse.responseStatusHeader.statusDescription!!,isSuccess = false,isNetworkFailure = false)
     }
 
     override fun onUserNotConnected() {

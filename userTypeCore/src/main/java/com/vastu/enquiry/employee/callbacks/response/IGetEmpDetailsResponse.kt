@@ -1,6 +1,6 @@
 package com.vastu.enquiry.employee.callbacks.response
 
-import com.vastu.enquiry.employee.model.response.employeeDetails.ObjEmpDetailsResponseMain
+import com.vastu.enquiry.employee.model.employeeDetails.ObjEmpDetailsResponseMain
 
 interface IGetEmpDetailsResponse {
     fun onEmpDetailsSuccessResponse(objEmpDetailsResponseMain: ObjEmpDetailsResponseMain)

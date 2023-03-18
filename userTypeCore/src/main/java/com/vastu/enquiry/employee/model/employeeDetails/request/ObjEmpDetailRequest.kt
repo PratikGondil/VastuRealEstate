@@ -1,4 +1,4 @@
-package com.vastu.enquiry.employee.model.response.employeeDetails.request
+package com.vastu.enquiry.employee.model.employeeDetails.request
 
 import com.google.gson.annotations.SerializedName
 

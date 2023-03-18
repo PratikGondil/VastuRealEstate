@@ -109,12 +109,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/llLimitBar"
-            android:value="@integer/budget_upper_limit"
-            android:valueFrom="@integer/budget_lower_limit"
-            android:valueTo="@integer/budget_upper_limit"
+            lowerLimit="@{realEstateViewModel.lowerLimit}"
+            upperLimit="@{realEstateViewModel.upperLimit}"
+            updatedValue="@{realEstateViewModel}"
+            android:valueFrom="@string/budget_lower_limit"
+            android:valueTo="@string/budget_upper_limit"
             app:haloColor="@color/white"
             app:labelBehavior="gone"
-            app:values="@array/rangeSliderValues"
+
             />
     </LinearLayout>
 
@@ -350,7 +352,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isHousesSelected}"/>
+            android:checked="@{realEstateViewModel.isFurnished}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkUnfurnished"
             android:layout_width="match_parent"
@@ -359,7 +361,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isApartmentSelected}"/>
+            android:checked="@{realEstateViewModel.isUnfurnished}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkSemiFurnished"
             android:layout_width="match_parent"
@@ -368,7 +370,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isBuilerFloorSelected}"/>
+            android:checked="@{realEstateViewModel.isSemiFurnished}"/>
 
 
     </LinearLayout>
@@ -393,7 +395,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isHousesSelected}"/>
+            android:checked="@{realEstateViewModel.isUnderConst}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkReadyToMove"
             android:layout_width="match_parent"
@@ -402,7 +404,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isApartmentSelected}"/>
+            android:checked="@{realEstateViewModel.isReadyToMove}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkNewLaunch"
             android:layout_width="match_parent"
@@ -411,7 +413,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isBuilerFloorSelected}"/>
+            android:checked="@{realEstateViewModel.isNewLaunch}"/>
 
 
     </LinearLayout>
@@ -436,7 +438,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isHousesSelected}"/>
+            android:checked="@{realEstateViewModel.isOwner}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/check_dealer"
             android:layout_width="match_parent"
@@ -445,7 +447,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isApartmentSelected}"/>
+            android:checked="@{realEstateViewModel.isDealer}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/check_builder"
             android:layout_width="match_parent"
@@ -454,7 +456,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isBuilerFloorSelected}"/>
+            android:checked="@{realEstateViewModel.isBuilder}"/>
 
 
     </LinearLayout>
@@ -505,12 +507,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/llLimitValue"
+            lowerLimit="@{realEstateViewModel.lowerLimitForBuildupArea}"
+            upperLimit="@{realEstateViewModel.upperLimitForBuildupArea}"
+            updatedValue="@{realEstateViewModel}"
             android:value="@string/buildup_area_upper_limit"
             android:valueFrom="@string/budget_lower_limit"
             android:valueTo="@string/buildup_area_upper_limit"
             app:haloColor="@color/white"
             app:labelBehavior="gone"
-            app:values="@array/buildupAreaSliderValues" />
+             />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/llChangeSort"
