@@ -179,6 +179,8 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
     override fun onClickBack() {
 
         activity?.onBackPressed()
+        hideDialog()
+
     }
 
     override fun onClickMenu() {

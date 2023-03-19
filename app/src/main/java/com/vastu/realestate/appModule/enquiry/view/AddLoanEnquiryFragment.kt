@@ -182,6 +182,7 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
 
     override fun onClickBack() {
      activity?.onBackPressed()
+        hideDialog()
     }
 
     override fun onClickMenu() {
