@@ -54,7 +54,6 @@ object FilterPropertyListRepository: IGetFilteredPropertyListReq, IOnServiceResp
         iFilterPropertyListResListener.onFailureFilterList(propertyListResponse)    }
 
     override fun onUserNotConnected() {
-        TODO("Not yet implemented")
     }
     private fun parseResponse(response: String): ObjFilterDataResponseMain {
         return Gson().fromJson(

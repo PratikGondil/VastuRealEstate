@@ -197,50 +197,57 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     }
 
 
-    override fun applyFilters() {
+    override fun applyFilters(objFilterData: ObjFilterData) {
 //
-//        realEstateViewModel.budgetLimit.add(realEstateViewModel.lowerLimit.get()!!)
-//        realEstateViewModel.budgetLimit.add(realEstateViewModel.upperLimit.get()!!)
-        realEstateViewModel.budgetLimit.add("25,00,000")
-        realEstateViewModel.budgetLimit.add("1,00,00,000")
+        realEstateViewModel.budgetLimit.add(realEstateViewModel.lowerLimit.get()!!)
+        realEstateViewModel.budgetLimit.add(realEstateViewModel.upperLimit.get()!!)
+//        realEstateViewModel.budgetLimit.add("25,00,000")
+//        realEstateViewModel.budgetLimit.add("1,00,00,000")
 
-//        realEstateViewModel.buildUpAreaLimits.add(realEstateViewModel.lowerLimitForBuildupArea.get()!!)
-//        realEstateViewModel.buildUpAreaLimits.add( realEstateViewModel.upperLimitForBuildupArea.get()!!)
-        realEstateViewModel.buildUpAreaLimits.add("1200")
-        realEstateViewModel.buildUpAreaLimits.add("1600")
+        realEstateViewModel.buildUpAreaLimits.add(realEstateViewModel.lowerLimitForBuildupArea.get()!!)
+        realEstateViewModel.buildUpAreaLimits.add( realEstateViewModel.upperLimitForBuildupArea.get()!!)
+//        realEstateViewModel.buildUpAreaLimits.add("1200")
+//        realEstateViewModel.buildUpAreaLimits.add("1600")
 
         /*Dummy Response for testing*/
-        realEstateViewModel.cityList.add("6")
-        realEstateViewModel.propertyType.add("Apartments")
-        realEstateViewModel.propertyType.add("Houses & Villas")
-        realEstateViewModel.noOfBedrooms.add("1")
-        realEstateViewModel.noOfBedrooms.add("2")
-        realEstateViewModel.noOfBedrooms.add("3")
-        realEstateViewModel.noOfBathRooms.add("1")
-        realEstateViewModel.noOfBathRooms.add("2")
-        realEstateViewModel.noOfBathRooms.add("3")
-        realEstateViewModel.listedBy.add("Sell")
-        realEstateViewModel.sortBy.add("Price:Low to High")
-        objFilterData =  ObjFilterData().copy(subAreaId =realEstateViewModel.cityList, budget = realEstateViewModel.budgetLimit, propertyType = realEstateViewModel.propertyType,
-            noOfBathrooms = realEstateViewModel.noOfBathRooms, noOfBedrooms = realEstateViewModel.noOfBedrooms, listedBy = realEstateViewModel.listedBy, buildUpArea = realEstateViewModel.buildUpAreaLimits,
-            sortBy = realEstateViewModel.sortBy
-        )
+//        realEstateViewModel.cityList.add("6")
+//        realEstateViewModel.propertyType.add("Apartments")
+//        realEstateViewModel.propertyType.add("Houses & Villas")
+//        realEstateViewModel.noOfBedrooms.add("1")
+//        realEstateViewModel.noOfBedrooms.add("2")
+//        realEstateViewModel.noOfBedrooms.add("3")
+//        realEstateViewModel.noOfBathRooms.add("1")
+//        realEstateViewModel.noOfBathRooms.add("2")
+//        realEstateViewModel.noOfBathRooms.add("3")
+//        realEstateViewModel.listedBy.add("Sell")
+//        realEstateViewModel.sortBy.add("Price:Low to High")
+//        this.objFilterData =  ObjFilterData().copy(subAreaId =realEstateViewModel.cityList, budget = realEstateViewModel.budgetLimit, propertyType = realEstateViewModel.propertyType,
+//            noOfBathrooms = realEstateViewModel.noOfBathRooms, noOfBedrooms = realEstateViewModel.noOfBedrooms, listedBy = realEstateViewModel.listedBy, buildUpArea = realEstateViewModel.buildUpAreaLimits,
+//            sortBy = realEstateViewModel.sortBy
+//        )
         PreferenceManger.put(objFilterData, PreferenceKEYS.FILTERDATA)
         realEstateViewModel.callApplyFilterApi(objFilterData)
         }
 fun clearFilter(){
+//    objFilterData = ObjFilterData()
+    PreferenceManger.put(null, PreferenceKEYS.FILTERDATA)
+
     realEstateViewModel.budgetLimit = arrayListOf()
     realEstateViewModel.buildUpAreaLimits = arrayListOf()
-    realEstateViewModel.cityList = arrayListOf()
+    realEstateViewModel.selectedAreaList = arrayListOf()
     realEstateViewModel.propertyType = arrayListOf()
     realEstateViewModel.noOfBedrooms = arrayListOf()
     realEstateViewModel.noOfBathRooms = arrayListOf()
     realEstateViewModel.listedBy = arrayListOf()
     realEstateViewModel.sortBy = arrayListOf()
+
     getRealEstateList()
 }
 
-
+     fun onErrorResponse(message: String, isSuccess:Boolean, isNetworkFailure:Boolean)
+    {
+        showDialog(message,isSuccess,isNetworkFailure)
+    }
 
 
 }

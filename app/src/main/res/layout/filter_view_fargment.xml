@@ -35,12 +35,67 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/llSubAreaLayout"
+        android:id="@+id/llCityLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llTitle"
+        setVisibility="@{realEstateViewModel.isVisibleCityLayout}"
+        android:layout_margin="@dimen/dimen10dp"
+
+        >
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilcity"
+            style="@style/Widget.Design.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColorHint="@color/black"
+            app:boxStrokeColor="@color/black"
+            app:endIconDrawable="@drawable/drop_down_icon"
+            app:endIconMode="custom"
+            app:expandedHintEnabled="false"
+            app:helperText="@string/required"
+            app:helperTextTextColor="@color/red"
+            app:hintEnabled="false"
+            app:placeholderText="@string/city_text"
+            app:placeholderTextColor="@color/black"
+          >
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/autoCompleteCity"
+                style="@style/TextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/edittext_background"
+                android:clickable="true"
+                android:context="@{context}"
+                android:dropDownHeight="136dp"
+                android:editable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:onItemClick="@{realEstateViewModel}"
+                tilLayout="@{tilcity}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:padding="@dimen/dimen10dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/llSubAreaLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llCityLayout"
         setVisibility="@{realEstateViewModel.isVisibleSubAreaLayout}"
         >
 

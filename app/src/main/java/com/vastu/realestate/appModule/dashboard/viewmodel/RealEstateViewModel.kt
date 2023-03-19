@@ -14,9 +14,13 @@ import com.vastu.realestatecore.model.response.ObjGetPropertyListResMain
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IRealEstateListener
 import com.vastu.realestate.appModule.utils.BaseUtils
 import com.vastu.realestate.registrationcore.callbacks.response.ISubAreaResponseListener
+import com.vastu.realestate.registrationcore.callbacks.response.ITalukaResponseListener
 import com.vastu.realestate.registrationcore.model.request.ObjSubAreaReq
+import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaDataList
+import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaResponseMain
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
+import com.vastu.realestate.registrationcore.repository.CityListRequestRepository
 import com.vastu.realestate.registrationcore.repository.SubAreaRequestRepository
 import com.vastu.realestate.utils.ApiUrlEndPoints
 import com.vastu.realestate.utils.ApiUrlEndPoints.GET_PROPERTY_LIST
@@ -28,7 +32,7 @@ import com.vastu.realestatecore.repository.FilterPropertyListRepository
 import com.vastu.realestatecore.repository.PropertyListRepository
 
 class RealEstateViewModel(application: Application) : AndroidViewModel(application),
-    IGetPropertyListResListener, ISubAreaResponseListener,
+    ITalukaResponseListener,IGetPropertyListResListener, ISubAreaResponseListener,
     IFilterPropertyListResListener {
     var isFilterViewVisible = ObservableField(View.GONE)
     var isRealEstateVisible = ObservableField(View.VISIBLE)
@@ -73,7 +77,8 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
     var isBuilder = ObservableField(false)
 
     var isFarmHousesSelected = ObservableField(false)
-    var isVisibleSubAreaLayout = ObservableField(true)
+    var isVisibleCityLayout = ObservableField(true)
+    var isVisibleSubAreaLayout = ObservableField(false)
     var isVisibleBudgetLayout = ObservableField(false)
     var isVisiblePropertyLayout = ObservableField(false)
     var isVisiblePricePerSqFtLayout = ObservableField(false)
@@ -93,7 +98,12 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
     var noOfBedrooms:ArrayList<String> = arrayListOf()
     var noOfBathRooms:ArrayList<String> = arrayListOf()
     var sortBy:ArrayList<String> = arrayListOf()
-    var cityList :ArrayList<String> = arrayListOf()
+    var selectedAreaList :ArrayList<String> = arrayListOf()
+    var selectedCityList :ArrayList<String> = arrayListOf()
+    var selectedCity = MutableLiveData<ObjTalukaDataList>()
+
+    var cityListResponse = MutableLiveData<ArrayList<ObjTalukaDataList>>()
+
     lateinit var iFilterClickListener: IFilterClickListener
     fun getPropertyList(userId:String){
         PropertyListRepository.callGetPropertyList(mContext,userId,GET_PROPERTY_LIST,this)
@@ -110,11 +120,20 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
        iRealEstateListener.onFailureGetRealEstateList(objGetPropertyListResMain)
     }
 
+    override fun onTalukaListSuccessResponse(objTalukaResponseMain: ObjTalukaResponseMain) {
+        cityListResponse.value = objTalukaResponseMain.objTalukaDetailResponse.objTalukaDataList as ArrayList<ObjTalukaDataList>
+    }
+
+    override fun onTalukaListFailureResponse(objTalukaResponseMain: ObjTalukaResponseMain) {
+        iFilterViewHandler.onCityListApiFailure(objTalukaResponseMain)
+    }
+
     override fun networkFailure() {
       iRealEstateListener.onUserNotConnected()
     }
     fun setSelectedView(objManageFilterVisibility: ObjManageFilterVisibility){
         title.set(objManageFilterVisibility.title)
+        isVisibleCityLayout.set(objManageFilterVisibility.isVisibleCityLayout)
         isVisibleSubAreaLayout.set(objManageFilterVisibility.isVisibleSubAreaLayout)
         isVisibleBudgetLayout.set(objManageFilterVisibility.isVisibleBudgetLayout)
         isVisiblePropertyLayout.set(objManageFilterVisibility.isVisiblePropertyLayout)
@@ -127,6 +146,10 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
         isVisibleBuildupAreaLayout.set(objManageFilterVisibility.isVisibleBuildupAreaLayout)
         isVisibleChangeSortLayout.set(objManageFilterVisibility.isVisibleChangeSortLayout)
     }
+    fun callCityListApi(){
+        CityListRequestRepository.callCityListApi(mContext, ApiUrlEndPoints.GET_CITIES,this)
+    }
+
     fun callSubAreaListApi(talukaId: ObjSubAreaReq){
         SubAreaRequestRepository.callSubAreaListApi(mContext,talukaId, ApiUrlEndPoints.GET_SUB_CITY,this)
 

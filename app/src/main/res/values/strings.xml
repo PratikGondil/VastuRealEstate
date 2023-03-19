@@ -46,7 +46,7 @@
     <string name="featured">FEATURED</string>
     <string name="details">Property Details</string>
     <string name="type">Type</string>
-    <string name="apartments">Apartments</string>
+    <string name="apartments">Apartment</string>
     <string name="bedrooms">Bedrooms</string>
     <string name="_1">1</string>
     <string name="bathrooms">Bathrooms</string>
@@ -156,6 +156,7 @@
     <string name="profile">My Profile</string>
     <!--    filter-->
     <string name="filters_and_sort">FILTERS &amp; SORT</string>
+    <string name="choose_city">Choose city from below options</string>
     <string name="choose_area">Choose area from below options</string>
     <string name="choose_a_range_below">Choose a range below</string>
     <string name="choose_from_below_options">Choose from below options</string>
@@ -192,6 +193,7 @@
     <string name="chip_text_builtup_area">Super Builtup area(ft):</string>
 
     <!--filter Types-->
+    <string name="by_taluka">By Taluka</string>
     <string name="by_area">By Area</string>
     <string name="by_budget">By Budget</string>
     <string name="by_property_type">By Property Type</string>

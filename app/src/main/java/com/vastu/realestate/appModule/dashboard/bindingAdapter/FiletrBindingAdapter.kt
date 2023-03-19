@@ -3,15 +3,23 @@ package com.vastu.realestate.appModule.dashboard.bindingAdapter
 import android.content.Context
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.AutoCompleteTextView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.slider.RangeSlider
+import com.google.android.material.textfield.TextInputLayout
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateViewModel
+import com.vastu.realestate.appModule.signUp.bindingAdapter.SignUpBindingAdapter
+import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
 import com.vastu.realestate.appModule.utils.BaseUtils
+import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaDataList
+import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData
 import java.util.*
 
 object FiletrBindingAdapter {
@@ -276,6 +284,8 @@ object FiletrBindingAdapter {
     @JvmStatic
     fun LinearLayout.setVisibility(view: Boolean){
         when(id){
+            R.id.llCityLayout->
+                visibility = manageVisibility(view)
             R.id.llSubAreaLayout->
                 visibility = manageVisibility(view)
             R.id.llBudgetLayout->
@@ -307,5 +317,26 @@ object FiletrBindingAdapter {
         }
         else
             return View.GONE
+    }
+    @BindingAdapter("android:onItemClick", "android:context","tilLayout")
+    @JvmStatic
+    fun AutoCompleteTextView.autoCompleteTextClick(
+        viewModel: RealEstateViewModel, context: Context, parentLayout: TextInputLayout
+    ) {
+
+        onItemClickListener =
+            AdapterView.OnItemClickListener { adapterView, view, i, l ->
+                val imm =context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                imm!!.hideSoftInputFromWindow(view.getWindowToken(), 0)
+                when (id) {
+                    R.id.autoCompleteCity ->{
+                        SignUpBindingAdapter.isValidCity = true
+                        viewModel.selectedCity.value = adapter.getItem(i) as ObjTalukaDataList?
+                        parentLayout.helperText = ""
+                    }
+
+
+                }
+            }
     }
 }

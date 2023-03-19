@@ -1,6 +1,9 @@
 {
   "filtertypelist": [
     {
+      "filtertype": "By Taluka"
+    },
+    {
       "filtertype": "By Area"
     },
     {
