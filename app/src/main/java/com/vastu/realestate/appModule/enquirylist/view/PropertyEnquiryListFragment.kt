@@ -120,7 +120,10 @@ class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener, IAssi
 
     override fun onRefresh() {
         propertyEnquiryViewBinding.swipeContainer.isRefreshing = false
-        getPropertyEnquiry()
+        if(userType.equals(BaseConstant.ADMIN))
+            getPropertyEnquiry()
+        else if (userType.equals(BaseConstant.EMPLOYEES))
+            getAssignedLoanEnquiry()
     }
 
     override fun assignLoanLeadToEmployee(loanData: LoanData) {

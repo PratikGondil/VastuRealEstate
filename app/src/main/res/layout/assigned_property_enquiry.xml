@@ -202,6 +202,7 @@
                 android:gravity="center"
                 android:maxLength="25"
                 android:maxLines="1"
+                android:text="@{objEmpPropertyEnquiryDtlsData.status_name}"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_size_small"
                 app:fontFamily="@font/poppins_regular"
@@ -210,24 +211,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <TextView
-                android:id="@+id/txtStatus"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:ellipsize="end"
-                android:gravity="center"
-                android:maxLength="25"
-                android:maxLines="1"
-                android:text="@{objEmpPropertyEnquiryDtlsData.status_name}"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_size_small"
-                app:fontFamily="@font/poppins_regular"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/txtAssignee"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"
-                app:layout_constraintWidth_percent="0.37"
-                />
             <TextView
                 android:id="@+id/btnAssignLead"
                 style="@style/TextAppearance"

@@ -231,9 +231,7 @@
     <string name="delete">Delete</string>
     <string name="register_successfully">Register Successfully</string>
     <string name="off">OFF</string>
-    <string name="reject">Reject</string>
     <string name="terms_condition"><![CDATA[Please accept terms & condition]]></string>
-    <string name="accept">Accept</string>
     <string name="accept_terms">I accept the terms and conditions.</string>
     <string name="getintouch">Get in Touch</string>
     <string name="feel_free">Feel free to contact us for any questions.</string>

@@ -40,7 +40,7 @@ class UpdateStatusFragment(var listerner: IAssignLeadListener): BottomSheetDialo
          lateinit var propertyData: ObjEmpPropertyEnquiryDtlsData
          var usertype :String = ""
          var objLoanStatusUpdateReq =  ObjLoanStatusUpdateReq()
-
+         var objPropStatusUpdateReq =  ObjPropStatusUpdateReq()
          override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
              val dialog = BottomSheetDialog(requireContext(), theme)
              dialog.setOnShowListener {
@@ -138,6 +138,13 @@ class UpdateStatusFragment(var listerner: IAssignLeadListener): BottomSheetDialo
                      status = (assignLeadsViewModel.status.value as ObjEnquiryStatusData).statusId)
                  assignLeadsViewModel.updateLoanEnqStatus(objLoanStatusUpdateReq)
              }
+             else{
+                 objPropStatusUpdateReq = objPropStatusUpdateReq.copy(emp_id = userDetails.userId,
+                     pro_enq_id =propertyData.proEnqId, status = (assignLeadsViewModel.status.value as ObjEnquiryStatusData).statusId)
+                 updateEnquiryStatus(objPropStatusUpdateReq)
+
+             }
+
          }
 
          override fun callAssignApi() {
@@ -174,6 +181,7 @@ class UpdateStatusFragment(var listerner: IAssignLeadListener): BottomSheetDialo
                  )
              )
              if(this::loanData.isInitialized) {
+                 if (loanData.statusName?.isNotEmpty() == true){
                  assignLeadsBinding.autoCompEmpName.setText(
                      assignLeadsBinding.autoCompEmpName.adapter.getItem(
                          BaseUtils.getPreviousStatus(loanData.statusName!!, statusList)
@@ -183,19 +191,23 @@ class UpdateStatusFragment(var listerner: IAssignLeadListener): BottomSheetDialo
                      loanData.statusName!!,
                      statusList
                  )
+
                  setPreselectedPaymentReason(index)
+                     }
              }
              else{
-                 assignLeadsBinding.autoCompEmpName.setText(
-                     assignLeadsBinding.autoCompEmpName.adapter.getItem(
-                         BaseUtils.getPreviousStatus(propertyData.status_name!!, statusList)
-                     ).toString(), false
-                 )
-                 val index = BaseUtils.getPreviousStatus(
-                     propertyData.status_name!!,
-                     statusList
-                 )
-                 setPreselectedPaymentReason(index)
+                 if (propertyData.status_name?.isNotEmpty() == true) {
+                     assignLeadsBinding.autoCompEmpName.setText(
+                         assignLeadsBinding.autoCompEmpName.adapter.getItem(
+                             BaseUtils.getPreviousStatus(propertyData.status_name!!, statusList)
+                         ).toString(), false
+                     )
+                     val index = BaseUtils.getPreviousStatus(
+                         propertyData.status_name!!,
+                         statusList
+                     )
+                     setPreselectedPaymentReason(index)
+                 }
              }
          }
          fun setPreselectedPaymentReason(index: Int) {
