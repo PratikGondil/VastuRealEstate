@@ -108,7 +108,6 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_marginStart="@dimen/margin_small"
                     android:layout_height="match_parent"
                     android:backgroundTint="@color/loan_background_color"
                     android:background="@drawable/dashboard_image_back"

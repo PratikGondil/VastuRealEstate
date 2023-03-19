@@ -3,7 +3,7 @@
     <data>
         <variable
             name="ObjEmpDetailsData"
-            type="com.vastu.enquiry.employee.model.response.employeeDetails.ObjEmpDetailsData" />
+            type="com.vastu.enquiry.employee.model.employeeDetails.ObjEmpDetailsData" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

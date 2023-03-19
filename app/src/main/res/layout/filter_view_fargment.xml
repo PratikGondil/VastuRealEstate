@@ -35,12 +35,67 @@
             />
     </LinearLayout>
     <LinearLayout
-        android:id="@+id/llSubAreaLayout"
+        android:id="@+id/llCityLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llTitle"
+        setVisibility="@{realEstateViewModel.isVisibleCityLayout}"
+        android:layout_margin="@dimen/dimen10dp"
+
+        >
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilcity"
+            style="@style/Widget.Design.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColorHint="@color/black"
+            app:boxStrokeColor="@color/black"
+            app:endIconDrawable="@drawable/drop_down_icon"
+            app:endIconMode="custom"
+            app:expandedHintEnabled="false"
+            app:helperText="@string/required"
+            app:helperTextTextColor="@color/red"
+            app:hintEnabled="false"
+            app:placeholderText="@string/city_text"
+            app:placeholderTextColor="@color/black"
+          >
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/autoCompleteCity"
+                style="@style/TextAppearance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/edittext_background"
+                android:clickable="true"
+                android:context="@{context}"
+                android:dropDownHeight="136dp"
+                android:editable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:onItemClick="@{realEstateViewModel}"
+                tilLayout="@{tilcity}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small"
+                tools:ignore="SpeakableTextPresentCheck"
+                android:padding="@dimen/dimen10dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/llSubAreaLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llCityLayout"
         setVisibility="@{realEstateViewModel.isVisibleSubAreaLayout}"
         >
 
@@ -109,12 +164,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/llLimitBar"
-            android:value="@integer/budget_upper_limit"
-            android:valueFrom="@integer/budget_lower_limit"
-            android:valueTo="@integer/budget_upper_limit"
+            lowerLimit="@{realEstateViewModel.lowerLimit}"
+            upperLimit="@{realEstateViewModel.upperLimit}"
+            updatedValue="@{realEstateViewModel}"
+            android:valueFrom="@string/budget_lower_limit"
+            android:valueTo="@string/budget_upper_limit"
             app:haloColor="@color/white"
             app:labelBehavior="gone"
-            app:values="@array/rangeSliderValues"
+
             />
     </LinearLayout>
 
@@ -350,7 +407,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isHousesSelected}"/>
+            android:checked="@{realEstateViewModel.isFurnished}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkUnfurnished"
             android:layout_width="match_parent"
@@ -359,7 +416,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isApartmentSelected}"/>
+            android:checked="@{realEstateViewModel.isUnfurnished}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkSemiFurnished"
             android:layout_width="match_parent"
@@ -368,7 +425,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isBuilerFloorSelected}"/>
+            android:checked="@{realEstateViewModel.isSemiFurnished}"/>
 
 
     </LinearLayout>
@@ -393,7 +450,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isHousesSelected}"/>
+            android:checked="@{realEstateViewModel.isUnderConst}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkReadyToMove"
             android:layout_width="match_parent"
@@ -402,7 +459,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isApartmentSelected}"/>
+            android:checked="@{realEstateViewModel.isReadyToMove}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkNewLaunch"
             android:layout_width="match_parent"
@@ -411,7 +468,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isBuilerFloorSelected}"/>
+            android:checked="@{realEstateViewModel.isNewLaunch}"/>
 
 
     </LinearLayout>
@@ -436,7 +493,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isHousesSelected}"/>
+            android:checked="@{realEstateViewModel.isOwner}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/check_dealer"
             android:layout_width="match_parent"
@@ -445,7 +502,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isApartmentSelected}"/>
+            android:checked="@{realEstateViewModel.isDealer}"/>
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/check_builder"
             android:layout_width="match_parent"
@@ -454,7 +511,7 @@
             android:textAppearance="@style/TextAppearance"
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isBuilerFloorSelected}"/>
+            android:checked="@{realEstateViewModel.isBuilder}"/>
 
 
     </LinearLayout>
@@ -505,12 +562,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/llLimitValue"
+            lowerLimit="@{realEstateViewModel.lowerLimitForBuildupArea}"
+            upperLimit="@{realEstateViewModel.upperLimitForBuildupArea}"
+            updatedValue="@{realEstateViewModel}"
             android:value="@string/buildup_area_upper_limit"
             android:valueFrom="@string/budget_lower_limit"
             android:valueTo="@string/buildup_area_upper_limit"
             app:haloColor="@color/white"
             app:labelBehavior="gone"
-            app:values="@array/buildupAreaSliderValues" />
+             />
     </LinearLayout>
     <LinearLayout
         android:id="@+id/llChangeSort"

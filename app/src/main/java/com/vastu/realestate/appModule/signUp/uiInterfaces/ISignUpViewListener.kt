@@ -5,6 +5,7 @@ import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaRe
 import com.vastu.realestate.registrationcore.model.response.registration.ObjRegisterDlts
 import com.vastu.realestate.registrationcore.model.response.registration.ObjRegisterResponseMain
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
+import com.vastu.termsandconditions.model.respone.TermsConditionMainResponse
 
 interface ISignUpViewListener : INetworkFailListener {
     fun registerUser()
@@ -13,4 +14,8 @@ interface ISignUpViewListener : INetworkFailListener {
     fun onRegistrationFail(objRegisterResponseMain: ObjRegisterResponseMain)
     fun onCityListApiFailure(objTalukaResponseMain:ObjTalukaResponseMain)
     fun onSubAreaListApiFailure(objGetCityAreaDetailResponseMain: ObjGetCityAreaDetailResponseMain)
+    fun onSuccessTermsCondition(termsConditionMainResponse: TermsConditionMainResponse)
+    fun onFailureTermsCondition(termsConditionMainResponse: TermsConditionMainResponse)
+    fun onSuccessTerms()
+    fun onFailureTerms()
 }

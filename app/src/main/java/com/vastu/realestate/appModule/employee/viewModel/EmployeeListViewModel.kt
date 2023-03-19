@@ -7,7 +7,7 @@ import com.vastu.enquiry.employee.callbacks.response.IGetEmpDetailsResponse
 import com.vastu.enquiry.employee.callbacks.response.IGetEmpListResponse
 import com.vastu.enquiry.employee.model.response.ObjEmployeeData
 import com.vastu.enquiry.employee.model.response.ObjEmployeeListResponse
-import com.vastu.enquiry.employee.model.response.employeeDetails.ObjEmpDetailsResponseMain
+import com.vastu.enquiry.employee.model.employeeDetails.ObjEmpDetailsResponseMain
 import com.vastu.enquiry.employee.repository.EmployeeDetailReqRepository
 import com.vastu.enquiry.employee.repository.EmployeeListRepository
 import com.vastu.realestate.appModule.employee.uiListener.IEmpListViewListener

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.getimages.model.response.ImageData
+import com.vastu.realestate.R
 import com.vastu.realestate.databinding.ImagesLayoutBinding
 import com.vastu.realestate.utils.CommonUtils
 
@@ -25,7 +26,8 @@ class PropertyImagesAdapter(private val itemClick:OnItemClickListener, private v
         CommonUtils.showImageFromURL(
             context,
             image.image,
-            holder.binding.PropertyImage
+            holder.binding.PropertyImage,
+            R.drawable.vastu_logo_splash
         )
         holder.binding.btnDelete.setOnClickListener {
             itemClick.onItemClick(image)

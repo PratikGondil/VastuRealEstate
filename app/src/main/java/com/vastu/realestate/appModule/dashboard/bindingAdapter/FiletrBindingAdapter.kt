@@ -1,39 +1,78 @@
 package com.vastu.realestate.appModule.dashboard.bindingAdapter
 
 import android.content.Context
+import android.util.Log
 import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.AdapterView
+import android.widget.AutoCompleteTextView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatCheckBox
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.google.android.material.slider.RangeSlider
+import com.google.android.material.textfield.TextInputLayout
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateViewModel
+import com.vastu.realestate.appModule.signUp.bindingAdapter.SignUpBindingAdapter
+import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
 import com.vastu.realestate.appModule.utils.BaseUtils
+import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaDataList
+import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData
 import java.util.*
 
 object FiletrBindingAdapter {
+
+    @BindingAdapter("lowerLimit","upperLimit","updatedValue")
+    @JvmStatic
+    fun RangeSlider.setValuesToSlider(lowerLimit:String,upperLimit:String,realEstateViewModel: RealEstateViewModel){
+        var cleanLowerLimit = lowerLimit.replace(",", "")
+        var cleanUpperLimit = upperLimit.replace(",", "")
+        if(id.equals(R.id.budgetRangeSlider)){
+
+            setValues(cleanLowerLimit.toFloat(),cleanUpperLimit.toFloat())
+            if(!(cleanLowerLimit.equals(context.getString(R.string.budget_lower_limit)))||!(cleanUpperLimit.equals(context.getString(R.string.budget_upper_limit)))){
+                realEstateViewModel.removeChip(id)
+                addChip(context,realEstateViewModel,id)
+                Log.d("Chip add ","Chip added in setvalues fun")
+            }
+
+        }
+
+        else if(id.equals(R.id.rangeSliderForBuildupAr)){
+            setValues(cleanLowerLimit.toFloat(),cleanUpperLimit.toFloat())
+            if(!(cleanLowerLimit.equals(context.getString(R.string.budget_lower_limit)))||!(cleanUpperLimit.equals(context.getString(R.string.buildup_area_upper_limit))))
+            {
+                realEstateViewModel.removeChip(id)
+                addChip(context,realEstateViewModel,id)}
+        }
+    }
     @BindingAdapter("viewmodel")
     @JvmStatic
     fun RangeSlider.setLimits(realEstateViewModel: RealEstateViewModel){
         addOnSliderTouchListener(object :RangeSlider.OnSliderTouchListener{
 
             override fun onStartTrackingTouch(slider: RangeSlider) {
+                if(id.equals(R.id.budgetRangeSlider)){
                 setValueToLimits(realEstateViewModel,id,values)
+                }
 
             }
 
             override fun onStopTrackingTouch(slider: RangeSlider) {
-
-                setValueToLimits(realEstateViewModel,id,values)
-                realEstateViewModel.removeChip(id)
-                addChip(context,realEstateViewModel,id)
+                if(id.equals(R.id.budgetRangeSlider)) {
+                    setValueToLimits(realEstateViewModel, id, values)
+                    realEstateViewModel.removeChip(id)
+                    addChip(context, realEstateViewModel, id)
+                    Log.d("Chip add ","Chip added in setLimits fun")
+                }
             }
 
         })
         addOnChangeListener(object :RangeSlider.OnChangeListener{
             override fun onValueChange(slider: RangeSlider, value: Float, fromUser: Boolean) {
+                if(fromUser)
                 setValueToLimits(realEstateViewModel,id,values)
             }
 
@@ -80,96 +119,139 @@ object FiletrBindingAdapter {
                 when(id){
                     R.id.checkHouses->{
                         if(isChecked){
+                            realEstateViewModel.isHousesSelected.set(true)
                             realEstateViewModel.addChip(text as String)
                         }
-                        else
+                        else{
+                            realEstateViewModel.isHousesSelected.set(false)
                             realEstateViewModel.removeChip(id)
+                        }
                     }
                     R.id.checkApartment->{
                         if(isChecked){
+                            realEstateViewModel.isApartmentSelected.set(true)
+
                             realEstateViewModel.addChip(text as String)
                         }
-                        else
+                        else {
+                            realEstateViewModel.isApartmentSelected.set(false)
+
                             realEstateViewModel.removeChip(id)
+                        }
                     }
 
                     R.id.checkBuilderFloor->{
                     if(isChecked){
+                        realEstateViewModel.isBuilerFloorSelected.set(true)
                         realEstateViewModel.addChip(text as String)
                     }
-                    else
+                    else{
+                        realEstateViewModel.isBuilerFloorSelected.set(false)
                         realEstateViewModel.removeChip(id)
+                    }
+
                 }
                     R.id.check_farm_house->{
                         if(isChecked){
+                            realEstateViewModel.isFarmHousesSelected.set(true)
                             realEstateViewModel.addChip(text as String)
                         }
-                        else
+                        else {
+                            realEstateViewModel.isFarmHousesSelected.set(false)
                             realEstateViewModel.removeChip(id)
+                        }
                     }
                     R.id.checkFurnished->{
                         if(isChecked){
+                            realEstateViewModel.isFurnished.set(true)
                             realEstateViewModel.addChip(text as String)
                         }
-                        else
+                        else {
+                            realEstateViewModel.isFurnished.set(false)
                             realEstateViewModel.removeChip(id)
+                        }
                     }
                     R.id.checkUnfurnished ->{
                         if(isChecked){
+                            realEstateViewModel.isUnfurnished.set(true)
                             realEstateViewModel.addChip(text as String)
                         }
-                        else
+                        else {
+                            realEstateViewModel.isUnfurnished.set(false)
                             realEstateViewModel.removeChip(id)
+                        }
                     }
                     R.id.checkSemiFurnished ->{
                         if(isChecked){
+                            realEstateViewModel.isSemiFurnished.set(true)
                             realEstateViewModel.addChip(text as String)
                         }
-                        else
+                        else {
+                            realEstateViewModel.isSemiFurnished.set(false)
                             realEstateViewModel.removeChip(id)
+                        }
                     }
                     R.id.checkUnderConst->{
                         if(isChecked){
+                            realEstateViewModel.isUnderConst.set(true)
                             realEstateViewModel.addChip(text as String)
                         }
-                        else
+                        else {
+                            realEstateViewModel.isUnderConst.set(false)
                             realEstateViewModel.removeChip(id)
+                        }
                     }
                     R.id.checkReadyToMove ->{
                         if(isChecked){
+                            realEstateViewModel.isReadyToMove.set(true)
                             realEstateViewModel.addChip(text as String)
                         }
-                        else
+                        else {
+                            realEstateViewModel.isReadyToMove.set(false)
                             realEstateViewModel.removeChip(id)
+                        }
                     }
                     R.id.checkNewLaunch ->{
                         if(isChecked){
+                            realEstateViewModel.isNewLaunch.set(true)
                             realEstateViewModel.addChip(text as String)
                         }
-                        else
+                        else {
+                            realEstateViewModel.isNewLaunch.set(true)
                             realEstateViewModel.removeChip(id)
+                        }
                     }
                     R.id.check_owner ->{
                         if(isChecked){
+                            realEstateViewModel.isOwner.set(true)
                             realEstateViewModel.addChip(text as String)
                         }
-                        else
+                        else {
+                            realEstateViewModel.isOwner.set(true)
                             realEstateViewModel.removeChip(id)
+                        }
                     }
                     R.id.check_dealer->{
                         if(isChecked){
+                            realEstateViewModel.isDealer.set(true)
                             realEstateViewModel.addChip(text as String)
                         }
-                        else
+                        else {
+                            realEstateViewModel.isDealer.set(true)
                             realEstateViewModel.removeChip(id)
+                        }
                     }
                     R.id.check_builder->{
                         if(isChecked){
+                            realEstateViewModel.isBuilder.set(true)
                             realEstateViewModel.addChip(text as String)
                         }
-                        else
+                        else {
+                            realEstateViewModel.isBuilder.set(true)
                             realEstateViewModel.removeChip(id)
+                        }
                     }
+
 
                 }
             }
@@ -202,6 +284,8 @@ object FiletrBindingAdapter {
     @JvmStatic
     fun LinearLayout.setVisibility(view: Boolean){
         when(id){
+            R.id.llCityLayout->
+                visibility = manageVisibility(view)
             R.id.llSubAreaLayout->
                 visibility = manageVisibility(view)
             R.id.llBudgetLayout->
@@ -233,5 +317,26 @@ object FiletrBindingAdapter {
         }
         else
             return View.GONE
+    }
+    @BindingAdapter("android:onItemClick", "android:context","tilLayout")
+    @JvmStatic
+    fun AutoCompleteTextView.autoCompleteTextClick(
+        viewModel: RealEstateViewModel, context: Context, parentLayout: TextInputLayout
+    ) {
+
+        onItemClickListener =
+            AdapterView.OnItemClickListener { adapterView, view, i, l ->
+                val imm =context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
+                imm!!.hideSoftInputFromWindow(view.getWindowToken(), 0)
+                when (id) {
+                    R.id.autoCompleteCity ->{
+                        SignUpBindingAdapter.isValidCity = true
+                        viewModel.selectedCity.value = adapter.getItem(i) as ObjTalukaDataList?
+                        parentLayout.helperText = ""
+                    }
+
+
+                }
+            }
     }
 }

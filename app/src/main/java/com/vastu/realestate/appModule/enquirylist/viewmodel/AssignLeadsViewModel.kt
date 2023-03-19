@@ -116,4 +116,7 @@ class AssignLeadsViewModel(application: Application):AndroidViewModel(applicatio
         iAssignLeadViewListener.onEmpListFailure(objPropEnqStatusResponseMain.statusEmpAssignResponse!!.responseStatusHeader?.statusDescription!!)
 
     }
+    fun dismiss(){
+        iAssignLeadViewListener.closeAssignLead()
+    }
 }

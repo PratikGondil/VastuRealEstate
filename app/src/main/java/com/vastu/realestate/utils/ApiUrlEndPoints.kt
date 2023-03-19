@@ -18,6 +18,8 @@ object ApiUrlEndPoints {
     const val EDIT_PROPERTY = "edit_property.php"
     const val GET_IMAGES = "get_images.php";
     const val DELETE_IMAGES= "delete_images.php"
+    const val OFFERS = "get_offers.php"
+    const val TERMS_AND_CONDITIONS = "get_term_and_condition.php"
 
     const val GET_BANKS = "get_banks.php"
     const val GET_OCCUPATION = "get_occupation.php"
@@ -36,4 +38,6 @@ object ApiUrlEndPoints {
     const val ENQUIRY_STATUS = "enquiry_status.php"
     const val UPDATE_ENQUIRY_STATUS = "update_enquiry_status.php"
     const val UPDATE_LOAN_STATUS = "update_loan_status.php"
+    const val GET_ASSINGED_LOAD_ENQUIRES = "get_assigned_loan_enquires.php"
+    const val GET_ASSIGNED_PROPERTY_ENQUIRES = "get_assigned_property_enquires.php"
 }

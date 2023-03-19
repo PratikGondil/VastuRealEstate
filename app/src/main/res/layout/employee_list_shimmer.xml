@@ -13,14 +13,14 @@
         android:id="@+id/left_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent=".10"
+        app:layout_constraintGuide_percent=".05"
         android:orientation="vertical"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/right_guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent=".90"
+        app:layout_constraintGuide_percent=".95"
         android:orientation="vertical"/>
 
 <androidx.cardview.widget.CardView
@@ -42,7 +42,7 @@
         android:background="@drawable/gradient">
         <TextView
             android:id="@+id/txtEmpId"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -52,10 +52,11 @@
             android:textColor="@color/text_shadow_white"
             android:textSize="@dimen/text_size_semilarge"
             android:fontFamily="@font/poppins_bold"
+            app:layout_constraintWidth_percent="0.20"
             />
         <TextView
             android:id="@+id/txtEmpName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@+id/txtEmpId"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,9 +64,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:gravity="left"
             android:text="@{employeeList.empName}"
+            android:singleLine="true"
             android:textColor="@color/text_shadow_white"
             android:textSize="@dimen/text_size_semilarge"
             android:fontFamily="@font/poppins_bold"
+            android:ellipsize="end"
+            app:layout_constraintWidth_percent="0.80"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

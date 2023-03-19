@@ -229,27 +229,45 @@
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-            <EditText
-                android:id="@+id/edtAddress"
-                android:fontFamily="@font/poppins_regular"
-                android:textSize="@dimen/text_size_small"
-                android:editable="false"
-                android:clickable="false"
-                android:layout_marginTop="@dimen/margin_small"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAddress"
+                style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="match_parent"
-                android:gravity="center_vertical"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_small"
+                android:gravity="center"
+                android:maxLength="15"
+                android:textAlignment="center"
+                android:textColorHint="@color/black"
+                app:boxStrokeColor="@color/black"
+                app:expandedHintEnabled="false"
+                app:helperTextTextColor="@color/red"
+                app:hintEnabled="false"
+                app:placeholderText="@string/last_name_text"
+                app:placeholderTextColor="@color/black"
+                app:startIconDrawable="@drawable/sub_area">
+
+                <com.google.android.material.textfield.TextInputEditText
+                 android:id="@+id/edtAddress"
+                style="@style/TextAppearance"
+                validateField="@{signUpViewModel}"
+                tilLayout="@{tilAddress}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/edittext_background" android:gravity="center_vertical"
                 android:maxLines="3"
+                android:cursorVisible="false"
+                android:clickable="false"
+                android:focusable="false"
                 android:lines="3"
                 android:minLines="3"
                 android:maxLength="150"
-                android:paddingStart="@dimen/padding_small"
                 android:text="@string/address_text"
-                android:layout_margin="@dimen/margin_small"
                 android:drawableStart="@drawable/sub_area"
-                android:drawablePadding="@dimen/margin_small"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edittext_background"/>
+                android:drawablePadding="@dimen/margin_menu"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilcity"
@@ -270,9 +288,7 @@
                 app:hintEnabled="false"
                 app:placeholderText="@string/city_text"
                 app:placeholderTextColor="@color/black"
-                app:startIconDrawable="@drawable/city"
-
-                >
+                app:startIconDrawable="@drawable/city">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/autoCompleteCity"

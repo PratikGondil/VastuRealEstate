@@ -29,9 +29,6 @@ class PropertyEnquiryAdapter(private val propertyDataList: List<EnquiryData>,
             if(userType!!.equals(BaseConstant.ADMIN))
                 binding.btnAssignLead.text = context.getString(R.string.reassign)
 
-            else
-                binding.btnAssignLead.text = "Update status"
-
         }
         else{
             binding.txtAssignee.visibility = View.GONE

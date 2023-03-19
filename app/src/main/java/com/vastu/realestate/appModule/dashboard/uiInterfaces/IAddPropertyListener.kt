@@ -7,6 +7,7 @@ import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaRe
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
 
 interface IAddPropertyListener: INetworkFailListener{
+    fun onClickBrochure()
     fun onClickUploadImage(image:Int)
     fun onClickAddProperty()
     fun onFailureEditProperty(editPropertyMainResponse: EditPropertyMainResponse)

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<data>
+    <variable
+        name="signUpViewModel"
+        type="com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel" />
+</data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="0dp"
+        app:behavior_skipCollapsed="true"
+        app:behavior_halfExpandedRatio="0.5"
+        android:background="@drawable/filter_background">
+
+
+        <LinearLayout
+            android:id="@+id/TermsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+    <TextView
+    android:id="@+id/tvTerms"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textSize="@dimen/text_size_normal"
+    android:layout_marginStart="@dimen/margin_large"
+    android:layout_marginEnd="@dimen/margin_large"
+    android:textColor="@color/black"
+    android:fontFamily="@font/poppins_regular"/>
+
+
+        <LinearLayout
+            android:id="@+id/llButtonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/TermsLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/dimen10dp"
+            android:weightSum="1"
+            android:background="@color/white">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRejectFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/reject"
+                android:background="@drawable/fillter_btn_background"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_semilarge"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_margin="@dimen/dimen10dp"
+                android:layout_weight="0.5"
+                android:onClick="@{(view)->signUpViewModel.rejectTerms()}"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAcceptFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/accept"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_semilarge"
+                android:fontFamily="@font/poppins_bold"
+                android:layout_margin="@dimen/dimen10dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/round_button_background"
+                android:onClick="@{(view)->signUpViewModel.acceptTerms()}"/>
+        </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

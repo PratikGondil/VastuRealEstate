@@ -1,7 +1,7 @@
 package com.vastu.realestate.appModule.employee.uiListener
 
-import com.vastu.enquiry.employee.model.response.employeeDetails.ObjEmpDetailsResponse
-import com.vastu.enquiry.employee.model.response.employeeDetails.ObjEmpDetailsResponseMain
+import com.vastu.enquiry.employee.model.employeeDetails.ObjEmpDetailsResponse
+import com.vastu.enquiry.employee.model.employeeDetails.ObjEmpDetailsResponseMain
 
 interface IEmpDetailsViewListener {
     fun initView()

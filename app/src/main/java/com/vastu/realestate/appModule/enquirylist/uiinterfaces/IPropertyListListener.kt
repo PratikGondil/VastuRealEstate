@@ -1,8 +1,11 @@
 package com.vastu.realestate.appModule.enquirylist.uiinterfaces
 
 import com.vastu.enquiry.property.model.response.GetPropertyEnquiryListMainResponse
+import com.vastu.enquiry.property.model.response.getAssignedPropertyEnquiry.ObjEmpPropertyEnquiryDtlsResMain
 
 interface IPropertyListListener:INetworkFailListener {
     fun onSuccessGetPropertyEnquiry(getPropertyEnquiryListMainResponse: GetPropertyEnquiryListMainResponse)
     fun onFailureGetPropertyEnquiry(getPropertyEnquiryListMainResponse: GetPropertyEnquiryListMainResponse)
+    fun onSuccessAssignedPropertyLead(objEmpPropertyEnquiryDtlsResMain: ObjEmpPropertyEnquiryDtlsResMain)
+    fun onFailureAssignedPropertyLead(objEmpPropertyEnquiryDtlsResMain: ObjEmpPropertyEnquiryDtlsResMain)
 }

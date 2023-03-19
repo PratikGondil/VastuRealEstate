@@ -125,7 +125,9 @@ class AssignLeadsFragment(var listerner: IAssignLeadListener): BottomSheetDialog
             assignLeadsViewModel.title.set(requireContext().resources.getString(R.string.update_status))
             assignLeadsViewModel.btnText.set(requireContext().resources.getString(R.string.update_status))
         }
-    }    fun getEmployeeList(){
+    }
+
+    fun getEmployeeList(){
 
 //        assignLeadsBinding.autoCompEmpName.setOnTouchListener(this)
         assignLeadsViewModel.callEmployeeListApi()
@@ -229,12 +231,30 @@ override fun proceedToNext(){
                 R.layout.drop_down_item, statusList
             )
         )
-    assignLeadsBinding.autoCompEmpName.setText(assignLeadsBinding.autoCompEmpName.adapter.getItem(BaseUtils.getPreviousStatus(loanData.status!!,statusList)).toString(),false)
-    val index = BaseUtils.getPreviousStatus(
-            loanData.status!!,
-        statusList
-        )
-        setPreselectedPaymentReason(index)
+        if(this::loanData.isInitialized) {
+            assignLeadsBinding.autoCompEmpName.setText(
+                assignLeadsBinding.autoCompEmpName.adapter.getItem(
+                    BaseUtils.getPreviousStatus(loanData.status!!, statusList)
+                ).toString(), false
+            )
+            val index = BaseUtils.getPreviousStatus(
+                loanData.status!!,
+                statusList
+            )
+            setPreselectedPaymentReason(index)
+        }
+        else{
+            assignLeadsBinding.autoCompEmpName.setText(
+                assignLeadsBinding.autoCompEmpName.adapter.getItem(
+                    BaseUtils.getPreviousStatus(propertyData.status!!, statusList)
+                ).toString(), false
+            )
+            val index = BaseUtils.getPreviousStatus(
+                propertyData.status!!,
+                statusList
+            )
+            setPreselectedPaymentReason(index)
+        }
     }
 
     fun setPreselectedPaymentReason(index: Int) {
@@ -254,6 +274,9 @@ override fun proceedToNext(){
     }
     fun updateEnquiryStatus(objPropStatusUpdateReq:ObjPropStatusUpdateReq){
         assignLeadsViewModel.updatePropEnqStatus(objPropStatusUpdateReq)
+    }
+    override fun closeAssignLead(){
+        this.dismiss()
     }
 
 //    fun updateLoanStatus(objLoanStatusUpdateReq: ObjLoanStatusUpdateReq) {

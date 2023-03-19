@@ -7,13 +7,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.vastu.enquiry.employee.model.response.employeeDetails.ObjEmpDetailsResponse
-import com.vastu.enquiry.employee.model.response.employeeDetails.ObjEmpDetailsResponseMain
-import com.vastu.enquiry.employee.model.response.employeeDetails.ObjGetEmpDetailsResponse
+import com.vastu.enquiry.employee.model.employeeDetails.ObjEmpDetailsResponse
+import com.vastu.enquiry.employee.model.employeeDetails.ObjEmpDetailsResponseMain
+import com.vastu.enquiry.employee.model.employeeDetails.ObjGetEmpDetailsResponse
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
-import com.vastu.realestate.appModule.dashboard.view.DashboardFragment
 import com.vastu.realestate.appModule.dashboard.view.DashboardFragment.Companion.userType
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.employee.adapter.EmployeeListAdapter
@@ -52,7 +51,7 @@ class EmployeeDetailsFragment:BaseFragment(),IToolbarListener, IEmpDetailsViewLi
         when(userType){
             BaseConstant.EMPLOYEES,BaseConstant.CUSTOMER->
                 drawerViewModel.toolbarTitle.set(getString(R.string.profile))
-            BaseConstant.BUILDER->
+            BaseConstant.ADMIN->
             drawerViewModel.toolbarTitle.set(getString(R.string.employees))
         }
 
@@ -117,7 +116,7 @@ class EmployeeDetailsFragment:BaseFragment(),IToolbarListener, IEmpDetailsViewLi
         when(userType){
             BaseConstant.EMPLOYEES,BaseConstant.CUSTOMER->
                 findNavController().navigate(R.id.action_employeeDetailsFragment_to_vastuDashboardFragment)
-            BaseConstant.BUILDER->
+            BaseConstant.ADMIN->
             findNavController().navigate(R.id.action_EmployeeDetailsFragment_to_EmployeeListFragment)
         }
 

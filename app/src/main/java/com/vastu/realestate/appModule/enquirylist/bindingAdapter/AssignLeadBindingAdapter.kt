@@ -32,9 +32,9 @@ object AssignLeadBindingAdapter {
         onItemClickListener =
             AdapterView.OnItemClickListener { adapterView, view, i, l ->
                 val imm =context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager?
-                imm!!.hideSoftInputFromWindow(view.getWindowToken(), 0)
+                imm!!.hideSoftInputFromWindow(view.getApplicationWindowToken(), 0)
+                isEmpSelect = true
                 if(viewModel.isAssignLead.get()!!) {
-                    isEmpSelect = true
                     viewModel.empName.value = (adapter.getItem(i) as ObjEmployeeData?)
                     parentLayout.helperText = ""
                 }

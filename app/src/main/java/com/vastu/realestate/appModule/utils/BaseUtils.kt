@@ -14,8 +14,10 @@ object BaseUtils {
 //        val formatter = BaseConstant.AMOUNTFORMAT
         return formatter
     }
+    fun stringToInt(){
 
 
+    }
     fun getFilterTypeList(context: Context): JSONObject {
         var json: JSONObject? = null
         try {

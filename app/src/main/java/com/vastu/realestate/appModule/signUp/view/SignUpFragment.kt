@@ -20,8 +20,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.location.*
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.uiInterfaces.ITermsConditionListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
+import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreen
 import com.vastu.realestate.appModule.signUp.uiInterfaces.ISignUpViewListener
 import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
 import com.vastu.realestate.databinding.SignUpFragmentBinding
@@ -35,10 +38,12 @@ import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaD
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
 import com.vastu.realestate.utils.BaseConstant.CUSTOMER
 import com.vastu.realestate.utils.BaseConstant.REGISTER_DTLS_OBJ
+import com.vastu.termsandconditions.model.respone.TermsConditionData
+import com.vastu.termsandconditions.model.respone.TermsConditionMainResponse
 import java.util.*
 
 
-class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener {
+class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,ITermsConditionListener {
 
     private lateinit var signUpViewModel: SignUpViewModel
     lateinit var signUpFragmentBinding: SignUpFragmentBinding
@@ -85,10 +90,6 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         return signUpFragmentBinding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        getLastLocation()
-    }
     @SuppressLint("MissingPermission")
     private fun getLastLocation(){
         if(checkPermissions()){
@@ -123,10 +124,15 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         )
     }
 
+    override fun onResume() {
+        super.onResume()
+        getLastLocation()
+    }
+
     private fun checkPermissions():Boolean{
         if(ActivityCompat.checkSelfPermission(requireContext(),android.Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED ||
            ActivityCompat.checkSelfPermission(requireContext(),android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-            return true;
+           return true
         }
         return false
     }
@@ -141,11 +147,9 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
     }
     private fun getAddress(latitude:Double,longitude:Double):String{
-        var city = ""
         val geoCoder = Geocoder(activity,Locale.getDefault())
-        val add = geoCoder.getFromLocation(latitude,longitude,1)
-        city = add.get(0).getAddressLine(0)
-        return city
+        val add = geoCoder.getFromLocation(latitude,longitude,1).get(0).getAddressLine(0)
+        return add
     }
 
     override fun onRequestPermissionsResult(
@@ -155,7 +159,7 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
     ) {
         if(requestCode == PERMISSION_ID){
             if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                Log.d("Debug","You have th permissions")
+                getLastLocation()
             }
         }
     }
@@ -209,7 +213,6 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         showDialog(getString(R.string.register_successfully),isSuccess = true,isNetworkFailure = false)
         findNavController().navigate(R.id.action_LoginSignUpFragment_To_OTPFragment,bundle)
         Handler(Looper.getMainLooper()).postDelayed({
-            hideDialog()
             hideDialog()}, 1000)
     }
 
@@ -237,8 +240,16 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         signUpViewModel.callSubAreaList(objSubAreaReq)
     }
     override fun goToLogin() {
-            hideProgressDialog()
-            viewPager.currentItem = 0
+        hideProgressDialog()
+        clearAllFields()
+        showDialog(getString(R.string.register_successfully),false,false)
+        Handler(Looper.getMainLooper()).postDelayed({
+            hideDialog() }, 1000)
+        showTermsConditionDialog()
+
+    }
+    private fun showTermsConditionDialog(){
+        signUpViewModel.callTermsAndCondition()
     }
 
     override fun onRegistrationFail(objRegisterResponseMain: ObjRegisterResponseMain) {
@@ -246,7 +257,6 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
         clearAllFields()
         showDialog(objRegisterResponseMain.objRegisterResponse.objResponseStatusHdr.statusDescr,false,false)
         Handler(Looper.getMainLooper()).postDelayed({
-            hideDialog()
             hideDialog()}, 1000)
 
     }
@@ -257,6 +267,33 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
 
     override fun onSubAreaListApiFailure(objGetCityAreaDetailResponseMain: ObjGetCityAreaDetailResponseMain) {
         showDialog(objGetCityAreaDetailResponseMain.objCityAreaResponse.objResponseStatusHdr.statusDescr,false,false)
+    }
+
+    override fun onSuccessTermsCondition(termsConditionMainResponse: TermsConditionMainResponse) {
+       if(termsConditionMainResponse.gettermsConditionDetailsResponse.termsConditionData!=null){
+           showTermsConditionBottomSheet(termsConditionMainResponse.gettermsConditionDetailsResponse.termsConditionData)
+       }
+    }
+    private fun showTermsConditionBottomSheet(termsConditionData: List<TermsConditionData>){
+        try{
+            val bottomSheetFragment = TermsConditionsScreen(this,termsConditionData)
+          bottomSheetFragment.setStyle(BottomSheetDialogFragment.STYLE_NORMAL,android.R.style.Theme_Translucent_NoTitleBar)
+            bottomSheetFragment.show(requireActivity().supportFragmentManager,bottomSheetFragment.tag)
+        }catch (e : Exception){
+            e.printStackTrace()
+        }
+    }
+
+    override fun onFailureTermsCondition(termsConditionMainResponse: TermsConditionMainResponse) {
+        showDialog(termsConditionMainResponse.termsConditionResponse.responseStatusHeader.statusDescription!!,isSuccess = false,isNetworkFailure = false)
+    }
+
+    override fun onSuccessTerms() {
+
+    }
+
+    override fun onFailureTerms() {
+
     }
 
     override fun onUserNotConnected() {
@@ -290,5 +327,13 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener 
             edtEmail.text?.clear()
             edtAddress.text?.clear()
         }
+    }
+
+    override fun onAcceptTerms() {
+        viewPager.currentItem = 0
+    }
+
+    override fun onRejectTerms() {
+        showDialog(getString(R.string.terms_condition),isSuccess = false,isNetworkFailure = false)
     }
 }

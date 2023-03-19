@@ -38,6 +38,11 @@
         <item name="android:background">@drawable/filter_background</item>
     </style>
 
+    <style name="lableStyle">
+        <item name="android:textSize">@dimen/text_size_menu</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
     <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
         <item name="android:windowBackground">@drawable/rounded_corner</item>
     </style>

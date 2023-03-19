@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="cityList"
+            type="com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/clMainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/white"
+        >
+        <LinearLayout
+            android:id="@+id/llProprtyType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="top"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/dimen10dp"
+            android:background="@color/white"
+            >
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/checkboxCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{cityList.subArea}"
+                android:textAppearance="@style/TextAppearance"
+                android:textColor="@color/black"
+
+                />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
