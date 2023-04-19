@@ -12,5 +12,7 @@ data class OfferData(
     @SerializedName("offer_id")
     val offerId: String,
     @SerializedName("property")
-    val `property`: String
+    val `property`: String,
+    @SerializedName("description")
+    val `description`: String
 ):Serializable

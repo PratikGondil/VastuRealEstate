@@ -16,6 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/back"
         android:layout_marginBottom="@dimen/margin_xlarge"
         tools:context=".appModule.dashboard.view.LoanFragment">
 
@@ -38,6 +39,7 @@
                 android:layout_height="@dimen/banner_image_height"
                 app:iss_auto_cycle="true"
                 app:iss_delay="0"
+                android:visibility="gone"
                 app:iss_error_image="@drawable/vastu_logo_splash"
                 app:iss_period="1000"
                 app:iss_placeholder="@color/loan_background_color"

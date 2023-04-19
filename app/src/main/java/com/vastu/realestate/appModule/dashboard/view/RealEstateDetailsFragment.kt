@@ -60,6 +60,10 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
                 val property =  args.getSerializable(BaseConstant.PROPERTY_DETAILS) as PropertyData
                 propertyId = property.propertyId
             }
+            if (args.getSerializable(BaseConstant.PROPERTY_ID) != null) {
+                val property =  args.getSerializable(BaseConstant.PROPERTY_ID).toString()
+                propertyId = property
+            }
         }
     }
 

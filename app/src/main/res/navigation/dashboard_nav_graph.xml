@@ -83,7 +83,15 @@
         android:id="@+id/OfferFragment"
         android:name="com.vastu.realestate.appModule.dashboard.view.offers.OffersFragment"
         android:label="OfferFragment"
-        tools:layout="@layout/offers_fragment"/>
+        tools:layout="@layout/offers_fragment">
+
+
+    <action
+        android:id="@+id/action_OffersFragment_to_RealEstateDetailsFragment"
+        app:destination="@id/RealEstateDetailsFragment"
+        app:enterAnim="@anim/enter_from_right"/>
+
+    </fragment>
     <fragment
         android:id="@+id/EmployeeListFragment"
         android:name="com.vastu.realestate.appModule.employee.fragment.EmployeeListFragment"

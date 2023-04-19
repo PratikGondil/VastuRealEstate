@@ -15,69 +15,84 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/rlMainTop"
+    android:background="@drawable/backtry"
+
     >
     <include
+        android:id="@+id/include"
         layout="@layout/toolbar_layout"
         bind:drawerViewModel="@{drawerViewModel}" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rlNew"
+        android:layout_marginBottom="@dimen/dimen50dp"
+        android:layout_below="@+id/include"
+        >
+
+
     <ImageView
         android:id="@+id/Imgvvastu"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="@dimen/dimen200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/dimen150dp"
+        android:layout_marginTop="@dimen/dimen5dp"
+        android:layout_height="@dimen/dimen150dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/vastu_logo_splash"
         />
 
-    <TextView
-        android:id="@+id/txtTiltle"
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="@dimen/dimen_16sp"
+        android:layout_below="@+id/rlNew"
+        android:layout_margin="@dimen/dimen10dp"
         android:layout_marginTop="@dimen/dimen50dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/Imgvvastu"
-        android:text="@string/getintouch"
-      />
 
-    <TextView
-        android:id="@+id/txtFeelFree"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="@dimen/dimen_16sp"
-        android:layout_marginTop="@dimen/dimen10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/txtTiltle"
-        android:text="@string/feel_free"
-        />
+        android:background="@drawable/itemview_background">
 
-    <TextView
-        android:id="@+id/txtEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="@dimen/dimen_16sp"
-        android:layout_marginTop="@dimen/dimen10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/txtFeelFree"
-        android:text="@string/email"
-        />
 
-    <TextView
-        android:id="@+id/txtEmailValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="@dimen/dimen_16sp"
-        android:layout_marginTop="@dimen/dimen10dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/txtEmail"
-        android:textStyle="bold"
-        android:autoLink="web|email"
-        android:textColor="@color/design_default_color_primary_variant"
-        android:text="@string/email_add_value"
-        />
+        <TextView
+            android:id="@+id/txtTiltle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen30dp"
+            android:gravity="center"
+            android:text="@string/getintouch"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/dimen_16sp" />
+
+        <TextView
+            android:id="@+id/txtFeelFree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtTiltle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen30dp"
+            android:gravity="center"
+            android:text="@string/feel_free"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/dimen_16sp" />
+
+
+        <TextView
+            android:id="@+id/txtEmailValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtFeelFree"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen30dp"
+            android:autoLink="web|email"
+            android:drawablePadding="@dimen/dimen5dp"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/dimen10dp"
+            android:text="@string/email_add_value"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/dimen_16sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
 </RelativeLayout>
 </layout>

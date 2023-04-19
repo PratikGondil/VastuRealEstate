@@ -132,7 +132,7 @@ object AddPropertyBindingAdapter {
         })
     }
     fun isValidArea(area:String):Boolean{
-        return area.length in 4..8
+        return area.length in 3..8
     }
     fun isValidBudget(budget:String):Boolean{
         return budget.length in 6..10

@@ -5,23 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vastu.offers.model.response.OfferData
 import com.vastu.offers.model.response.OffersMainResponse
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.OffersAdapter
-import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IOffersListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.dashboard.viewmodel.offer.OfferViewModel
 import com.vastu.realestate.databinding.OffersFragmentBinding
-import com.vastu.realestatecore.model.response.PropertyData
+import com.vastu.realestate.utils.BaseConstant
+import com.vastu.realestate.utils.IRecycleViewClick
 
-class OffersFragment:BaseFragment(), IToolbarListener,IOffersListener {
+class OffersFragment:BaseFragment(), IToolbarListener,IOffersListener,IRecycleViewClick {
     lateinit var offerViewModel: OfferViewModel
     lateinit var offersFragmentBinding: OffersFragmentBinding
     private lateinit var drawerViewModel: DrawerViewModel
@@ -61,7 +61,7 @@ class OffersFragment:BaseFragment(), IToolbarListener,IOffersListener {
     private fun getOffersDetails(offerData:List<OfferData>) {
         try {
             val recyclerViewOffers = offersFragmentBinding.rvOffers
-            val offersAdapter = OffersAdapter(offerData)
+            val offersAdapter = OffersAdapter(offerData,this)
             recyclerViewOffers.adapter = offersAdapter
             recyclerViewOffers.layoutManager = LinearLayoutManager(activity)
         } catch (e: Exception) {
@@ -89,4 +89,18 @@ class OffersFragment:BaseFragment(), IToolbarListener,IOffersListener {
     override fun onClickNotification() {
         //to be..
     }
+
+    override fun onClick(propertyId: String) {
+        if(isInteger(propertyId))
+        {
+            val bundle = Bundle()
+            bundle.putSerializable(BaseConstant.PROPERTY_ID,propertyId)
+            findNavController().navigate(R.id.action_OffersFragment_to_RealEstateDetailsFragment,bundle)
+        }
+
+    }
+
+    fun isInteger(str: String?) = str?.toIntOrNull()?.let { true } ?: false
+
+
 }

@@ -197,6 +197,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
                 }
                 BUILDER->{
                     drawerViewModel.enquiry.set(View.GONE)
+                    drawerViewModel.offer.set(View.VISIBLE)
                 }
                 EMPLOYEES->{
                 }

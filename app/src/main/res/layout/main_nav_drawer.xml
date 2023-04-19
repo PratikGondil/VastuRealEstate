@@ -245,6 +245,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1"
+                android:visibility="gone"
                 android:gravity="center"
                 android:onClick="@{(view)->drawerViewModel.onSettingsClick()}"
                 android:layout_gravity="center_horizontal|center_vertical"
