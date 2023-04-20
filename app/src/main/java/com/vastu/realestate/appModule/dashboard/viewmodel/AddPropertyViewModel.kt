@@ -52,7 +52,7 @@ class AddPropertyViewModel(application: Application):AndroidViewModel(applicatio
     var propertyTitle = ObservableField("")
     var propertyType = ObservableField("")
     var sellType  = ObservableField("")
-    var state = ObservableField("")
+    var state = ObservableField("Maharashtra")
     var price = ObservableField("")
     var propertyAddress  = ObservableField("")
     var bookingAmount = ObservableField("")
