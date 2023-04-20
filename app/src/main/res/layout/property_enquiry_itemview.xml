@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="enquiryData"
             type="com.vastu.enquiry.property.model.response.EnquiryData" />
@@ -13,10 +14,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_small"
-        android:orientation="vertical"
         android:layout_marginEnd="@dimen/margin_small"
-        android:background="@drawable/real_estate_background"
         android:layout_marginBottom="@dimen/margin_small"
+        android:background="@drawable/real_estate_background"
+        android:orientation="vertical"
         app:cardCornerRadius="@dimen/card_corner_radius">
 
         <TextView
@@ -37,32 +38,156 @@
             android:orientation="vertical"
             android:padding="@dimen/padding_small">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1">
 
-                <TextView
-                    android:id="@+id/property_name_textview"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_menu"
                     android:layout_weight="0.5"
-                    android:gravity="start"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:padding="1dp"
-                    android:textColor="@color/black_text"
-                    android:textSize="@dimen/text_size_small"
-                    android:text="@{enquiryData.firstName +' '+ enquiryData.middleName+' '+enquiryData.lastName}"
-                    app:fontFamily="@font/poppins_medium" />
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/edtName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/full_name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
 
+                    <TextView
+                        android:id="@+id/property_name_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:gravity="start"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:padding="1dp"
+                        android:text="@{enquiryData.firstName +' '+ enquiryData.middleName+' '+enquiryData.lastName}"
+                        android:textColor="@color/black_text"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_medium" />
+                    <TextView
+                        android:id="@+id/edtOccupation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/occupation_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+                    <TextView
+                        android:id="@+id/property_occupation_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start|center_vertical"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@{enquiryData.occupation}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_regular" />
+                    <TextView
+                        android:id="@+id/type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/type"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+                    <TextView
+                        android:id="@+id/interested_in_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@{enquiryData.interestedIn}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small" />
+
+                    <TextView
+                        android:id="@+id/area"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/area_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+                    <TextView
+                        android:id="@+id/area_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@{enquiryData.area}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_regular" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_menu"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:inputType="textCapWords"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:text="@string/mobile_number_text"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small"
+                    app:fontFamily="@font/roboto_bold" />
+                <TextView
                     android:id="@+id/property_mobile_textview"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:gravity="start"
@@ -72,34 +197,23 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
                     app:fontFamily="@font/poppins_regular" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
                 <TextView
-                    android:id="@+id/property_occupation_textview"
-                    android:layout_width="0dp"
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:ellipsize="end"
-                    android:gravity="start|center_vertical"
+                    android:gravity="start"
                     android:inputType="textCapWords"
                     android:maxLength="25"
                     android:maxLines="1"
-                    android:text="@{enquiryData.occupation}"
+                    android:text="@string/address_text"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/poppins_regular" />
-
+                    app:fontFamily="@font/roboto_bold" />
                 <TextView
                     android:id="@+id/property_address_textview"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:drawableStart="@drawable/location"
@@ -107,92 +221,73 @@
                     android:ellipsize="end"
                     android:gravity="start|center_vertical"
                     android:includeFontPadding="true"
-                    android:singleLine="true"
                     android:maxLength="25"
+                    android:singleLine="true"
                     android:text="@{enquiryData.address.toUpperCase()}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
                     app:fontFamily="@font/poppins_regular" />
+                    <TextView
+                        android:id="@+id/owner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/user"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+                    <TextView
+                        android:id="@+id/ownership_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@{enquiryData.ownership}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small" />
+                    <TextView
+                        android:id="@+id/budget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/budget_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+                    <TextView
+                        android:id="@+id/budget_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_regular" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_menu"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/interested_in_textview"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:ellipsize="end"
-                    android:gravity="start"
-                    android:inputType="textCapWords"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:text="@{enquiryData.interestedIn}"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_small" />
-
-                <TextView
-                    android:id="@+id/ownership_textview"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:ellipsize="end"
-                    android:gravity="start"
-                    android:inputType="textCapWords"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:text="@{enquiryData.ownership}"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <TextView
-                    android:id="@+id/area_textview"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:ellipsize="end"
-                    android:gravity="start"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:text="@{enquiryData.area}"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/poppins_regular" />
-
-                <TextView
-                    android:id="@+id/budget_textview"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
-                    android:ellipsize="end"
-                    android:gravity="start"
-                    android:maxLength="25"
-                    android:maxLines="1"
-                    android:text="@{enquiryData.budget}"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/poppins_regular" />
-            </LinearLayout>
-
         </LinearLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/llAssigneeLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/txtAssignee"
@@ -206,10 +301,10 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/text_size_small"
                 app:fontFamily="@font/poppins_regular"
-                app:layout_constraintWidth_percent="0.37"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintWidth_percent="0.37" />
 
             <TextView
                 android:id="@+id/txtStatus"
@@ -227,18 +322,22 @@
                 app:layout_constraintStart_toEndOf="@+id/txtAssignee"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0"
-                app:layout_constraintWidth_percent="0.37"
-               />
+                app:layout_constraintWidth_percent="0.37" />
+
             <TextView
                 android:id="@+id/btnAssignLead"
                 style="@style/TextAppearance"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:gravity="center"
                 android:autoLink="all"
+                android:gravity="center"
                 android:linksClickable="false"
                 android:selectAllOnFocus="false"
+                android:shadowColor="@color/text_shadow"
+                android:shadowDx="5.0"
+                android:shadowDy="5.0"
+                android:shadowRadius="3.0"
                 android:text="@string/assign"
                 android:textColor="@color/colorPrimaryDark"
                 app:fontFamily="@font/poppins_medium"
@@ -246,12 +345,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
-                app:layout_constraintWidth_percent="0.25"
-                android:shadowColor="@color/text_shadow"
-                android:shadowDx="5.0"
-                android:shadowDy="5.0"
-                android:shadowRadius="3.0"
-                />
+                app:layout_constraintWidth_percent="0.25" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vastu.enquiry.property.model.response.EnquiryData
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListener
+import com.vastu.realestate.appModule.utils.BaseUtils.numberToWord
 import com.vastu.realestate.databinding.PropertyEnquiryItemviewBinding
 import com.vastu.realestate.utils.BaseConstant
 
@@ -22,6 +23,7 @@ class PropertyEnquiryAdapter(private val propertyDataList: List<EnquiryData>,
         val propertyData = propertyDataList[position]
         holder.bind(propertyData)
         binding.propertyNameTextview.text = context.getString(R.string.username,propertyData.firstName,propertyData.middleName,propertyData.lastName)
+        binding.budgetTextview.text=propertyData.budget.numberToWord()
         if (propertyData.assignee?.isNotEmpty() == true){
             binding.txtAssignee.visibility = View.VISIBLE
             binding.txtStatus.visibility = View.VISIBLE

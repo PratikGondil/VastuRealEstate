@@ -5,8 +5,12 @@
       <map>
         <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/drawable/budget_range_icon.xml" value="0.1" />
         <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/drawable/edittext_background.xml" value="0.1" />
+        <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/layout/fragment_enquiry.xml" value="0.1" />
+        <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/layout/fragment_loan_enquiry_list.xml" value="0.1" />
         <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/layout/fragment_real_estate.xml" value="0.1" />
+        <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/layout/loan_enquiry_itemview.xml" value="0.1" />
         <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/layout/multiple_filters.xml" value="0.1" />
+        <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/layout/property_enquiry_itemview.xml" value="0.1" />
         <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/layout/real_estate_itemview.xml" value="0.1" />
         <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/layout/sorting_type_item.xml" value="0.1" />
       </map>
