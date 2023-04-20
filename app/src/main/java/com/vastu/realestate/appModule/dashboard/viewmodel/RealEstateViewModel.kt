@@ -9,8 +9,6 @@ import androidx.lifecycle.MutableLiveData
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterClickListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterViewHandler
-import com.vastu.realestatecore.callback.response.IGetPropertyListResListener
-import com.vastu.realestatecore.model.response.ObjGetPropertyListResMain
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IRealEstateListener
 import com.vastu.realestate.appModule.utils.BaseUtils
 import com.vastu.realestate.registrationcore.callbacks.response.ISubAreaResponseListener
@@ -25,9 +23,11 @@ import com.vastu.realestate.registrationcore.repository.SubAreaRequestRepository
 import com.vastu.realestate.utils.ApiUrlEndPoints
 import com.vastu.realestate.utils.ApiUrlEndPoints.GET_PROPERTY_LIST
 import com.vastu.realestatecore.callback.response.IFilterPropertyListResListener
+import com.vastu.realestatecore.callback.response.IGetPropertyListResListener
 import com.vastu.realestatecore.model.filter.ObjManageFilterVisibility
 import com.vastu.realestatecore.model.request.ObjFilterData
 import com.vastu.realestatecore.model.response.ObjFilterDataResponseMain
+import com.vastu.realestatecore.model.response.ObjGetPropertyListResMain
 import com.vastu.realestatecore.repository.FilterPropertyListRepository
 import com.vastu.realestatecore.repository.PropertyListRepository
 
@@ -77,7 +77,7 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
     var isBuilder = ObservableField(false)
 
     var isFarmHousesSelected = ObservableField(false)
-    var isVisibleCityLayout = ObservableField(true)
+    var isVisibleCityLayout = ObservableField(false)
     var isVisibleSubAreaLayout = ObservableField(false)
     var isVisibleBudgetLayout = ObservableField(false)
     var isVisiblePropertyLayout = ObservableField(false)
@@ -115,7 +115,9 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
     override fun getPropertyListSuccessResponse(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         iRealEstateListener.onSuccessGetRealEstateList(objGetPropertyListResMain)
     }
-
+    fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+        iRealEstateListener.searchFilter(s.toString())
+    }
     override fun getPropertyListFailureResponse(objGetPropertyListResMain: ObjGetPropertyListResMain) {
        iRealEstateListener.onFailureGetRealEstateList(objGetPropertyListResMain)
     }

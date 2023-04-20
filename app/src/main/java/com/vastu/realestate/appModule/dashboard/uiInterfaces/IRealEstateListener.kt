@@ -10,4 +10,5 @@ interface IRealEstateListener:INetworkFailListener {
     fun onFailureGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain)
     fun onFilterPropertyListSuccess(objGetFilterDataResponse: ObjGetFilterDataResponse)
     fun onFilterPropertyListFailure(objFilterDataResponseMain: ObjFilterDataResponseMain)
+    fun searchFilter(searchTxt:String)
 }

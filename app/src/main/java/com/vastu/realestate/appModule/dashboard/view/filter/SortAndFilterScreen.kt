@@ -142,8 +142,12 @@ override fun onCreateView(
         Log.d("selected",selectedFilterType)
 
         when(selectedFilterType){
+            resources.getString(R.string.district)->{
+                objManageFilterVisibility = ObjManageFilterVisibility(isVisibleCityLayout = false, title = resources.getString(R.string.choose_from_below_options))
+
+            }
             resources.getString(R.string.by_taluka)->{
-                objManageFilterVisibility = ObjManageFilterVisibility( title = resources.getString(R.string.choose_city))
+                objManageFilterVisibility = ObjManageFilterVisibility(isVisibleCityLayout = true, title = resources.getString(R.string.choose_city))
 
             }
             resources.getString(R.string.by_area)->{

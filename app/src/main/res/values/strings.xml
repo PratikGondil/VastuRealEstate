@@ -197,6 +197,7 @@
 
     <!--filter Types-->
     <string name="by_taluka">By Taluka</string>
+    <string name="district">Ahmednagar</string>
     <string name="by_area">By Area</string>
     <string name="by_budget">By Budget</string>
     <string name="by_property_type">By Property Type</string>

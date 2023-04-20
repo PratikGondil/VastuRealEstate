@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import androidx.databinding.DataBindingUtil
 
@@ -38,26 +39,30 @@ import com.vastu.realestatecore.model.response.PropertyData
 import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
 
 
-class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener, RealEstateAdapter.OnItemClickListener, OnRefreshListener ,
+class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener,
+    RealEstateAdapter.OnItemClickListener, OnRefreshListener,
     IFilterClickListener {
     private lateinit var realEstateBinding: FragmentRealEstateBinding
     private lateinit var realEstateViewModel: RealEstateViewModel
     private lateinit var drawerViewModel: DrawerViewModel
     private lateinit var getAdvertisementSlider: GetAdvertiseDetailsResponse
     private val imageList = ArrayList<SlideModel>()
-    lateinit var objFilterData :ObjFilterData
-   lateinit var bottomSheetBehavior :BottomSheetBehavior<FragmentContainerView>
-   lateinit var bottomSheetDialogFragment: BottomSheetDialogFragment
+    lateinit var objFilterData: ObjFilterData
+    lateinit var bottomSheetBehavior: BottomSheetBehavior<FragmentContainerView>
+    lateinit var bottomSheetDialogFragment: BottomSheetDialogFragment
+    lateinit var realEstatListUpdated: List<PropertyData>
+    var realEstateAdapter: RealEstateAdapter? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         realEstateViewModel = ViewModelProvider(this)[RealEstateViewModel::class.java]
         drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
-        realEstateBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_real_estate, container, false)
+        realEstateBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_real_estate, container, false)
         realEstateBinding.lifecycleOwner = this
         realEstateBinding.realEstateViewModel = realEstateViewModel
-        realEstateBinding.drawerViewModel= drawerViewModel
+        realEstateBinding.drawerViewModel = drawerViewModel
         realEstateViewModel.iRealEstateListener = this
         drawerViewModel.iToolbarListener = this
         realEstateViewModel.iFilterClickListener = this
@@ -68,12 +73,13 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
         return realEstateBinding.root
     }
 
-    private fun setSliderData(){
+    private fun setSliderData() {
         try {
             imageList.clear()
-            getAdvertisementSlider = PreferenceManger.getAdvertisementSlider(PreferenceKEYS.DASHBOARD_SLIDER_LIST)
+            getAdvertisementSlider =
+                PreferenceManger.getAdvertisementSlider(PreferenceKEYS.DASHBOARD_SLIDER_LIST)
             realEstateBinding.apply {
-                for( slider in getAdvertisementSlider.advertiseData){
+                for (slider in getAdvertisementSlider.advertiseData) {
                     imageList.add(SlideModel(slider.adSlider))
                 }
                 imageSlider.setImageList(imageList, ScaleTypes.FIT)
@@ -85,13 +91,41 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
         }
     }
 
+    override fun searchFilter(text: String) {
+        // creating a new array list to filter our data.
+        val filteredlist: ArrayList<PropertyData> = ArrayList()
+
+        // running a for loop to compare elements.
+        for (item in realEstatListUpdated) {
+            if (item.address?.toLowerCase()?.contains(text.toLowerCase()) == true
+                || item.area?.toLowerCase()?.contains(text.toLowerCase()) == true
+                || item.bookingAmount?.toLowerCase()?.contains(text.toLowerCase()) == true
+                || item.city?.toLowerCase()?.contains(text.toLowerCase()) == true
+                || item.price?.toLowerCase()?.contains(text.toLowerCase()) == true
+                || item.sellType?.toLowerCase()?.contains(text.toLowerCase()) == true
+                || item.propertyTitle?.toLowerCase()?.contains(text.toLowerCase())==true
+            ) {
+                filteredlist.add(item)
+            }
+        }
+        if (filteredlist.isEmpty()) {
+            // if no item is added in filtered list we are
+            // displaying a toast message as no data found.
+            Toast.makeText(activity, "No Data Found..", Toast.LENGTH_SHORT).show()
+        } else {
+            // at last we are passing that filtered
+            // list to our adapter class.
+            realEstateAdapter?.filterList(filteredlist)
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         drawerViewModel.toolbarTitle.set(getString(R.string.real_estate))
         drawerViewModel.isDashBoard.set(false)
     }
 
-    private fun getRealEstateList(){
+    private fun getRealEstateList() {
         try {
             realEstateBinding.loadingLayout.startShimmerAnimation()
             userId?.let { realEstateViewModel.getPropertyList(it) }
@@ -99,16 +133,17 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
             e.printStackTrace()
         }
     }
+
     override fun onSuccessGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         try {
             val realEstates = objGetPropertyListResMain.getPropertyDetailsResponse.propertyData
             realEstateBinding.apply {
-                if(realEstates.isNotEmpty()) {
+                if (realEstates.isNotEmpty()) {
                     searchFilterLayout.visibility = View.VISIBLE
                     rvRealEstste.visibility = View.VISIBLE
                     stopShimmerAnimation()
                     getRealEstateDetails(realEstates)
-                }else {
+                } else {
                     searchFilterLayout.visibility = View.GONE
                     rvRealEstste.visibility = View.GONE
                     stopShimmerAnimation()
@@ -119,18 +154,20 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
         }
     }
 
-    private fun getRealEstateDetails(realEstate:List<PropertyData>) {
+    private fun getRealEstateDetails(realEstate: List<PropertyData>) {
         try {
+            realEstatListUpdated = realEstate
             val recyclerViewRealEstate = realEstateBinding.rvRealEstste
             //val realEstates = RealEstateList.getRealEstateData(requireContext())
-            val realEstateAdapter = RealEstateAdapter(this,realEstate)
+            realEstateAdapter = RealEstateAdapter(this, realEstate)
             recyclerViewRealEstate.adapter = realEstateAdapter
             recyclerViewRealEstate.layoutManager = LinearLayoutManager(activity)
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
-    private fun stopShimmerAnimation(){
+
+    private fun stopShimmerAnimation() {
         try {
             realEstateBinding.apply {
                 loadingLayout.stopShimmerAnimation()
@@ -143,7 +180,11 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
 
     override fun onFailureGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         stopShimmerAnimation()
-        showDialog(objGetPropertyListResMain.propertyResponse.responseStatusHeader.statusDescription!!,false,false)
+        showDialog(
+            objGetPropertyListResMain.propertyResponse.responseStatusHeader.statusDescription!!,
+            false,
+            false
+        )
     }
 
     override fun onFilterPropertyListSuccess(objGetFilterDataResponse: ObjGetFilterDataResponse) {
@@ -151,21 +192,29 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     }
 
     override fun onFilterPropertyListFailure(objFilterDataResponseMain: ObjFilterDataResponseMain) {
-        showDialog(objFilterDataResponseMain.objfilterDataResponse.responseStatusHeader.statusDescription!!,false,false)
+        showDialog(
+            objFilterDataResponseMain.objfilterDataResponse.responseStatusHeader.statusDescription!!,
+            false,
+            false
+        )
 
     }
 
     override fun onUserNotConnected() {
         stopShimmerAnimation()
-        showDialog("",false,true)
+        showDialog("", false, true)
     }
 
 
     override fun onItemClick(propertyData: PropertyData) {
         val bundle = Bundle()
         bundle.putSerializable(BaseConstant.PROPERTY_DETAILS, propertyData)
-        findNavController().navigate(R.id.action_RealEstateFragment_to_RealEstateDetailsFragment,bundle)
+        findNavController().navigate(
+            R.id.action_RealEstateFragment_to_RealEstateDetailsFragment,
+            bundle
+        )
     }
+
     override fun onClickBack() {
         try {
             activity?.onBackPressed()
@@ -173,9 +222,11 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
             e.printStackTrace()
         }
     }
+
     override fun onClickMenu() {
         //onClickMenu
     }
+
     override fun onClickNotification() {
         //onClickNotifications
     }
@@ -186,12 +237,16 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     }
 
     override fun setFilterView() {
-        try{
+        try {
             val modalbottomSheetFragment = SortAndFilterScreen(this)
-            modalbottomSheetFragment.setStyle(BottomSheetDialogFragment.STYLE_NORMAL,android.R.style.Theme_Translucent_NoTitleBar
+            modalbottomSheetFragment.setStyle(
+                BottomSheetDialogFragment.STYLE_NORMAL, android.R.style.Theme_Translucent_NoTitleBar
             )
-            modalbottomSheetFragment.show(requireActivity().supportFragmentManager,modalbottomSheetFragment.tag)
-        }catch (e : Exception){
+            modalbottomSheetFragment.show(
+                requireActivity().supportFragmentManager,
+                modalbottomSheetFragment.tag
+            )
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
@@ -205,7 +260,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
 //        realEstateViewModel.budgetLimit.add("1,00,00,000")
 
         realEstateViewModel.buildUpAreaLimits.add(realEstateViewModel.lowerLimitForBuildupArea.get()!!)
-        realEstateViewModel.buildUpAreaLimits.add( realEstateViewModel.upperLimitForBuildupArea.get()!!)
+        realEstateViewModel.buildUpAreaLimits.add(realEstateViewModel.upperLimitForBuildupArea.get()!!)
 //        realEstateViewModel.buildUpAreaLimits.add("1200")
 //        realEstateViewModel.buildUpAreaLimits.add("1600")
 
@@ -227,26 +282,26 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
 //        )
         PreferenceManger.put(objFilterData, PreferenceKEYS.FILTERDATA)
         realEstateViewModel.callApplyFilterApi(objFilterData)
-        }
-fun clearFilter(){
+    }
+
+    fun clearFilter() {
 //    objFilterData = ObjFilterData()
-    PreferenceManger.put(null, PreferenceKEYS.FILTERDATA)
+        PreferenceManger.put(null, PreferenceKEYS.FILTERDATA)
 
-    realEstateViewModel.budgetLimit = arrayListOf()
-    realEstateViewModel.buildUpAreaLimits = arrayListOf()
-    realEstateViewModel.selectedAreaList = arrayListOf()
-    realEstateViewModel.propertyType = arrayListOf()
-    realEstateViewModel.noOfBedrooms = arrayListOf()
-    realEstateViewModel.noOfBathRooms = arrayListOf()
-    realEstateViewModel.listedBy = arrayListOf()
-    realEstateViewModel.sortBy = arrayListOf()
+        realEstateViewModel.budgetLimit = arrayListOf()
+        realEstateViewModel.buildUpAreaLimits = arrayListOf()
+        realEstateViewModel.selectedAreaList = arrayListOf()
+        realEstateViewModel.propertyType = arrayListOf()
+        realEstateViewModel.noOfBedrooms = arrayListOf()
+        realEstateViewModel.noOfBathRooms = arrayListOf()
+        realEstateViewModel.listedBy = arrayListOf()
+        realEstateViewModel.sortBy = arrayListOf()
 
-    getRealEstateList()
-}
+        getRealEstateList()
+    }
 
-     fun onErrorResponse(message: String, isSuccess:Boolean, isNetworkFailure:Boolean)
-    {
-        showDialog(message,isSuccess,isNetworkFailure)
+    fun onErrorResponse(message: String, isSuccess: Boolean, isNetworkFailure: Boolean) {
+        showDialog(message, isSuccess, isNetworkFailure)
     }
 
 

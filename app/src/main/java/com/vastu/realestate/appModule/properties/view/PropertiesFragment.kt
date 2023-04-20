@@ -115,6 +115,10 @@ class PropertiesFragment : BaseFragment(),IRealEstateListener, RealEstateAdapter
         showDialog(objFilterDataResponseMain.objfilterDataResponse.responseStatusHeader.statusDescription!!,isSuccess = false,isNetworkFailure = false)
     }
 
+    override fun searchFilter(searchTxt: String) {
+
+    }
+
     override fun onUserNotConnected() {
        hideProgressDialog()
        showDialog("", isSuccess = false, isNetworkFailure = true)

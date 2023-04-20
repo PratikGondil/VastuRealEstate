@@ -62,7 +62,7 @@
                     android:id="@+id/tilSearch"
                     style="@style/Widget.Design.TextInputLayout"
                     android:layout_width="0dp"
-                    android:layout_weight="1.1"
+                    android:layout_weight="2.3"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/margin_menu"
@@ -91,6 +91,7 @@
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_menu"
+                        android:onTextChanged="@{realEstateViewModel.onTextChanged}"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,6 +111,7 @@
                     app:expandedHintEnabled="false"
                     app:hintEnabled="false"
                     app:placeholderText="@string/budget"
+                    android:visibility="gone"
                     app:placeholderTextColor="@color/black"
                     app:startIconDrawable="@drawable/currency"
                     app:endIconDrawable="@drawable/drop_down_icon"

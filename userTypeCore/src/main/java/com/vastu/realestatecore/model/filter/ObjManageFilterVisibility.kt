@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class ObjManageFilterVisibility(
-    @SerializedName("isVisibleCityLayout") var isVisibleCityLayout:Boolean = true,
+    @SerializedName("isVisibleCityLayout") var isVisibleCityLayout:Boolean = false,
     @SerializedName("isVisibleSubAreaLayout") var isVisibleSubAreaLayout:Boolean = false,
     @SerializedName("isVisibleBudgetLayout") var isVisibleBudgetLayout:Boolean = false,
     @SerializedName("isVisiblePropertyLayout") var isVisiblePropertyLayout:Boolean = false,

@@ -3,45 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/drawable/button_inactive_background.xml" value="0.132" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/drawable/edittext_background.xml" value="0.1065" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/drawable/gradient.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/drawable/ic_baseline_local_phone_24.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/drawable/ic_house.xml" value="0.1135" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/drawable/ic_india_flag.xml" value="0.177" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/drawable/nav_background.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/drawable/otp_item_background.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/drawable/personal_loan.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/drawable/round_button_background.xml" value="0.172" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/drawable/white_background.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/activity_login.xml" value="0.18" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/activity_vastu_dashboard.xml" value="0.22" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/assign_leads_fragment.xml" value="0.18354430379746836" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/assigned_loan_enquiry.xml" value="0.171875" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/assigned_property_enquiry.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/dashboard_fragment.xml" value="0.21" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/drop_down_item.xml" value="0.14102564102564102" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/employee_detail_adapter.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/employee_details_fragment.xml" value="0.171875" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/employee_list_shimmer.xml" value="0.22" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/filter_view_fargment.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/fragment_add_property.xml" value="0.13229166666666667" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/fragment_loan_enquiry_list.xml" value="0.11979166666666667" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/fragment_login.xml" value="0.16" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/fragment_property_enquiry_list.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/fragment_sign_up_and_login.xml" value="0.1875" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/fragment_vastu_dashboard.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/loan_enquiry_itemview.xml" value="0.18" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/login_fragment.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/main_nav_drawer.xml" value="0.12" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/multiple_filters.xml" value="0.16354166666666667" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/otp_fragment.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/progress_dialog.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/property_enquiry_itemview.xml" value="0.25" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/sign_up_and_login_fragment.xml" value="0.18226600985221675" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/sign_up_fragment.xml" value="0.1" />
-        <entry key="..\:/Supriya_khambe/Vastu_workspace/vasturealestate/app/src/main/res/layout/sub_area_list_adapter.xml" value="0.1" />
+        <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/drawable/budget_range_icon.xml" value="0.1" />
+        <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/drawable/edittext_background.xml" value="0.1" />
+        <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/layout/fragment_real_estate.xml" value="0.1" />
+        <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/layout/multiple_filters.xml" value="0.1" />
+        <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/layout/real_estate_itemview.xml" value="0.1" />
+        <entry key="..\:/FreeLancing/VastuRealEstateProject/app/src/main/res/layout/sorting_type_item.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -6,49 +6,49 @@ import java.io.Serializable
 
 data class PropertyData(
     @SerializedName("property_area")
-    val propertyArea: String?,
+    val propertyArea: String?="",
     @SerializedName("address")
-    val address: String?,
+    val address: String?="",
     @SerializedName("area")
-    val area: String?,
+    val area: String?="",
     @SerializedName("availability")
-    val availability: String?,
+    val availability: String?="",
     @SerializedName("balcony")
-    val balcony: String?,
+    val balcony: String?="",
     @SerializedName("bedroom")
-    val bedroom: String?,
+    val bedroom: String?="",
     @SerializedName("booking_amount")
-    val bookingAmount: String?,
+    val bookingAmount: String?="",
     @SerializedName("brochure")
-    val brochure: String?,
+    val brochure: String?="",
     @SerializedName("build_year")
-    val buildYear: String?,
+    val buildYear: String?="",
     @SerializedName("city")
-    val city: String?,
+    val city: String?="",
     @SerializedName("description")
-    val description: String?,
+    val description: String?="",
     @SerializedName("floors")
-    val floors: String?,
+    val floors: String?="",
     @SerializedName("garage")
-    val garage: String?,
+    val garage: String?="",
     @SerializedName("highlights")
-    val highlights: String?,
+    val highlights: String?="",
     @SerializedName("kitchen")
-    val kitchen: String?,
+    val kitchen: String?="",
     @SerializedName("price")
-    val price: String?,
+    val price: String?="",
     @SerializedName("property_id")
-    val propertyId: String?,
+    val propertyId: String?="",
     @SerializedName("property_thumbnail")
-    val propertyThumbnail: String?,
+    val propertyThumbnail: String?="",
     @SerializedName("property_title")
-    val propertyTitle: String?,
+    val propertyTitle: String?="",
     @SerializedName("property_type")
-    val propertyType: String?,
+    val propertyType: String?="",
     @SerializedName("sell_type")
-    val sellType: String?,
+    val sellType: String?="",
     @SerializedName("state")
-    val state: String?,
+    val state: String?="",
     @SerializedName("swimming_pool")
-    val swimmingPool: String?
+    val swimmingPool: String?=""
 ): Serializable
