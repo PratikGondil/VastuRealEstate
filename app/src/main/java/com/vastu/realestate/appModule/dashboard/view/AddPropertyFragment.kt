@@ -216,9 +216,9 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 )
             )
 
-           addPropertyBinding.autoCompleteCity.setText(adapter.get(2).taluka);
-           selectetdTalukaID = adapter.get(2).talukaId
-           addPropertyViewModel.city.value = adapter.get(2)
+           addPropertyBinding.autoCompleteCity.setText(adapter.get(0).taluka);
+           selectetdTalukaID = adapter.get(0).talukaId
+           addPropertyViewModel.city.value = adapter.get(0)
 
 
        }

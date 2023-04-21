@@ -103,7 +103,7 @@ object AddPropertyBindingAdapter {
                     R.id.edtPropertyAddress ->{
                         if(isValidAddress(input.toString())){
                             isValidPropertyAddress = true
-                            viewModel.propertyAddress.set(input!!.toString().trim())
+                            viewModel.propertyAddress.set(input!!.toString())
                             viewModel.propertyAddressValid.set("")
                         }
                         else {
@@ -207,6 +207,9 @@ object AddPropertyBindingAdapter {
     }
     fun isValidAddress(address:String):Boolean{
         return BaseConstant.ADDRESS_REGEX.toRegex().containsMatchIn(address)
+    }
+    fun isValidPropertyAddress(address:String):Boolean{
+        return address.length > 6
     }
     fun isValidName(name:String):Boolean{
         return name.length > 6
