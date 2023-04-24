@@ -64,12 +64,9 @@ import com.vastu.realestate.utils.BaseConstant.PDF_SELECTION
 import com.vastu.realestate.utils.BaseConstant.PICK_FROM_GALLERY
 import com.vastu.realestate.utils.CommonUtils
 import com.vastu.realestatecore.model.response.PropertyData
-import java.io.ByteArrayOutputStream
-import java.io.FileDescriptor
-import java.io.IOException
+import java.io.*
 import java.net.URISyntaxException
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListener,View.OnTouchListener,IPropertyDetailsListener,IGetImagesListener,
@@ -95,7 +92,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     private var isValid:Boolean = false
     private var propertyId : String? = null
     private var selectetdTalukaID :String? =null
-
+    private var selectedPDf:String?=null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -494,8 +491,37 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 }
             }
         }else if(resultCode == PDF_SELECTION){
-
+            if (data != null) {
+                val uri: Uri? = data.data
+                try {
+                    if (uri != null) {
+                        val filePath = getPath(requireContext(), uri)
+                        selectedPDf = getBase64FromPath(filePath)
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                    Toast.makeText(activity, "Failed to select image!", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+    }
+
+    fun getBase64FromPath(path: String?): String? {
+        var byteArray: ByteArray? = null
+        try {
+            val file = File(path)
+            val inputStream: InputStream = FileInputStream(file)
+            val bos = ByteArrayOutputStream()
+            val b = ByteArray(1024 * 11)
+            var bytesRead = 0
+            while (inputStream.read(b).also { bytesRead = it } != -1) {
+                bos.write(b, 0, bytesRead)
+            }
+            byteArray = bos.toByteArray()
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return Base64.encodeToString(byteArray, Base64.NO_WRAP)
     }
     private fun setImagePath(filePath:String,bitmap: Bitmap?){
         addPropertyBinding.apply {
