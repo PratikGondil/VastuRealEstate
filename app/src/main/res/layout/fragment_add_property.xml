@@ -186,6 +186,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/lableStyle"
+                    android:visibility="gone"
                     android:layout_marginTop="@dimen/margin_small"
                     android:text="@string/state"/>
 
@@ -196,6 +197,7 @@
                     android:layout_height="wrap_content"
                     app:expandedHintEnabled="false"
                     app:hintEnabled="false"
+                    android:visibility="gone"
                     app:placeholderText="@string/state"
                     app:helperTextTextColor="@color/red"
                     app:helperText="@{addPropertyViewModel.stateValid}"
@@ -212,6 +214,7 @@
                         android:layout_gravity="center"
                         android:background="@drawable/edittext_background"
                         android:inputType="text"
+                        android:visibility="gone"
                         android:drawablePadding="@dimen/margin_small"
                         android:maxLength="30"
                         android:text="@{addPropertyViewModel.state}"
@@ -343,7 +346,7 @@
                         android:text="@{addPropertyViewModel.propertyAddress}"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_normal"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView

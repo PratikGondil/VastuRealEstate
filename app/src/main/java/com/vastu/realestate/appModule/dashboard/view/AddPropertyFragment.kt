@@ -93,6 +93,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     private var isEdit:Boolean = false
     private var isValid:Boolean = false
     private var propertyId : String? = null
+    private var selectetdTalukaID :String? =null
 
 
     override fun onCreateView(
@@ -143,8 +144,10 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             addPropertyBinding.autoCompleteSellType.setOnTouchListener(this)
             addPropertyBinding.autoCompleteBuildYear.setOnTouchListener(this)
             addPropertyBinding.autoCompleteAvailability.setOnTouchListener(this)
-            addPropertyBinding.autoCompleteCity.setOnTouchListener(this)
+            //addPropertyBinding.autoCompleteCity.setOnTouchListener(this)
             addPropertyBinding.autoCompleteSubAreaList.setOnTouchListener(this)
+
+
 
         val sellTypeList = arrayOf("Sell","Rent")
         val sellTypeAdapter: Array<String> = sellTypeList
@@ -155,7 +158,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             )
         )
 
-        val propertyTypeList = arrayOf("1 BHK", "2 BHK","3 BKH","4 BHK","5 BHK","6 BHK","7 BHK","8 BHK","Apartment","Home","Offcie")
+        val propertyTypeList = arrayOf("Flat","Row House","Bungalows","Office","Shop")
         val propertyTypeAdapter: Array<String> = propertyTypeList
         addPropertyBinding.autoCompletePropertyType.setAdapter(
             ArrayAdapter(
@@ -212,7 +215,13 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                     R.layout.drop_down_item, adapter
                 )
             )
-        }
+
+           addPropertyBinding.autoCompleteCity.setText(adapter.get(0).taluka);
+           selectetdTalukaID = adapter.get(0).talukaId
+           addPropertyViewModel.city.value = adapter.get(0)
+
+
+       }
     }
     private fun observeCity(){
        addPropertyViewModel.city.observe(viewLifecycleOwner){city->
@@ -222,7 +231,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         }
     }
     private fun callSubAreaList(id: String) {
-        objSubAreaReq = ObjSubAreaReq().copy(talukaId = id )
+        objSubAreaReq = ObjSubAreaReq().copy(talukaId = selectetdTalukaID )
         addPropertyViewModel.callSubAreaList(objSubAreaReq)
         observeSubAreaList()
     }
