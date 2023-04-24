@@ -41,6 +41,7 @@ import com.vastu.getimages.model.response.GetImageMainResponse
 import com.vastu.getimages.model.response.ImageData
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.adapter.AddPropertyBindingAdapter
 import com.vastu.realestate.appModule.dashboard.adapter.PropertyImagesAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IAddPropertyListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IGetImagesListener
@@ -219,6 +220,10 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
            addPropertyBinding.autoCompleteCity.setText(adapter.get(0).taluka);
            selectetdTalukaID = adapter.get(0).talukaId
            addPropertyViewModel.city.value = adapter.get(0)
+           addPropertyViewModel.cityValid.set("")
+           AddPropertyBindingAdapter.isValidCity = true
+           //addPropertyViewModel.subAreaValid.set("")
+           //addPropertyViewModel.subArea.value = adapter.get(0) as ObjCityAreaData?
 
 
        }
@@ -366,22 +371,26 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         hideProgressDialog()
         clearAllFields()
         showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = true, isNetworkFailure = false)
-        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
-        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = true, isNetworkFailure = false)
-        Handler(Looper.getMainLooper()).postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({  onClickBack()
+                                                       hideDialog()
+                                                    }, 1000)
+        //showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = true, isNetworkFailure = false)
+        /*Handler(Looper.getMainLooper()).postDelayed({
             onClickBack()
-            hideDialog()}, 1000)
+            hideDialog()}, 1000)*/
     }
 
     override fun onFailureAddProperty(addPropertyMainResponse: AddPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
         showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
-        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
-        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
-        Handler(Looper.getMainLooper()).postDelayed({
+        Handler(Looper.getMainLooper()).postDelayed({  onClickBack()
+                                                        hideDialog()
+                                                    }, 1000)
+        //showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
+       /* Handler(Looper.getMainLooper()).postDelayed({
             onClickBack()
-            hideDialog()}, 1000)
+            hideDialog()}, 1000)*/
     }
 
     override fun onCityListApiFailure(objTalukaResponseMain: ObjTalukaResponseMain) {

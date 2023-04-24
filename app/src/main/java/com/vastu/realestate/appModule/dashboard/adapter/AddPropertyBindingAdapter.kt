@@ -57,7 +57,7 @@ object AddPropertyBindingAdapter {
                     R.id.edtPropertyTitle ->{
                         if(isValidName(input.toString().trim())) {
                             isValidPropertyTitle = true
-                            viewModel.propertyTitle.set(input!!.toString().trim())
+                            viewModel.propertyTitle.set(input!!.toString())
                             viewModel.propertyTitleValid.set("")
                         }
                         else {
@@ -68,7 +68,7 @@ object AddPropertyBindingAdapter {
                     R.id.edtStates ->{
                         if(isValidName(input.toString())){
                            isValidState= true
-                            viewModel.state.set(input!!.toString().trim())
+                            viewModel.state.set(input!!.toString())
                             viewModel.stateValid.set("")
                         }
                         else {
@@ -79,7 +79,7 @@ object AddPropertyBindingAdapter {
                     R.id.edtPrice ->{
                         if(isValidAmount(input.toString())) {
                             isValidPrice = true
-                            viewModel.price.set(input!!.toString().trim())
+                            viewModel.price.set(input!!.toString())
                             viewModel.priceValid.set("")
                         }
                         else {
@@ -114,7 +114,7 @@ object AddPropertyBindingAdapter {
                     R.id.edtArea ->{
                         if(isValidArea(input.toString())){
                             isValidArea = true
-                            viewModel.areaSqFt.set(input!!.toString().trim())
+                            viewModel.areaSqFt.set(input!!.toString())
                             viewModel.areaSqFtValid.set("")
                         }
                         else {
@@ -126,7 +126,7 @@ object AddPropertyBindingAdapter {
                     R.id.edtBedroom ->{
                         if(isValidRooms(input.toString())){
                             isValidBedroom = true
-                            viewModel.bedroom.set(input!!.toString().trim())
+                            viewModel.bedroom.set(input!!.toString())
                             viewModel.bedroomValid.set("")
                         }
                         else{
@@ -138,7 +138,7 @@ object AddPropertyBindingAdapter {
                     R.id.edtBathroom ->{
                         if(isValidRooms(input.toString())){
                             isValidBathroom = true
-                            viewModel.bathroom.set(input!!.toString().trim())
+                            viewModel.bathroom.set(input!!.toString())
                             viewModel.bathroomValid.set("")
                         }
                         else{
@@ -147,18 +147,18 @@ object AddPropertyBindingAdapter {
                         }
                     }
 
-                    R.id.edtGarage ->  viewModel.garage.set(input!!.toString().trim())
+                    R.id.edtGarage ->  viewModel.garage.set(input!!.toString())
 
-                    R.id.edtBalcony -> viewModel.balcony.set(input!!.toString().trim())
+                    R.id.edtBalcony -> viewModel.balcony.set(input!!.toString())
 
-                    R.id.edtSwimmingPool -> viewModel.swimmingPool.set(input!!.toString().trim())
+                    R.id.edtSwimmingPool -> viewModel.swimmingPool.set(input!!.toString())
 
-                    R.id.edtFloors -> viewModel.floors.set(input!!.toString().trim())
+                    R.id.edtFloors -> viewModel.floors.set(input!!.toString())
 
                     R.id.edtKitchen ->{
                         if(isValidRooms(input.toString())){
                             isValidKitchen = true
-                            viewModel.kitchen.set(input!!.toString().trim())
+                            viewModel.kitchen.set(input!!.toString())
                             viewModel.kitchenValid.set("")
                         }
                         else{
@@ -169,7 +169,7 @@ object AddPropertyBindingAdapter {
                     R.id.edtDescription ->{
                         if(isValidAddress(input.toString())){
                             isValidDescription = true
-                            viewModel.description.set(input!!.toString().trim())
+                            viewModel.description.set(input!!.toString())
                             viewModel.descriptionValid.set("")
                         }
                         else {
@@ -180,7 +180,7 @@ object AddPropertyBindingAdapter {
                     R.id.edtHighlights ->{
                         if(isValidAddress(input.toString())){
                             isValidHighlights = true
-                            viewModel.highlights.set(input!!.toString().trim())
+                            viewModel.highlights.set(input!!.toString())
                             viewModel.highlightsValid.set("")
                         }
                         else {
