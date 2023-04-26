@@ -17,4 +17,5 @@ data class AddPropertyEnquiryRequest(
     @SerializedName("ownership")val ownership: String?=null,
     @SerializedName("area")val area: String?=null,
     @SerializedName("budget")val budget: String?=null,
+    @SerializedName("user_id")val userId: String?=null
 ): Serializable

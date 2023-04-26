@@ -22,6 +22,7 @@ import com.vastu.loanenquirycore.model.response.ownership.OwnershipMainResponse
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
+import com.vastu.realestate.appModule.dashboard.view.DashboardFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.enquiry.uiinterfaces.IAddPropertyEnquiryListener
 import com.vastu.realestate.appModule.enquiry.viewModel.AddPropertyEnquiryViewModel
@@ -143,7 +144,10 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
         hideProgressDialog()
         clearAllFields()
         showDialog(enquiryMainResponse.registerResponse.responseStatusHeader.statusDescription!!,true,false)
-        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
+        Handler(Looper.getMainLooper()).postDelayed({
+            onClickBack()
+            hideDialog()
+                                                    }, 1000)
     }
 
     override fun onUserNotConnected() {
@@ -172,7 +176,9 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
             interestedIn = addPropertyEnquiryViewModel.propertyName.value!!.propertyName,
             ownership = addPropertyEnquiryViewModel.ownershipName.value!!.ownershipName,
             area = addPropertyEnquiryViewModel.area.get(),
-            budget = addPropertyEnquiryViewModel.budget.get())
+            budget = addPropertyEnquiryViewModel.budget.get(),
+            userId = DashboardFragment.userId
+        )
         return addPropertyEnquiryRequest
     }
 

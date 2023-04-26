@@ -38,4 +38,5 @@
     <color name="badge_color">#F36538</color>
     <color name="shimmer_background_color">#F0EFF5</color>
     <color name="transparent">#00000000</color>
+    <color name="brown">#800000</color>
 </resources>

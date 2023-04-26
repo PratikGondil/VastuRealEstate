@@ -488,7 +488,7 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_small"
-                            android:text="@string/state"
+                            android:text="@string/sub_area"
                             android:textColor="@color/icon_color"
                               app:fontFamily="@font/poppins_light" />
 
@@ -498,7 +498,7 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_small"
-                            android:text="@{propertyData.state}"
+                            android:text="@{propertyData.area}"
                             android:textColor="@color/text_color"
                              app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
@@ -583,7 +583,7 @@
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_small"
-                            android:text="@{propertyData.area}"
+                            android:text="@{propertyData.propertyArea}"
                             android:textColor="@color/text_color"
                              app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
@@ -596,24 +596,6 @@
                         android:weightSum="2"
                         android:layout_marginTop="@dimen/margin_small">
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/text_size_small"
-                            android:text="@string/super_builtup_area_ft"
-                            android:textColor="@color/icon_color"
-                              app:fontFamily="@font/poppins_light" />
-
-                        <TextView
-                            android:id="@+id/propertyareaTextview"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textSize="@dimen/text_size_small"
-                            android:text="@{propertyData.propertyArea}"
-                            android:textColor="@color/text_color"
-                             app:fontFamily="@font/poppins_regular"  />
                     </LinearLayout>
 
 

@@ -13,42 +13,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <View
+        android:id="@+id/border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray" />
+
         <RelativeLayout
             android:id="@+id/cvGbpView"
-            android:layout_marginTop="@dimen/dimen10dp"
             android:layout_width="match_parent"
-            android:layout_margin="@dimen/dimen5dp"
             android:layout_height="wrap_content"
-           >
+            android:layout_below="@+id/border"
+            android:layout_margin="@dimen/dimen15dp"
+            android:layout_marginStart="@dimen/dimen5dp"
+            android:layout_marginTop="@dimen/dimen5dp"
+            android:layout_marginEnd="@dimen/dimen5dp"
+            android:layout_marginBottom="@dimen/dimen5dp">
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen10dp"
+                android:text="@{offers.description}"
+                android:textColor="@color/brown"
+                android:textSize="@dimen/text_size18sp"
+                app:fontFamily="@font/roboto_bold" />
 
             <LinearLayout
                 android:id="@+id/llMain"
+                android:layout_marginTop="@dimen/dimen5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:layout_below="@+id/description"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/offerImage"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen150dp"
-                    android:src="@drawable/offer_icon"
-                    />
+                    android:layout_height="@dimen/dimen300dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/offer_icon" />
 
             </LinearLayout>
-
-         <TextView
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:id="@+id/description"
-             android:text="@{offers.description}"
-             app:fontFamily="@font/poppins_bold"
-             android:layout_gravity="center"
-             android:gravity="center"
-             android:textColor="@color/colorPrimary"
-             android:layout_below="@+id/llMain"
-             android:layout_margin="@dimen/dimen10dp"
-             />
 
 
         </RelativeLayout>

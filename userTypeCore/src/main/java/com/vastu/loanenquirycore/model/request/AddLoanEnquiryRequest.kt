@@ -14,5 +14,6 @@ data class AddLoanEnquiryRequest(
     @SerializedName("interested_in")val interestedIn: String?=null,
     @SerializedName("preferred_bank")val preferredBank: String?=null,
     @SerializedName("loan_amount")val loanAmount: String?=null,
-    @SerializedName("loan_term_year")val loanTermYear: String?=null
+    @SerializedName("loan_term_year")val loanTermYear: String?=null,
+    @SerializedName("user_id")val userId: String?=null
 ): Serializable

@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vastu.offers.model.response.OfferData
 import com.vastu.offers.model.response.OffersMainResponse
@@ -64,6 +66,9 @@ class OffersFragment:BaseFragment(), IToolbarListener,IOffersListener,IRecycleVi
             val offersAdapter = OffersAdapter(offerData,this)
             recyclerViewOffers.adapter = offersAdapter
             recyclerViewOffers.layoutManager = LinearLayoutManager(activity)
+            val divider = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
+            divider.setDrawable(ContextCompat.getDrawable(requireContext(),R.drawable.item_separator)!!)
+            recyclerViewOffers.addItemDecoration(divider)
         } catch (e: Exception) {
             e.printStackTrace()
         }

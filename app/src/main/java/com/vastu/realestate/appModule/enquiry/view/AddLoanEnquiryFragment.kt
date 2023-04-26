@@ -22,6 +22,7 @@ import com.vastu.loanenquirycore.model.response.occupation.OccupationMainRespons
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
+import com.vastu.realestate.appModule.dashboard.view.DashboardFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.enquiry.uiinterfaces.IAddLoanEnquiryListener
 import com.vastu.realestate.appModule.enquiry.viewModel.AddLoanEnquiryViewModel
@@ -144,7 +145,9 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
             interestedIn = loanViewBinding.loanInterestedFor.text.toString(),//loanEnquiryViewModel.loanName.value!!.loanName,
             preferredBank = loanEnquiryViewModel.bankName.value!!.bankName,
             loanAmount = loanEnquiryViewModel.loanAmount.get(),
-            loanTermYear = loanEnquiryViewModel.loanTermYear.get())
+            loanTermYear = loanEnquiryViewModel.loanTermYear.get(),
+            userId = DashboardFragment.userId
+        )
         return addLoanEnquiryRequest
     }
 
