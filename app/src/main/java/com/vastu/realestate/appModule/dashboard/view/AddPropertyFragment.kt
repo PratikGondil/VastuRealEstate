@@ -165,7 +165,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             )
         )
 
-        val availabilityList = arrayOf("Available","Not Available","Coming Soon")
+        val availabilityList = arrayOf("Available","Not Available")
         val availabilityAdapter: Array<String> = availabilityList
         addPropertyBinding.autoCompleteAvailability.setAdapter(
             ArrayAdapter(
@@ -750,7 +750,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 R.drawable.vastu_logo_splash
             )
 
-            if(property.highlights.length>20){
+            if(property.highlights !=null && property.highlights.length>20){
                 val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
                 spannable.setSpan(
                     BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
@@ -759,11 +759,12 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                     BulletSpan(50, resources.getColor(R.color.black)), 20,  spannable.length,
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 edtHighlights.setText(Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights.trim()))
-            }else{
+            }else if(property.highlights !=null){
                 edtHighlights.setText(property.highlights)
             }
-           edtDescription.setText(property.description.replace(htmlPattern," ",ignoreCase = false))
-            isValid = true
+            if(property.description !=null)
+                edtDescription.setText(property.description.replace(htmlPattern," ",ignoreCase = false))
+                isValid = true
 
         }
      }
