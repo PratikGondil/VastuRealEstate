@@ -143,7 +143,7 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
             address = loanEnquiryViewModel.address.get(),
             occupation = loanEnquiryViewModel.occupationName.value!!.occupationName,
             interestedIn = loanViewBinding.loanInterestedFor.text.toString(),//loanEnquiryViewModel.loanName.value!!.loanName,
-            preferredBank = loanEnquiryViewModel.bankName.value!!.bankName,
+            preferredBank = loanEnquiryViewModel.bankValue.get(),
             loanAmount = loanEnquiryViewModel.loanAmount.get(),
             loanTermYear = loanEnquiryViewModel.loanTermYear.get(),
             userId = DashboardFragment.userId

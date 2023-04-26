@@ -331,7 +331,46 @@
                     tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilBankName"
+                    style="@style/Widget.Design.TextInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/margin_small"
+                    android:gravity="center"
+                    android:maxLength="15"
+                    android:textAlignment="center"
+                    android:textColorHint="@color/black"
+                    app:boxStrokeColor="@color/black"
+                    app:expandedHintEnabled="false"
+                    app:helperText="@{addLoanViewModel.bank}"
+                    app:helperTextTextColor="@color/red"
+                    app:hintEnabled="false"
+                    app:placeholderText="@string/preferred_bank_text"
+                    app:placeholderTextColor="@color/black"
+                    app:startIconDrawable="@drawable/city">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtBankName"
+                        style="@style/TextAppearance"
+                        valid="@{addLoanViewModel}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edittext_background"
+                        android:gravity="center_vertical"
+                        android:inputType="text"
+                        android:maxLength="20"
+                        android:text="@{addLoanViewModel.bankValue}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_normal"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPreferredBank"
                 style="@style/Widget.Design.TextInputLayout"
                 android:layout_width="match_parent"
@@ -344,6 +383,7 @@
                 app:boxStrokeColor="@color/black"
                 app:endIconDrawable="@drawable/drop_down_icon"
                 app:endIconMode="custom"
+                    android:visibility="gone"
                 app:expandedHintEnabled="false"
                 app:helperText="@{addLoanViewModel.bank}"
                 app:helperTextTextColor="@color/red"

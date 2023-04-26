@@ -76,6 +76,17 @@ object AddLoanBindingAdapter {
                             addLoanViewModel.lName.set(context.getString(R.string.last_name_error))
                         }
                     }
+                    R.id.edtBankName ->{
+                        if(isValidName(input.toString())) {
+                            isValidPreferredBank = true
+                            addLoanViewModel.bankValue.set(input!!.toString())
+                            addLoanViewModel.bank.set("")
+                        }
+                        else {
+                            isValidLastName = false
+                            addLoanViewModel.bank.set(context.getString(R.string.last_name_error))
+                        }
+                    }
                     R.id.edtMobileNum ->{
                         if(isValidMobile(input.toString())) {
                             isValidMobileNo = true

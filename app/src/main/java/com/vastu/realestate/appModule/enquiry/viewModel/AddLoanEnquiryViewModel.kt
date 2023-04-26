@@ -31,7 +31,7 @@ class AddLoanEnquiryViewModel(application: Application) : AndroidViewModel(appli
     var lastName = ObservableField("")
     var mobileNumber = ObservableField("")
     var address = ObservableField("")
-
+    var bankValue = ObservableField("")
     var occupationName = MutableLiveData<OccupationData>()
     var occupationList = MutableLiveData<ArrayList<OccupationData>>()
 
