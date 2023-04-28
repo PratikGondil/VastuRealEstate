@@ -17,5 +17,6 @@ data class LoanData(
     @SerializedName("loan_term_year")val loanTermYear: String?,
     @SerializedName("created_at")val createdAt: String?,
     @SerializedName("emp_name") val assignee :String?=null,
-    @SerializedName("status_name") val status :String?= null
+    @SerializedName("status_name") val status :String?= null,
+    @SerializedName("remark") val remark :String?= null
 ):java.io.Serializable

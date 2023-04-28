@@ -2,6 +2,8 @@ package com.vastu.realestate.appModule.enquirylist.view
 
 import android.app.Dialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -80,8 +82,24 @@ class UpdateStatusFragment(var listerner: IAssignLeadListener): BottomSheetDialo
              customProgressDialog = CustomProgressDialog.getInstance()
 
              getBundleData()
+             initView()
              return assignLeadsBinding.root
          }
+
+         private fun initView() {
+             assignLeadsBinding.edtRemark.addTextChangedListener(object : TextWatcher {
+                 override fun afterTextChanged(s: Editable?) {
+                 }
+
+                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                 }
+
+                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                     assignLeadsViewModel.remark.set(s.toString())
+                 }
+             })
+         }
+
          fun getBundleData(){
              try {
                  val args = arguments
@@ -135,12 +153,16 @@ class UpdateStatusFragment(var listerner: IAssignLeadListener): BottomSheetDialo
              val userDetails = PreferenceManger.get<ObjVerifyDtls>(PreferenceKEYS.USER)!!
              if(this::loanData.isInitialized){
                  objLoanStatusUpdateReq = objLoanStatusUpdateReq.copy(emp_id = userDetails.userId, loan_enq_id = loanData.loanEnqId,
-                     status = (assignLeadsViewModel.status.value as ObjEnquiryStatusData).statusId)
+                     status = (assignLeadsViewModel.status.value as ObjEnquiryStatusData).statusId,
+                     remark = assignLeadsViewModel.remark.get()
+                     )
                  assignLeadsViewModel.updateLoanEnqStatus(objLoanStatusUpdateReq)
              }
              else{
                  objPropStatusUpdateReq = objPropStatusUpdateReq.copy(emp_id = userDetails.userId,
-                     pro_enq_id =propertyData.proEnqId, status = (assignLeadsViewModel.status.value as ObjEnquiryStatusData).statusId)
+                     pro_enq_id =propertyData.proEnqId, status = (assignLeadsViewModel.status.value as ObjEnquiryStatusData).statusId,
+                     remark = assignLeadsViewModel.remark.get()
+                     )
                  updateEnquiryStatus(objPropStatusUpdateReq)
 
              }

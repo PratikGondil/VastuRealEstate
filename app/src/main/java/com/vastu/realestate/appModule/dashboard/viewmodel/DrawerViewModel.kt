@@ -16,6 +16,7 @@ class DrawerViewModel(application: Application) : AndroidViewModel(application) 
 
     var userName = ObservableField("")
     var mobileNo = ObservableField("")
+    var city = ObservableField("Ahmednagar")
 
     lateinit var iNavDrawerListener: INavDrawerListener
     lateinit var iToolbarListener: IToolbarListener

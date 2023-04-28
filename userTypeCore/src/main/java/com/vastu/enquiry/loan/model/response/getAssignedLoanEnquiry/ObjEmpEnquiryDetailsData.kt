@@ -12,5 +12,6 @@ data class ObjEmpEnquiryDetailsData(
     @SerializedName("preferred_bank" ) var preferredBank : String? = null,
     @SerializedName("loan_amount"    ) var loanAmount    : String? = null,
     @SerializedName("loan_term_year" ) var loanTermYear  : String? = null,
-    @SerializedName("status_name") var statusName : String? = null
+    @SerializedName("status_name") var statusName : String? = null,
+    @SerializedName("remark") var remark : String? = null
 ):java.io.Serializable

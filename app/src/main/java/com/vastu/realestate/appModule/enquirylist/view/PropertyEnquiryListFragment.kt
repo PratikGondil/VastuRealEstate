@@ -111,6 +111,8 @@ class PropertyEnquiryListFragment : BaseFragment() ,IPropertyListListener, IAssi
     }
 
     override fun onFailureAssignedPropertyLead(objEmpPropertyEnquiryDtlsResMain: ObjEmpPropertyEnquiryDtlsResMain) {
+        stopShimmerAnimation()
+        showDialog(objEmpPropertyEnquiryDtlsResMain.objEmpPropertyEnquiryDtlsRes?.ResponseStatusHeader?.statusDescription.toString(),false,false)
     }
 
     override fun onUserNotConnected() {

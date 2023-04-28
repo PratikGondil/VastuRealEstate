@@ -87,6 +87,17 @@
                             android:text="@{drawerViewModel.mobileNo}"
                             android:textSize="@dimen/text_size_normal" />
 
+                        <TextView
+                            android:id="@+id/city_textview"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            app:fontFamily="@font/poppins_medium"
+                            android:textColor="@color/white"
+                            android:text="@{drawerViewModel.city}"
+                            android:textSize="@dimen/text_size_normal" />
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

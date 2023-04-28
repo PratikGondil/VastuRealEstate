@@ -440,7 +440,7 @@
                     android:layout_gravity="center"
                     android:background="@drawable/edittext_background"
                     android:gravity="center_vertical"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:maxLength="10"
                     android:text="@{addLoanViewModel.loanAmount}"
                     android:textColor="@color/black"

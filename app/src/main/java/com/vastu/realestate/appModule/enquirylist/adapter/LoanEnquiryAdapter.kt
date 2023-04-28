@@ -34,7 +34,8 @@ class LoanEnquiryAdapter(
         holder.bind(loan)
         binding.loanNameTextview.text =
             context.getString(R.string.username, loan.firstName, loan.middleName, loan.lastName)
-        binding.loanAmountTextview.text = loan.loanAmount?.numberToWord()
+        binding.loanAmountTextview.text = loan.loanAmount
+        binding.remarkValue.text = loan.remark
         if (loan.assignee?.isNotEmpty() == true) {
             binding.txtAssignee.visibility = View.VISIBLE
             binding.txtStatus.visibility = View.VISIBLE

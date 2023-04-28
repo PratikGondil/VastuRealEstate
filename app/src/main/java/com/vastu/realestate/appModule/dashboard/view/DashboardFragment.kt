@@ -200,6 +200,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
                     drawerViewModel.offer.set(View.VISIBLE)
                 }
                 EMPLOYEES->{
+                    drawerViewModel.offer.set(View.VISIBLE)
                 }
                 CUSTOMER->{
                     drawerViewModel.enquiry.set(View.GONE)
