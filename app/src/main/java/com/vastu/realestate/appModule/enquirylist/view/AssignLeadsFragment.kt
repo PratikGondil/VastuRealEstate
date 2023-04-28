@@ -2,12 +2,15 @@ package com.vastu.realestate.appModule.enquirylist.view
 
 import android.app.Dialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import androidx.constraintlayout.helper.widget.CircularFlow
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -88,8 +91,24 @@ class AssignLeadsFragment(var listerner: IAssignLeadListener): BottomSheetDialog
 
         getBundleData()
         observeEmpList()
+        initView()
         return assignLeadsBinding.root
     }
+
+    private fun initView() {
+        assignLeadsBinding.edtRemark.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                assignLeadsViewModel.remark.set(s.toString())
+            }
+        })
+    }
+
     fun getBundleData(){
         try {
             val args = arguments
@@ -154,12 +173,16 @@ override fun proceedToNext(){
         val userDetails = PreferenceManger.get<ObjVerifyDtls>(PreferenceKEYS.USER)!!
         if(this::loanData.isInitialized){
             objLoanStatusUpdateReq = objLoanStatusUpdateReq.copy(emp_id = userDetails.userId, loan_enq_id = loanData.loanId,
-                status = (assignLeadsViewModel.status.value as ObjEnquiryStatusData).statusId)
+                status = (assignLeadsViewModel.status.value as ObjEnquiryStatusData).statusId,
+            remark = assignLeadsViewModel.remark.get()
+                )
             assignLeadsViewModel.updateLoanEnqStatus(objLoanStatusUpdateReq)
         }
         else{
             objPropStatusUpdateReq = objPropStatusUpdateReq.copy(emp_id = userDetails.userId,
-                pro_enq_id =propertyData.propertyId, status = (assignLeadsViewModel.status.value as ObjEnquiryStatusData).statusId)
+                pro_enq_id =propertyData.propertyId, status = (assignLeadsViewModel.status.value as ObjEnquiryStatusData).statusId,
+                remark = assignLeadsViewModel.remark.get()
+                )
             updateEnquiryStatus(objPropStatusUpdateReq)
 
         }
@@ -170,12 +193,14 @@ override fun proceedToNext(){
     override fun callAssignApi() {
         if(this::loanData.isInitialized){
             objAssignLoanEnquiryReq = objAssignLoanEnquiryReq.copy(loan_enq_id = loanData.loanId,
-                emp_id = (assignLeadsViewModel.empName.value as ObjEmployeeData).empId)
+                emp_id = (assignLeadsViewModel.empName.value as ObjEmployeeData).empId
+                )
             assignLeadsViewModel.callAssignLoanLeadApi(objAssignLoanEnquiryReq)
         }
         else  if(this::propertyData.isInitialized){
             objAssignPropertyEnquiryReq = objAssignPropertyEnquiryReq.copy( property_enq_id= propertyData.propertyId,
-                emp_id = (assignLeadsViewModel.empName.value as ObjEmployeeData).empId)
+                emp_id = (assignLeadsViewModel.empName.value as ObjEmployeeData).empId
+                )
             assignLeadsViewModel.callAssignPropertyLeadApi(objAssignPropertyEnquiryReq)
         }
     }
@@ -187,12 +212,16 @@ override fun proceedToNext(){
     override fun onLeadAssignSuccess(){
         if(this::loanData.isInitialized){
             objLoanStatusUpdateReq = objLoanStatusUpdateReq.copy(emp_id = objAssignLoanEnquiryReq.emp_id, loan_enq_id = objAssignLoanEnquiryReq.loan_enq_id,
-            status = BaseConstant.TO_DO)
+            status = BaseConstant.TO_DO,
+            remark = assignLeadsViewModel.remark.get()
+                )
             assignLeadsViewModel.updateLoanEnqStatus(objLoanStatusUpdateReq)
         }
         else{
             objPropStatusUpdateReq = objPropStatusUpdateReq.copy(emp_id = objAssignPropertyEnquiryReq.emp_id,
-            pro_enq_id = objAssignPropertyEnquiryReq.property_enq_id, status = BaseConstant.TO_DO)
+            pro_enq_id = objAssignPropertyEnquiryReq.property_enq_id, status = BaseConstant.TO_DO,
+            remark = assignLeadsViewModel.remark.get()
+                )
             updateEnquiryStatus(objPropStatusUpdateReq)
         }
 
