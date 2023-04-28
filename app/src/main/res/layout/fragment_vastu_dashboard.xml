@@ -53,7 +53,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:gravity="center"
-            android:background="@drawable/bl"
+            android:background="@drawable/white_background"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -69,28 +69,30 @@
                     android:id="@+id/real_estate_layout"
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/dimen20dp"
                     android:onClick="@{(view)->vastuDashboardViewModel.onClickRealEstate()}"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="@dimen/dimen110dp"
+                        android:layout_height="@dimen/dimen110dp"
                         android:background="@drawable/dashboard_image_back"
                         android:backgroundTint="@color/real_estate_background_color"
                         android:scaleType="center"
                         android:src="@drawable/real_estate" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/real_estate"
                         android:layout_marginTop="@dimen/margin_small"
                         android:textColor="@color/black"
                         android:gravity="center"
+                        android:layout_marginLeft="@dimen/dimen10dp"
                         android:includeFontPadding="true"
-                        app:fontFamily="@font/poppins_medium"
-                        android:textSize="@dimen/text_size_normal"/>
+                        app:fontFamily="@font/poppins_semibold"
+                        android:textSize="@dimen/text_size18sp"/>
                 </LinearLayout>
 
                 <View
@@ -101,6 +103,7 @@
                 <LinearLayout
                     android:id="@+id/loan_layout"
                     android:layout_width="0dp"
+                    android:layout_marginLeft="@dimen/dimen20dp"
                     android:layout_weight="1"
                     android:onClick="@{(view)->vastuDashboardViewModel.onClickLoan()}"
                     android:layout_height="wrap_content"
@@ -108,23 +111,24 @@
 
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="@dimen/dimen110dp"
+                    android:layout_height="@dimen/dimen110dp"
                     android:backgroundTint="@color/loan_background_color"
                     android:background="@drawable/dashboard_image_back"
                     android:src="@drawable/loan"
                     android:scaleType="center"/>
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/loan"
+                    android:layout_marginLeft="@dimen/dimen30dp"
                     android:layout_marginTop="@dimen/margin_small"
                     android:textColor="@color/black"
                     android:gravity="center"
                     android:includeFontPadding="true"
-                    app:fontFamily="@font/poppins_medium"
-                    android:textSize="@dimen/text_size_normal"/>
+                    app:fontFamily="@font/poppins_semibold"
+                    android:textSize="@dimen/text_size18sp"/>
             </LinearLayout>
             </LinearLayout>
         </LinearLayout>

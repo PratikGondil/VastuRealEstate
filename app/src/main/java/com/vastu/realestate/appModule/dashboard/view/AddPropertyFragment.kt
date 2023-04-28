@@ -1,6 +1,8 @@
 package com.vastu.realestate.appModule.dashboard.view
 
 import android.Manifest
+import android.R.attr
+import android.annotation.TargetApi
 import android.app.Activity.RESULT_CANCELED
 import android.content.ContentUris
 import android.content.Context
@@ -250,7 +252,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     }
 
     override fun onClickBrochure() {
-        if(checkRequestPermissions(PICK_FROM_GALLERY)) {
+        if(checkRequestPermissions(PDF_SELECTION)) {
            pdfSelection()
         }
     }
@@ -258,7 +260,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         val pdfIntent = Intent(Intent.ACTION_GET_CONTENT)
         pdfIntent.type = "application/pdf"
         pdfIntent.addCategory(Intent.CATEGORY_OPENABLE)
-        activity?.startActivityForResult(pdfIntent, 12)
+        startActivityForResult(pdfIntent, PDF_SELECTION)
     }
 
 
@@ -348,7 +350,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
            swimmingPool = addPropertyViewModel.swimmingPool.get(),
            garage = addPropertyViewModel.garage.get(),
            floors = addPropertyViewModel.floors.get(),
-           brochure = addPropertyViewModel.brochurePdf.get(),
+           brochure = selectedPDf,
            thumbnail = thumbnail,
            description = addPropertyViewModel.description.get(),
            highlights = addPropertyViewModel.highlights.get(),
@@ -490,13 +492,14 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                     Toast.makeText(activity, "Failed to select image!", Toast.LENGTH_SHORT).show()
                 }
             }
-        }else if(resultCode == PDF_SELECTION){
+        }else if(requestCode == PDF_SELECTION){
             if (data != null) {
                 val uri: Uri? = data.data
                 try {
                     if (uri != null) {
-                        val filePath = getPath(requireContext(), uri)
-                        selectedPDf = getBase64FromPath(filePath)
+                       /* val filePath = getPath(uri)
+                        addPropertyBinding.brouchePath.setText(filePath)
+                        selectedPDf = getBase64FromPath(filePath)*/
                     }
                 } catch (e: IOException) {
                     e.printStackTrace()
@@ -639,6 +642,127 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         return true
     }
 
+    private fun getPath(uri: Uri): String? {
+        val isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
+        if (isKitKat) {
+            // MediaStore (and general)
+            return getForApi19(uri)
+        } else if ("content".equals(uri.scheme, ignoreCase = true)) {
+
+            // Return the remote address
+            return if (isGooglePhotosUri(uri)) uri.lastPathSegment else getDataColumn(
+                uri,
+                null,
+                null
+            )
+        } else if ("file".equals(uri.scheme, ignoreCase = true)) {
+            return uri.path
+        }
+        return null
+    }
+
+    @TargetApi(19)
+    private fun getForApi19(uri: Uri): String? {
+
+        if (DocumentsContract.isDocumentUri(requireContext(), uri)) {
+
+            // ExternalStorageProvider
+            if (isExternalStorageDocument(uri)) {
+
+                val docId = DocumentsContract.getDocumentId(uri)
+                val split = docId.split(":".toRegex()).toTypedArray()
+                val type = split[0]
+                if ("primary".equals(type, ignoreCase = true)) {
+
+                    return Environment.getExternalStorageDirectory().toString() + "/" + split[1]
+                }
+
+                // TODO handle non-primary volumes
+            } else if (isDownloadsDocument(uri)) {
+                val id = DocumentsContract.getDocumentId(uri)
+                val contentUri = ContentUris.withAppendedId(
+                    Uri.parse("content://downloads/public_downloads"), java.lang.Long.valueOf(id)
+                )
+                return getDataColumn(contentUri, null, null)
+            } else if (isMediaDocument(uri)) {
+                val docId = DocumentsContract.getDocumentId(uri)
+                val split = docId.split(":".toRegex()).toTypedArray()
+                val type = split[0]
+                var contentUri: Uri? = null
+                if ("image" == type) {
+
+                    contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                } else if ("video" == type) {
+
+                    contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI
+                } else if ("audio" == type) {
+
+                    contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+                }
+                val selection = "_id=?"
+                val selectionArgs = arrayOf(
+                    split[1]
+                )
+                return getDataColumn(contentUri, selection, selectionArgs)
+            }
+        } else if ("content".equals(uri.scheme, ignoreCase = true)) {
+
+
+            // Return the remote address
+            return if (isGooglePhotosUri(uri)) uri.lastPathSegment else getDataColumn(
+                uri,
+                null,
+                null
+            )
+        } else if ("file".equals(uri.scheme, ignoreCase = true)) {
+            return uri.path
+        }
+        return null
+    }
+
+    /**
+     * Get the value of the data column for this Uri. This is useful for
+     * MediaStore Uris, and other file-based ContentProviders.
+     *
+     * @param uri The Uri to query.
+     * @param selection (Optional) Filter used in the query.
+     * @param selectionArgs (Optional) Selection arguments used in the query.
+     * @return The value of the _data column, which is typically a file path.
+     */
+    fun getDataColumn(
+        uri: Uri?, selection: String?,
+        selectionArgs: Array<String>?
+    ): String? {
+        var cursor: Cursor? = null
+        val column = "_data"
+        val projection = arrayOf(
+            column
+        )
+        try {
+            cursor = uri?.let {
+                activity?.getContentResolver()?.query(
+                    it, projection, selection, selectionArgs,
+                    null
+                )
+            }
+            if (cursor != null && cursor.moveToFirst()) {
+                val index = cursor.getColumnIndexOrThrow(column)
+                return cursor.getString(index)
+            }
+        } finally {
+            cursor?.close()
+        }
+        return null
+    }
+
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is Google Photos.
+     */
+    fun isGooglePhotosUri(uri: Uri): Boolean {
+        return "com.google.android.apps.photos.content" == uri.authority
+    }
     @Throws(URISyntaxException::class)
     private fun getPath(context: Context, uri: Uri): String? {
         var uri = uri
@@ -670,6 +794,10 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                     getString(R.string.audio_string) -> {
                         uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
                     }
+                    else-> {
+                        uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
+                    }
+
                 }
                 selection = getString(R.string.id_string)
                 selectionArgs = arrayOf(split[1])

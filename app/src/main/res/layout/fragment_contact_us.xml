@@ -16,7 +16,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/rlMainTop"
-    android:background="@drawable/image"
+    android:background="@drawable/white_background"
 
     >
     <include
@@ -50,7 +50,7 @@
         android:layout_below="@+id/rlNew"
         android:layout_marginStart="@dimen/dimen10dp"
 
-        android:layout_marginTop="@dimen/dimen50dp"
+        android:layout_marginTop="@dimen/dimen10dp"
         android:layout_marginEnd="@dimen/dimen10dp"
         android:layout_marginBottom="@dimen/dimen10dp"
         >
@@ -61,11 +61,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dimen30dp"
             android:gravity="center"
+            app:fontFamily="@font/poppins_semibold"
             android:text="@string/getintouch"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_size18sp" />
+            android:textColor="@color/purple_500"
+            android:textSize="@dimen/dimen25dp" />
 
         <TextView
             android:id="@+id/txtFeelFree"
@@ -76,8 +76,8 @@
             android:layout_marginTop="@dimen/dimen30dp"
             android:gravity="center"
             android:text="@string/feel_free"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size18sp" />
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimens20sp" />
 
 
         <TextView
@@ -88,12 +88,12 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen30dp"
             android:layout_marginBottom="@dimen/dimen10dp"
-            android:autoLink="web|email"
+            android:autoLink="web"
             android:drawablePadding="@dimen/dimen5dp"
             android:gravity="center"
             android:text="@string/email_add_value"
-            android:textColor="@color/white"
-            android:textSize="@dimen/dimen_16sp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimens20sp"
             android:textStyle="bold" />
     </RelativeLayout>
 </RelativeLayout>

@@ -48,7 +48,7 @@ class AssignLeadsViewModel(application: Application):AndroidViewModel(applicatio
     var employeeList = MutableLiveData<ArrayList<ObjEmployeeData>>()
     var isBtnEnable =ObservableField(false)
     var btnBackground = ObservableField(ContextCompat.getDrawable(mContext, R.drawable.button_inactive_background))
-
+    var remark = ObservableField("")
     fun callEmployeeListApi(){
         EmployeeListRepository.getEmployeeList(mContext,ApiUrlEndPoints.GET_EMPLOYEE_LIST,this)
     }
