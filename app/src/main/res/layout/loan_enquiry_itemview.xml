@@ -307,7 +307,6 @@
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
                     android:gravity="start"
-                    android:layout_marginLeft="@dimen/dimen10dp"
                     android:maxLength="25"
                     android:maxLines="1"
                     android:textColor="@color/black"

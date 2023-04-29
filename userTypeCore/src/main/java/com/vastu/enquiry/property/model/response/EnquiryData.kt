@@ -30,5 +30,6 @@ data class EnquiryData(
     val propertyId: String,
     @SerializedName("emp_name") val assignee :String,
     @SerializedName("status_name") val status :String,
-    @SerializedName("remark") val remark :String
+    @SerializedName("remark") val remark :String,
+    @SerializedName("property_title") val property_title :String
 ):java.io.Serializable

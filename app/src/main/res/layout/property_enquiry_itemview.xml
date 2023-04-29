@@ -166,6 +166,32 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_small"
                         app:fontFamily="@font/poppins_regular" />
+
+                    <TextView
+                        android:id="@+id/remark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/remark"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+
+                    <TextView
+                        android:id="@+id/remarkValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_regular" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -284,47 +310,40 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_small"
                         app:fontFamily="@font/poppins_regular" />
+
+                    <TextView
+                        android:id="@+id/propertyName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="Property Name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+
+                    <TextView
+                        android:id="@+id/propertyNameValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_regular" />
+
             </LinearLayout>
 
 
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="@dimen/dimen10dp"
-            >
 
-            <TextView
-                android:id="@+id/remark"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:gravity="start"
-                android:inputType="textCapWords"
-                android:maxLength="25"
-                android:maxLines="1"
-                android:text="Remark :"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_small"
-                app:fontFamily="@font/roboto_bold" />
-
-            <TextView
-                android:id="@+id/remarkValue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:gravity="start"
-                android:layout_marginLeft="@dimen/dimen10dp"
-                android:maxLength="25"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_size_small"
-                app:fontFamily="@font/poppins_regular" />
-            />
-        </LinearLayout>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

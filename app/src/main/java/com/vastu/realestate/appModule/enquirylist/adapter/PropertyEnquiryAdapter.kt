@@ -25,6 +25,7 @@ class PropertyEnquiryAdapter(private val propertyDataList: List<EnquiryData>,
         binding.propertyNameTextview.text = context.getString(R.string.username,propertyData.firstName,propertyData.middleName,propertyData.lastName)
         binding.budgetTextview.text=propertyData.budget
         binding.remarkValue.text = propertyData.remark
+        binding.propertyNameValue.text = propertyData.property_title
         if (propertyData.assignee?.isNotEmpty() == true){
             binding.txtAssignee.visibility = View.VISIBLE
             binding.txtStatus.visibility = View.VISIBLE
