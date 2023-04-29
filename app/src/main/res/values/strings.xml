@@ -232,7 +232,7 @@
     <string name="username">%1$s %2$s %3$s</string>
     <string name="edit_property">Edit Property</string>
     <string name="delete">Delete</string>
-    <string name="register_successfully">Register Successfully</string>
+    <string name="register_successfully">Register Successfully Please Log In</string>
     <string name="off">OFF</string>
     <string name="terms_condition"><![CDATA[Please accept terms & condition]]></string>
     <string name="accept_terms">I accept the terms and conditions.</string>

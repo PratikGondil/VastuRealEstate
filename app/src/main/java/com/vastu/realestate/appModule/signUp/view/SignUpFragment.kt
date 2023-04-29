@@ -22,9 +22,11 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.location.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.adapter.AddPropertyBindingAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.ITermsConditionListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreen
+import com.vastu.realestate.appModule.signUp.bindingAdapter.SignUpBindingAdapter
 import com.vastu.realestate.appModule.signUp.uiInterfaces.ISignUpViewListener
 import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
 import com.vastu.realestate.databinding.SignUpFragmentBinding
@@ -57,6 +59,8 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
     private var PERMISSION_ID = 52
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var locationRequest:LocationRequest
+    private var selectetdTalukaID :String? =null
+
 
     private val locationCallback = object:LocationCallback(){
         override fun onLocationResult(p0: LocationResult) {
@@ -178,12 +182,20 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
                     R.layout.drop_down_item, adapter
                 )
             )
+
+            signUpFragmentBinding.autoCompleteCity.setText(adapter.get(0).taluka);
+            selectetdTalukaID = adapter.get(0).talukaId
+            signUpViewModel.city.value = adapter.get(0)
+            signUpFragmentBinding.tilcity.helperText=""
+            SignUpBindingAdapter.isValidCity = true
         }
+
+
     }
     private fun observeCity(){
         signUpViewModel.city.observe(viewLifecycleOwner){city->
             if (city != null) {
-                  callSubAreaList(city.talukaId!!)
+                  callSubAreaList(selectetdTalukaID!!)
                 }
         }
     }
@@ -242,10 +254,9 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
     override fun goToLogin() {
         hideProgressDialog()
         clearAllFields()
-        showDialog(getString(R.string.register_successfully),false,false)
-        Handler(Looper.getMainLooper()).postDelayed({
-            hideDialog() }, 1000)
-        showTermsConditionDialog()
+        createDialog(this)
+
+
 
     }
     private fun showTermsConditionDialog(){
@@ -293,6 +304,17 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
     }
 
     override fun onFailureTerms() {
+
+    }
+
+    fun redirectAftertheTermsAccept()
+    {
+        showDialog(getString(R.string.register_successfully),false,false)
+        Handler(Looper.getMainLooper()).postDelayed({
+            viewPager.currentItem = 0
+            hideDialog()
+
+        }, 1000)
 
     }
 

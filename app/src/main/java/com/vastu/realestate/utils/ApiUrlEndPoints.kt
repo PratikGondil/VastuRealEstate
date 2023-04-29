@@ -2,7 +2,7 @@ package com.vastu.realestate.utils
 
 object ApiUrlEndPoints {
 
-    const val REGISTER = "register.php"
+    const val REGISTER = "register_new.php"
     const val GET_CITIES = "get_cities.php"
     const val GET_SUB_CITY = "get_subcity.php"
     const val LOGIN = "login.php"

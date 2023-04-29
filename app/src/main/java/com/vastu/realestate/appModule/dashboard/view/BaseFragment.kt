@@ -8,6 +8,7 @@ import com.vastu.realestate.R
 import com.vastu.realestate.appModule.enquiry.view.AddLoanEnquiryFragment
 import com.vastu.realestate.appModule.enquiry.view.AddPropertyEnquiryFragment
 import com.vastu.realestate.appModule.login.view.fragment.LoginFragment
+import com.vastu.realestate.appModule.signUp.view.SignUpFragment
 
 open class BaseFragment : Fragment() {
 
@@ -42,6 +43,10 @@ open class BaseFragment : Fragment() {
             }else if (fragment is AddLoanEnquiryFragment)
             {
                 fragment.redirectedAfterTermsLoan()
+            }else if(fragment is SignUpFragment)
+            {
+                fragment.redirectAftertheTermsAccept()
+
             }
         }
         builder.setCanceledOnTouchOutside(false)
