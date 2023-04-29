@@ -1,7 +1,7 @@
 package com.vastu.realestate.appModule.dashboard.view
 
 import android.Manifest
-import android.R.attr
+import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.Activity.RESULT_CANCELED
 import android.content.ContentUris
@@ -15,6 +15,7 @@ import android.net.Uri
 import android.os.*
 import android.provider.DocumentsContract
 import android.provider.MediaStore
+import android.provider.OpenableColumns
 import android.text.Html
 import android.text.Spannable
 import android.text.SpannableString
@@ -29,6 +30,7 @@ import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -65,36 +67,38 @@ import com.vastu.realestate.utils.BaseConstant.IS_FROM_PROPERTY_LIST
 import com.vastu.realestate.utils.BaseConstant.PDF_SELECTION
 import com.vastu.realestate.utils.BaseConstant.PICK_FROM_GALLERY
 import com.vastu.realestate.utils.CommonUtils
+import com.vastu.realestate.utils.FileUploadUtils
 import com.vastu.realestatecore.model.response.PropertyData
 import java.io.*
 import java.net.URISyntaxException
 import java.util.*
 
 
-class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListener,View.OnTouchListener,IPropertyDetailsListener,IGetImagesListener,
+class AddPropertyFragment : BaseFragment(), IToolbarListener, IAddPropertyListener,
+    View.OnTouchListener, IPropertyDetailsListener, IGetImagesListener,
     PropertyImagesAdapter.OnItemClickListener {
     private lateinit var addPropertyViewModel: AddPropertyViewModel
-    private lateinit var addPropertyBinding:FragmentAddPropertyBinding
+    private lateinit var addPropertyBinding: FragmentAddPropertyBinding
     private lateinit var drawerViewModel: DrawerViewModel
     private var objSubAreaReq = ObjSubAreaReq()
     private var addPropertyRequest = AddPropertyRequest()
     private var ediPropertyRequest = EditPropertyRequest()
     private var getImageRequest = GetImageRequest()
     private var deleteImageRequest = DeleteImageRequest()
-    private lateinit var imageList :List<ImageData>
-    private var image1=String()
-    private var image2=String()
-    private var image3=String()
-    private var image4=String()
-    private var image5=String()
-    private var thumbnail=String()
-    private var brouche =String()
-    private var stepImage:Int = 0
-    private var isEdit:Boolean = false
-    private var isValid:Boolean = false
-    private var propertyId : String? = null
-    private var selectetdTalukaID :String? =null
-    private var selectedPDf:String?=null
+    private lateinit var imageList: List<ImageData>
+    private var image1 = String()
+    private var image2 = String()
+    private var image3 = String()
+    private var image4 = String()
+    private var image5 = String()
+    private var thumbnail = String()
+    private var brouche = String()
+    private var stepImage: Int = 0
+    private var isEdit: Boolean = false
+    private var isValid: Boolean = false
+    private var propertyId: String? = null
+    private var selectetdTalukaID: String? = null
+    private var selectedPDf: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -102,7 +106,8 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     ): View? {
         drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
         addPropertyViewModel = ViewModelProvider(this)[AddPropertyViewModel::class.java]
-        addPropertyBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_add_property, container, false)
+        addPropertyBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_add_property, container, false)
         addPropertyBinding.lifecycleOwner = this
         drawerViewModel.iToolbarListener = this
         addPropertyViewModel.iAddPropertyListener = this
@@ -136,20 +141,20 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         }
     }
 
-    private fun editPropertyImages(){
+    private fun editPropertyImages() {
         addPropertyBinding.uploadImageLayout.setVisibility(View.GONE)
     }
-    private fun initViewsList(){
-            addPropertyBinding.autoCompletePropertyType.setOnTouchListener(this)
-            addPropertyBinding.autoCompleteSellType.setOnTouchListener(this)
-            addPropertyBinding.autoCompleteBuildYear.setOnTouchListener(this)
-            addPropertyBinding.autoCompleteAvailability.setOnTouchListener(this)
-            //addPropertyBinding.autoCompleteCity.setOnTouchListener(this)
-            addPropertyBinding.autoCompleteSubAreaList.setOnTouchListener(this)
+
+    private fun initViewsList() {
+        addPropertyBinding.autoCompletePropertyType.setOnTouchListener(this)
+        addPropertyBinding.autoCompleteSellType.setOnTouchListener(this)
+        addPropertyBinding.autoCompleteBuildYear.setOnTouchListener(this)
+        addPropertyBinding.autoCompleteAvailability.setOnTouchListener(this)
+        //addPropertyBinding.autoCompleteCity.setOnTouchListener(this)
+        addPropertyBinding.autoCompleteSubAreaList.setOnTouchListener(this)
 
 
-
-        val sellTypeList = arrayOf("Sell","Rent")
+        val sellTypeList = arrayOf("Sell", "Rent")
         val sellTypeAdapter: Array<String> = sellTypeList
         addPropertyBinding.autoCompleteSellType.setAdapter(
             ArrayAdapter(
@@ -158,7 +163,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             )
         )
 
-        val propertyTypeList = arrayOf("Flat","Row House","Bungalows","Office","Shop")
+        val propertyTypeList = arrayOf("Flat", "Row House", "Bungalows", "Office", "Shop")
         val propertyTypeAdapter: Array<String> = propertyTypeList
         addPropertyBinding.autoCompletePropertyType.setAdapter(
             ArrayAdapter(
@@ -167,7 +172,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             )
         )
 
-        val availabilityList = arrayOf("Available","Not Available")
+        val availabilityList = arrayOf("Available", "Not Available")
         val availabilityAdapter: Array<String> = availabilityList
         addPropertyBinding.autoCompleteAvailability.setAdapter(
             ArrayAdapter(
@@ -191,23 +196,25 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         )
         callCityList()
     }
+
     override fun onResume() {
         super.onResume()
-        if(isEdit)
+        if (isEdit)
             drawerViewModel.toolbarTitle.set(getString(R.string.edit_property))
         else
             drawerViewModel.toolbarTitle.set(getString(R.string.add_property))
         drawerViewModel.isDashBoard.set(false)
     }
 
-    private fun callCityList(){
-       addPropertyViewModel.callCityListApi()
-       observeCityList()
-       observeCity()
+    private fun callCityList() {
+        addPropertyViewModel.callCityListApi()
+        observeCityList()
+        observeCity()
     }
-    private fun observeCityList(){
-       addPropertyViewModel.cityList.observe(viewLifecycleOwner) { cityList ->
-            val adapter: ArrayList<ObjTalukaDataList> =cityList
+
+    private fun observeCityList() {
+        addPropertyViewModel.cityList.observe(viewLifecycleOwner) { cityList ->
+            val adapter: ArrayList<ObjTalukaDataList> = cityList
 
             addPropertyBinding.autoCompleteCity.setAdapter(
                 ArrayAdapter(
@@ -216,33 +223,36 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 )
             )
 
-           addPropertyBinding.autoCompleteCity.setText(adapter.get(0).taluka);
-           selectetdTalukaID = adapter.get(0).talukaId
-           addPropertyViewModel.city.value = adapter.get(0)
-           addPropertyViewModel.cityValid.set("")
-           AddPropertyBindingAdapter.isValidCity = true
-           //addPropertyViewModel.subAreaValid.set("")
-           //addPropertyViewModel.subArea.value = adapter.get(0) as ObjCityAreaData?
+            addPropertyBinding.autoCompleteCity.setText(adapter.get(0).taluka);
+            selectetdTalukaID = adapter.get(0).talukaId
+            addPropertyViewModel.city.value = adapter.get(0)
+            addPropertyViewModel.cityValid.set("")
+            AddPropertyBindingAdapter.isValidCity = true
+            //addPropertyViewModel.subAreaValid.set("")
+            //addPropertyViewModel.subArea.value = adapter.get(0) as ObjCityAreaData?
 
 
-       }
+        }
     }
-    private fun observeCity(){
-       addPropertyViewModel.city.observe(viewLifecycleOwner){city->
+
+    private fun observeCity() {
+        addPropertyViewModel.city.observe(viewLifecycleOwner) { city ->
             if (city != null) {
                 callSubAreaList(city.talukaId!!)
             }
         }
     }
+
     private fun callSubAreaList(id: String) {
-        objSubAreaReq = ObjSubAreaReq().copy(talukaId = selectetdTalukaID )
+        objSubAreaReq = ObjSubAreaReq().copy(talukaId = selectetdTalukaID)
         addPropertyViewModel.callSubAreaList(objSubAreaReq)
         observeSubAreaList()
     }
-    private fun observeSubAreaList(){
-        addPropertyViewModel.subAreaList.observe(viewLifecycleOwner){subAreaList->
-            val adapter: ArrayList<ObjCityAreaData> =subAreaList
-           addPropertyBinding.autoCompleteSubAreaList.setAdapter(
+
+    private fun observeSubAreaList() {
+        addPropertyViewModel.subAreaList.observe(viewLifecycleOwner) { subAreaList ->
+            val adapter: ArrayList<ObjCityAreaData> = subAreaList
+            addPropertyBinding.autoCompleteSubAreaList.setAdapter(
                 ArrayAdapter(
                     requireContext(),
                     R.layout.drop_down_item, adapter
@@ -252,11 +262,12 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     }
 
     override fun onClickBrochure() {
-        if(checkRequestPermissions(PDF_SELECTION)) {
-           pdfSelection()
+        if (checkRequestPermissions(PDF_SELECTION)) {
+            pdfSelection()
         }
     }
-    private fun pdfSelection(){
+
+    private fun pdfSelection() {
         val pdfIntent = Intent(Intent.ACTION_GET_CONTENT)
         pdfIntent.type = "application/pdf"
         pdfIntent.addCategory(Intent.CATEGORY_OPENABLE)
@@ -264,18 +275,18 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     }
 
 
-    override fun onClickUploadImage(image:Int) {
-        if(checkRequestPermissions(PICK_FROM_GALLERY)){
-             stepImage = image
-             chooseImageFromGallery()
-            }
+    override fun onClickUploadImage(image: Int) {
+        if (checkRequestPermissions(PICK_FROM_GALLERY)) {
+            stepImage = image
+            chooseImageFromGallery()
+        }
     }
 
     override fun onClickAddProperty() {
         showProgressDialog()
-        if(isEdit && isValid){
+        if (isEdit && isValid) {
             addPropertyViewModel.callEditPropertyApi(getEditPropertyData())
-        }else {
+        } else {
             addPropertyViewModel.callAddPropertyApi(getAddPropertyData())
         }
     }
@@ -283,18 +294,26 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     override fun onFailureEditProperty(editPropertyMainResponse: EditPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(editPropertyMainResponse.editPropertyResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
-        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
+        showDialog(
+            editPropertyMainResponse.editPropertyResponse.responseStatusHeader.statusDescription!!,
+            isSuccess = false,
+            isNetworkFailure = false
+        )
+        Handler(Looper.getMainLooper()).postDelayed({ onClickBack() }, 1000)
     }
 
     override fun onSuccessEditProperty(editPropertyMainResponse: EditPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(editPropertyMainResponse.editPropertyResponse.responseStatusHeader.statusDescription!!, isSuccess = true, isNetworkFailure = false)
-        Handler(Looper.getMainLooper()).postDelayed({  onClickBack() }, 1000)
+        showDialog(
+            editPropertyMainResponse.editPropertyResponse.responseStatusHeader.statusDescription!!,
+            isSuccess = true,
+            isNetworkFailure = false
+        )
+        Handler(Looper.getMainLooper()).postDelayed({ onClickBack() }, 1000)
     }
 
-    private fun getEditPropertyData():EditPropertyRequest {
+    private fun getEditPropertyData(): EditPropertyRequest {
         ediPropertyRequest = ediPropertyRequest.copy(
             propertyId = propertyId,
             userId = userId,
@@ -325,54 +344,62 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             img2 = image2,
             img3 = image3,
             img4 = image4,
-            img5 = image5)
+            img5 = image5
+        )
         return ediPropertyRequest
     }
-    private fun getAddPropertyData():AddPropertyRequest {
-       addPropertyRequest = addPropertyRequest.copy(
-           userId = userId,
-           userType = userType,
-           propertyTitle = addPropertyViewModel.propertyTitle.get(),
-           propertyType = addPropertyViewModel.propertyType.get(),
-           sellType = addPropertyViewModel.sellType.get(),
-           buildYear = addPropertyViewModel.buildYear.get(),
-           state = addPropertyViewModel.state.get(),
-           cityId = addPropertyViewModel.city.value!!.talukaId,
-           areaId = addPropertyViewModel.subArea.value!!.areaId,
-           address = addPropertyViewModel.propertyAddress.get(),
-           area = addPropertyViewModel.areaSqFt.get(),
-           price = addPropertyViewModel.price.get(),
-           bookingAmount = addPropertyViewModel.bookingAmount.get(),
-           bathroom = addPropertyViewModel.bathroom.get(),
-           bedroom = addPropertyViewModel.bedroom.get(),
-           kitchen = addPropertyViewModel.kitchen.get(),
-           balcony = addPropertyViewModel.balcony.get(),
-           swimmingPool = addPropertyViewModel.swimmingPool.get(),
-           garage = addPropertyViewModel.garage.get(),
-           floors = addPropertyViewModel.floors.get(),
-           brochure = selectedPDf,
-           thumbnail = thumbnail,
-           description = addPropertyViewModel.description.get(),
-           highlights = addPropertyViewModel.highlights.get(),
-           availability = addPropertyViewModel.availability.get(),
-           amenities = addPropertyViewModel.amenties.get(),
-           slug = "",
-           status = ADD_PROPERTY_STATUS,
-           img1 = image1,
-           img2 = image2,
-           img3 = image3,
-           img4 = image4,
-           img5 = image5)
+
+    private fun getAddPropertyData(): AddPropertyRequest {
+        addPropertyRequest = addPropertyRequest.copy(
+            userId = userId,
+            userType = userType,
+            propertyTitle = addPropertyViewModel.propertyTitle.get(),
+            propertyType = addPropertyViewModel.propertyType.get(),
+            sellType = addPropertyViewModel.sellType.get(),
+            buildYear = addPropertyViewModel.buildYear.get(),
+            state = addPropertyViewModel.state.get(),
+            cityId = addPropertyViewModel.city.value!!.talukaId,
+            areaId = addPropertyViewModel.subArea.value!!.areaId,
+            address = addPropertyViewModel.propertyAddress.get(),
+            area = addPropertyViewModel.areaSqFt.get(),
+            price = addPropertyViewModel.price.get(),
+            bookingAmount = addPropertyViewModel.bookingAmount.get(),
+            bathroom = addPropertyViewModel.bathroom.get(),
+            bedroom = addPropertyViewModel.bedroom.get(),
+            kitchen = addPropertyViewModel.kitchen.get(),
+            balcony = addPropertyViewModel.balcony.get(),
+            swimmingPool = addPropertyViewModel.swimmingPool.get(),
+            garage = addPropertyViewModel.garage.get(),
+            floors = addPropertyViewModel.floors.get(),
+            brochure = selectedPDf,
+            thumbnail = thumbnail,
+            description = addPropertyViewModel.description.get(),
+            highlights = addPropertyViewModel.highlights.get(),
+            availability = addPropertyViewModel.availability.get(),
+            amenities = addPropertyViewModel.amenties.get(),
+            slug = "",
+            status = ADD_PROPERTY_STATUS,
+            img1 = image1,
+            img2 = image2,
+            img3 = image3,
+            img4 = image4,
+            img5 = image5
+        )
         return addPropertyRequest
     }
 
     override fun onSuccessAddProperty(addPropertyMainResponse: AddPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = true, isNetworkFailure = false)
-        Handler(Looper.getMainLooper()).postDelayed({  onClickBack()
-                                                       hideDialog()
-                                                    }, 1000)
+        showDialog(
+            addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!,
+            isSuccess = true,
+            isNetworkFailure = false
+        )
+        Handler(Looper.getMainLooper()).postDelayed({
+            onClickBack()
+            hideDialog()
+        }, 1000)
         //showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = true, isNetworkFailure = false)
         /*Handler(Looper.getMainLooper()).postDelayed({
             onClickBack()
@@ -382,32 +409,46 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     override fun onFailureAddProperty(addPropertyMainResponse: AddPropertyMainResponse) {
         hideProgressDialog()
         clearAllFields()
-        showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
-        Handler(Looper.getMainLooper()).postDelayed({  onClickBack()
-                                                        hideDialog()
-                                                    }, 1000)
-        //showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
-       /* Handler(Looper.getMainLooper()).postDelayed({
+        showDialog(
+            addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!,
+            isSuccess = false,
+            isNetworkFailure = false
+        )
+        Handler(Looper.getMainLooper()).postDelayed({
             onClickBack()
-            hideDialog()}, 1000)*/
+            hideDialog()
+        }, 1000)
+        //showDialog(addPropertyMainResponse.registerResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
+        /* Handler(Looper.getMainLooper()).postDelayed({
+             onClickBack()
+             hideDialog()}, 1000)*/
     }
 
     override fun onCityListApiFailure(objTalukaResponseMain: ObjTalukaResponseMain) {
-      hideProgressDialog()
-      showDialog(objTalukaResponseMain.objTalukaResponse.objResponseStatusHdr.statusDescr, isSuccess = false, isNetworkFailure = false)
+        hideProgressDialog()
+        showDialog(
+            objTalukaResponseMain.objTalukaResponse.objResponseStatusHdr.statusDescr,
+            isSuccess = false,
+            isNetworkFailure = false
+        )
     }
 
     override fun onSubAreaListApiFailure(objGetCityAreaDetailResponseMain: ObjGetCityAreaDetailResponseMain) {
-      hideProgressDialog()
-      showDialog(objGetCityAreaDetailResponseMain.objCityAreaResponse.objResponseStatusHdr.statusDescr, isSuccess = false, isNetworkFailure = false)
+        hideProgressDialog()
+        showDialog(
+            objGetCityAreaDetailResponseMain.objCityAreaResponse.objResponseStatusHdr.statusDescr,
+            isSuccess = false,
+            isNetworkFailure = false
+        )
     }
 
     override fun onUserNotConnected() {
         hideProgressDialog()
         showDialog("", isSuccess = false, isNetworkFailure = true)
     }
-    private fun clearAllFields(){
-       addPropertyBinding.apply {
+
+    private fun clearAllFields() {
+        addPropertyBinding.apply {
             edtPropertyTitle.text?.clear()
             edtPrice.text?.clear()
             edtBookingAmount.text?.clear()
@@ -426,6 +467,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             thumbnailImage.setImageResource(R.drawable.hom)
         }
     }
+
     override fun onTouch(view: View?, p1: MotionEvent?): Boolean {
         when (view) {
             addPropertyBinding.autoCompletePropertyType -> {
@@ -437,19 +479,20 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             addPropertyBinding.autoCompleteBuildYear -> {
                 onShowStateDropDown(view)
             }
-            addPropertyBinding.autoCompleteAvailability->{
+            addPropertyBinding.autoCompleteAvailability -> {
                 onShowStateDropDown(view)
             }
-            addPropertyBinding.autoCompleteCity->{
+            addPropertyBinding.autoCompleteCity -> {
                 onShowStateDropDown(view)
             }
-            addPropertyBinding.autoCompleteSubAreaList->{
+            addPropertyBinding.autoCompleteSubAreaList -> {
                 onShowStateDropDown(view)
             }
         }
         return true
     }
-    private fun onShowStateDropDown(view: View){
+
+    private fun onShowStateDropDown(view: View) {
         (view as AutoCompleteTextView).showDropDown()
     }
 
@@ -464,12 +507,14 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     override fun onClickNotification() {
         //empty
     }
-    private fun chooseImageFromGallery(){
+
+    private fun chooseImageFromGallery() {
         val intent = Intent()
         intent.type = "*/*"
         intent.action = Intent.ACTION_GET_CONTENT
         intent.putExtra("return-data", true)
-        startActivityForResult(intent,PICK_FROM_GALLERY
+        startActivityForResult(
+            intent, PICK_FROM_GALLERY
         )
     }
 
@@ -485,82 +530,152 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                     if (uri != null) {
                         val filePath = getPath(requireContext(), uri)
                         val bitmap = uriToBitmap(uri)
-                        filePath?.let { setImagePath(it,bitmap) }
+                        filePath?.let { setImagePath(it, bitmap) }
                     }
                 } catch (e: IOException) {
                     e.printStackTrace()
                     Toast.makeText(activity, "Failed to select image!", Toast.LENGTH_SHORT).show()
                 }
             }
-        }else if(requestCode == PDF_SELECTION){
-            if (data != null) {
-                val uri: Uri? = data.data
-                try {
-                    if (uri != null) {
-                       /* val filePath = getPath(uri)
-                        addPropertyBinding.brouchePath.setText(filePath)
-                        selectedPDf = getBase64FromPath(filePath)*/
+        } else if (requestCode == PDF_SELECTION) {
+            try {
+                if (data != null) {
+                    val uri: Uri? = data.data
+                    try {
+                        if (uri != null) {
+                            val filePath =FileUploadUtils(requireContext()).getPath(uri)
+                           // val filePath =getPdfPath(uri)
+                            addPropertyBinding.brouchePath.text = filePath
+                            selectedPDf = getBase64FromPath(filePath)
+                        }
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                        Toast.makeText(activity, "Failed to select image!", Toast.LENGTH_SHORT)
+                            .show()
                     }
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                    Toast.makeText(activity, "Failed to select image!", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    private fun readFile() {
+        val FILENAME = "user_details.txt"
+        val dir = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            File(
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                    .toString() + "/" + "folderName"
+            )
+        } else {
+            File(
+                Environment.getExternalStorageDirectory()
+                    .toString() + "/${Environment.DIRECTORY_DOWNLOADS}/" + "folderName"
+            )
+        }
+        dir.apply {
+            if (this.exists()) File(this, FILENAME).apply {
+                FileInputStream(this).apply {
+                    val stringBuffer = StringBuffer()
+                    var i: Int
+                    while (this.read().also { i = it } != -1) {
+                        stringBuffer.append(i.toChar())
+                    }
+                    close()
                 }
             }
         }
     }
 
     fun getBase64FromPath(path: String?): String? {
-        var byteArray: ByteArray? = null
         try {
             val file = File(path)
-            val inputStream: InputStream = FileInputStream(file)
-            val bos = ByteArrayOutputStream()
-            val b = ByteArray(1024 * 11)
-            var bytesRead = 0
-            while (inputStream.read(b).also { bytesRead = it } != -1) {
-                bos.write(b, 0, bytesRead)
+            val uri = FileProvider.getUriForFile(requireContext(), activity?.packageName + ".provider", file)
+
+            val size = file.length().toInt()
+            val bytes = ByteArray(size)
+            try {
+                val inputStream: InputStream? = requireActivity().contentResolver.openInputStream(uri)
+                val buf = BufferedInputStream(inputStream)
+                buf.read(bytes, 0, bytes.size)
+                buf.close()
+            } catch (e: FileNotFoundException) {
+                e.printStackTrace()
+            } catch (e: IOException) {
+                e.printStackTrace()
             }
-            byteArray = bos.toByteArray()
+            return Base64.encodeToString(file.readBytes(), Base64.NO_WRAP)
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        return Base64.encodeToString(byteArray, Base64.NO_WRAP)
+        return null
     }
-    private fun setImagePath(filePath:String,bitmap: Bitmap?){
+@SuppressLint("Range")
+fun getPdfPath(uri: Uri?):String?
+{
+    val uriString: String = uri.toString()
+    var pdfPath: String? = null
+    var pdfName: String? = null
+    if (uriString.startsWith("content://")) {
+        var myCursor: Cursor? = null
+        try {
+            myCursor = requireContext()!!.contentResolver.query(uri!!, null, null, null, null)
+            if (myCursor != null && myCursor.moveToFirst()) {
+                val column_index: Int = myCursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                pdfName= myCursor.getString(myCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+
+                pdfPath = myCursor.getString(column_index)
+                //   pdfTextView.text = pdfName
+            }
+        } catch (e:Exception)
+        {
+         e.printStackTrace()
+        }
+        finally {
+            myCursor?.close()
+        }
+    }
+    return pdfPath
+}
+    private fun setImagePath(filePath: String, bitmap: Bitmap?) {
         addPropertyBinding.apply {
-            when(stepImage){
-                1->{
+            when (stepImage) {
+                1 -> {
                     imagePath1.text = getImageName(filePath)
                     image1 = convertToBase64(bitmap)
                 }
-                2->{
+                2 -> {
                     imagePath2.text = getImageName(filePath)
                     image2 = convertToBase64(bitmap)
                 }
-                3->{
+                3 -> {
                     imagePath3.text = getImageName(filePath)
                     image3 = convertToBase64(bitmap)
                 }
-                4->{
+                4 -> {
                     imagePath4.text = getImageName(filePath)
                     image4 = convertToBase64(bitmap)
                 }
-                5->{
+                5 -> {
                     imagePath5.text = getImageName(filePath)
                     image5 = convertToBase64(bitmap)
-                }else->{
+                }
+                else -> {
                     thumbnailImage.setImageBitmap(bitmap)
                     thumbnail = convertToBase64(bitmap)
                 }
             }
         }
     }
-    private fun getImageName(path:String):String{
-     return path.substring(path.lastIndexOf("/") + 1)
+
+    private fun getImageName(path: String): String {
+        return path.substring(path.lastIndexOf("/") + 1)
     }
+
     private fun uriToBitmap(selectedFileUri: Uri): Bitmap? {
         try {
-            val parcelFileDescriptor = requireContext().contentResolver.openFileDescriptor(selectedFileUri, "r")
+            val parcelFileDescriptor =
+                requireContext().contentResolver.openFileDescriptor(selectedFileUri, "r")
             val fileDescriptor: FileDescriptor = parcelFileDescriptor!!.fileDescriptor
             val image = BitmapFactory.decodeFileDescriptor(fileDescriptor)
             parcelFileDescriptor.close()
@@ -570,7 +685,8 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         }
         return null
     }
-    private fun convertToBase64(bitmap:Bitmap?):String{
+
+    private fun convertToBase64(bitmap: Bitmap?): String {
         val byteArrayOutputStream = ByteArrayOutputStream()
         bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream)
         return Base64.encodeToString(byteArrayOutputStream.toByteArray(), Base64.DEFAULT)
@@ -580,7 +696,10 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         val permissionCamera =
             ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA)
         val readExternalPermission =
-            ContextCompat.checkSelfPermission(requireActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
+            ContextCompat.checkSelfPermission(
+                requireActivity(),
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            )
         val writeExternalPermission = ContextCompat.checkSelfPermission(
             requireActivity(),
             Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -617,10 +736,10 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 && perms[Manifest.permission.READ_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED
                 && perms[Manifest.permission.WRITE_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED
             ) {
-                if(checkRequestPermissions(PICK_FROM_GALLERY)){
+                if (checkRequestPermissions(PICK_FROM_GALLERY)) {
                     chooseImageFromGallery()
                 }
-                if(checkRequestPermissions(PDF_SELECTION)){
+                if (checkRequestPermissions(PDF_SELECTION)) {
                     pdfSelection()
                 }
             }
@@ -643,11 +762,11 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     }
 
     private fun getPath(uri: Uri): String? {
-        val isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
+        /*val isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT
         if (isKitKat) {
             // MediaStore (and general)
             return getForApi19(uri)
-        } else if ("content".equals(uri.scheme, ignoreCase = true)) {
+        } else*/ if ("content".equals(uri.scheme, ignoreCase = true)) {
 
             // Return the remote address
             return if (isGooglePhotosUri(uri)) uri.lastPathSegment else getDataColumn(
@@ -676,8 +795,6 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
 
                     return Environment.getExternalStorageDirectory().toString() + "/" + split[1]
                 }
-
-                // TODO handle non-primary volumes
             } else if (isDownloadsDocument(uri)) {
                 val id = DocumentsContract.getDocumentId(uri)
                 val contentUri = ContentUris.withAppendedId(
@@ -763,6 +880,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
     fun isGooglePhotosUri(uri: Uri): Boolean {
         return "com.google.android.apps.photos.content" == uri.authority
     }
+
     @Throws(URISyntaxException::class)
     private fun getPath(context: Context, uri: Uri): String? {
         var uri = uri
@@ -778,7 +896,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
             } else if (isDownloadsDocument(uri)) {
                 val id = DocumentsContract.getDocumentId(uri)
                 uri = ContentUris.withAppendedId(
-                    Uri.parse("content://downloads/public_downloads"), java.lang.Long.valueOf(id)
+                    Uri.parse("content://downloads/public_downloads"), id.toLong()
                 )
             } else if (isMediaDocument(uri)) {
                 val docId = DocumentsContract.getDocumentId(uri)
@@ -794,7 +912,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                     getString(R.string.audio_string) -> {
                         uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
                     }
-                    else-> {
+                    else -> {
                         uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI
                     }
 
@@ -821,6 +939,7 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         }
         return null
     }
+
     private fun isExternalStorageDocument(uri: Uri): Boolean {
         return "com.android.externalstorage.documents" == uri.authority
     }
@@ -829,16 +948,16 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         return "com.android.providers.downloads.documents" == uri.authority
     }
 
-   private fun isMediaDocument(uri: Uri): Boolean {
+    private fun isMediaDocument(uri: Uri): Boolean {
         return "com.android.providers.media.documents" == uri.authority
     }
 
 
-    private fun getPropertyDetails(){
+    private fun getPropertyDetails() {
         hideProgressDialog()
         userId?.let {
             propertyId?.let { it1 ->
-                addPropertyViewModel.getPropertyDetails(it,it1)
+                addPropertyViewModel.getPropertyDetails(it, it1)
             }
         }
     }
@@ -849,7 +968,8 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
         getImages()
 
         addPropertyBinding.apply {
-            val property = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
+            val property =
+                propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
             edtPropertyTitle.setText(property.propertyTitle)
             edtPropertyAddress.setText(property.address)
             edtStates.setText(property.state)
@@ -878,41 +998,59 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
                 R.drawable.vastu_logo_splash
             )
 
-            if(property.highlights !=null && property.highlights.length>20){
-                val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
+            if (property.highlights != null && property.highlights.length > 20) {
+                val spannable = SpannableString(
+                    propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights
+                )
                 spannable.setSpan(
-                    BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    BulletSpan(50, resources.getColor(R.color.black)), 9, 18,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
                 spannable.setSpan(
-                    BulletSpan(50, resources.getColor(R.color.black)), 20,  spannable.length,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                edtHighlights.setText(Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights.trim()))
-            }else if(property.highlights !=null){
+                    BulletSpan(50, resources.getColor(R.color.black)), 20, spannable.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                )
+                edtHighlights.setText(
+                    Html.fromHtml(
+                        propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(
+                            0
+                        ).highlights.trim()
+                    )
+                )
+            } else if (property.highlights != null) {
                 edtHighlights.setText(property.highlights)
             }
-            if(property.description !=null)
-                edtDescription.setText(property.description.replace(htmlPattern," ",ignoreCase = false))
-                isValid = true
+            if (property.description != null)
+                edtDescription.setText(
+                    property.description.replace(
+                        htmlPattern,
+                        " ",
+                        ignoreCase = false
+                    )
+                )
+            isValid = true
 
         }
-     }
-    private fun getImages(){
-        getImageRequest = getImageRequest.copy(propertyId=propertyId)
+    }
+
+    private fun getImages() {
+        getImageRequest = getImageRequest.copy(propertyId = propertyId)
         showProgressDialog()
         addPropertyViewModel.getPropertyImages(getImageRequest)
     }
 
     override fun onSuccessGetImages(getImageMainResponse: GetImageMainResponse) {
         hideProgressDialog()
-        if(getImageMainResponse.getImageDetailsResponse.imageData.isNotEmpty()){
+        if (getImageMainResponse.getImageDetailsResponse.imageData.isNotEmpty()) {
             imageList = getImageMainResponse.getImageDetailsResponse.imageData
             setImages(imageList)
         }
     }
-    private fun setImages(images: List<ImageData>){
+
+    private fun setImages(images: List<ImageData>) {
         try {
             val imagesRecyclerView = addPropertyBinding.imagesGridView
-            val imageAdapter = PropertyImagesAdapter(this,images)
+            val imageAdapter = PropertyImagesAdapter(this, images)
             imagesRecyclerView.setLayoutManager(GridLayoutManager(activity, 2))
             imagesRecyclerView.adapter = imageAdapter
         } catch (e: Exception) {
@@ -922,35 +1060,56 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener,IAddPropertyListene
 
     override fun onFailureGetImages(getImageMainResponse: GetImageMainResponse) {
         hideProgressDialog()
-        showDialog(getImageMainResponse.imageResponse.responseStatusHeader.statusDescription!!, isSuccess = false,isNetworkFailure = false)
+        showDialog(
+            getImageMainResponse.imageResponse.responseStatusHeader.statusDescription!!,
+            isSuccess = false,
+            isNetworkFailure = false
+        )
         Handler(Looper.getMainLooper()).postDelayed({
-            hideDialog()}, 1000)
+            hideDialog()
+        }, 1000)
     }
 
     override fun onFailureGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
-        showDialog(propertyDataResponseMain.propertyIdResponse.responseStatusHeader.statusDescription!!, isSuccess = false,isNetworkFailure = false)
+        showDialog(
+            propertyDataResponseMain.propertyIdResponse.responseStatusHeader.statusDescription!!,
+            isSuccess = false,
+            isNetworkFailure = false
+        )
         Handler(Looper.getMainLooper()).postDelayed({
-            hideDialog()}, 1000)
+            hideDialog()
+        }, 1000)
     }
 
     override fun onItemClick(images: ImageData) {
-           showProgressDialog()
-           deleteImageRequest = deleteImageRequest.copy(propertyId=images.propertyId, imageId = images.imageId)
-           addPropertyViewModel.deleteImage(deleteImageRequest)
+        showProgressDialog()
+        deleteImageRequest =
+            deleteImageRequest.copy(propertyId = images.propertyId, imageId = images.imageId)
+        addPropertyViewModel.deleteImage(deleteImageRequest)
 
     }
+
     override fun onSuccessDeleteImage(deleteImageMainResponse: DeleteImageMainResponse) {
         hideProgressDialog()
-        showDialog(deleteImageMainResponse.imageDeleteResponse.responseStatusHeader.statusDescription!!, isSuccess = true,isNetworkFailure = false)
+        showDialog(
+            deleteImageMainResponse.imageDeleteResponse.responseStatusHeader.statusDescription!!,
+            isSuccess = true,
+            isNetworkFailure = false
+        )
         getImages()
     }
 
     override fun onFailureDeleteImage(deleteImageMainResponse: DeleteImageMainResponse) {
         hideProgressDialog()
-        showDialog(deleteImageMainResponse.imageDeleteResponse.responseStatusHeader.statusDescription!!, isSuccess = false,isNetworkFailure = false)
+        showDialog(
+            deleteImageMainResponse.imageDeleteResponse.responseStatusHeader.statusDescription!!,
+            isSuccess = false,
+            isNetworkFailure = false
+        )
         Handler(Looper.getMainLooper()).postDelayed({
-            hideDialog()}, 1000)
+            hideDialog()
+        }, 1000)
     }
 
     override fun addPropertyEnquiry() {
