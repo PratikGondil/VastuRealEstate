@@ -12,7 +12,7 @@ import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
 import com.vastu.utils.ErrorCode
 
-object AssignedPropertyEnquiryRepository: IGetAssignedPropertyEnqReq, IOnServiceResponseListener {
+object AssignedPropertyEnquiryRepository : IGetAssignedPropertyEnqReq, IOnServiceResponseListener {
     lateinit var iAssignedPropertyLeadResponse: IGetAssignedPropertyLeadRes
 
     override fun getAssignPropertyLead(
@@ -32,27 +32,46 @@ object AssignedPropertyEnquiryRepository: IGetAssignedPropertyEnqReq, IOnService
             .build()
             .sendApiRequest(this)
     }
+
     private fun buildRequest(objGetAssignedEnquiryReq: ObjGetAssignedEnquiryReq): ByteArray {
         return Gson().toJson(objGetAssignedEnquiryReq).toByteArray()
     }
+
     override fun onSuccessResponse(response: String, isError: Boolean) {
-        var objGetAssignedPropertyEnquiryRes = parseResponse(response)
-        if (objGetAssignedPropertyEnquiryRes.objEmpPropertyEnquiryDtlsRes?.ResponseStatusHeader?.statusCode.equals(
-                ErrorCode.success)){
-            iAssignedPropertyLeadResponse.onSuccessAssignedPropertyLead(objGetAssignedPropertyEnquiryRes)
+        try {
+            var objGetAssignedPropertyEnquiryRes = parseResponse(response)
+            if (objGetAssignedPropertyEnquiryRes.objEmpPropertyEnquiryDtlsRes?.ResponseStatusHeader?.statusCode.equals(
+                    ErrorCode.success
+                )
+            ) {
+                iAssignedPropertyLeadResponse.onSuccessAssignedPropertyLead(
+                    objGetAssignedPropertyEnquiryRes
+                )
+            } else {
+                iAssignedPropertyLeadResponse.onFailureAssignedPropertyLead(
+                    objGetAssignedPropertyEnquiryRes
+                )
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        else{
-            iAssignedPropertyLeadResponse.onFailureAssignedPropertyLead(objGetAssignedPropertyEnquiryRes)
-        }    }
+    }
 
     override fun onFailureResponse(response: String) {
-        var objGetAssignedPropertyEnquiryRes = parseResponse(response)
+        try {
+            var objGetAssignedPropertyEnquiryRes = parseResponse(response)
 
-        iAssignedPropertyLeadResponse.onFailureAssignedPropertyLead(objGetAssignedPropertyEnquiryRes)
+            iAssignedPropertyLeadResponse.onFailureAssignedPropertyLead(
+                objGetAssignedPropertyEnquiryRes
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun onUserNotConnected() {
     }
+
     private fun parseResponse(response: String): ObjEmpPropertyEnquiryDtlsResMain {
         return Gson().fromJson(
             response,

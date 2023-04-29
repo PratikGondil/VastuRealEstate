@@ -35,19 +35,27 @@ object AssignedLoanEnquiryRepository: IGetAssignedLoanEnqReq,IOnServiceResponseL
     }
 
     override fun onSuccessResponse(response: String, isError: Boolean) {
-        var objGetAssignedEnquiryRes = parseResponse(response)
-        if (objGetAssignedEnquiryRes.objEmpEnquiryDetailsResponse?.objResponseStatusHeader?.statusCode.equals(
-                ErrorCode.success)){
-            iAssignLoanLeadResponse.onSuccessAssignedLoanLead(objGetAssignedEnquiryRes)
-        }
-        else{
-            iAssignLoanLeadResponse.onFailureAssignedLoanLead(objGetAssignedEnquiryRes)
+        try {
+            var objGetAssignedEnquiryRes = parseResponse(response)
+            if (objGetAssignedEnquiryRes.objEmpEnquiryDetailsResponse?.objResponseStatusHeader?.statusCode.equals(
+                    ErrorCode.success)){
+                iAssignLoanLeadResponse.onSuccessAssignedLoanLead(objGetAssignedEnquiryRes)
+            }
+            else{
+                iAssignLoanLeadResponse.onFailureAssignedLoanLead(objGetAssignedEnquiryRes)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
     override fun onFailureResponse(response: String) {
-        var objAssignEnquiryReponse = parseResponse(response)
-        iAssignLoanLeadResponse.onFailureAssignedLoanLead(objAssignEnquiryReponse)
+        try {
+            var objAssignEnquiryReponse = parseResponse(response)
+            iAssignLoanLeadResponse.onFailureAssignedLoanLead(objAssignEnquiryReponse)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun onUserNotConnected() {
