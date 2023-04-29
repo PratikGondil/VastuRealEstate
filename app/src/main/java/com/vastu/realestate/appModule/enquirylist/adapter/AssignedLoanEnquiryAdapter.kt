@@ -31,6 +31,7 @@ class AssignedLoanEnquiryAdapter(
 //            binding.txtAssignee.visibility = View.VISIBLE
 //            binding.txtStatus.visibility = View.VISIBLE
 //
+        binding.remark.text = "Remark: "+loan.remark
             if(userType!!.equals(BaseConstant.EMPLOYEES))
                 binding.btnAssignLead.text = "Update status"
 

@@ -188,6 +188,17 @@
             </LinearLayout>
 
         </LinearLayout>
+        <TextView
+            android:id="@+id/remark"
+            android:textColor="@color/black"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:maxLength="25"
+            app:fontFamily="@font/poppins_regular"
+            android:layout_width="match_parent"
+            android:gravity="start"
+            android:textSize="@dimen/text_size_small"
+            android:layout_height="wrap_content" />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/llAssigneeLayout"
             android:layout_width="match_parent"

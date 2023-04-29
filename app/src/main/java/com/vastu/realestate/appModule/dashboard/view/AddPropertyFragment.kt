@@ -310,7 +310,10 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener, IAddPropertyListen
             isSuccess = true,
             isNetworkFailure = false
         )
-        Handler(Looper.getMainLooper()).postDelayed({ onClickBack() }, 1000)
+        Handler(Looper.getMainLooper()).postDelayed({
+            hideDialog()
+            onClickBack()
+                                                    }, 1000)
     }
 
     private fun getEditPropertyData(): EditPropertyRequest {

@@ -37,6 +37,7 @@ class AssignedPropertyEnquiryAdapter(private val propertyDataList: List<ObjEmpPr
 
         if(userType!!.equals(BaseConstant.EMPLOYEES))
             binding.btnAssignLead.text = "Update status"
+        binding.remark.text = "Remark: "+loan.remark
 
         holder.binding.btnAssignLead.setOnClickListener {
             iAssignLeadListener.updatePropertyLeadStatus(loan)
