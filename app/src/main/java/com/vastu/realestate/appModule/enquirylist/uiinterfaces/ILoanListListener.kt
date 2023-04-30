@@ -7,4 +7,5 @@ interface ILoanListListener :INetworkFailListener{
     fun onSuccessGetLoanEnquiry(getLoanEnquiryListMainResponse: GetLoanEnquiryListMainResponse)
     fun onFailureGetLoanEnquiry(getLoanEnquiryListMainResponse: GetLoanEnquiryListMainResponse)
     fun onGetAssignedLoanLeadSuccess(objEmpEnquiryDetailsResMain: ObjEmpEnquiryDetailsResMain)
+    fun onFailureGetAssignedLoanEnquiry(objEmpEnquiryDetailsResMain: ObjEmpEnquiryDetailsResMain)
 }

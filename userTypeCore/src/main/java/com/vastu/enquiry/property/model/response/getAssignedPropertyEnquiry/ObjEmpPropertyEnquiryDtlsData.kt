@@ -13,5 +13,7 @@ data class ObjEmpPropertyEnquiryDtlsData(
     @SerializedName("area") var area : String? = null,
     @SerializedName("budget") var budget : String? = null,
     @SerializedName("status_name") var status_name:String?=null,
-    @SerializedName("remark") var remark:String?=null
+    @SerializedName("remark") var remark:String?=null,
+    @SerializedName("property_title") var propertyTitle:String?=null
+
 ):java.io.Serializable

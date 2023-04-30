@@ -47,6 +47,7 @@ class LoanEnquiryViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     override fun onFailureAssignedLoanLead(objEmpEnquiryDetailsResMain: ObjEmpEnquiryDetailsResMain) {
+         iLoanListListener.onFailureGetAssignedLoanEnquiry(objEmpEnquiryDetailsResMain)
     }
 
 }

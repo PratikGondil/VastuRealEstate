@@ -106,6 +106,11 @@ class LoanEnquiryListFragment : BaseFragment(), ILoanListListener, IAssignLeadLi
         loanRecyclerview.adapter = loanAdapter
   }
 
+    override fun onFailureGetAssignedLoanEnquiry(objEmpEnquiryDetailsResMain: ObjEmpEnquiryDetailsResMain) {
+        stopShimmerAnimation()
+        showDialog(objEmpEnquiryDetailsResMain.objEmpEnquiryDetailsResponse?.objResponseStatusHeader?.statusDescription!!,false,false)
+    }
+
     override fun onUserNotConnected() {
         stopShimmerAnimation()
         showDialog("",false,true)
