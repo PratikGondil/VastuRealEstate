@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vastu.enquiry.loan.model.response.getAssignedLoanEnquiry.ObjEmpEnquiryDetailsData
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListener
 import com.vastu.realestate.databinding.AssignedLoanEnquiryBinding
+import com.vastu.realestate.databinding.AssignedLoanEnquiryItemviewBinding
 import com.vastu.realestate.utils.BaseConstant
 
 class AssignedLoanEnquiryAdapter(
@@ -17,10 +18,10 @@ class AssignedLoanEnquiryAdapter(
     RecyclerView.Adapter<AssignedLoanEnquiryViewHolder>()  {
     private lateinit var context: Context
 
-    private lateinit var binding: AssignedLoanEnquiryBinding
+    private lateinit var binding: AssignedLoanEnquiryItemviewBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AssignedLoanEnquiryViewHolder {
         context = parent.context
-        binding = AssignedLoanEnquiryBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        binding = AssignedLoanEnquiryItemviewBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return AssignedLoanEnquiryViewHolder(binding)
     }
 
@@ -31,7 +32,6 @@ class AssignedLoanEnquiryAdapter(
 //            binding.txtAssignee.visibility = View.VISIBLE
 //            binding.txtStatus.visibility = View.VISIBLE
 //
-        binding.remark.text = "Remark: "+loan.remark
             if(userType!!.equals(BaseConstant.EMPLOYEES))
                 binding.btnAssignLead.text = "Update status"
 
@@ -50,7 +50,7 @@ class AssignedLoanEnquiryAdapter(
 
     override fun getItemCount(): Int =loanDataList.size
 }
-class AssignedLoanEnquiryViewHolder(val binding: AssignedLoanEnquiryBinding)
+class AssignedLoanEnquiryViewHolder(val binding: AssignedLoanEnquiryItemviewBinding)
     :RecyclerView.ViewHolder(binding.root){
     fun bind(enquiryData: ObjEmpEnquiryDetailsData){
         binding.objEmpLoanEnquiryDtls = enquiryData

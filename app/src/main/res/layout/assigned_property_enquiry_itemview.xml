@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="objEmpPropertyEnquiryDtlsData"
+            type="com.vastu.enquiry.property.model.response.getAssignedPropertyEnquiry.ObjEmpPropertyEnquiryDtlsData" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:background="@drawable/real_estate_background"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="vertical"
+        app:cardCornerRadius="@dimen/card_corner_radius">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_small">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_menu"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/edtName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/full_name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+
+                    <TextView
+                        android:id="@+id/loan_name_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:gravity="start"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@{objEmpPropertyEnquiryDtlsData.name}"   
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_medium" />
+                    <TextView
+                        android:id="@+id/edtOccupation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/occupation_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+                    <TextView
+                        android:id="@+id/loan_occupation_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@{objEmpPropertyEnquiryDtlsData.occupation}"                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_regular" />
+
+
+                    <TextView
+                        android:id="@+id/loan_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/property_interested_in_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+
+                    <TextView
+                        android:id="@+id/loan_interested_in_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@{objEmpPropertyEnquiryDtlsData.interestedIn}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_regular" />
+
+                    <TextView
+                        android:id="@+id/loan_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/area_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+
+                    <TextView
+                        android:id="@+id/loan_amount_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLength="25"
+                        android:text="@{objEmpPropertyEnquiryDtlsData.area}"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_regular" />
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_menu"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+                    <TextView
+                        android:id="@+id/contact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/mobile_number_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+                    <TextView
+                        android:id="@+id/loan_mobile_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:gravity="start"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@{objEmpPropertyEnquiryDtlsData.mobile}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_regular" />
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/address_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+                    <TextView
+                        android:id="@+id/loan_address_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:drawableStart="@drawable/location"
+                        android:drawablePadding="@dimen/padding_small"
+                        android:ellipsize="end"
+                        android:gravity="start|center_vertical"
+                        android:includeFontPadding="true"
+                        android:maxLength="25"
+                        android:singleLine="true"
+                        android:text="@{objEmpPropertyEnquiryDtlsData.address}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_regular" />
+                    <TextView
+                        android:id="@+id/bank_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/ownership_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+                    <TextView
+                        android:id="@+id/loan_bank_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@{objEmpPropertyEnquiryDtlsData.ownership}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_regular" />
+                    <TextView
+                        android:id="@+id/Term"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@string/budget_text"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/roboto_bold" />
+                    <TextView
+                        android:id="@+id/loan_term_year_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:text="@{objEmpPropertyEnquiryDtlsData.budget}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_small"
+                        app:fontFamily="@font/poppins_regular" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/remark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:inputType="textCapWords"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:text="Remark :"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small"
+                    app:fontFamily="@font/roboto_bold" />
+
+                <TextView
+                    android:id="@+id/remarkValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:text="@{objEmpPropertyEnquiryDtlsData.remark}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small"
+                    app:fontFamily="@font/poppins_regular" />
+                />
+            </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/llAssigneeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtAssignee"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:visibility="gone"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_size_small"
+                    app:fontFamily="@font/poppins_regular"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.37" />
+
+                <TextView
+                    android:id="@+id/txtStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLength="25"
+                    android:maxLines="1"
+                    android:text="@{objEmpPropertyEnquiryDtlsData.status_name}"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/text_size_small"
+                    app:fontFamily="@font/poppins_regular"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/txtAssignee"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:layout_constraintWidth_percent="0.37" />
+
+                <TextView
+                    android:id="@+id/btnAssignLead"
+                    style="@style/TextAppearance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:autoLink="all"
+                    android:gravity="center"
+                    android:linksClickable="false"
+                    android:selectAllOnFocus="false"
+                    android:shadowColor="@color/text_shadow"
+                    android:shadowDx="5.0"
+                    android:shadowDy="5.0"
+                    android:shadowRadius="3.0"
+                    android:text="@string/assign"
+                    android:textColor="@color/colorPrimaryDark"
+                    app:fontFamily="@font/poppins_medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintWidth_percent="0.25" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vastu.enquiry.property.model.response.getAssignedPropertyEnquiry.ObjEmpPropertyEnquiryDtlsData
 import com.vastu.realestate.appModule.enquirylist.uiinterfaces.IAssignLeadListener
 import com.vastu.realestate.databinding.AssignedPropertyEnquiryBinding
+import com.vastu.realestate.databinding.AssignedPropertyEnquiryItemviewBinding
 import com.vastu.realestate.utils.BaseConstant
 
 class AssignedPropertyEnquiryAdapter(private val propertyDataList: List<ObjEmpPropertyEnquiryDtlsData>,
@@ -14,14 +15,14 @@ class AssignedPropertyEnquiryAdapter(private val propertyDataList: List<ObjEmpPr
 ) : RecyclerView.Adapter<AssignedPropertyEnquiryViewHolder>() {
     private lateinit var context: Context
 
-    private lateinit var binding: AssignedPropertyEnquiryBinding
+    private lateinit var binding: AssignedPropertyEnquiryItemviewBinding
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): AssignedPropertyEnquiryViewHolder {
         context = parent.context
-        binding = AssignedPropertyEnquiryBinding.inflate(
+        binding = AssignedPropertyEnquiryItemviewBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -37,7 +38,6 @@ class AssignedPropertyEnquiryAdapter(private val propertyDataList: List<ObjEmpPr
 
         if(userType!!.equals(BaseConstant.EMPLOYEES))
             binding.btnAssignLead.text = "Update status"
-        binding.remark.text = "Remark: "+loan.remark
 
         holder.binding.btnAssignLead.setOnClickListener {
             iAssignLeadListener.updatePropertyLeadStatus(loan)
@@ -45,7 +45,7 @@ class AssignedPropertyEnquiryAdapter(private val propertyDataList: List<ObjEmpPr
         }
     }
 }
-class AssignedPropertyEnquiryViewHolder(val binding:AssignedPropertyEnquiryBinding
+class AssignedPropertyEnquiryViewHolder(val binding:AssignedPropertyEnquiryItemviewBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(enquiryData: ObjEmpPropertyEnquiryDtlsData) {
         binding.objEmpPropertyEnquiryDtlsData = enquiryData
