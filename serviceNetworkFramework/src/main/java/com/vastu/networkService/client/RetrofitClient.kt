@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
-    var BASE_URL = "https://vastu.myclanservices.co.in/"
+    var BASE_URL = "https://vastu4u.com/api/"
 
     var httpClient = OkHttpClient.Builder()
         .connectTimeout(60, TimeUnit.SECONDS)
