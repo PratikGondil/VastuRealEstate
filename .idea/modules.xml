@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/VastuRealEstate.iml" filepath="$PROJECT_DIR$/.idea/modules/VastuRealEstate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/VastuRealEstate.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/VastuRealEstate.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/VastuRealEstate.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/VastuRealEstate.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/VastuRealEstate.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/VastuRealEstate.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/VastuRealEstate.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/VastuRealEstate.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/commoncore/VastuRealEstate.commoncore.iml" filepath="$PROJECT_DIR$/.idea/modules/commoncore/VastuRealEstate.commoncore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/commoncore/VastuRealEstate.commoncore.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/commoncore/VastuRealEstate.commoncore.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/commoncore/VastuRealEstate.commoncore.main.iml" filepath="$PROJECT_DIR$/.idea/modules/commoncore/VastuRealEstate.commoncore.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/commoncore/VastuRealEstate.commoncore.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/commoncore/VastuRealEstate.commoncore.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/loginCore/VastuRealEstate.loginCore.iml" filepath="$PROJECT_DIR$/.idea/modules/loginCore/VastuRealEstate.loginCore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/loginCore/VastuRealEstate.loginCore.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/loginCore/VastuRealEstate.loginCore.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/loginCore/VastuRealEstate.loginCore.main.iml" filepath="$PROJECT_DIR$/.idea/modules/loginCore/VastuRealEstate.loginCore.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/loginCore/VastuRealEstate.loginCore.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/loginCore/VastuRealEstate.loginCore.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/registrationCore/VastuRealEstate.registrationCore.iml" filepath="$PROJECT_DIR$/.idea/modules/registrationCore/VastuRealEstate.registrationCore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/registrationCore/VastuRealEstate.registrationCore.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/registrationCore/VastuRealEstate.registrationCore.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/registrationCore/VastuRealEstate.registrationCore.main.iml" filepath="$PROJECT_DIR$/.idea/modules/registrationCore/VastuRealEstate.registrationCore.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/registrationCore/VastuRealEstate.registrationCore.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/registrationCore/VastuRealEstate.registrationCore.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/serviceNetworkFramework/VastuRealEstate.serviceNetworkFramework.iml" filepath="$PROJECT_DIR$/.idea/modules/serviceNetworkFramework/VastuRealEstate.serviceNetworkFramework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/serviceNetworkFramework/VastuRealEstate.serviceNetworkFramework.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/serviceNetworkFramework/VastuRealEstate.serviceNetworkFramework.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/serviceNetworkFramework/VastuRealEstate.serviceNetworkFramework.main.iml" filepath="$PROJECT_DIR$/.idea/modules/serviceNetworkFramework/VastuRealEstate.serviceNetworkFramework.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/serviceNetworkFramework/VastuRealEstate.serviceNetworkFramework.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/serviceNetworkFramework/VastuRealEstate.serviceNetworkFramework.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/subModulesCore/VastuRealEstate.subModulesCore.iml" filepath="$PROJECT_DIR$/.idea/modules/subModulesCore/VastuRealEstate.subModulesCore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/subModulesCore/VastuRealEstate.subModulesCore.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/subModulesCore/VastuRealEstate.subModulesCore.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/subModulesCore/VastuRealEstate.subModulesCore.main.iml" filepath="$PROJECT_DIR$/.idea/modules/subModulesCore/VastuRealEstate.subModulesCore.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/subModulesCore/VastuRealEstate.subModulesCore.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/subModulesCore/VastuRealEstate.subModulesCore.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/userTypeCore/VastuRealEstate.userTypeCore.iml" filepath="$PROJECT_DIR$/.idea/modules/userTypeCore/VastuRealEstate.userTypeCore.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/userTypeCore/VastuRealEstate.userTypeCore.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/userTypeCore/VastuRealEstate.userTypeCore.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/userTypeCore/VastuRealEstate.userTypeCore.main.iml" filepath="$PROJECT_DIR$/.idea/modules/userTypeCore/VastuRealEstate.userTypeCore.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/userTypeCore/VastuRealEstate.userTypeCore.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/userTypeCore/VastuRealEstate.userTypeCore.unitTest.iml" />
+    </modules>
+  </component>
+</project>
