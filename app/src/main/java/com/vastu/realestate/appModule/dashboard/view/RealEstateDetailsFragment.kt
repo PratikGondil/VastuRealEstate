@@ -26,6 +26,8 @@ import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestatecore.model.response.PropertyData
 import com.vastu.slidercore.model.response.property.PropertySliderImage
 import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPropertySliderListener,
     IToolbarListener {
@@ -35,6 +37,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     private var sliderList : List<PropertySliderImage>? = null
     private val imageList = ArrayList<SlideModel>()
     private lateinit var drawerViewModel: DrawerViewModel
+    private val REMOVE_TAGS: Pattern = Pattern.compile("<.+?>")
 
 
     override fun onCreateView(
@@ -137,7 +140,17 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
             }else{
                 highlightsTextview.text = property.highlights
             }
-            descriptionTextview.text =  property.description.replace(htmlPattern," ",ignoreCase = false)
+
+            if(property.description.length>20){
+                val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).description)
+                spannable.setSpan(BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                spannable.setSpan(BulletSpan(50, resources.getColor(R.color.black)), 20,  spannable.length,
+                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                descriptionTextview.text = Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).description)
+            }else{
+                descriptionTextview.text = property.highlights
+            }
         }
     }
 

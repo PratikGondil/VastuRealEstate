@@ -732,6 +732,7 @@
                             android:layout_width="match_parent"
                             android:layout_weight="1"
                             android:layout_height="0dp"
+                            android:layout_marginBottom="@dimen/dimen5dp"
                             android:includeFontPadding="false"
                             android:textSize="@dimen/text_size_normal"
                             android:text="@string/description"
@@ -743,12 +744,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/text_size_small"
-                            android:layout_marginTop="@dimen/margin_menu"
                             android:layout_marginStart="@dimen/margin_small"
                             android:ellipsize="end"
+                            android:layout_marginTop="@dimen/dimen10dp"
                             android:minLines="2"
                             android:maxLines="10"
-                            android:text="@{propertyData.description}"
                             android:textColor="@color/text_color"
                              app:fontFamily="@font/poppins_light"  />
                     </LinearLayout>
@@ -773,6 +773,7 @@
                             android:textSize="@dimen/text_size_normal"
                             android:includeFontPadding="false"
                             android:text="@string/highlights"
+
                             android:textColor="@color/black"
                             app:fontFamily="@font/poppins_medium" />
                         <TextView
@@ -783,6 +784,7 @@
                             android:textSize="@dimen/text_size_small"
                             android:ellipsize="end"
                             android:minLines="2"
+                            android:layout_marginTop="@dimen/dimen10dp"
                             android:maxLines="10"
                             android:textColor="@color/text_color"
                              app:fontFamily="@font/poppins_light"  />
