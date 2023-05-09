@@ -30,12 +30,8 @@
           <stringArguments>
             <stringArg name="classpath">
               <args>
-                <arg>$MODULE_DIR$/../../../loginCore/build/intermediates/compile_library_classes_jar/debug/classes.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/2e86efdecc11d21d9fdeccf4b9d0cf77/transformed/junit-1.1.4-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/1aa073851289560c9374e3d1c38ffa4e/transformed/espresso-core-3.5.0-api.jar</arg>
-                <arg>$MODULE_DIR$/../../../serviceNetworkFramework/build/intermediates/compile_library_classes_jar/debug/classes.jar</arg>
-                <arg>$MODULE_DIR$/../../../commoncore/build/intermediates/compile_library_classes_jar/debug/classes.jar</arg>
-                <arg>$MODULE_DIR$/../../../userTypeCore/build/intermediates/compile_library_classes_jar/debug/classes.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/e5de861c8cc54c85bd3213dc88ae3151/transformed/material-1.7.0-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/82f433089a1e1775b63e6a2a08fa92db/transformed/constraintlayout-2.0.1-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/b3ca4d24e7de140e1b2109bdda799288/transformed/appcompat-1.5.1-api.jar</arg>
@@ -218,5 +214,4 @@
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.transition:transition:1.2.0@aar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: androidx.viewpager2:viewpager2:1.0.0@aar" level="project" />
   </component>
-  <component name="TestModuleProperties" production-module="VastuRealEstate.loginCore.main" />
 </module>
