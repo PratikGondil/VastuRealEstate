@@ -92,7 +92,7 @@
            />
             </androidx.core.widget.NestedScrollView>
         </LinearLayout>
-       <LinearLayout
+       <com.vastu.realestate.utils.DisallowInterceptView
            android:id="@+id/llFilterView"
            android:layout_width="0dp"
            android:layout_height="0dp"
@@ -108,7 +108,7 @@
                android:id="@+id/selectedFilterView"
                layout="@layout/filter_view_fargment"
                bind:realEstateViewModel="@{realEstateViewModel}"/>
-       </LinearLayout>
+       </com.vastu.realestate.utils.DisallowInterceptView>
 
     <LinearLayout
         android:id="@+id/llButtonLayout"

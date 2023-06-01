@@ -39,6 +39,8 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
         viewModel.iLoginViewListener = this
        //initView()
         return binder.root
+
+
     }
 
 
