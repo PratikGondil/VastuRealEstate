@@ -1,6 +1,7 @@
 package com.vastu.realestate.appModule.dashboard.adapter
 
 import android.content.Context
+import android.text.Html
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -30,6 +31,7 @@ class OffersAdapter(private val offersList: List<OfferData>,iRecycleViewClick: I
     override fun onBindViewHolder(holder: OffersViewHolder, position: Int) {
         val offer = offersList[position]
         holder.bind(offer)
+        holder.binding.description.setText(Html.fromHtml(offer.description))
         holder.binding.cvGbpView.setOnClickListener {
             iRecycleViewClickCopy.onClick(offersList[position].property)
         }
