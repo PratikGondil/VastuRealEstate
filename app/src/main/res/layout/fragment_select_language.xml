@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="com.vastu.realestate.appModule.employee.bindingAdapter.EmployeeDetailsBindingAdapter"/>
+        <variable
+            name="selectLanguageViewModel"
+            type="com.vastu.realestate.appModule.selectlanguage.SelectLanguageViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rlMainTop"
+        android:background="@drawable/white_background"
+
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtSelectLanguage"
+            android:text="Select Language"
+            android:textSize="@dimen/dimens20sp"
+            android:textColor="#ED9318"
+            />
+
+        <RadioGroup
+            android:id="@+id/radioLanguage"
+            android:layout_marginTop="@dimen/dimen50dp"
+            android:layout_below="@+id/txtSelectLanguage"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content" >
+        <RadioButton
+            android:id="@+id/chkMarathi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen10dp"
+            android:text="मराठी"
+            android:onClick="onCheckboxClicked"/>
+        <RadioButton
+            android:id="@+id/chkEnglish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen10dp"
+            android:layout_below="@+id/chkMarathi"
+            android:text="English"
+            android:onClick="onCheckboxClicked"/>
+        </RadioGroup>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNext"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@{selectLanguageViewModel.btnBackground}"
+            android:onClick="@{(view)->selectLanguageViewModel.onNextClick()}"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_normal"
+            android:layout_marginTop="@dimen/dimen50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/radioLanguage"
+            app:fontFamily="@font/poppins_medium" />
+
+    </RelativeLayout>
+</layout>
