@@ -4,6 +4,7 @@ import android.app.Application
 import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.login.uiInterfaces.ILoginViewListener
 import com.vastu.realestate.logincore.callbacks.response.ILoginResponseListener
@@ -19,6 +20,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application),
     init {
         mContext = application
     }
+
+
     var errorVisible = ObservableField(View.GONE)
     var btnBackground = ObservableField(mContext.getDrawable(R.drawable.button_inactive_background))
     var error =ObservableField("Please enter your register number to proceed.")

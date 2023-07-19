@@ -9,7 +9,8 @@ import com.vastu.realestate.R
 
 class SelectLanguageViewModel(application: Application): AndroidViewModel(application) {
     var mContext :Application
-
+    var isMarathiSelected = ObservableField<Boolean>(false)
+    var isEnglishSelected = ObservableField<Boolean>(false)
     init {
         mContext = application
     }
@@ -18,6 +19,11 @@ class SelectLanguageViewModel(application: Application): AndroidViewModel(applic
 
     fun onNextClick()
     {
+        var isMarathiSelected = isMarathiSelected.get()
+        if(isMarathiSelected == true)
+        {
+
+        }
 
     }
 

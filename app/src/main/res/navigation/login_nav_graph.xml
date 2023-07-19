@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/login_nav_graph"
-    app:startDestination="@id/SignUpAndLoginFragment">
+    app:startDestination="@id/SelectLanguageFragment">
     <fragment
         android:id="@+id/SignUpAndLoginFragment"
         android:name="com.vastu.realestate.SignUpAndLoginFragment"
@@ -16,6 +16,11 @@
         <action
             android:id="@+id/action_SignUpFragment_To_LoginFragment"
             app:destination="@+id/LoginFragment"
+            />
+
+        <action
+            android:id="@+id/action_SignUpFragment_To_selectLanguage"
+            app:destination="@+id/SelectLanguageFragment"
             />
     </fragment>
     <fragment
@@ -32,6 +37,14 @@
         tools:layout="@layout/login_fragment">
 
     </fragment>
+    <fragment
+        android:id="@+id/SelectLanguageFragment"
+        android:name="com.vastu.realestate.appModule.selectlanguage.SelectLanguageFragment"
+        android:label="SelectLanaguage"
+        tools:layout="@layout/fragment_select_language">
+
+    </fragment>
+
     <fragment
         android:id="@+id/OTPFragment"
         android:name="com.vastu.realestate.appModule.otp.fragment.OTPFragment"

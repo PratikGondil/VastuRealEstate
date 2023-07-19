@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.vastu.realestate.R
@@ -18,7 +20,9 @@ import com.vastu.realestate.databinding.FragmentSelectLanguageBinding
 
     lateinit var selectLanguageViewModel: SelectLanguageViewModel
     lateinit var selectLanguageBinding: FragmentSelectLanguageBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
+      lateinit var radioButton: RadioButton
+
+      override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
@@ -35,6 +39,10 @@ import com.vastu.realestate.databinding.FragmentSelectLanguageBinding
     }
 
       private fun initView() {
+          selectLanguageBinding.btnNext.setOnClickListener {
+
+
+          }
 
       }
 
