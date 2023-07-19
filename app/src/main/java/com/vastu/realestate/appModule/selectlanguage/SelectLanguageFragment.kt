@@ -10,14 +10,16 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.contactus.ContactUsViewModel
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
+import com.vastu.realestate.appModule.selectlanguage.uiinterface.iSelectLanguage
 import com.vastu.realestate.databinding.FragmentSelectLanguageBinding
 
 
-  class SelectLanguageFragment : BaseFragment() {
+  class SelectLanguageFragment : BaseFragment(),iSelectLanguage {
 
     lateinit var selectLanguageViewModel: SelectLanguageViewModel
     lateinit var selectLanguageBinding: FragmentSelectLanguageBinding
@@ -35,6 +37,7 @@ import com.vastu.realestate.databinding.FragmentSelectLanguageBinding
         selectLanguageViewModel = ViewModelProvider(this)[SelectLanguageViewModel::class.java]
         selectLanguageBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_select_language,container,false)
         selectLanguageBinding.selectLanguageViewModel = selectLanguageViewModel
+        selectLanguageViewModel.iSelectLanguage = this
         initView()
         return selectLanguageBinding.root
     }
@@ -55,6 +58,10 @@ import com.vastu.realestate.databinding.FragmentSelectLanguageBinding
           }
       }
 
+      override fun redirectToLoginSignUpPage() {
+          findNavController().navigate(R.id.action_SelectLanguage_to_SignupLoginHome)
+
+      }
 
 
   }

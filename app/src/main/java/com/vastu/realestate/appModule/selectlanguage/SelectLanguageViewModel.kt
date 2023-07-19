@@ -8,12 +8,14 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import com.vastu.networkService.util.Constants
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.selectlanguage.uiinterface.iSelectLanguage
 import com.vastu.realestate.utils.PreferenceManger
 
 class SelectLanguageViewModel(application: Application): AndroidViewModel(application) {
     var mContext :Application
     var isMarathiSelected = ObservableField<Boolean>(false)
     var isEnglishSelected = ObservableField<Boolean>(false)
+    lateinit var iSelectLanguage:iSelectLanguage
     init {
         mContext = application
     }
@@ -29,6 +31,7 @@ class SelectLanguageViewModel(application: Application): AndroidViewModel(applic
         }else if(isEnglishSelected.get() == true){
             PreferenceManger.putString<String>(Constants.SELECTED_LANGUAGE,Constants.ENGLISH)
         }
+        iSelectLanguage.redirectToLoginSignUpPage()
 
     }
 

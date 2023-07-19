@@ -43,6 +43,10 @@
         android:label="SelectLanaguage"
         tools:layout="@layout/fragment_select_language">
 
+        <action
+            android:id="@+id/action_SelectLanguage_to_SignupLoginHome"
+            app:destination="@+id/SignUpAndLoginFragment"
+            />
     </fragment>
 
     <fragment
