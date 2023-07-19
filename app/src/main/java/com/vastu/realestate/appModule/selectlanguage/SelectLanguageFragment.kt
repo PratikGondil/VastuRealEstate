@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.vastu.realestate.R
@@ -39,12 +40,21 @@ import com.vastu.realestate.databinding.FragmentSelectLanguageBinding
     }
 
       private fun initView() {
+          setOnCheckedChangeListener()
           selectLanguageBinding.btnNext.setOnClickListener {
 
 
           }
 
       }
+
+      private fun setOnCheckedChangeListener() {
+          selectLanguageBinding.radioLanguage.setOnCheckedChangeListener { group, checkedId ->
+              selectLanguageViewModel.btnBackground.set(ContextCompat.getDrawable(requireContext(),R.drawable.round_button_background))
+
+          }
+      }
+
 
 
   }

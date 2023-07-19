@@ -3,9 +3,12 @@ package com.vastu.realestate.appModule.selectlanguage
 import android.app.Application
 import android.app.backup.SharedPreferencesBackupHelper
 import android.content.SharedPreferences
+import androidx.core.content.ContextCompat
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
+import com.vastu.networkService.util.Constants
 import com.vastu.realestate.R
+import com.vastu.realestate.utils.PreferenceManger
 
 class SelectLanguageViewModel(application: Application): AndroidViewModel(application) {
     var mContext :Application
@@ -19,10 +22,12 @@ class SelectLanguageViewModel(application: Application): AndroidViewModel(applic
 
     fun onNextClick()
     {
-        var isMarathiSelected = isMarathiSelected.get()
-        if(isMarathiSelected == true)
+        if(isMarathiSelected.get() == true)
         {
+            PreferenceManger.putString<String>(Constants.SELECTED_LANGUAGE,Constants.MARATHI)
 
+        }else if(isEnglishSelected.get() == true){
+            PreferenceManger.putString<String>(Constants.SELECTED_LANGUAGE,Constants.ENGLISH)
         }
 
     }
