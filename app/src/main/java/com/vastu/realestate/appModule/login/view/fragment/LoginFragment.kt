@@ -1,27 +1,23 @@
 package com.vastu.realestate.appModule.login.view.fragment
 
-import android.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import com.vastu.networkService.util.Constants
 import com.vastu.realestate.appModule.login.viewModel.LoginViewModel
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.login.uiInterfaces.ILoginViewListener
 import com.vastu.realestate.commoncore.model.otp.ObjUserData
-import com.vastu.realestate.customProgressDialog.CustomProgressDialog
 import com.vastu.realestate.databinding.LoginFragmentBinding
 import com.vastu.realestate.logincore.model.response.ObjLoginResponse
 import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
 import com.vastu.realestate.utils.BaseConstant
+import com.vastu.realestate.utils.PreferenceManger
 
 class LoginFragment : BaseFragment(), ILoginViewListener {
 
@@ -52,9 +48,10 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
 
     fun redirectedToAPIAfterTerms()
     {
+        var language =PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
         if(viewModel.isValidMobileNumber.get()!!){
             showProgressDialog()
-            viewModel.callLoginApi(viewModel.mobileNumber.get().toString())
+            viewModel.callLoginApi(viewModel.mobileNumber.get().toString(),language!!)
         }
         else{
             binder.tilMobileNumLayout.helperText= viewModel.error.get()

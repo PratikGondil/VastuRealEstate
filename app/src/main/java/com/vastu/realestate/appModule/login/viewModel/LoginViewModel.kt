@@ -4,7 +4,6 @@ import android.app.Application
 import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.login.uiInterfaces.ILoginViewListener
 import com.vastu.realestate.logincore.callbacks.response.ILoginResponseListener
@@ -30,8 +29,8 @@ class LoginViewModel(application: Application) : AndroidViewModel(application),
         iLoginViewListener.onSendOtpClick()
     }
 
-    fun callLoginApi(mobileNumber:String){
-        LoginRepository.callLoginApi(mContext,mobileNumber,LOGIN,this)
+    fun callLoginApi(mobileNumber: String, language: String){
+        LoginRepository.callLoginApi(mContext,mobileNumber,language,LOGIN,this)
     }
 
     fun calltermsConditionsAPI()
