@@ -33,6 +33,7 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
         binder.lifecycleOwner = this
         binder.loginViewModel = viewModel
         viewModel.iLoginViewListener = this
+        viewModel.error.set(requireContext().resources.getString(R.string.valid_number_error))
        //initView()
         return binder.root
 

@@ -23,7 +23,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application),
 
     var errorVisible = ObservableField(View.GONE)
     var btnBackground = ObservableField(mContext.getDrawable(R.drawable.button_inactive_background))
-    var error =ObservableField("Please enter your register number to proceed.")
+    var error =ObservableField("")
     lateinit var iLoginViewListener : ILoginViewListener
     fun onSendOtpClick(){
         iLoginViewListener.onSendOtpClick()

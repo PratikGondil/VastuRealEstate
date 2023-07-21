@@ -249,4 +249,6 @@
     <string name="user">User</string>
     <string name="remark">Remark</string>
     <string name="next">Next</string>
+    <string name="valid_number">please enter valid number</string>
+    <string name="valid_number_error">Please enter your register number to proceed</string>
 </resources>
