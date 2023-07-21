@@ -21,6 +21,7 @@ import com.vastu.getimages.callbacks.response.IGetImagesResponseListener
 import com.vastu.getimages.model.request.GetImageRequest
 import com.vastu.getimages.model.response.GetImageMainResponse
 import com.vastu.getimages.repository.GetImageRepository
+import com.vastu.networkService.util.Constants
 import com.vastu.propertycore.callback.request.response.IGetPropertyDetailsResponseListener
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
 import com.vastu.propertycore.repository.PropertyDetailsRepository
@@ -39,6 +40,7 @@ import com.vastu.realestate.registrationcore.repository.CityListRequestRepositor
 import com.vastu.realestate.registrationcore.repository.SubAreaRequestRepository
 import com.vastu.realestate.utils.ApiUrlEndPoints
 import com.vastu.realestate.utils.ApiUrlEndPoints.EDIT_PROPERTY
+import com.vastu.realestate.utils.PreferenceManger
 
 class AddPropertyViewModel(application: Application):AndroidViewModel(application),
     ITalukaResponseListener, ISubAreaResponseListener,IAddPropertyResponseListener,IEditPropertyResponseListener,
@@ -145,10 +147,12 @@ class AddPropertyViewModel(application: Application):AndroidViewModel(applicatio
         )
     }
     fun callCityListApi(){
-        CityListRequestRepository.callCityListApi(mContext, ApiUrlEndPoints.GET_CITIES,this)
+        var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
+        CityListRequestRepository.callCityListApi(mContext, ApiUrlEndPoints.GET_CITIES,language!!,this)
     }
 
     fun callSubAreaList(talukaId: ObjSubAreaReq){
+
         SubAreaRequestRepository.callSubAreaListApi(mContext,talukaId,
             ApiUrlEndPoints.GET_SUB_CITY,this)
     }

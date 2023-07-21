@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.vastu.networkService.util.Constants
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterClickListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterViewHandler
@@ -22,6 +23,7 @@ import com.vastu.realestate.registrationcore.repository.CityListRequestRepositor
 import com.vastu.realestate.registrationcore.repository.SubAreaRequestRepository
 import com.vastu.realestate.utils.ApiUrlEndPoints
 import com.vastu.realestate.utils.ApiUrlEndPoints.GET_PROPERTY_LIST
+import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.realestatecore.callback.response.IFilterPropertyListResListener
 import com.vastu.realestatecore.callback.response.IGetPropertyListResListener
 import com.vastu.realestatecore.model.filter.ObjManageFilterVisibility
@@ -149,7 +151,8 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
         isVisibleChangeSortLayout.set(objManageFilterVisibility.isVisibleChangeSortLayout)
     }
     fun callCityListApi(){
-        CityListRequestRepository.callCityListApi(mContext, ApiUrlEndPoints.GET_CITIES,this)
+        var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
+        CityListRequestRepository.callCityListApi(mContext, ApiUrlEndPoints.GET_CITIES,language!!,this)
     }
 
     fun callSubAreaListApi(talukaId: ObjSubAreaReq){

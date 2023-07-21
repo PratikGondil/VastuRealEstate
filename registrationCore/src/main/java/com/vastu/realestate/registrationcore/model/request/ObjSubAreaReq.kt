@@ -4,5 +4,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class ObjSubAreaReq(
-    @SerializedName("taluka_id") var talukaId:String?=null
+    @SerializedName("taluka_id") var talukaId:String?=null,
+    @SerializedName("language") var language :String?=null
+
 ):Serializable
