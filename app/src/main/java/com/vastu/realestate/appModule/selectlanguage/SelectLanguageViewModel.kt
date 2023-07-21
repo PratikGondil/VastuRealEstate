@@ -1,9 +1,6 @@
 package com.vastu.realestate.appModule.selectlanguage
 
 import android.app.Application
-import android.app.backup.SharedPreferencesBackupHelper
-import android.content.SharedPreferences
-import androidx.core.content.ContextCompat
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import com.vastu.networkService.util.Constants
@@ -24,14 +21,18 @@ class SelectLanguageViewModel(application: Application): AndroidViewModel(applic
 
     fun onNextClick()
     {
+        var selectedLanguageCode =""
+
         if(isMarathiSelected.get() == true)
         {
+            selectedLanguageCode ="mr"
             PreferenceManger.putString<String>(Constants.SELECTED_LANGUAGE,Constants.MARATHI)
 
         }else if(isEnglishSelected.get() == true){
+            selectedLanguageCode ="en"
             PreferenceManger.putString<String>(Constants.SELECTED_LANGUAGE,Constants.ENGLISH)
         }
-        iSelectLanguage.redirectToLoginSignUpPage()
+        iSelectLanguage.redirectToLoginSignUpPage(selectedLanguageCode)
 
     }
 

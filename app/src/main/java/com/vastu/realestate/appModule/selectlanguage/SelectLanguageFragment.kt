@@ -1,20 +1,16 @@
   package com.vastu.realestate.appModule.selectlanguage
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.vastu.realestate.R
-import com.vastu.realestate.appModule.contactus.ContactUsViewModel
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
-import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.selectlanguage.uiinterface.iSelectLanguage
 import com.vastu.realestate.databinding.FragmentSelectLanguageBinding
 
@@ -58,7 +54,8 @@ import com.vastu.realestate.databinding.FragmentSelectLanguageBinding
           }
       }
 
-      override fun redirectToLoginSignUpPage() {
+      override fun redirectToLoginSignUpPage(selectedLanguageCode: String) {
+          setAppLocale(selectedLanguageCode)
           findNavController().navigate(R.id.action_SelectLanguage_to_SignupLoginHome)
 
       }
