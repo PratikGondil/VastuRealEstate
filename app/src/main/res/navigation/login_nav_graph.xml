@@ -31,6 +31,13 @@
 
     </fragment>
     <fragment
+        android:id="@+id/VideoViewFragment"
+        android:name="com.vastu.realestate.appModule.video.VideoFragment"
+        android:label="VideoViewFragment"
+        tools:layout="@layout/fragment_video">
+
+    </fragment>
+    <fragment
         android:id="@+id/LoginFragment"
         android:name="com.vastu.realestate.appModule.login.view.fragment.LoginFragment"
         android:label="LoginFragment"
