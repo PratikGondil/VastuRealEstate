@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data class="LoanInfoFragmentBinding">
+        <import type="com.vastu.realestate.appModule.dashboard.bindingAdapter.LoanInfoBindingAdapter"/>
+        <variable
+            name="loanInfoViewModel"
+            type="com.vastu.realestate.appModule.dashboard.viewmodel.LoanInformationViewModel" />
+        <variable
+            name="drawerViewModel"
+            type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
+
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/llToolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <include
+            layout="@layout/toolbar_layout"
+            bind:drawerViewModel="@{drawerViewModel}" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txtInfo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:layout_margin="@dimen/dimen20dp"
+        android:maxLines="@{loanInfoViewModel.maxline}"
+        android:text="art Of Nyati County, 210 Acre Residential
+        Township Of Gated Communities. Tallest Towers In Undri..
+        Close Proximity To Prestigious Schools And Shopping Arcades
+         In A 2 Km Vicinity. A Scenic And Unmatched View Of The
+         Sahyadri Hills. Grand Entrance Lobbies. 100% DG Backup
+         For External Amenities And Internal Units Excluding 15
+         Amp. Points.. Gas Pipeline Connection For Every Home..
+          Dedicated Covered Car Park For Every Home. Approved
+          By Major Accredited Lenders.. 6 Acre Township Of Active
+           Sporting Amenities (Fully Equipped Clubhouse With
+           Gymnasium And Indoor Recreational Space, Children's
+           Play Area, Jogging Track, Landscaped Gardens, Swimming
+           Pool.Multipurpose Sports Court) Interiors Part Of Nyati
+            County, 210 Acre Residential Township Of
+            Gated Communities. Tallest Towers In Undri..
+            Close Proximity To Prestigious Schools And Shopping
+            Arcades In A 2 Km Vicinity. A Scenic And Unmatched View
+             Of The Sahyadri Hills. Grand Entrance Lobbies. 100% DG
+              Backup For External Amenities And Internal
+              Units Excluding 15 Amp. Points.. Gas Pipeline
+              Connection For Every Home.. Dedicated Covered"
+        app:layout_constraintTop_toBottomOf="@+id/llToolbarLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        onClickBtn="@{loanInfoViewModel}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:gravity="start"
+        android:layout_marginTop="@dimen/dimen10dp"
+        android:padding="@dimen/dimen10dp"
+        android:background="@color/loan_btn_color"
+        android:textColor="@color/button_color"
+        android:maxLines="@{loanInfoViewModel.maxline}"
+        android:text="@{loanInfoViewModel.btnText}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/txtInfo"
+        app:layout_constraintTop_toBottomOf="@+id/txtInfo" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:onClick="@{(view)->loanInfoViewModel.onClickAddLoanEnquiry()}"
+        android:padding="@dimen/dimen10dp"
+        android:layout_margin="@dimen/dimen15dp"
+        android:text="@string/enquiry"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

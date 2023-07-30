@@ -39,4 +39,5 @@
     <color name="shimmer_background_color">#F0EFF5</color>
     <color name="transparent">#00000000</color>
     <color name="brown">#800000</color>
+    <color name="loan_btn_color">#F2D2D7</color>
 </resources>
