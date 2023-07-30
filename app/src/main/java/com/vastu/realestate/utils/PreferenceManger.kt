@@ -55,4 +55,13 @@ object PreferenceManger {
         val type = object : TypeToken<GetAdvertiseDetailsResponse>() {}.type
         return gson.fromJson(advertisementSliderList, type)
     }
+
+    fun <T> putString(key:String,value:String){
+        preferences.edit().putString(key,value).apply()
+    }
+    inline fun <reified T> getString(key:String): String? {
+        return preferences.getString(key,null)
+    }
+
+
 }

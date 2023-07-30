@@ -19,16 +19,18 @@ class LoginViewModel(application: Application) : AndroidViewModel(application),
     init {
         mContext = application
     }
+
+
     var errorVisible = ObservableField(View.GONE)
     var btnBackground = ObservableField(mContext.getDrawable(R.drawable.button_inactive_background))
-    var error =ObservableField("Please enter your register number to proceed.")
+    var error =ObservableField("")
     lateinit var iLoginViewListener : ILoginViewListener
     fun onSendOtpClick(){
         iLoginViewListener.onSendOtpClick()
     }
 
-    fun callLoginApi(mobileNumber:String){
-        LoginRepository.callLoginApi(mContext,mobileNumber,LOGIN,this)
+    fun callLoginApi(mobileNumber: String, language: String){
+        LoginRepository.callLoginApi(mContext,mobileNumber,language,LOGIN,this)
     }
 
     fun calltermsConditionsAPI()

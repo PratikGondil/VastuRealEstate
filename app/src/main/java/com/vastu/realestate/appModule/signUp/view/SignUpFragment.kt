@@ -10,7 +10,6 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -21,11 +20,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.location.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.vastu.networkService.util.Constants
 import com.vastu.realestate.R
-import com.vastu.realestate.appModule.dashboard.adapter.AddPropertyBindingAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.ITermsConditionListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
-import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreen
 import com.vastu.realestate.appModule.signUp.bindingAdapter.SignUpBindingAdapter
 import com.vastu.realestate.appModule.signUp.uiInterfaces.ISignUpViewListener
 import com.vastu.realestate.appModule.signUp.viewModel.SignUpViewModel
@@ -40,6 +38,7 @@ import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaD
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
 import com.vastu.realestate.utils.BaseConstant.CUSTOMER
 import com.vastu.realestate.utils.BaseConstant.REGISTER_DTLS_OBJ
+import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.termsandconditions.model.respone.TermsConditionData
 import com.vastu.termsandconditions.model.respone.TermsConditionMainResponse
 import java.util.*
@@ -244,11 +243,13 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
     }
 
     private fun getCityList(){
-        signUpViewModel.callCityListApi()
+        var language =PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
+        signUpViewModel.callCityListApi(language)
 
     }
     private fun callSubAreaList(talukaId: String) {
-        objSubAreaReq = ObjSubAreaReq().copy(talukaId = talukaId )
+        var language =PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
+        objSubAreaReq = objSubAreaReq.copy(talukaId,language!!)
         signUpViewModel.callSubAreaList(objSubAreaReq)
     }
     override fun goToLogin() {

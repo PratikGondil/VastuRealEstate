@@ -43,6 +43,7 @@ import com.vastu.editproperty.model.response.EditPropertyMainResponse
 import com.vastu.getimages.model.request.GetImageRequest
 import com.vastu.getimages.model.response.GetImageMainResponse
 import com.vastu.getimages.model.response.ImageData
+import com.vastu.networkService.util.Constants
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.AddPropertyBindingAdapter
@@ -68,6 +69,7 @@ import com.vastu.realestate.utils.BaseConstant.PDF_SELECTION
 import com.vastu.realestate.utils.BaseConstant.PICK_FROM_GALLERY
 import com.vastu.realestate.utils.CommonUtils
 import com.vastu.realestate.utils.FileUploadUtils
+import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.realestatecore.model.response.PropertyData
 import java.io.*
 import java.net.URISyntaxException
@@ -244,7 +246,8 @@ class AddPropertyFragment : BaseFragment(), IToolbarListener, IAddPropertyListen
     }
 
     private fun callSubAreaList(id: String) {
-        objSubAreaReq = ObjSubAreaReq().copy(talukaId = selectetdTalukaID)
+        var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
+        objSubAreaReq = ObjSubAreaReq().copy(talukaId = selectetdTalukaID, language = language)
         addPropertyViewModel.callSubAreaList(objSubAreaReq)
         observeSubAreaList()
     }

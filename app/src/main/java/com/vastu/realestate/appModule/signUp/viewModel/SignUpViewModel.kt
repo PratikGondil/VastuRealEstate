@@ -55,8 +55,8 @@ class SignUpViewModel(application: Application) : AndroidViewModel(application),
     fun callRegistrationApi(objUserInfo: ObjUserInfo){
         RegistrationRepository.callRegisterUserApi(mContext,objUserInfo, REGISTER,this)
     }
-    fun callCityListApi(){
-        CityListRequestRepository.callCityListApi(mContext,GET_CITIES,this)
+    fun callCityListApi(language: String?) {
+        CityListRequestRepository.callCityListApi(mContext,GET_CITIES,language!!,this)
     }
 
     fun callSubAreaList(talukaId: ObjSubAreaReq){

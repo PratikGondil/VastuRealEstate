@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Vastu</string>
+    <!--    <login>-->
+    <string name="sign_in_text">साइन इन करा</string>
+    <string name="sign_up_text">साइन अप करा</string>
+    <string name="we_will_send_otp">आम्ही तुम्हाला वनटाइम पासवर्ड (OTP) पाठवू</string>
+    <string name="mobile_number_text">मोबाईल नंबर</string>
+    <string name="enter_otp_text">यांना पाठवलेला ओटीपी एंटर करा </string>
+    <string name="verify_your_mobile_number">तुमचा मोबाईल नंबर सत्यापित करा</string>
+
+    <!--    <sign up>-->
+    <string name="first_name_text">पहिले नाव</string>
+    <string name="middle_name_text">मधले नाव</string>
+    <string name="last_name_text">आडनाव</string>
+    <string name="address_name_text">पत्त्याचे नाव</string>
+    <string name="email_id_text">ई - मेल आयडी</string>
+    <string name="city_text">शहर</string>
+    <string name="address_text">पत्ता</string>
+    <string name="sub_area_text">उपक्षेत्र</string>
+    <string name="send_otp_text">पाठवा</string>
+    <string name="submit_btn_text">सबमिट करा</string>
+    <string name="accept">स्वीकार</string>
+    <string name="reject">नाकार</string>
+    <!--    otp-->
+    <string name="timer_text">00.%1$s sec</string>
+    <string name="resend_otp"><u>ओटीपी पुन्हा पाठवा</u></string>
+    <string name="otp_not_received">OTP प्राप्त झाला नाही?</string>
+    <string name="submit_otp">सबमिट करा</string>
+    <string name="sent_otp_text">आम्ही तुमच्या नंबरवर OTP पाठवला आहे.</string>
+    <!--nav-->
+    <string name="contact_us">आमच्याशी संपर्क साधा</string>
+    <string name="notifications">सूचना</string>
+
+    <string name="settings">सेटिंग्ज</string>
+    <string name="logout">लॉगआउट</string>
+    <string name="mukul_joshi">मुकुल जोशी</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">हॅलो रिक्त तुकडा</string>
+    <string name="loan">कर्ज</string>
+    <string name="real_estate">रिअल इस्टेट</string>
+    <string name="vastu">वास्तू</string>
+    <string name="enquiry">चौकशी</string>
+    <string name="add_property">मालमत्ता जोडा</string>
+    <string name="personal_loan">वैयक्तिक कर्ज</string>
+    <string name="home_loan">होम लोन</string>
+    <string name="car_loan">कार कर्ज</string>
+    <string name="search">शोधा....</string>
+
+
+    <string name="budget">बजेट</string>
+    <string name="featured">वैशिष्ट्यपूर्ण</string>
+    <string name="details">मालमत्ता तपशील</string>
+    <string name="type">प्रकार</string>
+    <string name="loan_type">कर्जाचा प्रकार</string>
+    <string name="req_loan">कर्जाची रक्कम</string>
+    <string name="apartments">रो हाउस</string>
+    <string name="bedrooms">बेडरूम</string>
+    <string name="_1">1</string>
+    <string name="bathrooms">स्नानगृह</string>
+    <string name="furnishing">फर्निशिंग</string>
+    <string name="unfurnished">अनफर्निश्ड</string>
+    <string name="construction_status">बांधकाम स्थिती</string>
+    <string name="ready_to_move">हलवण्यास तयार</string>
+    <string name="listed_by">द्वारा सूचीबद्ध</string>
+    <string name="_700">700</string>
+    <string name="super_builtup_area_ft">सुपर बिल्टअप क्षेत्र (Sq.ft)</string>
+    <string name="chat">चॅट</string>
+    <string name="make_offer">ऑफर करा</string>
+    <string name="title">शीर्षक</string>
+    <string name="sell_type">विक्रीचा प्रकार</string>
+    <string name="kitchen">स्वयंपाकघर</string>
+    <string name="garage">गॅरेज</string>
+    <string name="balcony">बाल्कनी</string>
+    <string name="swimming_pool">जलतरण तलाव</string>
+    <string name="floors">मजले</string>
+    <string name="price">किंमत</string>
+    <string name="booking_amount">बुकिंग रक्कम</string>
+    <string name="state">राज्य</string>
+    <string name="brochure">ब्रोशर</string>
+    <string name="description">वर्णन</string>
+    <string name="_5">5</string>
+    <string name="please_wait">कृपया प्रतीक्षा करा...</string>
+    <string name="okay">ठीक आहे</string>
+    <string name="availability">उपलब्धता</string>
+    <string name="build_year">बिल्ड वर्ष</string>
+    <string name="highlights">हायलाइट्स</string>
+    <string name="slug">स्लग</string>
+
+    <string name="occupation_text">व्यवसाय</string>
+    <string name="property_interested_in_text">मालमत्तेमध्ये स्वारस्य आहे</string>
+    <string name="ownership_text">मालकी</string>
+    <string name="area_text">क्षेत्र(Sq.Ft.)</string>
+    <string name="budget_text">बजेट</string>
+    <string name="loan_interested_in_text">कर्जामध्ये स्वारस्य आहे</string>
+    <string name="preferred_bank_text">प्राधान्य बँक</string>
+    <string name="loan_amount_text">कर्जाची रक्कम</string>
+    <string name="loan_term_year_text">कर्ज मुदतीचे वर्ष</string>
+
+    <string name="banks_text">बँका</string>
+    <string name="loan_text">कर्ज</string>
+    <string name="property_text">मालमत्ता</string>
+    <string name="loan_enquiry">कर्ज चौकशी</string>
+    <string name="property_enquiry">मालमत्ता चौकशी</string>
+    <string name="required">आवश्यक*</string>
+    <string name="no_connection">कोणतेही कनेक्शन नाही</string>
+    <string name="first_name_error">कृपया नाव प्रविष्ट करा</string>
+    <string name="middle_name_error">कृपया मधले नाव प्रविष्ट करा</string>
+    <string name="last_name_error">कृपया आडनाव प्रविष्ट करा</string>
+    <string name="mobile_number_error">कृपया मोबाईल नंबर प्रविष्ट करा</string>
+    <string name="address_error">कृपया पत्ता प्रविष्ट करा</string>
+    <string name="occupation_error">कृपया व्यवसाय निवडा</string>
+    <string name="loan_interested_in_error">कृपया कर्ज निवडा</string>
+    <string name="bank_error">कृपया बँक निवडा</string>
+    <string name="amount_error">कृपया कर्जाची रक्कम प्रविष्ट करा</string>
+    <string name="loan_term_year_error">कृपया कर्ज मुदतीचे वर्ष प्रविष्ट करा</string>
+    <string name="property_interested_in_error">कृपया प्रॉपर्टी निवडा</string>
+    <string name="ownership_error">कृपया मालकी निवडा</string>
+    <string name="area_error">कृपया वैध क्षेत्र प्रविष्ट करा</string>
+    <string name="budget_error">कृपया वैध बजेट प्रविष्ट करा</string>
+    <string name="full_name">पूर्ण नाव</string>
+
+    <string name="preferred_bank">प्राधान्य बँक</string>
+    <string name="are_you_sure_you_want_to_logout">तुम्हाला खात्री आहे का, तुम्ही लॉगआउट करू इच्छिता?</string>
+    <string name="no">नाही</string>
+    <string name="yes">होय</string>
+    <string name="rupee">\u20B9</string>
+    <string name="offers">ऑफर</string>
+    <string name="st_ft">Sq.feet</string>
+    <string name="fill_up_the_property_details">मालमत्ता तपशील भरा</string>
+    <string name="edit_up_the_property_details">मालमत्ता तपशील संपादित करा</string>
+    <string name="property_title">मालमत्ता शीर्षक</string>
+    <string name="property_type">मालमत्ता प्रकार</string>
+    <string name="property_address">मालमत्ता पत्ता</string>
+    <string name="property_thumbnail_1080_800">प्रॉपर्टी थंबनेल(1080 * 800)</string>
+    <string name="choose_file">फाइल निवडा</string>
+    <string name="no_file_chosen">कोणतीही फाइल निवडलेली नाही</string>
+    <string name="brochure_pdf">ब्रोशर(PDF)</string>
+    <string name="select_image">प्रतिमा निवडा</string>
+    <string name="images">प्रतिमा*</string>
+
+
+    <string name="upload">अपलोड करा</string>
+    <string name="property_title_error">कृपया मालमत्ता शीर्षक प्रविष्ट करा</string>
+    <string name="state_error">कृपया राज्य प्रविष्ट करा</string>
+    <string name="post_property">पोस्ट प्रॉपर्टी</string>
+    <string name="description_error">कृपया वर्णन प्रविष्ट करा</string>
+    <string name="highlights_error">कृपया हायलाइट प्रविष्ट करा</string>
+    <string name="property_amount_error">कृपया मालमत्ता रक्कम प्रविष्ट करा</string>
+    <string name="property_price_error">कृपया मालमत्तेची किंमत प्रविष्ट करा</string>
+    <string name="image_string">प्रतिमा</string>
+    <string name="video_string">व्हिडिओ</string>
+    <string name="audio_string">ऑडिओ</string>
+    <string name="id_string">_id=?</string>
+    <string name="content_string">सामग्री</string>
+    <string name="file_string">फाइल</string>
+    <string name="data_string">__डेटा</string>
+    <string name="slash">/</string>
+    <string name="property_id">प्रॉपर्टी आयडी</string>
+    <string name="properties">गुणधर्म</string>
+    <string name="assign">नियुक्त करा</string>
+    <string name="reassign">पुन्हा नियुक्त करा</string>
+    <string name="employees">कर्मचारी</string>
+    <string name="employee_name">कर्मचाऱ्याचे नाव</string>
+    <string name="assign_lead_text">लीड नियुक्त करा</string>
+    <string name="update_status">स्थिती अपडेट करा</string>
+    <string name="profile">माझे प्रोफाइल</string>
+    <!--    filter-->
+    <string name="filters_and_sort">फिल्टर्स &amp; क्रमवारी लावा</string>
+    <string name="choose_city">खालील पर्यायांमधून शहर निवडा</string>
+    <string name="choose_area">खालील पर्यायांमधून क्षेत्र निवडा</string>
+    <string name="choose_a_range_below">खालील श्रेणी निवडा</string>
+    <string name="choose_from_below_options">खालील पर्यायांमधून निवडा</string>
+    <string name="choose_a_range_below_per_Sq">खालील श्रेणी निवडा (रु./चौ. फूट)</string>
+    <string name="choose_a_range_below_Sq">खालील श्रेणी निवडा (Sq Ft)</string>
+    <string name="select_from_below_options">खालील पर्यायांमधून निवडा</string>
+    <string name="budget_lower_limit">0</string>
+    <string name="budget_upper_limit">10000000</string>
+    <string name="SqFt_upper_limit">500000</string>
+    <string name="buildup_area_upper_limit">10000</string>
+    <string name="houses_and_Villas">फ्लॅट</string>
+    <string name="builder_floors">कार्यालय</string>
+    <string name="farmhouses">बंगले</string>
+    <string name="onebedroom">1 बेडरूम</string>
+    <string name="twobedrooms">2 बेडरूम</string>
+    <string name="threebedrooms">3 बेडरूम</string>
+    <string name="fourbedrooms">4 बेडरूम</string>
+    <string name="onebathroom">1 स्नानगृह</string>
+    <string name="twobathrooms">2 स्नानगृह</string>
+    <string name="furnished">सुसज्ज</string>
+    <string name="semi_furnished">अर्ध-सुसज्ज</string>
+    <string name="under_const">बांधकामाधीन</string>
+    <string name="new_launch">नवीन लाँच</string>
+    <string name="owner">मालक</string>
+    <string name="dealer">डीलर</string>
+    <string name="builder">बिल्डर</string>
+    <string name="date_published">प्रकाशित केल्याची तारीख</string>
+    <string name="relevance">प्रासंगिकता</string>
+    <string name="price_low_to_high">किंमत:कमी ते उच्च</string>
+    <string name="price_high_to_low">किंमत:उच्च ते कमी</string>
+    <string name="distance">अंतर</string>
+    <string name="chip_text_budget">बजेट:</string>
+    <string name="chip_text_price_per_sq">किंमत प्रति चौ.फुट:</string>
+    <string name="chip_text_builtup_area">सुपर बिल्टअप क्षेत्र(फूट):</string>
+
+    <!--filter Types-->
+    <string name="by_taluka">तालुक्यानुसार</string>
+    <string name="district">अहमदनगर</string>
+    <string name="by_area">क्षेत्रानुसार</string>
+    <string name="by_budget">बजेटनुसार</string>
+    <string name="by_property_type">मालमत्ता प्रकारानुसार</string>
+    <string name="by_price_per_sq_ft">किंमतीनुसार प्रति चौ.फुट.</string>
+    <string name="by_bedrooms">बेडरूमनुसार</string>
+    <string name="by_bathrooms">बाथरूमद्वारे</string>
+    <string name="by_furnishing">फर्निशिंग करून</string>
+    <string name="by_constr_status">बांधकाम स्थितीनुसार</string>
+    <string name="by_listed_by">द्वारा सूचीबद्ध</string>
+    <string name="by_buildup_area">सुपर बिल्डअप क्षेत्रानुसार</string>
+    <string name="change_sort">क्रमवारी बदला</string>
+    <string name="apply_btn_text">लागू करा</string>
+    <string name="clear_btn_text">सर्व साफ करा</string>
+    <string name="coming_soon_text">लवकरच येत आहे</string>
+    <string name="sub_area">उपक्षेत्र</string>
+    <string-array name="rangeSliderValues">
+        <item>0</item>
+        <item>10000000</item>
+    </string-array>
+
+    <string-array name="rsPerSqSliderValues">
+        <item>0</item>
+        <item>500000</item>
+    </string-array>
+
+    <string-array name="buildupAreaSliderValues">
+        <item>0</item>
+        <item>10000</item>
+    </string-array>
+    <string name="username">%1$s %2$s %3$s</string>
+    <string name="edit_property">मालमत्ता संपादित करा</string>
+    <string name="delete">हटवा</string>
+    <string name="register_successfully">यशस्वीपणे नोंदणी करा कृपया लॉग इन करा</string>
+    <string name="off">बंद</string>
+    <string name="terms_condition"><![CDATA[कृपया अटी आणि शर्ती स्वीकारा]]></string>
+    <string name="accept_terms">मी अटी आणि शर्ती स्वीकारतो.</string>
+    <string name="getintouch"><u>स्पर्श करा</u></string>
+    <string name="feel_free">कोणत्याही प्रश्नांसाठी आमच्याशी मोकळ्या मनाने संपर्क साधा.</string>
+
+    <string name="email">ईमेल पत्ता</string>
+    <string name="thanks_enquiry"> तुमच्या चौकशीसाठी धन्यवाद</string>
+    <string name="contact_soon">तुमची चौकशी सबमिट केली गेली आहे, आम्ही लवकरच तुमच्याशी संपर्क साधू!</string>
+    <string name="email_add_value">customersupport@vastu4u.com</string>
+    <string name="terms_text">\u2022आम्ही मालमत्ता सौद्यांमध्ये खरेदीदाराकडून कोणतेही शुल्क घेत नाही &amp; आम्ही ज्या कर्ज प्रस्तावांची विनंती करतो ते वास्तूच्या वतीने कोणत्याही प्रकारच्या व्यक्तींना कोणतेही रोख\/ऑनलाइन पेमेंट देऊ नका.\n\n\u2022वास्तू कधीही रोख पद्धतीने कोणतेही व्यवहार करत नाही, आणखी काही संबंधित प्रश्न असल्यास आम्हाला info@vastu4u.com वर मेल करा.\n\n\u2022बिल्डर्स आणि amp; विक्रेत्याला अटींनुसार शुल्क सहन करावे लागेल &amp; अट जी वेळोवेळी त्यांच्याशी संवाद साधेल.\n\n\u2022आम्ही आमच्या सर्व ग्राहकांना विनंती करतो की कृपया मालमत्ता खरेदी करण्यापूर्वी सर्व मालमत्तेशी संबंधित कागदपत्रे तुमच्या स्वत:च्या जोखमीवर तपासा. बिल्डर तुमच्या मालकीच्या जोखमीचा भाग असेल. वास्तू कधीही दिशाभूल करणारे व्यवहार किंवा फसवणूक याविषयी कोणतीही जबाबदारी घेत नाही.\n\n\u2022विक्रेत्याच्या चर्चेनंतर मालमत्ता विक्रीची रक्कम पोस्ट केली गेली आहे &amp; बांधकाम व्यावसायिक कोणत्याही परिस्थितीत प्रॉपर्टीचे दर वाढल्यास वास्तू यासाठी कधीही जबाबदार नसतात\n.\n\u2022विक्रेते किंवा बिल्डर्सना ग्राहकांकडून केलेले कोणतेही मालमत्ता सौदे रद्द करण्यासाठी किंवा पेमेंटच्या परताव्यांना आम्ही जबाबदार नाही.\n\n\u2022कर्ज प्रस्तावांसाठी वास्तू ग्राहकांकडून कोणतेही शुल्क घेत नाही. आम्ही कोणत्याही प्रकारची सेवा मोफत देण्यासाठी येथे आहोत. मालमत्ता संबंधित ers &amp; कर्ज प्रस्ताव अटींच्या अधीन आहेत &amp; अटी कृपया आमच्याशी अधिक संबंधित प्रश्नांसाठी customersupport@vastu4u.com वर संपर्क साधा."</string>
+    <string name="bank_name">बँकेचे नाव</string>
+    <string name="term_year">कार्यकाल</string>
+    <string name="user">वापरकर्ता</string>
+    <string name="remark">टिप्पणी</string>
+    <string name="next">पुढील</string>
+    <string name="valid_number">कृपया वैध क्रमांक प्रविष्ट करा</string>
+    <string name="valid_number_error">कृपया पुढे जाण्यासाठी तुमचा नोंदणी क्रमांक प्रविष्ट करा</string>
+
+
+</resources>

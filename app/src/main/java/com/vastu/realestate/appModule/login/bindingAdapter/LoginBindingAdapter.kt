@@ -41,7 +41,7 @@ object LoginBindingAdapter {
                 }
                 else {
                     viewModel.errorVisible.set(View.VISIBLE)
-                    viewModel.error.set("please enter valid number")
+                    viewModel.error.set(context!!.resources.getString(R.string.valid_number))
                 }
 
             }

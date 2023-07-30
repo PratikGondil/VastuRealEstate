@@ -4,5 +4,5 @@ import android.content.Context
 import com.vastu.realestate.logincore.callbacks.response.ILoginResponseListener
 
 interface ILoginReq {
-    fun callLoginApi(context: Context,mobileNumber:String,urlEndPoint:String,iLoginResponseListener: ILoginResponseListener)
+    fun callLoginApi(context: Context,mobileNumber:String,language:String,urlEndPoint:String,iLoginResponseListener: ILoginResponseListener)
 }

@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.core.content.ContextCompat
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
+import com.vastu.networkService.util.Constants
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.otp.uiListener.IVerifyOtpViewListener
 import com.vastu.realestate.commoncore.callbacks.otp.response.IVerifyOtpResponseListener
@@ -16,6 +17,7 @@ import com.vastu.realestate.logincore.model.response.ObjLoginResponseMain
 import com.vastu.realestate.logincore.repository.LoginRepository
 import com.vastu.realestate.utils.ApiUrlEndPoints.LOGIN
 import com.vastu.realestate.utils.ApiUrlEndPoints.VERIFY_OTP
+import com.vastu.realestate.utils.PreferenceManger
 
 class OTPViewModel(application: Application) : AndroidViewModel(application),IVerifyOtpResponseListener,
     ILoginResponseListener {
@@ -34,7 +36,9 @@ class OTPViewModel(application: Application) : AndroidViewModel(application),IVe
         iVerifyOtpViewListener.verifyOtp()
     }
     fun callLoginApi(mobileNumber:String){
-        LoginRepository.callLoginApi(mContext,mobileNumber,LOGIN,this)
+        var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
+
+        LoginRepository.callLoginApi(mContext,mobileNumber,language!!,LOGIN,this)
     }
 
     fun callVerifyOtpApi(objVerifyOtpReq: ObjVerifyOtpReq){

@@ -8,22 +8,27 @@ import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
 import com.vastu.realestate.commoncore.utils.ErrorCode
 import com.vastu.realestate.registrationcore.callbacks.request.ICityListReq
 import com.vastu.realestate.registrationcore.callbacks.response.ITalukaResponseListener
+import com.vastu.realestate.registrationcore.model.request.ObjCityReq
 import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaResponseMain
 
 object CityListRequestRepository : ICityListReq,IOnServiceResponseListener {
     lateinit var iTalukaResponseListener: ITalukaResponseListener
 
-     override fun callCityListApi(context: Context,urlEndPoint:String, iTalukaResponseListener: ITalukaResponseListener){
+     override fun callCityListApi(context: Context,urlEndPoint:String, language: String,iTalukaResponseListener: ITalukaResponseListener){
         this.iTalukaResponseListener = iTalukaResponseListener
         NetworkDaoBuilder.Builder
             .setContext(context)
             .setIsContentTypeJSON(true)
-            .setIsRequestPost(false)
-            .setIsRequestPut(false)
-            .setRequest(HashMap<String, String>())
+            .setIsRequestPost(true)
+            .setRequest(buildRequest(language))
             .setUrlEndPoint(urlEndPoint)
             .build()
             .sendApiRequest(this)
+    }
+
+    fun buildRequest(language: String): ByteArray {
+        var objLoginReq = ObjCityReq(language)
+        return Gson().toJson(objLoginReq).toByteArray()
     }
 
     @SuppressLint("SuspiciousIndentation")
