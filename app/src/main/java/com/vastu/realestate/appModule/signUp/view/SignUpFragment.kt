@@ -278,6 +278,8 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
         signUpViewModel.callSubAreaList(objSubAreaReq)
     }
     override fun goToLogin() {
+        hideProgressDialog()
+        clearAllFields()
         showDialog(getString(R.string.register_successfully),false,false)
         Handler(Looper.getMainLooper()).postDelayed({
             viewPager.currentItem = 0
