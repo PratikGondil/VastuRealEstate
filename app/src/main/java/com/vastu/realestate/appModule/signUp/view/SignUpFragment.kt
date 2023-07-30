@@ -228,6 +228,8 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
     }
 
     private fun getUserInfo(){
+        var language =PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
+
         objUserInfo =objUserInfo.copy(firstName = signUpViewModel.firstName.get()!!,
         middleName = signUpViewModel.middleName.get()!!,
         lastName = signUpViewModel.lastName.get()!!,
@@ -238,7 +240,8 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
         userType = CUSTOMER,
         latitude = lat.toString(),
         longitude = long.toString(),
-        address = address
+        address = address,
+        language = language
         )
     }
 
