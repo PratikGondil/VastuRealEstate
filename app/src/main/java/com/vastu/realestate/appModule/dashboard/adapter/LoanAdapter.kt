@@ -52,7 +52,7 @@ class LoanAdapter(private val itemClick:OnItemClickListener,
                (context.getString(R.string.commercial_loan).uppercase())-> binding.ivTransactionIcon.setImageDrawable(context.getDrawable(R.drawable.ic_commercial))
                (context.getString(R.string.plot_purchase_loan).uppercase())-> binding.ivTransactionIcon.setImageDrawable(context.getDrawable(R.drawable.ic_plot_p))
                (context.getString(R.string.construction_loan).uppercase())-> binding.ivTransactionIcon.setImageDrawable(context.getDrawable(R.drawable.ic_plot_purchase))
-               (context.getString(R.string.loan_against_property).uppercase())-> binding.ivTransactionIcon.setImageDrawable(context.getDrawable(R.drawable.ic_loan_against))
+               (context.getString(R.string.loan_against_property).uppercase())-> binding.ivTransactionIcon.setImageDrawable(context.getDrawable(R.drawable.ic_loan_against_1))
                (context.getString(R.string.home_loan).uppercase())-> binding.ivTransactionIcon.setImageDrawable(context.getDrawable(R.drawable.ic_home_loan))
                (context.getString(R.string.overdraft_loan).uppercase())-> binding.ivTransactionIcon.setImageDrawable(context.getDrawable(R.drawable.ic_overdraft__))
                (context.getString(R.string.term_loan).uppercase())-> binding.ivTransactionIcon.setImageDrawable(context.getDrawable(R.drawable.ic_term_loan))
