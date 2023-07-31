@@ -22,7 +22,7 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_weight="1"
             android:theme="@style/ThemeOverlay.AppCompat.Dark"
-            android:background="@drawable/site_menu_bg">
+            android:background="@color/button_color">
 
             <ImageView
                 android:id="@+id/menu_imageview"

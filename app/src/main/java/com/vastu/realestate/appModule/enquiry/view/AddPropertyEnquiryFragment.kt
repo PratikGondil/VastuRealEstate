@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.vastu.loanenquirycore.model.request.AddPropertyEnquiryRequest
 import com.vastu.loanenquirycore.model.response.enquiry.EnquiryMainResponse
 import com.vastu.loanenquirycore.model.response.interest.property.InterestedInData
@@ -162,6 +163,7 @@ class AddPropertyEnquiryFragment : BaseFragment(),IAddPropertyEnquiryListener,IT
    fun redirectedAfterAPITerms()
     {
         showProgressDialog()
+//        findNavController().navigateUp()
         addPropertyEnquiryViewModel.callAddPropertyEnquiry(getPropertyEnquiryInfo())
     }
     private fun getPropertyEnquiryInfo():AddPropertyEnquiryRequest{
