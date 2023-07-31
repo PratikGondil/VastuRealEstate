@@ -15,5 +15,5 @@ data class ObjUserInfo(
     @SerializedName("lat") var latitude:String?=null,
     @SerializedName("long") var longitude:String?=null,
     @SerializedName("address") var address:String?=null,
-    @SerializedName("address") var language:String?=null
+    @SerializedName("language") var language:String?=null
 ): Serializable
