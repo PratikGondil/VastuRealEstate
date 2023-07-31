@@ -2,7 +2,10 @@ package com.vastu.realestate.appModule.signUp.view
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
@@ -10,6 +13,7 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.provider.Settings
 import android.view.*
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -59,7 +63,8 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var locationRequest:LocationRequest
     private var selectetdTalukaID :String? =null
-
+    private var isdialogDisplayed :Boolean = false
+//private var isScrollView:Boolean = false
 
     private val locationCallback = object:LocationCallback(){
         override fun onLocationResult(p0: LocationResult) {
@@ -106,13 +111,31 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
                         long = location.longitude
                         signUpFragmentBinding.edtAddress.setText(getAddress(lat!!, long!!))
                         address = signUpFragmentBinding.edtAddress.text.toString()
+
                     }
                 }
             }else{
-                showDialog("Please enable your location service",isSuccess = false,isNetworkFailure = false)
+                buildAlertMessageNoGps()
             }
         }else{
             requestPermission()
+        }
+    }
+
+
+    private fun buildAlertMessageNoGps() {
+        if(!isdialogDisplayed) {
+            isdialogDisplayed = true
+            var gpsbuilder = AlertDialog.Builder(requireContext())
+            gpsbuilder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+            gpsbuilder.setTitle("GPS Settings")
+                .setCancelable(true)
+                .setPositiveButton("Settings",
+                    DialogInterface.OnClickListener { dialog, id ->startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                    }
+                )
+            var alert = gpsbuilder.create()
+            alert.show()
         }
     }
     @SuppressLint("MissingPermission")
@@ -130,6 +153,10 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
     override fun onResume() {
         super.onResume()
         getLastLocation()
+        if(address==null)
+        {
+            Handler().postDelayed({ getLastLocation() }, 3000)
+        }
     }
 
     private fun checkPermissions():Boolean{
@@ -167,9 +194,11 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initView(){
         signUpFragmentBinding.autoCompleteCity.setOnTouchListener(this)
         signUpFragmentBinding.autoCompleteAreaList.setOnTouchListener(this)
+
 
     }
     private fun observeCityList(){
@@ -210,11 +239,7 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
         }
     }
 
-    override fun registerUser(){
-        showProgressDialog()
-        getUserInfo()
-        signUpViewModel.callRegistrationApi(objUserInfo)
-    }
+
 
     override fun launchOtpScreen(objRegisterDlts: ObjRegisterDlts) {
         hideProgressDialog()
@@ -245,6 +270,10 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
         )
     }
 
+    override fun registerUser(){
+        createDialog(this)
+    }
+
     private fun getCityList(){
         var language =PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
         signUpViewModel.callCityListApi(language)
@@ -258,9 +287,12 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
     override fun goToLogin() {
         hideProgressDialog()
         clearAllFields()
-        createDialog(this)
+        showDialog(getString(R.string.register_successfully),false,false)
+        Handler(Looper.getMainLooper()).postDelayed({
+            viewPager.currentItem = 0
+            hideDialog()
 
-
+        }, 1000)
 
     }
     private fun showTermsConditionDialog(){
@@ -313,12 +345,9 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
 
     fun redirectAftertheTermsAccept()
     {
-        showDialog(getString(R.string.register_successfully),false,false)
-        Handler(Looper.getMainLooper()).postDelayed({
-            viewPager.currentItem = 0
-            hideDialog()
-
-        }, 1000)
+        showProgressDialog()
+        getUserInfo()
+        signUpViewModel.callRegistrationApi(objUserInfo)
 
     }
 
