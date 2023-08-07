@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/home_bottom_nav"
+        android:title="@string/home_text"/>
+
+    <item
+        android:id="@+id/primePropertiesFragment"
+        android:icon="@drawable/prime_properties"
+        android:title="@string/prime_properties_text"/>
+
+    <item
+        android:id="@+id/upcomingSchemesFragment"
+        android:icon="@drawable/upcoming_schemes"
+        android:title="@string/upcoming_schemes_text"/>
+
+    <item
+        android:id="@+id/ourServicesFragment"
+        android:icon="@drawable/our_services"
+        android:title="@string/our_services_text"/>
+
+    <item
+        android:id="@+id/wishlistFragment"
+        android:icon="@drawable/wishlist"
+        android:title="@string/wishlist_text"/>
+
+</menu>
