@@ -10,9 +10,13 @@ import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.activity.LoginActivity
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.*
@@ -36,6 +40,7 @@ import com.vastu.slidercore.model.response.mainpage.GetMainSliderDetailsResponse
 import com.vastu.slidercore.model.response.mainpage.MainPageSliderResponse
 import com.vastu.usertypecore.model.response.ObjGetUserTypeResMain
 
+
 class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListener,
     INavDrawerListener,IAdvertisementSliderListener {
         private lateinit var dashboardBinding: FragmentVastuDashboardBinding
@@ -45,6 +50,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         private val imageList = ArrayList<SlideModel>()
         private lateinit var getAdvertisementSlider: GetAdvertiseDetailsResponse
         private lateinit var getMainSliderDetailsResponse: GetMainSliderDetailsResponse
+        private lateinit var navController: NavController
 
 
     companion object{
@@ -59,7 +65,8 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
     ): View? {
         drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
         viewModel = ViewModelProvider(this)[VastuDashboardViewModel::class.java]
-        dashboardBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_vastu_dashboard, container, false)
+//        dashboardBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_vastu_dashboard, container, false)
+        dashboardBinding= FragmentVastuDashboardBinding.inflate(layoutInflater)
         dashboardBinding.lifecycleOwner = this
         dashboardBinding.vastuDashboardViewModel = viewModel
         dashboardBinding.drawerViewModel= drawerViewModel
@@ -69,6 +76,10 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         drawerViewModel.iToolbarListener = this
 
         drawerViewModel.iNavDrawerListener = this
+
+//        navController = Navigation.findNavController(requireActivity(),R.id.activity_main_nav_host_fragment)
+//        setupWithNavController(dashboardBinding.bottomNavigationDashboard,navController)
+
 
         getUserDetails()
 
@@ -206,7 +217,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
                     drawerViewModel.enquiry.set(View.GONE)
                     drawerViewModel.properties.set(View.GONE)
                     drawerViewModel.offer.set(View.VISIBLE)
-                    dashboardBinding.floatAddProperty.visibility = View.GONE
+                  //  dashboardBinding.floatAddProperty.visibility = View.GONE
                 }
             }
     }
@@ -299,4 +310,13 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         activity?.finishAffinity()
         startActivity(Intent(activity, LoginActivity::class.java))
     }
+
+//    private fun replaceFragment(fragment: Fragment) {
+//        val fragmentManager: FragmentManager = getSupportFragmentManager()
+//        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+//        fragmentTransaction.replace(com.vastu.realestate.R.id.llBottomNavigation, fragment)
+//        fragmentTransaction.commit()
+//    }
+
+
 }

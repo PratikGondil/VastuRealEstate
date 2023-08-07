@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".appModule.dashboard.view.DashboardFragment">
 
     <data>
+
         <variable
             name="drawerViewModel"
             type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
+
         <variable
             name="vastuDashboardViewModel"
             type="com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewModel" />
@@ -18,139 +20,191 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:openDrawer="start"
         android:fitsSystemWindows="true">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-    <include
-        layout="@layout/toolbar_layout"
-        bind:drawerViewModel="@{drawerViewModel}" />
-
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/image_slider"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/banner_image_height"
-            app:iss_auto_cycle="true"
-            app:iss_title_background="@drawable/grad"
-            app:iss_error_image="@drawable/vastu_logo_splash"
-            app:iss_placeholder="@color/loan_background_color"
-            app:iss_selected_dot="@drawable/default_selected_dot"
-            app:iss_unselected_dot=" @drawable/default_unselected_dot"
-            app:iss_period="1000"
-            app:iss_delay="0" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        <!--        tools:openDrawer=""-->
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:gravity="center"
-            android:background="@drawable/white_background"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <include
+                layout="@layout/toolbar_layout"
+                bind:drawerViewModel="@{drawerViewModel}" />
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/image_slider"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2.2"
-                android:layout_marginStart="@dimen/margin_xlarge"
-                android:layout_marginEnd="@dimen/margin_xlarge">
+                android:layout_height="@dimen/banner_image_height"
+                app:iss_auto_cycle="true"
+                app:iss_delay="0"
+                app:iss_error_image="@drawable/vastu_logo_splash"
+                app:iss_period="1000"
+                app:iss_placeholder="@color/loan_background_color"
+                app:iss_selected_dot="@drawable/default_selected_dot"
+                app:iss_title_background="@drawable/grad"
+                app:iss_unselected_dot=" @drawable/default_unselected_dot" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
-                    android:id="@+id/real_estate_layout"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/dimen20dp"
-                    android:onClick="@{(view)->vastuDashboardViewModel.onClickRealEstate()}"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/dashboard_background"
+                    android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:layout_width="@dimen/dimen110dp"
-                        android:layout_height="@dimen/dimen110dp"
-                        android:background="@drawable/dashboard_image_back"
-                        android:backgroundTint="@color/real_estate_background_color"
-                        android:scaleType="center"
-                        android:src="@drawable/real_estate" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:id="@+id/llInner"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/real_estate"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:textColor="@color/black"
-                        android:gravity="center"
-                        android:layout_marginLeft="@dimen/dimen10dp"
-                        android:includeFontPadding="true"
-                        app:fontFamily="@font/poppins_semibold"
-                        android:textSize="@dimen/text_size18sp"/>
+                        android:orientation="horizontal"
+                        android:weightSum="2.2">
+
+                                                <ImageView
+                                                    android:layout_width="@dimen/dimen80dp"
+                                                    android:layout_height="@dimen/dimen80dp"
+                                                    android:background="@drawable/badge_background"
+                                                    android:backgroundTint="@color/white"
+                                                    android:scaleType="center"
+                                                    android:src="@drawable/real_estate"/>
+
+                        <LinearLayout
+                            android:id="@+id/real_estate_layout"
+                            android:layout_width="@dimen/dimen25dp"
+                            android:layout_height="@dimen/dimen90dp"
+                            android:layout_marginLeft="@dimen/dimen20dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/dashboard_image_back"
+                            android:backgroundTint="@color/white"
+                            android:onClick="@{(view)->vastuDashboardViewModel.onClickRealEstate()}"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/badge_background"
+                                android:backgroundTint="@color/white"
+                                android:src="@drawable/real_estate" />
+
+
+                            <!--                            <ImageView-->
+                            <!--                                android:layout_width="@dimen/dimen150dp"-->
+                            <!--                                android:layout_height="@dimen/dimen90dp"-->
+                            <!--                                android:background="@drawable/dashboard_image_back"-->
+                            <!--                                android:backgroundTint="@color/white"-->
+                            <!--                                android:scaleType="center"-->
+                            <!--                                android:src="@drawable/real_estate" />-->
+
+                            <TextView
+                                android:id="@+id/tvRealEstate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/dimen50dp"
+                                android:includeFontPadding="true"
+                                android:text="@string/real_estate"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size18sp"
+                                app:fontFamily="@font/poppins_semibold" />
+
+                        </LinearLayout>
+
+                        <!--                        <View-->
+                        <!--                            android:layout_width="0dp"-->
+                        <!--                            android:layout_height="150dp"-->
+                        <!--                            android:layout_weight="0.2" />-->
+
+                        <LinearLayout
+                            android:id="@+id/loan_layout"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/dimen10dp"
+                            android:layout_weight="1"
+                            android:onClick="@{(view)->vastuDashboardViewModel.onClickLoan()}"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:layout_width="@dimen/dimen150dp"
+                                android:layout_height="@dimen/dimen90dp"
+                                android:background="@drawable/dashboard_image_back"
+                                android:backgroundTint="@color/white"
+                                android:scaleType="center"
+                                android:src="@drawable/loan" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/dimen30dp"
+                                android:layout_marginTop="@dimen/margin_small"
+                                android:gravity="center"
+                                android:includeFontPadding="true"
+                                android:text="@string/loan"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_size18sp"
+                                app:fontFamily="@font/poppins_semibold" />
+                        </LinearLayout>
+                    </LinearLayout>
                 </LinearLayout>
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_weight="0.2"
-                    android:layout_height="150dp"/>
-
                 <LinearLayout
-                    android:id="@+id/loan_layout"
-                    android:layout_width="0dp"
-                    android:layout_marginLeft="@dimen/dimen20dp"
-                    android:layout_weight="1"
-                    android:onClick="@{(view)->vastuDashboardViewModel.onClickLoan()}"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:id="@+id/llBottomNavigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:orientation="horizontal">
+
+<!--                    <fragment-->
+<!--                        android:id="@+id/activity_main_nav_host_fragment"-->
+<!--                        android:name="androidx.navigation.fragment.NavHostFragment"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="0dp"-->
+<!--                        app:defaultNavHost="true"-->
+<!--                        app:navGraph="@navigation/dashboard_nav_graph" />-->
 
 
-                <ImageView
-                    android:layout_width="@dimen/dimen110dp"
-                    android:layout_height="@dimen/dimen110dp"
-                    android:backgroundTint="@color/loan_background_color"
-                    android:background="@drawable/dashboard_image_back"
-                    android:src="@drawable/loan"
-                    android:scaleType="center"/>
+                    <com.google.android.material.bottomnavigation.BottomNavigationView
+                        android:id="@+id/bottomNavigation_dashboard"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="bottom"
+                        android:background="?android:attr/windowBackground"
+                        app:labelVisibilityMode="labeled"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:menu="@menu/bottom_navigation_menu" />
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/loan"
-                    android:layout_marginLeft="@dimen/dimen30dp"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:textColor="@color/black"
-                    android:gravity="center"
-                    android:includeFontPadding="true"
-                    app:fontFamily="@font/poppins_semibold"
-                    android:textSize="@dimen/text_size18sp"/>
-            </LinearLayout>
-            </LinearLayout>
+                <!--                        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
+                <!--                            android:id="@+id/floatAddProperty"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:gravity="center"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:text="@string/add_property"-->
+                <!--                            android:visibility="visible"-->
+                <!--                            app:fontFamily="@font/poppins_medium"-->
+                <!--                            android:textColor="@color/white"-->
+                <!--                            android:textSize="@dimen/text_size_small"-->
+                <!--                            app:icon="@drawable/ic_add"-->
+                <!--                            app:iconTint="@color/white"-->
+                <!--                            android:textAllCaps="false"-->
+                <!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+                <!--                            app:layout_constraintEnd_toEndOf="parent"-->
+                <!--                            android:layout_margin="@dimen/margin_large"-->
+                <!--                            android:onClick="@{(view)->vastuDashboardViewModel.onClickAddProperty()}" />-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/floatAddProperty"
-            android:layout_width="wrap_content"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:text="@string/add_property"
-            android:visibility="visible"
-            app:fontFamily="@font/poppins_medium"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_size_small"
-            app:icon="@drawable/ic_add"
-            app:iconTint="@color/white"
-            android:textAllCaps="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="@dimen/margin_large"
-            android:onClick="@{(view)->vastuDashboardViewModel.onClickAddProperty()}" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
 
 
         <com.google.android.material.navigation.NavigationView
@@ -162,8 +216,8 @@
 
             <!--android:layout_marginEnd="@dimen/navigation_view_margin_end"-->
             <include
-                bind:drawerViewModel="@{drawerViewModel}"
-                layout="@layout/main_nav_drawer" />
+                layout="@layout/main_nav_drawer"
+                bind:drawerViewModel="@{drawerViewModel}" />
         </com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>
