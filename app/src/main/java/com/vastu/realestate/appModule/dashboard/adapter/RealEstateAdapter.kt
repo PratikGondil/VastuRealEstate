@@ -2,6 +2,7 @@ package com.vastu.realestate.appModule.dashboard.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.realestate.R
@@ -49,6 +50,25 @@ class RealEstateAdapter(
             holder.binding.propertyImage,
             R.drawable.vastu_logo_splash
         )
+
+        if(position==0){
+            holder.binding.imgE.visibility=View.VISIBLE
+        showImageFromURL(
+            context,
+            property.propertyThumbnail,
+            holder.binding.imgE,
+            R.drawable.vastu_logo_splash
+        )
+        }else{
+            holder.binding.imgE.visibility=View.GONE
+        }
+
+        if(position==2) {
+            holder.binding.video.andExoPlayerView.visibility=View.VISIBLE
+            holder.binding.video.andExoPlayerView.setSource("https://myclanservices.co.in/pratik/video.mp4")
+        }else{
+            holder.binding.video.andExoPlayerView.visibility=View.GONE
+        }
         holder.binding.layoutContainer.setOnClickListener {
             itemClick.onItemClick(property)
         }

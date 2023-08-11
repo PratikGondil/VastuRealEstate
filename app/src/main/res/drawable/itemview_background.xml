@@ -4,7 +4,7 @@
     android:shape="rectangle">
     <size android:height="@dimen/dimen60dp"/>
     <solid
-        android:color="@color/loan_itemview_color"/>
+        android:color="@color/button_color"/>
     <stroke
         android:width="2dp"
         android:color="@color/item_border_color" />

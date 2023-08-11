@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="purple_200">#FFA42A37</color>
     <color name="purple_500">#FFA42A37</color>
     <color name="purple_700">#CC4354</color>
@@ -39,4 +39,7 @@
     <color name="shimmer_background_color">#F0EFF5</color>
     <color name="transparent">#00000000</color>
     <color name="brown">#800000</color>
+    <color name="loan_btn_color">#F2D2D7</color>
+    <color name="filter_txt_color">#B78C91</color>
+    <color name="pinkk">#F9EFF0</color>
 </resources>

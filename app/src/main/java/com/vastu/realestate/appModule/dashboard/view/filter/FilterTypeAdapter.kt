@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.Nullable
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterTypeClickListener
@@ -42,12 +43,19 @@ class FilterTypeAdapter(var context :Context, var itemsList: ArrayList<ObjFilter
 
             notifyDataSetChanged()
         }
-        if(selectedItemPosition == position)
+        if(selectedItemPosition == position) {
             holder.binding.llFilterTypeLayout.setBackgroundColor(context.resources.getColor(R.color.white))
-        else
-            holder.binding.llFilterTypeLayout.setBackgroundColor(context.resources.getColor(R.color.real_estate_background_color))
+            holder.binding.itemTextView.setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    R.color.text_color
+                )
+            )
+        } else {
+            holder.binding.itemTextView.setTextColor(ContextCompat.getColor(context,R.color.white))
+            holder.binding.llFilterTypeLayout.setBackgroundColor(context.resources.getColor(R.color.button_color))
 //            holder.binding.llFilterTypeLayout.background= ContextCompat.getDrawable(context,R.drawable.sort_selected_state)
-
+        }
 
 
     }

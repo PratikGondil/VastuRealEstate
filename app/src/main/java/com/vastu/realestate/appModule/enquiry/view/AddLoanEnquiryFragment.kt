@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.vastu.loanenquirycore.model.request.AddLoanEnquiryRequest
 import com.vastu.loanenquirycore.model.response.bank.BankData
 import com.vastu.loanenquirycore.model.response.bank.BankResponseMain
@@ -133,6 +134,7 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
     {
         showProgressDialog()
         loanEnquiryViewModel.callAddLoanEnquiry(getLoanEnquiryInfo())
+        findNavController().navigate(R.id.LoanFragment)
     }
     private fun getLoanEnquiryInfo():AddLoanEnquiryRequest{
         addLoanEnquiryRequest = addLoanEnquiryRequest.copy(
@@ -185,7 +187,7 @@ class AddLoanEnquiryFragment : BaseFragment(),IAddLoanEnquiryListener,IToolbarLi
 
     override fun onClickBack() {
      activity?.onBackPressed()
-        hideDialog()
+       // hideDialog()
     }
 
     override fun onClickMenu() {

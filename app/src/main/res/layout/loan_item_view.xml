@@ -13,61 +13,57 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen80dp">
-
-        <LinearLayout
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/loan_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="1"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_small"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:padding="@dimen/padding_small"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/itemview_background"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_weight="0.2"
-                android:layout_width="0dp"
-                android:scaleType="center"
-                android:layout_height="@dimen/dimen50dp"
-                android:src="@drawable/personal_loan" />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_weight="0.05"
-                android:layout_height="@dimen/dimen50dp" />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_weight="0.0001"
-                android:layout_height="@dimen/dimen50dp"
-                android:background="@color/ruler_color" />
-
-            <View
-                android:layout_width="1dp"
-                android:layout_weight="0.05"
-                android:layout_height="@dimen/dimen50dp" />
+            android:background="@drawable/loan_icon_background"
+            android:layout_marginStart="@dimen/dimen20dp"
+            android:layout_marginTop="@dimen/dimen20dp"
+            android:layout_marginEnd="@dimen/dimen10dp"
+            android:padding="18dp">
 
 
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="0dp"
-                android:layout_weight="0.7"
-                android:gravity="start"
-                app:fontFamily="@font/poppins_medium"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_size_small"
-                android:textColor="@color/text_color"
-                android:text="@{loanIntersetedData.loanName}" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                >
 
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/ivTransactionIcon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    />
 
+                <TextView
+                    android:id="@+id/tvTransactionName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivTransactionIcon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dimen15dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:letterSpacing="0.03"
+                    android:text="@{loanIntersetedData.loanName}"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:singleLine="true"
+                    />
+
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

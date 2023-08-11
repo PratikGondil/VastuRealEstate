@@ -154,6 +154,10 @@
             android:id="@+id/action_LoanFragment_to_AddLoanEnquiryFragment"
             app:destination="@id/addLoanEnquiryFragment"
             app:enterAnim="@anim/enter_from_right"/>
+        <action
+            android:id="@+id/action_LoanFragment_to_LoanInfoFragment"
+            app:destination="@id/LoanInfoFragment"
+            app:enterAnim="@anim/enter_from_right"/>
     </fragment>
 
     <fragment
@@ -186,5 +190,16 @@
         android:id="@+id/action_PropertiesFragment_to_AddPropertyFragment"
         app:destination="@id/addPropertyFragment"
         app:enterAnim="@anim/enter_from_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/LoanInfoFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.LoanInformationFragment"
+        android:label="LoanInfoFragment"
+        tools:layout="@layout/loan_info_fragment">
+        <action
+            android:id="@+id/action_LoanInfoFragment_to_LoanFragment"
+            app:destination="@id/LoanFragment"
+            app:enterAnim="@anim/enter_from_right"/>
     </fragment>
 </navigation>

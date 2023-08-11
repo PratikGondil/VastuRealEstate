@@ -38,10 +38,10 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/property_image"
                     android:layout_width="0dp"
-                    android:layout_weight="0.65"
-                    android:layout_marginStart="@dimen/margin_small"
-                    android:layout_marginEnd="@dimen/margin_small"
-                    android:layout_height="@dimen/image_height"
+                    android:layout_weight="0.55"
+                    android:layout_marginStart="@dimen/padding_xsmall"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/margin_small"
                     android:scaleType="fitXY"
                     android:src="@{propertyData.propertyThumbnail}"
                     android:layout_gravity="center"
@@ -51,7 +51,7 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1.35"
+                    android:layout_weight="1.45"
                     android:layout_margin="@dimen/margin_small"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -61,29 +61,29 @@
                         android:layout_height="wrap_content"
                         android:weightSum="1"
                         android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="0.25"
-                        android:layout_height="wrap_content"
-                        android:text="@string/featured"
-                        android:padding="1dp"
-                        android:gravity="center"
-                        android:textSize="@dimen/text_size_menu"
-                        app:fontFamily="@font/poppins_regular"
-                        android:background="@color/feature_color" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@{propertyData.propertyTitle}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_small"
+                            android:maxLength="35"
+                            android:layout_weight="0.90"
+                            android:minLines="1"
+                            android:gravity="start"
+                            app:fontFamily="@font/poppins_bold"/>
+<!--                        <View-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_weight="0.65"-->
+<!--                            android:layout_height="@dimen/dimen20dp"/>-->
 
-                        <View
-                            android:layout_width="0dp"
-                            android:layout_weight="0.65"
-                            android:layout_height="@dimen/dimen20dp"/>
-
-                    <ImageView
-                        android:id="@+id/img_like"
-                        android:layout_width="0dp"
-                        android:layout_weight="0.1"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/un_like"
-                        android:layout_gravity="top" />
+                        <ImageView
+                            android:id="@+id/img_like"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_weight="0.1"
+                            android:src="@drawable/ic_like" />
                 </LinearLayout>
 
 
@@ -92,32 +92,34 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@{propertyData.propertyTitle}"
-                            android:padding="1dp"
-                            android:textSize="@dimen/text_size_small"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_xsmall"
                             android:maxLength="35"
                             android:ellipsize="end"
                             android:minLines="1"
-                            app:fontFamily="@font/poppins_medium"/>
-
-
-                    <TextView
-                        android:id="@+id/property_prize_textview"
-                        android:textColor="@color/black"
-                        app:fontFamily="@font/poppins_medium"
-                        android:layout_width="match_parent"
-                        android:textSize="@dimen/text_size_small"
-                        android:maxLength="35"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:layout_height="wrap_content" />
+                            android:gravity="start"
+                            app:fontFamily="@font/poppins_regular"/>
 
 
                     <TextView
                         android:id="@+id/property_details_textview"
                         android:textColor="@color/black"
+                        app:fontFamily="@font/poppins_medium"
+                        android:layout_width="match_parent"
+                        android:textSize="@dimen/text_size_xsmall"
+                        android:maxLength="35"
                         android:ellipsize="end"
-                        android:maxLines="2"
+                        android:maxLines="1"
+                        android:layout_height="wrap_content" />
+
+
+                    <TextView
+                        android:id="@+id/property_address_textview"
+                        android:textColor="@color/black"
+                        android:ellipsize="end"
+                        android:maxLines="1"
                         android:maxLength="60"
+                        android:text="@{propertyData.address}"
                         app:fontFamily="@font/poppins_regular"
                         android:layout_width="match_parent"
                         android:textSize="@dimen/text_size_xsmall"
@@ -125,21 +127,39 @@
 
 
                     <TextView
-                        android:id="@+id/property_address_textview"
-                        android:text="@{propertyData.address}"
+                        android:id="@+id/property_prize_textview"
                         android:textColor="@color/black"
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:maxLength="35"
-                        android:drawablePadding="@dimen/padding_small"
-                        android:drawableStart="@drawable/location"
-                        app:fontFamily="@font/poppins_regular"
+                        app:fontFamily="@font/poppins_bold"
                         android:includeFontPadding="true"
                         android:layout_width="match_parent"
-                        android:textSize="@dimen/text_size_xsmall"
+                        android:textSize="@dimen/text_size_small"
                         android:layout_height="wrap_content" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+        <ImageView
+            android:id="@+id/img_e"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:src="@drawable/ic_like"
+            android:padding="@dimen/padding_xsmall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutContainer"/>
+<include
+    android:id="@+id/video"
+    layout="@layout/fragment_video"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:padding="@dimen/padding_xsmall"
+    app:layout_constraintTop_toBottomOf="@+id/img_e"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

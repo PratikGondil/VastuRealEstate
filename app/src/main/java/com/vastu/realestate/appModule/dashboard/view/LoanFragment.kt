@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
@@ -126,7 +128,7 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener, OnItemClickL
             val recyclerViewLoan = loanBinding.loanRecyclerview
             val loanAdapter = LoanAdapter(this,loanList)
             recyclerViewLoan.adapter = loanAdapter
-            recyclerViewLoan.layoutManager = LinearLayoutManager(activity)
+            recyclerViewLoan.layoutManager = GridLayoutManager(activity,2)
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -145,7 +147,10 @@ class LoanFragment : BaseFragment(),IToolbarListener,ILoanListener, OnItemClickL
     override fun onItemClick(loanData: LoanInterstedData) {
         loan = loanData
         if(loan.loanName!=null) {
-            loanBinding.floatLoanEnquiry.visibility = View.VISIBLE
+            val bundle = Bundle()
+            bundle.putSerializable(LOAN_DATA, loan)
+//            loanBinding.floatLoanEnquiry.visibility = View.VISIBLE
+            findNavController().navigate(R.id.LoanInfoFragment,bundle)
         }else{
             showDialog("Please Select Loan",isSuccess = false,isNetworkFailure = false)
         }

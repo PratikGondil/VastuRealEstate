@@ -258,5 +258,17 @@
     <string name="valid_number">कृपया वैध क्रमांक प्रविष्ट करा</string>
     <string name="valid_number_error">कृपया पुढे जाण्यासाठी तुमचा नोंदणी क्रमांक प्रविष्ट करा</string>
 
-
+    <string name="commercial_loan">व्यावसायिक वाहन कर्ज</string>
+    <string name="business_loan">व्यवसाय कर्ज</string>
+    <string name="auto_loan">ऑटो कर्ज</string>
+    <string name="project_loan">प्रकल्प कर्ज</string>
+    <string name="term_loan">मुदत कर्ज</string>
+    <string name="plot_purchase_loan">प्लॉट खरेदी कर्ज</string>
+    <string name="loan_against">औद्योगिक मालमत्ता कर्जावर कर्ज</string>
+    <string name="overdraft_loan">ओव्हरड्राफ्ट &amp; सीसी कर्ज</string>
+    <string name="construction_loan">भूखंड खरेदी + बांधकाम कर्ज</string>
+    <string name="loan_against_property">मालमत्तेवर कर्ज</string>
+    <string name="viewMore">अधिक पहा</string>
+    <string name="viewLess">कमी पहा</string>
+    <string name="welcome">वास्तु परिवारात \nआपले स्वागत आहे</string>
 </resources>
