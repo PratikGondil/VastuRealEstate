@@ -31,8 +31,7 @@ class LoanInformationFragment : BaseFragment(), ILoanInfoListener, IToolbarListe
     ): View? {
         drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
         loanInfoViewModel = ViewModelProvider(this)[LoanInformationViewModel::class.java]
-        loanInfoBinding =
-            DataBindingUtil.inflate(inflater, R.layout.loan_info_fragment, container, false)
+        loanInfoBinding = DataBindingUtil.inflate(inflater, R.layout.loan_info_fragment, container, false)
         loanInfoBinding.lifecycleOwner = this
         loanInfoViewModel.iLoanInfoListener = this
         drawerViewModel.iToolbarListener = this
@@ -56,6 +55,8 @@ class LoanInformationFragment : BaseFragment(), ILoanInfoListener, IToolbarListe
         drawerViewModel.isDashBoard.set(false)
         loanInfoViewModel.maxline.set(16)
         loanInfoViewModel.btnText.set(context?.getString(R.string.viewMore))
+        loanInfoViewModel.mainMorebtn.set(context?.getDrawable(R.drawable.ic_baseline_keyboard_arrow_up_24))
+
     }
     override fun onClickBack() {
 //        activity?.onBackPressed()

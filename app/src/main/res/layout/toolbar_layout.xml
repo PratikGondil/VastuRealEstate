@@ -27,7 +27,7 @@
             <ImageView
                 android:id="@+id/menu_imageview"
                 android:layout_width="0dp"
-                android:layout_weight="0.15"
+                android:layout_weight="0.1"
                 android:visibility="@{drawerViewModel.isDashBoard()?View.VISIBLE:View.GONE}"
                 android:onClick="@{(view)->drawerViewModel.onMenuClick()}"
                 android:layout_gravity="center"
@@ -37,7 +37,7 @@
             <ImageView
                 android:id="@+id/back_imageview"
                 android:layout_width="0dp"
-                android:layout_weight="0.15"
+                android:layout_weight="0.1"
                 android:visibility="@{drawerViewModel.isDashBoard()?View.GONE:View.VISIBLE}"
                 android:onClick="@{(view)->drawerViewModel.onBackClick()}"
                 android:layout_gravity="center"

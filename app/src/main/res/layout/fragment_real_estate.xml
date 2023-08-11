@@ -37,17 +37,17 @@
                 layout="@layout/toolbar_layout"
                 bind:drawerViewModel="@{drawerViewModel}" />
 
-            <com.denzcoskun.imageslider.ImageSlider
-                android:id="@+id/image_slider"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen200dp"
-                app:iss_auto_cycle="true"
-                app:iss_error_image="@drawable/vastu_logo_splash"
-                app:iss_placeholder="@color/loan_background_color"
-                app:iss_selected_dot="@drawable/default_selected_dot"
-                app:iss_unselected_dot="@drawable/default_unselected_dot"
-                app:iss_period="1000"
-                app:iss_delay="0" />
+<!--            <com.denzcoskun.imageslider.ImageSlider-->
+<!--                android:id="@+id/image_slider"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/dimen200dp"-->
+<!--                app:iss_auto_cycle="true"-->
+<!--                app:iss_error_image="@drawable/vastu_logo_splash"-->
+<!--                app:iss_placeholder="@color/loan_background_color"-->
+<!--                app:iss_selected_dot="@drawable/default_selected_dot"-->
+<!--                app:iss_unselected_dot="@drawable/default_unselected_dot"-->
+<!--                app:iss_period="1000"-->
+<!--                app:iss_delay="0" />-->
 
 
             <LinearLayout
@@ -55,7 +55,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_margin="@dimen/margin_small"
+                android:background="@color/button_color"
                 android:weightSum="2.5">
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -65,7 +65,10 @@
                     android:layout_weight="2.3"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="@dimen/margin_menu"
+                    android:layout_marginEnd="@dimen/margin_menu"
+                    android:layout_marginTop="@dimen/dimen2dp"
+                    android:layout_marginStart="@dimen/dimen15dp"
+                    android:layout_marginBottom="@dimen/dimen10dp"
                     android:background="@drawable/edittext_background"
                     android:gravity="center"
                     android:textAlignment="center"
@@ -75,11 +78,13 @@
                     app:hintEnabled="false"
                     app:placeholderText="@string/search"
                     app:placeholderTextColor="@color/black"
-                    app:startIconDrawable="@drawable/search">
+                    android:paddingStart="@dimen/dimen10dp"
+                    >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtSearch"
                         style="@style/TextAppearance"
+                        android:padding="@dimen/dimen10dp"
                         android:maxLength="15"
                         android:maxLines="1"
                         android:minLines="1"
@@ -91,6 +96,7 @@
                         android:inputType="text"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_menu"
+                        android:drawableEnd="@drawable/search"
                         android:onTextChanged="@{realEstateViewModel.onTextChanged}"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>

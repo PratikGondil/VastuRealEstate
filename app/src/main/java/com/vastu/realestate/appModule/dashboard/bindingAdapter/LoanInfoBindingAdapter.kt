@@ -14,11 +14,13 @@ object LoanInfoBindingAdapter {
             {
                 loanInformationViewModel.maxline.set(20)
                 loanInformationViewModel.btnText.set(context.getString(R.string.viewLess))
+                loanInformationViewModel.mainMorebtn.set(context.getDrawable(R.drawable.ic_baseline_keyboard_arrow_up_24))
             }
             else
             {
                 loanInformationViewModel.maxline.set(16)
                 loanInformationViewModel.btnText.set(context.getString(R.string.viewMore))
+                loanInformationViewModel.mainMorebtn.set(context.getDrawable(R.drawable.ic_baseline_keyboard_arrow_down_24))
             }
         }
     }
