@@ -202,4 +202,22 @@
             app:destination="@id/LoanFragment"
             app:enterAnim="@anim/enter_from_right"/>
     </fragment>
+
+    <fragment
+        android:id="@+id/upcomingSchemesFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.UpcomingSchemesFragment"
+        android:label="upcomingSchemes"
+        tools:layout="@layout/fragment_upcoming_schemes"/>
+
+    <fragment
+        android:id="@+id/ourServicesFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.OurServicesFragment"
+        android:label="ourServices"
+        tools:layout="@layout/fragment_our_services"/>
+
+    <fragment
+        android:id="@+id/wishlistFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.WishlistFragment"
+        android:label="wishlist"
+        tools:layout="@layout/fragment_wishlist"/>
 </navigation>

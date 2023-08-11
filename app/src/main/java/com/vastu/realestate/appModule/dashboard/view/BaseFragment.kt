@@ -3,7 +3,6 @@ package com.vastu.realestate.appModule.dashboard.view
 import android.app.AlertDialog
 import android.content.res.Configuration
 import android.os.Build
-import android.widget.Button
 import android.widget.CheckBox
 import androidx.fragment.app.Fragment
 import com.vastu.realestate.R
@@ -11,7 +10,7 @@ import com.vastu.realestate.appModule.enquiry.view.AddLoanEnquiryFragment
 import com.vastu.realestate.appModule.enquiry.view.AddPropertyEnquiryFragment
 import com.vastu.realestate.appModule.login.view.fragment.LoginFragment
 import com.vastu.realestate.appModule.signUp.view.SignUpFragment
-import java.util.Locale
+import java.util.*
 
 open class BaseFragment : Fragment() {
 

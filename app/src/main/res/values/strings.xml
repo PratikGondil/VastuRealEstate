@@ -267,10 +267,11 @@
     <string name="viewLess">View Less</string>
     <string name="welcome">Welcome \n to the vastu family</string>
 
-<!--    New Dashboard-->
+    <!--    New Dashboard-->
     <string name="home_text">Home</string>
     <string name="prime_properties_text">Prime Properties</string>
     <string name="upcoming_schemes_text">Upcoming Schemes</string>
     <string name="our_services_text">Our Services</string>
     <string name="wishlist_text">Wishlist</string>
+
 </resources>

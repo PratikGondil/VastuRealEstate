@@ -106,6 +106,7 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../registrationCore/build/generated/aidl_source_output_dir/debug/out" />
     <content url="file://$MODULE_DIR$/../../../registrationCore/build/generated/ap_generated_sources/debug/out">
+      <sourceFolder url="file://$MODULE_DIR$/../../../registrationCore/build/generated/ap_generated_sources/debug/out" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../registrationCore/build/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
     </content>
     <content url="file://$MODULE_DIR$/../../../registrationCore/build/generated/renderscript_source_output_dir/debug/out" />
@@ -115,6 +116,7 @@
     <content url="file://$MODULE_DIR$/../../../registrationCore/build/generated/res/rs/debug" />
     <content url="file://$MODULE_DIR$/../../../registrationCore/build/generated/source/buildConfig/debug">
       <sourceFolder url="file://$MODULE_DIR$/../../../registrationCore/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../registrationCore/build/generated/source/buildConfig/debug" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/../../../registrationCore/src/debug" />
     <content url="file://$MODULE_DIR$/../../../registrationCore/src/main">
