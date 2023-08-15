@@ -50,5 +50,21 @@ data class PropertyData(
     @SerializedName("state")
     val state: String?="",
     @SerializedName("swimming_pool")
-    val swimmingPool: String?=""
+    val swimmingPool: String?="",
+    @SerializedName("price_min_word")
+    val priceMinWord: String ="",
+    @SerializedName("price_max_word")
+    val priceMaxWord: String ="",
+    @SerializedName("price_min_digit")
+    val priceMinDigit: String ="",
+    @SerializedName("price_max_digit")
+    val priceMaxDigit: String ="",
+    @SerializedName("owner")
+    val owner: String ="",
+    @SerializedName("apartment")
+    val apartment: String ="",
+    @SerializedName("building")
+    val building: String ="",
+    @SerializedName("short_address")
+    val shortAddress: String ="",
 ): Serializable
