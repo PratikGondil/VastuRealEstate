@@ -15,7 +15,10 @@ import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.activity.LoginActivity
-import com.vastu.realestate.appModule.dashboard.uiInterfaces.*
+import com.vastu.realestate.appModule.dashboard.uiInterfaces.IAdvertisementSliderListener
+import com.vastu.realestate.appModule.dashboard.uiInterfaces.IDashboardViewListener
+import com.vastu.realestate.appModule.dashboard.uiInterfaces.INavDrawerListener
+import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewModel
 import com.vastu.realestate.appModule.enquirylist.view.EnquiryActivity
@@ -36,33 +39,36 @@ import com.vastu.slidercore.model.response.mainpage.GetMainSliderDetailsResponse
 import com.vastu.slidercore.model.response.mainpage.MainPageSliderResponse
 import com.vastu.usertypecore.model.response.ObjGetUserTypeResMain
 
-class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListener,
-    INavDrawerListener,IAdvertisementSliderListener {
-        private lateinit var dashboardBinding: FragmentVastuDashboardBinding
-        private var mainPagerSliderRequest = MainPagerSliderRequest()
-        private lateinit var viewModel: VastuDashboardViewModel
-        private lateinit var drawerViewModel: DrawerViewModel
-        private val imageList = ArrayList<SlideModel>()
-        private lateinit var getAdvertisementSlider: GetAdvertiseDetailsResponse
-        private lateinit var getMainSliderDetailsResponse: GetMainSliderDetailsResponse
+
+class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListener,
+    INavDrawerListener, IAdvertisementSliderListener {
+    private lateinit var dashboardBinding: FragmentVastuDashboardBinding
+    private var mainPagerSliderRequest = MainPagerSliderRequest()
+    private lateinit var viewModel: VastuDashboardViewModel
+    private lateinit var drawerViewModel: DrawerViewModel
+    private val imageList = ArrayList<SlideModel>()
+    private lateinit var getAdvertisementSlider: GetAdvertiseDetailsResponse
+    private lateinit var getMainSliderDetailsResponse: GetMainSliderDetailsResponse
 
 
-    companion object{
-        var userType:String? = null
+    companion object {
+        var userType: String? = null
         var userId: String? = null
-        var areaId:String?=null
+        var areaId: String? = null
         var objVerifyDetails = ObjVerifyDtls()
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
         viewModel = ViewModelProvider(this)[VastuDashboardViewModel::class.java]
-        dashboardBinding = DataBindingUtil.inflate(inflater,R.layout.fragment_vastu_dashboard, container, false)
+        dashboardBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_vastu_dashboard, container, false)
         dashboardBinding.lifecycleOwner = this
         dashboardBinding.vastuDashboardViewModel = viewModel
-        dashboardBinding.drawerViewModel= drawerViewModel
+        dashboardBinding.drawerViewModel = drawerViewModel
         viewModel.iAdvertisementSliderListener = this
         viewModel.iDashboardViewListener = this
 
@@ -73,19 +79,22 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         getUserDetails()
 
         return dashboardBinding.root
+
+
     }
-    private fun getUserDetails(){
+
+    private fun getUserDetails() {
         val isLogin = PreferenceManger.get<Boolean>(PreferenceKEYS.IS_LOGIN)
-        if(isLogin!!){
-           objVerifyDetails = PreferenceManger.get<ObjVerifyDtls>(PreferenceKEYS.USER)!!
-           userId = objVerifyDetails.userId!!
-           areaId = objVerifyDetails.city
+        if (isLogin!!) {
+            objVerifyDetails = PreferenceManger.get<ObjVerifyDtls>(PreferenceKEYS.USER)!!
+            userId = objVerifyDetails.userId!!
+            areaId = objVerifyDetails.city
         }
         setUserDetails()
         getUserType()
     }
 
-    private fun getUserType(){
+    private fun getUserType() {
         showProgressDialog()
         userId?.let { viewModel.getUserType(it) }
     }
@@ -96,19 +105,25 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         layoutChange()
         getAdvertisementSlider()
     }
-    private fun getAdvertisementSlider(){
+
+    private fun getAdvertisementSlider() {
         showProgressDialog()
         viewModel.getAdvertisementSlider()
     }
 
     override fun onFailGetUserType(objGetUserTypeResMain: ObjGetUserTypeResMain) {
         hideProgressDialog()
-        showDialog(objGetUserTypeResMain.userTypeResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
+        showDialog(
+            objGetUserTypeResMain.userTypeResponse.responseStatusHeader.statusDescription!!,
+            isSuccess = false,
+            isNetworkFailure = false
+        )
     }
 
     override fun onSuccessMainSlider(mainPageSliderResponse: MainPageSliderResponse) {
         hideProgressDialog()
-        PreferenceManger.saveSlider(mainPageSliderResponse.getMainSliderDetailsResponse,
+        PreferenceManger.saveSlider(
+            mainPageSliderResponse.getMainSliderDetailsResponse,
             PreferenceKEYS.MAIN_SLIDER_LIST
         )
         getMainSlider()
@@ -116,19 +131,26 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
 
     override fun onFailureAdvertisementSlider(advertisementSliderMainResponse: GetAdvertisementSliderMainResponse) {
         hideProgressDialog()
-        showDialog(advertisementSliderMainResponse.advertiseResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
+        showDialog(
+            advertisementSliderMainResponse.advertiseResponse.responseStatusHeader.statusDescription!!,
+            isSuccess = false,
+            isNetworkFailure = false
+        )
     }
 
-    private fun getMainSlider(){
+    private fun getMainSlider() {
         showProgressDialog()
-        mainPagerSliderRequest = mainPagerSliderRequest.copy(areaId = areaId,
-            userId= userId)
+        mainPagerSliderRequest = mainPagerSliderRequest.copy(
+            areaId = areaId,
+            userId = userId
+        )
         viewModel.getMainSlider(mainPagerSliderRequest)
     }
 
     override fun onSuccessAdvertisementSlider(advertisementSliderMainResponse: GetAdvertisementSliderMainResponse) {
         hideProgressDialog()
-        PreferenceManger.saveAdvertisementSlider(advertisementSliderMainResponse.getAdvertiseDetailsResponse,
+        PreferenceManger.saveAdvertisementSlider(
+            advertisementSliderMainResponse.getAdvertiseDetailsResponse,
             PreferenceKEYS.DASHBOARD_SLIDER_LIST
         )
         setSliderData()
@@ -136,7 +158,11 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
 
     override fun onFailureMainSlider(mainPageSliderResponse: MainPageSliderResponse) {
         hideProgressDialog()
-        showDialog(mainPageSliderResponse.mainSliderResponse.responseStatusHeader.statusDescription!!, isSuccess = false, isNetworkFailure = false)
+        showDialog(
+            mainPageSliderResponse.mainSliderResponse.responseStatusHeader.statusDescription!!,
+            isSuccess = false,
+            isNetworkFailure = false
+        )
     }
 
     override fun onUserNotConnected() {
@@ -144,20 +170,21 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         showDialog("", isSuccess = false, isNetworkFailure = true)
     }
 
-    private fun setUserDetails(){
+    private fun setUserDetails() {
         drawerViewModel.apply {
-          mobileNo.set(objVerifyDetails.mobileNo!!)
-          userName.set(objVerifyDetails.firstName!!)
+            mobileNo.set(objVerifyDetails.mobileNo!!)
+            userName.set(objVerifyDetails.firstName!!)
         }
     }
 
-    private fun setSliderData(){
+    private fun setSliderData() {
         imageList.clear()
-        getAdvertisementSlider = PreferenceManger.getAdvertisementSlider(PreferenceKEYS.DASHBOARD_SLIDER_LIST)
-        if(getAdvertisementSlider.advertiseData.isNotEmpty()) {
+        getAdvertisementSlider =
+            PreferenceManger.getAdvertisementSlider(PreferenceKEYS.DASHBOARD_SLIDER_LIST)
+        if (getAdvertisementSlider.advertiseData.isNotEmpty()) {
             dashboardBinding.apply {
                 for (slider in getAdvertisementSlider.advertiseData) {
-                    imageList.add(SlideModel(slider.adSlider,ScaleTypes.FIT))
+                    imageList.add(SlideModel(slider.adSlider, ScaleTypes.FIT))
                 }
                 imageSlider.setImageList(imageList, ScaleTypes.FIT)
                 imageSlider.startSliding(3000)
@@ -165,13 +192,14 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         }
     }
 
-    private fun setMainSliderData(){
+    private fun setMainSliderData() {
         imageList.clear()
         getMainSliderDetailsResponse = PreferenceManger.getSlider(PreferenceKEYS.MAIN_SLIDER_LIST)
-        if(getMainSliderDetailsResponse.propertyData.isNotEmpty()) {
-            getMainSliderDetailsResponse = PreferenceManger.getSlider(PreferenceKEYS.MAIN_SLIDER_LIST)
+        if (getMainSliderDetailsResponse.propertyData.isNotEmpty()) {
+            getMainSliderDetailsResponse =
+                PreferenceManger.getSlider(PreferenceKEYS.MAIN_SLIDER_LIST)
             dashboardBinding.apply {
-                for( slider in getMainSliderDetailsResponse.propertyData){
+                for (slider in getMainSliderDetailsResponse.propertyData) {
                     imageList.add(SlideModel(slider.propertyImage))
                 }
                 imageSlider.setImageList(imageList, ScaleTypes.FIT)
@@ -180,6 +208,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         }
 
     }
+
     override fun onLoanClick() {
         showProgressDialog()
         findNavController().navigate(R.id.action_VastuDashboardFragment_to_LoanFragment)
@@ -190,57 +219,61 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         drawerViewModel.toolbarTitle.set(getString(R.string.vastu))
         drawerViewModel.isDashBoard.set(true)
     }
-    private fun layoutChange(){
-            when(userType){
-                ADMIN->{
-                    drawerViewModel.employess.set(View.VISIBLE)
-                }
-                BUILDER->{
-                    drawerViewModel.enquiry.set(View.GONE)
-                    drawerViewModel.offer.set(View.VISIBLE)
-                }
-                EMPLOYEES->{
-                    drawerViewModel.offer.set(View.VISIBLE)
-                }
-                CUSTOMER->{
-                    drawerViewModel.enquiry.set(View.GONE)
-                    drawerViewModel.properties.set(View.GONE)
-                    drawerViewModel.offer.set(View.VISIBLE)
-                    dashboardBinding.floatAddProperty.visibility = View.GONE
-                }
+
+    private fun layoutChange() {
+        when (userType) {
+            ADMIN -> {
+                drawerViewModel.employess.set(View.VISIBLE)
             }
+            BUILDER -> {
+                drawerViewModel.enquiry.set(View.GONE)
+                drawerViewModel.offer.set(View.VISIBLE)
+            }
+            EMPLOYEES -> {
+                drawerViewModel.offer.set(View.VISIBLE)
+            }
+            CUSTOMER -> {
+                drawerViewModel.enquiry.set(View.GONE)
+                drawerViewModel.properties.set(View.GONE)
+                drawerViewModel.offer.set(View.VISIBLE)
+                //  dashboardBinding.floatAddProperty.visibility = View.GONE
+            }
+        }
     }
-
-
 
 
     override fun onRealEstateClick() {
         findNavController().navigate(R.id.action_VastuDashboardFragment_to_RealEstateFragment)
     }
-    private fun openDrawer(){
+
+    private fun openDrawer() {
         dashboardBinding.drawerLayout.openDrawer(GravityCompat.START)
     }
-    private fun closeDrawer(){
+
+    private fun closeDrawer() {
         dashboardBinding.drawerLayout.closeDrawer(GravityCompat.START)
     }
 
     override fun onClickBack() {
-       activity?.onBackPressed()
+        activity?.onBackPressed()
     }
+
     override fun onClickMenu() {
         openDrawer()
     }
+
     override fun onClickNotification() {
         findNavController().navigate(R.id.action_vastuDashboardFragment_to_Notification)
 
     }
+
     override fun onClickClose() {
         closeDrawer()
     }
 
     override fun goToUserProfile() {
-        if(userType.equals(EMPLOYEES)|| userType.equals(CUSTOMER))
-             findNavController().navigate(R.id.action_vastuDashboardFragment_to_EmployeeDetailsFragment)
+        if (userType.equals(EMPLOYEES) || userType.equals(CUSTOMER))
+            findNavController().navigate(R.id.action_vastuDashboardFragment_to_EmployeeDetailsFragment)
         closeDrawer()
     }
 
@@ -253,27 +286,34 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         findNavController().navigate(R.id.action_DashBoardFragment_to_PropertiesFragment)
         closeDrawer()
     }
-   override fun onEmployessClick(){
-       findNavController().navigate(R.id.action_VastuDashboardFragment_to_EmployeeListFragment)
-       closeDrawer()
+
+    override fun onEmployessClick() {
+        findNavController().navigate(R.id.action_VastuDashboardFragment_to_EmployeeListFragment)
+        closeDrawer()
 
 
-   }    override fun onClickAddProperty() {
+    }
+
+    override fun onClickAddProperty() {
         val bundle = Bundle()
         bundle.putSerializable(IS_FROM_PROPERTY_LIST, false)
-        findNavController().navigate(R.id.action_VastuDashboardFragment_to_addPropertyFragment,bundle)
+        findNavController().navigate(
+            R.id.action_VastuDashboardFragment_to_addPropertyFragment,
+            bundle
+        )
         closeDrawer()
     }
 
     override fun onClickOffers() {
-       findNavController().navigate(R.id.action_VastuDashboardFragment_to_OfferFragment)
-       closeDrawer()
+        findNavController().navigate(R.id.action_VastuDashboardFragment_to_OfferFragment)
+        closeDrawer()
     }
 
     override fun onClickContactUs() {
         findNavController().navigate(R.id.action_vastuDashboardFragment_to_ContactUs)
         closeDrawer()
     }
+
     override fun onClickSettings() {
         closeDrawer()
     }
@@ -283,7 +323,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         showLogoutDialog()
     }
 
-    private fun showLogoutDialog(){
+    private fun showLogoutDialog() {
         val dialog = Dialog(requireContext())
         dialog.setContentView(R.layout.log_out_dialog)
         dialog.findViewById<TextView>(R.id.tvYes).setOnClickListener {
@@ -294,9 +334,12 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener,IToolbarListene
         }
         dialog.show()
     }
-    private fun logOut(){
+
+    private fun logOut() {
         clearPreferences()
         activity?.finishAffinity()
         startActivity(Intent(activity, LoginActivity::class.java))
     }
+
+
 }

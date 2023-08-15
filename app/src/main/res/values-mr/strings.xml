@@ -139,6 +139,12 @@
     <string name="select_image">प्रतिमा निवडा</string>
     <string name="images">प्रतिमा*</string>
 
+    <string name="home_text">मुख्यपृष्ठ</string>
+    <string name="prime_properties_text">मुख्य गुणधर्म</string>
+    <string name="upcoming_schemes_text">आगामी योजना</string>
+    <string name="our_services_text">आमच्या सेवा</string>
+    <string name="wishlist_text">विशलिस्ट</string>
+
 
     <string name="upload">अपलोड करा</string>
     <string name="property_title_error">कृपया मालमत्ता शीर्षक प्रविष्ट करा</string>
