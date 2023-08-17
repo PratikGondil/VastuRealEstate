@@ -5,5 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class GetPropertyDetailsResponse(
     @SerializedName("PropertyData")
-    val propertyData: List<PropertyData>
+    val propertyData: List<PropertyData>,
+    @SerializedName("objSlider")
+    val objSlider: List<ObjSlider>
 )

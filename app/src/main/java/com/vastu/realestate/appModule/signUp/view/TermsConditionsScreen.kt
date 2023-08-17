@@ -40,7 +40,7 @@ class TermsConditionsScreen(var callback: SignUpFragment,var terms: List<TermsCo
     }
     private fun setupFullHeight(bottomSheet: View) {
         val layoutParams = bottomSheet.layoutParams
-        var dMetrics = resources.getDisplayMetrics()
+        var dMetrics = resources.displayMetrics
         val h = Math.round(dMetrics.heightPixels / dMetrics.density)
         layoutParams.height = h*2
 

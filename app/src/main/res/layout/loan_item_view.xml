@@ -53,7 +53,7 @@
                     android:layout_below="@+id/ivTransactionIcon"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/dimen15dp"
-                    android:fontFamily="@font/roboto_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:letterSpacing="0.03"
                     android:text="@{loanIntersetedData.loanName}"
                     android:textColor="@color/white"

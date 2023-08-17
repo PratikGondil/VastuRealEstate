@@ -38,44 +38,45 @@
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/property_image"
                     android:layout_width="0dp"
-                    android:layout_weight="0.55"
-                    android:layout_marginStart="@dimen/padding_xsmall"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/padding_xsmall"
+                    android:layout_weight="0.55"
+                    android:adjustViewBounds="true"
                     android:padding="@dimen/margin_small"
                     android:scaleType="fitXY"
                     android:src="@{propertyData.propertyThumbnail}"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="true"
                     app:shapeAppearanceOverlay="@style/image_custom_shape" />
 
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_weight="1.45"
-                    android:layout_margin="@dimen/margin_small"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_small"
+                    android:layout_weight="1.45"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:weightSum="1"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:weightSum="1">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_weight="0.90"
+                            android:gravity="start"
+                            android:maxLength="35"
+                            android:minLines="1"
                             android:text="@{propertyData.propertyTitle}"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
-                            android:maxLength="35"
-                            android:layout_weight="0.90"
-                            android:minLines="1"
-                            android:gravity="start"
-                            app:fontFamily="@font/poppins_bold"/>
-<!--                        <View-->
-<!--                            android:layout_width="0dp"-->
-<!--                            android:layout_weight="0.65"-->
-<!--                            android:layout_height="@dimen/dimen20dp"/>-->
+                            app:fontFamily="@font/open_sans_bold" />
+                        <!--                        <View-->
+                        <!--                            android:layout_width="0dp"-->
+                        <!--                            android:layout_weight="0.65"-->
+                        <!--                            android:layout_height="@dimen/dimen20dp"/>-->
 
                         <ImageView
                             android:id="@+id/img_like"
@@ -84,59 +85,59 @@
                             android:layout_gravity="top"
                             android:layout_weight="0.1"
                             android:src="@drawable/ic_like" />
-                </LinearLayout>
+                    </LinearLayout>
 
 
-                        <TextView
-                            android:id="@+id/feature_textview"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@{propertyData.propertyTitle}"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_xsmall"
-                            android:maxLength="35"
-                            android:ellipsize="end"
-                            android:minLines="1"
-                            android:gravity="start"
-                            app:fontFamily="@font/poppins_regular"/>
+                    <TextView
+                        android:id="@+id/feature_textview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="start"
+                        android:maxLength="35"
+                        android:minLines="1"
+                        android:text="@{propertyData.propertyTitle}"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_xsmall"
+                        app:fontFamily="@font/open_sans_semibold" />
 
 
                     <TextView
                         android:id="@+id/property_details_textview"
-                        android:textColor="@color/black"
-                        app:fontFamily="@font/poppins_medium"
                         android:layout_width="match_parent"
-                        android:textSize="@dimen/text_size_xsmall"
-                        android:maxLength="35"
+                        android:layout_height="wrap_content"
                         android:ellipsize="end"
+                        android:maxLength="35"
                         android:maxLines="1"
-                        android:layout_height="wrap_content" />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_xsmall"
+                        app:fontFamily="@font/open_sans_semibold" />
 
 
                     <TextView
                         android:id="@+id/property_address_textview"
-                        android:textColor="@color/black"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:maxLength="60"
-                        android:text="@{propertyData.address}"
-                        app:fontFamily="@font/poppins_regular"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLength="60"
+                        android:maxLines="1"
+                        android:text="@{propertyData.address}"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/text_size_xsmall"
-                        android:layout_height="wrap_content" />
+                        app:fontFamily="@font/poppins_regular" />
 
 
                     <TextView
                         android:id="@+id/property_prize_textview"
-                        android:textColor="@color/black"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:maxLength="35"
-                        app:fontFamily="@font/poppins_bold"
-                        android:includeFontPadding="true"
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:includeFontPadding="true"
+                        android:maxLength="35"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/text_size_small"
-                        android:layout_height="wrap_content" />
+                        app:fontFamily="@font/open_sans_bold" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -158,6 +159,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     android:padding="@dimen/padding_xsmall"
+    android:layout_marginTop="@dimen/dimen10dp"
     app:layout_constraintTop_toBottomOf="@+id/img_e"/>
 
 
