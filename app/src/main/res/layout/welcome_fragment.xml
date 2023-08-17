@@ -22,7 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="@dimen/dimen60dp"
-        android:src="@drawable/smile"/>
+        />
 
     <TextView
         android:id="@+id/txt_welcome"
