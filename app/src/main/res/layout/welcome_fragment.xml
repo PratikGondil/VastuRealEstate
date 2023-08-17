@@ -21,6 +21,7 @@
         app:layout_constraintTop_toBottomOf="@id/img_phn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/smile"
         android:layout_marginTop="@dimen/dimen60dp"
         />
 
