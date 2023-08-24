@@ -73,11 +73,6 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
                             app:fontFamily="@font/open_sans_bold" />
-                        <!--                        <View-->
-                        <!--                            android:layout_width="0dp"-->
-                        <!--                            android:layout_weight="0.65"-->
-                        <!--                            android:layout_height="@dimen/dimen20dp"/>-->
-
                         <ImageView
                             android:id="@+id/img_like"
                             android:layout_width="wrap_content"
@@ -96,14 +91,14 @@
                         android:gravity="start"
                         android:maxLength="35"
                         android:minLines="1"
-                        android:text="@{propertyData.propertyTitle}"
+                        android:text="@{propertyData.owner}"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_xsmall"
                         app:fontFamily="@font/open_sans_semibold" />
 
 
                     <TextView
-                        android:id="@+id/property_details_textview"
+                        android:id="@+id/property_bhk_dtls_txt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
@@ -121,7 +116,7 @@
                         android:ellipsize="end"
                         android:maxLength="60"
                         android:maxLines="1"
-                        android:text="@{propertyData.address}"
+                        android:text="@{propertyData.shortAddress}"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size_xsmall"
                         app:fontFamily="@font/poppins_regular" />

@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
-import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -32,10 +31,7 @@ import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.PreferenceKEYS
 import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.realestatecore.model.request.ObjFilterData
-import com.vastu.realestatecore.model.response.ObjFilterDataResponseMain
-import com.vastu.realestatecore.model.response.ObjGetFilterDataResponse
-import com.vastu.realestatecore.model.response.ObjGetPropertyListResMain
-import com.vastu.realestatecore.model.response.PropertyData
+import com.vastu.realestatecore.model.response.*
 import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
 
 
@@ -129,7 +125,6 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     private fun getRealEstateList() {
         try {
             realEstateBinding.loadingLayout.startShimmerAnimation()
-            realEstateViewModel.getPropertyList("1")
             userId?.let { realEstateViewModel.getPropertyList(it) }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -139,12 +134,13 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     override fun onSuccessGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         try {
             val realEstates = objGetPropertyListResMain.getPropertyDetailsResponse.propertyData
+            val sliderData=objGetPropertyListResMain.getPropertyDetailsResponse.adSlider
             realEstateBinding.apply {
                 if (realEstates.isNotEmpty()) {
                     searchFilterLayout.visibility = View.VISIBLE
                     rvRealEstste.visibility = View.VISIBLE
                     stopShimmerAnimation()
-                    getRealEstateDetails(realEstates)
+                    getRealEstateDetails(realEstates,sliderData)
                 } else {
                     searchFilterLayout.visibility = View.GONE
                     rvRealEstste.visibility = View.GONE
@@ -156,12 +152,12 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
         }
     }
 
-    private fun getRealEstateDetails(realEstate: List<PropertyData>) {
+    private fun getRealEstateDetails(realEstate: List<PropertyData>,adSlider:List<AdSlider>) {
         try {
             realEstatListUpdated = realEstate
             val recyclerViewRealEstate = realEstateBinding.rvRealEstste
             //val realEstates = RealEstateList.getRealEstateData(requireContext())
-            realEstateAdapter = RealEstateAdapter(this, realEstate)
+            realEstateAdapter = RealEstateAdapter(this, realEstate,adSlider)
             recyclerViewRealEstate.adapter = realEstateAdapter
             recyclerViewRealEstate.layoutManager = LinearLayoutManager(activity)
         } catch (e: Exception) {
@@ -190,7 +186,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     }
 
     override fun onFilterPropertyListSuccess(objGetFilterDataResponse: ObjGetFilterDataResponse) {
-        getRealEstateDetails(objGetFilterDataResponse.filteredPropertyResponse)
+        getRealEstateDetails(objGetFilterDataResponse.filteredPropertyResponse,objGetFilterDataResponse.adSlider)
     }
 
     override fun onFilterPropertyListFailure(objFilterDataResponseMain: ObjFilterDataResponseMain) {

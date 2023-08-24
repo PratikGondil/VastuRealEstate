@@ -1,7 +1,6 @@
 package com.vastu.realestate.appModule.properties.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,22 +8,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewbinding.ViewBinding
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IRealEstateListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
-import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
 import com.vastu.realestate.appModule.dashboard.view.DashboardFragment.Companion.userId
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.properties.viewmodel.PropertiesViewModel
 import com.vastu.realestate.databinding.FragmentPropertiesBinding
 import com.vastu.realestate.utils.BaseConstant
-import com.vastu.realestatecore.model.response.ObjFilterDataResponseMain
-import com.vastu.realestatecore.model.response.ObjGetFilterDataResponse
-import com.vastu.realestatecore.model.response.ObjGetPropertyListResMain
-import com.vastu.realestatecore.model.response.PropertyData
+import com.vastu.realestatecore.model.response.*
 
 
 class PropertiesFragment : BaseFragment(),IRealEstateListener, RealEstateAdapter.OnItemClickListener,
@@ -65,11 +59,12 @@ class PropertiesFragment : BaseFragment(),IRealEstateListener, RealEstateAdapter
     override fun onSuccessGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         try {
             val realEstates = objGetPropertyListResMain.getPropertyDetailsResponse.propertyData
+            val adSlider=objGetPropertyListResMain.getPropertyDetailsResponse.adSlider
             propertiesDataBinding.apply {
                 if(realEstates.isNotEmpty()) {
                     rvPropertyList.visibility = View.VISIBLE
                     stopShimmerAnimation()
-                    getRealEstateDetails(realEstates)
+                    getRealEstateDetails(realEstates,adSlider)
                 }else {
                     rvPropertyList.visibility = View.GONE
                     stopShimmerAnimation()
@@ -80,10 +75,10 @@ class PropertiesFragment : BaseFragment(),IRealEstateListener, RealEstateAdapter
         }
     }
 
-    private fun getRealEstateDetails(realEstate:List<PropertyData>) {
+    private fun getRealEstateDetails(realEstate:List<PropertyData>,adSlider:List<AdSlider>) {
         try {
             val recyclerViewRealEstate = propertiesDataBinding.rvPropertyList
-            val realEstateAdapter = RealEstateAdapter(this,realEstate)
+            val realEstateAdapter = RealEstateAdapter(this,realEstate,adSlider)
             recyclerViewRealEstate.adapter = realEstateAdapter
             recyclerViewRealEstate.layoutManager = LinearLayoutManager(activity)
         } catch (e: Exception) {
