@@ -39,27 +39,7 @@
         android:layout_margin="@dimen/dimen20dp"
         android:fontFamily="@font/open_sans_semibold"
         android:maxLines="@{loanInfoViewModel.maxline}"
-        android:text="art Of Nyati County, 210 Acre Residential
-        Township Of Gated Communities. Tallest Towers In Undri..
-        Close Proximity To Prestigious Schools And Shopping Arcades
-         In A 2 Km Vicinity. A Scenic And Unmatched View Of The
-         Sahyadri Hills. Grand Entrance Lobbies. 100% DG Backup
-         For External Amenities And Internal Units Excluding 15
-         Amp. Points.. Gas Pipeline Connection For Every Home..
-          Dedicated Covered Car Park For Every Home. Approved
-          By Major Accredited Lenders.. 6 Acre Township Of Active
-           Sporting Amenities (Fully Equipped Clubhouse With
-           Gymnasium And Indoor Recreational Space, Children's
-           Play Area, Jogging Track, Landscaped Gardens, Swimming
-           Pool.Multipurpose Sports Court) Interiors Part Of Nyati
-            County, 210 Acre Residential Township Of
-            Gated Communities. Tallest Towers In Undri..
-            Close Proximity To Prestigious Schools And Shopping
-            Arcades In A 2 Km Vicinity. A Scenic And Unmatched View
-             Of The Sahyadri Hills. Grand Entrance Lobbies. 100% DG
-              Backup For External Amenities And Internal
-              Units Excluding 15 Amp. Points.. Gas Pipeline
-              Connection For Every Home.. Dedicated Covered"
+        android:text="@string/loan_info"
         app:layout_constraintTop_toBottomOf="@+id/llToolbarLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

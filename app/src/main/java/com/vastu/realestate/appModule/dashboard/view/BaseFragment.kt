@@ -4,7 +4,9 @@ import android.app.AlertDialog
 import android.content.res.Configuration
 import android.os.Build
 import android.widget.CheckBox
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.findFragment
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.enquiry.view.AddLoanEnquiryFragment
 import com.vastu.realestate.appModule.enquiry.view.AddPropertyEnquiryFragment
@@ -34,6 +36,7 @@ open class BaseFragment : Fragment() {
             .create()
         val view = layoutInflater.inflate(R.layout.custom_dialog,null)
         val  checkbox = view.findViewById<CheckBox>(R.id.termsCheck)
+        val cross=view.findViewById<ImageView>(R.id.img_cross)
         builder.setView(view)
         checkbox.setOnClickListener {
             builder.dismiss()
@@ -53,6 +56,9 @@ open class BaseFragment : Fragment() {
         }
         builder.setCanceledOnTouchOutside(false)
         builder.show()
+        cross.setOnClickListener{
+            builder.dismiss()
+        }
     }
 
     fun setAppLocale(localeCode: String) {

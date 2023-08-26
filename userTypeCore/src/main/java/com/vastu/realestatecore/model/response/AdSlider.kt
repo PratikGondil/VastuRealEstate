@@ -1,8 +1,9 @@
 package com.vastu.realestatecore.model.response
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-data class ObjSlider(
+data class AdSlider(
     @SerializedName("id")
     var id       : String?  = "",
     @SerializedName("slider")
@@ -14,4 +15,4 @@ data class ObjSlider(
     @SerializedName("video")
     var video    : Boolean? = false
 
-)
+): Serializable

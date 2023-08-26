@@ -9,7 +9,7 @@
     <item
         android:id="@+id/PropertiesFragment"
         android:icon="@drawable/prime_properties"
-        android:title="@string/prime_properties_text"/>
+        android:title="@string/prime_properties_text" />
 
     <item
         android:id="@+id/upcomingSchemesFragment"
