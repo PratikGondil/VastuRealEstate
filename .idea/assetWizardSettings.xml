@@ -328,8 +328,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_clear_24" />
-                            <entry key="sourceFile" value="C:\Users\manasi.tambe\Downloads\Real Estate &amp; Loan icon\Loan icon.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_home" />
+                            <entry key="sourceFile" value="C:\Users\anjali.kapoor\Downloads\home.svg" />
                           </map>
                         </option>
                       </PersistentState>

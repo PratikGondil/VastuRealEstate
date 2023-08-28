@@ -10,4 +10,6 @@ interface INavDrawerListener {
     fun onClickContactUs()
     fun onClickSettings()
     fun onClickLogout()
+    fun onRateUsClick()
+    fun onFeedbackClick()
 }

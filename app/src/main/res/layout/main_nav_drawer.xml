@@ -219,8 +219,62 @@
                     android:fontFamily="@font/poppins_regular"
                     android:text="@string/offers" />
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/nav_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onFeedbackClick()}"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="@dimen/margin_xxlarge">
 
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_feedback"
+                    android:scaleType="centerInside" />
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:textColor="@color/nav_text_color"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/feedback" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/nav_rate_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onRateUsClick()}"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="@dimen/margin_xxlarge">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_rating"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:textColor="@color/nav_text_color"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/rate_us" />
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/nav_contact_us"
                 android:layout_width="match_parent"
@@ -237,7 +291,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/contact_us"
+                    android:src="@drawable/email"
                     android:scaleType="centerInside" />
 
                 <TextView
@@ -305,7 +359,7 @@
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/poppins_regular"
+                    android:fontFamily="@font/open_sans_semibold"
                     android:text="@string/logout" />
             </LinearLayout>
         </LinearLayout>

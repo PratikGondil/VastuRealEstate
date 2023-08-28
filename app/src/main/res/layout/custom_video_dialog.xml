@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingDefaultResource">
+
+    <ImageView
+        android:id="@+id/img_cross"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="@dimen/dimen10dp"
+        android:src="@drawable/ic_baseline_clear_24" />
+
+    <com.potyvideo.library.AndExoPlayerView
+        android:id="@+id/andExoPlayerViewType"
+        android:layout_below="@+id/img_cross"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:andexo_aspect_ratio="aspect_16_9"
+        app:andexo_play_when_ready="true"
+        app:andexo_show_controller="false"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+        app:andexo_resize_mode="Fit" />
+
+</RelativeLayout>

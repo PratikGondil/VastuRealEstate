@@ -1,18 +1,23 @@
 package com.vastu.realestate.appModule.dashboard.view
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
+import com.potyvideo.library.AndExoPlayerView
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.activity.LoginActivity
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IAdvertisementSliderListener
@@ -33,6 +38,7 @@ import com.vastu.realestate.utils.PreferenceKEYS
 import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.realestate.utils.PreferenceManger.clearPreferences
 import com.vastu.slidercore.model.request.MainPagerSliderRequest
+import com.vastu.slidercore.model.response.advertisement.AdvertiseData
 import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
 import com.vastu.slidercore.model.response.advertisement.GetAdvertisementSliderMainResponse
 import com.vastu.slidercore.model.response.mainpage.GetMainSliderDetailsResponse
@@ -179,6 +185,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
 
     private fun setSliderData() {
         imageList.clear()
+        dashboardBinding.imageSlider.visibility = View.VISIBLE
         getAdvertisementSlider =
             PreferenceManger.getAdvertisementSlider(PreferenceKEYS.DASHBOARD_SLIDER_LIST)
         if (getAdvertisementSlider.advertiseData.isNotEmpty()) {
@@ -189,6 +196,36 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
                 imageSlider.setImageList(imageList, ScaleTypes.FIT)
                 imageSlider.startSliding(3000)
             }
+        }
+
+        dashboardBinding.imageSlider.setItemClickListener(object : ItemClickListener {
+            override fun onItemSelected(position: Int) {
+                var selectedPostition = getAdvertisementSlider.advertiseData[position]
+                if(selectedPostition.type =="video"){
+                    createVideoDialog(getAdvertisementSlider.advertiseData[position])
+                }else{
+                    dashboardBinding.imageSlider.visibility = View.VISIBLE
+                }
+
+            }
+
+        })
+    }
+
+    @SuppressLint("MissingInflatedId")
+    private fun createVideoDialog(advertiseData: AdvertiseData) {
+        val builder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+            .create()
+        val view = layoutInflater.inflate(R.layout.custom_video_dialog,null)
+        val cross :ImageView = view.findViewById(R.id.img_cross)
+        val videoView :AndExoPlayerView=view.findViewById(R.id.andExoPlayerViewType)
+        videoView.setSource(advertiseData.link)
+        builder.setView(view)
+
+        builder.setCanceledOnTouchOutside(false)
+        builder.show()
+        cross.setOnClickListener{
+            builder.dismiss()
         }
     }
 
@@ -321,6 +358,16 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
     override fun onClickLogout() {
         closeDrawer()
         showLogoutDialog()
+    }
+
+    override fun onRateUsClick() {
+        findNavController().navigate(R.id.action_vastuDashboardFragment_to_RateUs)
+        closeDrawer()
+    }
+
+    override fun onFeedbackClick() {
+        findNavController().navigate(R.id.action_vastuDashboardFragment_to_feedback)
+        closeDrawer()
     }
 
     private fun showLogoutDialog() {

@@ -52,6 +52,14 @@
             android:id="@+id/action_vastuDashboardFragment_to_Notification"
             app:destination="@id/NotificationFragment"
             app:enterAnim="@anim/slide_in_right"/>
+        <action
+            android:id="@+id/action_vastuDashboardFragment_to_RateUs"
+            app:destination="@id/rateUs"
+            app:enterAnim="@anim/slide_in_right"/>
+        <action
+            android:id="@+id/action_vastuDashboardFragment_to_feedback"
+            app:destination="@id/feedback"
+            app:enterAnim="@anim/slide_in_right"/>
 
     </fragment>
 
@@ -220,4 +228,28 @@
         android:name="com.vastu.realestate.appModule.dashboard.view.WishlistFragment"
         android:label="wishlist"
         tools:layout="@layout/fragment_wishlist"/>
+    <fragment
+        android:id="@+id/rateUs"
+        android:name="com.vastu.realestate.appModule.rateUs.RateUsFragment"
+        android:label="rateUs"
+        tools:layout="@layout/rate_us_fragment">
+
+        <action
+            android:id="@+id/action_rateUs_to_Dashboard"
+            app:destination="@id/VastuDashboardFragment"
+            app:enterAnim="@anim/slide_in_right"/>
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/feedback"
+        android:name="com.vastu.realestate.appModule.feedback.FeedbackFragment"
+        android:label="feedback"
+        tools:layout="@layout/feedback_fragment">
+
+        <action
+            android:id="@+id/action_feedback_to_Dashboard"
+            app:destination="@id/VastuDashboardFragment"
+            app:enterAnim="@anim/slide_in_right"/>
+    </fragment>
 </navigation>

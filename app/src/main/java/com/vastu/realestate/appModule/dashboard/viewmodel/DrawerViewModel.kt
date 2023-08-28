@@ -66,4 +66,10 @@ class DrawerViewModel(application: Application) : AndroidViewModel(application) 
     fun onLogoutClick(){
         iNavDrawerListener.onClickLogout()
     }
+    fun onRateUsClick(){
+        iNavDrawerListener.onRateUsClick()
+    }
+    fun onFeedbackClick(){
+        iNavDrawerListener.onFeedbackClick()
+    }
 }
