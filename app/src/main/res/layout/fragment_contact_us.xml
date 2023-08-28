@@ -33,14 +33,13 @@
         >
 
 
-    <ImageView
-        android:id="@+id/Imgvvastu"
-        android:layout_width="@dimen/dimen150dp"
-        android:layout_marginTop="@dimen/dimen5dp"
-        android:layout_height="@dimen/dimen150dp"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/vastu_logo_splash"
-        />
+        <ImageView
+            android:id="@+id/Imgvvastu"
+            android:layout_width="@dimen/dimen150dp"
+            android:layout_height="@dimen/dimen150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen5dp"
+            android:src="@drawable/vastu_logo_splash" />
 
     </RelativeLayout>
 
@@ -62,10 +61,11 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
-            app:fontFamily="@font/poppins_semibold"
             android:text="@string/getintouch"
             android:textColor="@color/purple_500"
-            android:textSize="@dimen/dimen25dp" />
+            android:textSize="@dimen/dimen25dp"
+            android:visibility="gone"
+            app:fontFamily="@font/poppins_semibold" />
 
         <TextView
             android:id="@+id/txtFeelFree"
@@ -75,26 +75,38 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen30dp"
             android:gravity="center"
+            android:visibility="gone"
             android:text="@string/feel_free"
             android:textColor="@color/black"
             android:textSize="@dimen/dimens20sp" />
 
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="20dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardMaxElevation="12dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
 
-        <TextView
-            android:id="@+id/txtEmailValue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/txtFeelFree"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dimen30dp"
-            android:layout_marginBottom="@dimen/dimen10dp"
-            android:autoLink="web"
-            android:drawablePadding="@dimen/dimen5dp"
-            android:gravity="center"
-            android:text="@string/email_add_value"
-            android:textColor="@color/black"
-            android:textSize="@dimen/dimens20sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/txtEmailValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtFeelFree"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen10dp"
+        android:layout_marginBottom="@dimen/dimen10dp"
+        android:autoLink="web"
+        android:gravity="center"
+        android:padding="@dimen/dimen5dp"
+        android:text="@string/email_add_value"
+        android:textColor="@color/button_color"
+        android:textSize="@dimen/dimens20sp"
+        android:textFontWeight="500"
+        android:fontFamily="@font/open_sans_bold"/>
+</androidx.cardview.widget.CardView>
     </RelativeLayout>
 </RelativeLayout>
 </layout>
