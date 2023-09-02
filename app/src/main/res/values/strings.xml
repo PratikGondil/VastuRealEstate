@@ -58,10 +58,14 @@
     <string name="furnishing">Furnishing</string>
     <string name="unfurnished">Unfurnished</string>
     <string name="construction_status">Construction Status</string>
+    <string name="construction">Construction</string>
+    <string name="status">Status</string>
     <string name="ready_to_move">Ready to Move</string>
     <string name="listed_by">Listed By</string>
     <string name="_700">700</string>
     <string name="super_builtup_area_ft">Super Builtup Area (Sq.ft )</string>
+    <string name="super_builtup">Super Builtup</string>
+    <string name="area_ft">Area (Sq.ft )</string>
     <string name="chat">CHAT</string>
     <string name="make_offer">MAKE OFFER</string>
     <string name="title">Title</string>
@@ -81,6 +85,8 @@
     <string name="okay">Okay</string>
     <string name="availability">Availability</string>
     <string name="build_year">Build Year</string>
+    <string name="rera_no">RERA No</string>
+    <string name="brief_details">Brief Details</string>
     <string name="highlights">Highlights</string>
     <string name="slug">Slug</string>
 
