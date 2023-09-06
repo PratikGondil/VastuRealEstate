@@ -299,6 +299,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_vastuDashboardFragment_to_feedback">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -340,6 +345,27 @@
                       </LayoutPositions>
                     </value>
                   </entry>
+                  <entry key="feedback">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                        <option name="myPositions">
+                          <map>
+                            <entry key="action_feedback_to_Dashboard">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
                   <entry key="filter_fragment">
                     <value>
                       <LayoutPositions>
@@ -353,6 +379,18 @@
                     </value>
                   </entry>
                   <entry key="ourServicesFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="primePropertiesFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -386,6 +424,18 @@
                     </value>
                   </entry>
                   <entry key="upcomingSchemesFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="upcomingpropertiesFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">

@@ -7,12 +7,12 @@
         android:title="@string/home_text"/>
 
     <item
-        android:id="@+id/PropertiesFragment"
+        android:id="@+id/primePropertiesFragment"
         android:icon="@drawable/prime_properties"
         android:title="@string/prime_properties_text" />
 
     <item
-        android:id="@+id/upcomingSchemesFragment"
+        android:id="@+id/upcomingpropertiesFragment"
         android:icon="@drawable/upcoming_schemes"
         android:title="@string/upcoming_schemes_text"/>
 

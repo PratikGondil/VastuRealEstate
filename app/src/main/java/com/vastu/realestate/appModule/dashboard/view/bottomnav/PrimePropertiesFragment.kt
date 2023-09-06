@@ -1,4 +1,4 @@
-package com.vastu.realestate.appModule.dashboard.view
+package com.vastu.realestate.appModule.dashboard.view.bottomnav
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -22,9 +22,12 @@ import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterClickListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IRealEstateListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
+import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.view.DashboardFragment.Companion.userId
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreen
+import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreenPrime
+import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreenUpcoming
 import com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateViewModel
 import com.vastu.realestate.databinding.FragmentRealEstateBinding
 import com.vastu.realestate.utils.ApiUrlEndPoints
@@ -36,7 +39,7 @@ import com.vastu.realestatecore.model.response.*
 import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
 
 
-class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener,
+class PrimePropertiesFragment : BaseFragment(), IRealEstateListener, IToolbarListener,
     RealEstateAdapter.OnItemClickListener, OnRefreshListener,
     IFilterClickListener {
     private lateinit var realEstateBinding: FragmentRealEstateBinding
@@ -126,7 +129,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     private fun getRealEstateList() {
         try {
             realEstateBinding.loadingLayout.startShimmerAnimation()
-            userId?.let { realEstateViewModel.getPropertyList(it,ApiUrlEndPoints.GET_PROPERTY_LIST) }
+            userId?.let { realEstateViewModel.getPropertyList(it,ApiUrlEndPoints.GET_PRIME_PROPERTIES) }
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -237,7 +240,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
 
     override fun setFilterView() {
         try {
-            val modalbottomSheetFragment = SortAndFilterScreen(this)
+            val modalbottomSheetFragment = SortAndFilterScreenPrime(this)
             modalbottomSheetFragment.setStyle(
                 BottomSheetDialogFragment.STYLE_NORMAL, android.R.style.Theme_Translucent_NoTitleBar
             )

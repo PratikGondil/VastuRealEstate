@@ -133,7 +133,7 @@
 
     <fragment
         android:id="@+id/RealEstateFragment"
-        android:name="com.vastu.realestate.appModule.dashboard.view.RealEstateFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.PrimePropertiesFragement"
         android:label="RealEstateFragment"
         tools:layout="@layout/fragment_real_estate">
         <action
@@ -216,6 +216,18 @@
         android:name="com.vastu.realestate.appModule.dashboard.view.UpcomingSchemesFragment"
         android:label="upcomingSchemes"
         tools:layout="@layout/fragment_upcoming_schemes"/>
+
+    <fragment
+        android:id="@+id/upcomingpropertiesFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.bottomnav.UpcomingPropertiesFragment"
+        android:label="upcomingSchemes"
+        tools:layout="@layout/fragment_real_estate"/>
+
+    <fragment
+        android:id="@+id/primePropertiesFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.bottomnav.PrimePropertiesFragment"
+        android:label="primeproperties"
+        tools:layout="@layout/fragment_real_estate"/>
 
     <fragment
         android:id="@+id/ourServicesFragment"

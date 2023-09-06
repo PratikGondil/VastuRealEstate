@@ -9,8 +9,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.view.bottomnav.PrimePropertiesFragment
 import com.vastu.realestate.appModule.dashboard.view.offers.OffersFragment
-import com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewModel
 import com.vastu.realestate.appModule.employee.fragment.EmployeeDetailsFragment
 import com.vastu.realestate.appModule.employee.fragment.EmployeeListFragment
 import com.vastu.realestate.appModule.enquiry.view.AddLoanEnquiryFragment
@@ -37,12 +37,11 @@ class DashboardActivity : BaseActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
-
     override fun onBackPressed() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.dashboardNavHost) as NavHostFragment?
         val fragment = navHostFragment!!.childFragmentManager.fragments[0]
-        if (fragment is LoanFragment || fragment is RealEstateFragment || fragment is RealEstateDetailsFragment
+        if (fragment is LoanFragment || fragment is PrimePropertiesFragment || fragment is RealEstateDetailsFragment
             || fragment is AddLoanEnquiryFragment || fragment is AddPropertyEnquiryFragment
             || fragment is AddPropertyFragment || fragment is OffersFragment
             || fragment is PropertiesFragment || fragment is AddPropertyFragment || fragment is OffersFragment || fragment is EmployeeDetailsFragment || fragment is EmployeeListFragment
@@ -55,10 +54,32 @@ class DashboardActivity : BaseActivity() {
     }
 
     private val mOnNavigationItemSelectedListener =
-        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+        BottomNavigationView.OnNavigationItemSelectedListener {
+                item ->
+            when(item.itemId){
+                R.id.PropertiesFragment ->
+                    isPrimeClicked()
+                R.id.RealEstateFragment->
+                    isUpcomingClicked()
+                }
             NavigationUI.onNavDestinationSelected(
                 item,
                 navController
             )
         }
+
+    fun isPrimeClicked(){
+        isPrime = true
+        isUpcomingClicked= false
+    }
+
+    fun isUpcomingClicked(){
+        isPrime = false
+        isUpcomingClicked= true
+    }
+
+    companion object{
+        var isUpcomingClicked = false
+        var isPrime = false
+    }
 }

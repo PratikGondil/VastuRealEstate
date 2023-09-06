@@ -107,8 +107,8 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
     var cityListResponse = MutableLiveData<ArrayList<ObjTalukaDataList>>()
 
     lateinit var iFilterClickListener: IFilterClickListener
-    fun getPropertyList(userId:String){
-        PropertyListRepository.callGetPropertyList(mContext,userId,GET_PROPERTY_LIST,this)
+    fun getPropertyList(userId:String,endpoint:String){
+        PropertyListRepository.callGetPropertyList(mContext,userId,endpoint,this)
     }
     fun filterClick(){
         iFilterClickListener.setFilterView()
