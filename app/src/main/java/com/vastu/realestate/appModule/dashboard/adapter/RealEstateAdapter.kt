@@ -59,7 +59,7 @@ class RealEstateAdapter(
         if(adSlider.isNotEmpty() && adSlider.size==2){
             adSliderImage=adSlider[0]
             adSliderVideo=adSlider[1]
-            if (position == adSliderImage.position?.toInt()) {
+            if (position-1 == adSliderImage.position?.toInt()) {
                 holder.binding.imgE.visibility = View.VISIBLE
                 showImageFromURL(
                     context,
@@ -70,7 +70,7 @@ class RealEstateAdapter(
             } else {
                 holder.binding.imgE.visibility = View.GONE
             }
-            if (position == adSliderVideo.position?.toInt()) {
+            if (position-1 == adSliderVideo.position?.toInt()) {
                 holder.binding.video.andExoPlayerView.visibility = View.VISIBLE
                 holder.binding.video.andExoPlayerView.setSource(adSliderVideo.slider.toString())
             } else {

@@ -133,7 +133,7 @@
 
     <fragment
         android:id="@+id/RealEstateFragment"
-        android:name="com.vastu.realestate.appModule.dashboard.view.PrimePropertiesFragement"
+        android:name="com.vastu.realestate.appModule.dashboard.view.RealEstateFragment"
         android:label="RealEstateFragment"
         tools:layout="@layout/fragment_real_estate">
         <action
