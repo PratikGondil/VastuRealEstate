@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        tools:openDrawer="">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,18 +45,21 @@
                 app:iss_title_background="@drawable/grad"
                 app:iss_unselected_dot=" @drawable/default_unselected_dot" />
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="1"
                 android:background="@drawable/dashboard_background">
 
                 <RelativeLayout
                     android:id="@+id/card_container"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
                     android:layout_marginLeft="@dimen/dimen15dp"
                     android:layout_marginTop="@dimen/dimen50dp"
-                    android:layout_marginRight="@dimen/dimen10dp"
                     android:onClick="@{(view)->vastuDashboardViewModel.onClickRealEstate()}">
 
                     <com.google.android.material.card.MaterialCardView
@@ -90,12 +93,12 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/img_real_estate"
-                        android:layout_width="@dimen/dimen80dp"
-                        android:layout_height="@dimen/dimen80dp"
+                        android:layout_width="@dimen/dimen120dp"
+                        android:layout_height="@dimen/dimen120dp"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/real_estate"
-                        app:civ_border_color="@color/black"
-                        app:civ_border_width="@dimen/dimen5dp" />
+                        android:src="@drawable/dashboard_real_estate"
+
+                        />
 
 
                 </RelativeLayout>
@@ -105,6 +108,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen50dp"
+                    android:layout_weight="0.5"
                     android:layout_toRightOf="@+id/card_container"
                     android:onClick="@{(view)->vastuDashboardViewModel.onClickLoan()}">
 
@@ -138,16 +142,14 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/img_loan"
-                        android:layout_width="@dimen/dimen80dp"
-                        android:layout_height="@dimen/dimen80dp"
+                        android:layout_width="@dimen/dimen120dp"
+                        android:layout_height="@dimen/dimen120dp"
                         android:layout_centerHorizontal="true"
-                        android:src="@drawable/loan"
-                        app:civ_border_color="@color/black"
-                        app:civ_border_width="@dimen/dimen5dp" />
+                        android:src="@drawable/dashboard_loan" />
 
 
                 </RelativeLayout>
-            </RelativeLayout>
+            </LinearLayout>
         </LinearLayout>
 
 
