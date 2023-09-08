@@ -15,15 +15,12 @@
         android:layout_marginEnd="@dimen/dimen10dp"
         android:src="@drawable/ic_baseline_clear_24" />
 
-    <com.potyvideo.library.AndExoPlayerView
+    <com.vastu.realestate.appModule.utils.Player
         android:id="@+id/andExoPlayerViewType"
         android:layout_below="@+id/img_cross"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:andexo_aspect_ratio="aspect_16_9"
-        app:andexo_play_when_ready="true"
-        app:andexo_show_controller="false"
-        android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
-        app:andexo_resize_mode="Fit" />
+        android:layout_height="@dimen/dimen300dp"
+
+        />
 
 </RelativeLayout>

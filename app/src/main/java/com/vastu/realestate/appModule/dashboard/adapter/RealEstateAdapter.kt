@@ -1,9 +1,15 @@
 package com.vastu.realestate.appModule.dashboard.adapter
 
 import android.content.Context
+import android.media.MediaPlayer
+import android.media.MediaPlayer.OnCompletionListener
+import android.media.MediaPlayer.OnPreparedListener
+import android.net.Uri
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.realestate.R
 import com.vastu.realestate.databinding.RealEstateItemviewBinding
@@ -21,6 +27,8 @@ class RealEstateAdapter(
     var adSlider: List<AdSlider>
     lateinit var adSliderImage: AdSlider
     lateinit var adSliderVideo: AdSlider
+    lateinit var mediaPlayer: MediaPlayer
+    var isunMute = false
 
     init {
         realEstateListCurrent = realEstateList
@@ -59,7 +67,7 @@ class RealEstateAdapter(
         if(adSlider.isNotEmpty() && adSlider.size==2){
             adSliderImage=adSlider[0]
             adSliderVideo=adSlider[1]
-            if (position-1 == adSliderImage.position?.toInt()) {
+            if (position == adSliderImage.position?.toInt()) {
                 holder.binding.imgE.visibility = View.VISIBLE
                 showImageFromURL(
                     context,
@@ -70,17 +78,41 @@ class RealEstateAdapter(
             } else {
                 holder.binding.imgE.visibility = View.GONE
             }
-            if (position-1 == adSliderVideo.position?.toInt()) {
-                holder.binding.video.andExoPlayerView.visibility = View.VISIBLE
-                holder.binding.video.andExoPlayerView.setSource(adSliderVideo.slider.toString())
+            if (position == adSliderVideo.position?.toInt()) {
+                binding.video.setMediaController(null);
+                binding.video.setVideoURI(Uri.parse(adSliderVideo.slider.toString()))
+                holder.binding.video.visibility = View.VISIBLE
+                holder.binding.mute.visibility = View.VISIBLE
+                binding.video.setOnPreparedListener(OnPreparedListener { mp ->
+                    mediaPlayer = mp
+                    mp.setVolume(0f, 0f)
+                    mp.isLooping = true
+                })
+                binding.video.requestFocus()
+                binding.video.start()
+
+                holder.binding.mute.setOnClickListener {
+                    if(!isunMute) {
+                        isunMute = true
+                        holder.binding.mute.setImageResource(R.drawable.baseline_volume_up_24)
+                        setVolume(100)
+                    }else{
+                        isunMute = false
+                        holder.binding.mute.setImageResource(R.drawable.baseline_volume_off_24)
+                        setVolume(0)
+                    }
+
+                }
+
+
             } else {
-                holder.binding.video.andExoPlayerView.visibility = View.GONE
+                holder.binding.video.visibility = View.GONE
             }
 
         }
         else {
             holder.binding.imgE.visibility = View.GONE
-            holder.binding.video.andExoPlayerView.visibility = View.GONE
+            holder.binding.video.visibility = View.GONE
         }
 
         holder.binding.layoutContainer.setOnClickListener {
@@ -93,6 +125,12 @@ class RealEstateAdapter(
     interface OnItemClickListener {
         fun onItemClick(propertyData: PropertyData)
     }
+    private fun setVolume(amount: Int) {
+        val max = 100
+        val numerator: Double = if (max - amount > 0) Math.log((max - amount).toDouble()) else 0.0
+        val volume = (1 - numerator / Math.log(max.toDouble())).toFloat()
+        mediaPlayer!!.setVolume(volume, volume)
+    }
 
 }
 class RealEstateViewHolder(
@@ -103,5 +141,6 @@ class RealEstateViewHolder(
 
     }
 }
+
 
 

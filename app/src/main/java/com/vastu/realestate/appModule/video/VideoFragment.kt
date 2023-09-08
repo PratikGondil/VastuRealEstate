@@ -32,7 +32,7 @@ class VideoFragment : Fragment() {
     }
 
     private fun initView() {
-       videoBinding.andExoPlayerView.setSource("https://myclanservices.co.in/pratik/video.mp4")
+     //  videoBinding.andExoPlayerView.setSource("https://myclanservices.co.in/pratik/video.mp4")
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

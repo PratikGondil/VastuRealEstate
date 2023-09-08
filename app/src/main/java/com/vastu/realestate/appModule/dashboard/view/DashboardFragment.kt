@@ -4,12 +4,15 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.MediaController
 import android.widget.TextView
+import android.widget.VideoView
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -17,7 +20,6 @@ import androidx.navigation.fragment.findNavController
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
-import com.potyvideo.library.AndExoPlayerView
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.activity.LoginActivity
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IAdvertisementSliderListener
@@ -218,8 +220,13 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
             .create()
         val view = layoutInflater.inflate(R.layout.custom_video_dialog,null)
         val cross :ImageView = view.findViewById(R.id.img_cross)
-        val videoView :AndExoPlayerView=view.findViewById(R.id.andExoPlayerViewType)
-        videoView.setSource(advertiseData.link)
+        val videoView :VideoView=view.findViewById(R.id.andExoPlayerViewType)
+        val mediaController = MediaController(requireContext())
+        mediaController.setAnchorView(videoView)
+        videoView.setMediaController(mediaController);
+        videoView.setVideoURI(Uri.parse(advertiseData.link))
+        videoView.requestFocus();
+        videoView.start()
         builder.setView(view)
 
         builder.setCanceledOnTouchOutside(false)
