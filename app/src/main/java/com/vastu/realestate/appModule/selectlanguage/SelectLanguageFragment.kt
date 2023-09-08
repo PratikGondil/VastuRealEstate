@@ -9,10 +9,12 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.vastu.loanenquirycore.model.response.interest.loan.LoanInterstedData
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.selectlanguage.uiinterface.iSelectLanguage
 import com.vastu.realestate.databinding.FragmentSelectLanguageBinding
+import com.vastu.realestate.utils.BaseConstant
 
 
   class SelectLanguageFragment : BaseFragment(),iSelectLanguage {
@@ -20,7 +22,7 @@ import com.vastu.realestate.databinding.FragmentSelectLanguageBinding
     lateinit var selectLanguageViewModel: SelectLanguageViewModel
     lateinit var selectLanguageBinding: FragmentSelectLanguageBinding
       lateinit var radioButton: RadioButton
-
+      var flow=""
       override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -38,13 +40,25 @@ import com.vastu.realestate.databinding.FragmentSelectLanguageBinding
         return selectLanguageBinding.root
     }
 
-      private fun initView() {
-          setOnCheckedChangeListener()
-          selectLanguageBinding.btnNext.setOnClickListener {
-
-
+      fun getBundleData(){
+          val args = this.arguments
+          if (args != null){
+              if (args.getString(BaseConstant.LANGUAGE_FLOW) != null) {
+                  flow = args.getString(BaseConstant.LANGUAGE_FLOW)!!
+              }
           }
+      }
+      private fun initView() {
+          if(flow == BaseConstant.LANGUAGE_FLOW){
+              selectLanguageViewModel.loginView.set(View.GONE)
+              selectLanguageViewModel.btnText.set(requireContext().getString(R.string.done))
+          }else {
+              setOnCheckedChangeListener()
+              selectLanguageBinding.btnNext.setOnClickListener {
 
+
+              }
+          }
       }
 
       private fun setOnCheckedChangeListener() {

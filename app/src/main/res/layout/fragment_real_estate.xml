@@ -160,8 +160,8 @@
              android:layout_height="wrap_content"
              android:text="Adavance filter"
              android:textColor="@color/white"
-             android:textSize="6sp"
-             android:layout_marginTop="@dimen/dimen5dp"
+             android:textSize="@dimen/dimen8sp"
+             android:layout_marginTop="@dimen/dimen10dp"
              android:layout_marginStart="@dimen/dimen5dp"
              android:textAlignment="center"
            />
@@ -172,7 +172,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/dimen15dp"
                 android:orientation="vertical"
                 shimmer:duration="5000">
 

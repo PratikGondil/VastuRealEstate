@@ -1,6 +1,7 @@
 package com.vastu.realestate.appModule.selectlanguage
 
 import android.app.Application
+import android.view.View
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import com.vastu.networkService.util.Constants
@@ -12,12 +13,14 @@ class SelectLanguageViewModel(application: Application): AndroidViewModel(applic
     var mContext :Application
     var isMarathiSelected = ObservableField<Boolean>(false)
     var isEnglishSelected = ObservableField<Boolean>(false)
+    var loginView=ObservableField(View.VISIBLE)
+
     lateinit var iSelectLanguage:iSelectLanguage
     init {
         mContext = application
     }
     var btnBackground = ObservableField(mContext.getDrawable(R.drawable.button_inactive_background))
-
+    var btnText=ObservableField(mContext.resources.getString(R.string.next))
 
     fun onNextClick()
     {

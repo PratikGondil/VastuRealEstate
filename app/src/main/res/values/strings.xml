@@ -288,4 +288,42 @@
     <string name="rate_us">Rate us</string>
     <string name="feedback">Feedback</string>
     <string name="change_language">Change Language</string>
+    <string name="are_you_finding">Are You Finding Us Helpful ?</string>
+    <string name="please_share_experience">Please Share Your Experience With Us.</string>
+    <string name="add_detail">Add Detailed Review</string>
+    <string name="write_here">write here</string>
+    <string name="what_improve">What can we Improve ?</string>
+    <string name="how_can_we_make">How can we make Vastu better for you ?</string>
+    <string name="submit_feedback">Submit Feedback</string>
+    <string name="app_crash">App Crash/Slow Down Search Issues</string>
+    <string name="search_issue">Search Issues</string>
+    <string name="asking_question">Asking A Question Suggestion</string>
+    <string name="improvement">Improvement</string>
+    <string name="other">Others</string>
+    <string name="please_describe_feedback">Please describe your feedback here...</string>
+    <string name="select">select</string>
+    <string name="done">Done</string>
+    <string name="plan_builder">Plan For Builders</string>
+    <string name="your_property">Your Properties Promotional Activities Along With Company Branding Is Possible Only With Vastu.</string>
+    <string name="view_plan">View Plans</string>
+    <string name="plan_add">Plan For Advertisement</string>
+    <string name="one_of">One Of The Best Platform For Advertising Your Company, Product Or Services In Local Market.</string>
+    <string name="get_quick">Get Quick Buyers &amp; Save Money On Promotional Activities</string>
+    <string name="here_you_get">Here You Get Genuine And Quick Buyers + Save Brokerage</string>
+    <string name="benefit">Benefit Of This Plan</string>
+    <string name="subscribe">Subscribe To Affordable</string>
+    <string name="payment_summary">Payment Summary</string>
+    <string name="choose_plan">Choose a plan duration</string>
+    <string name="incl_gst">incl. GST</string>
+    <string name="gst">GST</string>
+    <string name="total">Total</string>
+    <string name="advanced">Advanced</string>
+    <string name="choose_plan">Choose a plan duration</string>
+<!--    <string name="">Advanced</string>-->
+<!--    <string name="">Advanced</string>-->
+<!--    <string name="">Advanced</string>-->
+
+
+
+
 </resources>

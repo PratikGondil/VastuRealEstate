@@ -219,7 +219,7 @@
 
     <fragment
         android:id="@+id/ourServicesFragment"
-        android:name="com.vastu.realestate.appModule.dashboard.view.OurServicesFragment"
+        android:name="com.vastu.realestate.appModule.ourServies.viewPlan.OurServicesFragment"
         android:label="ourServices"
         tools:layout="@layout/fragment_our_services"/>
 
@@ -251,5 +251,34 @@
             android:id="@+id/action_feedback_to_Dashboard"
             app:destination="@id/VastuDashboardFragment"
             app:enterAnim="@anim/slide_in_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/SelectLanguageFragment"
+        android:name="com.vastu.realestate.appModule.selectlanguage.SelectLanguageFragment"
+        android:label="SelectLanaguage"
+        tools:layout="@layout/fragment_select_language">
+
+        <action
+            android:id="@+id/action_SelectLanguage_to_SignupLoginHome"
+            app:destination="@+id/SignUpAndLoginFragment"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/planForOwnerFragment"
+        android:name="com.vastu.realestate.appModule.ourServies.planForOwner.PlanForPropertyOwnerFragment"
+        android:label="planForOwnerFragment"
+        tools:layout="@layout/plan_for_owner_fragment">
+
+    </fragment>
+    <fragment
+        android:id="@+id/viewPlanFragment"
+        android:name="com.vastu.realestate.appModule.ourServies.viewPlan.OurServicesFragment"
+        android:label="viewPlan"
+        tools:layout="@layout/view_plans_fragment">
+
+        <action
+            android:id="@+id/action_viewPlanFragment_to_planForOwnerFragment"
+            app:destination="@+id/planForOwnerFragment"
+            />
     </fragment>
 </navigation>

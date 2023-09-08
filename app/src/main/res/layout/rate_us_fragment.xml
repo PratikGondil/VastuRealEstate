@@ -27,9 +27,9 @@
         app:layout_constraintTop_toBottomOf="@+id/include"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Are You Finding Us Helpful ?"
+        android:text="@string/are_you_finding"
         android:fontFamily="@font/open_sans_bold"
-        android:textSize="22sp"
+        android:textSize="@dimen/dimen22sp"
         android:layout_margin="@dimen/dimen20dp"
         />
     <TextView
@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_are_u"
         app:layout_constraintStart_toStartOf="@+id/txt_are_u"
         app:layout_constraintEnd_toEndOf="@+id/txt_are_u"
-        android:text="Please Share Your Experience With Us."
+        android:text="@string/please_share_experience"
         android:fontFamily="@font/open_sans_bold"
         android:textSize="@dimen/dimen_16sp"
         android:layout_marginStart="@dimen/dimen20dp"
@@ -51,7 +51,7 @@
         style="?android:attr/ratingBarStyleIndicator"
         android:progressTint="#FFCC01"
         android:id="@+id/smallRating"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/dimen20dp"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toBottomOf="@+id/txt_plz_share"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +64,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dimen10dp"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toEndOf="@+id/smallRating"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_plz_share"
@@ -76,9 +76,9 @@
         app:layout_constraintTop_toBottomOf="@+id/smallRating"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="Add Detailed Review"
+        android:text="@string/add_detail"
         android:layout_marginStart="@dimen/dimen20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="@dimen/dimen40dp"
         />
     <EditText
         android:id="@+id/edt_review"
@@ -90,8 +90,11 @@
         android:layout_margin="@dimen/dimen20dp"
         android:background="@drawable/edt_background"
         android:maxLines="5"
+        android:textColorHint="@color/gray_hint"
+        android:gravity="top"
+        android:padding="@dimen/dimen2dp"
         android:textSize="@dimen/dimen_16sp"
-        android:hint="write here"/>
+        android:hint="@string/write_here"/>
 
     <Button
         android:id="@+id/submit"

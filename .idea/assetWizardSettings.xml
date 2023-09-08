@@ -329,8 +329,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_home" />
-                            <entry key="sourceFile" value="C:\Users\anjali.kapoor\Downloads\home.svg" />
+                            <entry key="outputName" value="ic_contact_us" />
+                            <entry key="sourceFile" value="C:\Users\anjali.kapoor\Downloads\Contact us.svg" />
                           </map>
                         </option>
                       </PersistentState>

@@ -51,4 +51,5 @@ object BaseConstant {
   const val INPROGRSS ="2"
   const val COMPLETE = "3"
   const val USER_TYPE= "USER TYPE"
+  const val LANGUAGE_FLOW="drawer_language"
 }

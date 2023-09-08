@@ -3,7 +3,7 @@
     xmlns:bind="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
-
+        <import type="com.vastu.realestate.appModule.feedback.FeedbackBindingAdapter"/>
         <variable
             name="drawerViewModel"
             type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
@@ -29,9 +29,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintEnd_toStartOf="@+id/imgRate"
-            android:text="Are You Finding Us Helpful ?"
+            android:text="@string/what_improve"
             android:fontFamily="@font/open_sans_bold"
-            android:textSize="22sp"
+            android:textSize="@dimen/dimens20sp"
             android:layout_margin="@dimen/dimen20dp"
             />
         <TextView
@@ -41,7 +41,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txt_are_u"
             app:layout_constraintStart_toStartOf="@+id/txt_are_u"
             app:layout_constraintEnd_toEndOf="@+id/txt_are_u"
-            android:text="Please Share Your Experience With Us."
+            android:text="@string/how_can_we_make"
             android:fontFamily="@font/open_sans_bold"
             android:textSize="@dimen/dimen_16sp"
             android:layout_marginStart="@dimen/dimen20dp"
@@ -50,10 +50,13 @@
             android:id="@+id/spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            allItems="@{feedbackViewModel.allQuery}"
+            selectedItem="@{feedbackViewModel.selectedQuery}"
             android:layout_margin="@dimen/dimen20dp"
-            android:padding="@dimen/dimen10dp"
             android:text="@string/select_from_below_options"
-            android:textSize="@dimen/dimens20sp"
+            android:textSize="@dimen/dimen_16sp"
+            android:spinnerMode="dropdown"
+            android:background="@drawable/edt_background"
             app:layout_constraintTop_toBottomOf="@+id/txt_plz_share"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -81,15 +84,18 @@
             android:layout_margin="@dimen/dimen20dp"
             android:background="@drawable/edt_background"
             android:maxLines="5"
+            android:gravity="top"
+            android:padding="@dimen/dimen2dp"
             android:textSize="@dimen/dimen_16sp"
-            android:hint="write here"/>
+            android:textColorHint="@color/gray_hint"
+            android:hint="@string/please_describe_feedback"/>
 
         <Button
             android:id="@+id/submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_small"
-            android:text="@string/select_image"
+            android:text="@string/submit_feedback"
             android:textColor="@color/white"
             android:layout_margin="@dimen/dimen60dp"
             android:fontFamily="@font/open_sans_semibold"
