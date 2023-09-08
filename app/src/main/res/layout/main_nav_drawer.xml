@@ -101,7 +101,34 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/nav_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:onClick="@{(view)->drawerViewModel.onHomeClick()}"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="@dimen/margin_xxlarge">
 
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_home"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:textColor="@color/nav_text_color"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/home_text" />
+            </LinearLayout>
             <LinearLayout
                 android:id="@+id/nav_enquiry"
                 android:layout_width="match_parent"
@@ -220,6 +247,34 @@
                     android:text="@string/offers" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/nav_change_lang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onLanguageClick()}"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="@dimen/margin_xxlarge">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.2"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_language"
+                    android:scaleType="centerInside" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:textColor="@color/nav_text_color"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_normal"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/change_language" />
+            </LinearLayout>
+            <LinearLayout
                 android:id="@+id/nav_feedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -235,7 +290,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_feedback"
+                    android:src="@drawable/ic_feedback__2_"
                     android:scaleType="centerInside" />
 
                 <TextView

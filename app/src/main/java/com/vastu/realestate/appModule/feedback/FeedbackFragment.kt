@@ -19,7 +19,6 @@ class FeedbackFragment :BaseFragment(), IToolbarListener {
     lateinit var drawerViewModel: DrawerViewModel
     lateinit var feedbackFragmentBinding: FeedbackFragmentBinding
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

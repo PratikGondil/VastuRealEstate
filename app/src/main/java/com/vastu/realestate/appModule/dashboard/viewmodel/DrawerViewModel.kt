@@ -72,4 +72,10 @@ class DrawerViewModel(application: Application) : AndroidViewModel(application) 
     fun onFeedbackClick(){
         iNavDrawerListener.onFeedbackClick()
     }
+    fun onLanguageClick(){
+        iNavDrawerListener.onLanguageClick()
+    }
+    fun onHomeClick(){
+        iNavDrawerListener.onHomeClick()
+    }
 }

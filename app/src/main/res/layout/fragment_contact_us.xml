@@ -25,12 +25,11 @@
         bind:drawerViewModel="@{drawerViewModel}" />
 
     <RelativeLayout
+        android:id="@+id/rlNew"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rlNew"
-        android:layout_marginBottom="@dimen/dimen50dp"
         android:layout_below="@+id/include"
-        >
+        android:layout_marginBottom="@dimen/dimen50dp">
 
 
         <ImageView
@@ -39,7 +38,7 @@
             android:layout_height="@dimen/dimen150dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dimen5dp"
-            android:src="@drawable/vastu_logo_splash" />
+            android:src="@drawable/ic_contact_us" />
 
     </RelativeLayout>
 
@@ -96,7 +95,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txtFeelFree"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/dimen10dp"
         android:layout_marginBottom="@dimen/dimen10dp"
         android:autoLink="web"
         android:gravity="center"

@@ -31,6 +31,7 @@ import com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewMode
 import com.vastu.realestate.appModule.enquirylist.view.EnquiryActivity
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.databinding.FragmentVastuDashboardBinding
+import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.BaseConstant.ADMIN
 import com.vastu.realestate.utils.BaseConstant.BUILDER
 import com.vastu.realestate.utils.BaseConstant.CUSTOMER
@@ -375,6 +376,17 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
     override fun onFeedbackClick() {
         findNavController().navigate(R.id.action_vastuDashboardFragment_to_feedback)
         closeDrawer()
+    }
+
+    override fun onLanguageClick() {
+        val bundle = Bundle()
+        bundle.putString(BaseConstant.LANGUAGE_FLOW,"mr")
+        findNavController().navigate(R.id.SelectLanguageFragment,bundle)
+        closeDrawer()
+    }
+
+    override fun onHomeClick() {
+       closeDrawer()
     }
 
     private fun showLogoutDialog() {

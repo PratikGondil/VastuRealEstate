@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <variable
+            name="planForOwnerViewModel"
+            type="com.vastu.realestate.appModule.ourServies.planForOwner.PlanForOwnerViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_bg">
+    <TextView
+        android:id="@id/tv_total_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen10dp"
+        android:text="@string/choose_plan"
+        bind:layout_constraintEnd_toEndOf="parent"
+        bind:layout_constraintTop_toTopOf="parent"
+        android:textSize="@dimen/dimens20sp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPlanList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        tools:listitem="@layout/our_service_item_view"
+        android:layout_gravity="center"
+        android:orientation="horizontal"
+        bind:layout_constraintStart_toStartOf="parent"
+        bind:layout_constraintEnd_toEndOf="parent"
+        bind:layout_constraintTop_toBottomOf="@+id/tv_total_value"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen15dp"
+        bind:layout_constraintStart_toStartOf="parent"
+        bind:layout_constraintEnd_toEndOf="parent"
+        bind:layout_constraintTop_toBottomOf="@+id/rvPlanList"
+        android:background="@drawable/gradient_bg">
+
+
+    <TextView
+        android:id="@+id/tv_middleTitle"
+        bind:layout_constraintStart_toStartOf="parent"
+        bind:layout_constraintEnd_toEndOf="parent"
+        bind:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/dimen15dp"
+        android:textColor="@color/gray_shade2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/dimen15sp"
+        android:text="payment summary" />
+
+    <View
+        android:id="@+id/divider_1"
+        bind:layout_constraintStart_toStartOf="parent"
+        bind:layout_constraintEnd_toEndOf="parent"
+        bind:layout_constraintTop_toBottomOf="@id/tv_middleTitle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen1dp"
+        android:layout_below="@+id/tv_middleTitle"
+        android:layout_marginTop="@dimen/dimen10dp"
+        android:layout_marginStart="@dimen/dimen15dp"
+        android:layout_marginEnd="@dimen/dimen15dp"
+        android:background="@color/gray_shade2"/>
+
+    <TextView
+        android:id="@+id/tv_advanced"
+        bind:layout_constraintTop_toBottomOf="@id/divider_1"
+        android:layout_width="0dp"
+        bind:layout_constraintStart_toStartOf="@id/divider_1"
+        android:textColor="@color/gray_shade2"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen20dp"
+        android:layout_alignParentStart="true"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="start"
+        android:text="Advanced"
+        android:textAllCaps="false"
+        android:textSize="@dimen/dimen15sp" />
+
+    <TextView
+        android:id="@+id/tv_advanced_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="end"
+        bind:layout_constraintEnd_toEndOf="@id/divider_1"
+        android:text="ppkk"
+        android:textAllCaps="false"
+        android:textColor="@color/gray_shade2"
+        android:textSize="@dimen/dimen15sp"
+        bind:layout_constraintTop_toTopOf="@+id/tv_advanced"
+        bind:layout_constraintBottom_toBottomOf="@+id/tv_advanced"/>
+
+    <TextView
+        android:id="@+id/tv_gst"
+        bind:layout_constraintStart_toStartOf="@id/divider_1"
+        bind:layout_constraintTop_toBottomOf="@id/tv_advanced_value"
+        android:layout_marginTop="@dimen/dimen20dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="start"
+        android:text="@string/gst"
+        android:textAllCaps="false"
+        android:textColor="@color/gray_shade2"
+        android:textSize="@dimen/dimen15sp" />
+
+    <TextView
+        android:id="@+id/tv_gst_value"
+        bind:layout_constraintEnd_toEndOf="@id/divider_1"
+        bind:layout_constraintTop_toTopOf="@id/tv_gst"
+        bind:layout_constraintBottom_toBottomOf="@id/tv_gst"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="end"
+        android:text="jjkook"
+        android:textAllCaps="false"
+        android:textColor="@color/gray_shade2"
+        android:textSize="@dimen/dimen15sp" />
+
+    <TextView
+        android:id="@+id/tv_total"
+        android:layout_marginTop="@dimen/dimen20dp"
+        bind:layout_constraintStart_toStartOf="@id/divider_1"
+        bind:layout_constraintTop_toBottomOf="@id/tv_gst"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="start"
+        android:text="@string/total"
+        android:textAllCaps="false"
+        android:textColor="@color/gray_shade2"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_total_value"
+        bind:layout_constraintTop_toBottomOf="@id/tv_gst"
+        bind:layout_constraintEnd_toEndOf="@id/divider_1"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/dimen20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:fontFamily="@font/roboto_regular"
+        android:gravity="end"
+        android:text="000"
+        android:textAllCaps="false"
+        android:textColor="@color/gray_shade2"
+        android:textSize="@dimen/dimen15sp" />
+
+    <View
+        android:id="@+id/divider_2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen1dp"
+        android:layout_marginTop="@dimen/dimen20dp"
+        android:layout_marginStart="@dimen/dimen15dp"
+        android:layout_marginEnd="@dimen/dimen15dp"
+        bind:layout_constraintStart_toStartOf="@id/divider_1"
+        bind:layout_constraintEnd_toEndOf="@id/divider_1"
+        bind:layout_constraintTop_toBottomOf="@id/tv_total_value"
+        android:background="@color/gray_shade2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
