@@ -6,4 +6,5 @@ object Constants {
     val SELECTED_LANGUAGE ="SelectedLanguage"
     val MARATHI ="Marathi"
     val ENGLISH ="English"
+    var TERMS_ACCEPTED ="termsaccepted"
 }

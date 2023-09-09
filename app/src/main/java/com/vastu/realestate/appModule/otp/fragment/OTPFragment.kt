@@ -171,7 +171,7 @@ class OTPFragment : BaseFragment(), IVerifyOtpViewListener {
         hideProgressDialog()
         PreferenceManger.put(objVerifyDtls,USER)
         PreferenceManger.put(true, IS_LOGIN)
-        startActivity(Intent(activity, DashboardActivity::class.java))
+        findNavController().navigate(R.id.action_OTPFragment_To_WelcomeFragement)
     }
 
     override fun onOtpVerifyFailure(objVerifyOtpResponseMain: ObjVerifyOtpResponseMain) {

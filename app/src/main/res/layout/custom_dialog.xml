@@ -1,221 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/curved_radius"
+    >
 
-    <LinearLayout
+    <RelativeLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+                    <TextView
+                        android:id="@+id/txt_term"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:letterSpacing="0"
+                        android:layout_weight="0.90"
+                        android:text="@string/term_condition"
+                        android:textColor="@color/button_color"
+                        android:textSize="@dimen/text_size18sp" />
+                    <ImageView
+                        android:id="@+id/img_cross"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.1"
+                        android:layout_marginEnd="@dimen/dimen10dp"
+                        android:src="@drawable/ic_baseline_clear_24" />
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/border_color" />
+
+                <TextView
+                    android:id="@+id/txt_ter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_medium"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:letterSpacing="0"
+                    android:text="@string/term_condition_info"
+                    android:textColor="@color/filter_txt_color"
+                    android:textSize="@dimen/text_size_small" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/button_color"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/txt_term1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/button_color"
+                        android:letterSpacing="0"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:text="@string/terms_text"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size_xsmall"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/txt_term2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:background="@color/button_color"
+                        android:letterSpacing="0"
+                        android:text="@string/term2"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/border_color" />
+
+                    <TextView
+                        android:id="@+id/txt_term3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/button_color"
+                        android:letterSpacing="0"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:text="@string/term3"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/txt_term4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/button_color"
+                        android:letterSpacing="0"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:text="@string/term4"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/txt_term5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/button_color"
+                        android:letterSpacing="0"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:text="@string/term5"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/border_color" />
+
+                    <TextView
+                        android:id="@+id/txt_term6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/button_color"
+                        android:letterSpacing="0"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:text="@string/term6"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/txt_term7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/button_color"
+                        android:letterSpacing="0"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:text="@string/term7"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/white" />
+
+                    <TextView
+                        android:id="@+id/txt_term8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/button_color"
+                        android:letterSpacing="0"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:text="@string/term8"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/border_color" />
+
+                    <TextView
+                        android:id="@+id/txt_term9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/button_color"
+                        android:letterSpacing="0"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:text="@string/term9"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="@dimen/dimen20dp"
+                        android:background="@color/border_color" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
-            <TextView
-                android:id="@+id/txt_term"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_medium"
-                android:fontFamily="@font/open_sans_bold"
-                android:letterSpacing="0"
-                android:layout_weight="0.90"
-                android:text="@string/term_condition"
-                android:textColor="@color/button_color"
-                android:textSize="@dimen/text_size18sp" />
-            <ImageView
-                android:id="@+id/img_cross"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0.1"
-                android:layout_marginEnd="@dimen/dimen10dp"
-                android:src="@drawable/ic_baseline_clear_24" />
-        </LinearLayout>
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/border_color" />
-
-        <TextView
-            android:id="@+id/txt_ter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_medium"
-            android:fontFamily="@font/open_sans_bold"
-            android:letterSpacing="0"
-            android:text="@string/term_condition_info"
-            android:textColor="@color/filter_txt_color"
-            android:textSize="@dimen/text_size_small" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/button_color"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/txt_term1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/button_color"
-                android:letterSpacing="0"
-                android:text="@string/terms_text"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/white" />
-
-            <TextView
-                android:id="@+id/txt_term2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/button_color"
-                android:letterSpacing="0"
-                android:text="@string/term2"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/border_color" />
-
-            <TextView
-                android:id="@+id/txt_term3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/button_color"
-                android:letterSpacing="0"
-                android:text="@string/term3"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/white" />
-
-            <TextView
-                android:id="@+id/txt_term4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/button_color"
-                android:letterSpacing="0"
-                android:text="@string/term4"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/white" />
-
-            <TextView
-                android:id="@+id/txt_term5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/button_color"
-                android:letterSpacing="0"
-                android:text="@string/term5"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/border_color" />
-
-            <TextView
-                android:id="@+id/txt_term6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/button_color"
-                android:letterSpacing="0"
-                android:text="@string/term6"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/white" />
-
-            <TextView
-                android:id="@+id/txt_term7"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/button_color"
-                android:letterSpacing="0"
-                android:text="@string/term7"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/white" />
-
-            <TextView
-                android:id="@+id/txt_term8"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/button_color"
-                android:letterSpacing="0"
-                android:text="@string/term8"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/border_color" />
-
-            <TextView
-                android:id="@+id/txt_term9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@color/button_color"
-                android:letterSpacing="0"
-                android:text="@string/term9"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/border_color" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="bottom"
+            android:background="@color/white"
+            android:layout_marginTop="@dimen/dimen30dp"
+            android:layout_alignParentBottom="true"
             android:orientation="horizontal">
 
             <CheckBox
@@ -230,6 +261,9 @@
                 android:textColor="@color/button_color"/>
         </LinearLayout>
 
-    </LinearLayout>
 
-</ScrollView>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

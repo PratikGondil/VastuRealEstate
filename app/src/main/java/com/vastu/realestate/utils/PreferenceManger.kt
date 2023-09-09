@@ -64,4 +64,12 @@ object PreferenceManger {
     }
 
 
+    fun <T> putBoolean(key:String,value:Boolean){
+        preferences.edit().putBoolean(key,value).apply()
+    }
+    inline fun <reified T> getBoolean(key:String): Boolean? {
+        return preferences.getBoolean(key,false)
+    }
+
+
 }
