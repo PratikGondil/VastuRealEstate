@@ -32,6 +32,7 @@
                         android:layout_margin="@dimen/margin_medium"
                         android:fontFamily="@font/open_sans_bold"
                         android:letterSpacing="0"
+                        android:textStyle="bold"
                         android:layout_weight="0.90"
                         android:text="@string/term_condition"
                         android:textColor="@color/button_color"
@@ -59,6 +60,7 @@
                     android:layout_margin="@dimen/margin_medium"
                     android:fontFamily="@font/open_sans_bold"
                     android:letterSpacing="0"
+                    android:textStyle="bold"
                     android:text="@string/term_condition_info"
                     android:textColor="@color/filter_txt_color"
                     android:textSize="@dimen/text_size_small" />
@@ -76,11 +78,12 @@
                         android:layout_margin="10dp"
                         android:background="@color/button_color"
                         android:letterSpacing="0"
+                        android:textStyle="bold"
                         android:fontFamily="@font/open_sans_bold"
                         android:text="@string/terms_text"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_xsmall"
-                        android:textStyle="bold" />
+                         />
 
                     <View
                         android:layout_width="match_parent"

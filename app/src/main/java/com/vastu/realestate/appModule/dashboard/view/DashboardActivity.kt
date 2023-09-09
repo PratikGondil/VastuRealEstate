@@ -1,12 +1,13 @@
 package com.vastu.realestate.appModule.dashboard.view
 
 import android.app.AlertDialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
 import android.widget.CheckBox
 import android.widget.ImageView
-
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -20,10 +21,7 @@ import com.vastu.realestate.appModule.employee.fragment.EmployeeDetailsFragment
 import com.vastu.realestate.appModule.employee.fragment.EmployeeListFragment
 import com.vastu.realestate.appModule.enquiry.view.AddLoanEnquiryFragment
 import com.vastu.realestate.appModule.enquiry.view.AddPropertyEnquiryFragment
-import com.vastu.realestate.appModule.login.view.fragment.LoginFragment
 import com.vastu.realestate.appModule.properties.view.PropertiesFragment
-import com.vastu.realestate.appModule.signUp.view.SignUpFragment
-
 import com.vastu.realestate.databinding.ActivityVastuDashboardBinding
 import com.vastu.realestate.utils.PreferenceManger
 
@@ -83,6 +81,9 @@ class DashboardActivity : BaseActivity() {
         val view = layoutInflater.inflate(R.layout.custom_dialog,null)
         val  checkbox = view.findViewById<CheckBox>(R.id.termsCheck)
         val cross=view.findViewById<ImageView>(R.id.img_cross)
+        val back = ColorDrawable(Color.TRANSPARENT)
+        val inset = InsetDrawable(back, 30)
+        builder.getWindow()!!.setBackgroundDrawable(inset)
         builder.setView(view)
         checkbox.setOnClickListener {
             builder.dismiss()
