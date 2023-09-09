@@ -327,6 +327,9 @@
     <!--    <string name="">Advanced</string>-->
     <!--    <string name="">Advanced</string>-->
     <!--    <string name="">Advanced</string>-->
+    <string name="builder_profile">Builder Profile</string>
+    <string name="amenities">Amenities</string>
+    <string name="similar_project">Similar Projects of M/s Vinayak Construction -</string>
 
 
 </resources>

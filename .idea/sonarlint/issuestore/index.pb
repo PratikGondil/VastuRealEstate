@@ -181,12 +181,6 @@ aapp/src/main/java/com/vastu/realestate/appModule/enquiry/viewModel/AddPropertyE
 oserviceNetworkFramework/src/main/java/com/vastu/networkService/serviceResListener/IOnServiceResponseListener.kt,1\3\13366da215e6c4425609d8ec125440dc7d99ad11
 ¢
 ruserTypeCore/src/main/java/com/vastu/propertycore/callback/request/response/IGetPropertyDeatilsResponseListener.kt,c\6\c69cbba9b65efa89b28469b33f77d61bf1c9810b
-Ü
-VuserTypeCore/src/main/java/com/vastu/propertycore/model/response/PropertyIdResponse.kt,7\6\76babb5d2ee66858d3d9e03d6039869bba78b1ad
-å
-\userTypeCore/src/main/java/com/vastu/propertycore/model/response/PropertyDataResponseMain.kt,9\2\92767f5942870e166d9e89bed109548f50bd393f
-ê
-`userTypeCore/src/main/java/com/vastu/propertycore/model/response/GetPropertyIdDetailsResponse.kt,a\8\a8059e7d6f1e730ec960b178e8b394def7947c10
 É
 SuserTypeCore/src/main/java/com/vastu/propertycore/model/response/PropertyIDDataX.kt,2\5\25eecbf269daa888406adf358cf54d3925dbd182
 ä
@@ -217,8 +211,6 @@ A
 aapp/src/main/java/com/vastu/realestate/appModule/enquirylist/uiinterfaces/INetworkFailListener.kt,3\e\3e88c25ff78667f5ca9b24414a559c9b2c1f6323
 à
 Xapp/src/main/java/com/vastu/realestate/appModule/dashboard/uiInterfaces/ILoanListener.kt,c\1\c116b2dedb6ab5fe2e3334f899daff509f04011a
-ñ
-fuserTypeCore/src/main/java/com/vastu/loanenquirycore/model/response/interest/loan/LoanInterstedData.kt,5\1\51c6ec5f42d140322b74ccd4806f428e4fffa5aa
 §
 tuserTypeCore/src/main/java/com/vastu/loanenquirycore/model/response/interest/loan/GetloanInterstedDetailsResponse.kt,c\5\c52d1aa3d8f54b089f8739dd5eff3731e1d6b4a4
 û
@@ -405,8 +397,6 @@ F
 loginCore/build.gradle,3\7\3736d50d8a65ed15c92ff0a74efcb46f2bcc5a2c
 M
 registrationCore/build.gradle,f\3\f3be075cd17c79f3ac9e8712fa38e653e44eef0f
-Å
-Qapp/src/main/java/com/vastu/realestate/appModule/dashboard/adapter/LoanAdapter.kt,6\6\6683a504f658aad6edc50f0da1a5de1908b0473a
 å
 \app/src/main/java/com/vastu/realestate/appModule/dashboard/viewmodel/AddPropertyViewModel.kt,a\9\a9484597b6daed48ea552fad98de69528e26d9fe
 ú
@@ -421,8 +411,6 @@ WserviceNetworkFramework/src/main/java/com/vastu/networkService/client/RetrofitC
 \app/src/main/java/com/vastu/realestate/appModule/properties/viewmodel/PropertiesViewModel.kt,5\0\50915ad69cba7340f65104130305e224f923dfc7
 ã
 [app/src/main/java/com/vastu/realestate/appModule/dashboard/view/filter/FilterTypeAdapter.kt,e\4\e436a50ebeb5e47888cad4d66edc817783dc7d68
-
-Oapp/src/main/java/com/vastu/realestate/appModule/dashboard/view/LoanFragment.kt,1\8\180ad07d63d356f9d43c0f8500e530a7d6df97a7
 ~
 Napp/src/main/java/com/vastu/realestate/appModule/signUp/view/SignUpFragment.kt,3\1\31553533d40c3d4831c787431b362e4442f6602f
 ∏
@@ -457,10 +445,6 @@ VuserTypeCore/src/main/java/com/vastu/realestatecore/model/response/PropertyResp
 RuserTypeCore/src/main/java/com/vastu/realestatecore/model/response/PropertyData.kt,9\c\9c27ac2e63974a74fda18f0a6490b05adb06f26f
 Ö
 Uapp/src/main/java/com/vastu/realestate/appModule/login/view/fragment/LoginFragment.kt,4\1\410b53e82b5a89500f8bf60c44c1f4a5de58bcad
-á
-Wapp/src/main/java/com/vastu/realestate/appModule/dashboard/adapter/RealEstateAdapter.kt,b\8\b80270b3a5298f27d555f657140054a9ceda9844
-k
-;app/src/main/java/com/vastu/realestate/utils/CommonUtils.kt,2\3\23ca5637fdadea5cd6c999bc1e3c6969b175ec8e
 ã
 [userTypeCore/src/main/java/com/vastu/termsandconditions/model/respone/TermsConditionData.kt,5\7\573009f97e8fa7cf7c2fc9b002eecd586ba73e86
 Ä

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
@@ -35,6 +36,7 @@
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/log_out.xml" value="0.1" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/offer.xml" value="0.1" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/activity_vastu_dashboard.xml" value="0.1765625" />
+        <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/aminity_item_view.xml" value="0.17326732673267325" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/assigned_loan_enquiry_itemview.xml" value="0.171875" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/bottom_dialog_layout.xml" value="0.171875" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/custom_dialog.xml" value="0.28297546012269936" />
@@ -49,6 +51,7 @@
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/fragment_real_estate.xml" value="0.1" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/fragment_real_estate_details.xml" value="0.171875" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/fragment_select_language.xml" value="0.1875" />
+        <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/fragment_vastu_dashboard.xml" value="0.1875" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/lay_terms.xml" value="0.1765625" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/loan_enquiry_itemview.xml" value="0.17604166666666668" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/loan_info_fragment.xml" value="0.1361111111111111" />
@@ -60,6 +63,7 @@
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/plan_for_owner_fragment.xml" value="0.171875" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/rate_us_fragment.xml" value="0.1" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/real_estate_itemview.xml" value="0.1765625" />
+        <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/related_property_item_view.xml" value="0.17616580310880828" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/sorting_type_item.xml" value="0.1765625" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/spinner_feedback.xml" value="0.1875" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/view_plans_fragment.xml" value="0.171875" />
@@ -70,7 +74,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

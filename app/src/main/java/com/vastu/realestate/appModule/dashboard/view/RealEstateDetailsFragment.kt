@@ -8,13 +8,20 @@ import android.text.style.BulletSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
+import com.vastu.propertycore.model.response.Amenity
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
+import com.vastu.propertycore.model.response.RelatedProperty
 import com.vastu.realestate.R
+import com.vastu.realestate.appModule.dashboard.adapter.AmenitiesAdapter
+import com.vastu.realestate.appModule.dashboard.adapter.RelatedPropertyAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertyDetailsListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertySliderListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
@@ -26,7 +33,6 @@ import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestatecore.model.response.PropertyData
 import com.vastu.slidercore.model.response.property.PropertySliderImage
 import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
-import java.util.regex.Matcher
 import java.util.regex.Pattern
 
 class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPropertySliderListener,
@@ -57,6 +63,10 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         return realEstateDetailsBinding.root
     }
     private fun getBundleData(){
+        if(activity is DashboardActivity)
+        {
+            (activity as DashboardActivity).bottomNavigationView.visibility= View.GONE
+        }
         val args = this.arguments
         if (args != null){
             if (args.getSerializable(BaseConstant.PROPERTY_DETAILS) != null) {
@@ -118,7 +128,26 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         bundle.putSerializable(BaseConstant.PROPERTY_ID, propertyId)
         findNavController().navigate(R.id.action_RealEstateDetailsFragment_to_AddPropertyEnquiryFragment,bundle)
     }
-
+    private fun setAmenityDetails(amenity:List<Amenity>){
+        try {
+            val recyclerViewAmenity = realEstateDetailsBinding.aminityRecyclerView
+            val amenityAdapter = AmenitiesAdapter(requireContext(),amenity)
+            recyclerViewAmenity.adapter = amenityAdapter
+            recyclerViewAmenity.layoutManager = GridLayoutManager(activity,2)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+    private fun setRelatedPropertyDetails(relatedProperty:List<RelatedProperty>){
+        try {
+            val recyclerViewProperty = realEstateDetailsBinding.relatedRecyclerView
+            val relatedPropertyAdapter = RelatedPropertyAdapter(requireContext(),relatedProperty)
+            recyclerViewProperty.adapter = relatedPropertyAdapter
+            recyclerViewProperty.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, true)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
     override fun chatEnquiry() {
 
     }
@@ -151,6 +180,8 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
             }else{
                 descriptionTextview.text = property.highlights
             }
+            setAmenityDetails(propertyDataResponseMain.getPropertyIdDetailsResponse.amenities)
+            setRelatedPropertyDetails(propertyDataResponseMain.getPropertyIdDetailsResponse.relatedProperty)
         }
     }
 
@@ -167,5 +198,12 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     }
 
     override fun onClickNotification() {
+    }
+    override fun onPause() {
+        if(activity is DashboardActivity)
+        {
+            (activity as DashboardActivity).bottomNavigationView.visibility= View.VISIBLE
+        }
+        super.onPause()
     }
 }
