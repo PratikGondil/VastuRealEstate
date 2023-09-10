@@ -36,6 +36,8 @@ class RelatedPropertyAdapter(val  context: Context,val relatedProperty:List<Rela
             holder.binding.imageView,
             R.drawable.vastu_logo_splash
         )
+        holder.binding.title.text=relatedProperty.propertyTitle
+        holder.binding.owener.text=relatedProperty.owner
         holder.binding.propertyPrizeTextview.text =
             context.getString(R.string.rupee) + " " + relatedProperty.priceMinWord + "-" + relatedProperty.priceMaxWord
         holder.binding.propertyBhkDtlsTxt.text =

@@ -39,8 +39,6 @@ _userTypeCore/src/main/java/com/vastu/loanenquirycore/model/response/enquiry/Reg
 auserTypeCore/src/main/java/com/vastu/slidercore/model/response/advertisement/AdvertiseResponse.kt,5\4\54c287d4d0f7705f15895963fe92f0e2784d6894
 —
 guserTypeCore/src/main/java/com/vastu/slidercore/model/response/property/PropertySliderImagesResponse.kt,c\b\cb3acb3d3f5b783167a8ac798be8e14cf653f33a
-•
-euserTypeCore/src/main/java/com/vastu/slidercore/model/response/property/PropertySliderResponseMain.kt,0\b\0bf2d2046d6fddb8389756aaad716f3e63acc597
 ”
 duserTypeCore/src/main/java/com/vastu/loanenquirycore/model/response/occupation/OccupationResponse.kt,6\0\60fc73e0477e7374612640a030248bded4da5c68
 ž
@@ -67,8 +65,6 @@ SuserTypeCore/src/main/java/com/vastu/enquiry/property/model/response/EnquiryDat
 [app/src/main/java/com/vastu/realestate/appModule/enquirylist/adapter/EnquiryPagerAdapter.kt,c\a\ca3f76503d5dd263a2597cea4a3819677c1cef21
 Œ
 \app/src/main/java/com/vastu/realestate/appModule/login/bindingAdapter/LoginBindingAdapter.kt,3\5\35d7349c1d730b3d9ab87488e75135242b4ab2e7
-š
-juserTypeCore/src/main/java/com/vastu/slidercore/model/response/property/GetPropertySliderImagesResponse.kt,b\0\b07c55c0c11d11ace3d1be8f3503398245fd7db4
 ”
 dregistrationCore/src/main/java/com/vastu/realestate/registrationcore/callbacks/request/ISignUpReq.kt,0\1\0161f01172010bbe885cddd00b9049284d7f5d2c
 ™
@@ -187,8 +183,6 @@ SuserTypeCore/src/main/java/com/vastu/propertycore/model/response/PropertyIDData
 ZuserTypeCore/src/main/java/com/vastu/propertycore/repository/PropertyDeatailsRepository.kt,c\0\c06913274af7a5859844b2091be6e0ade360ed2e
 ¡
 qregistrationCore/src/main/java/com/vastu/realestate/registrationcore/model/response/cityList/ObjTalukaDataList.kt,0\2\02f99606764245b61c901ded5089a0fc440ab363
-Ž
-^userTypeCore/src/main/java/com/vastu/slidercore/model/response/property/PropertySliderImage.kt,d\4\d424f3d455e7379427902fd9757a2963fb2d7370
 ˆ
 Xapp/src/main/java/com/vastu/realestate/rootModule/splash/view/activity/SplashActivity.kt,0\9\094f45bdd942a7c3204d995eae434f15128c22e4
 ˆ
