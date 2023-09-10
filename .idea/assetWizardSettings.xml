@@ -351,9 +351,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="e84c4c" />
-                            <entry key="outputName" value="baseline_volume_off_24" />
-                            <entry key="sourceFile" value="C:\Users\anjali.kapoor\Downloads\home.svg" />
+                            <entry key="outputName" value="ic_logout" />
+                            <entry key="sourceFile" value="C:\Users\anjali.kapoor\Desktop\db\Logout.svg" />
                           </map>
                         </option>
                       </PersistentState>
