@@ -379,9 +379,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
     }
 
     override fun onLanguageClick() {
-        val bundle = Bundle()
-        bundle.putString(BaseConstant.LANGUAGE_FLOW,"mr")
-        findNavController().navigate(R.id.SelectLanguageFragment,bundle)
+        findNavController().navigate(R.id.languageFragment)
         closeDrawer()
     }
 

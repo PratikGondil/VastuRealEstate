@@ -234,7 +234,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/offer"
+                    android:src="@drawable/ic_discount"
                     android:scaleType="centerInside" />
 
                 <TextView
@@ -346,7 +346,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/email"
+                    android:src="@drawable/ic_email"
                     android:scaleType="centerInside" />
 
                 <TextView
@@ -405,7 +405,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/log_out"
+                    android:src="@drawable/ic_logout"
                     android:scaleType="centerInside" />
 
                 <TextView

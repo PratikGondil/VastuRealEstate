@@ -41,24 +41,13 @@ import com.vastu.realestate.utils.BaseConstant
     }
 
       fun getBundleData(){
-          val args = this.arguments
-          if (args != null){
-              if (args.getString(BaseConstant.LANGUAGE_FLOW) != null) {
-                  flow = args.getString(BaseConstant.LANGUAGE_FLOW)!!
-              }
-          }
+
       }
       private fun initView() {
-          if(flow == BaseConstant.LANGUAGE_FLOW){
-              selectLanguageViewModel.loginView.set(View.GONE)
-              selectLanguageViewModel.btnText.set(requireContext().getString(R.string.done))
-          }else {
+
               setOnCheckedChangeListener()
               selectLanguageBinding.btnNext.setOnClickListener {
-
-
               }
-          }
       }
 
       private fun setOnCheckedChangeListener() {

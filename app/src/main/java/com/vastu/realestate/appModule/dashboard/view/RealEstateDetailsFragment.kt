@@ -23,6 +23,7 @@ import com.vastu.propertycore.model.response.PropertyIdData
 import com.vastu.propertycore.model.response.RelatedProperty
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.AmenitiesAdapter
+import com.vastu.realestate.appModule.dashboard.adapter.PropertyPhotoPlanAdapter
 import com.vastu.realestate.appModule.dashboard.adapter.RelatedPropertyAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertyDetailsListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertySliderListener
@@ -110,6 +111,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
             imageSlider.startSliding(3000)
         }
         getPropertyDetails()
+        setPhotosPropertyDetails(propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages)
     }
 
     override fun onFailurePropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
@@ -146,6 +148,17 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
             val relatedPropertyAdapter = RelatedPropertyAdapter(requireContext(),relatedProperty)
             recyclerViewProperty.adapter = relatedPropertyAdapter
             recyclerViewProperty.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, true)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    private fun setPhotosPropertyDetails(propertySliderImage:List<PropertySliderImage>){
+        try {
+            val recyclerPhotoProperty = realEstateDetailsBinding.imgRecyclerView
+            val propertyPhotoAdapter = PropertyPhotoPlanAdapter(requireContext(),propertySliderImage)
+            recyclerPhotoProperty.adapter = propertyPhotoAdapter
+            recyclerPhotoProperty.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, true)
         } catch (e: Exception) {
             e.printStackTrace()
         }

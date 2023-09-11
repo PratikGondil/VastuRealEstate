@@ -293,4 +293,15 @@
             app:destination="@+id/planForOwnerFragment"
             />
     </fragment>
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="com.vastu.realestate.appModule.selectlanguage.LanguageFragment"
+        android:label="languageFragment"
+        tools:layout="@layout/language_fragment">
+
+        <action
+            android:id="@+id/action_languageFragment_to_dashboardFragment"
+            app:destination="@+id/VastuDashboardFragment"
+            />
+    </fragment>
 </navigation>
