@@ -834,6 +834,8 @@
                             android:textColor="@color/white"
                             android:textSize="@dimen/text_size_small"
                             app:fontFamily="@font/open_sans_bold" />
+
+
                         <LinearLayout
                             android:id="@+id/brochureLayout"
                             android:layout_width="match_parent"
@@ -888,6 +890,30 @@
                             android:layout_marginStart="@dimen/margin_large"
                             tools:listitem="@layout/related_property_item_view"
                             android:layout_height="wrap_content" />
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        >
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnBrocture"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/margin_small"
+                            android:background="@drawable/round_button_background"
+                            android:onClick="@{(view)->realEstateDetailsViewModel.onClickViewBrocture()}"
+                            android:text="open Broture"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_small"
+                            app:fontFamily="@font/open_sans_bold" />
+
+
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

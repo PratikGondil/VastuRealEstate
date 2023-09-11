@@ -16,8 +16,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
+import com.rajat.pdfviewer.PdfViewerActivity
 import com.vastu.propertycore.model.response.Amenity
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
+import com.vastu.propertycore.model.response.PropertyIdData
 import com.vastu.propertycore.model.response.RelatedProperty
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.AmenitiesAdapter
@@ -44,7 +46,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     private val imageList = ArrayList<SlideModel>()
     private lateinit var drawerViewModel: DrawerViewModel
     private val REMOVE_TAGS: Pattern = Pattern.compile("<.+?>")
-
+    lateinit var  propertyIdDataList: PropertyIdData
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -150,12 +152,23 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     }
     override fun chatEnquiry() {
 
+
+    }
+
+    override fun viewbroture() {
+        PdfViewerActivity.launchPdfFromUrl(
+            context, propertyIdDataList.brochure,
+            propertyIdDataList.propertyTitle,
+            "vastu",
+            enableDownload = true
+        )
     }
 
     override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
         realEstateDetailsBinding.apply {
             val property = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
+            propertyIdDataList = property
             propertyData = property
             val htmlPattern = "<[^>]*>"
 

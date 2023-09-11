@@ -26,6 +26,11 @@ class RealEstateDetailsViewModel(application: Application) : AndroidViewModel(ap
     fun onClickPropertyEnquiry(){
         iPropertyDetailsListener.addPropertyEnquiry()
     }
+
+    fun onClickViewBrocture()
+    {
+    iPropertyDetailsListener.viewbroture()
+    }
     fun onClickChat(){
         iPropertyDetailsListener.chatEnquiry()
     }
