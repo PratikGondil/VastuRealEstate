@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
-import com.rajat.pdfviewer.PdfViewerActivity
 import com.vastu.propertycore.model.response.Amenity
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
 import com.vastu.propertycore.model.response.PropertyIdData
@@ -169,12 +168,6 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     }
 
     override fun viewbroture() {
-        PdfViewerActivity.launchPdfFromUrl(
-            context, propertyIdDataList.brochure,
-            propertyIdDataList.propertyTitle,
-            "vastu",
-            enableDownload = true
-        )
     }
 
     override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {

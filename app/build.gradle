@@ -74,10 +74,7 @@ dependencies {
 
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
-    implementation 'com.github.afreakyelf:Pdf-Viewer:v1.0.7'
-    implementation 'com.mindorks.android:prdownloader:0.6.0'
-    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
-
+    implementation 'com.github.akshaaatt:Sliding-Carousel:1.0.4'
 
 
 }
