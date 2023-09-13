@@ -31,7 +31,6 @@ import com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewMode
 import com.vastu.realestate.appModule.enquirylist.view.EnquiryActivity
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
 import com.vastu.realestate.databinding.FragmentVastuDashboardBinding
-import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.BaseConstant.ADMIN
 import com.vastu.realestate.utils.BaseConstant.BUILDER
 import com.vastu.realestate.utils.BaseConstant.CUSTOMER
@@ -41,7 +40,6 @@ import com.vastu.realestate.utils.PreferenceKEYS
 import com.vastu.realestate.utils.PreferenceManger
 import com.vastu.realestate.utils.PreferenceManger.clearPreferences
 import com.vastu.slidercore.model.request.MainPagerSliderRequest
-import com.vastu.slidercore.model.response.advertisement.AdvertiseData
 import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResponse
 import com.vastu.slidercore.model.response.advertisement.GetAdvertisementSliderMainResponse
 import com.vastu.slidercore.model.response.mainpage.GetMainSliderDetailsResponse
@@ -205,7 +203,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
             override fun onItemSelected(position: Int) {
                 var selectedPostition = getAdvertisementSlider.advertiseData[position]
                 if(selectedPostition.type =="video"){
-                    createVideoDialog(getAdvertisementSlider.advertiseData[position])
+                    createVideoDialog(getAdvertisementSlider.advertiseData[position].link)
                 }else{
                     dashboardBinding.imageSlider.visibility = View.VISIBLE
                 }
@@ -216,7 +214,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
     }
 
     @SuppressLint("MissingInflatedId")
-    private fun createVideoDialog(advertiseData: AdvertiseData) {
+    fun createVideoDialog(advertiseData: String) {
         val builder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
             .create()
         val view = layoutInflater.inflate(R.layout.custom_video_dialog,null)
@@ -225,7 +223,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
         val mediaController = MediaController(requireContext())
         mediaController.setAnchorView(videoView)
         videoView.setMediaController(mediaController);
-        videoView.setVideoURI(Uri.parse(advertiseData.link))
+        videoView.setVideoURI(Uri.parse(advertiseData))
         videoView.requestFocus();
         videoView.start()
         builder.setView(view)
