@@ -5,6 +5,7 @@ import android.text.Html
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.BulletSpan
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
+import com.vastu.propertycore.model.response.AddWishlistResponse
 import com.vastu.propertycore.model.response.Amenity
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
 import com.vastu.propertycore.model.response.RelatedProperty
@@ -95,6 +97,27 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     override fun onFailureGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
         showDialog(propertyDataResponseMain.propertyIdResponse.responseStatusHeader.statusDescription!!,false,false)
+    }
+
+    override fun onSuccessAddWishList(addWishlistResponse: AddWishlistResponse) {
+        hideProgressDialog()
+        showDialog(addWishlistResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
+        Log.e("********SSresponse",addWishlistResponse.toString())
+    }
+
+    override fun onFailureAddWishList(addWishlistResponse: AddWishlistResponse) {
+        hideProgressDialog()
+        showDialog(addWishlistResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
+        Log.e("*********ffresponse",addWishlistResponse.toString())
+    }
+
+    override fun addToWishlist() {
+        hideProgressDialog()
+        userId?.let {
+            propertyId?.let { it1 ->
+                realEstateDetailsViewModel.getAddToWishlist(it,it1)
+            }
+        }
     }
 
     override fun onSuccessPropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {

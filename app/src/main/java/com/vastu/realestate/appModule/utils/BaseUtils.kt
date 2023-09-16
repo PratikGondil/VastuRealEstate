@@ -1,12 +1,20 @@
 package com.vastu.realestate.appModule.utils
 
 import android.content.Context
+import android.text.Spanned
+import androidx.core.text.parseAsHtml
 import com.vastu.enquiry.statusUpdate.enquiryStatus.model.response.ObjEnquiryStatusData
+import com.vastu.realestate.appModule.utils.BaseUtils.htmlToString
 import com.vastu.realestate.utils.BaseConstant
 import org.json.JSONObject
+import org.jsoup.Jsoup
+import org.w3c.dom.Document
 import java.io.IOException
 import java.text.NumberFormat
 import java.util.*
+object  BaseUtilForBinding{
+    fun htmlToStringFormat(str:String):String=htmlToString(str)
+}
 
 object BaseUtils {
     fun amountFormatter(amount: Int): String {
@@ -58,4 +66,13 @@ object BaseUtils {
         }
         return reason
     }
+
+//    fun htmlToString(str:String): String {
+//        return str.parseAsHtml().toString()
+//    }
+    fun htmlToString(html: String): String {
+        val document: org.jsoup.nodes.Document = Jsoup.parse(html)
+        return document.toString()
+    }
+
 }

@@ -18,6 +18,8 @@
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/background.xml" value="0.1625" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/bg_gradient.xml" value="0.136" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/border.xml" value="0.1445" />
+        <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/btn_bg.xml" value="0.1" />
+        <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/button_bg.xml" value="0.1" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/button_inactive_background.xml" value="0.1325" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/camera.xml" value="0.1325" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/circle_img.xml" value="0.1545" />
@@ -36,6 +38,7 @@
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/loan.xml" value="0.1805" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/log_out.xml" value="0.1" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/offer.xml" value="0.1" />
+        <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/drawable/tab_layout_details.xml" value="0.1" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/activity_vastu_dashboard.xml" value="0.1765625" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/aminity_item_view.xml" value="0.17326732673267325" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/assigned_loan_enquiry_itemview.xml" value="0.171875" />
@@ -50,7 +53,7 @@
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/fragment_our_services.xml" value="0.171875" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/fragment_properties.xml" value="0.14907407407407408" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/fragment_real_estate.xml" value="0.1" />
-        <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/fragment_real_estate_details.xml" value="0.13295729250604352" />
+        <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/fragment_real_estate_details.xml" value="0.1" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/fragment_select_language.xml" value="0.1875" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/fragment_vastu_dashboard.xml" value="0.1875" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/language_fragment.xml" value="0.1875" />
@@ -69,6 +72,7 @@
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/related_property_item_view.xml" value="0.17616580310880828" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/sorting_type_item.xml" value="0.1765625" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/spinner_feedback.xml" value="0.1875" />
+        <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/tab_layout_details.xml" value="0.171875" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/view_plans_fragment.xml" value="0.171875" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/layout/welcome_fragment.xml" value="0.16979166666666667" />
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />

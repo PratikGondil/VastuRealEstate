@@ -6,6 +6,6 @@ import java.io.Serializable
 data class Amenity(
     @SerializedName("icon")
     val icon: String,
-    @SerializedName("amenities_name_marathi")
-    val amenitiesNameMarathi: String,
+    @SerializedName("amenities_name")
+    val amenities_name: String,
 ):Serializable

@@ -26,7 +26,7 @@ class AmenitiesAdapter(private val context: Context, private val amenityList: Li
             val amenity = amenityList[position]
             holder.bind(amenity)
             holder.binding.imageView.setImageURI(Uri.parse(amenity.icon))
-            holder.binding.textView.text=amenity.amenitiesNameMarathi
+            holder.binding.textView.text=amenity.amenities_name
 
             CommonUtils.showImageFromURL(
                 context,
