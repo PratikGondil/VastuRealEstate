@@ -237,9 +237,9 @@
 
     <fragment
         android:id="@+id/wishlistFragment"
-        android:name="com.vastu.realestate.appModule.dashboard.view.WishlistFragment"
+        android:name="com.vastu.realestate.appModule.dashboard.view.bottomnav.WishListFragment"
         android:label="wishlist"
-        tools:layout="@layout/fragment_wishlist"/>
+        tools:layout="@layout/fragment_real_estate"/>
     <fragment
         android:id="@+id/rateUs"
         android:name="com.vastu.realestate.appModule.rateUs.RateUsFragment"

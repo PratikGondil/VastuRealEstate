@@ -77,5 +77,7 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.14.2'
 //    implementation 'com.github.mhiew:android-pdf-viewer:3.2.0-beta.1'
 
+    implementation 'com.github.akshaaatt:Sliding-Carousel:1.0.4'
+    implementation 'me.relex:circleindicator:2.1.6'
 
 }

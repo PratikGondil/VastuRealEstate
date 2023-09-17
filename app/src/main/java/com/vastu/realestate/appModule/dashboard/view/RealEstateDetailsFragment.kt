@@ -9,17 +9,22 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewbinding.ViewBinding
+import com.aemerse.slider.listener.CarouselListener
+import com.aemerse.slider.model.CarouselItem
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.propertycore.model.response.AddWishlistResponse
 import com.vastu.propertycore.model.response.Amenity
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
+import com.vastu.propertycore.model.response.PropertyIdData
 import com.vastu.propertycore.model.response.RelatedProperty
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.AmenitiesAdapter
@@ -36,6 +41,7 @@ import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestatecore.model.response.PropertyData
 import com.vastu.slidercore.model.response.property.PropertySliderImage
 import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
+import me.relex.circleindicator.CircleIndicator2
 import java.util.regex.Pattern
 
 class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPropertySliderListener,
@@ -45,9 +51,10 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     private var propertyId : String? = null
     private var sliderList : List<PropertySliderImage>? = null
     private val imageList = ArrayList<SlideModel>()
+    private val imageListCarousel = ArrayList<CarouselItem>()
     private lateinit var drawerViewModel: DrawerViewModel
     private val REMOVE_TAGS: Pattern = Pattern.compile("<.+?>")
-
+    lateinit var  propertyIdDataList: PropertyIdData
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -121,16 +128,35 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     }
 
     override fun onSuccessPropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
-        imageList.clear()
+        imageListCarousel.clear()
         hideProgressDialog()
         sliderList = propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages
         for( slider in sliderList!!){
-            imageList.add(SlideModel(slider.image))
+            var coItem  =CarouselItem(
+                imageUrl = slider.image,
+                caption = ""
+            )
+            imageListCarousel.add(coItem)
         }
         realEstateDetailsBinding.apply {
-            imageSlider.setImageList(imageList, ScaleTypes.FIT)
-            imageSlider.startSliding(3000)
+            imageSlider.setData(imageListCarousel)
+            imageSlider.autoPlayDelay =3000
+
+           // imageSlider.setIndicator(custom)
         }
+
+
+        realEstateDetailsBinding.imageSlider.carouselListener = object : CarouselListener {
+          override fun onClick(position: Int, carouselItem: CarouselItem) {
+             createImageDialog(imageListCarousel.get(position).imageUrl!!)
+
+            }
+
+            override fun onLongClick(position: Int, dataObject: CarouselItem) {
+            }
+
+        }
+
         getPropertyDetails()
         setPhotosPropertyDetails(propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages)
     }
@@ -186,12 +212,17 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     }
     override fun chatEnquiry() {
 
+
+    }
+
+    override fun viewbroture() {
     }
 
     override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
         realEstateDetailsBinding.apply {
             val property = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
+            propertyIdDataList = property
             propertyData = property
             val htmlPattern = "<[^>]*>"
 

@@ -57,6 +57,13 @@
     </fragment>
 
     <fragment
+        android:id="@+id/WelcomeFragment"
+        android:name="com.vastu.realestate.appModule.welcome.WelcomeFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/welcome_fragment">
+
+    </fragment>
+    <fragment
         android:id="@+id/OTPFragment"
         android:name="com.vastu.realestate.appModule.otp.fragment.OTPFragment"
         android:label="OTPFragment"
@@ -64,6 +71,11 @@
         <action
             android:id="@+id/action_OTPFragment_To_LoginFragment"
             app:destination="@+id/LoginFragment"
+            />
+
+        <action
+            android:id="@+id/action_OTPFragment_To_WelcomeFragement"
+            app:destination="@+id/WelcomeFragment"
             />
     </fragment>
 </navigation>

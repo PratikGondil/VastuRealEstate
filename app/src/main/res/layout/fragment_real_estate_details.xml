@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-<import type="com.vastu.realestate.appModule.utils.BaseUtilForBinding"/>
+
         <variable
             name="drawerViewModel"
             type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".appModule.dashboard.view.RealEstateDetailsFragment">
+
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scrollview"
@@ -95,18 +96,25 @@
 <!--                    android:id="@+id/viewPager"-->
 <!--                    android:layout_width="match_parent"-->
 <!--                    android:layout_height="wrap_content"/>-->
-                <com.denzcoskun.imageslider.ImageSlider
+                <com.aemerse.slider.ImageCarousel
                     android:id="@+id/image_slider"
-                    android:visibility="visible"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/banner_image_height"
-                    app:iss_auto_cycle="true"
-                    app:iss_delay="0"
-                    app:iss_error_image="@drawable/vastu_logo_splash"
-                    app:iss_period="1000"
-                    app:iss_placeholder="@color/loan_background_color"
-                    app:iss_selected_dot="@drawable/default_selected_dot"
-                    app:iss_unselected_dot="@drawable/default_unselected_dot" />
+                    android:layout_height="250dp"
+                    android:layout_margin="@dimen/dimen20dp" />
+
+                <me.relex.circleindicator.CircleIndicator2
+                    android:id="@+id/custom"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    app:ci_width = "@dimen/dimen10dp"
+                    app:ci_height= "@dimen/dimen10dp"
+                    app:ci_drawable = "@drawable/baseline_play_arrow_24"
+
+                    >
+
+
+                </me.relex.circleindicator.CircleIndicator2>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -860,6 +868,7 @@
                                 android:ellipsize="end"
                                 android:maxLines="10"
                                 android:minLines="2"
+                                android:text="@{propertyData.description}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
                                 app:fontFamily="@font/open_sans_semibold" />
@@ -897,6 +906,7 @@
                                 android:ellipsize="end"
                                 android:maxLines="10"
                                 android:minLines="2"
+                                android:text="@{propertyData.highlights}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
                                 app:fontFamily="@font/open_sans_semibold" />

@@ -1,10 +1,14 @@
 package com.vastu.realestate.appModule.dashboard.view
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.res.Configuration
+import android.net.Uri
 import android.os.Build
 import android.widget.CheckBox
 import android.widget.ImageView
+import android.widget.MediaController
+import android.widget.VideoView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.findFragment
 import com.vastu.realestate.R
@@ -12,6 +16,7 @@ import com.vastu.realestate.appModule.enquiry.view.AddLoanEnquiryFragment
 import com.vastu.realestate.appModule.enquiry.view.AddPropertyEnquiryFragment
 import com.vastu.realestate.appModule.login.view.fragment.LoginFragment
 import com.vastu.realestate.appModule.signUp.view.SignUpFragment
+import com.vastu.realestate.utils.CommonUtils
 import java.util.*
 
 open class BaseFragment : Fragment() {
@@ -71,6 +76,28 @@ open class BaseFragment : Fragment() {
             config.locale = Locale(localeCode.lowercase(Locale.getDefault()))
         }
         resources.updateConfiguration(config, dm)
+    }
+
+    @SuppressLint("MissingInflatedId")
+    fun createImageDialog(imageURL: String) {
+        val builder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+            .create()
+        val view = layoutInflater.inflate(R.layout.custom_image_dialog,null)
+        val cross :ImageView = view.findViewById(R.id.img_cross)
+        val imageView : ImageView =view.findViewById(R.id.touchImageView)
+
+        CommonUtils.showImageFromURL(
+            context,
+            imageURL,
+            imageView,
+            R.drawable.vastu_logo_splash
+        )
+        builder.setView(view)
+        builder.setCanceledOnTouchOutside(false)
+        builder.show()
+        cross.setOnClickListener{
+            builder.dismiss()
+        }
     }
 
 }

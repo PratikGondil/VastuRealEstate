@@ -43,6 +43,7 @@ object ApiUrlEndPoints {
     const val GET_PRIME_PROPERTIES = "get_prime_properties.php"
     const val GET_UPCOMING_PROPERTIES = "get_upcoming_schemes.php"
     const val ADD_WISHLIST="add_wishlist.php"
+    const val GET_WISHLIST ="get_wishlist.php"
 
 
 }

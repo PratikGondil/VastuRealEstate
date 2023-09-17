@@ -572,6 +572,11 @@
                                 <LayoutPositions />
                               </value>
                             </entry>
+                            <entry key="action_OTPFragment_To_WelcomeFragement">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
                           </map>
                         </option>
                       </LayoutPositions>
@@ -642,6 +647,18 @@
                     </value>
                   </entry>
                   <entry key="VideoViewFragment">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="WelcomeFragment">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">

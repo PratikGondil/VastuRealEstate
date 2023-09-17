@@ -42,8 +42,7 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
 
 
     override fun onSendOtpClick() {
-        createDialog(this)
-
+        redirectedToAPIAfterTerms()
 
     }
 

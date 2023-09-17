@@ -1137,4 +1137,8 @@ fun getPdfPath(uri: Uri?):String?
 
     override fun chatEnquiry() {
     }
+
+    override fun viewbroture() {
+        TODO("Not yet implemented")
+    }
 }

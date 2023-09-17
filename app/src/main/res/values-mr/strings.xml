@@ -311,4 +311,45 @@
               प्रत्येक घरासाठी कनेक्शन.. समर्पित कव्हर केलेले</string>
     <string name="term_condition_info">कृपया कोणतीही मालमत्ता आणि कर्जे निवडण्यापूर्वी सर्व अटी आणि नियम नीट वाचा, कृपया खाली उपलब्ध असलेल्या बॉक्समध्ये टिक करा -</string>
     <string name="property_photo_amp_floor_plan"><![CDATA[Property Photo & Floor Plan]]></string>
+    <string name="rate_us">आम्हाला रेट करा</string>
+    <string name="feedback">अभिप्राय</string>
+    <string name="change_language">भाषा बदला</string>
+    <string name="are_you_finding">तुम्ही आम्हाला उपयुक्त वाटत आहात का?</string>
+    <string name="please_share_experience">कृपया तुमचा अनुभव आमच्यासोबत शेअर करा.</string>
+    <string name="add_detail">तपशीलवार पुनरावलोकन जोडा</string>
+    <string name="write_here">येथे लिहा</string>
+    <string name="what_improve">आम्ही काय सुधारू शकतो?</string>
+    <string name="how_can_we_make">आम्ही तुमच्यासाठी वास्तू कशी चांगली बनवू शकतो?</string>
+    <string name="submit_feedback">अभिप्राय सबमिट करा</string>
+    <string name="app_crash">अॅप क्रॅश/स्लो डाउन शोध समस्या</string>
+    <string name="search_issue">शोध समस्या</string>
+    <string name="asking_question">एक प्रश्न सूचना विचारणे</string>
+    <string name="improvement">सुधारणा</string>
+    <string name="other">इतर</string>
+    <string name="please_describe_feedback">कृपया तुमच्या प्रतिक्रिया इथे सांगा...</string>
+    <string name="select">निवडा</string>
+    <string name="done">झाले</string>
+    <string name="plan_builder">बिल्डर्ससाठी योजना</string>
+    <string name="your_property">कंपनीच्या ब्रँडिंगसह तुमची प्रॉपर्टीज प्रमोशनल अॅक्टिव्हिटी केवळ वास्तूमुळेच शक्य आहे.</string>
+    <string name="view_plan">योजना पहा</string>
+    <string name="plan_add">जाहिरातीसाठी योजना</string>
+    <string name="one_of">स्थानिक बाजारपेठेत तुमच्या कंपनीची, उत्पादनाची किंवा सेवांची जाहिरात करण्यासाठी सर्वोत्तम प्लॅटफॉर्मपैकी एक.</string>
+    <string name="get_quick">द्रुत खरेदीदार मिळवा &amp; प्रचारात्मक क्रियाकलापांवर पैसे वाचवा</string>
+    <string name="here_you_get">येथे तुम्हाला अस्सल आणि द्रुत खरेदीदार मिळतील + ब्रोकरेज वाचवा</string>
+    <string name="benefit">या योजनेचा लाभ</string>
+    <string name="subscribe">परवडण्याजोगी सदस्यता घ्या</string>
+    <string name="payment_summary">पेमेंट सारांश</string>
+    <string name="choose_plan">योजना कालावधी निवडा</string>
+    <string name="incl_gst">समावेश जीएसटी</string>
+    <string name="gst">जीएसटी</string>
+    <string name="total">एकूण</string>
+    <string name="advanced">प्रगत</string>
+    <!--    <string name="">Advanced</string>-->
+    <!--    <string name="">Advanced</string>-->
+    <!--    <string name="">Advanced</string>-->
+    <string name="builder_profile">बिल्डर प्रोफाइल</string>
+    <string name="amenities">सुविधा</string>
+    <string name="similar_project">मेसर्स विनायक कन्स्ट्रक्शनचे तत्सम प्रकल्प -</string>
+
+
 </resources>

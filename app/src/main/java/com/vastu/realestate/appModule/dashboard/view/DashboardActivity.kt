@@ -1,13 +1,19 @@
 package com.vastu.realestate.appModule.dashboard.view
 
+import android.app.AlertDialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.InsetDrawable
 import android.os.Bundle
-
+import android.widget.CheckBox
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.vastu.networkService.util.Constants
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.view.bottomnav.PrimePropertiesFragment
 import com.vastu.realestate.appModule.dashboard.view.offers.OffersFragment
@@ -16,8 +22,8 @@ import com.vastu.realestate.appModule.employee.fragment.EmployeeListFragment
 import com.vastu.realestate.appModule.enquiry.view.AddLoanEnquiryFragment
 import com.vastu.realestate.appModule.enquiry.view.AddPropertyEnquiryFragment
 import com.vastu.realestate.appModule.properties.view.PropertiesFragment
-
 import com.vastu.realestate.databinding.ActivityVastuDashboardBinding
+import com.vastu.realestate.utils.PreferenceManger
 
 
 class DashboardActivity : BaseActivity() {
@@ -35,6 +41,14 @@ class DashboardActivity : BaseActivity() {
         navController = Navigation.findNavController(this, R.id.dashboardNavHost)
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        showTermsDialog()
+    }
+
+    private fun showTermsDialog() {
+        var isAccepted = PreferenceManger.getBoolean<Boolean>(Constants.TERMS_ACCEPTED)
+        if(isAccepted!!) {
+            createDialog()
+        }
     }
 
     override fun onBackPressed() {
@@ -56,30 +70,29 @@ class DashboardActivity : BaseActivity() {
     private val mOnNavigationItemSelectedListener =
         BottomNavigationView.OnNavigationItemSelectedListener {
                 item ->
-            when(item.itemId){
-                R.id.PropertiesFragment ->
-                    isPrimeClicked()
-                R.id.RealEstateFragment->
-                    isUpcomingClicked()
-                }
             NavigationUI.onNavDestinationSelected(
                 item,
                 navController
             )
         }
-
-    fun isPrimeClicked(){
-        isPrime = true
-        isUpcomingClicked= false
-    }
-
-    fun isUpcomingClicked(){
-        isPrime = false
-        isUpcomingClicked= true
-    }
-
-    companion object{
-        var isUpcomingClicked = false
-        var isPrime = false
+    fun createDialog() {
+        val builder = AlertDialog.Builder(this, R.style.CustomAlertDialog)
+            .create()
+        val view = layoutInflater.inflate(R.layout.custom_dialog,null)
+        val  checkbox = view.findViewById<CheckBox>(R.id.termsCheck)
+        val cross=view.findViewById<ImageView>(R.id.img_cross)
+        val back = ColorDrawable(Color.TRANSPARENT)
+        val inset = InsetDrawable(back, 30)
+        builder.getWindow()!!.setBackgroundDrawable(inset)
+        builder.setView(view)
+        checkbox.setOnClickListener {
+            builder.dismiss()
+            PreferenceManger.putBoolean<Boolean>(Constants.TERMS_ACCEPTED, true)
+        }
+        builder.setCanceledOnTouchOutside(false)
+        builder.show()
+        cross.setOnClickListener{
+            builder.dismiss()
+        }
     }
 }

@@ -7,6 +7,8 @@ import com.vastu.realestate.appModule.enquirylist.uiinterfaces.INetworkFailListe
 interface IPropertyDetailsListener :INetworkFailListener{
     fun addPropertyEnquiry()
     fun chatEnquiry()
+
+    fun viewbroture()
     fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain)
     fun onFailureGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain)
     fun onSuccessAddWishList(addWishlistResponse: AddWishlistResponse)
