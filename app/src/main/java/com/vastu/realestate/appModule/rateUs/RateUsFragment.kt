@@ -13,14 +13,21 @@ import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
+import com.vastu.realestate.appModule.feedback.FeedbackFragment
 
 import com.vastu.realestate.databinding.RateUsFragmentBinding
 
-class RateUsFragment: BaseFragment(), IToolbarListener {
+class RateUsFragment: BaseFragment(), IToolbarListener, IRateUsViewListener {
 
     lateinit var rateUsViewModel: RateUsViewModel
     lateinit var drawerViewModel: DrawerViewModel
     lateinit var rateUsBinding: RateUsFragmentBinding
+
+    companion object {
+        var userId: String? = null
+        var rateUs: String? = null
+        var feedback: String? = null
+    }
 
 
     override fun onCreateView(
@@ -32,6 +39,7 @@ class RateUsFragment: BaseFragment(), IToolbarListener {
         drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
         rateUsBinding = DataBindingUtil.inflate(inflater, R.layout.rate_us_fragment,container,false)
         drawerViewModel.iToolbarListener = this
+        rateUsViewModel.iRateUsViewListener = this
         rateUsBinding.drawerViewModel= drawerViewModel
         rateUsBinding.rateUsViewModel = rateUsViewModel
         initView()
@@ -42,10 +50,6 @@ class RateUsFragment: BaseFragment(), IToolbarListener {
         drawerViewModel.toolbarTitle.set(getString(R.string.rate_us))
         drawerViewModel.isDashBoard.set(false)
     }
-
-
-
-
     override fun onClickBack() {
         findNavController().navigate(R.id.action_rateUs_to_Dashboard)
     }
@@ -57,4 +61,29 @@ class RateUsFragment: BaseFragment(), IToolbarListener {
     override fun onClickNotification() {
         TODO("Not yet implemented")
     }
+
+    private fun getRateUs(){
+        userId?.let {
+            rateUs?.let{ it1->
+                feedback?.let { it2 ->
+                    rateUsViewModel.callRateUsApi(it,it1,it2)
+                }
+            }
+        }
+    }
+
+    override fun onRateUsFail(objRateUsResponse: ObjRateUsResponse) {
+        hideProgressDialog()
+        showDialog(objRateUsResponse.objResponseStatusHdr.statusDescr,false,false)
+    }
+
+    override fun launchDashboardScreen(rateUsDataResponseMain: RateUsDataResponseMain) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSubmitBtnClick() {
+        getRateUs()
+    }
+
+
 }

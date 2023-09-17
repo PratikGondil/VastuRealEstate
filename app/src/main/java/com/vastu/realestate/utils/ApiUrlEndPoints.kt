@@ -43,5 +43,10 @@ object ApiUrlEndPoints {
     const val GET_PRIME_PROPERTIES = "get_prime_properties.php"
     const val GET_UPCOMING_PROPERTIES = "get_upcoming_schemes.php"
 
+    const val GET_FEEDBACK = "add_feedback.php"
+    const val RATE_US = "rate_us.php"
+    const val GET_PLANS_TYPE = "get_plans.php"
+    const val GET_PLANS = "get_plan_by_type.php"
+
 
 }

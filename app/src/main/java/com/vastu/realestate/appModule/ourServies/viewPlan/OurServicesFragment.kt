@@ -13,13 +13,18 @@ import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.ourServies.planForOwner.bottomSheetRecycler.PlanForOwnerBottomSheet
+import com.vastu.realestate.appModule.rateUs.RateUsFragment
 import com.vastu.realestate.databinding.ViewPlansFragmentBinding
 
 
-class OurServicesFragment : Fragment() , IToolbarListener,IViewPlanListener {
+class OurServicesFragment : Fragment(), IToolbarListener, IViewPlanListener {
     lateinit var viewPlansViewModel: ViewPlansViewModel
     lateinit var drawerViewModel: DrawerViewModel
     lateinit var viewPlansFragmentBinding: ViewPlansFragmentBinding
+
+    companion object {
+        var planTypeId: String? = null
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,21 +33,23 @@ class OurServicesFragment : Fragment() , IToolbarListener,IViewPlanListener {
     ): View? {
         viewPlansViewModel = ViewModelProvider(this)[ViewPlansViewModel::class.java]
         drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
-        viewPlansFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.view_plans_fragment,container,false)
+        viewPlansFragmentBinding =
+            DataBindingUtil.inflate(inflater, R.layout.view_plans_fragment, container, false)
         viewPlansFragmentBinding.viewPlansViewModel = viewPlansViewModel
         drawerViewModel.iToolbarListener = this
-        viewPlansViewModel.iViewPlanListener=this
-        viewPlansFragmentBinding.drawerViewModel= drawerViewModel
+        viewPlansViewModel.iViewPlanListener = this
+        viewPlansFragmentBinding.drawerViewModel = drawerViewModel
         initView()
         return viewPlansFragmentBinding.root
     }
 
-    fun initView(){
+    fun initView() {
         drawerViewModel.toolbarTitle.set(getString(R.string.our_services_text))
         drawerViewModel.isDashBoard.set(false)
     }
+
     override fun onClickBack() {
-     findNavController().navigateUp()
+        findNavController().navigateUp()
     }
 
     override fun onClickMenu() {
@@ -60,6 +67,16 @@ class OurServicesFragment : Fragment() , IToolbarListener,IViewPlanListener {
     override fun onAdvertisePlanClick() {
 
     }
-//
 
+    private fun getPlans() {
+        planTypeId?.let {
+            viewPlansViewModel.callPlansApi(it)
+        }
+    }
+
+    private fun getPlansType() {
+        planTypeId?.let {
+            viewPlansViewModel.callPlansTypeApi(it)
+        }
+    }
 }

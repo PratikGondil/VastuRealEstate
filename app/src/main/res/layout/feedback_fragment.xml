@@ -96,6 +96,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_small"
             android:text="@string/submit_feedback"
+            android:onClick="@{(view)->feedbackViewModel.submitClick()}"
             android:textColor="@color/white"
             android:layout_margin="@dimen/dimen60dp"
             android:fontFamily="@font/open_sans_semibold"
