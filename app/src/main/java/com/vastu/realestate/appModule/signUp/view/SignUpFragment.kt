@@ -271,7 +271,7 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
     }
 
     override fun registerUser(){
-        createDialog(this)
+        redirectAftertheTermsAccept()
     }
 
     private fun getCityList(){

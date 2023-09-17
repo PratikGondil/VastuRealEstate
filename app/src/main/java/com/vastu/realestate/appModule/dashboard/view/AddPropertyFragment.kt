@@ -44,6 +44,7 @@ import com.vastu.getimages.model.request.GetImageRequest
 import com.vastu.getimages.model.response.GetImageMainResponse
 import com.vastu.getimages.model.response.ImageData
 import com.vastu.networkService.util.Constants
+import com.vastu.propertycore.model.response.AddWishlistResponse
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.AddPropertyBindingAdapter
@@ -1088,6 +1089,18 @@ fun getPdfPath(uri: Uri?):String?
         }, 1000)
     }
 
+    override fun onSuccessAddWishList(addWishlistResponse: AddWishlistResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFailureAddWishList(addWishlistResponse: AddWishlistResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun addToWishlist() {
+        TODO("Not yet implemented")
+    }
+
     override fun onItemClick(images: ImageData) {
         showProgressDialog()
         deleteImageRequest =
@@ -1123,5 +1136,9 @@ fun getPdfPath(uri: Uri?):String?
     }
 
     override fun chatEnquiry() {
+    }
+
+    override fun viewbroture() {
+        TODO("Not yet implemented")
     }
 }

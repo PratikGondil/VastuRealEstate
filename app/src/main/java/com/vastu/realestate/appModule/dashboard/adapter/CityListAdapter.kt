@@ -15,7 +15,8 @@ class CityListAdapter(
     var iFilterViewHandler: IFilterViewHandler
 ): RecyclerView.Adapter<CityListAdapter.CityListViewHolder>()  {
 
-    class CityListViewHolder(@Nullable val binding: SubAreaListAdapterBinding, view: View):RecyclerView.ViewHolder(view){
+    class CityListViewHolder(@Nullable val binding: SubAreaListAdapterBinding, view: View)
+        :RecyclerView.ViewHolder(view){
         fun bind(item: ObjCityAreaData) {
 
             binding.cityList = item

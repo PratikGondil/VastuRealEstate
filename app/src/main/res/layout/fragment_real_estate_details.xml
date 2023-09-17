@@ -24,6 +24,7 @@
         android:layout_height="match_parent"
         tools:context=".appModule.dashboard.view.RealEstateDetailsFragment">
 
+
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scrollview"
             android:layout_width="match_parent"
@@ -42,43 +43,182 @@
                 <include
                     layout="@layout/toolbar_layout"
                     bind:drawerViewModel="@{drawerViewModel}" />
-
-                <com.denzcoskun.imageslider.ImageSlider
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen50dp"
+                    android:background="@color/colorPrimary"
+                    app:tabIndicatorColor="@color/white"
+                    app:tabIndicatorHeight="4dp"
+                    app:tabMode="scrollable"
+                    app:tabGravity="fill"
+                    app:tabSelectedTextColor="@android:color/white"
+                    app:tabInlineLabel="true"
+                    app:tabTextColor="#e4e4e4" >
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/dimen8sp"
+                        android:textColor="@color/white"
+                        android:text="@string/builder_profile"/>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dimen8sp"
+                        android:text="@string/details"/>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/dimen8sp"
+                        android:textColor="@color/white"
+                        android:text="@string/amenities"/>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/dimen8sp"
+                        android:textColor="@color/white"
+                        android:text="@string/builder_profile"/>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/dimen8sp"
+                        android:textColor="@color/white"
+                        android:text="@string/details"/>
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/dimen8sp"
+                        android:text="@string/amenities"/>
+                </com.google.android.material.tabs.TabLayout>
+<!--                <androidx.viewpager.widget.ViewPager-->
+<!--                    android:id="@+id/viewPager"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"/>-->
+                <com.aemerse.slider.ImageCarousel
                     android:id="@+id/image_slider"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/banner_image_height"
-                    app:iss_auto_cycle="true"
-                    app:iss_delay="0"
-                    app:iss_error_image="@drawable/vastu_logo_splash"
-                    app:iss_period="1000"
-                    app:iss_placeholder="@color/loan_background_color"
-                    app:iss_selected_dot="@drawable/default_selected_dot"
-                    app:iss_unselected_dot="@drawable/default_unselected_dot" />
+                    android:layout_height="250dp"
+                    android:layout_margin="@dimen/dimen20dp" />
+
+                <me.relex.circleindicator.CircleIndicator2
+                    android:id="@+id/custom"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    app:ci_width = "@dimen/dimen10dp"
+                    app:ci_height= "@dimen/dimen10dp"
+                    app:ci_drawable = "@drawable/baseline_play_arrow_24"
+
+                    >
+
+
+                </me.relex.circleindicator.CircleIndicator2>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:layout_marginBottom="@dimen/margin_small"
-                        android:background="@color/border_color" />
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_large"
                         android:layout_marginTop="@dimen/margin_medium"
-                        android:text="@string/details"
-                        android:textColor="@color/red"
-                        android:textSize="@dimen/text_size_normal"
+                        android:text="@string/builder_profile"
+                        android:textColor="@color/button_color"
+                        android:textSize="@dimen/dimens20sp"
                         android:textStyle="bold"
-                        app:fontFamily="@font/poppins_semibold" />
+                        app:fontFamily="@font/open_sans_bold" />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen20dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="start"
+                            android:maxLength="35"
+                            android:minLines="1"
+                            android:text="@{propertyData.priceMinWord + propertyData.priceMaxWord}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/dimens20sp"
+                            app:fontFamily="@font/open_sans_bold" />
+
+                        <TextView
+                            android:id="@+id/feature_textview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:gravity="start"
+                            android:maxLength="35"
+                            android:minLines="1"
+                            android:text="@{propertyData.bedroom + @string/bhk_apartments}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size18sp"
+                            app:fontFamily="@font/open_sans_semibold" />
+
+                        <TextView
+                            android:id="@+id/property_bhk_dtls_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLength="35"
+                            android:maxLines="1"
+                            android:text="@{propertyData.owner}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/dimen_16sp"
+                            app:fontFamily="@font/open_sans_semibold" />
+
+                        <TextView
+                            android:id="@+id/property_address_textview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLength="60"
+                            android:maxLines="1"
+                            android:text="@{propertyData.owner}"
+                            android:textColor="@color/gray_shade2"
+                            android:textSize="@dimen/text_size_small"
+                            app:fontFamily="@font/open_sans_semibold" />
+
+                        <TextView
+                            android:id="@+id/property_prize_textview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:includeFontPadding="true"
+                            android:maxLength="35"
+                            android:maxLines="1"
+                            android:text="@{propertyData.shortAddress}"
+                            android:textColor="@color/gray_shade2"
+                            android:textSize="@dimen/text_size_small"
+                            app:fontFamily="@font/open_sans_semibold" />
+                    </LinearLayout>
                 </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:background="@color/border_color" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/details"
+                    android:textColor="@color/button_color"
+                    android:textSize="@dimen/dimens20sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/open_sans_bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -93,7 +233,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/margin_medium"
                         android:layout_marginTop="@dimen/dimen15dp"
-                        android:backgroundTint="@color/red">
+                        android:backgroundTint="@color/button_color">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -101,191 +241,313 @@
                             android:layout_margin="@dimen/margin_small"
                             android:orientation="vertical">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/title"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/title"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/type"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/sell_type"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/type"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/bedrooms"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/bathrooms"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/sell_type"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/kitchen"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/balcony"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/bedrooms"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/floors"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/furnishing"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/bathrooms"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/price"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/booking_amount"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/kitchen"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/city_text"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/sub_area"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/balcony"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="@dimen/dimen20dp"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/construction"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="@dimen/dimen20dp"
-                                    android:text="@string/status"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/floors"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="@dimen/dimen20dp"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/super_builtup"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="@dimen/dimen20dp"
-                                    android:text="@string/area_ft"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/furnishing"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/availability"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/build_year"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/price"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/rera_no"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/dimen10dp"
-                                    android:text="@string/brief_details"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_small"
-                                    app:fontFamily="@font/poppins_light" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/booking_amount"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/city_text"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/sub_area"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/dimen20dp"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/construction"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/dimen20dp"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/status"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/dimen20dp"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/super_builtup"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/dimen20dp"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/area_ft"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/availability"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/build_year"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_small"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/rera_no"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginTop="@dimen/dimen5dp"
+                                android:background="@color/border_color" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen10dp"
+                                android:text="@string/brief_details"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -309,19 +571,214 @@
                                 android:layout_height="wrap_content"
                                 android:text="@{propertyData.propertyTitle}"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen10dp"
-                                android:text="hide"
+                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:text="@{propertyData.propertyType}"
                                 android:textColor="@color/black"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
+                            <TextView
+                                android:id="@+id/sellTypeTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.sellType}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/bedroomTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:text="@{propertyData.bedroom}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/bathroomTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.bathroom}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/kitchenTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen20dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.kitchen}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/balconyTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.balcony}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/floorsTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.floors}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/furnishingTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_weight="1"
+                                android:text="@string/unfurnished"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/priceTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen20dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.price}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/bookingAmountTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen20dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.bookingAmount}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/cityTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen30dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.city}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/stateTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.area}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/constructionStatusTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_weight="1"
+                                android:text="@string/ready_to_move"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/text_size_small"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/statusTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.state}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/text_size_small"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/superTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen20dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.state}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/text_size_small"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/area"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen20dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.propertyArea}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/dimen15sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/availableTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen20dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.availability}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/text_size_small"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/build_yearTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen20dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.buildYear}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/text_size_small"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <TextView
+                                android:id="@+id/briefTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.area}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/text_size_small"
+                                app:fontFamily="@font/open_sans_bold" />
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
@@ -345,23 +802,6 @@
                     android:orientation="vertical"
                     android:visibility="visible">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_small"
-                        android:layout_marginTop="@dimen/margin_large"
-                        android:text="@string/details"
-                        android:textColor="@color/black_text"
-                        android:textSize="@dimen/text_size_normal"
-                        app:fontFamily="@font/poppins_semibold" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:layout_marginBottom="@dimen/margin_small"
-                        android:background="@color/border_color" />
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -370,643 +810,35 @@
                         android:orientation="vertical">
 
                         <LinearLayout
-                            android:id="@+id/titleLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/title"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/titleTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.propertyTitle}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/typeLayout"
+                            android:id="@+id/amenitiesLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
+                            android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginBottom="@dimen/dimen5dp"
                                 android:layout_weight="1"
-                                android:text="@string/type"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/typeTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.propertyType}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/sellTypeLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/sell_type"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/sellTypeTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.sellType}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/bedroomLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/bedrooms"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/bedroomTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.bedroom}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/bathroomLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/bathrooms"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/bathroomTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.bedroom}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/kitchenLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/kitchen"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/kitchenTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.kitchen}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/balconyLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/balcony"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/balconyTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.balcony}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/garageLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/garage"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/garageTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.garage}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/swimmingPoolLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/swimming_pool"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/swimmingPoolTextView"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.swimmingPool}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/floorsLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/floors"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/floorsTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.floors}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:id="@+id/furnishingLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/furnishing"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/furnishingTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/unfurnished"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:id="@+id/priceLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/price"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/priceTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.price}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/bookingAmountLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/booking_amount"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/bookingAmountTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.bookingAmount}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:id="@+id/cityLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/city_text"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/cityTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.city}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/stateLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/sub_area"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/stateTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.area}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:id="@+id/constructionStatusLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/construction_status"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/constructionStatusTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/ready_to_move"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/listedByLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:visibility="gone"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/listed_by"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/listedByTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/ready_to_move"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/areaLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/super_builtup_area_ft"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/areaTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.propertyArea}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/propertyareaLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:id="@+id/availabilityLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/availability"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/avilibilityTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.availability}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/buildYearLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/build_year"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/buildYearTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.buildYear}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/slugLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:visibility="gone"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/slug"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/slugTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="test"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
-                        </LinearLayout>
-
-
-                        <LinearLayout
-                            android:id="@+id/brochureLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/margin_small"
-                            android:orientation="horizontal"
-                            android:visibility="gone"
-                            android:weightSum="2">
-
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/brochure"
-                                android:textColor="@color/icon_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-
-                            <TextView
-                                android:id="@+id/brochureTextview"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.brochure}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_regular" />
+                                android:includeFontPadding="false"
+                                android:text="@string/amenities"
+                                android:textColor="@color/button_color"
+                                android:textSize="@dimen/dimens20sp"
+                                app:fontFamily="@font/open_sans_bold" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/aminity_recyclerView"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                tools:listitem="@layout/aminity_item_view" />
                         </LinearLayout>
 
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_marginTop="@dimen/margin_xlarge"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:layout_marginBottom="@dimen/margin_small"
                             android:background="@color/border_color" />
 
                         <LinearLayout
@@ -1023,9 +855,9 @@
                                 android:layout_weight="1"
                                 android:includeFontPadding="false"
                                 android:text="@string/description"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/text_size_normal"
-                                app:fontFamily="@font/poppins_medium" />
+                                android:textColor="@color/button_color"
+                                android:textSize="@dimen/dimens20sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
                                 android:id="@+id/descriptionTextview"
@@ -1036,9 +868,10 @@
                                 android:ellipsize="end"
                                 android:maxLines="10"
                                 android:minLines="2"
+                                android:text="@{propertyData.description}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
+                                app:fontFamily="@font/open_sans_semibold" />
                         </LinearLayout>
 
                         <View
@@ -1060,10 +893,9 @@
                                 android:layout_height="wrap_content"
                                 android:includeFontPadding="false"
                                 android:text="@string/highlights"
-                                android:textColor="@color/black"
-
-                                android:textSize="@dimen/text_size_normal"
-                                app:fontFamily="@font/poppins_medium" />
+                                android:textColor="@color/button_color"
+                                android:textSize="@dimen/dimens20sp"
+                                app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
                                 android:id="@+id/highlightsTextview"
@@ -1074,11 +906,86 @@
                                 android:ellipsize="end"
                                 android:maxLines="10"
                                 android:minLines="2"
+                                android:text="@{propertyData.highlights}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
-                                app:fontFamily="@font/poppins_light" />
-                            <!--android:text="@{propertyData.highlights}"-->
+                                app:fontFamily="@font/open_sans_semibold" />
                         </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/photoLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:padding="@dimen/padding_large">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/property_photo_amp_floor_plan"
+                            android:textColor="@color/button_color"
+                            android:textSize="@dimen/dimens20sp"
+                            app:fontFamily="@font/open_sans_bold" />
+                        <com.aemerse.slider.ImageCarousel
+                            android:id="@+id/image_slider_property_plan"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:layout_margin="@dimen/dimen20dp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/img_recyclerView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="horizontal"
+                            android:visibility="gone"
+                            tools:listitem="@layout/property_photo_plan_item_view" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/dimen10dp"
+                        android:background="@color/border_color" />
+
+                    <LinearLayout
+                        android:id="@+id/brochureLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:padding="@dimen/padding_large"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/brochure"
+                            android:textColor="@color/button_color"
+                            android:textSize="@dimen/dimens20sp"
+                            app:fontFamily="@font/open_sans_bold" />
+                        <com.aemerse.slider.ImageCarousel
+                            android:id="@+id/image_slider_property_brochure"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen300dp"
+                            android:layout_margin="@dimen/dimen20dp" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnMakeOffer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="@dimen/dimen5dp"
+                            android:layout_marginStart="@dimen/margin_small"
+                            android:layout_weight="1"
+                            android:background="@drawable/round_button_background"
+                            android:text="@string/downloadBrochure"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_small"
+                            app:fontFamily="@font/open_sans_bold" />
                     </LinearLayout>
 
                     <View
@@ -1088,31 +995,72 @@
                         android:background="@color/border_color" />
 
                     <LinearLayout
-                        android:id="@+id/chat_layout"
+                        android:id="@+id/relatedLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:orientation="horizontal"
-                        android:padding="@dimen/padding_large"
-                        android:weightSum="2">
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/dimen150dp"
+                        android:orientation="vertical">
 
-
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/btnMakeOffer"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="@dimen/margin_small"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="@dimen/margin_large"
+                            android:layout_marginBottom="@dimen/dimen5dp"
                             android:layout_weight="1"
-                            android:background="@drawable/round_button_background"
-                            android:onClick="@{(view)->realEstateDetailsViewModel.onClickPropertyEnquiry()}"
-                            android:text="@string/make_offer"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/text_size_small"
-                            app:fontFamily="@font/poppins_regular" />
+                            android:includeFontPadding="false"
+                            android:text="@string/similar_project"
+                            android:textColor="@color/button_color"
+                            android:textSize="@dimen/dimens20sp"
+                            app:fontFamily="@font/open_sans_bold" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/related_recyclerView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_large"
+                            tools:listitem="@layout/related_property_item_view" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/rl_Positive_Negative_Btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:background="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnNegative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen15dp"
+                android:layout_weight="0.5"
+                android:onClick="@{(view)->realEstateDetailsViewModel.onClickPropertyEnquiry()}"
+                android:background="@drawable/button_bg"
+                android:text="@string/enquiry"
+                android:textSize="@dimen/text_size_small"
+                android:fontFamily="@font/open_sans_bold"
+                android:textColor="@color/button_color"
+               />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPositive"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen15dp"
+                android:layout_weight="0.5"
+                android:onClick="@{(view)->realEstateDetailsViewModel.addToWishlist()}"
+                android:fontFamily="@font/open_sans_bold"
+                android:background="@drawable/btn_bg"
+                android:textSize="@dimen/text_size_small"
+                android:text="@string/add_to_wishlist"
+                android:textColor="@color/white" />
+        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
