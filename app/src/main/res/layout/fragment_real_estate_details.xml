@@ -45,7 +45,7 @@
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tabLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen150dp"
+                    android:layout_height="@dimen/dimen50dp"
                     android:background="@color/colorPrimary"
                     app:tabIndicatorColor="@color/white"
                     app:tabIndicatorHeight="4dp"
@@ -97,7 +97,7 @@
 <!--                    android:layout_height="wrap_content"/>-->
                 <com.denzcoskun.imageslider.ImageSlider
                     android:id="@+id/image_slider"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/banner_image_height"
                     app:iss_auto_cycle="true"
@@ -860,7 +860,6 @@
                                 android:ellipsize="end"
                                 android:maxLines="10"
                                 android:minLines="2"
-                                android:text="@{BaseUtilForBinding.INSTANCE.htmlToStringFormat(propertyData.description)}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
                                 app:fontFamily="@font/open_sans_semibold" />
@@ -898,7 +897,6 @@
                                 android:ellipsize="end"
                                 android:maxLines="10"
                                 android:minLines="2"
-                                android:text="@{BaseUtilForBinding.INSTANCE.htmlToStringFormat(propertyData.highlights)}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
                                 app:fontFamily="@font/open_sans_semibold" />
@@ -1039,7 +1037,7 @@
                 android:onClick="@{(view)->realEstateDetailsViewModel.addToWishlist()}"
                 android:fontFamily="@font/open_sans_bold"
                 android:background="@drawable/btn_bg"
-                android:textSize="@dimen/dimen8sp"
+                android:textSize="@dimen/text_size_small"
                 android:text="@string/add_to_wishlist"
                 android:textColor="@color/white" />
         </LinearLayout>

@@ -186,7 +186,14 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
         }
     }
 
+    fun showBottomNav(){
+        if(activity is DashboardActivity)
+        {
+            (activity as DashboardActivity).bottomNavigationView.visibility= View.VISIBLE
+        }
+    }
     private fun setSliderData() {
+        showBottomNav()
         imageList.clear()
         dashboardBinding.imageSlider.visibility = View.VISIBLE
         getAdvertisementSlider =

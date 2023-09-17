@@ -236,10 +236,6 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     override fun onClickNotification() {
     }
     override fun onPause() {
-        if(activity is DashboardActivity)
-        {
-            (activity as DashboardActivity).bottomNavigationView.visibility= View.VISIBLE
-        }
         super.onPause()
     }
 }
