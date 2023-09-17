@@ -928,12 +928,18 @@
                             android:textColor="@color/button_color"
                             android:textSize="@dimen/dimens20sp"
                             app:fontFamily="@font/open_sans_bold" />
+                        <com.aemerse.slider.ImageCarousel
+                            android:id="@+id/image_slider_property_plan"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:layout_margin="@dimen/dimen20dp" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/img_recyclerView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:scrollbars="horizontal"
+                            android:visibility="gone"
                             tools:listitem="@layout/property_photo_plan_item_view" />
 
                     </LinearLayout>
@@ -961,6 +967,11 @@
                             android:textColor="@color/button_color"
                             android:textSize="@dimen/dimens20sp"
                             app:fontFamily="@font/open_sans_bold" />
+                        <com.aemerse.slider.ImageCarousel
+                            android:id="@+id/image_slider_property_brochure"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dimen300dp"
+                            android:layout_margin="@dimen/dimen20dp" />
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/btnMakeOffer"
@@ -971,7 +982,6 @@
                             android:layout_marginStart="@dimen/margin_small"
                             android:layout_weight="1"
                             android:background="@drawable/round_button_background"
-                            android:onClick="@{(view)->realEstateDetailsViewModel.onClickPropertyEnquiry()}"
                             android:text="@string/downloadBrochure"
                             android:textColor="@color/white"
                             android:textSize="@dimen/text_size_small"
@@ -1031,6 +1041,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimen15dp"
                 android:layout_weight="0.5"
+                android:onClick="@{(view)->realEstateDetailsViewModel.onClickPropertyEnquiry()}"
                 android:background="@drawable/button_bg"
                 android:text="@string/enquiry"
                 android:textSize="@dimen/text_size_small"

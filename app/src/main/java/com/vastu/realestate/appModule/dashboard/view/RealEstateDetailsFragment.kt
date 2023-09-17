@@ -9,17 +9,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewbinding.ViewBinding
 import com.aemerse.slider.listener.CarouselListener
 import com.aemerse.slider.model.CarouselItem
-import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.propertycore.model.response.AddWishlistResponse
 import com.vastu.propertycore.model.response.Amenity
@@ -41,7 +37,6 @@ import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestatecore.model.response.PropertyData
 import com.vastu.slidercore.model.response.property.PropertySliderImage
 import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
-import me.relex.circleindicator.CircleIndicator2
 import java.util.regex.Pattern
 
 class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPropertySliderListener,
@@ -108,13 +103,13 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
 
     override fun onSuccessAddWishList(addWishlistResponse: AddWishlistResponse) {
         hideProgressDialog()
-        showDialog(addWishlistResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(addWishlistResponse.registerResponse.responseStatusHeader.statusDescription,true,false)
         Log.e("********SSresponse",addWishlistResponse.toString())
     }
 
     override fun onFailureAddWishList(addWishlistResponse: AddWishlistResponse) {
         hideProgressDialog()
-        showDialog(addWishlistResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
+        showDialog(addWishlistResponse.registerResponse.responseStatusHeader.statusDescription,false,true)
         Log.e("*********ffresponse",addWishlistResponse.toString())
     }
 
@@ -146,6 +141,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         }
 
 
+
         realEstateDetailsBinding.imageSlider.carouselListener = object : CarouselListener {
           override fun onClick(position: Int, carouselItem: CarouselItem) {
              createImageDialog(imageListCarousel.get(position).imageUrl!!)
@@ -158,6 +154,8 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         }
 
         getPropertyDetails()
+        sliderDataForFloorPlan(propertySliderResponseMain)
+        sliderDataForBrochure(propertySliderResponseMain)
         setPhotosPropertyDetails(propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages)
     }
 
@@ -268,5 +266,71 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     }
     override fun onPause() {
         super.onPause()
+    }
+    fun sliderDataForFloorPlan(propertySliderResponseMain: PropertySliderResponseMain) {
+        //image_slider_property_plan
+
+        imageListCarousel.clear()
+        hideProgressDialog()
+        sliderList = propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages
+        for( slider in sliderList!!){
+            var coItem  =CarouselItem(
+                imageUrl = slider.image,
+                caption = ""
+            )
+            imageListCarousel.add(coItem)
+        }
+        realEstateDetailsBinding.apply {
+            imageSliderPropertyPlan.setData(imageListCarousel)
+            imageSliderPropertyPlan.autoPlayDelay =3000
+
+            // imageSlider.setIndicator(custom)
+        }
+
+
+
+        realEstateDetailsBinding.imageSliderPropertyPlan.carouselListener = object : CarouselListener {
+            override fun onClick(position: Int, carouselItem: CarouselItem) {
+                createImageDialog(imageListCarousel.get(position).imageUrl!!)
+
+            }
+
+            override fun onLongClick(position: Int, dataObject: CarouselItem) {
+            }
+
+        }
+    }
+    fun sliderDataForBrochure(propertySliderResponseMain: PropertySliderResponseMain) {
+        //image_slider_property_plan
+
+        imageListCarousel.clear()
+        hideProgressDialog()
+        sliderList = propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages
+        for( slider in sliderList!!){
+            var coItem  =CarouselItem(
+                imageUrl = slider.image,
+                caption = ""
+            )
+            imageListCarousel.add(coItem)
+        }
+        realEstateDetailsBinding.apply {
+            imageSliderPropertyBrochure.setData(imageListCarousel)
+            imageSliderPropertyBrochure.autoPlayDelay =3000
+
+            // imageSlider.setIndicator(custom)
+        }
+
+
+
+        realEstateDetailsBinding.imageSliderPropertyBrochure.carouselListener = object : CarouselListener {
+            override fun onClick(position: Int, carouselItem: CarouselItem) {
+                createImageDialog(imageListCarousel.get(position).imageUrl!!)
+
+            }
+
+            override fun onLongClick(position: Int, dataObject: CarouselItem) {
+            }
+
+        }
     }
 }
