@@ -1,6 +1,7 @@
 package com.vastu.realestate.appModule.rateUs
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +13,9 @@ import com.vastu.realestate.R
 
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
+import com.vastu.realestate.appModule.dashboard.view.DashboardFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
+import com.vastu.realestate.appModule.employee.bindingAdapter.EmployeeDetailsBindingAdapter.setRating
 import com.vastu.realestate.appModule.feedback.FeedbackFragment
 
 import com.vastu.realestate.databinding.RateUsFragmentBinding
@@ -22,12 +25,6 @@ class RateUsFragment: BaseFragment(), IToolbarListener, IRateUsViewListener {
     lateinit var rateUsViewModel: RateUsViewModel
     lateinit var drawerViewModel: DrawerViewModel
     lateinit var rateUsBinding: RateUsFragmentBinding
-
-    companion object {
-        var userId: String? = null
-        var rateUs: String? = null
-        var feedback: String? = null
-    }
 
 
     override fun onCreateView(
@@ -62,27 +59,22 @@ class RateUsFragment: BaseFragment(), IToolbarListener, IRateUsViewListener {
         TODO("Not yet implemented")
     }
 
-    private fun getRateUs(){
-        userId?.let {
-            rateUs?.let{ it1->
-                feedback?.let { it2 ->
-                    rateUsViewModel.callRateUsApi(it,it1,it2)
-                }
-            }
-        }
-    }
-
     override fun onRateUsFail(objRateUsResponse: ObjRateUsResponse) {
         hideProgressDialog()
         showDialog(objRateUsResponse.objResponseStatusHdr.statusDescr,false,false)
     }
 
     override fun launchDashboardScreen(rateUsDataResponseMain: RateUsDataResponseMain) {
-        TODO("Not yet implemented")
+        showDialog(rateUsDataResponseMain.objRateUsResponse.objResponseStatusHdr.statusDescr,true,false)
+        Handler().postDelayed({
+            hideDialog()
+        }, 750)
     }
 
     override fun onSubmitBtnClick() {
-        getRateUs()
+        rateUsViewModel.callRateUsApi(DashboardFragment.userId!!,
+            rateUsBinding.smallRating.toString(),rateUsBinding.edtReview.text.toString())
+
     }
 
 

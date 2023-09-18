@@ -19,7 +19,7 @@ object PlanTypeRepository :IPlanTypeRequest, IOnServiceResponseListener {
         NetworkDaoBuilder.Builder
             .setContext(context)
             .setIsContentTypeJSON(true)
-            .setIsRequestPost(true)
+            .setIsRequestPost(false)
             .setRequest(buildRequest(planTypeId))
             .setUrlEndPoint(urlEndPoint)
             .build()

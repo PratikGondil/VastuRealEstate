@@ -11,6 +11,10 @@ class ViewPlansViewModel(application: Application) : AndroidViewModel(applicatio
     lateinit var iViewPlanViewListener: IViewPlanViewListener
     lateinit var iPlansTypeViewListener: IPlansTypeViewListener
     lateinit var iViewPlanListener: IViewPlanListener
+
+    init {
+        mContext = application
+    }
     fun onBuilderPlanClick() {
         iViewPlanListener.onBuilderPlanClick()
     }

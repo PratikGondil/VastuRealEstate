@@ -83,7 +83,7 @@
                             android:gravity="center"
                             android:text="@string/real_estate"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/dimen15dp"
+                            android:textSize="@dimen/dimen20dp"
                             android:textStyle="bold" />
 
 
@@ -130,7 +130,7 @@
                             android:gravity="center"
                             android:text="@string/loan"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/dimen15dp"
+                            android:textSize="@dimen/dimen20dp"
                             android:textStyle="bold" />
                     </androidx.cardview.widget.CardView>
 

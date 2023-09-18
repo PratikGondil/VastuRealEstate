@@ -19,7 +19,8 @@ object ViewPlanRepository : IViewPlanRequest, IOnServiceResponseListener {
         NetworkDaoBuilder.Builder
             .setContext(context)
             .setIsContentTypeJSON(true)
-            .setIsRequestPost(false)
+            .setIsRequestPost(true)
+            .setRequest(ViewPlanRepository.buildRequest(planTypeId))
             .setUrlEndPoint(urlEndPoint)
             .build()
             .sendApiRequest(this)

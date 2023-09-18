@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
+import com.vastu.realestate.appModule.dashboard.view.DashboardFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.ourServies.planForOwner.bottomSheetRecycler.PlanForOwnerBottomSheet
 import com.vastu.realestate.appModule.rateUs.RateUsFragment
@@ -65,18 +66,13 @@ class OurServicesFragment : Fragment(), IToolbarListener, IViewPlanListener {
     }
 
     override fun onAdvertisePlanClick() {
-
+        viewPlansViewModel.callPlansApi(planTypeId!!)
     }
 
-    private fun getPlans() {
-        planTypeId?.let {
-            viewPlansViewModel.callPlansApi(it)
-        }
-    }
+//    private fun getPlans() {
+//        planTypeId?.let {
+//            viewPlansViewModel.callPlansApi(it)
+//        }
+//    }
 
-    private fun getPlansType() {
-        planTypeId?.let {
-            viewPlansViewModel.callPlansTypeApi(it)
-        }
-    }
 }
