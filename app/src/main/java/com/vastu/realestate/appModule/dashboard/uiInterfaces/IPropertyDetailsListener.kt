@@ -14,4 +14,5 @@ interface IPropertyDetailsListener :INetworkFailListener{
     fun onSuccessAddWishList(addWishlistResponse: AddWishlistResponse)
     fun onFailureAddWishList(addWishlistResponse: AddWishlistResponse)
     fun addToWishlist()
+    fun onClickBuilderProfile()
 }

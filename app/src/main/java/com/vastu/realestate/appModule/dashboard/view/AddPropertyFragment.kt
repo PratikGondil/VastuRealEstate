@@ -1101,6 +1101,10 @@ fun getPdfPath(uri: Uri?):String?
         TODO("Not yet implemented")
     }
 
+    override fun onClickBuilderProfile() {
+        TODO("Not yet implemented")
+    }
+
     override fun onItemClick(images: ImageData) {
         showProgressDialog()
         deleteImageRequest =

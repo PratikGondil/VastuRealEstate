@@ -49,6 +49,7 @@
                     android:layout_height="@dimen/dimen50dp"
                     android:background="@color/colorPrimary"
                     app:tabIndicatorColor="@color/white"
+                    android:onClick="@{(view)->realEstateDetailsViewModel.onClickBuilderProfile()}"
                     app:tabIndicatorHeight="4dp"
                     app:tabMode="scrollable"
                     app:tabGravity="fill"
@@ -56,15 +57,18 @@
                     app:tabInlineLabel="true"
                     app:tabTextColor="#e4e4e4" >
                     <com.google.android.material.tabs.TabItem
+                        android:id="@+id/tab1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/dimen8sp"
                         android:textColor="@color/white"
+                        android:clickable="true"
                         android:text="@string/builder_profile"/>
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
+                        android:clickable="true"
                         android:textSize="@dimen/dimen8sp"
                         android:text="@string/details"/>
                     <com.google.android.material.tabs.TabItem
@@ -72,6 +76,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/dimen8sp"
                         android:textColor="@color/white"
+                        android:clickable="true"
                         android:text="@string/amenities"/>
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
@@ -92,10 +97,10 @@
                         android:textSize="@dimen/dimen8sp"
                         android:text="@string/amenities"/>
                 </com.google.android.material.tabs.TabLayout>
-<!--                <androidx.viewpager.widget.ViewPager-->
-<!--                    android:id="@+id/viewPager"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"/>-->
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
                 <com.aemerse.slider.ImageCarousel
                     android:id="@+id/image_slider"
                     android:layout_width="match_parent"
@@ -970,7 +975,7 @@
                         <com.aemerse.slider.ImageCarousel
                             android:id="@+id/image_slider_property_brochure"
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/dimen300dp"
+                            android:layout_height="500dp"
                             android:layout_margin="@dimen/dimen20dp" />
 
                         <androidx.appcompat.widget.AppCompatButton

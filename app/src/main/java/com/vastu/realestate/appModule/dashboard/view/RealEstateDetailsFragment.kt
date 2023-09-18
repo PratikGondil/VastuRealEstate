@@ -122,6 +122,53 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         }
     }
 
+    override fun onClickBuilderProfile() {
+
+//        realEstateDetailsBinding.tabLayout.setOnClickListener{
+//            when(id){
+//                R.id.tab1->
+//                    realEstateDetailsBinding.scrollview.scrollTo(5,10)
+//            }
+//        }
+//        val tabLayout = requireView().findViewById<TabLayout>(R.id.tabLayout)
+//        val viewPager = requireView().findViewById<ViewPager>(R.id.viewPager)
+//
+//        // Create an instance of your ViewPager adapter (assuming you have one)
+//        val adapter = MyPagerAdapter(supportFragmentManager)
+//
+//        // Set the adapter to the ViewPager
+//        viewPager.adapter = adapter
+//
+//        // Connect the TabLayout with the ViewPager
+//        tabLayout.setupWithViewPager(viewPager)
+//
+//        // Add an OnTabSelectedListener to listen for tab selection events
+//        realEstateDetailsBinding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+//            override fun onTabSelected(tab: TabLayout.Tab?) {
+//                // Handle tab selection
+//                tab?.let {
+//                    when(id){
+//                        R.id.tab1->
+//                            realEstateDetailsBinding.scrollview.scrollTo(5,10)
+//                    }
+////                    viewPager.currentItem = it.position
+//                }
+//            }
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab?) {
+//                // Handle tab unselection
+//            }
+//
+//            override fun onTabReselected(tab: TabLayout.Tab?) {
+//                // Handle tab reselection
+//            }
+//        })
+    }
+
+
+
+
+
     override fun onSuccessPropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
         imageListCarousel.clear()
         hideProgressDialog()
