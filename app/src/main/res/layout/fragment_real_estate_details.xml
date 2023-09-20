@@ -868,7 +868,6 @@
                                 android:ellipsize="end"
                                 android:maxLines="10"
                                 android:minLines="2"
-                                android:text="@{propertyData.description}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
                                 app:fontFamily="@font/open_sans_semibold" />
@@ -906,7 +905,6 @@
                                 android:ellipsize="end"
                                 android:maxLines="10"
                                 android:minLines="2"
-                                android:text="@{propertyData.highlights}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
                                 app:fontFamily="@font/open_sans_semibold" />

@@ -1,5 +1,6 @@
 package com.vastu.realestate.appModule.dashboard.view
 
+import android.os.Build
 import android.os.Bundle
 import android.text.Html
 import android.text.Spannable
@@ -9,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -216,6 +218,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     override fun viewbroture() {
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
         realEstateDetailsBinding.apply {
@@ -223,28 +226,9 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
             propertyIdDataList = property
             propertyData = property
             val htmlPattern = "<[^>]*>"
+            highlightsTextview.setText(Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights.trim(),Html.FROM_HTML_MODE_LEGACY));
+            descriptionTextview.setText(Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).description,Html.FROM_HTML_MODE_LEGACY));
 
-            if(property.highlights.length>20){
-                val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights)
-                spannable.setSpan(BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                spannable.setSpan(BulletSpan(50, resources.getColor(R.color.black)), 20,  spannable.length,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                highlightsTextview.text = Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights.trim())
-            }else{
-                highlightsTextview.text = property.highlights
-            }
-
-            if(property.description.length>20){
-                val spannable = SpannableString(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).description)
-                spannable.setSpan(BulletSpan(50,resources.getColor(R.color.black)), 9, 18,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                spannable.setSpan(BulletSpan(50, resources.getColor(R.color.black)), 20,  spannable.length,
-                    Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                descriptionTextview.text = Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).description)
-            }else{
-                descriptionTextview.text = property.highlights
-            }
             setAmenityDetails(propertyDataResponseMain.getPropertyIdDetailsResponse.amenities)
             setRelatedPropertyDetails(propertyDataResponseMain.getPropertyIdDetailsResponse.relatedProperty)
         }
