@@ -84,4 +84,8 @@ class RealEstateDetailsViewModel(application: Application) : AndroidViewModel(ap
     fun addToWishlist(){
         iPropertyDetailsListener.addToWishlist()
     }
+    fun onClickBuilderProfile()
+    {
+        iPropertyDetailsListener.onClickBuilderProfile()
+    }
 }
