@@ -23,6 +23,7 @@
             android:gravity="center_vertical|center_horizontal"
             android:padding="@dimen/padding_xsmall"
             android:clickable="true"
+            android:layout_margin="@dimen/dimen10dp"
             android:background="@drawable/real_estate_background"
             app:cardCornerRadius="@dimen/card_corner_radius"
             app:layout_constraintStart_toStartOf="parent"
@@ -138,6 +139,7 @@
         </LinearLayout>
         <ImageView
             android:id="@+id/img_e"
+            android:layout_margin="@dimen/dimen10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
@@ -149,6 +151,7 @@
 
         <com.vastu.realestate.appModule.utils.Player
            android:id="@+id/video"
+            android:layout_margin="@dimen/dimen10dp"
             layout="@layout/fragment_video"
             android:layout_width="wrap_content"
             android:layout_height="200dp"

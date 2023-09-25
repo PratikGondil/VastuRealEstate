@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        tools:openDrawer="end">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,18 +32,12 @@
                 layout="@layout/toolbar_layout"
                 bind:drawerViewModel="@{drawerViewModel}" />
 
-            <com.denzcoskun.imageslider.ImageSlider
+
+            <com.aemerse.slider.ImageCarousel
                 android:id="@+id/image_slider"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/banner_image_height"
-                app:iss_auto_cycle="true"
-                app:iss_delay="0"
-                app:iss_error_image="@drawable/vastu_logo_splash"
-                app:iss_period="1000"
-                app:iss_placeholder="@color/loan_background_color"
-                app:iss_selected_dot="@drawable/default_selected_dot"
-                app:iss_title_background="@drawable/grad"
-                app:iss_unselected_dot=" @drawable/default_unselected_dot" />
+                 />
 
             <LinearLayout
                 android:layout_width="match_parent"

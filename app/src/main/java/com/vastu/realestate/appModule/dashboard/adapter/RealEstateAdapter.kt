@@ -2,14 +2,11 @@ package com.vastu.realestate.appModule.dashboard.adapter
 
 import android.content.Context
 import android.media.MediaPlayer
-import android.media.MediaPlayer.OnCompletionListener
 import android.media.MediaPlayer.OnPreparedListener
 import android.net.Uri
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.realestate.R
 import com.vastu.realestate.databinding.RealEstateItemviewBinding
@@ -63,7 +60,13 @@ class RealEstateAdapter(
             holder.binding.propertyImage,
             R.drawable.vastu_logo_splash
         )
+        manageAddSlider(holder,position)
+        holder.binding.layoutContainer.setOnClickListener {
+            itemClick.onItemClick(property)
+        }
+    }
 
+    private fun manageAddSlider(holder: RealEstateViewHolder, position: Int) {
         if(adSlider.isNotEmpty() && adSlider.size==2){
             adSliderImage=adSlider[0]
             adSliderVideo=adSlider[1]
@@ -113,10 +116,6 @@ class RealEstateAdapter(
         else {
             holder.binding.imgE.visibility = View.GONE
             holder.binding.video.visibility = View.GONE
-        }
-
-        holder.binding.layoutContainer.setOnClickListener {
-            itemClick.onItemClick(property)
         }
     }
 

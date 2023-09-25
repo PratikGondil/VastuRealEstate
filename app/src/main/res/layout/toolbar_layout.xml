@@ -46,10 +46,11 @@
 
             <ImageView
                 android:id="@+id/vastu_logo"
-                android:layout_width="@dimen/dimen40dp"
+                android:layout_width="@dimen/dimen30dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0.1"
+                android:layout_marginLeft="@dimen/dimen10dp"
                 android:src="@drawable/ic_vastu_logo"
                 android:visibility="@{drawerViewModel.isDashBoard()?View.VISIBLE:View.GONE}" />
 
@@ -71,6 +72,7 @@
                 android:visibility="visible"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.15"
+                android:layout_marginRight="@dimen/dimen10dp"
                 android:layout_gravity="center">
 
                 <ImageView
