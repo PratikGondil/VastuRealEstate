@@ -17,6 +17,8 @@ import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.aemerse.slider.listener.CarouselListener
+import com.aemerse.slider.model.CarouselItem
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
@@ -54,6 +56,8 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
     private lateinit var viewModel: VastuDashboardViewModel
     private lateinit var drawerViewModel: DrawerViewModel
     private val imageList = ArrayList<SlideModel>()
+    private val imageListCarousel = ArrayList<CarouselItem>()
+
     private lateinit var getAdvertisementSlider: GetAdvertiseDetailsResponse
     private lateinit var getMainSliderDetailsResponse: GetMainSliderDetailsResponse
 
@@ -196,28 +200,40 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
         dashboardBinding.imageSlider.visibility = View.VISIBLE
         getAdvertisementSlider =
             PreferenceManger.getAdvertisementSlider(PreferenceKEYS.DASHBOARD_SLIDER_LIST)
-        if (getAdvertisementSlider.advertiseData.isNotEmpty()) {
-            dashboardBinding.apply {
-                for (slider in getAdvertisementSlider.advertiseData) {
-                    imageList.add(SlideModel(slider.adSlider, ScaleTypes.FIT))
-                }
-                imageSlider.setImageList(imageList, ScaleTypes.FIT)
-                imageSlider.startSliding(3000)
-            }
+        imageListCarousel.clear()
+        hideProgressDialog()
+        for( slider in getAdvertisementSlider.advertiseData!!){
+            var coItem  = CarouselItem(
+                imageUrl = slider.adSlider,
+                caption = ""
+            )
+            imageListCarousel.add(coItem)
+        }
+        dashboardBinding.apply {
+            imageSlider.setData(imageListCarousel)
+            imageSlider.autoPlayDelay =3000
+
+            // imageSlider.setIndicator(custom)
         }
 
-        dashboardBinding.imageSlider.setItemClickListener(object : ItemClickListener {
-            override fun onItemSelected(position: Int) {
+
+
+        dashboardBinding.imageSlider.carouselListener = object : CarouselListener {
+            override fun onClick(position: Int, carouselItem: CarouselItem) {
                 var selectedPostition = getAdvertisementSlider.advertiseData[position]
                 if(selectedPostition.type =="video"){
                     createVideoDialog(getAdvertisementSlider.advertiseData[position].link)
                 }else{
+                    createImageDialog(imageListCarousel.get(position).imageUrl!!)
                     dashboardBinding.imageSlider.visibility = View.VISIBLE
                 }
-
             }
 
-        })
+            override fun onLongClick(position: Int, dataObject: CarouselItem) {
+            }
+
+        }
+
     }
 
     @SuppressLint("MissingInflatedId")
@@ -242,22 +258,6 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
         }
     }
 
-    private fun setMainSliderData() {
-        imageList.clear()
-        getMainSliderDetailsResponse = PreferenceManger.getSlider(PreferenceKEYS.MAIN_SLIDER_LIST)
-        if (getMainSliderDetailsResponse.propertyData.isNotEmpty()) {
-            getMainSliderDetailsResponse =
-                PreferenceManger.getSlider(PreferenceKEYS.MAIN_SLIDER_LIST)
-            dashboardBinding.apply {
-                for (slider in getMainSliderDetailsResponse.propertyData) {
-                    imageList.add(SlideModel(slider.propertyImage))
-                }
-                imageSlider.setImageList(imageList, ScaleTypes.FIT)
-                imageSlider.startSliding(3000)
-            }
-        }
-
-    }
 
     override fun onLoanClick() {
         showProgressDialog()
