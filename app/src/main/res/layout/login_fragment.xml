@@ -95,7 +95,7 @@
                 <TextView
                     android:id="@+id/txtSendOtp"
                     android:textColor="@color/black"
-                    app:fontFamily="@font/poppins_light"
+                    app:fontFamily="@font/open_sans_semibold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
