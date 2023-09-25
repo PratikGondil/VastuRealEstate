@@ -32,12 +32,30 @@
                 layout="@layout/toolbar_layout"
                 bind:drawerViewModel="@{drawerViewModel}" />
 
-
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
             <com.aemerse.slider.ImageCarousel
                 android:id="@+id/image_slider"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/banner_image_height"
-                 />
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+    <me.relex.circleindicator.CircleIndicator2
+        android:id="@+id/custom"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:ci_width = "@dimen/dimen20dp"
+        app:ci_height= "@dimen/dimen20dp"
+        app:layout_constraintStart_toStartOf="@id/image_slider"
+        app:layout_constraintBottom_toBottomOf="@id/image_slider"
+        app:ci_drawable = "@drawable/baseline_play_arrow_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,7 +65,7 @@
                 android:weightSum="1"
                 android:background="@drawable/dashboard_background">
 
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/card_container"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -61,13 +79,18 @@
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/card_real_estate"
                         android:layout_width="@dimen/dimen180dp"
-                        android:layout_height="@dimen/dimen110dp"
+                        android:layout_height="@dimen/dimen90dp"
                         android:layout_marginTop="@dimen/dimen50dp"
                         android:foreground="?android:attr/selectableItemBackground"
                         app:cardBackgroundColor="#ffffff"
                         app:cardCornerRadius="@dimen/dimen15dp"
                         app:cardElevation="0dp"
-                        app:cardUseCompatPadding="false">
+                        app:cardUseCompatPadding="false"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:layout_constraintEnd_toEndOf="parent">
 
 
                         <TextView
@@ -83,19 +106,21 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
+
                     <ImageView
                         android:id="@+id/img_real_estate"
-                        android:layout_width="120dp"
-                        android:layout_height="@dimen/dimen120dp"
-                        android:layout_marginStart="@dimen/dimen30dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
                         android:src="@drawable/dashboard_real_estate"
+                        app:layout_constraintStart_toStartOf="@id/card_real_estate"
+                        app:layout_constraintTop_toTopOf="@id/card_real_estate"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/card_real_estate" />
 
-                        />
 
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </RelativeLayout>
-
-                <RelativeLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/card_container2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -110,12 +135,17 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/card_loan"
                         android:layout_width="@dimen/dimen180dp"
-                        android:layout_height="@dimen/dimen110dp"
+                        android:layout_height="@dimen/dimen90dp"
                         android:layout_marginTop="@dimen/dimen50dp"
                         android:foreground="?android:attr/selectableItemBackground"
                         app:cardBackgroundColor="#ffffff"
                         app:cardCornerRadius="@dimen/dimen15dp"
-                        app:cardElevation="0dp">
+                        app:cardElevation="0dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:layout_constraintEnd_toEndOf="parent">
 
                         <TextView
                             android:layout_width="match_parent"
@@ -130,13 +160,17 @@
 
                     <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/img_loan"
-                        android:layout_width="@dimen/dimen120dp"
-                        android:layout_height="@dimen/dimen120dp"
-                        android:layout_marginLeft="@dimen/dimen30dp"
+                        android:layout_width="130dp"
+                        android:layout_height="130dp"
+                        app:layout_constraintStart_toStartOf="@id/card_loan"
+                        app:layout_constraintTop_toTopOf="@id/card_loan"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toTopOf="@+id/card_loan"
                         android:src="@drawable/dashboard_loan" />
 
 
-                </RelativeLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
         </LinearLayout>
 
