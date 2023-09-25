@@ -101,26 +101,37 @@
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
                 <com.aemerse.slider.ImageCarousel
                     android:id="@+id/image_slider"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:layout_margin="@dimen/dimen20dp" />
+                    android:layout_margin="@dimen/dimen20dp"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintVertical_bias="0.5"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
                 <me.relex.circleindicator.CircleIndicator2
                     android:id="@+id/custom"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    app:ci_width = "@dimen/dimen10dp"
-                    app:ci_height= "@dimen/dimen10dp"
+                    app:ci_width = "@dimen/dimen20dp"
+                    app:ci_height= "@dimen/dimen20dp"
+                    app:layout_constraintStart_toStartOf="@id/image_slider"
+                    app:layout_constraintBottom_toBottomOf="@id/image_slider"
                     app:ci_drawable = "@drawable/baseline_play_arrow_24"
 
                     >
 
 
                 </me.relex.circleindicator.CircleIndicator2>
-
+                </androidx.constraintlayout.widget.ConstraintLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
