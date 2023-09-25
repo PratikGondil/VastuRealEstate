@@ -345,12 +345,16 @@ class SignUpFragment : BaseFragment(),View.OnTouchListener, ISignUpViewListener,
 
     fun redirectAftertheTermsAccept()
     {
-        showProgressDialog()
-        getUserInfo()
-        signUpViewModel.callRegistrationApi(objUserInfo)
+      createDialog(this)
 
     }
 
+
+    fun callSignUpAPI(){
+        showProgressDialog()
+        getUserInfo()
+        signUpViewModel.callRegistrationApi(objUserInfo)
+    }
     override fun onUserNotConnected() {
         hideProgressDialog()
         showDialog("",false,true)

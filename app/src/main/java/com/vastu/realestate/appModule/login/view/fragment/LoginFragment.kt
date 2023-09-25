@@ -48,6 +48,11 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
 
     fun redirectedToAPIAfterTerms()
     {
+      createDialog(this)
+    }
+
+
+    fun callLoginAPI(){
         var language =PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
         if(viewModel.isValidMobileNumber.get()!!){
             showProgressDialog()
@@ -57,7 +62,6 @@ class LoginFragment : BaseFragment(), ILoginViewListener {
             binder.tilMobileNumLayout.helperText= viewModel.error.get()
         }
     }
-
 
     override fun launchOtpScreen(objLoginResponseMain: ObjLoginResponseMain) {
         hideProgressDialog()

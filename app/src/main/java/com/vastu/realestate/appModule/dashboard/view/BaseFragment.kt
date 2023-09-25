@@ -46,7 +46,7 @@ open class BaseFragment : Fragment() {
         checkbox.setOnClickListener {
             builder.dismiss()
             if(fragment is LoginFragment) {
-                fragment.redirectedToAPIAfterTerms()
+                fragment.callLoginAPI()
             }else if(fragment is AddPropertyEnquiryFragment)
             {
                 fragment.redirectedAfterAPITerms()
@@ -55,7 +55,7 @@ open class BaseFragment : Fragment() {
                 fragment.redirectedAfterTermsLoan()
             }else if(fragment is SignUpFragment)
             {
-                fragment.redirectAftertheTermsAccept()
+                fragment.callSignUpAPI()
 
             }
         }
