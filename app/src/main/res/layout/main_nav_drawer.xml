@@ -71,32 +71,31 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            app:fontFamily="@font/poppins_medium"
+                            app:fontFamily="@font/open_sans_bold"
                             android:textColor="@color/white"
                             android:text="@{drawerViewModel.userName}"
                             android:textSize="@dimen/text_size_semilarge" />
 
                         <TextView
                             android:id="@+id/mobile_textview"
-                            android:layout_marginTop="@dimen/margin_small"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            app:fontFamily="@font/poppins_medium"
+                            app:fontFamily="@font/open_sans_regular"
                             android:textColor="@color/white"
                             android:text="@{drawerViewModel.mobileNo}"
-                            android:textSize="@dimen/text_size_normal" />
+                            android:textSize="@dimen/text_size_small" />
 
                         <TextView
                             android:id="@+id/city_textview"
-                            android:layout_marginTop="@dimen/margin_small"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            app:fontFamily="@font/poppins_medium"
+                            app:fontFamily="@font/open_sans_regular"
+                            android:textStyle="normal"
                             android:textColor="@color/white"
                             android:text="@{drawerViewModel.city}"
-                            android:textSize="@dimen/text_size_normal" />
+                            android:textSize="@dimen/text_size_small" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -123,10 +122,12 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight="0.8"
-                    android:textColor="@color/nav_text_color"
+                    android:textColor="@color/black"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="@dimen/text_size_small"
+                    android:fontFamily="@font/open_sans_extra_bold"
+                    android:fontWeight="500"
+                    android:textStyle="bold"
                     android:text="@string/home_text" />
             </LinearLayout>
             <LinearLayout
@@ -154,8 +155,10 @@
                     android:layout_weight="0.8"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="@dimen/text_size_small"
+                    android:fontFamily="@font/open_sans_extra_bold"
+                    android:fontWeight="500"
+                    android:textStyle="bold"
                     android:text="@string/enquiry" />
             </LinearLayout>
 
@@ -184,8 +187,10 @@
                     android:layout_weight="0.8"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="@dimen/text_size_small"
+                    android:fontFamily="@font/open_sans_extra_bold"
+                    android:fontWeight="500"
+                    android:textStyle="bold"
                     android:text="@string/properties" />
             </LinearLayout>
             <LinearLayout
@@ -213,8 +218,10 @@
                     android:layout_weight="0.8"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="@dimen/text_size_small"
+                    android:fontFamily="@font/open_sans_extra_bold"
+                    android:fontWeight="500"
+                    android:textStyle="bold"
                     android:text="@string/employees" />
             </LinearLayout>
             <LinearLayout
@@ -242,8 +249,10 @@
                     android:layout_weight="0.8"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="@dimen/text_size_small"
+                    android:fontFamily="@font/open_sans_extra_bold"
+                    android:fontWeight="500"
+                    android:textStyle="bold"
                     android:text="@string/offers" />
             </LinearLayout>
             <LinearLayout
@@ -270,8 +279,10 @@
                     android:layout_weight="0.8"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="@dimen/text_size_small"
+                    android:fontFamily="@font/open_sans_extra_bold"
+                    android:fontWeight="500"
+                    android:textStyle="bold"
                     android:text="@string/change_language" />
             </LinearLayout>
             <LinearLayout
@@ -298,8 +309,10 @@
                     android:layout_weight="0.8"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="@dimen/text_size_small"
+                    android:fontFamily="@font/open_sans_extra_bold"
+                    android:fontWeight="500"
+                    android:textStyle="bold"
                     android:text="@string/feedback" />
             </LinearLayout>
             <LinearLayout
@@ -326,8 +339,10 @@
                     android:layout_weight="0.8"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="@dimen/text_size_small"
+                    android:fontFamily="@font/open_sans_extra_bold"
+                    android:fontWeight="500"
+                    android:textStyle="bold"
                     android:text="@string/rate_us" />
             </LinearLayout>
             <LinearLayout
@@ -354,8 +369,10 @@
                     android:layout_weight="0.8"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="@dimen/text_size_small"
+                    android:fontFamily="@font/open_sans_extra_bold"
+                    android:fontWeight="500"
+                    android:textStyle="bold"
                     android:text="@string/contact_us" />
             </LinearLayout>
 
@@ -384,8 +401,10 @@
                     android:layout_weight="0.8"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/poppins_regular"
+                    android:textSize="@dimen/text_size_small"
+                    android:fontFamily="@font/open_sans_extra_bold"
+                    android:fontWeight="500"
+                    android:textStyle="bold"
                     android:text="@string/settings" />
             </LinearLayout>
 
@@ -413,8 +432,10 @@
                     android:layout_weight="0.8"
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_normal"
-                    android:fontFamily="@font/open_sans_semibold"
+                    android:textSize="@dimen/text_size_small"
+                    android:fontFamily="@font/open_sans_extra_bold"
+                    android:fontWeight="500"
+                    android:textStyle="bold"
                     android:text="@string/logout" />
             </LinearLayout>
         </LinearLayout>

@@ -44,6 +44,15 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_back_arrow" />
 
+            <ImageView
+                android:id="@+id/vastu_logo"
+                android:layout_width="@dimen/dimen40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="0.1"
+                android:src="@drawable/ic_vastu_logo"
+                android:visibility="@{drawerViewModel.isDashBoard()?View.VISIBLE:View.GONE}" />
+
             <TextView
                 android:id="@+id/title_textview"
                 android:layout_width="0dp"
@@ -52,13 +61,14 @@
                 android:textColor="@color/white"
                 android:text="@{drawerViewModel.toolbarTitle}"
                 android:textSize="@dimen/text_size_normal"
+                android:visibility="@{drawerViewModel.isDashBoard()?View.INVISIBLE:View.VISIBLE}"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical|center_horizontal"
                 app:fontFamily="@font/poppins_regular" />
 
             <RelativeLayout
                 android:layout_width="0dp"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.15"
                 android:layout_gravity="center">

@@ -329,8 +329,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="real_estate_icon" />
-                            <entry key="sourceFile" value="E:\VastuProject\Real Estate &amp; Loan icon\Real Estate icon.svg" />
+                            <entry key="outputName" value="ic_vastu_logo" />
+                            <entry key="sourceFile" value="C:\Users\anjali.kapoor\Downloads\Vastu logo.svg" />
                           </map>
                         </option>
                       </PersistentState>
