@@ -4,11 +4,10 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.PixelFormat
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.MediaController
 import android.widget.TextView
@@ -32,6 +31,7 @@ import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewModel
 import com.vastu.realestate.appModule.enquirylist.view.EnquiryActivity
 import com.vastu.realestate.commoncore.model.otp.response.ObjVerifyDtls
+import com.vastu.realestate.customProgressDialog.FullScreenDialog
 import com.vastu.realestate.databinding.FragmentVastuDashboardBinding
 import com.vastu.realestate.utils.BaseConstant.ADMIN
 import com.vastu.realestate.utils.BaseConstant.BUILDER
@@ -222,7 +222,9 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
             override fun onClick(position: Int, carouselItem: CarouselItem) {
                 var selectedPostition = getAdvertisementSlider.advertiseData[position]
                 if(selectedPostition.type =="video"){
-                    createVideoDialog(getAdvertisementSlider.advertiseData[position].link)
+                 //   createVideoDialog(getAdvertisementSlider.advertiseData[position].link)
+                    val dialog = FullScreenDialog(requireContext(), getAdvertisementSlider.advertiseData[position].link)
+                    dialog.show()
                 }else{
                     createImageDialog(imageListCarousel.get(position).imageUrl!!)
                     dashboardBinding.imageSlider.visibility = View.VISIBLE
@@ -238,7 +240,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
 
     @SuppressLint("MissingInflatedId")
     fun createVideoDialog(advertiseData: String) {
-        val builder = AlertDialog.Builder(requireContext(), R.style.CustomAlertDialog)
+        val builder = AlertDialog.Builder(requireContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen)
             .create()
         val view = layoutInflater.inflate(R.layout.custom_video_dialog,null)
         val cross :ImageView = view.findViewById(R.id.img_cross)

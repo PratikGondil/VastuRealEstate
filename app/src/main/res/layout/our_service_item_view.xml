@@ -18,7 +18,7 @@
         android:id="@+id/main_constraint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dimen15dp"
+        android:padding="@dimen/dimen10dp"
         android:background="@drawable/gradient_bg"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +40,8 @@
             />
             <RadioButton
                 android:id="@+id/radioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/dimen30dp"
+                android:layout_height="@dimen/dimen30dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginStart="@dimen/dimen20dp"
                 app:layout_constraintStart_toEndOf="@+id/txt_month"
