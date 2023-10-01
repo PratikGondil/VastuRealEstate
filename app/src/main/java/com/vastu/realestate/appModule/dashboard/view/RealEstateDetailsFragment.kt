@@ -182,6 +182,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
 
 
     override fun onSuccessPropertySliderById(propertySliderResponseMain: PropertyDetailsResponseSliderMain) {
+        setCustomIndicator()
         imageListbuilder.clear()
         hideProgressDialog()
         buiderSlider = propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.builder_slider
@@ -195,7 +196,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         realEstateDetailsBinding.apply {
             imageSliderBuilder.setData(imageListbuilder)
             imageSliderBuilder.autoPlayDelay =3000
-
+            //imageSliderBuilder.setIndicator(custom)
            // imageSlider.setIndicator(custom)
         }
 
@@ -216,6 +217,10 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         sliderDataForFloorPlan(propertySliderResponseMain)
         sliderDataForBrochure(propertySliderResponseMain)
        // setPhotosPropertyDetails(propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages)
+    }
+
+    private fun setCustomIndicator() {
+
     }
 
     override fun onFailurePropertySliderById(propertySliderResponseMain: PropertyDetailsResponseSliderMain) {

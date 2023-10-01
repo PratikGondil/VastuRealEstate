@@ -125,7 +125,6 @@
                     app:ci_height= "@dimen/dimen20dp"
                     app:layout_constraintStart_toStartOf="@id/image_slider_builder"
                     app:layout_constraintBottom_toBottomOf="@id/image_slider_builder"
-                    app:ci_drawable = "@drawable/baseline_play_arrow_24"
 
                     >
 
