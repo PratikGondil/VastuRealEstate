@@ -17,16 +17,23 @@
         android:layout_margin="16dp"
        />
 
-    <VideoView
+
+    <com.potyvideo.library.AndExoPlayerView
         android:id="@+id/andExoPlayerViewType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:andexo_aspect_ratio="aspect_16_9"
+        app:andexo_play_when_ready="true"
+        app:andexo_show_controller="true"
+        app:andexo_resize_mode="Fit"
         app:layout_constraintTop_toBottomOf="@id/img_cross"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+
         />
+
 
 <!--    <MediaController-->
 <!--        android:id="@+id/media_actions"-->

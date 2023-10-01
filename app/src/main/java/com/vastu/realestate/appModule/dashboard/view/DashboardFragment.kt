@@ -215,14 +215,10 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
 
             // imageSlider.setIndicator(custom)
         }
-
-
-
         dashboardBinding.imageSlider.carouselListener = object : CarouselListener {
             override fun onClick(position: Int, carouselItem: CarouselItem) {
                 var selectedPostition = getAdvertisementSlider.advertiseData[position]
                 if(selectedPostition.type =="video"){
-                 //   createVideoDialog(getAdvertisementSlider.advertiseData[position].link)
                     val dialog = FullScreenDialog(requireContext(), getAdvertisementSlider.advertiseData[position].link)
                     dialog.show()
                 }else{
@@ -237,29 +233,6 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
         }
 
     }
-
-    @SuppressLint("MissingInflatedId")
-    fun createVideoDialog(advertiseData: String) {
-        val builder = AlertDialog.Builder(requireContext(), android.R.style.Theme_Black_NoTitleBar_Fullscreen)
-            .create()
-        val view = layoutInflater.inflate(R.layout.custom_video_dialog,null)
-        val cross :ImageView = view.findViewById(R.id.img_cross)
-        val videoView :VideoView=view.findViewById(R.id.andExoPlayerViewType)
-        val mediaController = MediaController(requireActivity())
-        mediaController.setAnchorView(videoView)
-        videoView.setMediaController(mediaController);
-        videoView.setVideoURI(Uri.parse(advertiseData))
-        videoView.requestFocus();
-        videoView.start()
-        builder.setView(view)
-
-        builder.setCanceledOnTouchOutside(false)
-        builder.show()
-        cross.setOnClickListener{
-            builder.dismiss()
-        }
-    }
-
 
     override fun onLoanClick() {
         showProgressDialog()
