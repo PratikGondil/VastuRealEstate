@@ -12,7 +12,7 @@ object ApiUrlEndPoints {
     const val GET_ADVERTISEMENT_SLIDER = "get_advertisment_slider.php"
     const val MAIN_PAGE_SLIDER = "get_main_slider.php"
     const val GET_PROPERTY_LIST ="get_property_list_new.php"
-    const val PROPERTY_SLIDER = "property_slider_by_id.php"
+    const val PROPERTY_SLIDER = "property_by_id_all_slider_images.php"
     const val GET_PROPERTY = "property_by_id.php"
     const val ADD_PROPERTY = "add_property.php"
     const val EDIT_PROPERTY = "edit_property.php"

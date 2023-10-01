@@ -26,12 +26,13 @@ class FullScreenDialog(context: Context, videoUrl: String) : Dialog(context) {
         val mediaController = MediaController(context)
         mediaController.setAnchorView(videoView)
         mediaController.setMediaPlayer(videoView)
-        mediaController.show()
         videoView.setMediaController(mediaController)
         videoView.setVideoURI(Uri.parse(videoUrl))
         videoView.requestFocus()
         // Start playing the video
         videoView.start()
+        mediaController.show()
+        mediaController.isEnabled = true
 
         closeImageView.setOnClickListener {
             // Stop the video and dismiss the dialog when the close button is clicked

@@ -245,7 +245,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
         val view = layoutInflater.inflate(R.layout.custom_video_dialog,null)
         val cross :ImageView = view.findViewById(R.id.img_cross)
         val videoView :VideoView=view.findViewById(R.id.andExoPlayerViewType)
-        val mediaController = MediaController(requireContext())
+        val mediaController = MediaController(requireActivity())
         mediaController.setAnchorView(videoView)
         videoView.setMediaController(mediaController);
         videoView.setVideoURI(Uri.parse(advertiseData))

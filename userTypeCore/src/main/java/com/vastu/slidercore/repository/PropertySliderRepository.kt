@@ -8,6 +8,7 @@ import com.vastu.slidercore.callback.request.IGetPropertySliderByIdRequest
 import com.vastu.slidercore.callback.response.IGetPropertySliderByIdResponse
 import com.vastu.slidercore.model.request.PropertySliderRequest
 import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
+import com.vastu.slidercore.model.response.realestatedetails.PropertyDetailsResponseSliderMain
 import com.vastu.utils.ErrorCode
 
 object PropertySliderRepository:IGetPropertySliderByIdRequest,IOnServiceResponseListener {
@@ -38,7 +39,7 @@ object PropertySliderRepository:IGetPropertySliderByIdRequest,IOnServiceResponse
 
     override fun onSuccessResponse(response: String, isError: Boolean) {
         val propertySliderResponse = parseResponse(response)
-        when(propertySliderResponse.propertySliderImagesResponse.responseStatusHeader.statusCode){
+        when(propertySliderResponse.PropertySliderImagesResponse.ResponseStatusHeader.statusCode){
             ErrorCode.success->
                 iGetPropertySliderByIdResponse.getPropertySliderByIdSuccessResponse(propertySliderResponse)
             ErrorCode.error_0001->
@@ -56,10 +57,10 @@ object PropertySliderRepository:IGetPropertySliderByIdRequest,IOnServiceResponse
        iGetPropertySliderByIdResponse.networkFailure()
     }
 
-    private fun parseResponse(response: String): PropertySliderResponseMain {
+    private fun parseResponse(response: String): PropertyDetailsResponseSliderMain {
         return Gson().fromJson(
             response,
-            PropertySliderResponseMain::class.java
+            PropertyDetailsResponseSliderMain::class.java
         )
     }
 }

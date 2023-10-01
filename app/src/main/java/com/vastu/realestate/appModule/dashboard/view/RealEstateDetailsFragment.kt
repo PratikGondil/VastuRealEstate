@@ -39,6 +39,10 @@ import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestatecore.model.response.PropertyData
 import com.vastu.slidercore.model.response.property.PropertySliderImage
 import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
+import com.vastu.slidercore.model.response.realestatedetails.BrochureSlider
+import com.vastu.slidercore.model.response.realestatedetails.BuilderSlider
+import com.vastu.slidercore.model.response.realestatedetails.PropertyDetailsResponseSliderMain
+import com.vastu.slidercore.model.response.realestatedetails.PropertySlider
 import java.util.regex.Pattern
 
 class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPropertySliderListener,
@@ -46,9 +50,15 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     private lateinit var realEstateDetailsBinding: FragmentRealEstateDetailsBinding
     private lateinit var realEstateDetailsViewModel: RealEstateDetailsViewModel
     private var propertyId : String? = null
-    private var sliderList : List<PropertySliderImage>? = null
+    private var propertySliderList : List<PropertySlider>? = null
+    private var buiderSlider : List<BuilderSlider>? = null
+    private var brouchureSlider : List<BrochureSlider>? = null
+
     private val imageList = ArrayList<SlideModel>()
-    private val imageListCarousel = ArrayList<CarouselItem>()
+    private val imageListbuilder = ArrayList<CarouselItem>()
+    private val imageListCarouselProperty = ArrayList<CarouselItem>()
+    private val imageListbrocure = ArrayList<CarouselItem>()
+
     private lateinit var drawerViewModel: DrawerViewModel
     private val REMOVE_TAGS: Pattern = Pattern.compile("<.+?>")
     lateinit var  propertyIdDataList: PropertyIdData
@@ -171,29 +181,29 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
 
 
 
-    override fun onSuccessPropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
-        imageListCarousel.clear()
+    override fun onSuccessPropertySliderById(propertySliderResponseMain: PropertyDetailsResponseSliderMain) {
+        imageListbuilder.clear()
         hideProgressDialog()
-        sliderList = propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages
-        for( slider in sliderList!!){
+        buiderSlider = propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.builder_slider
+        for( slider in buiderSlider!!){
             var coItem  =CarouselItem(
                 imageUrl = slider.image,
                 caption = ""
             )
-            imageListCarousel.add(coItem)
+            imageListbuilder.add(coItem)
         }
         realEstateDetailsBinding.apply {
-            imageSlider.setData(imageListCarousel)
-            imageSlider.autoPlayDelay =3000
+            imageSliderBuilder.setData(imageListbuilder)
+            imageSliderBuilder.autoPlayDelay =3000
 
            // imageSlider.setIndicator(custom)
         }
 
 
 
-        realEstateDetailsBinding.imageSlider.carouselListener = object : CarouselListener {
+        realEstateDetailsBinding.imageSliderBuilder.carouselListener = object : CarouselListener {
           override fun onClick(position: Int, carouselItem: CarouselItem) {
-             createImageDialog(imageListCarousel.get(position).imageUrl!!)
+             createImageDialog(imageListbuilder.get(position).imageUrl!!)
 
             }
 
@@ -205,10 +215,10 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         getPropertyDetails()
         sliderDataForFloorPlan(propertySliderResponseMain)
         sliderDataForBrochure(propertySliderResponseMain)
-        setPhotosPropertyDetails(propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages)
+       // setPhotosPropertyDetails(propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages)
     }
 
-    override fun onFailurePropertySliderById(propertySliderResponseMain: PropertySliderResponseMain) {
+    override fun onFailurePropertySliderById(propertySliderResponseMain: PropertyDetailsResponseSliderMain) {
         hideProgressDialog()
     }
 
@@ -298,21 +308,19 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     override fun onPause() {
         super.onPause()
     }
-    fun sliderDataForFloorPlan(propertySliderResponseMain: PropertySliderResponseMain) {
-        //image_slider_property_plan
-
-        imageListCarousel.clear()
+    fun sliderDataForFloorPlan(propertySliderResponseMain: PropertyDetailsResponseSliderMain) {
+        imageListCarouselProperty.clear()
         hideProgressDialog()
-        sliderList = propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages
-        for( slider in sliderList!!){
+        propertySliderList = propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.property_slider
+        for( slider in propertySliderList!!){
             var coItem  =CarouselItem(
                 imageUrl = slider.image,
                 caption = ""
             )
-            imageListCarousel.add(coItem)
+            imageListCarouselProperty.add(coItem)
         }
         realEstateDetailsBinding.apply {
-            imageSliderPropertyPlan.setData(imageListCarousel)
+            imageSliderPropertyPlan.setData(imageListCarouselProperty)
             imageSliderPropertyPlan.autoPlayDelay =3000
 
             // imageSlider.setIndicator(custom)
@@ -322,7 +330,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
 
         realEstateDetailsBinding.imageSliderPropertyPlan.carouselListener = object : CarouselListener {
             override fun onClick(position: Int, carouselItem: CarouselItem) {
-                createImageDialog(imageListCarousel.get(position).imageUrl!!)
+                createImageDialog(imageListCarouselProperty.get(position).imageUrl!!)
 
             }
 
@@ -331,21 +339,19 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
 
         }
     }
-    fun sliderDataForBrochure(propertySliderResponseMain: PropertySliderResponseMain) {
-        //image_slider_property_plan
-
-        imageListCarousel.clear()
+    fun sliderDataForBrochure(propertySliderResponseMain: PropertyDetailsResponseSliderMain) {
+        imageListbrocure.clear()
         hideProgressDialog()
-        sliderList = propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages
-        for( slider in sliderList!!){
+        brouchureSlider = propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.brochure_slider
+        for( slider in brouchureSlider!!){
             var coItem  =CarouselItem(
                 imageUrl = slider.image,
                 caption = ""
             )
-            imageListCarousel.add(coItem)
+            imageListbrocure.add(coItem)
         }
         realEstateDetailsBinding.apply {
-            imageSliderPropertyBrochure.setData(imageListCarousel)
+            imageSliderPropertyBrochure.setData(imageListbrocure)
             imageSliderPropertyBrochure.autoPlayDelay =3000
 
             // imageSlider.setIndicator(custom)
@@ -355,7 +361,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
 
         realEstateDetailsBinding.imageSliderPropertyBrochure.carouselListener = object : CarouselListener {
             override fun onClick(position: Int, carouselItem: CarouselItem) {
-                createImageDialog(imageListCarousel.get(position).imageUrl!!)
+                createImageDialog(imageListbrocure.get(position).imageUrl!!)
 
             }
 

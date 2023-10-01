@@ -106,7 +106,7 @@
                     android:layout_height="wrap_content"
                     >
                 <com.aemerse.slider.ImageCarousel
-                    android:id="@+id/image_slider"
+                    android:id="@+id/image_slider_builder"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:layout_margin="@dimen/dimen20dp"
@@ -123,8 +123,8 @@
                     android:layout_height="48dp"
                     app:ci_width = "@dimen/dimen20dp"
                     app:ci_height= "@dimen/dimen20dp"
-                    app:layout_constraintStart_toStartOf="@id/image_slider"
-                    app:layout_constraintBottom_toBottomOf="@id/image_slider"
+                    app:layout_constraintStart_toStartOf="@id/image_slider_builder"
+                    app:layout_constraintBottom_toBottomOf="@id/image_slider_builder"
                     app:ci_drawable = "@drawable/baseline_play_arrow_24"
 
                     >

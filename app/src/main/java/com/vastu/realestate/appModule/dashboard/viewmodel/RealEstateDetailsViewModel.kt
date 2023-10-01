@@ -15,6 +15,7 @@ import com.vastu.realestate.utils.ApiUrlEndPoints.GET_PROPERTY
 import com.vastu.realestate.utils.ApiUrlEndPoints.PROPERTY_SLIDER
 import com.vastu.slidercore.callback.response.IGetPropertySliderByIdResponse
 import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
+import com.vastu.slidercore.model.response.realestatedetails.PropertyDetailsResponseSliderMain
 import com.vastu.slidercore.repository.PropertySliderRepository
 
 class RealEstateDetailsViewModel(application: Application) : AndroidViewModel(application),
@@ -60,11 +61,11 @@ class RealEstateDetailsViewModel(application: Application) : AndroidViewModel(ap
         iPropertyDetailsListener.onFailureGetPropertyDetails(propertyDataResponseMain)
     }
 
-    override fun getPropertySliderByIdSuccessResponse(propertySliderResponseMain: PropertySliderResponseMain) {
+    override fun getPropertySliderByIdSuccessResponse(propertySliderResponseMain: PropertyDetailsResponseSliderMain) {
         iPropertySliderListener.onSuccessPropertySliderById(propertySliderResponseMain)
     }
 
-    override fun getPropertySliderByIdFailureResponse(propertySliderResponseMain: PropertySliderResponseMain) {
+    override fun getPropertySliderByIdFailureResponse(propertySliderResponseMain: PropertyDetailsResponseSliderMain) {
        iPropertySliderListener.onFailurePropertySliderById(propertySliderResponseMain)
     }
 
