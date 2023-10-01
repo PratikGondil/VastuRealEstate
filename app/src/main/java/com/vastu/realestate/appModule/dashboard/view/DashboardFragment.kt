@@ -1,25 +1,17 @@
 package com.vastu.realestate.appModule.dashboard.view
 
-import android.annotation.SuppressLint
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Intent
-import android.graphics.PixelFormat
-import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
-import android.widget.MediaController
 import android.widget.TextView
-import android.widget.VideoView
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aemerse.slider.listener.CarouselListener
 import com.aemerse.slider.model.CarouselItem
-import com.denzcoskun.imageslider.constants.ScaleTypes
-import com.denzcoskun.imageslider.interfaces.ItemClickListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.activity.LoginActivity
@@ -219,8 +211,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
             override fun onClick(position: Int, carouselItem: CarouselItem) {
                 var selectedPostition = getAdvertisementSlider.advertiseData[position]
                 if(selectedPostition.type =="video"){
-                    val dialog = FullScreenDialog(requireContext(), getAdvertisementSlider.advertiseData[position].link)
-                    dialog.show()
+                  createDialogDashboard(getAdvertisementSlider.advertiseData[position].link)
                 }else{
                     createImageDialog(imageListCarousel.get(position).imageUrl!!)
                     dashboardBinding.imageSlider.visibility = View.VISIBLE
@@ -234,6 +225,20 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
 
     }
 
+
+    fun createDialogDashboard(link: String) {
+        val dialog = Dialog(requireContext(), android.R.style.Theme_Translucent_NoTitleBar_Fullscreen)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.custom_video_dialog)
+        val videoView = dialog.findViewById<com.potyvideo.library.AndExoPlayerView>(R.id.andExoPlayerViewType)
+        val closeImageView = dialog.findViewById<ImageView>(R.id.img_cross)
+        videoView.setSource(link)
+        closeImageView.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
     override fun onLoanClick() {
         showProgressDialog()
         findNavController().navigate(R.id.action_VastuDashboardFragment_to_LoanFragment)

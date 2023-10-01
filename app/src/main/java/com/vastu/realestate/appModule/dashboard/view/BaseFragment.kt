@@ -3,7 +3,6 @@ package com.vastu.realestate.appModule.dashboard.view
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.res.Configuration
-import android.net.Uri
 import android.os.Build
 import android.widget.CheckBox
 import android.widget.ImageView

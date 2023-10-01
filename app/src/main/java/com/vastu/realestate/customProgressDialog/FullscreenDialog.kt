@@ -19,7 +19,6 @@ class FullScreenDialog(context: Context, videoUrl: String) : Dialog(context) {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.custom_video_dialog)
         window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
-
         // Initialize VideoView and ImageView
         val videoView = findViewById<com.potyvideo.library.AndExoPlayerView>(R.id.andExoPlayerViewType)
         val closeImageView = findViewById<ImageView>(R.id.img_cross)
