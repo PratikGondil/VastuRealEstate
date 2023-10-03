@@ -541,8 +541,6 @@ Napp/src/main/java/com/vastu/realestate/appModule/signUp/view/SignUpFragment.kt
 Wapp/src/main/java/com/vastu/realestate/appModule/dashboard/adapter/RealEstateAdapter.kt,b\8\b80270b3a5298f27d555f657140054a9ceda9844
 …
 Uapp/src/main/java/com/vastu/realestate/appModule/dashboard/view/RealEstateFragment.kt,2\5\2512a79ce20829a35be2f188a23e5facd797eb17
-Œ
-\app/src/main/java/com/vastu/realestate/appModule/dashboard/view/RealEstateDetailsFragment.kt,e\4\e4285e0c3792c851a2a8725299208725f4d9e981
 —
 gapp/src/main/java/com/vastu/realestate/appModule/dashboard/view/bottomnav/UpcomingPropertiesFragment.kt,5\1\51607baa739b4210d70b5bf4c2aac54e2cd8b0ac
 

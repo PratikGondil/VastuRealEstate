@@ -61,6 +61,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/dimen8sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:textColor="@color/white"
                         android:clickable="true"
                         android:text="@string/builder_profile"/>
@@ -70,11 +72,15 @@
                         android:textColor="@color/white"
                         android:clickable="true"
                         android:textSize="@dimen/dimen8sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:text="@string/details"/>
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/dimen8sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:textColor="@color/white"
                         android:clickable="true"
                         android:text="@string/amenities"/>
@@ -82,12 +88,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/dimen8sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:textColor="@color/white"
                         android:text="@string/builder_profile"/>
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/dimen8sp"
+                        android:textSize="@dimen/dimen8sp"  android:textStyle="bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:textColor="@color/white"
                         android:text="@string/details"/>
                     <com.google.android.material.tabs.TabItem
@@ -95,6 +104,8 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
                         android:textSize="@dimen/dimen8sp"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:text="@string/amenities"/>
                 </com.google.android.material.tabs.TabLayout>
                 <androidx.viewpager.widget.ViewPager
@@ -162,6 +173,7 @@
                             android:text="@{propertyData.priceMinWord + propertyData.priceMaxWord}"
                             android:textColor="@color/black"
                             android:textSize="@dimen/dimens20sp"
+                            android:textStyle="bold"
                             app:fontFamily="@font/open_sans_bold" />
 
                         <TextView
@@ -262,6 +274,7 @@
                                 android:text="@string/title"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -277,6 +290,7 @@
                                 android:text="@string/type"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -292,6 +306,7 @@
                                 android:text="@string/sell_type"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -307,6 +322,7 @@
                                 android:text="@string/bedrooms"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -322,6 +338,7 @@
                                 android:text="@string/bathrooms"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -337,6 +354,7 @@
                                 android:text="@string/kitchen"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -352,6 +370,7 @@
                                 android:text="@string/balcony"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -367,6 +386,7 @@
                                 android:text="@string/floors"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -382,6 +402,7 @@
                                 android:text="@string/furnishing"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -397,6 +418,7 @@
                                 android:text="@string/price"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -412,6 +434,7 @@
                                 android:text="@string/booking_amount"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -427,6 +450,7 @@
                                 android:text="@string/city_text"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -442,6 +466,7 @@
                                 android:text="@string/sub_area"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -457,6 +482,7 @@
                                 android:text="@string/construction"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -472,6 +498,7 @@
                                 android:text="@string/status"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -487,6 +514,7 @@
                                 android:text="@string/super_builtup"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -502,6 +530,7 @@
                                 android:text="@string/area_ft"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -517,6 +546,7 @@
                                 android:text="@string/availability"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -532,6 +562,7 @@
                                 android:text="@string/build_year"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/text_size_small"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -547,6 +578,7 @@
                                 android:text="@string/rera_no"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <View
@@ -562,6 +594,7 @@
                                 android:text="@string/brief_details"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                         </LinearLayout>
@@ -587,6 +620,7 @@
                                 android:text="@{propertyData.propertyTitle}"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -596,6 +630,7 @@
                                 android:text="@{propertyData.propertyType}"
                                 android:textColor="@color/black"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -607,6 +642,7 @@
                                 android:text="@{propertyData.sellType}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -617,6 +653,7 @@
                                 android:text="@{propertyData.bedroom}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -628,6 +665,7 @@
                                 android:text="@{propertyData.bathroom}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -639,6 +677,7 @@
                                 android:text="@{propertyData.kitchen}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -650,6 +689,7 @@
                                 android:text="@{propertyData.balcony}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -661,6 +701,7 @@
                                 android:text="@{propertyData.floors}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -672,6 +713,7 @@
                                 android:text="@string/unfurnished"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -683,6 +725,7 @@
                                 android:text="@{propertyData.price}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -694,6 +737,7 @@
                                 android:text="@{propertyData.bookingAmount}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -705,6 +749,7 @@
                                 android:text="@{propertyData.city}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -716,6 +761,7 @@
                                 android:text="@{propertyData.area}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -727,6 +773,7 @@
                                 android:text="@string/ready_to_move"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -738,6 +785,7 @@
                                 android:text="@{propertyData.state}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -749,6 +797,7 @@
                                 android:text="@{propertyData.state}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -760,6 +809,7 @@
                                 android:text="@{propertyData.propertyArea}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -771,6 +821,7 @@
                                 android:text="@{propertyData.availability}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -782,6 +833,7 @@
                                 android:text="@{propertyData.buildYear}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -793,6 +845,7 @@
                                 android:text="@{propertyData.area}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
                         </LinearLayout>
 
@@ -840,6 +893,7 @@
                                 android:text="@string/amenities"
                                 android:textColor="@color/button_color"
                                 android:textSize="@dimen/dimens20sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <androidx.recyclerview.widget.RecyclerView
@@ -872,6 +926,7 @@
                                 android:text="@string/description"
                                 android:textColor="@color/button_color"
                                 android:textSize="@dimen/dimens20sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -909,6 +964,7 @@
                                 android:text="@string/highlights"
                                 android:textColor="@color/button_color"
                                 android:textSize="@dimen/dimens20sp"
+                                android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
@@ -940,6 +996,7 @@
                             android:text="@string/property_photo_amp_floor_plan"
                             android:textColor="@color/button_color"
                             android:textSize="@dimen/dimens20sp"
+                            android:textStyle="bold"
                             app:fontFamily="@font/open_sans_bold" />
                         <com.aemerse.slider.ImageCarousel
                             android:id="@+id/image_slider_property_plan"
@@ -979,6 +1036,7 @@
                             android:text="@string/brochure"
                             android:textColor="@color/button_color"
                             android:textSize="@dimen/dimens20sp"
+                            android:textStyle="bold"
                             app:fontFamily="@font/open_sans_bold" />
                         <com.aemerse.slider.ImageCarousel
                             android:id="@+id/image_slider_property_brochure"
@@ -998,6 +1056,7 @@
                             android:text="@string/downloadBrochure"
                             android:textColor="@color/white"
                             android:textSize="@dimen/text_size_small"
+                            android:textStyle="bold"
                             app:fontFamily="@font/open_sans_bold" />
                     </LinearLayout>
 
@@ -1025,6 +1084,7 @@
                             android:text="@string/similar_project"
                             android:textColor="@color/button_color"
                             android:textSize="@dimen/dimens20sp"
+                            android:textStyle="bold"
                             app:fontFamily="@font/open_sans_bold" />
 
                         <androidx.recyclerview.widget.RecyclerView

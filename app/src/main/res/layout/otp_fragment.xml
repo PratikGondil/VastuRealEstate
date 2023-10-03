@@ -183,9 +183,9 @@
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btnNextButton"
+                        btnBackground="@{otpViewModel.btnBackground}"
                         context="@{context}"
                         isValidOTP="@{otpViewModel.isValidOTP()}"
-                        btnBackground="@{otpViewModel.btnBackground}"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
@@ -193,6 +193,8 @@
                         android:gravity="center"
                         android:onClick="@{(view)->otpViewModel.onOtpSubmitClick()}"
                         android:text="@string/submit_btn_text"
+                        android:fontFamily="@font/open_sans_bold"
+                        android:textStyle="bold"
                         android:textColor="@color/white" />
                 </RelativeLayout>
             </LinearLayout>
