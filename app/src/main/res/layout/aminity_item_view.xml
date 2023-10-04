@@ -18,15 +18,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/dimen15dp"
+        android:padding="@dimen/dimen5dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="@dimen/dimen40dp"
-            android:layout_height="@dimen/dimen40dp"
+            android:layout_width="@dimen/dimen30dp"
+            android:layout_height="@dimen/dimen30dp"
             android:src="@drawable/ic_like__1_" />
 
         <TextView
@@ -34,10 +34,11 @@
             android:layout_marginStart="@dimen/dimen15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/dimen15sp"
             android:textColor="@color/black"
-            android:fontFamily="@font/open_sans_bold"
-            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/dimen15sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/open_sans_bold"
+            android:layout_gravity="center"
             android:text="Item Text" />
     </LinearLayout>
 
