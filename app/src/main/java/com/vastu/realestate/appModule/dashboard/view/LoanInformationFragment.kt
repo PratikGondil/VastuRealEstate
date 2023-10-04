@@ -42,6 +42,10 @@ class LoanInformationFragment : BaseFragment(), ILoanInfoListener, IToolbarListe
     }
 
     private fun getBundleData(){
+        if(activity is DashboardActivity)
+        {
+            (activity as DashboardActivity).bottomNavigationView.visibility= View.GONE
+        }
         val args = this.arguments
         if (args != null){
             if (args.getSerializable(BaseConstant.LOAN_DATA) != null) {

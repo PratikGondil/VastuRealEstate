@@ -239,8 +239,6 @@ dapp/src/main/java/com/vastu/realestate/appModule/enquiry/bindingadapter/AddProp
 ^app/src/main/java/com/vastu/realestate/appModule/enquirylist/adapter/PropertyEnquiryAdapter.kt,a\a\aa082cbb9932249ca49b0d50c02c9557ec45ac18
 Š
 Zapp/src/main/java/com/vastu/realestate/appModule/enquirylist/adapter/LoanEnquiryAdapter.kt,e\e\ee12cce68df6a11af85059ee16635e13310fd237
-Œ
-\app/src/main/java/com/vastu/realestate/appModule/enquirylist/view/LoanEnquiryListFragment.kt,1\9\19001689be502198c9db74d08a9c6c657737975c
 „
 Tapp/src/main/java/com/vastu/realestate/appModule/enquirylist/view/EnquiryActivity.kt,0\9\09495fab283503ad0b75773116e2305f49fb1203
 ˆ
