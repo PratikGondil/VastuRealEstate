@@ -57,7 +57,7 @@
             app:tabIndicatorHeight="@dimen/tab_height"
             app:tabSelectedTextColor="@color/tab_selected_text_color"
             app:tabTextAppearance="@style/TabTextStyle"
-            app:tabTextColor="@color/icon_color"
+            app:tabTextColor="@color/gray_hint"
             tools:ignore="SpeakableTextPresentCheck" />
         <androidx.viewpager2.widget.ViewPager2
             android:id ="@+id/vpSignUpLogin"

@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="@dimen/dimen150dp"
         android:layout_height="@dimen/dimen150dp"
-        android:src="@drawable/vastu_logo_splash"
+        android:src="@drawable/ic_vastu_splash_scrren_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

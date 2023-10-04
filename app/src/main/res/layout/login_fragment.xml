@@ -52,18 +52,20 @@
                     android:textAlignment="center"
                     android:textColorHint="@color/black"
                     app:hintEnabled="false"
+                    app:helperTextTextAppearance="@font/open_sans_extra_bold"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
                     app:placeholderText="@string/mobile_number_text"
                     app:placeholderTextColor="@color/black"
                     app:startIconDrawable="@drawable/phone"
                     app:helperText="@{loginViewModel.error}"
-                    app:helperTextTextColor="@color/red"
+                    app:helperTextTextColor="@color/button_color"
                     >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtMobile"
                         style="@style/TextAppearance"
+                        android:fontFamily="@font/open_sans_bold"
                         validateMobileNo="@{loginViewModel}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -75,6 +77,7 @@
                         android:focusableInTouchMode="true"
                         android:focusable="true"
                         android:imeOptions="actionDone"
+                        android:textStyle="bold"
                         android:singleLine="true"
                         android:maxLength="10"/>
 
@@ -95,11 +98,12 @@
                 <TextView
                     android:id="@+id/txtSendOtp"
                     android:textColor="@color/black"
-                    app:fontFamily="@font/open_sans_semibold"
+                    app:fontFamily="@font/open_sans_bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
                     android:text="@string/we_will_send_otp" />
 
 
@@ -126,6 +130,7 @@
                     android:text="@string/send_otp_text"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_normal"
+                    android:textStyle="bold"
                     app:fontFamily="@font/poppins_medium" />
             </RelativeLayout>
         </LinearLayout>
