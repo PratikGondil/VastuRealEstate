@@ -196,8 +196,6 @@ qregistrationCore/src/main/java/com/vastu/realestate/registrationcore/model/resp
 Ž
 ^userTypeCore/src/main/java/com/vastu/slidercore/model/response/property/PropertySliderImage.kt,d\4\d424f3d455e7379427902fd9757a2963fb2d7370
 ˆ
-Xapp/src/main/java/com/vastu/realestate/rootModule/splash/view/activity/SplashActivity.kt,0\9\094f45bdd942a7c3204d995eae434f15128c22e4
-ˆ
 XuserTypeCore/src/main/java/com/vastu/editproperty/model/response/EditPropertyResponse.kt,c\3\c31999fcbb6fbbc88f65e46a5c66b45c1b5e6138
 ˆ
 XuserTypeCore/src/main/java/com/vastu/addproperty/callback/request/IAddPropertyRequest.kt,3\e\3e87c4d1c22749c42abfa6a82a66e0e92b43a25b
@@ -471,10 +469,6 @@ z
 J.idea/libraries/Gradle__androidx_exifinterface_exifinterface_1_3_3_aar.xml,9\a\9a07aa26225c2ac9bd5adf05f1e03272c0ea8a20
 {
 K.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_14_2_aar.xml,6\8\6873d5a884da442474442353dce828a8331a5873
-^
-..idea/modules/app/VastuRealEstate.app.main.iml,c\3\c39151322fe3698d15a1a9cf92442bd7084a6ec2
-b
-2.idea/modules/app/VastuRealEstate.app.unitTest.iml,a\9\a91e374a62c57493b957cd94cbd05426dfd0ef28
 G
 commoncore/build.gradle,2\6\2633d0f14b37331cddb08f2ccbff1715b7a0c865
 k
@@ -533,8 +527,6 @@ _app/src/main/java/com/vastu/realestate/appModule/dashboard/viewmodel/VastuDashb
 dapp/src/main/java/com/vastu/realestate/appModule/dashboard/view/bottomnav/PrimePropertiesFragment.kt,d\4\d4e671fabd1ab9d2a0d47efb01334002b09bf039
 w
 Gapp/src/main/java/com/vastu/realestate/appModule/video/VideoFragment.kt,9\e\9e932493aa16a7852375e1e7cf3051f1ada52006
-~
-Napp/src/main/java/com/vastu/realestate/appModule/signUp/view/SignUpFragment.kt,3\1\31553533d40c3d4831c787431b362e4442f6602f
 Œ
 \app/src/main/java/com/vastu/realestate/appModule/utils/properties/view/PropertiesFragment.kt,1\6\16f2f51f4f1a816fec175179f7a44dc89b0d61f0
 ‡

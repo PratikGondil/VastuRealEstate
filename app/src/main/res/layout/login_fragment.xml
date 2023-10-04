@@ -52,6 +52,7 @@
                     android:textAlignment="center"
                     android:textColorHint="@color/black"
                     app:hintEnabled="false"
+                    app:helperTextTextAppearance="@font/open_sans_semibold"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
                     app:placeholderText="@string/mobile_number_text"
@@ -64,6 +65,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtMobile"
                         style="@style/TextAppearance"
+                        android:fontFamily="@font/open_sans_regular"
                         validateMobileNo="@{loginViewModel}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -100,6 +102,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
                     android:text="@string/we_will_send_otp" />
 
 
@@ -126,6 +129,7 @@
                     android:text="@string/send_otp_text"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_normal"
+                    android:textStyle="bold"
                     app:fontFamily="@font/poppins_medium" />
             </RelativeLayout>
         </LinearLayout>

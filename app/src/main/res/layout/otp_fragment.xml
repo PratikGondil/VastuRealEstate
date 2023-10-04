@@ -97,9 +97,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/roboto_bold"
+                    android:fontFamily="@font/poppins_light"
                     android:text="@string/sent_otp_text"
-                    android:textSize="@dimen/text_size_small"
+                    android:textSize="@dimen/text_size_xsmall"
                     android:layout_weight="0.1"
                     android:gravity="center"
                     />
@@ -153,6 +153,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    android:fontFamily="@font/poppins_light"
                     android:textColor="@color/black_text"
                     android:text="@string/otp_not_received"
                     android:layout_weight="0.1"/>
@@ -165,7 +166,6 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="@string/resend_otp"
-
                     android:selectAllOnFocus="false"
                     android:linksClickable="false"
                     android:autoLink="all"

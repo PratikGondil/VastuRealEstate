@@ -27,7 +27,7 @@
                 android:id="@+id/image"
                 android:layout_width="@dimen/image_width"
                 android:layout_height="@dimen/image_height"
-                android:src="@drawable/mobile"
+                android:src="@drawable/ic_vastu_select_language_logo"
                 android:layout_marginTop="@dimen/margin_xxxlarge"
                 android:layout_gravity="center"
                 android:scaleType="fitCenter"/>
@@ -48,24 +48,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/rlMainTop"
-                android:layout_margin="@dimen/dimen50dp"
+                android:layout_margin="@dimen/dimen30dp"
                 android:background="@drawable/white_background"
 
                 >
+
                 <TextView
+                    android:id="@+id/txtSelectLanguage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/txtSelectLanguage"
                     android:text="Select Language"
-                    android:textSize="@dimen/dimens20sp"
                     android:textColor="#ED9318"
-                    />
+                    android:textSize="@dimen/dimens20sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/poppins_regular" />
 
                 <RadioGroup
                     android:id="@+id/radioLanguage"
-                    android:layout_marginTop="@dimen/dimen50dp"
+                    android:layout_marginTop="@dimen/dimen30dp"
                     android:layout_below="@+id/txtSelectLanguage"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
                     <RadioButton
                         android:id="@+id/chkMarathi"
@@ -73,7 +75,15 @@
                         android:layout_height="wrap_content"
                         android:padding="@dimen/dimen10dp"
                         android:text="मराठी"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/dimens20sp"
+                        app:fontFamily="@font/open_sans_bold"
                         android:checked="@={selectLanguageViewModel.isMarathiSelected()}"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:background="@color/border_color" />
                     <RadioButton
                         android:id="@+id/chkEnglish"
                         android:layout_width="wrap_content"
@@ -81,23 +91,34 @@
                         android:padding="@dimen/dimen10dp"
                         android:layout_below="@+id/chkMarathi"
                         android:text="English"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_size18sp"
+                        app:fontFamily="@font/open_sans_bold"
                         android:checked="@={selectLanguageViewModel.isEnglishSelected()}"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:textStyle="bold"
+                        app:fontFamily="@font/open_sans_bold"
+                        android:background="@color/border_color" />
                 </RadioGroup>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnNext"
                     android:layout_width="130dp"
                     android:layout_height="wrap_content"
+                    android:layout_below="@id/radioLanguage"
+                    android:layout_centerHorizontal="true"
                     android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dimen110dp"
                     android:background="@{selectLanguageViewModel.btnBackground}"
                     android:onClick="@{(view)->selectLanguageViewModel.onNextClick()}"
                     android:text="@string/next"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_normal"
-                    android:layout_marginTop="@dimen/dimen50dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@id/radioLanguage"
-                    app:fontFamily="@font/poppins_medium" />
+                    android:textSize="@dimen/text_size18sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/open_sans_bold" />
 
             </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

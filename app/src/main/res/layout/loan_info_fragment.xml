@@ -53,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:gravity="start"
+        android:letterSpacing="0"
         android:layout_marginTop="@dimen/dimen10dp"
         android:padding="@dimen/dimen10dp"
         android:drawablePadding="@dimen/dimen5dp"

@@ -260,7 +260,9 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="@dimen/margin_medium"
                         android:layout_marginTop="@dimen/dimen15dp"
-                        android:backgroundTint="@color/button_color">
+                        android:backgroundTint="@color/button_color"
+                        app:cardCornerRadius="@dimen/dimen20dp"
+                        >
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -1117,6 +1119,7 @@
                 android:onClick="@{(view)->realEstateDetailsViewModel.onClickPropertyEnquiry()}"
                 android:background="@drawable/button_bg"
                 android:text="@string/enquiry"
+                android:textStyle="bold"
                 android:textSize="@dimen/text_size_small"
                 android:fontFamily="@font/open_sans_bold"
                 android:textColor="@color/button_color"
@@ -1132,6 +1135,7 @@
                 android:fontFamily="@font/open_sans_bold"
                 android:background="@drawable/btn_bg"
                 android:textSize="@dimen/text_size_small"
+                android:textStyle="bold"
                 android:text="@string/add_to_wishlist"
                 android:textColor="@color/white" />
         </LinearLayout>
