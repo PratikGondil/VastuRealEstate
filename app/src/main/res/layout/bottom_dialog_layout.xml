@@ -39,6 +39,7 @@
             android:maxLines="4"
             android:textColor="@color/text_color"
             android:textSize="@dimen/text_size_normal"
-            app:fontFamily="@font/poppins_regular" />
+            android:textStyle="bold"
+            app:fontFamily="@font/open_sans_bold" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

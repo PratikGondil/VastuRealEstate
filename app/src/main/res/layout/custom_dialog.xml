@@ -14,6 +14,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen50dp"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -260,6 +261,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/font"
+                android:fontFamily="@font/open_sans_bold"
                 android:text="@string/accept_terms"
                 android:textColor="@color/button_color"/>
         </LinearLayout>

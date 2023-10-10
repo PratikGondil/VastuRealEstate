@@ -97,7 +97,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/open_sans_semibold"
+                    android:fontFamily="@font/open_sans_bold"
+                    android:textStyle="bold"
                     android:text="@string/sent_otp_text"
                     android:textSize="@dimen/text_size_small"
                     android:layout_weight="0.1"
@@ -153,14 +154,15 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:fontFamily="@font/poppins_light"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:textColor="@color/black_text"
                     android:text="@string/otp_not_received"
                     android:layout_weight="0.1"/>
 
                 <TextView
                     android:id="@+id/txtResendOtp"
-                    style="@style/TextAppearance"
+                    style="@style/font"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

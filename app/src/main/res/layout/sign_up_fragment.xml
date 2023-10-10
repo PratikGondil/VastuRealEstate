@@ -53,7 +53,8 @@
                 app:boxStrokeColor="@color/black"
                 app:expandedHintEnabled="false"
                 app:helperText="@string/required"
-                app:helperTextTextColor="@color/red"
+                app:helperTextTextAppearance="@style/font"
+                app:helperTextTextColor="@color/button_color"
                 app:hintEnabled="false"
                 app:placeholderText="@string/first_name_text"
                 app:placeholderTextColor="@color/black"
@@ -61,7 +62,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtFirstName"
-                    style="@style/TextAppearance"
+                    style="@style/font"
                     validateField="@{signUpViewModel}"
                     tilLayout="@{tilFirstName}"
                     android:layout_width="match_parent"
@@ -74,7 +75,8 @@
                     android:text="@{signUpViewModel.firstName}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:fontFamily="@font/open_sans_bold"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,15 +93,16 @@
                 app:boxStrokeColor="@color/black"
                 app:expandedHintEnabled="false"
                 app:helperText="@string/required"
-                app:helperTextTextColor="@color/red"
+                app:helperTextTextColor="@color/button_color"
                 app:hintEnabled="false"
+                app:helperTextTextAppearance="@style/font"
                 app:placeholderText="@string/middle_name_text"
                 app:placeholderTextColor="@color/black"
                 app:startIconDrawable="@drawable/first_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtMiddleName"
-                    style="@style/TextAppearance"
+                    style="@style/font"
                     validateField="@{signUpViewModel}"
                     tilLayout="@{tilMiddleName}"
                     android:layout_width="match_parent"
@@ -112,7 +115,8 @@
                     android:text="@{signUpViewModel.middleName}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:fontFamily="@font/open_sans_bold"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -130,15 +134,16 @@
                 app:boxStrokeColor="@color/black"
                 app:expandedHintEnabled="false"
                 app:helperText="@string/required"
-                app:helperTextTextColor="@color/red"
+                app:helperTextTextColor="@color/button_color"
                 app:hintEnabled="false"
+                app:helperTextTextAppearance="@style/font"
                 app:placeholderText="@string/last_name_text"
                 app:placeholderTextColor="@color/black"
                 app:startIconDrawable="@drawable/first_name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtLastName"
-                    style="@style/TextAppearance"
+                    style="@style/font"
                     validateField="@{signUpViewModel}"
                     tilLayout="@{tilLastName}"
                     android:layout_width="match_parent"
@@ -150,7 +155,8 @@
                     android:text="@{signUpViewModel.lastName}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:fontFamily="@font/open_sans_bold"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -167,15 +173,16 @@
                 app:boxStrokeColor="@color/black"
                 app:expandedHintEnabled="false"
                 app:helperText="@string/required"
-                app:helperTextTextColor="@color/red"
+                app:helperTextTextColor="@color/button_color"
                 app:hintEnabled="false"
+                app:helperTextTextAppearance="@style/font"
                 app:placeholderText="@string/mobile_number_text"
                 app:placeholderTextColor="@color/black"
                 app:startIconDrawable="@drawable/phone">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtMobileNum"
-                    style="@style/TextAppearance"
+                    style="@style/font"
                     validateField="@{signUpViewModel}"
                     tilLayout="@{tilMobileNum}"
                     android:layout_width="match_parent"
@@ -188,7 +195,8 @@
                     android:text="@{signUpViewModel.mobileNumber}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:fontFamily="@font/open_sans_bold"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -205,15 +213,16 @@
                 app:boxStrokeColor="@color/black"
                 app:expandedHintEnabled="false"
                 app:helperText="@string/required"
-                app:helperTextTextColor="@color/red"
+                app:helperTextTextColor="@color/button_color"
                 app:hintEnabled="false"
+                app:helperTextTextAppearance="@style/font"
                 app:placeholderText="@string/email_id_text"
                 app:placeholderTextColor="@color/black"
                 app:startIconDrawable="@drawable/email">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtEmail"
-                    style="@style/TextAppearance"
+                    style="@style/font"
                     validateField="@{signUpViewModel}"
                     tilLayout="@{tilEmailId}"
                     android:layout_width="match_parent"
@@ -226,7 +235,8 @@
                     android:text="@{signUpViewModel.mailId}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
-                    tools:ignore="SpeakableTextPresentCheck" />
+                    tools:ignore="SpeakableTextPresentCheck"
+                    android:fontFamily="@font/open_sans_bold"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -242,15 +252,16 @@
                 android:textColorHint="@color/black"
                 app:boxStrokeColor="@color/black"
                 app:expandedHintEnabled="false"
-                app:helperTextTextColor="@color/red"
+                app:helperTextTextColor="@color/button_color"
                 app:hintEnabled="false"
+                app:helperTextTextAppearance="@style/font"
                 app:placeholderText="@string/last_name_text"
                 app:placeholderTextColor="@color/black"
                 app:startIconDrawable="@drawable/sub_area">
 
                 <com.google.android.material.textfield.TextInputEditText
                  android:id="@+id/edtAddress"
-                style="@style/TextAppearance"
+                style="@style/font"
                 validateField="@{signUpViewModel}"
                 tilLayout="@{tilAddress}"
                 android:layout_width="match_parent"
@@ -284,15 +295,16 @@
                 app:endIconMode="custom"
                 app:expandedHintEnabled="false"
                 app:helperText="@string/required"
-                app:helperTextTextColor="@color/red"
+                app:helperTextTextColor="@color/button_color"
                 app:hintEnabled="false"
+                app:helperTextTextAppearance="@style/font"
                 app:placeholderText="@string/city_text"
                 app:placeholderTextColor="@color/black"
                 app:startIconDrawable="@drawable/city">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/autoCompleteCity"
-                    style="@style/TextAppearance"
+                    style="@style/font"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -327,15 +339,16 @@
                 app:endIconMode="custom"
                 app:expandedHintEnabled="false"
                 app:helperText="@string/required"
-                app:helperTextTextColor="@color/red"
+                app:helperTextTextColor="@color/button_color"
                 app:hintEnabled="false"
+                app:helperTextTextAppearance="@style/font"
                 app:placeholderText="@string/sub_area_text"
                 app:placeholderTextColor="@color/black"
                 app:startIconDrawable="@drawable/sub_area">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/autoCompleteAreaList"
-                    style="@style/TextAppearance"
+                    style="@style/font"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -379,7 +392,9 @@
                 android:background="@{signUpViewModel.btnBackground}"
                 android:clickable="true"
                 android:enabled="false"
-                android:fontFamily="@font/poppins_medium"
+                android:fontFamily="@font/open_sans_bold"
+                android:textStyle="bold"
+                android:gravity="center"
                 android:onClick="@{(view)->signUpViewModel.onSubmitBtnClick()}"
                 android:text="@string/submit_btn_text"
                 android:textColor="@color/white" />
