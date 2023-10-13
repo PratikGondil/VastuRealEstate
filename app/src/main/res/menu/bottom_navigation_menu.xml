@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/VastuDashboardFragment"
         android:icon="@drawable/home_bottom_nav"
-        android:title="@string/home_text"/>
+        android:title="@string/home_text"
+        app:fontFamily="@font/open_sans_bold"
+        android:fontFamily="@font/open_sans_bold"/>
 
     <item
         android:id="@+id/primePropertiesFragment"
         android:icon="@drawable/prime_properties"
-        android:title="@string/prime_properties_text" />
+        android:title="@string/prime_properties_text"
+        app:fontFamily="@font/open_sans_bold"
+        android:fontFamily="@font/open_sans_bold" />
 
     <item
         android:id="@+id/upcomingpropertiesFragment"
         android:icon="@drawable/upcoming_schemes"
-        android:title="@string/upcoming_schemes_text"/>
+        android:title="@string/upcoming_schemes_text"
+        app:fontFamily="@font/open_sans_bold"
+        android:fontFamily="@font/open_sans_bold"/>
 
     <item
         android:id="@+id/ourServicesFragment"
         android:icon="@drawable/our_services"
-        android:title="@string/our_services_text"/>
+        android:title="@string/our_services_text"
+        app:fontFamily="@font/open_sans_bold"
+        android:fontFamily="@font/open_sans_bold"/>
 
     <item
         android:id="@+id/wishlistFragment"
         android:icon="@drawable/wishlist"
-        android:title="@string/wishlist_text"/>
+        android:title="@string/wishlist_text"
+        app:fontFamily="@font/open_sans_bold"
+        android:fontFamily="@font/open_sans_bold"/>
 
 </menu>

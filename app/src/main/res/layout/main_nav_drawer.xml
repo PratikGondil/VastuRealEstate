@@ -72,6 +72,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             app:fontFamily="@font/open_sans_bold"
+                            android:fontFamily="@font/open_sans_bold"
                             android:textColor="@color/white"
                             android:text="@{drawerViewModel.userName}"
                             android:textSize="@dimen/text_size_semilarge" />
@@ -125,7 +126,8 @@
                     android:textColor="@color/black"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
-                    android:fontFamily="@font/open_sans_extra_bold"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
                     android:textStyle="bold"
                     android:text="@string/home_text" />
@@ -156,7 +158,8 @@
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
-                    android:fontFamily="@font/open_sans_extra_bold"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
                     android:textStyle="bold"
                     android:text="@string/enquiry" />
@@ -188,7 +191,8 @@
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
-                    android:fontFamily="@font/open_sans_extra_bold"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
                     android:textStyle="bold"
                     android:text="@string/properties" />
@@ -219,7 +223,8 @@
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
-                    android:fontFamily="@font/open_sans_extra_bold"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
                     android:textStyle="bold"
                     android:text="@string/employees" />
@@ -250,7 +255,8 @@
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
-                    android:fontFamily="@font/open_sans_extra_bold"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
                     android:textStyle="bold"
                     android:text="@string/offers" />
@@ -280,7 +286,8 @@
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
-                    android:fontFamily="@font/open_sans_extra_bold"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
                     android:textStyle="bold"
                     android:text="@string/change_language" />
@@ -310,7 +317,8 @@
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
-                    android:fontFamily="@font/open_sans_extra_bold"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
                     android:textStyle="bold"
                     android:text="@string/feedback" />
@@ -340,7 +348,8 @@
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
-                    android:fontFamily="@font/open_sans_extra_bold"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
                     android:textStyle="bold"
                     android:text="@string/rate_us" />
@@ -370,7 +379,8 @@
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
-                    android:fontFamily="@font/open_sans_extra_bold"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
                     android:textStyle="bold"
                     android:text="@string/contact_us" />
@@ -433,7 +443,8 @@
                     android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/text_size_small"
-                    android:fontFamily="@font/open_sans_extra_bold"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
                     android:textStyle="bold"
                     android:text="@string/logout" />
