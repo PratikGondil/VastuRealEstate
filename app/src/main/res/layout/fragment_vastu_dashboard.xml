@@ -39,12 +39,16 @@
                 android:id="@+id/image_slider"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/banner_image_height"
-                app:previousButtonLayout="@style/buttonStyle"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintVertical_bias="0.5"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
+
+<!--
+    app:previousButtonLayout="@layout/custom_previous_button"
+-->
+
     <me.relex.circleindicator.CircleIndicator2
         android:id="@+id/custom"
         android:visibility="visible"
