@@ -547,5 +547,3 @@ y
 Iapp/src/main/java/com/vastu/realestate/appModule/rateUs/RateUsFragment.kt,6\e\6e8fd87f2e66859f4553f23f5803442306d7303f
 ‹
 [app/src/main/java/com/vastu/realestate/appModule/ourServies/viewPlan/OurServicesFragment.kt,2\4\24a1073c66897d0c63ef5cd5b2526c92957e60c7
-Œ
-\app/src/main/java/com/vastu/realestate/appModule/dashboard/view/RealEstateDetailsFragment.kt,e\4\e4285e0c3792c851a2a8725299208725f4d9e981

@@ -37,6 +37,8 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dimen10dp"
                 android:text="मराठी"
+                app:fontFamily="@font/open_sans_bold"
+                android:fontFamily="@font/open_sans_bold"
                 android:checked="@={selectLanguageViewModel.isMarathiSelected()}"/>
             <View
                 android:layout_width="match_parent"
@@ -51,6 +53,8 @@
                 android:padding="@dimen/dimen10dp"
                 android:layout_below="@+id/chkMarathi"
                 android:text="English"
+                app:fontFamily="@font/open_sans_bold"
+                android:fontFamily="@font/open_sans_bold"
                 android:checked="@={selectLanguageViewModel.isEnglishSelected()}"/>
             <View
                 android:layout_width="match_parent"
@@ -73,7 +77,8 @@
             android:text="@string/done"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_normal"
-            app:fontFamily="@font/poppins_medium" />
+            app:fontFamily="@font/open_sans_bold"
+            android:fontFamily="@font/open_sans_bold" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

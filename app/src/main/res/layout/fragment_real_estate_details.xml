@@ -1107,8 +1107,9 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/related_recyclerView"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_marginStart="@dimen/margin_large"
+                            android:layout_margin="@dimen/dimen10dp"
                             tools:listitem="@layout/related_property_item_view" />
                     </LinearLayout>
                 </LinearLayout>

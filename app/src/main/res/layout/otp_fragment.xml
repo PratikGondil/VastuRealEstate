@@ -84,6 +84,7 @@
                     android:layout_gravity="center"
                     android:gravity="top|center"
                     app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:text="@string/submit_otp"
                     android:textColor="@color/colorSecondary"
                     android:textSize="@dimen/dimens20sp"
