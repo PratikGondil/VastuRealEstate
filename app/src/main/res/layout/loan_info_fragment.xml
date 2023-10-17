@@ -39,7 +39,7 @@
         android:layout_margin="@dimen/dimen20dp"
         android:textStyle="bold"
         android:textSize="@dimen/text_size_small"
-        android:fontFamily="@font/open_sans_bold"
+        android:fontFamily="@font/open_sans_extra_bold"
         android:maxLines="@{loanInfoViewModel.maxline}"
         android:text="@string/loan_info"
         app:layout_constraintTop_toBottomOf="@+id/llToolbarLayout"

@@ -31,6 +31,8 @@
                 android:text="@{cityList.subArea}"
                 android:textAppearance="@style/TextAppearance"
                 android:textColor="@color/black"
+                android:fontFamily="@font/open_sans_extra_bold"
+                android:textStyle="bold"
 
                 />
         </LinearLayout>

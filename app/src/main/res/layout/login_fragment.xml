@@ -52,6 +52,8 @@
                     android:textAlignment="center"
                     android:textColorHint="@color/black"
                     app:hintEnabled="false"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:textSize="@dimen/text_size_small"
                     app:helperTextTextAppearance="@style/font"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
@@ -64,8 +66,8 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtMobile"
-                        style="@style/TextAppearance"
                         android:fontFamily="@font/open_sans_bold"
+                        app:fontFamily="@font/open_sans_bold"
                         validateMobileNo="@{loginViewModel}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

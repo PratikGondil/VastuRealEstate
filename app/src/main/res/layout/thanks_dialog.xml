@@ -22,7 +22,8 @@
             android:layout_marginTop="@dimen/margin_xlarge"
             android:layout_marginBottom="@dimen/margin_small"
             android:text="@string/thanks_enquiry"
-            android:fontFamily="@font/poppins_regular"
+            android:fontFamily="@font/open_sans_extra_bold"
+            android:textStyle="bold"
             android:textSize="@dimen/text_size_small"
             android:gravity="center"/>
 
@@ -32,16 +33,19 @@
             android:layout_marginTop="@dimen/dimen5dp"
             android:layout_marginBottom="@dimen/margin_small"
             android:text="@string/contact_soon"
-            android:fontFamily="@font/poppins_regular"
             android:textSize="@dimen/text_size_small"
+            android:fontFamily="@font/open_sans_extra_bold"
+            android:textStyle="bold"
             android:gravity="center"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/Thanks"
-           android:layout_gravity="center"
+            android:layout_gravity="center"
             android:text="Ok"
+            android:fontFamily="@font/open_sans_extra_bold"
+            android:textStyle="bold"
             />
     </LinearLayout>
 
