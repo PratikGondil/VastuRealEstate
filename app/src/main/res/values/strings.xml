@@ -338,5 +338,38 @@
     <string name="property_photo_amp_floor_plan"><![CDATA[Property Photo & Floor Plan]]></string>
     <string name="advance_filter">Advance filter</string>
 
+    <string name="we_need_to_understand_your_profile">We Need To Understand Your Profile</string>
+    <string name="advertisement_plans">Advertisement Plans Are Only For Companies, Firm Or Person Who Deal In Real Estate Industry</string>
+    <string name="view_plans">View Plans</string>
+    <string name="plan_for_advertisement">Plan for Advertisement</string>
+    <string name="profile_advertisement">Profile</string>
+    <string name="builder_and_developers">Builder And Developers</string>
+    <string name="engineer_and_architect">Engineer And Architect</string>
+    <string name="construction_contractor">Construction Contractor</string>
+    <string name="cement">Cement</string>
+    <string name="steel">Steel</string>
+    <string name="hardware">Hardware</string>
+    <string name="marbles">Marbles</string>
+    <string name="centring_works">Centring Works</string>
+    <string name="electric_material">Electric Material</string>
+    <string name="pop_and_designs">POP And Designs</string>
+    <string name="paint_colour">Paint/Colour</string>
+    <string name="interior_designs_and_material">Interior Designs And Material</string>
+    <string name="furniture">Furniture</string>
+    <string name="bricks_cement_blocks">Bricks/Cement Blocks</string>
+    <string name="alluminium_works">Alluminium Works</string>
+    <string name="fabrication">Fabrication</string>
+    <string name="plumbing">Plumbing</string>
+    <string name="home_appliances">Home Appliances</string>
+    <string name="home_decor">Home Decor</string>
+
+    <string name="choose_mode_of_advertisement">Choose Mode Of Advertisement</string>
+    <string name="plan_for_video_advertisement">Plan For Video Advertisement</string>
+    <string name="facility_to_promote_your_products">Facility To Promote Your Products And Services To Customers In A Single Video Only With Vastu.</string>
+    <string name="check_demo">Check Demo</string>
+    <string name="plan_for_banner_advertisement">Plan For Banner Advertisement</string>
+    <string name="facility_to_promote_your_products_in_a_single_banner">Facility To Promote Your Products And Services To Customers In A Single Banner Only With Vastu.</string>
+    <string name="plans_for_property_owners">Plans For Property Owners</string>
+
 
 </resources>

@@ -304,4 +304,24 @@
             app:destination="@+id/VastuDashboardFragment"
             />
     </fragment>
+    <fragment
+        android:id="@+id/planForAdvertisementFragment"
+        android:name="com.vastu.realestate.appModule.ourServies.planForAdvertisement.PlanForAdvertisementFragment"
+        android:label="planForAdvertisementFragment"
+        tools:layout="@layout/plan_for_advertisement_fragment">
+
+        <action
+            android:id="@+id/action_planForAdvertisementFragment_to_modeForAdvertisementFragment"
+            app:destination="@+id/modeForAdvertisementFragment"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/modeForAdvertisementFragment"
+        android:name="com.vastu.realestate.appModule.ourServies.modeForAdvertisement.ModeForAdvertisementFragment"
+        android:label="modeForAdvertisementFragment"
+        tools:layout="@layout/mode_for_advertisement_fragment">
+
+    </fragment>
 </navigation>
