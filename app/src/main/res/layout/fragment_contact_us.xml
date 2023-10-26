@@ -95,15 +95,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txtFeelFree"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/dimen10dp"
         android:autoLink="web"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:padding="@dimen/dimen5dp"
         android:text="@string/email_add_value"
         android:textColor="@color/button_color"
-        android:textSize="@dimen/dimens20sp"
-        android:textFontWeight="500"
-        android:fontFamily="@font/open_sans_bold"/>
+        android:textSize="@dimen/dimen22sp"
+        android:fontFamily="@font/open_sans_bold"
+        app:fontFamily="@font/open_sans_bold"
+        android:textStyle="bold"/>
 </androidx.cardview.widget.CardView>
     </RelativeLayout>
 </RelativeLayout>

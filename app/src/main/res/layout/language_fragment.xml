@@ -37,8 +37,9 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dimen10dp"
                 android:text="मराठी"
+                android:textStyle="bold"
+                android:textSize="@dimen/dimens20sp"
                 app:fontFamily="@font/open_sans_bold"
-                android:fontFamily="@font/open_sans_bold"
                 android:checked="@={selectLanguageViewModel.isMarathiSelected()}"/>
             <View
                 android:layout_width="match_parent"
@@ -53,8 +54,9 @@
                 android:padding="@dimen/dimen10dp"
                 android:layout_below="@+id/chkMarathi"
                 android:text="English"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size18sp"
                 app:fontFamily="@font/open_sans_bold"
-                android:fontFamily="@font/open_sans_bold"
                 android:checked="@={selectLanguageViewModel.isEnglishSelected()}"/>
             <View
                 android:layout_width="match_parent"
@@ -73,12 +75,12 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dimen50dp"
             android:background="@{selectLanguageViewModel.btnBackground}"
+            android:fontFamily="@font/open_sans_bold"
             android:onClick="@{(view)->selectLanguageViewModel.onNextClick()}"
             android:text="@string/done"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_size_normal"
-            app:fontFamily="@font/open_sans_bold"
-            android:fontFamily="@font/open_sans_bold" />
+            android:textSize="@dimen/text_size_semilarge"
+            app:fontFamily="@font/open_sans_bold" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
