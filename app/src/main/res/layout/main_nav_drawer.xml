@@ -149,7 +149,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/contact_us"
+                    android:src="@drawable/ic_enquiry"
                     android:scaleType="centerInside" />
 
                 <TextView
@@ -182,7 +182,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/city"
+                    android:src="@drawable/ic_properties"
                     android:scaleType="centerInside" />
 
                 <TextView
@@ -214,7 +214,7 @@
                     android:layout_weight="0.2"
                     android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/first_name"
+                    android:src="@drawable/ic_employee"
                     android:scaleType="centerInside" />
 
                 <TextView

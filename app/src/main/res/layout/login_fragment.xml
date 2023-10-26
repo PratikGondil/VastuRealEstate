@@ -128,11 +128,11 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@{loginViewModel.btnBackground}"
+                    android:gravity="center"
                     android:onClick="@{(view)->loginViewModel.onSendOtpClick()}"
                     android:text="@string/send_otp_text"
-                    android:gravity="center"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_normal"
+                    android:textSize="@dimen/text_size18sp"
                     android:textStyle="bold"
                     app:fontFamily="@font/open_sans_bold" />
             </RelativeLayout>

@@ -10,124 +10,78 @@
         <variable
             name="drawerViewModel"
             type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
-    </data>
-
+   </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
         <include
             android:id="@+id/include"
             layout="@layout/toolbar_layout"
             bind:drawerViewModel="@{drawerViewModel}" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="vertical"
-            app:layout_constraintHeight_percent=".40"
-            app:layout_constraintVertical_bias="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:background="@drawable/background">
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="@dimen/image_width"
-                android:layout_height="@dimen/image_height"
-                android:src="@drawable/ic_vastu_select_language_logo"
-                android:layout_marginTop="@dimen/margin_xxxlarge"
-                android:layout_gravity="center"
-                android:scaleType="fitCenter"/>
-        </LinearLayout>
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/clMainLayout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintHeight_percent=".70"
-            app:layout_constraintVertical_bias="1.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_margin="@dimen/dimen20dp"
-            android:background="@drawable/white_background">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rlMainTop"
+        android:layout_margin="@dimen/dimen50dp">
 
-            <RelativeLayout
+        >
+        <RadioGroup
+            android:id="@+id/radioLanguage"
+            android:layout_marginTop="@dimen/dimen50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <RadioButton
+                android:id="@+id/chkMarathi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen10dp"
+                android:text="मराठी"
+                android:textStyle="bold"
+                android:textSize="@dimen/dimens20sp"
+                app:fontFamily="@font/open_sans_bold"
+                android:checked="@={selectLanguageViewModel.isMarathiSelected()}"/>
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/rlMainTop"
-                android:layout_margin="@dimen/dimen30dp"
-                android:background="@drawable/white_background"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:background="@color/border_color" />
+            <RadioButton
+                android:id="@+id/chkEnglish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen10dp"
+                android:layout_below="@+id/chkMarathi"
+                android:text="English"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size18sp"
+                app:fontFamily="@font/open_sans_bold"
+                android:checked="@={selectLanguageViewModel.isEnglishSelected()}"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:background="@color/border_color" />
+        </RadioGroup>
 
-                >
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNext"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radioLanguage"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen50dp"
+            android:background="@{selectLanguageViewModel.btnBackground}"
+            android:fontFamily="@font/open_sans_bold"
+            android:onClick="@{(view)->selectLanguageViewModel.onNextClick()}"
+            android:text="@string/done"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_semilarge"
+            app:fontFamily="@font/open_sans_bold" />
 
-                <TextView
-                    android:id="@+id/txtSelectLanguage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Select Language"
-                    android:textColor="#ED9318"
-                    android:textSize="@dimen/dimens20sp"
-                    android:textStyle="bold"
-                    app:fontFamily="@font/open_sans_bold" />
-
-                <RadioGroup
-                    android:id="@+id/radioLanguage"
-                    android:layout_marginTop="@dimen/dimen30dp"
-                    android:layout_below="@+id/txtSelectLanguage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-                    <RadioButton
-                        android:id="@+id/chkMarathi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/dimen10dp"
-                        android:text="मराठी"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/dimens20sp"
-                        app:fontFamily="@font/open_sans_bold"
-                        android:checked="@={selectLanguageViewModel.isMarathiSelected()}"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginBottom="@dimen/margin_small"
-                        android:background="@color/border_color" />
-                    <RadioButton
-                        android:id="@+id/chkEnglish"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/dimen10dp"
-                        android:layout_below="@+id/chkMarathi"
-                        android:text="English"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/text_size18sp"
-                        app:fontFamily="@font/open_sans_bold"
-                        android:checked="@={selectLanguageViewModel.isEnglishSelected()}"/>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginBottom="@dimen/margin_small"
-                        android:textStyle="bold"
-                        app:fontFamily="@font/open_sans_bold"
-                        android:background="@color/border_color" />
-                </RadioGroup>
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnNext"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/radioLanguage"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/dimen110dp"
-                    android:background="@{selectLanguageViewModel.btnBackground}"
-                    android:onClick="@{(view)->selectLanguageViewModel.onNextClick()}"
-                    android:text="@string/next"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size18sp"
-                    android:textStyle="bold"
-                    app:fontFamily="@font/open_sans_bold" />
-
-            </RelativeLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

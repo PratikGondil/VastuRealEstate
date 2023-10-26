@@ -36,7 +36,6 @@
         android:fontFamily="@font/open_sans_extra_bold"
         app:fontFamily="@font/open_sans_extra_bold"
         android:textColor="@color/white"
-        android:textStyle="bold"
         android:textSize="25sp"
         android:gravity="center"
         android:layout_marginTop="@dimen/dimen30dp"
