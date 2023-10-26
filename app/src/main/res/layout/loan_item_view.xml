@@ -55,6 +55,7 @@
                     android:layout_marginTop="@dimen/dimen15dp"
                     android:textStyle="bold"
                     android:fontFamily="@font/open_sans_bold"
+                    app:fontFamily="@font/open_sans_bold"
                     android:letterSpacing="0"
                     android:text="@{loanIntersetedData.loanName}"
                     android:textColor="@color/white"

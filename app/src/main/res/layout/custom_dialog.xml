@@ -2,25 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/curved_radius"
-    >
+    android:background="@drawable/curved_radius">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
+
                 <LinearLayout
+                    android:id="@+id/lin_main"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -31,6 +27,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/margin_medium"
                         android:fontFamily="@font/open_sans_bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:letterSpacing="0"
                         android:textStyle="bold"
                         android:layout_weight="0.90"
@@ -49,21 +46,37 @@
 
 
                 <View
+                    android:id="@+id/view1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lin_main"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/border_color" />
 
                 <TextView
                     android:id="@+id/txt_ter"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_medium"
                     android:fontFamily="@font/open_sans_bold"
+                    app:fontFamily="@font/open_sans_bold"
                     android:letterSpacing="0"
                     android:textStyle="bold"
                     android:text="@string/term_condition_info"
                     android:textColor="@color/filter_txt_color"
                     android:textSize="@dimen/text_size_small" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_ter"
+            >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -80,6 +93,7 @@
                         android:letterSpacing="0"
                         android:textStyle="bold"
                         android:fontFamily="@font/open_sans_bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:text="@string/terms_text"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_xsmall"
@@ -96,6 +110,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
                         android:fontFamily="@font/open_sans_bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:background="@color/button_color"
                         android:letterSpacing="0"
                         android:text="@string/term2"
@@ -116,6 +131,7 @@
                         android:background="@color/button_color"
                         android:letterSpacing="0"
                         android:fontFamily="@font/open_sans_bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:text="@string/term3"
                         android:textColor="@color/white"
                         android:textSize="12sp"
@@ -134,6 +150,7 @@
                         android:background="@color/button_color"
                         android:letterSpacing="0"
                         android:fontFamily="@font/open_sans_bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:text="@string/term4"
                         android:textColor="@color/white"
                         android:textSize="12sp"
@@ -152,6 +169,7 @@
                         android:background="@color/button_color"
                         android:letterSpacing="0"
                         android:fontFamily="@font/open_sans_bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:text="@string/term5"
                         android:textColor="@color/white"
                         android:textSize="12sp"
@@ -170,6 +188,7 @@
                         android:background="@color/button_color"
                         android:letterSpacing="0"
                         android:fontFamily="@font/open_sans_bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:text="@string/term6"
                         android:textColor="@color/white"
                         android:textSize="12sp"
@@ -188,6 +207,7 @@
                         android:background="@color/button_color"
                         android:letterSpacing="0"
                         android:fontFamily="@font/open_sans_bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:text="@string/term7"
                         android:textColor="@color/white"
                         android:textSize="12sp"
@@ -206,6 +226,7 @@
                         android:background="@color/button_color"
                         android:letterSpacing="0"
                         android:fontFamily="@font/open_sans_bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:text="@string/term8"
                         android:textColor="@color/white"
                         android:textSize="12sp"
@@ -224,6 +245,7 @@
                         android:background="@color/button_color"
                         android:letterSpacing="0"
                         android:fontFamily="@font/open_sans_bold"
+                        app:fontFamily="@font/open_sans_bold"
                         android:text="@string/term9"
                         android:textColor="@color/white"
                         android:textSize="12sp"
@@ -237,19 +259,21 @@
                 </LinearLayout>
 
 
-            </LinearLayout>
+
 
         </ScrollView>
 
 
 
         <LinearLayout
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_gravity="bottom"
             android:background="@color/white"
             android:layout_marginTop="@dimen/dimen30dp"
-            android:layout_alignParentBottom="true"
             android:orientation="horizontal">
 
             <CheckBox
@@ -260,13 +284,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/font"
+                android:fontFamily="@font/open_sans_bold"
+                app:fontFamily="@font/open_sans_bold"
                 android:text="@string/accept_terms"
                 android:textColor="@color/button_color"/>
         </LinearLayout>
 
 
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </LinearLayout>

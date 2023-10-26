@@ -44,6 +44,11 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
+
+<!--
+    app:previousButtonLayout="@layout/custom_previous_button"
+-->
+
     <me.relex.circleindicator.CircleIndicator2
         android:id="@+id/custom"
         android:visibility="visible"
@@ -99,8 +104,10 @@
                             android:layout_marginTop="@dimen/dimen60dp"
                             android:gravity="center"
                             android:text="@string/real_estate"
+                            android:fontFamily="@font/open_sans_bold"
+                            app:fontFamily="@font/open_sans_bold"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/dimen15sp"
+                            android:textSize="@dimen/dimen_16sp"
                             android:textStyle="bold" />
 
 
@@ -154,7 +161,9 @@
                             android:gravity="center"
                             android:text="@string/loan"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/dimen15sp"
+                            android:textSize="@dimen/dimen_16sp"
+                            android:fontFamily="@font/open_sans_bold"
+                            app:fontFamily="@font/open_sans_bold"
                             android:textStyle="bold" />
                     </androidx.cardview.widget.CardView>
 

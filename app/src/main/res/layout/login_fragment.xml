@@ -52,7 +52,9 @@
                     android:textAlignment="center"
                     android:textColorHint="@color/black"
                     app:hintEnabled="false"
-                    app:helperTextTextAppearance="@font/open_sans_extra_bold"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:textSize="@dimen/text_size_small"
+                    app:helperTextTextAppearance="@style/font"
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
                     app:placeholderText="@string/mobile_number_text"
@@ -64,8 +66,8 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtMobile"
-                        style="@style/TextAppearance"
                         android:fontFamily="@font/open_sans_bold"
+                        app:fontFamily="@font/open_sans_bold"
                         validateMobileNo="@{loginViewModel}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -102,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textSize="@dimen/text_size_small"
+                    android:textSize="@dimen/dimen15sp"
                     android:textStyle="bold"
                     android:text="@string/we_will_send_otp" />
 
@@ -128,10 +130,11 @@
                     android:background="@{loginViewModel.btnBackground}"
                     android:onClick="@{(view)->loginViewModel.onSendOtpClick()}"
                     android:text="@string/send_otp_text"
+                    android:gravity="center"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_normal"
                     android:textStyle="bold"
-                    app:fontFamily="@font/poppins_medium" />
+                    app:fontFamily="@font/open_sans_bold" />
             </RelativeLayout>
         </LinearLayout>
 

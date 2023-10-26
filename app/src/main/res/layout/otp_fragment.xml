@@ -84,6 +84,7 @@
                     android:layout_gravity="center"
                     android:gravity="top|center"
                     app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:text="@string/submit_otp"
                     android:textColor="@color/colorSecondary"
                     android:textSize="@dimen/dimens20sp"
@@ -93,13 +94,14 @@
 
                 <TextView
                     android:id="@+id/txtSentOtp"
-                    style="@style/TextAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/open_sans_semibold"
+                    android:fontFamily="@font/open_sans_bold"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:textStyle="bold"
                     android:text="@string/sent_otp_text"
-                    android:textSize="@dimen/text_size_small"
+                    android:textSize="@dimen/dimen15sp"
                     android:layout_weight="0.1"
                     android:gravity="center"
                     />
@@ -148,27 +150,31 @@
 
                 <TextView
                     android:id="@+id/txtOtpReceiveConfirmation"
-                    style="@style/TextAppearance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:fontFamily="@font/poppins_light"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/dimen15sp"
+                    app:fontFamily="@font/open_sans_bold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:textColor="@color/black_text"
                     android:text="@string/otp_not_received"
                     android:layout_weight="0.1"/>
 
                 <TextView
                     android:id="@+id/txtResendOtp"
-                    style="@style/TextAppearance"
+                    style="@style/font"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="@string/resend_otp"
+                    app:fontFamily="@font/open_sans_bold"
                     android:selectAllOnFocus="false"
                     android:linksClickable="false"
                     android:autoLink="all"
+                    android:textSize="@dimen/text_size_small"
                     android:textColor="@color/text_color_blue"
                     android:layout_weight="0.1"
                     android:onClick="@{(view)->otpViewModel.resendOtp()}"/>
@@ -190,12 +196,14 @@
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:layout_gravity="center"
+                        android:fontFamily="@font/open_sans_bold"
                         android:gravity="center"
                         android:onClick="@{(view)->otpViewModel.onOtpSubmitClick()}"
                         android:text="@string/submit_btn_text"
-                        android:fontFamily="@font/open_sans_bold"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_size18sp"
                         android:textStyle="bold"
-                        android:textColor="@color/white" />
+                        app:fontFamily="@font/open_sans_bold" />
                 </RelativeLayout>
             </LinearLayout>
 

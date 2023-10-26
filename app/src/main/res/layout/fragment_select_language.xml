@@ -61,7 +61,7 @@
                     android:textColor="#ED9318"
                     android:textSize="@dimen/dimens20sp"
                     android:textStyle="bold"
-                    app:fontFamily="@font/poppins_regular" />
+                    app:fontFamily="@font/open_sans_bold" />
 
                 <RadioGroup
                     android:id="@+id/radioLanguage"

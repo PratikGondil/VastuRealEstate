@@ -8,12 +8,14 @@
             type="com.vastu.propertycore.model.response.RelatedProperty" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
     <!-- res/layout/item_card.xml -->
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:padding="@dimen/dimen20dp"
         android:layout_margin="@dimen/dimen10dp"
         android:elevation="5dp"
         app:cardElevation="@dimen/dimen5dp"
