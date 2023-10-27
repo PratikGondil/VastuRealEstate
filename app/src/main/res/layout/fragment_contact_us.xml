@@ -46,11 +46,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rlNew"
-        android:layout_marginStart="@dimen/dimen10dp"
-
-        android:layout_marginTop="@dimen/dimen10dp"
-        android:layout_marginEnd="@dimen/dimen10dp"
-        android:layout_marginBottom="@dimen/dimen10dp"
         >
 
 
@@ -83,7 +78,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardElevation="10dp"
-    app:cardCornerRadius="20dp"
+    app:cardCornerRadius="@dimen/dimen10dp"
     app:cardBackgroundColor="@color/white"
     app:cardMaxElevation="12dp"
     app:cardPreventCornerOverlap="true"
@@ -97,10 +92,10 @@
         android:layout_centerHorizontal="true"
         android:autoLink="web"
         android:gravity="center_horizontal"
-        android:padding="@dimen/dimen5dp"
+        android:padding="@dimen/dimen15dp"
         android:text="@string/email_add_value"
         android:textColor="@color/button_color"
-        android:textSize="@dimen/dimen22sp"
+        android:textSize="@dimen/text_size18sp"
         android:fontFamily="@font/open_sans_bold"
         app:fontFamily="@font/open_sans_bold"
         android:textStyle="bold"/>

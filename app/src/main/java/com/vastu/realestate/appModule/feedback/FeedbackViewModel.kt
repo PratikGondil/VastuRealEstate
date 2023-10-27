@@ -5,9 +5,11 @@ import android.util.Log
 import androidx.databinding.Observable
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
+import com.vastu.networkService.util.Constants
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.login.uiInterfaces.ILoginViewListener
 import com.vastu.realestate.utils.ApiUrlEndPoints.GET_FEEDBACK
+import com.vastu.realestate.utils.PreferenceManger
 
 class FeedbackViewModel(application: Application) : AndroidViewModel(application), IFeedbackResponseListener {
     lateinit var mContext: Application
@@ -24,16 +26,16 @@ class FeedbackViewModel(application: Application) : AndroidViewModel(application
             }
         })
     }
-
+    var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
     val allQuery: ObservableField<List<String>> =
         ObservableField<List<String>>(
             listOf(
-                mContext.getString(R.string.select),
-                mContext.getString(R.string.app_crash),
-                mContext.getString(R.string.search_issue),
-                mContext.getString(R.string.asking_question),
-                mContext.getString(R.string.improvement),
-                mContext.getString(R.string.other)
+                mContext.resources.getString(R.string.select),
+                mContext.resources.getString(R.string.app_crash),
+                mContext.resources.getString(R.string.search_issue),
+                mContext.resources.getString(R.string.asking_question),
+                mContext.resources.getString(R.string.improvement),
+                mContext.resources.getString(R.string.other)
             )
         )
 
