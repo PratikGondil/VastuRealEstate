@@ -22,6 +22,7 @@
    <TextView
         android:id="@+id/txt_title"
         android:fontFamily="@font/open_sans_extra_bold"
+       android:textStyle="bold"
         android:textSize="@dimen/text_size18sp"
         android:textAlignment="viewStart"
         android:layout_margin="@dimen/dimen15dp"
@@ -66,7 +67,8 @@
         <TextView
             android:id="@+id/txt_info"
             android:fontFamily="@font/open_sans_regular"
-            android:textSize="@dimen/dimen_16sp"
+            android:textSize="@dimen/dimen15sp"
+            android:letterSpacing="0"
             android:textAlignment="viewStart"
             android:textColor="@color/gray_txt"
             android:text="@string/your_property"
@@ -78,17 +80,21 @@
         android:id="@+id/btn_view_plan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="@dimen/dimen5dp"
+        android:paddingBottom="@dimen/dimen10dp"
+        android:paddingTop="@dimen/dimen10dp"
+        android:layout_marginTop="@dimen/dimen20dp"
+        android:paddingLeft="@dimen/dimen25dp"
+        android:paddingRight="@dimen/dimen25dp"
         android:text="@string/view_plan"
         android:textColor="@color/white"
-        android:onClick="@{view->viewPlansViewModel.onBuilderPlanClick()}"
-        android:fontFamily="@font/open_sans_semibold"
+        android:fontFamily="@font/open_sans_bold"
         android:textSize="@dimen/dimen_16sp"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_info"/>
+        app:layout_constraintTop_toBottomOf="@+id/txt_info"
+    android:onClick="@{view->viewPlansViewModel.onBuilderPlanClick()}"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
@@ -128,6 +134,7 @@
                     android:id="@+id/txt_info2"
                     android:fontFamily="@font/open_sans_regular"
                     android:textSize="@dimen/dimen_16sp"
+                    android:letterSpacing="0"
                     android:textAlignment="viewStart"
                     android:textColor="@color/gray_txt"
                     android:text="@string/one_of"
@@ -138,18 +145,23 @@
                     android:id="@+id/btn_view_plan2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/dimen5dp"
+                    android:layout_marginTop="@dimen/dimen20dp"
+                    android:paddingBottom="@dimen/dimen10dp"
+                    android:paddingTop="@dimen/dimen10dp"
+                    android:paddingLeft="@dimen/dimen25dp"
+                    android:paddingRight="@dimen/dimen25dp"
                     android:text="@string/view_plan"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/open_sans_semibold"
+                    android:fontFamily="@font/open_sans_bold"
                     android:textSize="@dimen/dimen_16sp"
                     android:textAllCaps="false"
-                    android:onClick="@{view->viewPlansViewModel.onAdvertisePlanClick()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintVertical_bias="0.1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_info2" />
+                    app:layout_constraintTop_toBottomOf="@+id/txt_info2"
+                android:onClick="@{view->viewPlansViewModel.onAdvertisePlanClick()}"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 

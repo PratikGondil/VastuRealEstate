@@ -45,7 +45,7 @@ class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPrope
         {
             (activity as DashboardActivity).bottomNavigationView.visibility= View.GONE
         }
-        drawerViewModel.toolbarTitle.set(getString(R.string.our_services_text))
+        drawerViewModel.toolbarTitle.set(getString(R.string.plans_for_property_owners))
         drawerViewModel.isDashBoard.set(false)
     }
 

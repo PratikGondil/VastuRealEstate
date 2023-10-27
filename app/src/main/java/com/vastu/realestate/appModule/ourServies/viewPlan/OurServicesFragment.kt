@@ -66,7 +66,8 @@ class OurServicesFragment : Fragment(), IToolbarListener, IViewPlanListener {
     }
 
     override fun onAdvertisePlanClick() {
-        viewPlansViewModel.callPlansApi(planTypeId!!)
+        findNavController().navigate(R.id.planForAdvertisementFragment)
+       // viewPlansViewModel.callPlansApi(planTypeId!!)
     }
 
 //    private fun getPlans() {
