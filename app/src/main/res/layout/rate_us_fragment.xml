@@ -29,6 +29,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/are_you_finding"
         android:fontFamily="@font/open_sans_bold"
+        app:fontFamily="@font/open_sans_bold"
+        android:textStyle="bold"
         android:textSize="@dimen/dimen22sp"
         android:layout_margin="@dimen/dimen20dp"
         />
@@ -40,7 +42,9 @@
         app:layout_constraintStart_toStartOf="@+id/txt_are_u"
         app:layout_constraintEnd_toEndOf="@+id/txt_are_u"
         android:text="@string/please_share_experience"
-        android:fontFamily="@font/open_sans_bold"
+        android:fontFamily="@font/open_sans_semibold"
+        app:fontFamily="@font/open_sans_semibold"
+        android:textStyle="bold"
         android:textSize="@dimen/dimen_16sp"
         android:layout_marginStart="@dimen/dimen20dp"
         />
@@ -79,6 +83,9 @@
         android:text="@string/add_detail"
         android:layout_marginStart="@dimen/dimen20dp"
         android:layout_marginTop="@dimen/dimen40dp"
+        android:fontFamily="@font/open_sans_bold"
+        app:fontFamily="@font/open_sans_bold"
+        android:textStyle="bold"
         />
     <EditText
         android:id="@+id/edt_review"
@@ -92,8 +99,11 @@
         android:maxLines="5"
         android:textColorHint="@color/gray_hint"
         android:gravity="top"
-        android:padding="@dimen/dimen2dp"
+        android:padding="@dimen/dimen5dp"
         android:textSize="@dimen/dimen_16sp"
+        android:fontFamily="@font/open_sans_bold"
+        app:fontFamily="@font/open_sans_bold"
+        android:textStyle="bold"
         android:hint="@string/write_here"/>
 
     <Button
@@ -105,8 +115,10 @@
         android:onClick="@{(view)->rateUsViewModel.submitClick()}"
         android:textColor="@color/white"
         android:layout_margin="@dimen/dimen60dp"
-        android:fontFamily="@font/open_sans_semibold"
-        android:textSize="@dimen/text_size_small"
+        android:fontFamily="@font/open_sans_bold"
+        app:fontFamily="@font/open_sans_bold"
+        android:textStyle="bold"
+         android:textSize="@dimen/text_size_small"
         app:layout_constraintTop_toBottomOf="@+id/edt_review"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
