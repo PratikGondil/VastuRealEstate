@@ -37,6 +37,19 @@ class FeedbackViewModel(application: Application) : AndroidViewModel(application
             )
         )
 
+
+    val allQueryMarathi: ObservableField<List<String>> =
+        ObservableField<List<String>>(
+            listOf(
+                "निवडा",
+                "अॅप क्रॅश/स्लो डाउन शोध समस्या",
+               "शोध समस्या",
+                "एक प्रश्न सूचना विचारणे",
+                "सुधारणा",
+                "इतर"
+            )
+        )
+
     fun submitClick(){
         iFeedbackViewListener.onSubmitBtnClick()
     }

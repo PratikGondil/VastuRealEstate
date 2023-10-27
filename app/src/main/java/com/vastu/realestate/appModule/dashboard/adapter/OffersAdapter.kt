@@ -31,7 +31,6 @@ class OffersAdapter(private val offersList: List<OfferData>,iRecycleViewClick: I
     override fun onBindViewHolder(holder: OffersViewHolder, position: Int) {
         val offer = offersList[position]
         holder.bind(offer)
-        holder.binding.description.setText(Html.fromHtml(offer.description))
         holder.binding.cvGbpView.setOnClickListener {
             iRecycleViewClickCopy.onClick(offersList[position].property)
         }
