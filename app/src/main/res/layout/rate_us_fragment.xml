@@ -118,7 +118,8 @@
         android:fontFamily="@font/open_sans_bold"
         app:fontFamily="@font/open_sans_bold"
         android:textStyle="bold"
-         android:textSize="@dimen/text_size_small"
+        android:textAllCaps="false"
+        android:textSize="@dimen/text_size_semilarge"
         app:layout_constraintTop_toBottomOf="@+id/edt_review"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

@@ -50,6 +50,7 @@
             />
         <Spinner
             android:id="@+id/spinner"
+            style="@style/spinner_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dimen20dp"
