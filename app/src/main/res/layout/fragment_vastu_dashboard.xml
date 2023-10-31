@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        tools:openDrawer="">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,7 +88,7 @@
                         android:layout_marginTop="@dimen/dimen50dp"
                         android:foreground="?android:attr/selectableItemBackground"
                         app:cardBackgroundColor="#ffffff"
-                        app:cardCornerRadius="@dimen/dimen15dp"
+                        app:cardCornerRadius="@dimen/dimen30dp"
                         app:cardElevation="0dp"
                         app:cardUseCompatPadding="false"
                         app:layout_constraintTop_toTopOf="parent"
@@ -146,7 +146,7 @@
                         android:layout_marginTop="@dimen/dimen50dp"
                         android:foreground="?android:attr/selectableItemBackground"
                         app:cardBackgroundColor="#ffffff"
-                        app:cardCornerRadius="@dimen/dimen15dp"
+                        app:cardCornerRadius="@dimen/dimen30dp"
                         app:cardElevation="0dp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
