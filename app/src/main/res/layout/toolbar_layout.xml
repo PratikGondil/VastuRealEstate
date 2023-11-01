@@ -48,7 +48,7 @@
 
             <ImageView
                 android:id="@+id/vastu_logo"
-                android:layout_width="@dimen/dimen30dp"
+                android:layout_width="@dimen/dimen40dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0.1"
