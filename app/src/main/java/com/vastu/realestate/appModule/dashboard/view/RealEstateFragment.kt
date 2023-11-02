@@ -66,25 +66,11 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
         drawerViewModel.iToolbarListener = this
         realEstateViewModel.iFilterClickListener = this
         getRealEstateList()
-       // setSliderData()
-//        realEstateBinding.swipeContainer.setOnRefreshListener(this)
-//        realEstateBinding.swipeContainer.setColorSchemeResources(R.color.button_color)
-//        bottomSheetBehavior =BottomSheetBehavior.from(realEstateBinding.filterFragment)
         return realEstateBinding.root
     }
 
     private fun setSliderData() {
         try {
-//            imageList.clear()
-//            getAdvertisementSlider =
-//                PreferenceManger.getAdvertisementSlider(PreferenceKEYS.DASHBOARD_SLIDER_LIST)
-//            realEstateBinding.apply {
-//                for (slider in getAdvertisementSlider.advertiseData) {
-//                    imageList.add(SlideModel(slider.adSlider))
-//                }
-//                imageSlider.setImageList(imageList, ScaleTypes.FIT)
-//                imageSlider.startSliding(3000)
-//            }
             getRealEstateList()
         } catch (e: Exception) {
             e.printStackTrace()

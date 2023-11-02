@@ -55,7 +55,7 @@ class DashboardActivity : BaseActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.dashboardNavHost) as NavHostFragment?
         val fragment = navHostFragment!!.childFragmentManager.fragments[0]
-        if (fragment is LoanFragment || fragment is PrimePropertiesFragment || fragment is RealEstateDetailsFragment
+        if (fragment is RealEstateFragment || fragment is LoanFragment || fragment is PrimePropertiesFragment || fragment is RealEstateDetailsFragment
             || fragment is AddLoanEnquiryFragment || fragment is AddPropertyEnquiryFragment
             || fragment is AddPropertyFragment || fragment is OffersFragment
             || fragment is PropertiesFragment || fragment is AddPropertyFragment || fragment is OffersFragment || fragment is EmployeeDetailsFragment || fragment is EmployeeListFragment
