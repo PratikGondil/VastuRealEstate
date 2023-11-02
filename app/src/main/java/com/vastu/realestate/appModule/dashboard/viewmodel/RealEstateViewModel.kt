@@ -7,6 +7,9 @@ import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.vastu.networkService.util.Constants
+import com.vastu.propertycore.callback.request.response.IGetWishlistResponseListener
+import com.vastu.propertycore.model.response.AddWishlistResponse
+import com.vastu.propertycore.repository.AddWishlistRepository
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterClickListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterViewHandler
@@ -35,7 +38,7 @@ import com.vastu.realestatecore.repository.PropertyListRepository
 
 class RealEstateViewModel(application: Application) : AndroidViewModel(application),
     ITalukaResponseListener,IGetPropertyListResListener, ISubAreaResponseListener,
-    IFilterPropertyListResListener {
+    IFilterPropertyListResListener, IGetWishlistResponseListener {
     var isFilterViewVisible = ObservableField(View.GONE)
     var isRealEstateVisible = ObservableField(View.VISIBLE)
 
@@ -187,5 +190,18 @@ class RealEstateViewModel(application: Application) : AndroidViewModel(applicati
 
     override fun onFailureFilterList(objFilterDataResponseMain: ObjFilterDataResponseMain) {
         iRealEstateListener.onFilterPropertyListFailure(objFilterDataResponseMain)
+    }
+
+    fun getAddToWishlist(userId:String,propertyId:String){
+        AddWishlistRepository.callAddWishlistApi(mContext,userId,propertyId,
+            ApiUrlEndPoints.ADD_WISHLIST,this)
+    }
+
+    override fun getWishlistSuccessResponse(addWishlistResponse: AddWishlistResponse) {
+        iRealEstateListener.onSuccessAddWishList(addWishlistResponse)
+    }
+
+    override fun getWishlistFailureResponse(addWishlistResponse: AddWishlistResponse) {
+        iRealEstateListener.onFailureAddWishList(addWishlistResponse)
     }
 }

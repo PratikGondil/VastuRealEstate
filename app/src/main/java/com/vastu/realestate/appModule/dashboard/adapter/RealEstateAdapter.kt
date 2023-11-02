@@ -60,6 +60,9 @@ class RealEstateAdapter(
             holder.binding.propertyImage,
             R.drawable.vastu_logo_splash
         )
+        holder.binding.imgLike.setOnClickListener {
+            itemClick.onWishlistClick(property)
+        }
         manageAddSlider(holder,position)
         holder.binding.layoutContainer.setOnClickListener {
             itemClick.onItemClick(property)
@@ -123,6 +126,7 @@ class RealEstateAdapter(
 
     interface OnItemClickListener {
         fun onItemClick(propertyData: PropertyData)
+        fun onWishlistClick(propertyData: PropertyData)
     }
     private fun setVolume(amount: Int) {
         val max = 100

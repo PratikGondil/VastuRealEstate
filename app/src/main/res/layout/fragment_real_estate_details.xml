@@ -137,6 +137,13 @@
                     android:id="@+id/image_slider_builder"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
+                    app:showNavigationButtons="true"
+                    app:previousButtonLayout="@layout/previous_layout"
+                    app:previousButtonId="@id/btn_previous"
+                    app:previousButtonMargin="4dp"
+                    app:nextButtonLayout="@layout/next_layout"
+                    app:nextButtonId="@id/btn_next"
+                    app:nextButtonMargin="4dp"
                     android:layout_margin="@dimen/dimen20dp"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintVertical_bias="0.5"
@@ -146,7 +153,7 @@
 
                 <me.relex.circleindicator.CircleIndicator2
                     android:id="@+id/custom"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     app:ci_width = "@dimen/dimen20dp"

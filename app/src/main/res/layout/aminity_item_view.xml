@@ -27,7 +27,7 @@
             android:id="@+id/imageView"
             android:layout_width="@dimen/dimen30dp"
             android:layout_height="@dimen/dimen30dp"
-            android:src="@drawable/ic_like__1_" />
+            android:src="@drawable/ic_like_fill" />
 
         <TextView
             android:id="@+id/textView"

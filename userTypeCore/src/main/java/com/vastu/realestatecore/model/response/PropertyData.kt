@@ -67,4 +67,9 @@ data class PropertyData(
     val building: String ="",
     @SerializedName("short_address")
     val shortAddress: String ="",
+    @SerializedName("wishlist")
+    val wishlist: Boolean =false
+
+
+
 ): Serializable

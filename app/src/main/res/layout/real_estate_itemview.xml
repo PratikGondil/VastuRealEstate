@@ -79,7 +79,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="top"
                             android:layout_weight="0.1"
-                            android:src="@drawable/ic_like" />
+                            android:src="@{propertyData.wishlist ? @drawable/ic_like_fill : @drawable/ic_like}" />
                     </LinearLayout>
 
 

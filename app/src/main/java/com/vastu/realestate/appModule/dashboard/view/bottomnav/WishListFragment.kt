@@ -1,6 +1,7 @@
 package com.vastu.realestate.appModule.dashboard.view.bottomnav
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.vastu.propertycore.model.response.AddWishlistResponse
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterClickListener
@@ -120,6 +122,18 @@ class WishListFragment : BaseFragment(), IRealEstateListener, IToolbarListener,
         }
     }
 
+    override fun onSuccessAddWishList(addWishlistResponse: AddWishlistResponse) {
+        hideProgressDialog()
+        showDialog(addWishlistResponse.registerResponse.responseStatusHeader.statusDescription,true,false)
+        refreshAPI()
+
+    }
+
+    override fun onFailureAddWishList(addWishlistResponse: AddWishlistResponse) {
+        hideProgressDialog()
+        showDialog(addWishlistResponse.registerResponse.responseStatusHeader.statusDescription,false,false)
+
+    }
     override fun onResume() {
         super.onResume()
         drawerViewModel.toolbarTitle.set(getString(R.string.real_estate))
@@ -217,6 +231,15 @@ class WishListFragment : BaseFragment(), IRealEstateListener, IToolbarListener,
         )
     }
 
+    override fun onWishlistClick(propertyData: PropertyData) {
+        showProgressDialog()
+        userId?.let {
+            propertyData.propertyId?.let { it1 ->
+                realEstateViewModel.getAddToWishlist(it,it1)
+            }
+        }
+    }
+
     override fun onClickBack() {
         try {
             activity?.onBackPressed()
@@ -304,6 +327,12 @@ class WishListFragment : BaseFragment(), IRealEstateListener, IToolbarListener,
 
     fun onErrorResponse(message: String, isSuccess: Boolean, isNetworkFailure: Boolean) {
         showDialog(message, isSuccess, isNetworkFailure)
+    }
+
+    private fun refreshAPI() {
+        Handler().postDelayed({
+            onRefresh()
+        }, 550)
     }
 
 

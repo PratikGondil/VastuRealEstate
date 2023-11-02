@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.vastu.propertycore.model.response.AddWishlistResponse
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IRealEstateListener
@@ -114,6 +115,14 @@ class PropertiesFragment : BaseFragment(),IRealEstateListener, RealEstateAdapter
 
     }
 
+    override fun onSuccessAddWishList(addWishlistResponse: AddWishlistResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onFailureAddWishList(addWishlistResponse: AddWishlistResponse) {
+        TODO("Not yet implemented")
+    }
+
     override fun onUserNotConnected() {
        hideProgressDialog()
        showDialog("", isSuccess = false, isNetworkFailure = true)
@@ -124,6 +133,15 @@ class PropertiesFragment : BaseFragment(),IRealEstateListener, RealEstateAdapter
         bundle.putSerializable(BaseConstant.PROPERTY_DETAILS, propertyData)
         bundle.putBoolean(BaseConstant.IS_FROM_PROPERTY_LIST,true)
         findNavController().navigate(R.id.action_PropertiesFragment_to_AddPropertyFragment,bundle)
+    }
+
+    override fun onWishlistClick(propertyData: PropertyData) {
+        showProgressDialog()
+        userId?.let {
+            propertyData.propertyId?.let { it1 ->
+                //realEstateViewModel.getAddToWishlist(it,it1)
+            }
+        }
     }
 
     override fun onClickBack() {
