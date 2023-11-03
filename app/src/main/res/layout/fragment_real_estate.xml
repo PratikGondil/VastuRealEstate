@@ -86,7 +86,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtSearch"
                         style="@style/TextAppearance"
-                        android:padding="@dimen/dimen10dp"
+                        android:padding="@dimen/dimen15dp"
                         android:maxLength="15"
                         android:maxLines="1"
                         android:minLines="1"

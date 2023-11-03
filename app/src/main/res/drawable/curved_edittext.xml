@@ -4,7 +4,7 @@
 
     <!-- shape property for the view based on the value particular view would be drawn -->
     <corners
-        android:radius="@dimen/dimen25dp" />
+        android:radius="@dimen/dimen40dp" />
     <stroke android:width="0dp"
         android:color="@color/black" />
     <!--  stroke for defining a border for view -->
