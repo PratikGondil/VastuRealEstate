@@ -225,6 +225,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
 
     override fun onFailurePropertySliderById(propertySliderResponseMain: PropertyDetailsResponseSliderMain) {
         hideProgressDialog()
+        getPropertyDetails()
     }
 
     private fun getPropertyDetails(){

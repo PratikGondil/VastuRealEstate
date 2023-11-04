@@ -70,4 +70,8 @@ data class PropertyIdData(
     val building: String,
     @SerializedName("short_address")
     val shortAddress: String,
+    @SerializedName("furnishing")
+    val furnishing: String,
+    @SerializedName("construction_status")
+    val construction_status: String,
 ):java.io.Serializable
