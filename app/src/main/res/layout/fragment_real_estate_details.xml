@@ -1025,6 +1025,13 @@
                         <com.aemerse.slider.ImageCarousel
                             android:id="@+id/image_slider_property_plan"
                             android:layout_width="match_parent"
+                            app:showNavigationButtons="true"
+                            app:previousButtonLayout="@layout/previous_layout"
+                            app:previousButtonId="@id/btn_previous"
+                            app:previousButtonMargin="4dp"
+                            app:nextButtonLayout="@layout/next_layout"
+                            app:nextButtonId="@id/btn_next"
+                            app:nextButtonMargin="4dp"
                             android:layout_height="250dp"
                             android:layout_margin="@dimen/dimen20dp" />
 
@@ -1063,6 +1070,13 @@
                             android:textStyle="bold"
                             app:fontFamily="@font/open_sans_bold" />
                         <com.aemerse.slider.ImageCarousel
+                            app:showNavigationButtons="true"
+                            app:previousButtonLayout="@layout/previous_layout"
+                            app:previousButtonId="@id/btn_previous"
+                            app:previousButtonMargin="4dp"
+                            app:nextButtonLayout="@layout/next_layout"
+                            app:nextButtonId="@id/btn_next"
+                            app:nextButtonMargin="4dp"
                             android:id="@+id/image_slider_property_brochure"
                             android:layout_width="match_parent"
                             android:layout_height="500dp"

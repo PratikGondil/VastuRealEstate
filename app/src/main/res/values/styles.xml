@@ -35,10 +35,10 @@
 
     <style name="image_custom_shape_real">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">10%</item>
-        <item name="cornerSizeTopRight">10%</item>
-        <item name="cornerSizeBottomRight">10%</item>
-        <item name="cornerSizeBottomLeft">10%</item>
+        <item name="cornerSizeTopLeft">7%</item>
+        <item name="cornerSizeTopRight">7%</item>
+        <item name="cornerSizeBottomRight">7%</item>
+        <item name="cornerSizeBottomLeft">7%</item>
     </style>
 
     <style name="spinnerItemStyle">
