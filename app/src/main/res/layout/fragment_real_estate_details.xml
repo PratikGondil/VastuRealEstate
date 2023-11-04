@@ -145,6 +145,7 @@
                     app:nextButtonId="@id/btn_next"
                     app:nextButtonMargin="4dp"
                     app:autoPlayDelay="1000"
+                    app:autoPlay="true"
                     android:layout_margin="@dimen/dimen20dp"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintVertical_bias="0.5"
@@ -1032,6 +1033,8 @@
                             app:nextButtonLayout="@layout/next_layout"
                             app:nextButtonId="@id/btn_next"
                             app:nextButtonMargin="4dp"
+                            app:autoPlayDelay="1000"
+                            app:autoPlay="true"
                             android:layout_height="250dp"
                             android:layout_margin="@dimen/dimen20dp" />
 
@@ -1077,6 +1080,8 @@
                             app:nextButtonLayout="@layout/next_layout"
                             app:nextButtonId="@id/btn_next"
                             app:nextButtonMargin="4dp"
+                            app:autoPlayDelay="1000"
+                            app:autoPlay="true"
                             android:id="@+id/image_slider_property_brochure"
                             android:layout_width="match_parent"
                             android:layout_height="500dp"

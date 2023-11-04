@@ -203,7 +203,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
         }
         dashboardBinding.apply {
             imageSlider.setData(imageListCarousel)
-            imageSlider.autoPlayDelay =3000
+            //imageSlider.autoPlayDelay =1000
 
             // imageSlider.setIndicator(custom)
         }

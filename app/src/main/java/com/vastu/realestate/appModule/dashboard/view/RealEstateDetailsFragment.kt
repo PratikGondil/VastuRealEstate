@@ -195,7 +195,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         }
         realEstateDetailsBinding.apply {
             imageSliderBuilder.setData(imageListbuilder)
-            imageSliderBuilder.autoPlayDelay =3000
+           /// imageSliderBuilder.autoPlayDelay =1000
             //imageSliderBuilder.setIndicator(custom)
            // imageSlider.setIndicator(custom)
         }
@@ -327,7 +327,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         }
         realEstateDetailsBinding.apply {
             imageSliderPropertyPlan.setData(imageListCarouselProperty)
-            imageSliderPropertyPlan.autoPlayDelay =3000
+           // imageSliderPropertyPlan.autoPlayDelay =1000
 
             // imageSlider.setIndicator(custom)
         }
@@ -358,7 +358,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         }
         realEstateDetailsBinding.apply {
             imageSliderPropertyBrochure.setData(imageListbrocure)
-            imageSliderPropertyBrochure.autoPlayDelay =3000
+            //imageSliderPropertyBrochure.autoPlayDelay =1000
 
             // imageSlider.setIndicator(custom)
         }
