@@ -95,7 +95,6 @@
                     android:layout_width="@dimen/dimen180dp"
                     android:layout_height="@dimen/dimen90dp"
                     android:layout_marginTop="@dimen/dimen50dp"
-                    android:foreground="?android:attr/selectableItemBackground"
                     app:cardBackgroundColor="#ffffff"
                     app:cardCornerRadius="@dimen/dimen20dp"
                     app:cardElevation="0dp"
