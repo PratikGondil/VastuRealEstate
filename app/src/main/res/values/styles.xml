@@ -27,19 +27,11 @@
 
     <style name="image_custom_shape">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">5%</item>
-        <item name="cornerSizeTopRight">5%</item>
-        <item name="cornerSizeBottomRight">5%</item>
-        <item name="cornerSizeBottomLeft">5%</item>
+        <item name="cornerSizeTopLeft">8%</item>
+        <item name="cornerSizeTopRight">8%</item>
+        <item name="cornerSizeBottomRight">8%</item>
+        <item name="cornerSizeBottomLeft">8%</item>
 </style>
-
-    <style name="image_custom_shape_real">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">7%</item>
-        <item name="cornerSizeTopRight">7%</item>
-        <item name="cornerSizeBottomRight">7%</item>
-        <item name="cornerSizeBottomLeft">7%</item>
-    </style>
 
     <style name="spinnerItemStyle">
         <item name="android:background">@color/white</item>
