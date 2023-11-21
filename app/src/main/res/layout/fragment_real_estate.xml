@@ -14,14 +14,14 @@
             type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
     </data>
 
-    <!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        tools:context=".appModule.dashboard.view.RealEstateFragment">-->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/margin_xlarge">
+<!--    <androidx.coordinatorlayout.widget.CoordinatorLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        tools:context=".appModule.dashboard.view.RealEstateFragment">-->
+   <androidx.constraintlayout.widget.ConstraintLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginBottom="@dimen/margin_xlarge">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,17 +37,17 @@
                 layout="@layout/toolbar_layout"
                 bind:drawerViewModel="@{drawerViewModel}" />
 
-            <!--            <com.denzcoskun.imageslider.ImageSlider-->
-            <!--                android:id="@+id/image_slider"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="@dimen/dimen200dp"-->
-            <!--                app:iss_auto_cycle="true"-->
-            <!--                app:iss_error_image="@drawable/vastu_logo_splash"-->
-            <!--                app:iss_placeholder="@color/loan_background_color"-->
-            <!--                app:iss_selected_dot="@drawable/default_selected_dot"-->
-            <!--                app:iss_unselected_dot="@drawable/default_unselected_dot"-->
-            <!--                app:iss_period="1000"-->
-            <!--                app:iss_delay="0" />-->
+<!--            <com.denzcoskun.imageslider.ImageSlider-->
+<!--                android:id="@+id/image_slider"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/dimen200dp"-->
+<!--                app:iss_auto_cycle="true"-->
+<!--                app:iss_error_image="@drawable/vastu_logo_splash"-->
+<!--                app:iss_placeholder="@color/loan_background_color"-->
+<!--                app:iss_selected_dot="@drawable/default_selected_dot"-->
+<!--                app:iss_unselected_dot="@drawable/default_unselected_dot"-->
+<!--                app:iss_period="1000"-->
+<!--                app:iss_delay="0" />-->
 
 
             <LinearLayout
@@ -97,7 +97,7 @@
                         android:gravity="center_vertical"
                         android:inputType="text"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_menu"
+                        android:textSize="@dimen/text_size_normal"
                         android:drawableEnd="@drawable/search"
                         android:onTextChanged="@{realEstateViewModel.onTextChanged}"
                         tools:ignore="SpeakableTextPresentCheck" />
@@ -143,34 +143,34 @@
                         android:textSize="@dimen/text_size_menu"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <LinearLayout
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_weight="0.2">
+                <ImageView
+                    android:id="@+id/img_filter"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_weight="0.2">
-                    <ImageView
-                        android:id="@+id/img_filter"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/filter"
-                        android:scaleType="fitCenter"
-                        android:layout_marginEnd="@dimen/dimen5dp"
-                        android:onClick="@{(view)->realEstateViewModel.filterClick()}"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/advance_filter"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/dimen8sp"
-                        android:fontFamily="@font/open_sans_bold"
-                        android:textStyle="bold"
-                        android:layout_marginTop="@dimen/dimen10dp"
-                        android:layout_marginStart="@dimen/dimen5dp"
-                        android:textAlignment="center"
-                        />
-                </LinearLayout>
+                    android:src="@drawable/filter"
+                    android:scaleType="fitCenter"
+                    android:layout_marginEnd="@dimen/dimen5dp"
+                    android:onClick="@{(view)->realEstateViewModel.filterClick()}"/>
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/advance_filter"
+             android:textColor="@color/white"
+             android:textSize="@dimen/text_size_xsmall"
+             android:fontFamily="@font/open_sans_bold"
+             android:textStyle="bold"
+             android:layout_marginTop="@dimen/dimen10dp"
+             android:layout_marginStart="@dimen/dimen5dp"
+             android:textAlignment="center"
+           />
+            </LinearLayout>
             </LinearLayout>
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/loading_layout"

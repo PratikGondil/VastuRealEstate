@@ -70,4 +70,5 @@
     <dimen name="dimen22sp">22sp</dimen>
     <dimen name="dimen40dp">40dp</dimen>
     <dimen name="dimen8sp">8sp</dimen>
+    <dimen name="dimen10sp">10sp</dimen>
 </resources>

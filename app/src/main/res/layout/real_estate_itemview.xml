@@ -40,7 +40,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_marginStart="@dimen/padding_xsmall"
-                    android:layout_weight="0.70"
+                    android:layout_weight="0.75"
                     android:background="@drawable/image_view_border"
                     android:adjustViewBounds="true"
                     android:padding="@dimen/margin_small"
@@ -53,7 +53,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/margin_small"
-                    android:layout_weight="1.30"
+                    android:layout_weight="1.25"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -71,7 +71,7 @@
                             android:maxLines="1"
                             android:textAlignment="textStart"
                             android:text="@{propertyData.propertyTitle}"
-                            android:textColor="@color/realestate_color"
+                            android:textColor="@color/blue_text"
                             android:textSize="@dimen/text_size_normal"
                             app:fontFamily="@font/open_sans_bold" />
                         <ImageView
@@ -91,9 +91,9 @@
                         android:ellipsize="end"
                         android:gravity="start"
                         android:maxLength="35"
-                        android:minLines="1"
+                        android:maxLines="1"
                         android:text="@{propertyData.owner}"
-                        android:textColor="@color/realestate_color"
+                        android:textColor="@color/blue_text"
                         android:textSize="@dimen/text_size_small"
                         app:fontFamily="@font/open_sans_semibold" />
 
@@ -105,7 +105,7 @@
                         android:ellipsize="end"
                         android:maxLength="35"
                         android:maxLines="1"
-                        android:textColor="@color/realestate_color"
+                        android:textColor="@color/blue_text"
                         android:textSize="@dimen/text_size_small"
                         app:fontFamily="@font/open_sans_semibold" />
 
@@ -118,7 +118,7 @@
                         android:maxLength="60"
                         android:maxLines="1"
                         android:text="@{propertyData.shortAddress}"
-                        android:textColor="@color/realestate_color"
+                        android:textColor="@color/blue_text"
                         android:textSize="@dimen/text_size_small"
                         app:fontFamily="@font/open_sans_semibold" />
 
@@ -131,7 +131,7 @@
                         android:includeFontPadding="true"
                         android:maxLength="35"
                         android:maxLines="1"
-                        android:textColor="@color/realestate_color"
+                        android:textColor="@color/blue_text"
                         android:textSize="@dimen/text_size_normal"
                         app:fontFamily="@font/open_sans_bold" />
                 </LinearLayout>
@@ -143,14 +143,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
+            android:background="@drawable/image_view_border"
             android:padding="@dimen/padding_xsmall"
-            app:shapeAppearanceOverlay="@style/image_custom_shape_real"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layoutContainer"/>
 
         <com.vastu.realestate.appModule.utils.Player
-           android:id="@+id/video"
+            android:id="@+id/video"
             android:layout_margin="@dimen/dimen10dp"
             layout="@layout/fragment_video"
             android:layout_width="wrap_content"

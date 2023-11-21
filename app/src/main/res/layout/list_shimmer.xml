@@ -10,10 +10,7 @@
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/dimen5dp"
-        android:layout_marginEnd="@dimen/margin_small"
-        android:layout_marginStart="@dimen/margin_small"
-        android:layout_marginBottom="@dimen/margin_small"
+        android:layout_margin="@dimen/margin_small"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
@@ -22,6 +19,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_vertical|center_horizontal"
+        android:padding="@dimen/padding_xsmall"
         android:background="@drawable/real_estate_background"
         app:cardCornerRadius="@dimen/card_corner_radius">
 
