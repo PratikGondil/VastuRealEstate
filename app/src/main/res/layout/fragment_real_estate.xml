@@ -97,7 +97,7 @@
                         android:gravity="center_vertical"
                         android:inputType="text"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_menu"
+                        android:textSize="@dimen/text_size_normal"
                         android:drawableEnd="@drawable/search"
                         android:onTextChanged="@{realEstateViewModel.onTextChanged}"
                         tools:ignore="SpeakableTextPresentCheck" />
@@ -163,7 +163,7 @@
              android:layout_height="wrap_content"
              android:text="@string/advance_filter"
              android:textColor="@color/white"
-             android:textSize="@dimen/dimen8sp"
+             android:textSize="@dimen/text_size_xsmall"
              android:fontFamily="@font/open_sans_bold"
              android:textStyle="bold"
              android:layout_marginTop="@dimen/dimen10dp"

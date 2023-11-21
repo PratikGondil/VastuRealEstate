@@ -97,7 +97,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
         if (filteredlist.isEmpty()) {
             // if no item is added in filtered list we are
             // displaying a toast message as no data found.
-            Toast.makeText(activity, "No Data Found..", Toast.LENGTH_SHORT).show()
+           // Toast.makeText(activity, "No Data Found..", Toast.LENGTH_SHORT).show()
         } else {
             // at last we are passing that filtered
             // list to our adapter class.
@@ -129,6 +129,10 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     }
 
     private fun getRealEstateList() {
+        if(activity is DashboardActivity)
+        {
+            (activity as DashboardActivity).bottomNavigationView.visibility= View.VISIBLE
+        }
         try {
             realEstateBinding.loadingLayout.startShimmerAnimation()
             userId?.let { realEstateViewModel.getPropertyList(it,ApiUrlEndPoints.GET_PROPERTY_LIST) }
