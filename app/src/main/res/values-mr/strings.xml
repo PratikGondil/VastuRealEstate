@@ -45,7 +45,7 @@
     <string name="personal_loan">वैयक्तिक कर्ज</string>
     <string name="home_loan">होम लोन</string>
     <string name="car_loan">कार कर्ज</string>
-    <string name="search">शोधा....</string>
+    <string name="search"><b>शोधा....</b></string>
 
 
     <string name="budget">बजेट</string>
@@ -139,11 +139,11 @@
     <string name="select_image">प्रतिमा निवडा</string>
     <string name="images">प्रतिमा*</string>
 
-    <string name="home_text">मुख्यपृष्ठ</string>
-    <string name="prime_properties_text">मुख्य गुणधर्म</string>
-    <string name="upcoming_schemes_text">आगामी योजना</string>
-    <string name="our_services_text">आमच्या सेवा</string>
-    <string name="wishlist_text">विशलिस्ट</string>
+    <string name="home_text"><b>मुख्यपृष्ठ</b></string>
+    <string name="prime_properties_text"><b>मुख्य गुणधर्म</b></string>
+    <string name="upcoming_schemes_text"><b>आगामी योजना</b></string>
+    <string name="our_services_text"><b>आमच्या सेवा</b></string>
+    <string name="wishlist_text"><b>विशलिस्ट</b></string>
 
 
     <string name="upload">अपलोड करा</string>
