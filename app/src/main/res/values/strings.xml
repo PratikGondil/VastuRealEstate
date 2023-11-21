@@ -44,7 +44,7 @@
     <string name="personal_loan">PERSONAL LOAN</string>
     <string name="home_loan">HOME LOAN</string>
     <string name="car_loan">CAR LOAN</string>
-    <string name="search">Search by Project</string>
+    <string name="search"><b>Search by Project</b></string>
     <string name="budget">Budget</string>
     <string name="featured">FEATURED</string>
     <string name="details">Property Details</string>
@@ -282,11 +282,11 @@
     <string name="welcome">Welcome \n to the vastu family</string>
 
     <!--    New Dashboard-->
-    <string name="home_text">Home</string>
-    <string name="prime_properties_text">Prime Properties</string>
-    <string name="upcoming_schemes_text">Upcoming Schemes</string>
-    <string name="our_services_text">Our Services</string>
-    <string name="wishlist_text">Wishlist</string>
+    <string name="home_text"><b>Home</b></string>
+    <string name="prime_properties_text"><b>Prime Properties</b></string>
+    <string name="upcoming_schemes_text"><b>Upcoming Schemes</b></string>
+    <string name="our_services_text"><b>Our Services</b></string>
+    <string name="wishlist_text"><b>Wishlist</b></string>
     <string name="bhk_apartments">BHK Apartments</string>
     <string name="term_condition">Terms And Conditions</string>
     <string name="loan_info">art Of Nyati County, 210 Acre ResidentialTownship Of Gated Communities. Tallest Towers In Undri..Close Proximity To Prestigious Schools And Shopping ArcadesIn A 2 Km Vicinity. A Scenic And Unmatched View Of TheSahyadri Hills. Grand Entrance Lobbies. 100% DG BackupFor External Amenities And Internal Units Excluding 15Amp. Points.. Gas Pipeline Connection For Every Home..Dedicated Covered Car Park For Every Home. ApprovedBy Major Accredited Lenders.. 6 Acre Township Of ActiveSporting Amenities (Fully Equipped Clubhouse WithGymnasium And Indoor Recreational Space, Children\'s Play Area, Jogging Track, Landscaped Gardens, SwimmingPool.Multipurpose Sports Court) Interiors Part Of NyatiCounty, 210 Acre Residential Township OfGated Communities. Tallest Towers In Undri..Close Proximity To Prestigious Schools And ShoppingArcades In A 2 Km Vicinity. A Scenic And Unmatched ViewOf The Sahyadri Hills. Grand Entrance Lobbies. 100% DGBackup For External Amenities And InternalUnits Excluding 15 Amp. Points.. Gas PipelineConnection For Every Home.. Dedicated Covered</string>
