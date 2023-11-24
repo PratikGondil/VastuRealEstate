@@ -84,7 +84,7 @@ class RealEstateAdapter(
             } else {
                 holder.binding.imgE.visibility = View.GONE
             }
-            if (position == adSliderVideo.position?.toInt()) {
+            if (position == 6) {
                 binding.video.setMediaController(null);
                 binding.video.setVideoURI(Uri.parse(adSliderVideo.slider.toString()))
                 holder.binding.video.visibility = View.VISIBLE

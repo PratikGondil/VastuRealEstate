@@ -133,33 +133,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     >
-                <com.aemerse.slider.ImageCarousel
-                    android:id="@+id/image_slider_builder"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    app:autoPlay="true"
-                    app:autoPlayDelay="2000"
-                    android:layout_margin="@dimen/dimen20dp"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintVertical_bias="0.5"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    <com.aemerse.slider.ImageCarousel
+                        android:id="@+id/image_slider_builder"
+                        android:layout_width="match_parent"
+                        android:layout_height="250dp"
+                        app:showNavigationButtons="true"
+                        app:previousButtonLayout="@layout/previous_layout"
+                        app:previousButtonId="@id/btn_previous"
+                        app:previousButtonMargin="4dp"
+                        app:nextButtonLayout="@layout/next_layout"
+                        app:nextButtonId="@id/btn_next"
+                        app:nextButtonMargin="4dp"
+                        app:autoPlayDelay="1000"
+                        app:autoPlay="true"
+                        android:layout_margin="@dimen/dimen20dp"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
 
-                <me.relex.circleindicator.CircleIndicator2
-                    android:id="@+id/custom"
-                    android:visibility="visible"
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    app:ci_width = "@dimen/dimen20dp"
-                    app:ci_height= "@dimen/dimen20dp"
-                    app:layout_constraintStart_toStartOf="@id/image_slider_builder"
-                    app:layout_constraintBottom_toBottomOf="@id/image_slider_builder"
+                    <me.relex.circleindicator.CircleIndicator2
+                        android:id="@+id/custom"
+                        android:visibility="gone"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        app:ci_width = "@dimen/dimen20dp"
+                        app:ci_height= "@dimen/dimen20dp"
+                        app:layout_constraintStart_toStartOf="@id/image_slider_builder"
+                        app:layout_constraintBottom_toBottomOf="@id/image_slider_builder"
 
-                    >
+                        >
 
 
-                </me.relex.circleindicator.CircleIndicator2>
+                    </me.relex.circleindicator.CircleIndicator2>
                 </androidx.constraintlayout.widget.ConstraintLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -729,8 +736,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen15dp"
                                 android:layout_weight="1"
-                                android:text="@string/unfurnished"
-                                android:textColor="@color/text_color"
+                                android:text="@{propertyData.furnishing}"                                android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
                                 android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
@@ -789,7 +795,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen15dp"
                                 android:layout_weight="1"
-                                android:text="@string/ready_to_move"
+                                android:text="@{propertyData.construction_status}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
                                 android:textStyle="bold"
@@ -1020,9 +1026,16 @@
                         <com.aemerse.slider.ImageCarousel
                             android:id="@+id/image_slider_property_plan"
                             android:layout_width="match_parent"
-                            android:layout_height="250dp"
+                            app:showNavigationButtons="true"
+                            app:previousButtonLayout="@layout/previous_layout"
+                            app:previousButtonId="@id/btn_previous"
+                            app:previousButtonMargin="4dp"
+                            app:nextButtonLayout="@layout/next_layout"
+                            app:nextButtonId="@id/btn_next"
+                            app:nextButtonMargin="4dp"
+                            app:autoPlayDelay="1000"
                             app:autoPlay="true"
-                            app:autoPlayDelay="2000"
+                            android:layout_height="250dp"
                             android:layout_margin="@dimen/dimen20dp" />
 
                         <androidx.recyclerview.widget.RecyclerView
@@ -1060,11 +1073,18 @@
                             android:textStyle="bold"
                             app:fontFamily="@font/open_sans_bold" />
                         <com.aemerse.slider.ImageCarousel
+                            app:showNavigationButtons="true"
+                            app:previousButtonLayout="@layout/previous_layout"
+                            app:previousButtonId="@id/btn_previous"
+                            app:previousButtonMargin="4dp"
+                            app:nextButtonLayout="@layout/next_layout"
+                            app:nextButtonId="@id/btn_next"
+                            app:nextButtonMargin="4dp"
+                            app:autoPlayDelay="1000"
+                            app:autoPlay="true"
                             android:id="@+id/image_slider_property_brochure"
                             android:layout_width="match_parent"
                             android:layout_height="500dp"
-                            app:autoPlay="true"
-                            app:autoPlayDelay="2000"
                             android:layout_margin="@dimen/dimen20dp" />
 
                         <androidx.appcompat.widget.AppCompatButton
@@ -1145,7 +1165,7 @@
                 android:textSize="@dimen/text_size_small"
                 android:fontFamily="@font/open_sans_extra_bold"
                 android:textColor="@color/button_color"
-               />
+                />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPositive"
@@ -1161,5 +1181,5 @@
                 android:text="@string/add_to_wishlist"
                 android:textColor="@color/white" />
         </LinearLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
