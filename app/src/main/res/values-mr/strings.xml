@@ -139,7 +139,7 @@
     <string name="select_image">प्रतिमा निवडा</string>
     <string name="images">प्रतिमा*</string>
 
-    <string name="home_text"><b>मुख्यपृष्ठ</b></string>
+    <string name="home_text"><b>home</b></string>
     <string name="prime_properties_text"><b>मुख्य गुणधर्म</b></string>
     <string name="upcoming_schemes_text"><b>आगामी योजना</b></string>
     <string name="our_services_text"><b>आमच्या सेवा</b></string>
