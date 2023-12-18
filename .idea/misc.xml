@@ -91,12 +91,34 @@
         <entry key="..\:/Users/anjali.kapoor/AndroidStudioProjects/vastu_5_7_23/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1" />
         <entry key="..\:/Users/anjali.kapoor/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/activity_list_item.xml" value="0.171875" />
         <entry key="..\:/Users/anjali.kapoor/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.1875" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/drawable-hdpi/realestatate_searchbarbg.xml" value="0.126" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/drawable/drop_down_icon.xml" value="0.121" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/drawable/edt_background.xml" value="0.171" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/drawable/real_estate.xml" value="0.1" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/drawable/realestatate_searchbarbg.xml" value="0.1" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/aminity_item_view.xml" value="0.1921875" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/creator_details_page.xml" value="0.1" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/creator_list_item_view.xml" value="0.22" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/creatorlist_fragment.xml" value="0.1765625" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/drop_down_item.xml" value="0.16197916666666667" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/employee_details_fragment.xml" value="0.1765625" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/feedback_fragment.xml" value="0.1921875" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/find_profile_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/fragment_loan_enquiry_list.xml" value="0.1921875" />
         <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/fragment_real_estate.xml" value="0.14629629629629629" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/fragment_real_estate_details.xml" value="0.1" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/fragment_vastu_dashboard.xml" value="0.1921875" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/loan_info_fragment.xml" value="0.1875" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/multiple_filters.xml" value="0.1765625" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/real_estate_itemview.xml" value="0.1921875" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/sign_up_and_login_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/sign_up_fragment.xml" value="0.1" />
+        <entry key="..\:/Users/anjali.kapoor/Desktop/VastuRealEstate/app/src/main/res/layout/sub_area_list_adapter.xml" value="0.1" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

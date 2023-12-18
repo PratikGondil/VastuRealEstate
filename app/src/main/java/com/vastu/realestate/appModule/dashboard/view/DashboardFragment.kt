@@ -241,7 +241,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
     }
     override fun onLoanClick() {
         showProgressDialog()
-        findNavController().navigate(R.id.action_VastuDashboardFragment_to_LoanFragment)
+        findNavController().navigate(R.id.findProfileFragment)
     }
 
     override fun onResume() {
