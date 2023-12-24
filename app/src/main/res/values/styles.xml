@@ -100,4 +100,11 @@
         <item name="cornerSizeBottomRight">8dp</item>
         <item name="cornerSizeBottomLeft">8dp</item>
     </style>
+
+    <style name="Tab_Menu_Details" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:textSize">@dimen/dimen_16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/button_color</item>
+    </style>
 </resources>

@@ -53,7 +53,7 @@
                     app:tabIndicatorHeight="4dp"
                     app:tabMode="scrollable"
                     app:tabGravity="fill"
-                    app:tabTextAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    app:tabTextAppearance="@style/Tab_Menu_Details"
                     app:tabSelectedTextColor="@android:color/white"
                     app:tabInlineLabel="true"
                     app:tabTextColor="#e4e4e4" >
@@ -175,6 +175,7 @@
 
                     <TextView
                         android:layout_width="match_parent"
+                        android:id="@+id/txtBuilderProfile"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_large"
                         android:layout_marginTop="@dimen/margin_medium"
@@ -198,7 +199,7 @@
                             android:minLines="1"
                             android:text="@{propertyData.priceMinWord + propertyData.priceMaxWord}"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/dimens20sp"
+                            android:textSize="@dimen/text_size18sp"
                             android:textStyle="bold"
                             app:fontFamily="@font/open_sans_bold" />
 
@@ -224,7 +225,7 @@
                             android:maxLines="1"
                             android:text="@{propertyData.owner}"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/dimen_16sp"
+                            android:textSize="@dimen/text_size_small"
                             app:fontFamily="@font/open_sans_semibold" />
 
                         <TextView
@@ -268,6 +269,7 @@
                     android:layout_marginStart="@dimen/margin_large"
                     android:layout_marginTop="@dimen/margin_medium"
                     android:text="@string/details"
+                    android:id="@+id/txtPropertyDetails"
                     android:textColor="@color/button_color"
                     android:textSize="@dimen/text_size18sp"
                     android:textStyle="bold"
@@ -912,8 +914,11 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
+                                android:id="@+id/txtAmmenities"
                                 android:layout_marginBottom="@dimen/dimen5dp"
                                 android:layout_weight="1"
+                                android:focusable="true"
+                                android:focusableInTouchMode="true"
                                 android:includeFontPadding="false"
                                 android:text="@string/amenities"
                                 android:textColor="@color/button_color"
@@ -947,6 +952,7 @@
                                 android:layout_height="0dp"
                                 android:layout_marginBottom="@dimen/dimen5dp"
                                 android:layout_weight="1"
+                                android:id="@+id/txtDescription"
                                 android:includeFontPadding="false"
                                 android:text="@string/description"
                                 android:textColor="@color/button_color"
@@ -1017,6 +1023,7 @@
 
                         <TextView
                             android:layout_width="wrap_content"
+                            android:id="@+id/txtPhotos"
                             android:layout_height="wrap_content"
                             android:text="@string/property_photo_amp_floor_plan"
                             android:textColor="@color/button_color"
@@ -1068,6 +1075,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="@string/brochure"
+                            android:id="@+id/txtBrochure"
                             android:textColor="@color/button_color"
                             android:textSize="@dimen/text_size18sp"
                             android:textStyle="bold"
@@ -1123,6 +1131,7 @@
                             android:layout_marginStart="@dimen/margin_large"
                             android:layout_marginBottom="@dimen/dimen5dp"
                             android:layout_weight="1"
+                            android:id="@+id/txtSimilarProjects"
                             android:includeFontPadding="false"
                             android:text="@string/similar_project"
                             android:textColor="@color/button_color"

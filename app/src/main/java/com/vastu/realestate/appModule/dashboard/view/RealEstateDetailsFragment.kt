@@ -1,16 +1,17 @@
 package com.vastu.realestate.appModule.dashboard.view
 
+import android.graphics.Point
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.BulletSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewParent
+import android.widget.ScrollView
 import androidx.annotation.RequiresApi
+import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.aemerse.slider.listener.CarouselListener
 import com.aemerse.slider.model.CarouselItem
 import com.denzcoskun.imageslider.models.SlideModel
+import com.google.android.material.tabs.TabLayout
 import com.vastu.propertycore.model.response.AddWishlistResponse
 import com.vastu.propertycore.model.response.Amenity
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
@@ -38,12 +40,12 @@ import com.vastu.realestate.databinding.FragmentRealEstateDetailsBinding
 import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestatecore.model.response.PropertyData
 import com.vastu.slidercore.model.response.property.PropertySliderImage
-import com.vastu.slidercore.model.response.property.PropertySliderResponseMain
 import com.vastu.slidercore.model.response.realestatedetails.BrochureSlider
 import com.vastu.slidercore.model.response.realestatedetails.BuilderSlider
 import com.vastu.slidercore.model.response.realestatedetails.PropertyDetailsResponseSliderMain
 import com.vastu.slidercore.model.response.realestatedetails.PropertySlider
 import java.util.regex.Pattern
+
 
 class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPropertySliderListener,
     IToolbarListener {
@@ -102,6 +104,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         drawerViewModel.toolbarTitle.set(getString(R.string.real_estate))
         drawerViewModel.isDashBoard.set(false)
         getPropertySlider()
+        setupView()
     }
     private fun getPropertySlider(){
         showProgressDialog()
@@ -134,7 +137,90 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
         }
     }
 
+    fun setupView(){
+        realEstateDetailsBinding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when(tab!!.position){
+                    0 -> handleScroll(tab.text)
+                    1 ->handleScroll(tab.text)
+                    2 ->handleScroll(tab.text)
+                    3 ->handleScroll(tab.text)
+                    4 ->handleScroll(tab.text)
+                    5 ->handleScroll(tab.text)
+                    6 ->handleScroll(tab.text)
+                    7 ->handleScroll(tab.text)
+                    8 ->handleScroll(tab.text)
+
+
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+        })
+    }
+
+    private fun handleScroll(text: CharSequence?) {
+       // realEstateDetailsBinding.scrollview.smoothScrollTo(realEstateDetailsBinding.txtAmmenities.getScrollX(),realEstateDetailsBinding.txtAmmenities.getScrollY());
+//Amenities
+        //Property Details
+        //Description
+        //Highlights
+        //Property Photo & Floor Plan
+        //Brochure
+        //Similar Projects of M/s Vinayak Construction
+
+        when(text){
+            "Builder Profile" -> scrollToView( realEstateDetailsBinding.scrollview,realEstateDetailsBinding.txtBuilderProfile)
+            "Property Details"->scrollToView( realEstateDetailsBinding.scrollview,realEstateDetailsBinding.txtPropertyDetails)
+
+            "Amenities"->scrollToView( realEstateDetailsBinding.scrollview,realEstateDetailsBinding.txtAmmenities)
+
+            "Description"->scrollToView( realEstateDetailsBinding.scrollview,realEstateDetailsBinding.txtDescription)
+
+            "Highlights"->scrollToView( realEstateDetailsBinding.scrollview,realEstateDetailsBinding.highlightsTextview)
+
+            "Property Photo & Floor Plan"->scrollToView( realEstateDetailsBinding.scrollview,realEstateDetailsBinding.txtPhotos)
+
+            "Brochure"->scrollToView( realEstateDetailsBinding.scrollview,realEstateDetailsBinding.txtBrochure)
+
+            "Similar Projects"->scrollToView( realEstateDetailsBinding.scrollview,realEstateDetailsBinding.txtSimilarProjects)
+
+
+        }
+
+    }
+
+    private fun scrollToView(scrollViewParent: NestedScrollView, view: View) {
+        // Get deepChild Offset
+        val childOffset = Point()
+        getDeepChildOffset(scrollViewParent, view.parent, view, childOffset)
+        // Scroll to child.
+        scrollViewParent.smoothScrollTo(0, childOffset.y)
+    }
+
+    private fun getDeepChildOffset(
+        mainParent: ViewGroup,
+        parent: ViewParent,
+        child: View,
+        accumulatedOffset: Point
+    ) {
+        val parentGroup = parent as ViewGroup
+        accumulatedOffset.x += child.left
+        accumulatedOffset.y += child.top
+        if (parentGroup == mainParent) {
+            return
+        }
+        getDeepChildOffset(mainParent, parentGroup.parent, parentGroup, accumulatedOffset)
+    }
+
+
     override fun onClickBuilderProfile() {
+        realEstateDetailsBinding.scrollview.smoothScrollTo(0, realEstateDetailsBinding.txtAmmenities.getTop());
+
 
 //        realEstateDetailsBinding.tabLayout.setOnClickListener{
 //            when(id){
