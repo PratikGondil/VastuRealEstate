@@ -933,6 +933,13 @@
                 <!--                        android:weightSum="2">-->
 
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/dimen10dp"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:background="@color/border_color" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1009,7 +1016,6 @@
                                 android:layout_marginStart="@dimen/margin_small"
                                 android:layout_marginTop="@dimen/dimen10dp"
                                 android:ellipsize="end"
-                                android:maxLines="10"
                                 android:minLines="2"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
@@ -1047,13 +1053,19 @@
                                 android:layout_marginStart="@dimen/margin_large"
                                 android:layout_marginTop="@dimen/dimen10dp"
                                 android:ellipsize="end"
-                                android:maxLines="10"
                                 android:minLines="2"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
                                 app:fontFamily="@font/open_sans_semibold" />
                         </LinearLayout>
                     </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:background="@color/border_color" />
 
                     <LinearLayout
                         android:id="@+id/photoLayout"
@@ -1094,6 +1106,14 @@
                             android:scrollbars="horizontal"
                             android:visibility="gone"
                             tools:listitem="@layout/property_photo_plan_item_view" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/margin_small"
+                            android:layout_marginBottom="@dimen/margin_small"
+                            android:background="@color/border_color" />
+
 
                     </LinearLayout>
 
