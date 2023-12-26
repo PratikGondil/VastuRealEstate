@@ -98,7 +98,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
     }
 
     private fun getUserType() {
-        showProgressDialog()
+      //  showProgressDialog()
         userId?.let { viewModel.getUserType(it) }
     }
 
@@ -110,7 +110,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
     }
 
     private fun getAdvertisementSlider() {
-        showProgressDialog()
+        //showProgressDialog()
         viewModel.getAdvertisementSlider()
     }
 
@@ -142,7 +142,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
     }
 
     private fun getMainSlider() {
-        showProgressDialog()
+        //showProgressDialog()
         mainPagerSliderRequest = mainPagerSliderRequest.copy(
             areaId = areaId,
             userId = userId
@@ -240,7 +240,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
         dialog.show()
     }
     override fun onLoanClick() {
-        showProgressDialog()
+       // showProgressDialog()
         findNavController().navigate(R.id.action_VastuDashboardFragment_to_LoanFragment)
     }
 

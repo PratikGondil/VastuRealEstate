@@ -74,4 +74,6 @@ data class PropertyIdData(
     val furnishing: String,
     @SerializedName("construction_status")
     val construction_status: String,
+    @SerializedName("flat_facing")
+    val flatFacing: String,
 ):java.io.Serializable
