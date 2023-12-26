@@ -343,5 +343,18 @@
         android:label="creatorListFragment"
         tools:layout="@layout/creatorlist_fragment">
 
+        <action
+            android:id="@+id/action_creatorListFragment_to_creatorDetailsFragment"
+            app:destination="@+id/creatorDetailsFragment"
+            />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/creatorDetailsFragment"
+        android:name="com.vastu.realestate.appModule.realCreator.creatorDetails.CreatorDetailsFragment"
+        android:label="creatorDetailsFragment"
+        tools:layout="@layout/creator_details_page">
+
     </fragment>
 </navigation>

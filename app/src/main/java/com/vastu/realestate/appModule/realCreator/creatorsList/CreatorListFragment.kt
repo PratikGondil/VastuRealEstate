@@ -153,7 +153,9 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
                     realEstateViewModel.getRealCreatorList(
                         it,
                         ApiUrlEndPoints.GET_REAL_CREATOR,
-                        language
+                        language,
+                        taluka = "pune",
+                        subarea = "abc"
                     )
                 }
             }
@@ -197,23 +199,16 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
     }
 
 
-    override fun onItemClick(propertyData: PropertyData) {
+    override fun onItemClick(realCreatorDatum: RealCreatorDatum) {
         val bundle = Bundle()
-        bundle.putSerializable(BaseConstant.PROPERTY_DETAILS, propertyData)
+        bundle.putSerializable(BaseConstant.PROPERTY_DETAILS, realCreatorDatum)
         findNavController().navigate(
-            R.id.action_RealEstateFragment_to_RealEstateDetailsFragment,
+            R.id.action_creatorListFragment_to_creatorDetailsFragment,
             bundle
         )
     }
 
-    override fun onWishlistClick(propertyData: PropertyData) {
-        showProgressDialog()
-        DashboardFragment.userId?.let {
-            propertyData.propertyId?.let { it1 ->
-                //  realEstateViewModel.getAddToWishlist(it,it1)
-            }
-        }
-    }
+
 
     override fun onClickBack() {
         try {

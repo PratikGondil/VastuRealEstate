@@ -16,8 +16,8 @@ import com.vastu.utils.ErrorCode
 object RealCreatorListRepository : IGetRealCreatorListReq, IOnServiceResponseListener {
     lateinit var iGetRealCreatorListResListener: IGetRealCreatorListResListener
 
-    private fun buildRequest(request: String,language: String,taluka :String,subarea:String): ByteArray {
-        val objRealCreationReq = ObjRealCreatorListReq(language,request)
+    fun buildRequest(request: String,language: String,taluka_id :String,subarea:String): ByteArray {
+        val objRealCreationReq = ObjRealCreatorListReq(language,request,taluka_id,subarea)
         return Gson().toJson(objRealCreationReq).toByteArray()
     }
 
@@ -52,6 +52,8 @@ object RealCreatorListRepository : IGetRealCreatorListReq, IOnServiceResponseLis
         context: Context,
         profileId: String,
         language: String,
+        taluka: String,
+        subarea: String,
         urlEndPoint: String,
         iGetRealCreatorListResListener: IGetRealCreatorListResListener
     ) {
@@ -60,7 +62,7 @@ object RealCreatorListRepository : IGetRealCreatorListReq, IOnServiceResponseLis
             .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
-            .setRequest(buildRequest(profileId,language,"2","16"))
+            .setRequest(buildRequest(profileId,language,"16","16"))
             .setUrlEndPoint(urlEndPoint)
             .build()
             .sendApiRequest(this)

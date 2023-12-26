@@ -1,27 +1,21 @@
 package com.vastu.realestate.appModule.realCreator.infoPage
 
-import android.Manifest
 import android.annotation.SuppressLint
-import android.app.AlertDialog
-import android.content.Context
-import android.content.DialogInterface
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.location.Geocoder
-import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.provider.Settings
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MotionEvent
+import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.core.app.ActivityCompat
+import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.google.android.gms.location.*
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
 import com.vastu.networkService.util.Constants
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
@@ -35,7 +29,6 @@ import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaRe
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
 import com.vastu.realestate.utils.PreferenceManger
-import java.util.*
 
 class FindProfileFragment: BaseFragment(), View.OnTouchListener,IToolbarListener, FindProfileViewListener {
 
@@ -103,10 +96,7 @@ class FindProfileFragment: BaseFragment(), View.OnTouchListener,IToolbarListener
         }
         findProfileFragmentBinding.spinner.adapter = ArrayAdapter(
             requireContext(), R.layout.drop_down_item, adapter
-        ).also {
-                adapter->
-            adapter.setDropDownViewResource(R.drawable.drop_down_icon)
-        }
+        )
 
         findProfileFragmentBinding.spinner2.adapter = ArrayAdapter(
             requireContext(),                R.layout.drop_down_item, adapter
@@ -156,32 +146,6 @@ class FindProfileFragment: BaseFragment(), View.OnTouchListener,IToolbarListener
         TODO("Not yet implemented")
     }
 
-    private fun buildAlertMessageNoGps() {
-        if(!isdialogDisplayed) {
-            isdialogDisplayed = true
-            var gpsbuilder = AlertDialog.Builder(requireContext())
-            gpsbuilder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
-            gpsbuilder.setTitle("GPS Settings")
-                .setCancelable(true)
-                .setPositiveButton("Settings",
-                    DialogInterface.OnClickListener { dialog, id ->startActivity(Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS))
-                    }
-                )
-            var alert = gpsbuilder.create()
-            alert.show()
-        }
-    }
-    @SuppressLint("MissingPermission")
-    private fun getNewLocation(){
-        locationRequest= LocationRequest()
-        locationRequest.priority =LocationRequest.PRIORITY_HIGH_ACCURACY
-        locationRequest.interval = 0
-        locationRequest.fastestInterval =0
-        locationRequest.numUpdates =2
-        fusedLocationProviderClient.requestLocationUpdates(
-            locationRequest,locationCallback, Looper.myLooper()
-        )
-    }
 
     override fun onResume() {
         super.onResume()
@@ -240,22 +204,30 @@ class FindProfileFragment: BaseFragment(), View.OnTouchListener,IToolbarListener
     }
 
     override fun onClickBack() {
-        TODO("Not yet implemented")
     }
 
     override fun onClickMenu() {
-        TODO("Not yet implemented")
     }
 
     override fun onClickNotification() {
-        TODO("Not yet implemented")
     }
 
     override fun onSubmitBtnClick() {
         findNavController().navigate(R.id.action_findProfileFragment_to_creatorListFragment)
     }
+    fun onShowStateDropDown(view: View){
+        (view as AutoCompleteTextView).showDropDown()
+    }
 
-    override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-        TODO("Not yet implemented")
+    override fun onTouch(view: View?, p1: MotionEvent?): Boolean {
+        if (view == findProfileFragmentBinding.autoCompleteCity) {
+            view.let {
+                onShowStateDropDown(it)
+            }
+        }
+        else if(view == findProfileFragmentBinding.autoCompleteAreaList){
+            onShowStateDropDown(view)
+        }
+        return true
     }
 }

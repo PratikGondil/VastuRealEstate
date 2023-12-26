@@ -110,8 +110,8 @@ class CreatorListAdapter(
     override fun getItemCount(): Int = realEstateListCurrent.size
 
     interface OnItemClickListener {
-        fun onItemClick(propertyData: PropertyData)
-        fun onWishlistClick(propertyData: PropertyData)
+        fun onItemClick(realCreatorDatum:RealCreatorDatum)
+
     }
     private fun setVolume(amount: Int) {
         val max = 100

@@ -7,5 +7,9 @@ data class ObjRealCreatorListReq(
     @SerializedName("language")
     var language: String? = null,
     @SerializedName("profile_id")
-    var profileId: String? = null
-): Serializable
+    var profileId: String? = null,
+    @SerializedName("taluka_id")
+    val talukaID: String,
+    @SerializedName("subarea_id")
+    val subareaID: String
+    ): Serializable

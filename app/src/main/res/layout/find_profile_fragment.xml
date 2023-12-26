@@ -68,11 +68,12 @@
             style="@style/Widget.Design.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/edt_background"
             app:layout_constraintTop_toBottomOf="@+id/spinner2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/margin_small"
+            android:layout_margin="@dimen/dimen20dp"
             android:gravity="center"
             android:textAlignment="center"
             android:textColorHint="@color/black"
@@ -80,13 +81,11 @@
             app:endIconDrawable="@drawable/drop_down_icon"
             app:endIconMode="custom"
             app:expandedHintEnabled="false"
-            app:helperText="@string/required"
             app:helperTextTextColor="@color/button_color"
             app:hintEnabled="false"
             app:helperTextTextAppearance="@style/font"
             app:placeholderText="@string/city_text"
-            app:placeholderTextColor="@color/black"
-            app:startIconDrawable="@drawable/city">
+            app:placeholderTextColor="@color/black">
 
             <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/autoCompleteCity"
@@ -94,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/edittext_background"
+
                 android:clickable="true"
                 android:context="@{context}"
                 android:dropDownHeight="136dp"
@@ -119,7 +118,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tilcity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/margin_small"
+            android:layout_margin="@dimen/dimen20dp"
             android:gravity="center"
             android:textAlignment="center"
             android:textColorHint="@color/black"
@@ -127,13 +126,12 @@
             app:endIconDrawable="@drawable/drop_down_icon"
             app:endIconMode="custom"
             app:expandedHintEnabled="false"
-            app:helperText="@string/required"
             app:helperTextTextColor="@color/button_color"
             app:hintEnabled="false"
+            android:background="@drawable/edittext_background"
             app:helperTextTextAppearance="@style/font"
             app:placeholderText="@string/sub_area_text"
-            app:placeholderTextColor="@color/black"
-            app:startIconDrawable="@drawable/sub_area">
+            app:placeholderTextColor="@color/black">
 
             <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/autoCompleteAreaList"
@@ -141,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/edittext_background"
+
                 android:clickable="true"
                 android:context="@{context}"
                 android:dropDownHeight="136dp"

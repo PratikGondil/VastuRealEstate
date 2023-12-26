@@ -11,12 +11,12 @@
             type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
 
         <variable
-            name="propertyData"
-            type="com.vastu.propertycore.model.response.PropertyIdData" />
+            name="singalRealCreatorDatum"
+            type="com.vastu.realCreator.creatorDetails.model.SingalRealCreatorDatum" />
 
         <variable
-            name="realEstateDetailsViewModel"
-            type="com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateDetailsViewModel" />
+            name="creatorListDetailsViewModel"
+            type="com.vastu.realestate.appModule.realCreator.creatorDetails.CreatorDetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,46 +47,48 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content" />
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
+                    android:layout_height="wrap_content">
+
                     <com.aemerse.slider.ImageCarousel
                         android:id="@+id/image_slider_builder"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
-                        app:showNavigationButtons="true"
-                        app:previousButtonLayout="@layout/previous_layout"
-                        app:previousButtonId="@id/btn_previous"
-                        app:previousButtonMargin="4dp"
-                        app:nextButtonLayout="@layout/next_layout"
-                        app:nextButtonId="@id/btn_next"
-                        app:nextButtonMargin="4dp"
-                        app:autoPlayDelay="2000"
-                        app:autoPlay="true"
                         android:layout_margin="@dimen/dimen20dp"
+                        app:autoPlay="true"
+                        app:autoPlayDelay="2000"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintVertical_bias="0.5"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:nextButtonId="@id/btn_next"
+                        app:nextButtonLayout="@layout/next_layout"
+                        app:nextButtonMargin="4dp"
+                        app:previousButtonId="@id/btn_previous"
+                        app:previousButtonLayout="@layout/previous_layout"
+                        app:previousButtonMargin="4dp"
+                        app:showNavigationButtons="true" />
 
                     <me.relex.circleindicator.CircleIndicator2
                         android:id="@+id/custom"
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        app:ci_width = "@dimen/dimen20dp"
-                        app:ci_height= "@dimen/dimen20dp"
-                        app:layout_constraintStart_toStartOf="@id/image_slider_builder"
+                        android:visibility="gone"
+                        app:ci_height="@dimen/dimen20dp"
+                        app:ci_width="@dimen/dimen20dp"
                         app:layout_constraintBottom_toBottomOf="@id/image_slider_builder"
+                        app:layout_constraintStart_toStartOf="@id/image_slider_builder"
 
                         >
 
 
                     </me.relex.circleindicator.CircleIndicator2>
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -150,7 +152,6 @@
                             android:ellipsize="end"
                             android:maxLength="60"
                             android:maxLines="1"
-                            android:text="@{propertyData.owner}"
                             android:textColor="@color/blue_text"
                             android:textSize="@dimen/dimens20sp"
                             app:fontFamily="@font/open_sans_semibold" />
@@ -163,7 +164,6 @@
                             android:includeFontPadding="true"
                             android:maxLength="35"
                             android:maxLines="1"
-                            android:text="@{propertyData.shortAddress}"
                             android:textColor="@color/blue_text"
                             android:textSize="@dimen/dimens20sp"
                             app:fontFamily="@font/open_sans_semibold" />
@@ -188,21 +188,22 @@
                     android:textSize="@dimen/text_size18sp"
                     android:textStyle="bold"
                     app:fontFamily="@font/open_sans_bold" />
+
                 <TextView
                     android:id="@+id/txtInfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
                     android:layout_margin="@dimen/dimen20dp"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/open_sans_bold"
                     android:fontFamily="@font/open_sans_bold"
                     android:text="@string/loan_info"
-                    app:layout_constraintTop_toBottomOf="@+id/llToolbarLayout"
-                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/open_sans_bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/llToolbarLayout" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -215,55 +216,54 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_large"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:text="@string/details"
+                    android:text="@string/contact_us"
                     android:textColor="@color/button_color"
                     android:textSize="@dimen/text_size18sp"
                     android:textStyle="bold"
                     app:fontFamily="@font/open_sans_bold" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <Button
                         android:id="@+id/CallButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Contact via Facebook"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/ic_phone" />
+
+                    <TextView
+                        android:id="@+id/whatsappButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:drawablePadding="8dp"
-                        android:padding="12dp"
-                        android:layout_marginTop="8dp"/>
+                        android:padding="20dp"
+                        android:background="@drawable/ic_whatsapp" />
 
-                    <Button
-                    android:id="@+id/whatsappButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Contact via WhatsApp"
-                    android:drawablePadding="8dp"
-                    android:padding="12dp"
-                    android:layout_marginTop="8dp"/>
-
-                <!-- Facebook -->
+                    <!-- Facebook -->
                     <Button
                         android:id="@+id/ShareButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Contact via WhatsApp"
-                        android:drawablePadding="8dp"
+                        android:layout_margin="8dp"
                         android:padding="12dp"
-                        android:layout_marginTop="8dp"/>
+                        android:background="@drawable/ic_share__1_" />
 
                     <!-- Facebook -->
                     <Button
                         android:id="@+id/EmailButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Contact via Facebook"
-                        android:drawablePadding="8dp"
-                        android:padding="12dp"
-                        android:layout_marginTop="8dp"/>
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/email"
+                        android:padding="12dp" />
 
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
@@ -276,79 +276,79 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_large"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:text="@string/details"
-                    android:textColor="@color/button_color"
+                    android:text="Are we helpful to you"
+                    android:textColor="@color/blue_text"
                     android:textSize="@dimen/text_size18sp"
                     android:textStyle="bold"
                     app:fontFamily="@font/open_sans_bold" />
+
                 <LinearLayout
                     android:id="@+id/starButtonsLayout"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:gravity="center"
+                    android:orientation="horizontal"
                     android:padding="16dp"
-                    app:layout_constraintTop_toBottomOf="@+id/employeeInfoLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintTop_toBottomOf="@+id/employeeInfoLayout">
 
                     <Button
                         android:id="@+id/star1Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="★"
-                        android:textSize="24sp"
                         android:padding="8dp"
-                        android:background="@android:color/transparent"/>
+                        android:background="@drawable/ic_rate_disable_star"
+                        android:text="★"
+                        android:textSize="24sp" />
 
                     <Button
                         android:id="@+id/star2Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="★"
-                        android:textSize="24sp"
                         android:padding="8dp"
-                        android:background="@android:color/transparent"/>
+                        android:background="@drawable/ic_rate_disable_star"
+                        android:textSize="24sp" />
 
                     <Button
                         android:id="@+id/star3Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="★"
-                        android:textSize="24sp"
                         android:padding="8dp"
-                        android:background="@android:color/transparent"/>
+                        android:background="@drawable/ic_rate_disable_star"
+                        android:textSize="24sp" />
 
                     <Button
                         android:id="@+id/star4Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="★"
-                        android:textSize="24sp"
                         android:padding="8dp"
-                        android:background="@android:color/transparent"/>
+                        android:background="@drawable/ic_rate_disable_star"
+                        android:text="★"
+                        android:textSize="24sp" />
 
                     <Button
                         android:id="@+id/star5Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="★"
-                        android:textSize="24sp"
                         android:padding="8dp"
-                        android:background="@android:color/transparent"/>
+                        android:background="@drawable/ic_rate_disable_star"
+                        android:text="★"
+                        android:textSize="24sp" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+
         <LinearLayout
             android:id="@+id/rl_Positive_Negative_Btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:weightSum="1"
-            android:background="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPositive"
@@ -356,12 +356,12 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimen15dp"
                 android:layout_weight="0.5"
-                android:fontFamily="@font/open_sans_extra_bold"
                 android:background="@drawable/btn_bg"
-                android:textSize="@dimen/text_size_small"
-                android:textStyle="bold"
+                android:fontFamily="@font/open_sans_extra_bold"
                 android:text="@string/rate_us"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
