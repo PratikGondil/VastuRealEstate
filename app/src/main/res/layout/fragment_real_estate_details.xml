@@ -950,7 +950,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/margin_large"
                         android:orientation="vertical">
 
                         <LinearLayout
@@ -963,6 +962,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
+                                android:layout_marginStart="@dimen/margin_large"
                                 android:id="@+id/txtAmmenities"
                                 android:layout_marginBottom="@dimen/dimen5dp"
                                 android:layout_weight="1"
@@ -999,6 +999,7 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
+                                android:layout_marginStart="@dimen/margin_large"
                                 android:layout_marginBottom="@dimen/dimen5dp"
                                 android:layout_weight="1"
                                 android:id="@+id/txtDescription"
@@ -1040,6 +1041,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:includeFontPadding="false"
+                                android:layout_marginStart="@dimen/margin_large"
                                 android:text="@string/highlights"
                                 android:textColor="@color/button_color"
                                 android:textSize="@dimen/text_size18sp"
@@ -1073,9 +1075,10 @@
                         android:layout_height="wrap_content"
                         android:background="@color/white"
                         android:orientation="vertical"
-                        android:padding="@dimen/padding_large">
+                        >
 
                         <TextView
+                            android:layout_marginStart="@dimen/margin_large"
                             android:layout_width="wrap_content"
                             android:id="@+id/txtPhotos"
                             android:layout_height="wrap_content"
@@ -1128,11 +1131,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
+                        android:layout_marginTop="@dimen/margin_small"
                         android:orientation="vertical"
-                        android:padding="@dimen/padding_large"
                         android:weightSum="2">
 
                         <TextView
+                            android:layout_marginStart="@dimen/margin_large"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -1183,8 +1187,8 @@
                         android:id="@+id/relatedLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_small"
-                        android:layout_marginBottom="@dimen/dimen150dp"
+                        android:layout_marginTop="@dimen/dimen10dp"
+                        android:layout_marginBottom="@dimen/dimen200dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -1205,8 +1209,9 @@
                             android:id="@+id/related_recyclerView"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginStart="@dimen/margin_large"
-                            android:layout_margin="@dimen/dimen10dp"
+                            android:layout_marginLeft="@dimen/dimen10dp"
+                            android:layout_marginRight="@dimen/dimen10dp"
+                            android:layout_marginBottom="@dimen/dimen10dp"
                             tools:listitem="@layout/related_property_item_view" />
                     </LinearLayout>
                 </LinearLayout>

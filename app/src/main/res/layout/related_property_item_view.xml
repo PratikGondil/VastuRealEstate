@@ -9,18 +9,19 @@
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     >
     <!-- res/layout/item_card.xml -->
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:padding="@dimen/dimen20dp"
-        android:layout_margin="@dimen/dimen10dp"
         android:elevation="5dp"
         app:cardElevation="@dimen/dimen5dp"
         app:cardMaxElevation="7dp"
+        app:contentPadding="1dp"
+        app:cardUseCompatPadding="true"
         android:clickable="true"
+        app:cardCornerRadius="10dp"
         android:focusable="true"
         android:outlineAmbientShadowColor="@color/gray"
         android:hardwareAccelerated="true"
@@ -132,6 +133,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
                     android:src="@drawable/ic_like"
+                    android:layout_marginTop="@dimen/dimen5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginStart="@dimen/dimen50dp"
                     app:layout_constraintTop_toTopOf="parent"
