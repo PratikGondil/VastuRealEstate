@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="com.vastu.realestate.appModule.realCreator.infoPage.FindProfileBindingAdapter"/>
+        <variable
+            name="drawerViewModel"
+            type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
+        <variable
+            name="findProfileViewModel"
+            type="com.vastu.realestate.appModule.realCreator.infoPage.FindProfileViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar_layout"
+            bind:drawerViewModel="@{drawerViewModel}" />
+
+        <TextView
+            android:id="@+id/txt_are_u"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/include"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/we_need_to_understand_your_profile"
+            android:fontFamily="@font/open_sans_bold"
+            android:textSize="@dimen/dimens20sp"
+            android:layout_margin="@dimen/dimen20dp"
+            app:fontFamily="@font/open_sans_bold"
+            />
+
+        <Spinner
+            android:id="@+id/spinner"
+            style="@style/spinner_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen20dp"
+            android:text="@string/select_from_below_options"
+            android:textSize="@dimen/dimen_16sp"
+            android:spinnerMode="dropdown"
+            android:background="@drawable/edt_background"
+            app:layout_constraintTop_toBottomOf="@+id/txt_are_u"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            style="@style/spinner_style"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen20dp"
+            android:text="@string/select_from_below_options"
+            android:textSize="@dimen/dimen_16sp"
+            android:spinnerMode="dropdown"
+            android:background="@drawable/edt_background"
+            app:layout_constraintTop_toBottomOf="@+id/spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilcity"
+            style="@style/Widget.Design.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edt_background"
+            app:layout_constraintTop_toBottomOf="@+id/spinner2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/dimen20dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColorHint="@color/black"
+            app:boxStrokeColor="@color/black"
+            app:endIconDrawable="@drawable/drop_down_icon"
+            app:endIconMode="custom"
+            app:expandedHintEnabled="false"
+            app:helperTextTextColor="@color/button_color"
+            app:hintEnabled="false"
+            app:helperTextTextAppearance="@style/font"
+            app:placeholderText="@string/city_text"
+            app:placeholderTextColor="@color/black">
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/autoCompleteCity"
+                style="@style/font"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:clickable="true"
+                android:context="@{context}"
+                android:dropDownHeight="136dp"
+                android:editable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:onItemClick="@{findProfileViewModel}"
+                tilLayout="@{tilcity}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small"
+                 />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilSubArea"
+            style="@style/Widget.Design.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/tilcity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/dimen20dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColorHint="@color/black"
+            app:boxStrokeColor="@color/black"
+            app:endIconDrawable="@drawable/drop_down_icon"
+            app:endIconMode="custom"
+            app:expandedHintEnabled="false"
+            app:helperTextTextColor="@color/button_color"
+            app:hintEnabled="false"
+            android:background="@drawable/edittext_background"
+            app:helperTextTextAppearance="@style/font"
+            app:placeholderText="@string/sub_area_text"
+            app:placeholderTextColor="@color/black">
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/autoCompleteAreaList"
+                style="@style/font"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:clickable="true"
+                android:context="@{context}"
+                android:dropDownHeight="136dp"
+                android:editable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:onItemClick="@{findProfileViewModel}"
+                tilLayout="@{tilSubArea}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_small"
+            android:text="@string/submit_btn_text"
+            android:onClick="@{(view)->findProfileViewModel.submitClick()}"
+            android:textColor="@color/white"
+            android:layout_margin="@dimen/dimen60dp"
+            android:fontFamily="@font/open_sans_bold"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_semilarge"
+            android:letterSpacing="0"
+            android:textAllCaps="false"
+            app:fontFamily="@font/open_sans_bold"
+            app:layout_constraintTop_toBottomOf="@+id/tilSubArea"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

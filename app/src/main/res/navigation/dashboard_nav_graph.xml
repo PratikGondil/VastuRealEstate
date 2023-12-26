@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_vastu_dashboard">
         <action
             android:id="@+id/action_VastuDashboardFragment_to_LoanFragment"
-            app:destination="@id/LoanFragment"
+            app:destination="@id/findProfileFragment"
             app:enterAnim="@anim/slide_in_right"/>
         <action
             android:id="@+id/action_VastuDashboardFragment_to_RealEstateFragment"
@@ -322,6 +322,39 @@
         android:name="com.vastu.realestate.appModule.ourServies.modeForAdvertisement.ModeForAdvertisementFragment"
         android:label="modeForAdvertisementFragment"
         tools:layout="@layout/mode_for_advertisement_fragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/findProfileFragment"
+        android:name="com.vastu.realestate.appModule.realCreator.infoPage.FindProfileFragment"
+        android:label="findProfileFragment"
+        tools:layout="@layout/find_profile_fragment">
+        <action
+            android:id="@+id/action_findProfileFragment_to_creatorListFragment"
+            app:destination="@+id/creatorListFragment"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/creatorListFragment"
+        android:name="com.vastu.realestate.appModule.realCreator.creatorsList.CreatorListFragment"
+        android:label="creatorListFragment"
+        tools:layout="@layout/creatorlist_fragment">
+
+        <action
+            android:id="@+id/action_creatorListFragment_to_creatorDetailsFragment"
+            app:destination="@+id/creatorDetailsFragment"
+            />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/creatorDetailsFragment"
+        android:name="com.vastu.realestate.appModule.realCreator.creatorDetails.CreatorDetailsFragment"
+        android:label="creatorDetailsFragment"
+        tools:layout="@layout/creator_details_page">
 
     </fragment>
 </navigation>

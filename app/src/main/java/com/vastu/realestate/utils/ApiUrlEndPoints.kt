@@ -50,5 +50,9 @@ object ApiUrlEndPoints {
     const val GET_PLANS_TYPE = "get_plans.php"
     const val GET_PLANS = "get_plan_by_type.php"
 
+    const val GET_REAL_CREATOR_PROFILE="get_real_creator_profile.php"
+    const val GET_REAL_CREATOR_DETAILS="get_real_creator.php"
+    const val GET_REAL_CREATOR ="get_real_creator.php"
+
 
 }

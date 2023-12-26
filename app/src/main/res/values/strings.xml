@@ -372,5 +372,6 @@
     <string name="plans_for_property_owners">Plans For Property Owners</string>
     <string name="facing">Facing</string>
 
-
+    <string name="real_creator">Real Creator</string>
+    <string name="search_profile"><b>Search by Profile</b></string>
 </resources>
