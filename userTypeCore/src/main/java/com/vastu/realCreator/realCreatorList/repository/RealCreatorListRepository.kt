@@ -62,7 +62,7 @@ object RealCreatorListRepository : IGetRealCreatorListReq, IOnServiceResponseLis
             .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
-            .setRequest(buildRequest(profileId,language,"16","16"))
+            .setRequest(buildRequest(profileId,language,"3","16"))
             .setUrlEndPoint(urlEndPoint)
             .build()
             .sendApiRequest(this)

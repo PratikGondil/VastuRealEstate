@@ -6,7 +6,7 @@ import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
 import com.vastu.realCreator.rate_us.callback.IGetRatUsCreatorResListener
 import com.vastu.realCreator.rate_us.callback.IGetRateUsReq
-import com.vastu.realCreator.rate_us.model.CreatorRateUsRes
+import com.vastu.realCreator.rate_us.model.ObjCreatorRateUsRes
 import com.vastu.realCreator.rate_us.model.ObjCreatorRateUsReq
 import com.vastu.utils.ErrorCode
 
@@ -34,10 +34,10 @@ object CreatorRateUsRepository:  IGetRateUsReq, IOnServiceResponseListener {
 
     }
 
-    private fun parseResponse(response: String): CreatorRateUsRes {
+    private fun parseResponse(response: String): ObjCreatorRateUsRes.CreatorRateUsRes {
         return Gson().fromJson(
             response,
-            CreatorRateUsRes::class.java
+            ObjCreatorRateUsRes.CreatorRateUsRes::class.java
         )
     }
 
