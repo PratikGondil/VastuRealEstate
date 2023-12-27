@@ -38,4 +38,8 @@ data class RealCreatorDatum(
     val totalRating: String,
     @SerializedName("slug")
     val slug: String
-):Serializable
+):Serializable{
+    override fun toString(): String {
+        return "$profileName"
+    }
+}

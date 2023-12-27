@@ -13,8 +13,8 @@ import com.vastu.utils.ErrorCode
 object CreatorListRepository :IGetCreatorListReq, IOnServiceResponseListener {
     lateinit var iGetCreatorListResListener: IGetCreatorListResListener
 
-    private fun buildRequest(request: String,language: String): ByteArray {
-        val objCreationReq = ObjCreatorListReq(request,language)
+    private fun buildRequest(language: String): ByteArray {
+        val objCreationReq = ObjCreatorListReq(language)
         return Gson().toJson(objCreationReq).toByteArray()
     }
 
@@ -47,7 +47,6 @@ object CreatorListRepository :IGetCreatorListReq, IOnServiceResponseListener {
 
     override fun callGetCreatorList(
         context: Context,
-        userId: String,
         language: String,
         urlEndPoint: String,
         iGetCreatorListResListener: IGetCreatorListResListener
@@ -57,7 +56,7 @@ object CreatorListRepository :IGetCreatorListReq, IOnServiceResponseListener {
             .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(true)
-            .setRequest(buildRequest(userId,language))
+            .setRequest(buildRequest(language))
             .setUrlEndPoint(urlEndPoint)
             .build()
             .sendApiRequest(this)
