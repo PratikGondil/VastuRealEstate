@@ -8,4 +8,10 @@ data class ProfileDaum(
     val profileId: String,
     @SerializedName("profile_name")
     val profileName: String,
-): Serializable
+): Serializable{
+    override fun toString(): String {
+        return "$profileName"
+    }
+}
+
+

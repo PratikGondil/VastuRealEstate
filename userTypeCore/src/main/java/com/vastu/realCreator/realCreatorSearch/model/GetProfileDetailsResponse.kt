@@ -6,5 +6,5 @@ import java.io.Serializable
 
 data class GetProfileDetailsResponse(
     @SerializedName("ProfileData")
-    val profileData: List<ProfileDaum>,
+    val profileData: ArrayList<ProfileDaum>,
 ): Serializable

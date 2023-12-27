@@ -79,7 +79,8 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
         observeCity()
         observeSubAreaList()
         observeProfileList()
-
+        observeTalukaList()
+        observSubAreaCall()
         return findProfileFragmentBinding.root
     }
 
@@ -88,8 +89,10 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
         drawerViewModel.toolbarTitle.set(getString(R.string.real_creator))
         drawerViewModel.isDashBoard.set(false)
         setSpinner()
-        findProfileFragmentBinding.autoCompleteCity.setOnTouchListener(this)
+       // findProfileFragmentBinding.autoCompleteCity.setOnTouchListener(this)
         findProfileFragmentBinding.autoCompleteAreaList.setOnTouchListener(this)
+        findProfileFragmentBinding.autoCompleteTaluka.setOnTouchListener(this)
+        findProfileFragmentBinding.autoProfileList.setOnTouchListener(this)
     }
 
     @SuppressLint("ResourceType")
@@ -195,6 +198,35 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
     }
 
 
+    private fun observeTalukaList() {
+        viewModel.cityList.observe(viewLifecycleOwner) { cityList ->
+            val adapter: ArrayList<ObjTalukaDataList> = cityList
+            findProfileFragmentBinding.autoCompleteTaluka.setAdapter(
+                ArrayAdapter(
+                    requireContext(),
+                    R.layout.drop_down_item, adapter
+                )
+            )
+
+        }
+
+
+
+
+    }
+
+    private fun observSubAreaCall() {
+        viewModel.callSubAreaAPI.observe(viewLifecycleOwner) {
+            if(it){
+                callSubAreaList(viewModel.taluka.value!!.talukaId!!)
+            }
+
+        }
+
+
+
+
+    }
     private fun observeCityList() {
         viewModel.cityList.observe(viewLifecycleOwner) { cityList ->
             val adapter: ArrayList<ObjTalukaDataList> = cityList
@@ -206,7 +238,6 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
             )
 
             findProfileFragmentBinding.autoCompleteCity.setText(adapter.get(0).taluka);
-            selectetdTalukaID = adapter.get(0).talukaId
             viewModel.city.value = adapter.get(0)
             findProfileFragmentBinding.tilcity.helperText = ""
             FindProfileBindingAdapter.isValidCity = true
@@ -216,7 +247,8 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
     }
     private fun observeProfileList() {
         viewModel.profileList.observe(viewLifecycleOwner) { profileList ->
-            val adapter: List<ProfileDaum> = profileList
+
+            val adapter: ArrayList<ProfileDaum> = profileList
             findProfileFragmentBinding.autoProfileList.setAdapter(
                 ArrayAdapter(
                     requireContext(),
@@ -224,11 +256,11 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
                 )
             )
 
-            findProfileFragmentBinding.autoProfileList.setText(adapter.get(0).profileName);
+          /*  findProfileFragmentBinding.autoProfileList.setText(adapter.get(0).profileName);
             selectetdProfileID = adapter.get(0).profileId
             viewModel.profile.value = adapter.get(0)
             findProfileFragmentBinding.tilprofile.helperText = ""
-            FindProfileBindingAdapter.isProfile = true
+            FindProfileBindingAdapter.isProfile = true*/
         }
 
 
@@ -237,7 +269,7 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
     private fun observeCity() {
         viewModel.city.observe(viewLifecycleOwner) { city ->
             if (city != null) {
-                callSubAreaList(selectetdTalukaID!!)
+               // callSubAreaList(selectetdTalukaID!!)
             }
         }
     }
@@ -281,6 +313,9 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
             onShowStateDropDown(view)
         }
         else if (view == findProfileFragmentBinding.autoProfileList) {
+            onShowStateDropDown(view)
+        }
+        else if (view == findProfileFragmentBinding.autoCompleteTaluka) {
             onShowStateDropDown(view)
         }
         return true

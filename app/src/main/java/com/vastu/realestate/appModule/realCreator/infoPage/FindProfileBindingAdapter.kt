@@ -17,7 +17,7 @@ object FindProfileBindingAdapter {
     var isValidCity:Boolean=false
     var isValidSubArea:Boolean=false
     var isProfile:Boolean=false
-
+    var isTaluka:Boolean=false
 
 
     @BindingAdapter("android:onItemClick", "android:context","tilLayout")
@@ -46,13 +46,19 @@ object FindProfileBindingAdapter {
                         viewModel.profile.value=adapter.getItem(i) as ProfileDaum
                         parentLayout.helperText = ""
                     }
+                    R.id.autoCompleteTaluka->{
+                        isTaluka = true
+                        viewModel.taluka.value=adapter.getItem(i) as ObjTalukaDataList?
+                        parentLayout.helperText = ""
+                        viewModel.isTalukaSelected()
+                    }
 
                 }
                 changeSubmitBtnState(viewModel, context)
             }
     }
     fun changeSubmitBtnState(findProfileViewModel: FindProfileViewModel,context: Context) {
-        if (isValidCity && isValidSubArea) {
+        if (isValidCity && isValidSubArea && isTaluka && isProfile) {
             findProfileViewModel.isBtnEnable.set(true)
             findProfileViewModel.btnBackground.set(
                 ContextCompat.getDrawable(context,

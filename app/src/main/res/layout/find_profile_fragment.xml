@@ -18,7 +18,9 @@
         <include
             android:id="@+id/include"
             layout="@layout/toolbar_layout"
-            bind:drawerViewModel="@{drawerViewModel}" />
+            bind:drawerViewModel="@{drawerViewModel}"
+            bind:layout_editor_absoluteX="0dp"
+            bind:layout_editor_absoluteY="16dp" />
 
         <TextView
             android:id="@+id/txt_are_u"
@@ -90,6 +92,7 @@
             app:placeholderText="@string/profile"
             app:placeholderTextColor="@color/black">
 
+
             <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                 android:id="@+id/autoProfileList"
                 style="@style/font"
@@ -157,6 +160,54 @@
                  />
 
         </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTaluka"
+            style="@style/Widget.Design.TextInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edt_background"
+            app:layout_constraintTop_toBottomOf="@+id/tilcity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/dimen20dp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColorHint="@color/black"
+            app:boxStrokeColor="@color/black"
+            app:endIconDrawable="@drawable/drop_down_icon"
+            app:endIconMode="custom"
+            app:expandedHintEnabled="false"
+            app:helperTextTextColor="@color/button_color"
+            app:hintEnabled="false"
+            app:helperTextTextAppearance="@style/font"
+            app:placeholderText="@string/taluka"
+            app:placeholderTextColor="@color/black">
+
+            <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                android:id="@+id/autoCompleteTaluka"
+                style="@style/font"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:paddingStart="@dimen/dimen5dp"
+                android:background="@null"
+                android:context="@{context}"
+                android:dropDownHeight="136dp"
+                android:editable="false"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:onItemClick="@{findProfileViewModel}"
+                tilLayout="@{tilcity}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilSubArea"
@@ -164,7 +215,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:layout_constraintTop_toBottomOf="@+id/tilcity"
+            app:layout_constraintTop_toBottomOf="@+id/tilTaluka"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="@dimen/dimen20dp"

@@ -50,12 +50,15 @@ class FindProfileViewModel(application: Application) :AndroidViewModel(applicati
     var city = MutableLiveData<ObjTalukaDataList>()
     var subArea = ObservableField<ObjCityAreaData>()
     var profile = MutableLiveData<ProfileDaum>()
+    var taluka = MutableLiveData<ObjTalukaDataList>()
+
     var cityList = MutableLiveData<ArrayList<ObjTalukaDataList>>()
     var subAreaList = MutableLiveData<ArrayList<ObjCityAreaData>>()
-    var profileList = MutableLiveData<List<ProfileDaum>>()
+    var profileList = MutableLiveData<ArrayList<ProfileDaum>>()
     var isBtnEnable =ObservableField(false)
     var btnBackground = ObservableField(ContextCompat.getDrawable(mContext, R.drawable.button_inactive_background))
 
+    var callSubAreaAPI = MutableLiveData<Boolean>()
 
     var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
     val allQuery: ObservableField<List<String>> =
@@ -107,6 +110,9 @@ class FindProfileViewModel(application: Application) :AndroidViewModel(applicati
     }
 
 
+    fun isTalukaSelected(){
+        callSubAreaAPI.value = true
+    }
 
 
 
