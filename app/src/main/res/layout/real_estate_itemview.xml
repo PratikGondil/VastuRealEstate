@@ -173,10 +173,9 @@
             android:layout_marginBottom="@dimen/dimen10dp"
             app:layout_constraintBottom_toBottomOf="@+id/video"
             android:src="@drawable/baseline_volume_off_24"
-            >
+            />
 
 
-        </ImageView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
