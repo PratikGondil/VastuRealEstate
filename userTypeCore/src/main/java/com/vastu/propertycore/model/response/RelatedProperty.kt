@@ -1,6 +1,7 @@
 package com.vastu.propertycore.model.response
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class RelatedProperty(
     @SerializedName("property_id")
@@ -65,4 +66,4 @@ data class RelatedProperty(
     val contsructionName: String,
     @SerializedName("sold_status")
     val soldStatus: String,
-)
+):Serializable

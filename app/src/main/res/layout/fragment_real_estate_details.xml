@@ -26,11 +26,12 @@
 
         <RelativeLayout
             android:id="@+id/rlMain"
-            app:layout_constraintBottom_toTopOf="@+id/scrollview"
             android:layout_width="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/scrollview"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_height="wrap_content">
+            app:layout_constraintStart_toStartOf="parent">
+
             <include
                 android:id="@+id/toolbar"
                 layout="@layout/toolbar_layout"
@@ -38,86 +39,95 @@
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
-                android:layout_below="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen50dp"
+                android:layout_below="@+id/toolbar"
                 android:background="@color/colorPrimary"
-                app:tabIndicatorColor="@color/white"
                 android:onClick="@{(view)->realEstateDetailsViewModel.onClickBuilderProfile()}"
-                app:tabIndicatorHeight="4dp"
-                app:tabMode="scrollable"
                 app:tabGravity="fill"
-                app:tabTextAppearance="@style/Tab_Menu_Details"
-                app:tabSelectedTextColor="@android:color/white"
+                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorHeight="4dp"
                 app:tabInlineLabel="true"
-                app:tabTextColor="#e4e4e4" >
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabTextAppearance="@style/TabTextStyle"
+                app:tabTextColor="#e4e4e4">
+
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/dimen8sp"
-                    android:textStyle="bold"
-                    app:fontFamily="@font/open_sans_bold"
-                    android:textColor="@color/white"
                     android:clickable="true"
-                    android:text="@string/builder_profile"/>
+                    android:text="@string/builder_profile"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen8sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/open_sans_extra_bold"
+                    app:tabTextAppearance="@style/TabTextStyle" />
+
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
                     android:clickable="true"
-                    android:textSize="@dimen/dimen8sp"
-                    android:textStyle="bold"
-                    app:fontFamily="@font/open_sans_bold"
-                    android:text="@string/details"/>
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/dimen8sp"
-                    android:textStyle="bold"
-                    app:fontFamily="@font/open_sans_bold"
-                    android:textColor="@color/white"
-                    android:text="@string/amenities"/>
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/dimen8sp"
-                    android:textStyle="bold"
-                    app:fontFamily="@font/open_sans_bold"
-                    android:textColor="@color/white"
-                    android:text="@string/description"/>
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/dimen8sp"
-                    android:textStyle="bold"
-                    app:fontFamily="@font/open_sans_bold"
-                    android:textColor="@color/white"
-                    android:text="@string/highlights"/>
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:text="@string/details"
                     android:textColor="@color/white"
                     android:textSize="@dimen/dimen8sp"
                     android:textStyle="bold"
-                    app:fontFamily="@font/open_sans_bold"
-                    android:text="@string/property_photo_amp_floor_plan"/>
+                    app:fontFamily="@font/open_sans_bold" />
+
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/amenities"
                     android:textColor="@color/white"
                     android:textSize="@dimen/dimen8sp"
                     android:textStyle="bold"
-                    app:fontFamily="@font/open_sans_bold"
-                    android:text="@string/brochure"/>
+                    app:fontFamily="@font/open_sans_bold" />
+
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@string/description"
                     android:textColor="@color/white"
                     android:textSize="@dimen/dimen8sp"
                     android:textStyle="bold"
-                    app:fontFamily="@font/open_sans_bold"
-                    android:text="@string/similar_project"/>
+                    app:fontFamily="@font/open_sans_bold" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/highlights"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen8sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/open_sans_bold" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/property_photo_amp_floor_plan"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen8sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/open_sans_bold" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/brochure"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen8sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/open_sans_bold" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/similar_project"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/dimen8sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/open_sans_bold" />
             </com.google.android.material.tabs.TabLayout>
 
 
@@ -142,54 +152,62 @@
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_height="wrap_content" />
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    >
+                    android:layout_margin="@dimen/dimen10dp"
+                    android:background="@drawable/real_estate_background"
+                    app:cardCornerRadius="@dimen/dimen10dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="true">
+
                     <com.aemerse.slider.ImageCarousel
                         android:id="@+id/image_slider_builder"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
-                        app:showNavigationButtons="true"
-                        app:previousButtonLayout="@layout/previous_layout"
-                        app:previousButtonId="@id/btn_previous"
-                        app:previousButtonMargin="4dp"
-                        app:nextButtonLayout="@layout/next_layout"
-                        app:nextButtonId="@id/btn_next"
-                        app:nextButtonMargin="4dp"
-                        app:autoPlayDelay="2000"
+                        android:background="@drawable/real_estate_background"
                         app:autoPlay="true"
-                        android:layout_margin="@dimen/dimen20dp"
+                        app:autoPlayDelay="2000"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintVertical_bias="0.5"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.5"
+                        app:nextButtonId="@id/btn_next"
+
+                        app:nextButtonLayout="@layout/next_layout"
+                        app:nextButtonMargin="4dp"
+                        app:previousButtonId="@id/btn_previous"
+                        app:previousButtonLayout="@layout/previous_layout"
+                        app:previousButtonMargin="4dp"
+                        app:showNavigationButtons="true" />
 
                     <me.relex.circleindicator.CircleIndicator2
                         android:id="@+id/custom"
-                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        app:ci_width = "@dimen/dimen20dp"
-                        app:ci_height= "@dimen/dimen20dp"
-                        app:layout_constraintStart_toStartOf="@id/image_slider_builder"
+                        android:visibility="gone"
+                        app:ci_height="@dimen/dimen20dp"
+                        app:ci_width="@dimen/dimen20dp"
                         app:layout_constraintBottom_toBottomOf="@id/image_slider_builder"
+                        app:layout_constraintStart_toStartOf="@id/image_slider_builder"
 
                         >
 
 
                     </me.relex.circleindicator.CircleIndicator2>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="match_parent"
                         android:id="@+id/txtBuilderProfile"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_large"
                         android:layout_marginTop="@dimen/margin_medium"
@@ -211,7 +229,7 @@
                             android:gravity="start"
                             android:maxLength="35"
                             android:minLines="1"
-                            android:text="@{propertyData.priceMinWord + propertyData.priceMaxWord}"
+                            android:text="@{propertyData.priceMinWord +@string/dash+ propertyData.priceMaxWord}"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size18sp"
                             android:textStyle="bold"
@@ -278,12 +296,12 @@
                     android:background="@color/border_color" />
 
                 <TextView
+                    android:id="@+id/txtPropertyDetails"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_large"
                     android:layout_marginTop="@dimen/margin_medium"
                     android:text="@string/details"
-                    android:id="@+id/txtPropertyDetails"
                     android:textColor="@color/button_color"
                     android:textSize="@dimen/text_size18sp"
                     android:textStyle="bold"
@@ -292,7 +310,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_medium"
                     android:layout_marginEnd="@dimen/margin_medium"
                     android:orientation="horizontal">
 
@@ -300,9 +317,8 @@
                     <LinearLayout
                         android:layout_width="130dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/margin_medium"
-                        android:layout_marginTop="@dimen/dimen15dp"
-                        >
+                        android:layout_marginStart="@dimen/margin_large"
+                        android:layout_marginTop="@dimen/dimen15dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -669,8 +685,8 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3dp"
                             android:layout_margin="@dimen/margin_small"
+                            android:layout_marginTop="3dp"
                             android:orientation="vertical">
 
                             <TextView
@@ -708,7 +724,7 @@
                                 android:id="@+id/bedroomTextview"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_marginTop="@dimen/dimen20dp"
                                 android:text="@{propertyData.bedroom}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
@@ -719,7 +735,7 @@
                                 android:id="@+id/bathroomTextview"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_marginTop="@dimen/padding_large"
                                 android:layout_weight="1"
                                 android:text="@{propertyData.bathroom}"
                                 android:textColor="@color/text_color"
@@ -769,7 +785,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen15dp"
                                 android:layout_weight="1"
-                                android:text="@{propertyData.furnishing}"                                android:textColor="@color/text_color"
+                                android:text="@{propertyData.furnishing}"
+                                android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
                                 android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
@@ -780,7 +797,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen15dp"
                                 android:layout_weight="1"
-                                android:text="@{propertyData.flatFacing}"                                android:textColor="@color/text_color"
+                                android:text="@{propertyData.flatFacing}"
+                                android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
                                 android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
@@ -789,9 +807,9 @@
                                 android:id="@+id/priceTextview"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen20dp"
+                                android:layout_marginTop="@dimen/dimen15dp"
                                 android:layout_weight="1"
-                                android:text="@{propertyData.price}"
+                                android:text="@{propertyData.priceMaxWord}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
                                 android:textStyle="bold"
@@ -801,7 +819,7 @@
                                 android:id="@+id/bookingAmountTextview"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen20dp"
+                                android:layout_marginTop="@dimen/dimen25dp"
                                 android:layout_weight="1"
                                 android:text="@{propertyData.bookingAmount}"
                                 android:textColor="@color/text_color"
@@ -875,7 +893,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen20dp"
                                 android:layout_weight="1"
-                                android:text="@{propertyData.propertyArea}"
+                                android:text="@{propertyData.area}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
                                 android:textStyle="bold"
@@ -885,7 +903,7 @@
                                 android:id="@+id/availableTextview"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen20dp"
+                                android:layout_marginTop="@dimen/dimen15dp"
                                 android:layout_weight="1"
                                 android:text="@{propertyData.availability}"
                                 android:textColor="@color/text_color"
@@ -897,7 +915,7 @@
                                 android:id="@+id/build_yearTextview"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen20dp"
+                                android:layout_marginTop="@dimen/dimen15dp"
                                 android:layout_weight="1"
                                 android:text="@{propertyData.buildYear}"
                                 android:textColor="@color/text_color"
@@ -906,7 +924,7 @@
                                 app:fontFamily="@font/open_sans_bold" />
 
                             <TextView
-                                android:id="@+id/briefTextview"
+                                android:id="@+id/reraTextview"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen15dp"
@@ -916,6 +934,17 @@
                                 android:textSize="@dimen/text_size_small"
                                 android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/briefTextview"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="@dimen/dimen15dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:text="@{propertyData.brief}"-->
+<!--                                android:textColor="@color/text_color"-->
+<!--                                android:textSize="@dimen/text_size_small"-->
+<!--                                android:textStyle="bold"-->
+<!--                                app:fontFamily="@font/open_sans_bold" />-->
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
@@ -960,10 +989,10 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/txtAmmenities"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_marginStart="@dimen/margin_large"
-                                android:id="@+id/txtAmmenities"
                                 android:layout_marginBottom="@dimen/dimen5dp"
                                 android:layout_weight="1"
                                 android:focusable="true"
@@ -977,6 +1006,7 @@
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/aminity_recyclerView"
+                                android:layout_marginStart="@dimen/margin_large"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 tools:listitem="@layout/aminity_item_view" />
@@ -997,12 +1027,12 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/txtDescription"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_marginStart="@dimen/margin_large"
                                 android:layout_marginBottom="@dimen/dimen5dp"
                                 android:layout_weight="1"
-                                android:id="@+id/txtDescription"
                                 android:includeFontPadding="false"
                                 android:text="@string/description"
                                 android:textColor="@color/button_color"
@@ -1014,7 +1044,7 @@
                                 android:id="@+id/descriptionTextview"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/margin_small"
+                                android:layout_marginStart="@dimen/margin_large"
                                 android:layout_marginTop="@dimen/dimen10dp"
                                 android:ellipsize="end"
                                 android:minLines="2"
@@ -1040,8 +1070,8 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:includeFontPadding="false"
                                 android:layout_marginStart="@dimen/margin_large"
+                                android:includeFontPadding="false"
                                 android:text="@string/highlights"
                                 android:textColor="@color/button_color"
                                 android:textSize="@dimen/text_size18sp"
@@ -1074,33 +1104,42 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
 
                         <TextView
-                            android:layout_marginStart="@dimen/margin_large"
-                            android:layout_width="wrap_content"
                             android:id="@+id/txtPhotos"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_large"
                             android:text="@string/property_photo_amp_floor_plan"
                             android:textColor="@color/button_color"
                             android:textSize="@dimen/text_size18sp"
                             android:textStyle="bold"
                             app:fontFamily="@font/open_sans_bold" />
-                        <com.aemerse.slider.ImageCarousel
-                            android:id="@+id/image_slider_property_plan"
+
+                        <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
-                            app:showNavigationButtons="true"
-                            app:previousButtonLayout="@layout/previous_layout"
-                            app:previousButtonId="@id/btn_previous"
-                            app:previousButtonMargin="4dp"
-                            app:nextButtonLayout="@layout/next_layout"
-                            app:nextButtonId="@id/btn_next"
-                            app:nextButtonMargin="4dp"
-                            app:autoPlayDelay="2000"
-                            app:autoPlay="true"
-                            android:layout_height="250dp"
-                            android:layout_margin="@dimen/dimen20dp" />
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dimen10dp"
+                            android:background="@drawable/real_estate_background"
+                            app:cardCornerRadius="@dimen/dimen10dp"
+                            app:cardElevation="0dp"
+                            app:cardUseCompatPadding="true">
+
+                            <com.aemerse.slider.ImageCarousel
+                                android:id="@+id/image_slider_property_plan"
+                                android:layout_width="match_parent"
+                                android:layout_height="250dp"
+                                app:autoPlay="true"
+                                app:autoPlayDelay="2000"
+                                app:nextButtonId="@id/btn_next"
+                                app:nextButtonLayout="@layout/next_layout"
+                                app:nextButtonMargin="4dp"
+                                app:previousButtonId="@id/btn_previous"
+                                app:previousButtonLayout="@layout/previous_layout"
+                                app:previousButtonMargin="4dp"
+                                app:showNavigationButtons="true" />
+                        </androidx.cardview.widget.CardView>
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/img_recyclerView"
@@ -1120,59 +1159,62 @@
 
                     </LinearLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="@dimen/dimen10dp"
-                        android:background="@color/border_color" />
-
                     <LinearLayout
                         android:id="@+id/brochureLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
                         android:layout_marginTop="@dimen/margin_small"
+                        android:background="@color/white"
                         android:orientation="vertical"
                         android:weightSum="2">
 
                         <TextView
-                            android:layout_marginStart="@dimen/margin_large"
+                            android:id="@+id/txtBrochure"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_large"
                             android:layout_weight="1"
                             android:text="@string/brochure"
-                            android:id="@+id/txtBrochure"
                             android:textColor="@color/button_color"
                             android:textSize="@dimen/text_size18sp"
                             android:textStyle="bold"
                             app:fontFamily="@font/open_sans_bold" />
-                        <com.aemerse.slider.ImageCarousel
-                            app:showNavigationButtons="true"
-                            app:previousButtonLayout="@layout/previous_layout"
-                            app:previousButtonId="@id/btn_previous"
-                            app:previousButtonMargin="4dp"
-                            app:nextButtonLayout="@layout/next_layout"
-                            app:nextButtonId="@id/btn_next"
-                            app:nextButtonMargin="4dp"
-                            app:autoPlayDelay="2000"
-                            app:autoPlay="true"
-                            android:id="@+id/image_slider_property_brochure"
+
+                        <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
-                            android:layout_height="500dp"
-                            android:layout_margin="@dimen/dimen20dp" />
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dimen10dp"
+                            android:background="@drawable/real_estate_background"
+                            app:cardCornerRadius="@dimen/dimen10dp"
+                            app:cardElevation="0dp"
+                            app:cardUseCompatPadding="true">
+
+                            <com.aemerse.slider.ImageCarousel
+                                android:id="@+id/image_slider_property_brochure"
+                                android:layout_width="match_parent"
+                                android:layout_height="500dp"
+                                app:autoPlay="true"
+                                app:autoPlayDelay="2000"
+                                app:nextButtonId="@id/btn_next"
+                                app:nextButtonLayout="@layout/next_layout"
+                                app:nextButtonMargin="4dp"
+                                app:previousButtonId="@id/btn_previous"
+                                app:previousButtonLayout="@layout/previous_layout"
+                                app:previousButtonMargin="4dp"
+                                app:showNavigationButtons="true" />
+                        </androidx.cardview.widget.CardView>
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/btnMakeOffer"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_margin="@dimen/dimen5dp"
-                            android:layout_marginStart="@dimen/margin_small"
+                            android:layout_margin="@dimen/margin_large"
                             android:layout_weight="1"
                             android:background="@drawable/round_button_background"
                             android:text="@string/downloadBrochure"
                             android:textColor="@color/white"
-                            android:textSize="@dimen/text_size_small"
+                            android:textSize="@dimen/text_size_semilarge"
                             android:textStyle="bold"
                             app:fontFamily="@font/open_sans_bold" />
                     </LinearLayout>
@@ -1192,12 +1234,12 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/txtSimilarProjects"
                             android:layout_width="wrap_content"
                             android:layout_height="0dp"
                             android:layout_marginStart="@dimen/margin_large"
                             android:layout_marginBottom="@dimen/dimen5dp"
                             android:layout_weight="1"
-                            android:id="@+id/txtSimilarProjects"
                             android:includeFontPadding="false"
                             android:text="@string/similar_project"
                             android:textColor="@color/button_color"
@@ -1217,16 +1259,17 @@
                 </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+
         <LinearLayout
             android:id="@+id/rl_Positive_Negative_Btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="horizontal"
             android:weightSum="1"
-            android:background="@color/white"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnNegative"
@@ -1234,14 +1277,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimen15dp"
                 android:layout_weight="0.5"
-                android:onClick="@{(view)->realEstateDetailsViewModel.onClickPropertyEnquiry()}"
                 android:background="@drawable/button_bg"
-                android:text="@string/enquiry"
-                android:textStyle="bold"
-                android:textSize="@dimen/text_size18sp"
                 android:fontFamily="@font/open_sans_bold"
+                android:onClick="@{(view)->realEstateDetailsViewModel.onClickPropertyEnquiry()}"
+                android:text="@string/enquiry"
                 android:textColor="@color/button_color"
-                />
+                android:textSize="@dimen/text_size18sp"
+                android:textStyle="bold"
+                app:fontFamily="@font/open_sans_bold" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnPositive"
@@ -1249,13 +1292,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/dimen15dp"
                 android:layout_weight="0.5"
-                android:onClick="@{(view)->realEstateDetailsViewModel.addToWishlist()}"
-                android:fontFamily="@font/open_sans_bold"
                 android:background="@drawable/btn_bg"
+                android:fontFamily="@font/open_sans_bold"
+                android:onClick="@{(view)->realEstateDetailsViewModel.addToWishlist()}"
+                android:text="@string/add_to_wishlist"
+                android:textColor="@color/white"
                 android:textSize="@dimen/text_size18sp"
                 android:textStyle="bold"
-                android:text="@string/add_to_wishlist"
-                android:textColor="@color/white" />
+                app:fontFamily="@font/open_sans_bold" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

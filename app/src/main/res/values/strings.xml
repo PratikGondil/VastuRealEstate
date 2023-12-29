@@ -330,7 +330,7 @@
 <!--    <string name="">Advanced</string>-->
 
 
-    <string name="builder_profile">Builder Profile</string>
+    <string name="builder_profile"><b>Builder Profile</b></string>
     <string name="amenities">Amenities</string>
     <string name="similar_project">Similar Projects</string>
     <string name="downloadBrochure">Download Brochure</string>
@@ -375,4 +375,5 @@
     <string name="real_creator">Real Creator</string>
     <string name="search_profile"><b>Search by Profile</b></string>
     <string name="taluka"><b>Taluka</b></string>
+    <string name="dash">-</string>
 </resources>

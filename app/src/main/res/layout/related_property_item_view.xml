@@ -8,11 +8,12 @@
             type="com.vastu.propertycore.model.response.RelatedProperty" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     >
     <!-- res/layout/item_card.xml -->
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardItem"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:elevation="5dp"

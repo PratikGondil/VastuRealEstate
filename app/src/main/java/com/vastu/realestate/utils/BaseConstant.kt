@@ -52,4 +52,5 @@ object BaseConstant {
   const val COMPLETE = "3"
   const val USER_TYPE= "USER TYPE"
   const val LANGUAGE_FLOW="drawer_language"
+  var RELATED_PROPERTY_DETAILS = "Related_PROPERTY_DETAILS"
 }

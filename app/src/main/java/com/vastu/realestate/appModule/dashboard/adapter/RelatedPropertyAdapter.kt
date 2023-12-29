@@ -9,9 +9,10 @@ import com.vastu.propertycore.model.response.RelatedProperty
 import com.vastu.realestate.R
 import com.vastu.realestate.databinding.RelatedPropertyItemViewBinding
 import com.vastu.realestate.utils.CommonUtils
+import com.vastu.realestatecore.model.response.PropertyData
 import java.util.zip.Inflater
 
-class RelatedPropertyAdapter(val  context: Context,val relatedProperty:List<RelatedProperty>)
+class RelatedPropertyAdapter(private val itemClick: OnItemClickListener,val  context: Context,val relatedProperty:List<RelatedProperty>)
     :RecyclerView.Adapter<RelatedPropertyAdapter.RelatedPropertyViewHolder>() {
     lateinit var binding:RelatedPropertyItemViewBinding
 
@@ -43,7 +44,12 @@ class RelatedPropertyAdapter(val  context: Context,val relatedProperty:List<Rela
         holder.binding.propertyBhkDtlsTxt.text =
             relatedProperty.bedroom + " " + context.getString(R.string.bhk_apartments)
 
-
+        holder.binding.cardItem.setOnClickListener {
+            itemClick.onItemClick(relatedProperty)
+        }
+    }
+    interface OnItemClickListener {
+        fun onItemClick(propertyData: RelatedProperty)
     }
 
     override fun getItemCount(): Int {

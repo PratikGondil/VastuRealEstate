@@ -29,6 +29,7 @@ import com.vastu.propertycore.model.response.RelatedProperty
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.AmenitiesAdapter
 import com.vastu.realestate.appModule.dashboard.adapter.PropertyPhotoPlanAdapter
+import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
 import com.vastu.realestate.appModule.dashboard.adapter.RelatedPropertyAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertyDetailsListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertySliderListener
@@ -47,7 +48,7 @@ import com.vastu.slidercore.model.response.realestatedetails.PropertySlider
 import java.util.regex.Pattern
 
 
-class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPropertySliderListener,
+class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemClickListener,IPropertyDetailsListener,IPropertySliderListener,
     IToolbarListener {
     private lateinit var realEstateDetailsBinding: FragmentRealEstateDetailsBinding
     private lateinit var realEstateDetailsViewModel: RealEstateDetailsViewModel
@@ -95,6 +96,10 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
             if (args.getSerializable(BaseConstant.PROPERTY_ID) != null) {
                 val property =  args.getSerializable(BaseConstant.PROPERTY_ID).toString()
                 propertyId = property
+            }
+            if (args.getSerializable(BaseConstant.RELATED_PROPERTY_DETAILS) != null) {
+                val property =  args.getSerializable(BaseConstant.RELATED_PROPERTY_DETAILS) as RelatedProperty
+                propertyId = property.propertyId
             }
         }
     }
@@ -341,7 +346,7 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
     private fun setRelatedPropertyDetails(relatedProperty:List<RelatedProperty>){
         try {
             val recyclerViewProperty = realEstateDetailsBinding.relatedRecyclerView
-            val relatedPropertyAdapter = RelatedPropertyAdapter(requireContext(),relatedProperty)
+            val relatedPropertyAdapter = RelatedPropertyAdapter(this,requireContext(),relatedProperty)
             recyclerViewProperty.adapter = relatedPropertyAdapter
             recyclerViewProperty.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL, true)
         } catch (e: Exception) {
@@ -461,5 +466,14 @@ class RealEstateDetailsFragment : BaseFragment(),IPropertyDetailsListener,IPrope
             }
 
         }
+    }
+
+    override fun onItemClick(propertyData: RelatedProperty) {
+        val bundle = Bundle()
+        bundle.putSerializable(BaseConstant.RELATED_PROPERTY_DETAILS, propertyData)
+        findNavController().navigate(
+            R.id.RealEstateDetailsFragment,
+            bundle
+        )
     }
 }
