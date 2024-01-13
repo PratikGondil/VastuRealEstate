@@ -1002,7 +1002,7 @@ fun getPdfPath(uri: Uri?):String?
                 context,
                 property.propertyThumbnail,
                 thumbnailImage,
-                R.drawable.vastu_logo_splash
+                R.drawable.load
             )
 
             if (property.highlights != null && property.highlights.length > 20) {

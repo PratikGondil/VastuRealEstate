@@ -127,7 +127,7 @@ class CreatorListAdapter(
             context,
             property.thumbnail,
             holder.binding.propertyImage,
-            R.drawable.vastu_logo_splash
+            R.drawable.load
         )
     }
 

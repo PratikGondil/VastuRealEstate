@@ -35,7 +35,7 @@ class RelatedPropertyAdapter(private val itemClick: OnItemClickListener,val  con
             context,
             relatedProperty.propertyThumbnail,
             holder.binding.imageView,
-            R.drawable.vastu_logo_splash
+            R.drawable.load
         )
         holder.binding.title.text=relatedProperty.propertyTitle
         holder.binding.owener.text=relatedProperty.owner

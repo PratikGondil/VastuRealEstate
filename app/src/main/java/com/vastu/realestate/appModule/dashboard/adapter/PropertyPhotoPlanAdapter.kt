@@ -33,7 +33,7 @@ class PropertyPhotoPlanAdapter(
             context,
             photos.image,
             holder.binding.imageView,
-            R.drawable.vastu_logo_splash
+            R.drawable.load
         )
     }
 

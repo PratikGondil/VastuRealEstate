@@ -27,7 +27,7 @@ class PropertyImagesAdapter(private val itemClick:OnItemClickListener, private v
             context,
             image.image,
             holder.binding.PropertyImage,
-            R.drawable.vastu_logo_splash
+            R.drawable.load
         )
         holder.binding.btnDelete.setOnClickListener {
             itemClick.onItemClick(image)
