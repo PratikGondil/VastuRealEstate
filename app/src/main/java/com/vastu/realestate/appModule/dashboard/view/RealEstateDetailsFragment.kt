@@ -1,5 +1,6 @@
 package com.vastu.realestate.appModule.dashboard.view
 
+import android.app.Dialog
 import android.graphics.Point
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewParent
+import android.view.Window
+import android.widget.ImageView
 import android.widget.ScrollView
 import androidx.annotation.RequiresApi
 import androidx.core.widget.NestedScrollView
@@ -278,10 +281,19 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
         hideProgressDialog()
         buiderSlider = propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.builder_slider
         for( slider in buiderSlider!!){
-            var coItem  =CarouselItem(
-                imageUrl = slider.image,
-                caption = ""
-            )
+            var coItem  =CarouselItem()
+            if(slider.type.equals("video")){
+                coItem = CarouselItem(
+                    imageUrl = slider.thumbnail,
+                    caption = ""
+                )
+            }else {
+                coItem = CarouselItem(
+                    imageUrl = slider.image,
+                    caption = ""
+                )
+            }
+
             imageListbuilder.add(coItem)
         }
         realEstateDetailsBinding.apply {
@@ -295,7 +307,12 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
 
         realEstateDetailsBinding.imageSliderBuilder.carouselListener = object : CarouselListener {
           override fun onClick(position: Int, carouselItem: CarouselItem) {
-             createImageDialog(imageListbuilder.get(position).imageUrl!!)
+              var selectedPostition = propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.builder_slider[position]
+              if(selectedPostition.type =="video"){
+                  createDialogDashboard( propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.builder_slider[position].image)
+              }else{
+                  createImageDialog(imageListbuilder.get(position).imageUrl!!)
+              }
 
             }
 
@@ -308,6 +325,20 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
         sliderDataForFloorPlan(propertySliderResponseMain)
         sliderDataForBrochure(propertySliderResponseMain)
        // setPhotosPropertyDetails(propertySliderResponseMain.getPropertySliderImagesResponse.propertySliderImages)
+    }
+
+    fun createDialogDashboard(link: String) {
+        val dialog = Dialog(requireContext(), android.R.style.Theme_Translucent_NoTitleBar_Fullscreen)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.custom_video_dialog)
+        val videoView = dialog.findViewById<com.potyvideo.library.AndExoPlayerView>(R.id.andExoPlayerViewType)
+        val closeImageView = dialog.findViewById<ImageView>(R.id.img_cross)
+        videoView.setSource(link)
+        closeImageView.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        dialog.show()
     }
 
     private fun setCustomIndicator() {
@@ -410,10 +441,18 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
         hideProgressDialog()
         propertySliderList = propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.property_slider
         for( slider in propertySliderList!!){
-            var coItem  =CarouselItem(
-                imageUrl = slider.image,
-                caption = ""
-            )
+            var coItem  =CarouselItem()
+            if(slider.type.equals("video")){
+                coItem = CarouselItem(
+                    imageUrl = slider.thumbnail,
+                    caption = ""
+                )
+            }else {
+                coItem = CarouselItem(
+                    imageUrl = slider.image,
+                    caption = ""
+                )
+            }
             imageListCarouselProperty.add(coItem)
         }
         realEstateDetailsBinding.apply {
@@ -427,7 +466,14 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
 
         realEstateDetailsBinding.imageSliderPropertyPlan.carouselListener = object : CarouselListener {
             override fun onClick(position: Int, carouselItem: CarouselItem) {
-                createImageDialog(imageListCarouselProperty.get(position).imageUrl!!)
+
+                var selectedPostition = propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.property_slider[position]
+                if(selectedPostition.type =="video"){
+                    createDialogDashboard( propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.property_slider[position].image)
+                }else{
+                    createImageDialog(imageListCarouselProperty.get(position).imageUrl!!)
+                }
+
 
             }
 
@@ -441,10 +487,18 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
         hideProgressDialog()
         brouchureSlider = propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.brochure_slider
         for( slider in brouchureSlider!!){
-            var coItem  =CarouselItem(
-                imageUrl = slider.image,
-                caption = ""
-            )
+            var coItem  =CarouselItem()
+            if(slider.type.equals("video")){
+                coItem = CarouselItem(
+                    imageUrl = slider.thumbnail,
+                    caption = ""
+                )
+            }else {
+                coItem = CarouselItem(
+                    imageUrl = slider.image,
+                    caption = ""
+                )
+            }
             imageListbrocure.add(coItem)
         }
         realEstateDetailsBinding.apply {
@@ -458,7 +512,12 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
 
         realEstateDetailsBinding.imageSliderPropertyBrochure.carouselListener = object : CarouselListener {
             override fun onClick(position: Int, carouselItem: CarouselItem) {
-                createImageDialog(imageListbrocure.get(position).imageUrl!!)
+                var selectedPostition = propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.brochure_slider[position]
+                if(selectedPostition.type =="video"){
+                    createDialogDashboard( propertySliderResponseMain.GetPropertySliderImagesResponse.PropertySliderImages.brochure_slider[position].image)
+                }else{
+                    createImageDialog(imageListbrocure.get(position).imageUrl!!)
+                }
 
             }
 

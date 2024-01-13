@@ -195,10 +195,18 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
         imageListCarousel.clear()
         hideProgressDialog()
         for( slider in getAdvertisementSlider.advertiseData!!){
-            var coItem  = CarouselItem(
-                imageUrl = slider.adSlider,
-                caption = ""
-            )
+            var coItem = CarouselItem()
+            if(slider.type.equals("video")){
+                coItem = CarouselItem(
+                    imageUrl = slider.thumbnail,
+                    caption = ""
+                )
+            }else {
+                coItem = CarouselItem(
+                    imageUrl = slider.adSlider,
+                    caption = ""
+                )
+            }
             imageListCarousel.add(coItem)
         }
         dashboardBinding.apply {
@@ -211,7 +219,7 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
             override fun onClick(position: Int, carouselItem: CarouselItem) {
                 var selectedPostition = getAdvertisementSlider.advertiseData[position]
                 if(selectedPostition.type =="video"){
-                  createDialogDashboard(getAdvertisementSlider.advertiseData[position].link)
+                  createDialogDashboard(getAdvertisementSlider.advertiseData[position].adSlider)
                 }else{
                     createImageDialog(imageListCarousel.get(position).imageUrl!!)
                     dashboardBinding.imageSlider.visibility = View.VISIBLE

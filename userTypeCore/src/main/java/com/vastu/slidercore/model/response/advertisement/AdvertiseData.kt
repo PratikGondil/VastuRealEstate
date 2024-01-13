@@ -13,6 +13,8 @@ data class AdvertiseData(
     @SerializedName("ad_type")
     val type: String,
     @SerializedName("ad_link")
-    val link: String
+    val link: String,
+    @SerializedName("thumbnail")
+    val thumbnail: String
 
 )
