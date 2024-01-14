@@ -107,15 +107,16 @@
 
                     <TextView
                         android:id="@+id/rating"
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLength="60"
                         android:maxLines="1"
-                        android:textColor="@color/blue_text"
+                        android:background="@drawable/rating_bg"
+                        android:textColor="@color/white"
                         android:textSize="@dimen/text_size_small"
                         app:fontFamily="@font/open_sans_semibold"
-                        android:text="@{realCreatorDatum.rating}"/>
+                        android:text="@{realCreatorDatum.rating + @string/star}"/>
 
 
                     <TextView
