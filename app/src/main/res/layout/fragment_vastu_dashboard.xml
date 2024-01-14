@@ -182,7 +182,7 @@
                         app:layout_constraintTop_toTopOf="@id/card_loan"
                         app:layout_constraintEnd_toEndOf="@id/card_loan"
                         app:layout_constraintBottom_toTopOf="@+id/card_loan"
-                        android:src="@drawable/dashboard_real_estate" />
+                        android:src="@drawable/real_creator" />
 
 
 

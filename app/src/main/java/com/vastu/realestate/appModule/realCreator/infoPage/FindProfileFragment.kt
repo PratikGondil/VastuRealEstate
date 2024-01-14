@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
@@ -88,7 +89,7 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
     private fun initView() {
         drawerViewModel.toolbarTitle.set(getString(R.string.real_creator))
         drawerViewModel.isDashBoard.set(false)
-        setSpinner()
+//        setSpinner()
        // findProfileFragmentBinding.autoCompleteCity.setOnTouchListener(this)
         findProfileFragmentBinding.autoCompleteAreaList.setOnTouchListener(this)
         findProfileFragmentBinding.autoCompleteTaluka.setOnTouchListener(this)
@@ -116,30 +117,6 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
         )
 
 
-
-        findProfileFragmentBinding.spinner.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    var selectedItem = ""
-                    if (isMarathi) {
-                        selectedItem = viewModel.allQueryMarathi.get()!!.get(position)
-                        viewModel.selectedQuery.set(selectedItem)
-                    } else {
-                        selectedItem = viewModel.allQuery.get()!!.get(position)
-                        viewModel.selectedQuery.set(selectedItem)
-                    }
-
-
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {
-                }
-            }
 
 
     }
@@ -287,6 +264,7 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
     }
 
     override fun onClickBack() {
+        findNavController().navigateUp()
     }
 
     override fun onClickMenu() {

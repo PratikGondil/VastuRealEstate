@@ -14,6 +14,7 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.networkService.util.Constants
 import com.vastu.propertycore.model.response.PropertyIdData
 import com.vastu.realCreator.creatorDetails.model.ObjDetailsCreatorRes
+import com.vastu.realCreator.realCreatorList.model.RealCreatorDatum
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
@@ -61,7 +62,11 @@ class CreatorDetailsFragment: BaseFragment(), IToolbarListener,ICreatorDetailsLi
     }
 
 
-
+    override fun onResume() {
+        super.onResume()
+        drawerViewModel.toolbarTitle.set(getString(R.string.real_estate))
+        drawerViewModel.isDashBoard.set(false)
+    }
 
     private fun getBundleData(){
         if(activity is DashboardActivity)
@@ -71,8 +76,8 @@ class CreatorDetailsFragment: BaseFragment(), IToolbarListener,ICreatorDetailsLi
         val args = this.arguments
         if (args != null){
             if (args.getSerializable(BaseConstant.PROPERTY_DETAILS) != null) {
-                val property =  args.getSerializable(BaseConstant.PROPERTY_DETAILS) as PropertyData
-                propertyId = property.propertyId
+                val property =  args.getSerializable(BaseConstant.PROPERTY_DETAILS) as RealCreatorDatum
+                propertyId = property.profileID
             }
             if (args.getSerializable(BaseConstant.PROPERTY_ID) != null) {
                 val property =  args.getSerializable(BaseConstant.PROPERTY_ID).toString()

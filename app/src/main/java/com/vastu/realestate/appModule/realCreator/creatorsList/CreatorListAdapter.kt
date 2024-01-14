@@ -49,9 +49,7 @@ class CreatorListAdapter(
 //            itemClick.onWishlistClick(property)
 //        }
 //        manageAddSlider(holder,position)
-//        holder.binding.layoutContainer.setOnClickListener {
-//            itemClick.onItemClick(property)
-//        }
+
 //    }
 
 //    private fun manageAddSlider(holder: RealEstateViewHolder, position: Int) {
@@ -129,6 +127,9 @@ class CreatorListAdapter(
             holder.binding.propertyImage,
             R.drawable.vastu_logo_splash
         )
+        holder.binding.layoutContainer.setOnClickListener {
+            itemClick.onItemClick(property)
+        }
     }
 
 }

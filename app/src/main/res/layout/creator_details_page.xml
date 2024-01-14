@@ -227,7 +227,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <Button
+                    <TextView
                         android:id="@+id/CallButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -244,7 +244,7 @@
                         android:background="@drawable/ic_whatsapp" />
 
                     <!-- Facebook -->
-                    <Button
+                    <TextView
                         android:id="@+id/ShareButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -253,7 +253,7 @@
                         android:background="@drawable/ic_share__1_" />
 
                     <!-- Facebook -->
-                    <Button
+                    <TextView
                         android:id="@+id/EmailButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
