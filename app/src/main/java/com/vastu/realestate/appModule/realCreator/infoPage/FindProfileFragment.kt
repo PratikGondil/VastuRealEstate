@@ -6,18 +6,15 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
-import com.google.common.collect.Sets.filter
 import com.vastu.networkService.util.Constants
 import com.vastu.realCreator.realCreatorSearch.model.ObjCreatorListRes
 import com.vastu.realCreator.realCreatorSearch.model.ProfileDaum
@@ -25,7 +22,6 @@ import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
-import com.vastu.realestate.appModule.signUp.bindingAdapter.SignUpBindingAdapter
 import com.vastu.realestate.databinding.FindProfileFragmentBinding
 import com.vastu.realestate.registrationcore.model.request.ObjSubAreaReq
 import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaDataList
@@ -33,7 +29,7 @@ import com.vastu.realestate.registrationcore.model.response.cityList.ObjTalukaRe
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjCityAreaData
 import com.vastu.realestate.registrationcore.model.response.subArea.ObjGetCityAreaDetailResponseMain
 import com.vastu.realestate.utils.PreferenceManger
-import java.util.Locale.filter
+
 
 class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListener,
     FindProfileViewListener {
@@ -274,7 +270,10 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
     }
 
     override fun onSubmitBtnClick() {
-        findNavController().navigate(R.id.action_findProfileFragment_to_creatorListFragment)
+        var objSelectedProfile = ObjSelectedProfile(viewModel.profile.value!!.profileId,viewModel.taluka.value!!.talukaId!!,viewModel.subArea.get()!!.areaId)
+        val bundle = Bundle()
+        bundle.putSerializable("profile", objSelectedProfile)
+        findNavController().navigate(R.id.action_findProfileFragment_to_creatorListFragment,bundle)
     }
 
     fun onShowStateDropDown(view: View) {

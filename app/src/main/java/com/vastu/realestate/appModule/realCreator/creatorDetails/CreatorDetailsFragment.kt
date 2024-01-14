@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.aemerse.slider.model.CarouselItem
 import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.networkService.util.Constants
@@ -20,6 +21,7 @@ import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
+import com.vastu.realestate.appModule.realCreator.infoPage.ObjSelectedProfile
 import com.vastu.realestate.databinding.CreatorDetailsPageBinding
 import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.PreferenceManger
@@ -41,6 +43,7 @@ class CreatorDetailsFragment: BaseFragment(), IToolbarListener,ICreatorDetailsLi
     private lateinit var drawerViewModel: DrawerViewModel
     private val REMOVE_TAGS: Pattern = Pattern.compile("<.+?>")
     lateinit var  propertyIdDataList: PropertyIdData
+    lateinit var  selectedProfile: ObjSelectedProfile
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -83,6 +86,12 @@ class CreatorDetailsFragment: BaseFragment(), IToolbarListener,ICreatorDetailsLi
                 val property =  args.getSerializable(BaseConstant.PROPERTY_ID).toString()
                 propertyId = property
             }
+
+            if(args.getSerializable("profile") !=  null){
+              selectedProfile = requireArguments().getSerializable("profile") as ObjSelectedProfile
+
+            }
+
         }
     }
 
@@ -96,7 +105,9 @@ class CreatorDetailsFragment: BaseFragment(), IToolbarListener,ICreatorDetailsLi
             language?.let { creatorDetailsViewModel.apiCallRepo(it,"1") }
         }
     override fun onClickBack() {
-        TODO("Not yet implemented")
+        val bundle = Bundle()
+        bundle.putSerializable("profile", selectedProfile)
+        findNavController().navigate(R.id.action_creatorDetailsFragment_to_creatorListFragment,bundle)
     }
 
     override fun onClickMenu() {
