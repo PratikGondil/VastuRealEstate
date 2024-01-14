@@ -220,7 +220,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/dimen20dp"
+                        android:layout_marginStart="@dimen/margin_large"
                         android:orientation="vertical">
 
                         <TextView
@@ -229,7 +229,7 @@
                             android:gravity="start"
                             android:maxLength="35"
                             android:minLines="1"
-                            android:text="@{propertyData.priceMinWord +@string/dash+ propertyData.priceMaxWord}"
+                            android:text="@{propertyData.builder_name}"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size18sp"
                             android:textStyle="bold"
@@ -243,7 +243,7 @@
                             android:gravity="start"
                             android:maxLength="35"
                             android:minLines="1"
-                            android:text="@{propertyData.bedroom + @string/bhk_apartments}"
+                            android:text="@{propertyData.contsruction_name}"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size18sp"
                             app:fontFamily="@font/open_sans_semibold" />
@@ -260,17 +260,17 @@
                             android:textSize="@dimen/text_size_small"
                             app:fontFamily="@font/open_sans_semibold" />
 
-                        <TextView
-                            android:id="@+id/property_address_textview"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLength="60"
-                            android:maxLines="1"
-                            android:text="@{propertyData.owner}"
-                            android:textColor="@color/gray_shade2"
-                            android:textSize="@dimen/text_size_small"
-                            app:fontFamily="@font/open_sans_semibold" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/property_address_textview"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:ellipsize="end"-->
+<!--                            android:maxLength="60"-->
+<!--                            android:maxLines="1"-->
+<!--                            android:text="@{propertyData.owner}"-->
+<!--                            android:textColor="@color/gray_shade2"-->
+<!--                            android:textSize="@dimen/text_size_small"-->
+<!--                            app:fontFamily="@font/open_sans_semibold" />-->
 
                         <TextView
                             android:id="@+id/property_prize_textview"
@@ -310,14 +310,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/margin_medium"
                     android:orientation="horizontal">
 
 
                     <LinearLayout
                         android:layout_width="130dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="@dimen/margin_large"
+                        android:layout_marginStart="@dimen/dimen10dp"
                         android:layout_marginTop="@dimen/dimen15dp">
 
                         <LinearLayout
@@ -551,13 +550,14 @@
 
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="@dimen/dimen20dp"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen10dp"
-                                android:text="@string/construction"
+                                android:text="@string/construction_status"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
                                 android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
+
 
                             <View
                                 android:layout_width="match_parent"
@@ -567,41 +567,9 @@
 
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="@dimen/dimen20dp"
-                                android:layout_marginTop="@dimen/dimen10dp"
-                                android:text="@string/status"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/dimen15sp"
-                                android:textStyle="bold"
-                                app:fontFamily="@font/open_sans_bold" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginTop="@dimen/dimen5dp"
-                                android:background="@color/border_color" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="@dimen/dimen20dp"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen10dp"
                                 android:text="@string/super_builtup"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/dimen15sp"
-                                android:textStyle="bold"
-                                app:fontFamily="@font/open_sans_bold" />
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:layout_marginTop="@dimen/dimen5dp"
-                                android:background="@color/border_color" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="@dimen/dimen20dp"
-                                android:layout_marginTop="@dimen/dimen10dp"
-                                android:text="@string/area_ft"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/dimen15sp"
                                 android:textStyle="bold"
@@ -678,7 +646,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/dimen15dp"
-                        android:layout_marginEnd="@dimen/margin_medium"
+                        android:layout_marginEnd="@dimen/dimen10dp"
                         android:backgroundTint="@color/pinkk"
                         app:cardCornerRadius="@dimen/dimen10dp">
 
@@ -809,7 +777,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen15dp"
                                 android:layout_weight="1"
-                                android:text="@{propertyData.priceMaxWord}"
+                                android:text="@{propertyData.priceMinWord +@string/dash+ propertyData.priceMaxWord}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
                                 android:textStyle="bold"
@@ -845,7 +813,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen15dp"
                                 android:layout_weight="1"
-                                android:text="@{propertyData.area}"
+                                android:text="@{propertyData.shortAddress}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
                                 android:textStyle="bold"
@@ -855,7 +823,7 @@
                                 android:id="@+id/constructionStatusTextview"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_marginTop="@dimen/dimen25dp"
                                 android:layout_weight="1"
                                 android:text="@{propertyData.construction_status}"
                                 android:textColor="@color/text_color"
@@ -867,43 +835,31 @@
                                 android:id="@+id/statusTextview"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_marginTop="@dimen/dimen40dp"
                                 android:layout_weight="1"
-                                android:text="@{propertyData.state}"
+                                android:text="@{propertyData.area_min +@string/area_ft +@string/dash +propertyData.area_max +@string/area_ft}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
                                 android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
 
-                            <TextView
-                                android:id="@+id/superTextview"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen20dp"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.state}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/text_size_small"
-                                android:textStyle="bold"
-                                app:fontFamily="@font/open_sans_bold" />
-
-                            <TextView
-                                android:id="@+id/area"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen20dp"
-                                android:layout_weight="1"
-                                android:text="@{propertyData.area}"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/dimen15sp"
-                                android:textStyle="bold"
-                                app:fontFamily="@font/open_sans_bold" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/area"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginTop="@dimen/dimen20dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:text="@{propertyData.area}"-->
+<!--                                android:textColor="@color/text_color"-->
+<!--                                android:textSize="@dimen/dimen15sp"-->
+<!--                                android:textStyle="bold"-->
+<!--                                app:fontFamily="@font/open_sans_bold" />-->
 
                             <TextView
                                 android:id="@+id/availableTextview"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_marginTop="@dimen/dimen25dp"
                                 android:layout_weight="1"
                                 android:text="@{propertyData.availability}"
                                 android:textColor="@color/text_color"
@@ -915,7 +871,7 @@
                                 android:id="@+id/build_yearTextview"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_marginTop="@dimen/dimen20dp"
                                 android:layout_weight="1"
                                 android:text="@{propertyData.buildYear}"
                                 android:textColor="@color/text_color"
@@ -929,22 +885,22 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen15dp"
                                 android:layout_weight="1"
-                                android:text="@{propertyData.area}"
+                                android:text="@{propertyData.rera}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/text_size_small"
                                 android:textStyle="bold"
                                 app:fontFamily="@font/open_sans_bold" />
-<!--                            <TextView-->
-<!--                                android:id="@+id/briefTextview"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="@dimen/dimen15dp"-->
-<!--                                android:layout_weight="1"-->
-<!--                                android:text="@{propertyData.brief}"-->
-<!--                                android:textColor="@color/text_color"-->
-<!--                                android:textSize="@dimen/text_size_small"-->
-<!--                                android:textStyle="bold"-->
-<!--                                app:fontFamily="@font/open_sans_bold" />-->
+                            <TextView
+                                android:id="@+id/briefTextview"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen15dp"
+                                android:layout_weight="1"
+                                android:text="@{propertyData.brief}"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/text_size_small"
+                                android:textStyle="bold"
+                                app:fontFamily="@font/open_sans_bold" />
                         </LinearLayout>
 
                     </androidx.cardview.widget.CardView>
@@ -1254,6 +1210,13 @@
                             android:layout_marginLeft="@dimen/dimen10dp"
                             android:layout_marginRight="@dimen/dimen10dp"
                             android:layout_marginBottom="@dimen/dimen10dp"
+                            app:nextButtonId="@id/btn_next"
+                            app:nextButtonLayout="@layout/next_layout"
+                            app:nextButtonMargin="4dp"
+                            app:previousButtonId="@id/btn_previous"
+                            app:previousButtonLayout="@layout/previous_layout"
+                            app:previousButtonMargin="4dp"
+                            app:showNavigationButtons="true"
                             tools:listitem="@layout/related_property_item_view" />
                     </LinearLayout>
                 </LinearLayout>

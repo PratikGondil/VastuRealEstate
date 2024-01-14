@@ -76,4 +76,18 @@ data class PropertyIdData(
     val construction_status: String,
     @SerializedName("flat_facing")
     val flatFacing: String,
+    @SerializedName("area_min")
+    val area_min: String,
+    @SerializedName("area_max")
+    val area_max: String,
+    @SerializedName("builder_name")
+    val builder_name: String,
+    @SerializedName("site_name")
+    val site_name: String,
+    @SerializedName("rera")
+    val rera:String,
+    @SerializedName("brief")
+    val brief:String,
+    @SerializedName("contsruction_name")
+    val contsruction_name:String
 ):java.io.Serializable

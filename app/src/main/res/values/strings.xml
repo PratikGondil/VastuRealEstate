@@ -58,14 +58,14 @@
     <string name="furnishing">Furnishing</string>
     <string name="unfurnished">Unfurnished</string>
     <string name="construction_status">Construction Status</string>
-    <string name="construction">Construction</string>
+    <string name="construction">Construction \nstatus</string>
     <string name="status">Status</string>
     <string name="ready_to_move">Ready to Move</string>
     <string name="listed_by">Listed By</string>
     <string name="_700">700</string>
     <string name="super_builtup_area_ft">Super Builtup Area (Sq.ft )</string>
-    <string name="super_builtup">Super Builtup</string>
-    <string name="area_ft">Area (Sq.ft )</string>
+    <string name="super_builtup">Super Builtup Area (Sq.ft )</string>
+    <string name="area_ft">Sq.ft</string>
     <string name="chat">CHAT</string>
     <string name="make_offer">MAKE OFFER</string>
     <string name="title">Title</string>
@@ -340,7 +340,7 @@
     <string name="property_photo_amp_floor_plan"><![CDATA[Property Photo & Floor Plan]]></string>
     <string name="advance_filter">Advanced Filter</string>
 
-    <string name="we_need_to_understand_your_profile">We Need To Understand Your Profile</string>
+    <string name="we_need_to_understand_your_profile">We Need To Understand Your Profile you find</string>
     <string name="advertisement_plans">Advertisement Plans Are Only For Companies, Firm Or Person Who Deal In Real Estate Industry</string>
     <string name="view_plans">View Plans</string>
     <string name="plan_for_advertisement">Plan for Advertisement</string>
