@@ -234,6 +234,7 @@
                         android:layout_margin="8dp"
                         android:padding="@dimen/dimen15dp"
                         android:src="@drawable/ic_phone"
+                        android:onClick="@{view->creatorListDetailsViewModel.onCallClick()}"
                         android:background="@drawable/background_icon"/>
 
                     <ImageView
@@ -241,6 +242,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:onClick="@{view->creatorListDetailsViewModel.onWhatsAppClick()}"
                         android:padding="@dimen/dimen15dp"
                         android:src="@drawable/ic_whatsapp"
                         android:background="@drawable/background_icon"/>
@@ -251,6 +253,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
+                        android:onClick="@{view->creatorListDetailsViewModel.onShareClick()}"
                         android:padding="@dimen/dimen15dp"
                         android:background="@drawable/background_icon"
                         android:src="@drawable/ic_share__1_" />
@@ -260,10 +263,14 @@
                         android:id="@+id/EmailButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
-                        android:src="@drawable/email"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/ic_gmail"
+                        android:onClick="@{view->creatorListDetailsViewModel.onEmailClick()}"
                         android:background="@drawable/background_icon"
-                        android:padding="@dimen/dimen15dp" />
+                        android:paddingStart="@dimen/dimen20dp"
+                        android:paddingTop="@dimen/dimen20dp"
+                        android:paddingEnd="@dimen/dimen15dp"
+                        android:paddingBottom="@dimen/dimen10dp"/>
 
 
                 </LinearLayout>

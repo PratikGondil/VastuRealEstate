@@ -30,4 +30,21 @@ class CreatorDetailsViewModel(application: Application) : AndroidViewModel(appli
     override fun networkFailure() {
 
     }
+
+     fun onWhatsAppClick() {
+        iCreatorDetailsListener.onWhatsAppClick()
+    }
+
+     fun onShareClick() {
+        iCreatorDetailsListener.onShareClick()
+    }
+
+     fun onEmailClick() {
+       iCreatorDetailsListener.onEmailClick()
+    }
+
+     fun onCallClick() {
+        iCreatorDetailsListener.onCallClick()
+    }
+
 }

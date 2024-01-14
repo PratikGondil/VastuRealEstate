@@ -2,6 +2,7 @@ package com.vastu.realestate.appModule.realCreator.infoPage
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -270,10 +271,15 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
     }
 
     override fun onSubmitBtnClick() {
-        var objSelectedProfile = ObjSelectedProfile(viewModel.profile.value!!.profileId,viewModel.taluka.value!!.talukaId!!,viewModel.subArea.get()!!.areaId)
-        val bundle = Bundle()
-        bundle.putSerializable("profile", objSelectedProfile)
-        findNavController().navigate(R.id.action_findProfileFragment_to_creatorListFragment,bundle)
+        if(viewModel.profile.value != null &&
+            viewModel.taluka.value!= null &&
+            viewModel.subArea.get() != null){
+            var objSelectedProfile = ObjSelectedProfile(viewModel.profile.value!!.profileId,viewModel.taluka.value!!.talukaId!!,viewModel.subArea.get()!!.areaId)
+            val bundle = Bundle()
+            bundle.putSerializable("profile", objSelectedProfile)
+            findNavController().navigate(R.id.action_findProfileFragment_to_creatorListFragment,bundle)
+        }
+
     }
 
     fun onShowStateDropDown(view: View) {

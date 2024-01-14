@@ -31,19 +31,18 @@ import com.vastu.slidercore.model.response.realestatedetails.BuilderSlider
 import com.vastu.slidercore.model.response.realestatedetails.PropertySlider
 import java.util.regex.Pattern
 
-class CreatorDetailsFragment: BaseFragment(), IToolbarListener,ICreatorDetailsListener {
-
+class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetailsListener {
 
 
     private lateinit var creatorDetailsPageBinding: CreatorDetailsPageBinding
     private lateinit var creatorDetailsViewModel: CreatorDetailsViewModel
-    private var propertyId : String? = null
+    private var propertyId: String? = null
 
 
     private lateinit var drawerViewModel: DrawerViewModel
     private val REMOVE_TAGS: Pattern = Pattern.compile("<.+?>")
-    lateinit var  propertyIdDataList: PropertyIdData
-    lateinit var  selectedProfile: ObjSelectedProfile
+    lateinit var propertyIdDataList: PropertyIdData
+    lateinit var selectedProfile: ObjSelectedProfile
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,12 +50,14 @@ class CreatorDetailsFragment: BaseFragment(), IToolbarListener,ICreatorDetailsLi
     ): View? {
         drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
         creatorDetailsViewModel = ViewModelProvider(this)[CreatorDetailsViewModel::class.java]
-        creatorDetailsPageBinding = DataBindingUtil.inflate(inflater,
-            R.layout.creator_details_page, container, false)
+        creatorDetailsPageBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.creator_details_page, container, false
+        )
         creatorDetailsPageBinding.creatorListDetailsViewModel = creatorDetailsViewModel
         creatorDetailsPageBinding.lifecycleOwner = this
         drawerViewModel.iToolbarListener = this
-        creatorDetailsViewModel.iCreatorDetailsListener  = this
+        creatorDetailsViewModel.iCreatorDetailsListener = this
 
         creatorDetailsPageBinding.drawerViewModel = drawerViewModel
         getBundleData()
@@ -71,24 +72,20 @@ class CreatorDetailsFragment: BaseFragment(), IToolbarListener,ICreatorDetailsLi
         drawerViewModel.isDashBoard.set(false)
     }
 
-    private fun getBundleData(){
-        if(activity is DashboardActivity)
-        {
-            (activity as DashboardActivity).bottomNavigationView.visibility= View.GONE
+    private fun getBundleData() {
+        if (activity is DashboardActivity) {
+            (activity as DashboardActivity).bottomNavigationView.visibility = View.GONE
         }
         val args = this.arguments
-        if (args != null){
+        if (args != null) {
             if (args.getSerializable(BaseConstant.PROPERTY_DETAILS) != null) {
-                val property =  args.getSerializable(BaseConstant.PROPERTY_DETAILS) as RealCreatorDatum
+                val property =
+                    args.getSerializable(BaseConstant.PROPERTY_DETAILS) as RealCreatorDatum
                 propertyId = property.profileID
             }
-            if (args.getSerializable(BaseConstant.PROPERTY_ID) != null) {
-                val property =  args.getSerializable(BaseConstant.PROPERTY_ID).toString()
-                propertyId = property
-            }
-
-            if(args.getSerializable("profile") !=  null){
-              selectedProfile = requireArguments().getSerializable("profile") as ObjSelectedProfile
+            if (args.getSerializable("profile") != null) {
+                selectedProfile =
+                    requireArguments().getSerializable("profile") as ObjSelectedProfile
 
             }
 
@@ -96,18 +93,18 @@ class CreatorDetailsFragment: BaseFragment(), IToolbarListener,ICreatorDetailsLi
     }
 
 
+    fun apiCall() {
+        var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
+        language?.let { creatorDetailsViewModel.apiCallRepo(it, "1") }
+    }
 
-
-
-
-        fun apiCall(){
-            var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
-            language?.let { creatorDetailsViewModel.apiCallRepo(it,"1") }
-        }
     override fun onClickBack() {
         val bundle = Bundle()
         bundle.putSerializable("profile", selectedProfile)
-        findNavController().navigate(R.id.action_creatorDetailsFragment_to_creatorListFragment,bundle)
+        findNavController().navigate(
+            R.id.action_creatorDetailsFragment_to_creatorListFragment,
+            bundle
+        )
     }
 
     override fun onClickMenu() {
@@ -119,7 +116,7 @@ class CreatorDetailsFragment: BaseFragment(), IToolbarListener,ICreatorDetailsLi
     }
 
     override fun onWhatsAppClick() {
-        val phoneNumber = "+1234567890" // Replace with the phone number without '+' or '-' or '()'
+        val phoneNumber = "+91-9730004730" // Replace with the phone number without '+' or '-' or '()'
         val message = "Hello, this is a WhatsApp message from my app!"
 
         val whatsappIntent = Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:$phoneNumber"))
@@ -133,15 +130,19 @@ class CreatorDetailsFragment: BaseFragment(), IToolbarListener,ICreatorDetailsLi
     }
 
     override fun onShareClick() {
-        TODO("Not yet implemented")
+        val intent= Intent()
+        intent.action=Intent.ACTION_SEND
+        intent.putExtra(Intent.EXTRA_TEXT,"Hey Check out this Great app:")
+        intent.type="text/plain"
+        startActivity(Intent.createChooser(intent,"Share To:"))
     }
 
     override fun onEmailClick() {
         val emailIntent = Intent(Intent.ACTION_SENDTO)
         emailIntent.data = Uri.parse("mailto:")
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("recipient@example.com"))
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("customersupport@vastu4u.com"))
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject")
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message body")
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "")
 
         try {
             startActivity(Intent.createChooser(emailIntent, "Send Email"))
@@ -151,14 +152,18 @@ class CreatorDetailsFragment: BaseFragment(), IToolbarListener,ICreatorDetailsLi
     }
 
     override fun onCallClick() {
-        val phoneNumber = "+1234567890" // Replace with the phone number you want to call
+        val phoneNumber = "+91-9730004730" // Replace with the phone number you want to call
 
         val callIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
 
         try {
             startActivity(callIntent)
         } catch (ex: android.content.ActivityNotFoundException) {
-            Toast.makeText(requireContext(), "Calling is not supported on this device.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                "Calling is not supported on this device.",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
