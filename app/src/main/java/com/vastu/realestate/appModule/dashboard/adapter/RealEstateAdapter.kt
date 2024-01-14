@@ -22,8 +22,6 @@ class RealEstateAdapter(
     private lateinit var binding: RealEstateItemviewBinding
     var realEstateListCurrent: List<PropertyData>
     var adSlider: List<AdSlider>
-    lateinit var adSliderImage: AdSlider
-    lateinit var adSliderVideo: AdSlider
     lateinit var mediaPlayer: MediaPlayer
     var isunMute = false
 
@@ -58,7 +56,7 @@ class RealEstateAdapter(
             context,
             property.propertyThumbnail,
             holder.binding.propertyImage,
-            R.drawable.vastu_logo_splash
+            R.drawable.load
         )
         holder.binding.imgLike.setOnClickListener {
             itemClick.onWishlistClick(property)
@@ -70,7 +68,59 @@ class RealEstateAdapter(
     }
 
     private fun manageAddSlider(holder: RealEstateViewHolder, position: Int) {
-        if(adSlider.isNotEmpty() && adSlider.size==2){
+        if(adSlider.isNotEmpty()){
+             for (add in adSlider)
+             {
+                 if(add.position!!.toInt()==position){
+                     if(add.video!!){
+                         binding.video.setMediaController(null);
+                         binding.video.setVideoURI(Uri.parse(add.slider.toString()))
+                         holder.binding.video.visibility = View.VISIBLE
+                         holder.binding.mute.visibility = View.VISIBLE
+                         binding.video.setOnPreparedListener(OnPreparedListener { mp ->
+                             mediaPlayer = mp
+                             mp.setVolume(0f, 0f)
+                             mp.isLooping = true
+                         })
+                         binding.video.requestFocus()
+                         binding.video.start()
+
+                         holder.binding.mute.setOnClickListener {
+                             if(!isunMute) {
+                                 isunMute = true
+                                 holder.binding.mute.setImageResource(R.drawable.baseline_volume_up_24)
+                                 setVolume(100)
+                             }else{
+                                 isunMute = false
+                                 holder.binding.mute.setImageResource(R.drawable.baseline_volume_off_24)
+                                 setVolume(0)
+                             }
+
+                         }
+                     }else{
+                        holder.binding.imgE.visibility = View.VISIBLE
+                             showImageFromURL(
+                                 context,
+                                 add.slider,
+                                 holder.binding.imgE,
+                                 R.drawable.load
+                                             )
+
+                     }
+                 }else{
+                     holder.binding.imgE.visibility = View.GONE
+                     holder.binding.video.visibility = View.GONE
+                     break
+                 }
+
+             }
+
+        }else {
+            holder.binding.imgE.visibility = View.GONE
+            holder.binding.video.visibility = View.GONE
+        }
+
+      /*  if(adSlider.isNotEmpty() && adSlider.size==2){
             adSliderImage=adSlider[0]
             adSliderVideo=adSlider[1]
             if (position == adSliderImage.position?.toInt()) {
@@ -79,7 +129,7 @@ class RealEstateAdapter(
                     context,
                     adSliderImage.slider,
                     holder.binding.imgE,
-                    R.drawable.vastu_logo_splash
+                    R.drawable.load
                 )
             } else {
                 holder.binding.imgE.visibility = View.GONE
@@ -119,7 +169,7 @@ class RealEstateAdapter(
         else {
             holder.binding.imgE.visibility = View.GONE
             holder.binding.video.visibility = View.GONE
-        }
+        }*/
     }
 
     override fun getItemCount(): Int = realEstateListCurrent.size

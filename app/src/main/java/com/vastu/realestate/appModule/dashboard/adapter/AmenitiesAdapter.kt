@@ -32,7 +32,7 @@ class AmenitiesAdapter(private val context: Context, private val amenityList: Li
                 context,
                 amenity.icon,
                 holder.binding.imageView,
-                R.drawable.vastu_logo_splash
+                R.drawable.load
             )
         }
 

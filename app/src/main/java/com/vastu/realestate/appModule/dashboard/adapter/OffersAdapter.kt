@@ -38,7 +38,7 @@ class OffersAdapter(private val offersList: List<OfferData>,iRecycleViewClick: I
             context,
             offer.image,
             holder.binding.offerImage,
-            R.drawable.vastu_logo_splash
+            R.drawable.load
         )
     }
 
