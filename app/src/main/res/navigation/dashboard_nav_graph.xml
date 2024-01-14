@@ -356,5 +356,10 @@
         android:label="creatorDetailsFragment"
         tools:layout="@layout/creator_details_page">
 
+        <action
+            android:id="@+id/action_creatorDetailsFragment_to_creatorListFragment"
+            app:destination="@+id/creatorListFragment"
+            />
+
     </fragment>
 </navigation>

@@ -26,6 +26,7 @@ import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
 import com.vastu.realestate.appModule.dashboard.view.DashboardFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
+import com.vastu.realestate.appModule.realCreator.infoPage.ObjSelectedProfile
 import com.vastu.realestate.databinding.CreatorlistFragmentBinding
 import com.vastu.realestate.utils.ApiUrlEndPoints
 import com.vastu.realestate.utils.BaseConstant
@@ -46,6 +47,7 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
     lateinit var bottomSheetBehavior: BottomSheetBehavior<FragmentContainerView>
     lateinit var bottomSheetDialogFragment: BottomSheetDialogFragment
     lateinit var realEstatListUpdated: List<RealCreatorDatum>
+    lateinit var objSelectedProfile: ObjSelectedProfile
 
     var realEstateAdapter: CreatorListAdapter? = null
     override fun onCreateView(
@@ -61,7 +63,11 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
         realEstateBinding.drawerViewModel = drawerViewModel
         realEstateViewModel.iCreatorListListener = this
         drawerViewModel.iToolbarListener = this
+        if(arguments!=null){
+            objSelectedProfile = requireArguments().getSerializable("profile") as ObjSelectedProfile
+        }
         getRealEstateList()
+
         return realEstateBinding.root
     }
 
@@ -151,11 +157,11 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
             DashboardFragment.userId?.let {
                 if (language != null) {
                     realEstateViewModel.getRealCreatorList(
-                        it,
+                        objSelectedProfile.profile!!,
                         ApiUrlEndPoints.GET_REAL_CREATOR,
                         language,
-                        taluka = "pune",
-                        subarea = "abc"
+                        taluka = objSelectedProfile.taluka!!,
+                        subarea = objSelectedProfile.subArea!!
                     )
                 }
             }
@@ -202,6 +208,7 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
     override fun onItemClick(realCreatorDatum: RealCreatorDatum) {
         val bundle = Bundle()
         bundle.putSerializable(BaseConstant.PROPERTY_DETAILS, realCreatorDatum)
+        bundle.putSerializable("profile",objSelectedProfile)
         findNavController().navigate(
             R.id.action_creatorListFragment_to_creatorDetailsFragment,
             bundle

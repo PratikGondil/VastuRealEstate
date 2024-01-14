@@ -24,6 +24,7 @@ class RealEstateAdapter(
     var adSlider: List<AdSlider>
     lateinit var mediaPlayer: MediaPlayer
     var isunMute = false
+    var addPostion: MutableList<Int> = ArrayList()
 
     init {
         realEstateListCurrent = realEstateList
@@ -68,57 +69,63 @@ class RealEstateAdapter(
     }
 
     private fun manageAddSlider(holder: RealEstateViewHolder, position: Int) {
-        if(adSlider.isNotEmpty()){
-             for (add in adSlider)
-             {
-                 if(add.position!!.toInt()==position){
-                     if(add.video!!){
-                         binding.video.setMediaController(null);
-                         binding.video.setVideoURI(Uri.parse(add.slider.toString()))
-                         holder.binding.video.visibility = View.VISIBLE
-                         holder.binding.mute.visibility = View.VISIBLE
-                         binding.video.setOnPreparedListener(OnPreparedListener { mp ->
-                             mediaPlayer = mp
-                             mp.setVolume(0f, 0f)
-                             mp.isLooping = true
-                         })
-                         binding.video.requestFocus()
-                         binding.video.start()
 
-                         holder.binding.mute.setOnClickListener {
-                             if(!isunMute) {
-                                 isunMute = true
-                                 holder.binding.mute.setImageResource(R.drawable.baseline_volume_up_24)
-                                 setVolume(100)
-                             }else{
-                                 isunMute = false
-                                 holder.binding.mute.setImageResource(R.drawable.baseline_volume_off_24)
-                                 setVolume(0)
-                             }
+        if (adSlider.isNotEmpty()){
+            for(add in adSlider){
+                addPostion.add(add.position!!.toInt())
+            }
+        }
 
-                         }
-                     }else{
+        if(addPostion.contains(position)){
+            for (add in adSlider)
+            {
+                if(add.position!!.toInt()==position){
+                    if(add.video!!){
+                        binding.video.setMediaController(null);
+                        binding.video.setVideoURI(Uri.parse(add.slider.toString()))
+                        holder.binding.video.visibility = View.VISIBLE
+                        holder.binding.mute.visibility = View.VISIBLE
+                        binding.video.setOnPreparedListener(OnPreparedListener { mp ->
+                            mediaPlayer = mp
+                            mp.setVolume(0f, 0f)
+                            mp.isLooping = true
+                        })
+                        binding.video.requestFocus()
+                        binding.video.start()
+
+                        holder.binding.mute.setOnClickListener {
+                            if(!isunMute) {
+                                isunMute = true
+                                holder.binding.mute.setImageResource(R.drawable.baseline_volume_up_24)
+                                setVolume(100)
+                            }else{
+                                isunMute = false
+                                holder.binding.mute.setImageResource(R.drawable.baseline_volume_off_24)
+                                setVolume(0)
+                            }
+
+                        }
+                    }else{
                         holder.binding.imgE.visibility = View.VISIBLE
-                             showImageFromURL(
-                                 context,
-                                 add.slider,
-                                 holder.binding.imgE,
-                                 R.drawable.load
-                                             )
+                        showImageFromURL(
+                            context,
+                            add.slider,
+                            holder.binding.imgE,
+                            R.drawable.load
+                        )
 
-                     }
-                 }else{
-                     holder.binding.imgE.visibility = View.GONE
-                     holder.binding.video.visibility = View.GONE
-                     break
-                 }
+                    }
+                }
 
-             }
+            }
 
         }else {
             holder.binding.imgE.visibility = View.GONE
             holder.binding.video.visibility = View.GONE
+            holder.binding.mute.visibility = View.GONE
         }
+
+
 
       /*  if(adSlider.isNotEmpty() && adSlider.size==2){
             adSliderImage=adSlider[0]
