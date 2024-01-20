@@ -27,8 +27,6 @@ import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.view.DashboardFragment.Companion.userId
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
-import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreen
-import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreenUpcoming
 import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreenWishList
 import com.vastu.realestate.appModule.dashboard.viewmodel.RealEstateViewModel
 import com.vastu.realestate.databinding.FragmentRealEstateBinding
@@ -152,13 +150,12 @@ class WishListFragment : BaseFragment(), IRealEstateListener, IToolbarListener,
     override fun onSuccessGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         try {
             val realEstates = objGetPropertyListResMain.getPropertyDetailsResponse.propertyData
-            val sliderData=objGetPropertyListResMain.getPropertyDetailsResponse.adSlider
             realEstateBinding.apply {
                 if (realEstates.isNotEmpty()) {
                     searchFilterLayout.visibility = View.VISIBLE
                     rvRealEstste.visibility = View.VISIBLE
                     stopShimmerAnimation()
-                    getRealEstateDetails(realEstates,sliderData)
+                    getRealEstateDetails(realEstates)
                 } else {
                     searchFilterLayout.visibility = View.GONE
                     rvRealEstste.visibility = View.GONE
@@ -170,12 +167,12 @@ class WishListFragment : BaseFragment(), IRealEstateListener, IToolbarListener,
         }
     }
 
-    private fun getRealEstateDetails(realEstate: List<PropertyData>,adSlider:List<AdSlider>) {
+    private fun getRealEstateDetails(realEstate: List<PropertyData>) {
         try {
             realEstatListUpdated = realEstate
             val recyclerViewRealEstate = realEstateBinding.rvRealEstste
             //val realEstates = RealEstateList.getRealEstateData(requireContext())
-            realEstateAdapter = RealEstateAdapter(this, realEstate,adSlider)
+            realEstateAdapter = RealEstateAdapter(this, realEstate)
             recyclerViewRealEstate.adapter = realEstateAdapter
             recyclerViewRealEstate.layoutManager = LinearLayoutManager(activity)
         } catch (e: Exception) {
@@ -204,7 +201,7 @@ class WishListFragment : BaseFragment(), IRealEstateListener, IToolbarListener,
     }
 
     override fun onFilterPropertyListSuccess(objGetFilterDataResponse: ObjGetFilterDataResponse) {
-        getRealEstateDetails(objGetFilterDataResponse.filteredPropertyResponse,objGetFilterDataResponse.adSlider)
+        getRealEstateDetails(objGetFilterDataResponse.filteredPropertyResponse)
     }
 
     override fun onFilterPropertyListFailure(objFilterDataResponseMain: ObjFilterDataResponseMain) {

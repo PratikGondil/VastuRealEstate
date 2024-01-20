@@ -5,7 +5,6 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 
 import androidx.databinding.DataBindingUtil
 
@@ -144,13 +143,12 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     override fun onSuccessGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         try {
             val realEstates = objGetPropertyListResMain.getPropertyDetailsResponse.propertyData
-            val sliderData=objGetPropertyListResMain.getPropertyDetailsResponse.adSlider
             realEstateBinding.apply {
                 if (realEstates.isNotEmpty()) {
                     searchFilterLayout.visibility = View.VISIBLE
                     rvRealEstste.visibility = View.VISIBLE
                     stopShimmerAnimation()
-                    getRealEstateDetails(realEstates,sliderData)
+                    getRealEstateDetails(realEstates)
                 } else {
                     searchFilterLayout.visibility = View.GONE
                     rvRealEstste.visibility = View.GONE
@@ -162,12 +160,12 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
         }
     }
 
-    private fun getRealEstateDetails(realEstate: List<PropertyData>,adSlider:List<AdSlider>) {
+    private fun getRealEstateDetails(realEstate: List<PropertyData>) {
         try {
             realEstatListUpdated = realEstate
             val recyclerViewRealEstate = realEstateBinding.rvRealEstste
             //val realEstates = RealEstateList.getRealEstateData(requireContext())
-            realEstateAdapter = RealEstateAdapter(this, realEstate,adSlider)
+            realEstateAdapter = RealEstateAdapter(this, realEstate)
             recyclerViewRealEstate.adapter = realEstateAdapter
             recyclerViewRealEstate.layoutManager = LinearLayoutManager(activity)
         } catch (e: Exception) {
@@ -196,7 +194,7 @@ class RealEstateFragment : BaseFragment(), IRealEstateListener, IToolbarListener
     }
 
     override fun onFilterPropertyListSuccess(objGetFilterDataResponse: ObjGetFilterDataResponse) {
-        getRealEstateDetails(objGetFilterDataResponse.filteredPropertyResponse,objGetFilterDataResponse.adSlider)
+        getRealEstateDetails(objGetFilterDataResponse.filteredPropertyResponse)
     }
 
     override fun onFilterPropertyListFailure(objFilterDataResponseMain: ObjFilterDataResponseMain) {

@@ -68,7 +68,19 @@ data class PropertyData(
     @SerializedName("short_address")
     val shortAddress: String ="",
     @SerializedName("wishlist")
-    val wishlist: Boolean =false
+    val wishlist: Boolean =false,
+    @SerializedName("id")
+    var id       : String?  = "",
+    @SerializedName("slider")
+    var slider   : String?  = "",
+    @SerializedName("link")
+    var link     : String?  = "",
+    @SerializedName("position")
+    var position : String?  = "",
+    @SerializedName("video")
+    var video    : Boolean? = false,
+    @SerializedName("is_add")
+    var isAdd    : Boolean? = false
 
 
 
