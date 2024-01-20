@@ -306,7 +306,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/employeeInfoLayout"
-                    android:layout_marginBottom="@dimen/dimen50dp">
+                    android:layout_marginBottom="@dimen/dimen60dp">
 
                     <ImageButton
                         android:id="@+id/star1Button"
