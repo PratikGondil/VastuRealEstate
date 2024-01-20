@@ -60,12 +60,11 @@ class PropertiesFragment : BaseFragment(),IRealEstateListener, RealEstateAdapter
     override fun onSuccessGetRealEstateList(objGetPropertyListResMain: ObjGetPropertyListResMain) {
         try {
             val realEstates = objGetPropertyListResMain.getPropertyDetailsResponse.propertyData
-            val adSlider=objGetPropertyListResMain.getPropertyDetailsResponse.adSlider
             propertiesDataBinding.apply {
                 if(realEstates.isNotEmpty()) {
                     rvPropertyList.visibility = View.VISIBLE
                     stopShimmerAnimation()
-                    getRealEstateDetails(realEstates,adSlider)
+                    getRealEstateDetails(realEstates)
                 }else {
                     rvPropertyList.visibility = View.GONE
                     stopShimmerAnimation()
@@ -76,10 +75,10 @@ class PropertiesFragment : BaseFragment(),IRealEstateListener, RealEstateAdapter
         }
     }
 
-    private fun getRealEstateDetails(realEstate:List<PropertyData>,adSlider:List<AdSlider>) {
+    private fun getRealEstateDetails(realEstate:List<PropertyData>) {
         try {
             val recyclerViewRealEstate = propertiesDataBinding.rvPropertyList
-            val realEstateAdapter = RealEstateAdapter(this,realEstate,adSlider)
+            val realEstateAdapter = RealEstateAdapter(this, realEstate)
             recyclerViewRealEstate.adapter = realEstateAdapter
             recyclerViewRealEstate.layoutManager = LinearLayoutManager(activity)
         } catch (e: Exception) {
