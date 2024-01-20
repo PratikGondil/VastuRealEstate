@@ -71,15 +71,17 @@ class SortAndFilterScreen(var callback:RealEstateFragment): BottomSheetDialogFra
                 setupFullHeight(it)
                 behaviour.state = BottomSheetBehavior.STATE_EXPANDED
             }
+
         }
         return dialog
     }
     private fun setupFullHeight(bottomSheet: View) {
         val layoutParams = bottomSheet.layoutParams
-        var dMetrics = resources.getDisplayMetrics()
+        var dMetrics = resources.displayMetrics
         val h = Math.round(dMetrics.heightPixels / dMetrics.density)
-        layoutParams.height = h*2
-
+        val w = Math.round(dMetrics.widthPixels / dMetrics.density)
+        layoutParams.height = (h*1.9).toInt()
+        layoutParams.width= (w * 1.8).toInt()
         bottomSheet.layoutParams = layoutParams
 
     }

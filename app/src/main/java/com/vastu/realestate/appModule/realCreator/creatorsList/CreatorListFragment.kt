@@ -17,6 +17,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.vastu.networkService.util.Constants
 import com.vastu.realCreator.creatorDetails.model.ObjDetailsCreatorRes
 import com.vastu.realCreator.creatorDetails.model.SingalRealCreatorDatum
+import com.vastu.realCreator.creatorDetails.model.Slider
 import com.vastu.realCreator.realCreatorList.model.ObjRealCreatorListRes
 import com.vastu.realCreator.realCreatorList.model.RealCreatorDatum
 import com.vastu.realestate.R
@@ -50,6 +51,7 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
     lateinit var realEstatListUpdated: List<RealCreatorDatum>
     lateinit var objSelectedProfile: ObjSelectedProfile
      lateinit var singalRealCreatorDatum: List<SingalRealCreatorDatum>
+     lateinit var slider: Slider
 
     var creatorListAdapter: CreatorListAdapter? = null
     override fun onCreateView(
@@ -214,6 +216,7 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
         val bundle = Bundle()
         bundle.putSerializable(BaseConstant.PROPERTY_DETAILS, singalRealCreatorDatum.get(0))
         bundle.putSerializable("profile",objSelectedProfile)
+        bundle.putSerializable("slider",slider)
         findNavController().navigate(
             R.id.action_creatorListFragment_to_creatorDetailsFragment,
             bundle
@@ -253,6 +256,7 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
 
     override fun onSuccessGetRealCreatorList(objDetailsCreatorRes: ObjDetailsCreatorRes) {
          singalRealCreatorDatum =objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.singalRealCreatorData
+         slider=objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.slider
 
     }
 
