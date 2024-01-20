@@ -15,6 +15,7 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.networkService.util.Constants
 import com.vastu.propertycore.model.response.PropertyIdData
 import com.vastu.realCreator.creatorDetails.model.ObjDetailsCreatorRes
+import com.vastu.realCreator.creatorDetails.model.SingalRealCreatorDatum
 import com.vastu.realCreator.realCreatorList.model.RealCreatorDatum
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
@@ -61,7 +62,6 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
 
         creatorDetailsPageBinding.drawerViewModel = drawerViewModel
         getBundleData()
-        apiCall()
         return creatorDetailsPageBinding.root
     }
 
@@ -80,7 +80,7 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
         if (args != null) {
             if (args.getSerializable(BaseConstant.PROPERTY_DETAILS) != null) {
                 val property =
-                    args.getSerializable(BaseConstant.PROPERTY_DETAILS) as RealCreatorDatum
+                    args.getSerializable(BaseConstant.PROPERTY_DETAILS) as SingalRealCreatorDatum
                 propertyId = property.profileID
             }
             if (args.getSerializable("profile") != null) {
@@ -93,10 +93,6 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
     }
 
 
-    fun apiCall() {
-        var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
-        language?.let { creatorDetailsViewModel.apiCallRepo(it, "1") }
-    }
 
     override fun onClickBack() {
         val bundle = Bundle()
@@ -173,6 +169,8 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
             false,
             false
         )
+
+        val realEstates = objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.singalRealCreatorData
     }
 
     override fun onFailureGetRealCreatorList(objDetailsCreatorRes: ObjDetailsCreatorRes) {

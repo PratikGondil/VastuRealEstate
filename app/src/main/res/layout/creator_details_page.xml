@@ -120,6 +120,7 @@
                             android:textColor="@color/blue_text"
                             android:textSize="@dimen/text_size_small"
                             android:textStyle="bold"
+                            android:text="@{singalRealCreatorDatum.profileName}"
                             app:fontFamily="@font/open_sans_semibold" />
 
                         <TextView
@@ -195,7 +196,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dimen20dp"
                     android:fontFamily="@font/open_sans_bold"
-                    android:text="@string/loan_info"
+                    android:text="@{singalRealCreatorDatum.overview}"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"
@@ -225,6 +226,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -302,49 +304,46 @@
                     android:padding="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/employeeInfoLayout">
+                    app:layout_constraintTop_toBottomOf="@+id/employeeInfoLayout"
+                    android:layout_marginBottom="@dimen/dimen50dp">
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/star1Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:background="@drawable/ic_rate_disable_star"
-                        android:text="★"
+                        android:background="@drawable/rate_us"
                         android:textSize="24sp" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/star2Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:background="@drawable/ic_rate_disable_star"
-                        android:textSize="24sp" />
+                        android:background="@drawable/rate_us" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/star3Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:background="@drawable/ic_rate_disable_star"
+                        android:background="@drawable/rate_us"
                         android:textSize="24sp" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/star4Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:background="@drawable/ic_rate_disable_star"
-                        android:text="★"
+                        android:background="@drawable/rate_us"
                         android:textSize="24sp" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/star5Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:background="@drawable/ic_rate_disable_star"
-                        android:text="★"
+                        android:background="@drawable/rate_us"
                         android:textSize="24sp" />
                 </LinearLayout>
             </LinearLayout>

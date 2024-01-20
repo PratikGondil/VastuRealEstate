@@ -2,6 +2,7 @@ package com.vastu.realestate.appModule.dashboard.view
 
 import android.app.Dialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
@@ -378,6 +379,26 @@ class DashboardFragment : BaseFragment(), IDashboardViewListener, IToolbarListen
 
     override fun onHomeClick() {
        closeDrawer()
+    }
+
+    override fun onYoutubeClick() {
+        val youtubeUrl = "https://www.youtube.com/"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(youtubeUrl))
+        startActivity(intent)
+    }
+
+    override fun onFBClick() {
+        val youtubeUrl = "https://www.facebook.com/profile.php/?id=61550050315120"
+
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(youtubeUrl))
+        startActivity(intent)
+    }
+
+    override fun onInstaClick() {
+        val youtubeUrl = "https://www.instagram.com/vastu_app?igshid=MmU2YjMzNjRlOQ%3D%3D"
+
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(youtubeUrl))
+        startActivity(intent)
     }
 
     private fun showLogoutDialog() {
