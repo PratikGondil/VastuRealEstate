@@ -15,10 +15,11 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.vastu.networkService.util.Constants
+import com.vastu.realCreator.creatorDetails.model.ObjDetailsCreatorRes
+import com.vastu.realCreator.creatorDetails.model.SingalRealCreatorDatum
+import com.vastu.realCreator.creatorDetails.model.Slider
 import com.vastu.realCreator.realCreatorList.model.ObjRealCreatorListRes
 import com.vastu.realCreator.realCreatorList.model.RealCreatorDatum
-import com.vastu.realCreator.realCreatorSearch.model.ObjCreatorListRes
-import com.vastu.realCreator.realCreatorSearch.model.ProfileDaum
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.CreatorListAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
@@ -26,6 +27,7 @@ import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
 import com.vastu.realestate.appModule.dashboard.view.DashboardFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
+import com.vastu.realestate.appModule.realCreator.creatorDetails.ICreatorApiListener
 import com.vastu.realestate.appModule.realCreator.infoPage.ObjSelectedProfile
 import com.vastu.realestate.databinding.CreatorlistFragmentBinding
 import com.vastu.realestate.utils.ApiUrlEndPoints
@@ -37,9 +39,9 @@ import com.vastu.slidercore.model.response.advertisement.GetAdvertiseDetailsResp
 
 class CreatorListFragment : BaseFragment(), IToolbarListener,
     CreatorListAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener,
-    ICreatorListListener {
-    private lateinit var realEstateBinding: CreatorlistFragmentBinding
-    private lateinit var realEstateViewModel: CreatorListViewModel
+    ICreatorListListener ,ICreatorApiListener{
+    private lateinit var creatorlistFragmentBinding: CreatorlistFragmentBinding
+    private lateinit var creatorListViewModel: CreatorListViewModel
     private lateinit var drawerViewModel: DrawerViewModel
     private lateinit var getAdvertisementSlider: GetAdvertiseDetailsResponse
     private val imageList = ArrayList<SlideModel>()
@@ -48,27 +50,31 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
     lateinit var bottomSheetDialogFragment: BottomSheetDialogFragment
     lateinit var realEstatListUpdated: List<RealCreatorDatum>
     lateinit var objSelectedProfile: ObjSelectedProfile
+     lateinit var singalRealCreatorDatum: List<SingalRealCreatorDatum>
+     lateinit var slider: Slider
 
-    var realEstateAdapter: CreatorListAdapter? = null
+    var creatorListAdapter: CreatorListAdapter? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        realEstateViewModel = ViewModelProvider(this)[CreatorListViewModel::class.java]
+        creatorListViewModel = ViewModelProvider(this)[CreatorListViewModel::class.java]
         drawerViewModel = ViewModelProvider(this)[DrawerViewModel::class.java]
-        realEstateBinding =
+        creatorlistFragmentBinding =
             DataBindingUtil.inflate(inflater, R.layout.creatorlist_fragment, container, false)
-        realEstateBinding.lifecycleOwner = this
-        realEstateBinding.creatorListViewModel = realEstateViewModel
-        realEstateBinding.drawerViewModel = drawerViewModel
-        realEstateViewModel.iCreatorListListener = this
+        creatorlistFragmentBinding.lifecycleOwner = this
+        creatorlistFragmentBinding.creatorListViewModel = creatorListViewModel
+        creatorlistFragmentBinding.drawerViewModel = drawerViewModel
+        creatorListViewModel.iCreatorListListener = this
+        creatorListViewModel.iCreatorApiListener=this
         drawerViewModel.iToolbarListener = this
         if(arguments!=null){
             objSelectedProfile = requireArguments().getSerializable("profile") as ObjSelectedProfile
         }
         getRealEstateList()
 
-        return realEstateBinding.root
+
+        return creatorlistFragmentBinding.root
     }
 
     private fun setSliderData() {
@@ -83,7 +89,7 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
         try {
             val realEstates = objRealCreatorListRes.getRealCreatorDetailsResponse.realCreatorData
             //   val sliderData=objGetPropertyListResMain.getPropertyDetailsResponse.adSlider
-            realEstateBinding.apply {
+            creatorlistFragmentBinding.apply {
                 if (realEstates.isNotEmpty()) {
                     searchFilterLayout.visibility = View.VISIBLE
                     rvCreatorList.visibility = View.VISIBLE
@@ -153,10 +159,10 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
             (activity as DashboardActivity).bottomNavigationView.visibility = View.VISIBLE
         }
         try {
-            realEstateBinding.loadingLayout.startShimmerAnimation()
+            creatorlistFragmentBinding.loadingLayout.startShimmerAnimation()
             DashboardFragment.userId?.let {
                 if (language != null) {
-                    realEstateViewModel.getRealCreatorList(
+                    creatorListViewModel.getRealCreatorList(
                         objSelectedProfile.profile!!,
                         ApiUrlEndPoints.GET_REAL_CREATOR,
                         language,
@@ -174,12 +180,13 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
     private fun getRealEstateDetails(realEstate: List<RealCreatorDatum>) {
         try {
             realEstatListUpdated = realEstate
-            val recyclerViewRealEstate = realEstateBinding.rvCreatorList
+            val recyclerViewRealEstate = creatorlistFragmentBinding.rvCreatorList
             //val realEstates = RealEstateList.getRealEstateData(requireContext())
-            realEstateAdapter = CreatorListAdapter(this, realEstate)
+            creatorListAdapter = CreatorListAdapter(this, realEstate)
 
-            recyclerViewRealEstate.adapter = realEstateAdapter
+            recyclerViewRealEstate.adapter = creatorListAdapter
             recyclerViewRealEstate.layoutManager = LinearLayoutManager(activity)
+            apiCall()
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -187,7 +194,7 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
 
     private fun stopShimmerAnimation() {
         try {
-            realEstateBinding.apply {
+            creatorlistFragmentBinding.apply {
                 loadingLayout.stopShimmerAnimation()
                 loadingLayout.visibility = View.GONE
             }
@@ -205,10 +212,11 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
     }
 
 
-    override fun onItemClick(realCreatorDatum: RealCreatorDatum) {
+    override fun onItemClick() {
         val bundle = Bundle()
-        bundle.putSerializable(BaseConstant.PROPERTY_DETAILS, realCreatorDatum)
+        bundle.putSerializable(BaseConstant.PROPERTY_DETAILS, singalRealCreatorDatum.get(0))
         bundle.putSerializable("profile",objSelectedProfile)
+        bundle.putSerializable("slider",slider)
         findNavController().navigate(
             R.id.action_creatorListFragment_to_creatorDetailsFragment,
             bundle
@@ -241,6 +249,19 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
     override fun onRefresh() {
         TODO("Not yet implemented")
     }
+    fun apiCall() {
+        var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
+        language?.let { creatorListViewModel.apiCallRepo(it, "1") }
+    }
 
+    override fun onSuccessGetRealCreatorList(objDetailsCreatorRes: ObjDetailsCreatorRes) {
+         singalRealCreatorDatum =objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.singalRealCreatorData
+         slider=objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.slider
+
+    }
+
+    override fun onFailureGetRealCreatorList(objDetailsCreatorRes: ObjDetailsCreatorRes) {
+
+    }
 
 }

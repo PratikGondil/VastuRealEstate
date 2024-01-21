@@ -112,38 +112,41 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:id="@+id/name"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="start"
-                            android:maxLength="35"
                             android:minLines="1"
                             android:textColor="@color/blue_text"
-                            android:textSize="@dimen/text_size_small"
+                            android:textSize="@dimen/text_size_normal"
                             android:textStyle="bold"
-                            app:fontFamily="@font/open_sans_semibold" />
+                            app:fontFamily="@font/open_sans_bold" />
 
                         <TextView
-                            android:id="@+id/feature_textview"
+                            android:id="@+id/address"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
                             android:gravity="start"
-                            android:maxLength="35"
                             android:minLines="1"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/text_size18sp"
+                            android:textSize="@dimen/text_size_small"
                             app:fontFamily="@font/open_sans_semibold" />
+
 
                         <TextView
                             android:id="@+id/rating"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
-                            android:maxLength="35"
+                            android:maxLength="60"
                             android:maxLines="1"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/dimen_16sp"
+                            android:padding="2dp"
+                            android:background="@drawable/rating_bg"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_small"
                             app:fontFamily="@font/open_sans_semibold" />
+
 
                         <TextView
                             android:id="@+id/nameEmp"
@@ -151,10 +154,10 @@
                             android:layout_height="wrap_content"
                             android:ellipsize="end"
                             android:maxLength="60"
-                            android:maxLines="1"
                             android:textColor="@color/blue_text"
-                            android:textSize="@dimen/dimens20sp"
-                            app:fontFamily="@font/open_sans_semibold" />
+                            android:textSize="@dimen/text_size_normal"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/open_sans_bold" />
 
                         <TextView
                             android:id="@+id/mobileNumber"
@@ -163,10 +166,10 @@
                             android:ellipsize="end"
                             android:includeFontPadding="true"
                             android:maxLength="35"
-                            android:maxLines="1"
                             android:textColor="@color/blue_text"
-                            android:textSize="@dimen/dimens20sp"
-                            app:fontFamily="@font/open_sans_semibold" />
+                            android:textSize="@dimen/text_size_normal"
+                            android:textStyle="bold"
+                            app:fontFamily="@font/open_sans_bold"  />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -195,7 +198,6 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/dimen20dp"
                     android:fontFamily="@font/open_sans_bold"
-                    android:text="@string/loan_info"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"
@@ -225,6 +227,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -298,54 +301,52 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:layout_marginTop="@dimen/dimen5dp"
                     android:orientation="horizontal"
-                    android:padding="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/employeeInfoLayout">
+                    app:layout_constraintTop_toBottomOf="@+id/employeeInfoLayout"
+                    android:layout_marginBottom="@dimen/dimen60dp">
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/star1Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:background="@drawable/ic_rate_disable_star"
-                        android:text="★"
-                        android:textSize="24sp" />
+                        android:background="@drawable/rate_us"
+                        />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/star2Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:background="@drawable/ic_rate_disable_star"
-                        android:textSize="24sp" />
+                        android:background="@drawable/rate_us"
+                        />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/star3Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:background="@drawable/ic_rate_disable_star"
-                        android:textSize="24sp" />
+                        android:background="@drawable/rate_us"
+                         />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/star4Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:background="@drawable/ic_rate_disable_star"
-                        android:text="★"
-                        android:textSize="24sp" />
+                        android:background="@drawable/rate_us"
+                         />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/star5Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="8dp"
-                        android:background="@drawable/ic_rate_disable_star"
-                        android:text="★"
-                        android:textSize="24sp" />
+                        android:background="@drawable/rate_us"
+                        />
                 </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

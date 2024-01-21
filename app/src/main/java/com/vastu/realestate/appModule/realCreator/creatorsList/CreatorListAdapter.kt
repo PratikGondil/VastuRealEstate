@@ -108,7 +108,7 @@ class CreatorListAdapter(
     override fun getItemCount(): Int = realEstateListCurrent.size
 
     interface OnItemClickListener {
-        fun onItemClick(realCreatorDatum:RealCreatorDatum)
+        fun onItemClick()
 
     }
     private fun setVolume(amount: Int) {
@@ -128,7 +128,7 @@ class CreatorListAdapter(
             R.drawable.load
         )
         holder.binding.layoutContainer.setOnClickListener {
-            itemClick.onItemClick(property)
+            itemClick.onItemClick()
         }
     }
 

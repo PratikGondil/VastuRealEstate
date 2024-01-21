@@ -78,4 +78,14 @@ class DrawerViewModel(application: Application) : AndroidViewModel(application) 
     fun onHomeClick(){
         iNavDrawerListener.onHomeClick()
     }
+    fun onYoutubeClick(){
+        iNavDrawerListener.onYoutubeClick()
+    }
+    fun onFBClick(){
+        iNavDrawerListener.onFBClick()
+    }
+    fun onInstaClick(){
+        iNavDrawerListener.onInstaClick()
+    }
+
 }

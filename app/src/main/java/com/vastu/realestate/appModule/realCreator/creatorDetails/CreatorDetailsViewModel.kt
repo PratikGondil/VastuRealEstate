@@ -15,9 +15,6 @@ class CreatorDetailsViewModel(application: Application) : AndroidViewModel(appli
         mContext=application
     }
 
-    fun apiCallRepo(langauage:String,id:String){
-       DetailsCreatorRepository.callGetCreatorDetailsList(mContext,id,langauage, ApiUrlEndPoints.GET_REAL_CREATOR_DETAILS,this)
-    }
 
     override fun getDetailsCreatorSuccessResponse(objDetailsCreatorRes: ObjDetailsCreatorRes) {
         iCreatorDetailsListener.onSuccessGetRealCreatorList(objDetailsCreatorRes)

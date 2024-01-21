@@ -1245,7 +1245,7 @@
                 android:onClick="@{(view)->realEstateDetailsViewModel.onClickPropertyEnquiry()}"
                 android:text="@string/enquiry"
                 android:textColor="@color/button_color"
-                android:textSize="@dimen/text_size18sp"
+                android:textSize="@dimen/dimen_16sp"
                 android:textStyle="bold"
                 app:fontFamily="@font/open_sans_bold" />
 
@@ -1260,7 +1260,7 @@
                 android:onClick="@{(view)->realEstateDetailsViewModel.addToWishlist()}"
                 android:text="@string/add_to_wishlist"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size18sp"
+                android:textSize="@dimen/dimen_16sp"
                 android:textStyle="bold"
                 app:fontFamily="@font/open_sans_bold" />
         </LinearLayout>

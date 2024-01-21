@@ -3,18 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.vastu.realestate.appModule.dashboard.viewmodel.VastuDashboardViewModel" />
+
         <variable
             name="drawerViewModel"
             type="com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/main_layout"
         android:background="@color/white">
 
         <LinearLayout
@@ -22,43 +24,43 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/button_color">
+                android:background="@color/button_color"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/close_imageview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="end|top"
+                    android:layout_marginTop="@dimen/margin_xxxlarge"
                     android:layout_marginEnd="@dimen/margin_small"
                     android:onClick="@{(view)->drawerViewModel.onCloseClick()}"
-                    android:layout_marginTop="@dimen/margin_xxxlarge"
-                    android:layout_gravity="end|top"
                     android:src="@drawable/ic_close" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:onClick="@{(view)->drawerViewModel.displayProfile()}"
                     android:orientation="horizontal"
                     android:paddingStart="@dimen/padding_small"
                     android:paddingEnd="@dimen/padding_small"
-                    android:paddingBottom="@dimen/padding_small"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:onClick="@{(view)->drawerViewModel.displayProfile()}">
+                    android:paddingBottom="@dimen/padding_small">
 
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/user_profile_imageview"
-                        android:padding="@dimen/padding_menu"
                         android:layout_width="@dimen/image_width"
-                        android:src="@drawable/user"
                         android:layout_height="@dimen/image_height"
-                        android:layout_gravity="center_horizontal" />
+                        android:layout_gravity="center_horizontal"
+                        android:padding="@dimen/padding_menu"
+                        android:src="@drawable/user" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -71,384 +73,451 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            app:fontFamily="@font/open_sans_bold"
                             android:fontFamily="@font/open_sans_bold"
-                            android:textColor="@color/white"
                             android:text="@{drawerViewModel.userName}"
-                            android:textSize="@dimen/text_size_semilarge" />
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_semilarge"
+                            app:fontFamily="@font/open_sans_bold" />
 
                         <TextView
                             android:id="@+id/mobile_textview"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            app:fontFamily="@font/open_sans_regular"
-                            android:textColor="@color/white"
                             android:text="@{drawerViewModel.mobileNo}"
-                            android:textSize="@dimen/text_size_small" />
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_small"
+                            app:fontFamily="@font/open_sans_regular" />
 
                         <TextView
                             android:id="@+id/city_textview"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
-                            app:fontFamily="@font/open_sans_regular"
-                            android:textStyle="normal"
-                            android:textColor="@color/white"
                             android:text="@{drawerViewModel.city}"
-                            android:textSize="@dimen/text_size_small" />
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_small"
+                            android:textStyle="normal"
+                            app:fontFamily="@font/open_sans_regular" />
 
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/nav_home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:onClick="@{(view)->drawerViewModel.onHomeClick()}"
-                android:gravity="center"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="@dimen/margin_xxlarge">
+                android:layout_marginTop="@dimen/dimen20dp"
+                android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onHomeClick()}"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_home"
-                    android:scaleType="centerInside" />
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_home" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:textColor="@color/black"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/open_sans_bold"
+                    android:layout_weight="0.8"
                     android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
+                    android:text="@string/home_text"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"
-                    android:text="@string/home_text" />
+                    app:fontFamily="@font/open_sans_bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/nav_enquiry"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:visibility="@{drawerViewModel.enquiry}"
-                android:onClick="@{(view)->drawerViewModel.onEnquiryClick()}"
-                android:gravity="center"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="@dimen/margin_xxlarge">
+                android:layout_marginTop="@dimen/dimen20dp"
+                android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onEnquiryClick()}"
+                android:orientation="horizontal"
+                android:visibility="@{drawerViewModel.enquiry}"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_enquiry"
-                    android:scaleType="centerInside" />
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_enquiry" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/open_sans_bold"
+                    android:layout_weight="0.8"
                     android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
+                    android:text="@string/enquiry"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"
-                    android:text="@string/enquiry" />
+                    app:fontFamily="@font/open_sans_bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/nav_properties"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:gravity="center"
-                android:visibility="@{drawerViewModel.properties}"
-                android:onClick="@{(view)->drawerViewModel.onAddPropertyClick()}"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="@dimen/margin_xxlarge">
+                android:layout_marginTop="@dimen/dimen20dp"
+                android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onAddPropertyClick()}"
+                android:orientation="horizontal"
+                android:visibility="@{drawerViewModel.properties}"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_properties"
-                    android:scaleType="centerInside" />
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_properties" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/open_sans_bold"
+                    android:layout_weight="0.8"
                     android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
+                    android:text="@string/properties"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"
-                    android:text="@string/properties" />
+                    app:fontFamily="@font/open_sans_bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/nav_employee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:gravity="center"
-                android:visibility="@{drawerViewModel.employess}"
-                android:onClick="@{(view)->drawerViewModel.onEmployessClick()}"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="@dimen/margin_xxlarge">
+                android:layout_marginTop="@dimen/dimen20dp"
+                android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onEmployessClick()}"
+                android:orientation="horizontal"
+                android:visibility="@{drawerViewModel.employess}"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_employee"
-                    android:scaleType="centerInside" />
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_employee" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/open_sans_bold"
+                    android:layout_weight="0.8"
                     android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
+                    android:text="@string/employees"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"
-                    android:text="@string/employees" />
+                    app:fontFamily="@font/open_sans_bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/nav_offers"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:gravity="center"
-                android:visibility="@{drawerViewModel.offer}"
-                android:onClick="@{(view)->drawerViewModel.onOffersClick()}"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="@dimen/margin_xxlarge">
+                android:layout_marginTop="@dimen/dimen20dp"
+                android:gravity="center"
+                android:onClick="@{(view)->drawerViewModel.onOffersClick()}"
+                android:orientation="horizontal"
+                android:visibility="@{drawerViewModel.offer}"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_discount"
-                    android:scaleType="centerInside" />
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_discount" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/open_sans_bold"
+                    android:layout_weight="0.8"
                     android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
+                    android:text="@string/offers"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"
-                    android:text="@string/offers" />
+                    app:fontFamily="@font/open_sans_bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/nav_change_lang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="@dimen/dimen20dp"
                 android:gravity="center"
                 android:onClick="@{(view)->drawerViewModel.onLanguageClick()}"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="@dimen/margin_xxlarge">
+                android:orientation="horizontal"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_language"
-                    android:scaleType="centerInside" />
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_language" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/open_sans_bold"
+                    android:layout_weight="0.8"
                     android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
+                    android:text="@string/change_language"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"
-                    android:text="@string/change_language" />
+                    app:fontFamily="@font/open_sans_bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/nav_feedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="@dimen/dimen20dp"
                 android:gravity="center"
                 android:onClick="@{(view)->drawerViewModel.onFeedbackClick()}"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="@dimen/margin_xxlarge">
+                android:orientation="horizontal"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_feedback__2_"
-                    android:scaleType="centerInside" />
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_feedback__2_" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/open_sans_bold"
+                    android:layout_weight="0.8"
                     android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
+                    android:text="@string/feedback"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"
-                    android:text="@string/feedback" />
+                    app:fontFamily="@font/open_sans_bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/nav_rate_us"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="@dimen/dimen20dp"
                 android:gravity="center"
                 android:onClick="@{(view)->drawerViewModel.onRateUsClick()}"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="@dimen/margin_xxlarge">
+                android:orientation="horizontal"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_rating"
-                    android:scaleType="centerInside" />
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_rating" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/open_sans_bold"
+                    android:layout_weight="0.8"
                     android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
+                    android:text="@string/rate_us"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"
-                    android:text="@string/rate_us" />
+                    app:fontFamily="@font/open_sans_bold" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/nav_contact_us"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="@dimen/dimen20dp"
                 android:gravity="center"
                 android:onClick="@{(view)->drawerViewModel.onContactUsClick()}"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="@dimen/margin_xxlarge">
+                android:orientation="horizontal"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_email"
-                    android:scaleType="centerInside" />
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_email" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/open_sans_bold"
+                    android:layout_weight="0.8"
                     android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
+                    android:text="@string/contact_us"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"
-                    android:text="@string/contact_us" />
+                    app:fontFamily="@font/open_sans_bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/nav_settings"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
-                android:visibility="gone"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="@dimen/dimen20dp"
                 android:gravity="center"
                 android:onClick="@{(view)->drawerViewModel.onSettingsClick()}"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="@dimen/margin_xxlarge">
+                android:orientation="horizontal"
+                android:visibility="gone"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/settings"
-                    android:scaleType="centerInside" />
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/settings" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
+                    android:layout_weight="0.8"
                     android:fontFamily="@font/open_sans_extra_bold"
                     android:fontWeight="500"
-                    android:textStyle="bold"
-                    android:text="@string/settings" />
+                    android:text="@string/settings"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/nav_log_out"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="1"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_marginTop="@dimen/dimen20dp"
                 android:gravity="center"
                 android:onClick="@{(view)->drawerViewModel.onLogoutClick()}"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginTop="@dimen/margin_xxlarge">
+                android:orientation="horizontal"
+                android:weightSum="1">
 
                 <ImageView
                     android:layout_width="0dp"
-                    android:layout_weight="0.2"
-                    android:layout_gravity="center"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_logout"
-                    android:scaleType="centerInside" />
+                    android:layout_gravity="center"
+                    android:layout_weight="0.2"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_logout" />
 
                 <TextView
                     android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:textColor="@color/nav_text_color"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_size_small"
-                    app:fontFamily="@font/open_sans_bold"
+                    android:layout_weight="0.8"
                     android:fontFamily="@font/open_sans_bold"
                     android:fontWeight="500"
+                    android:text="@string/logout"
+                    android:textColor="@color/nav_text_color"
+                    android:textSize="@dimen/text_size_small"
                     android:textStyle="bold"
-                    android:text="@string/logout" />
+                    app:fontFamily="@font/open_sans_bold" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/followUsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dimen20dp"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Follow Us"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_small"
+                android:textStyle="bold"
+                app:fontFamily="@font/open_sans_bold" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <!-- First Image -->
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="@dimen/dimen30dp"
+                    android:layout_height="@dimen/dimen30dp"
+                    android:layout_margin="8dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_youtube_logo"
+                    android:onClick="@{(view)->drawerViewModel.onYoutubeClick()}"/>
+
+                <!-- Second Image -->
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="@dimen/dimen30dp"
+                    android:layout_height="@dimen/dimen30dp"
+                    android:layout_margin="8dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/insta_icon_"
+                    android:onClick="@{(view)->drawerViewModel.onInstaClick()}"/>
+
+                <!-- Third Image -->
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="@dimen/dimen30dp"
+                    android:layout_height="@dimen/dimen30dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_facebook_icon_9imsd"
+                    android:onClick="@{(view)->drawerViewModel.onFBClick()}"/>
+
+                <!-- Follow Us TextView -->
+
+
+            </LinearLayout>
+
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

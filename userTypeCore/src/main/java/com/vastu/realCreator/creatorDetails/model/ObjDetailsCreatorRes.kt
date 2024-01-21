@@ -53,7 +53,7 @@ data class SingalRealCreatorDatum(
     @SerializedName("total_rating")
     val totalRating: String,
     @SerializedName("slug")
-    val slug: String
+    val slug: String,
 ):Serializable
 
 data class Slider(

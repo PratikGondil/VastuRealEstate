@@ -14,4 +14,7 @@ interface INavDrawerListener {
     fun onFeedbackClick()
     fun onLanguageClick()
     fun onHomeClick()
+    fun onYoutubeClick()
+    fun onFBClick()
+    fun onInstaClick()
 }

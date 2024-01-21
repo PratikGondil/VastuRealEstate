@@ -15,6 +15,8 @@ import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.networkService.util.Constants
 import com.vastu.propertycore.model.response.PropertyIdData
 import com.vastu.realCreator.creatorDetails.model.ObjDetailsCreatorRes
+import com.vastu.realCreator.creatorDetails.model.SingalRealCreatorDatum
+import com.vastu.realCreator.creatorDetails.model.Slider
 import com.vastu.realCreator.realCreatorList.model.RealCreatorDatum
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
@@ -43,6 +45,10 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
     private val REMOVE_TAGS: Pattern = Pattern.compile("<.+?>")
     lateinit var propertyIdDataList: PropertyIdData
     lateinit var selectedProfile: ObjSelectedProfile
+    lateinit var  property :SingalRealCreatorDatum
+    lateinit var slider: Slider
+    private val imageListCarouselProperty = ArrayList<CarouselItem>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,7 +67,6 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
 
         creatorDetailsPageBinding.drawerViewModel = drawerViewModel
         getBundleData()
-        apiCall()
         return creatorDetailsPageBinding.root
     }
 
@@ -79,8 +84,8 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
         val args = this.arguments
         if (args != null) {
             if (args.getSerializable(BaseConstant.PROPERTY_DETAILS) != null) {
-                val property =
-                    args.getSerializable(BaseConstant.PROPERTY_DETAILS) as RealCreatorDatum
+                property =
+                    args.getSerializable(BaseConstant.PROPERTY_DETAILS) as SingalRealCreatorDatum
                 propertyId = property.profileID
             }
             if (args.getSerializable("profile") != null) {
@@ -88,15 +93,17 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
                     requireArguments().getSerializable("profile") as ObjSelectedProfile
 
             }
+            if (args.getSerializable("slider") != null) {
+                slider =
+                    requireArguments().getSerializable("slider") as Slider
+
+            }
 
         }
+        setView()
     }
 
 
-    fun apiCall() {
-        var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
-        language?.let { creatorDetailsViewModel.apiCallRepo(it, "1") }
-    }
 
     override fun onClickBack() {
         val bundle = Bundle()
@@ -173,6 +180,8 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
             false,
             false
         )
+
+        val realEstates = objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.singalRealCreatorData
     }
 
     override fun onFailureGetRealCreatorList(objDetailsCreatorRes: ObjDetailsCreatorRes) {
@@ -182,4 +191,33 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
             false
         )
     }
+
+    fun setView(){
+        creatorDetailsPageBinding.name.text=property.name
+        creatorDetailsPageBinding.address.text= property.address
+        creatorDetailsPageBinding.rating.text=property.rating+requireContext().getString(R.string.star)
+        creatorDetailsPageBinding.nameEmp.text = property.profileName
+        creatorDetailsPageBinding.mobileNumber.text=property.mobile
+        creatorDetailsPageBinding.txtInfo.text=property.overview
+
+        var coItem  =CarouselItem()
+            if(slider.video.equals(true)){
+                coItem = CarouselItem(
+                    imageUrl = slider.image,
+                    caption = ""
+                )
+            }else {
+                coItem = CarouselItem(
+                    imageUrl = slider.image,
+                    caption = ""
+                )
+            }
+          imageListCarouselProperty.add(coItem)
+        creatorDetailsPageBinding.apply {
+            imageSliderBuilder.setData(imageListCarouselProperty)
+        }
+        }
+
+
+
 }
