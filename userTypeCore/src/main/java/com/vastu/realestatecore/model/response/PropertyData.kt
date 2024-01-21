@@ -79,7 +79,7 @@ data class PropertyData(
     var position : String?  = "",
     @SerializedName("video")
     var video    : Boolean? = false,
-    @SerializedName("is_add")
+    @SerializedName("is_ad")
     var isAdd    : Boolean? = false
 
 

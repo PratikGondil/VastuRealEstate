@@ -4,6 +4,7 @@ import android.content.Context
 import android.media.MediaPlayer
 import android.media.MediaPlayer.OnPreparedListener
 import android.net.Uri
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,7 +45,16 @@ class RealEstateAdapter(
 
 
         val property = realEstateListCurrent[position]
-        if(!realEstateListCurrent[position].isAdd!!) {
+        if(!(realEstateListCurrent[position].isAdd)!!) {
+            binding.video.setMediaController(null);
+            binding.video.stopPlayback();
+            binding.video.clearAnimation();
+            binding.video.suspend();
+            binding.video.setVideoURI(null);
+            holder.binding.layoutContainer.visibility = View.VISIBLE
+            holder.binding.video.visibility = View.GONE
+            holder.binding.mute.visibility = View.GONE
+            holder.binding.imgE.visibility = View.GONE
             holder.bind(property)
             holder.binding.propertyPrizeTextview.text =
                 context.getString(R.string.rupee) + " " + property.priceMinWord + "-" + property.priceMaxWord
@@ -58,14 +68,19 @@ class RealEstateAdapter(
             )
         }else{
             if(realEstateListCurrent[position].video!!){
-                binding.video.setMediaController(null);
-                binding.video.setVideoURI(Uri.parse(realEstateListCurrent[position].slider.toString()))
+                holder.binding.layoutContainer.visibility = View.GONE
                 holder.binding.video.visibility = View.VISIBLE
                 holder.binding.mute.visibility = View.VISIBLE
+                binding.video.setMediaController(null);
+                binding.video.stopPlayback();
+                binding.video.suspend();
+                binding.video.clearAnimation()
+                binding.video.setVideoURI(null);
+                binding.video.setVideoURI(Uri.parse(realEstateListCurrent[position].slider.toString()))
                 binding.video.setOnPreparedListener(OnPreparedListener { mp ->
                     mediaPlayer = mp
                     mp.setVolume(0f, 0f)
-                    mp.isLooping = true
+                    mp.isLooping = false
                 })
                 binding.video.requestFocus()
                 binding.video.start()
@@ -85,6 +100,7 @@ class RealEstateAdapter(
             }
             else{
                 holder.binding.imgE.visibility = View.VISIBLE
+                holder.binding.layoutContainer.visibility = View.GONE
                 showImageFromURL(
                     context,
                     realEstateListCurrent[position].slider,
