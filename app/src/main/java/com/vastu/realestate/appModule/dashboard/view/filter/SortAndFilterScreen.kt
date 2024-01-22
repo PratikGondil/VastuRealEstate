@@ -3,21 +3,23 @@ package com.vastu.realestate.appModule.dashboard.view.filter
 import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.core.view.size
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.gson.Gson
@@ -43,7 +45,7 @@ import com.vastu.realestatecore.model.filter.ObjManageFilterVisibility
 import com.vastu.realestatecore.model.request.ObjFilterData
 
 
-class SortAndFilterScreen(var callback:RealEstateFragment): BottomSheetDialogFragment() , IFilterTypeClickListener, IFilterViewHandler,View.OnTouchListener {
+class SortAndFilterScreen(var callback:RealEstateFragment): DialogFragment() , IFilterTypeClickListener, IFilterViewHandler,View.OnTouchListener {
     lateinit var multipleFiltersBinding: MultipleFiltersBinding
     lateinit var filterViewModel: RealEstateViewModel
     lateinit var itemsList : ArrayList<ObjFilterTypeList>
@@ -59,16 +61,17 @@ class SortAndFilterScreen(var callback:RealEstateFragment): BottomSheetDialogFra
    lateinit var subAreaListAdapter : SubAreaListAdapter
     var objManageFilterVisibility= ObjManageFilterVisibility()
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = BottomSheetDialog(requireContext(), theme)
+        val dialog = Dialog(requireContext(), theme)
         dialog.setOnShowListener {
 
-            val bottomSheetDialog = it as BottomSheetDialog
+            val bottomSheetDialog = it as Dialog
+            getDialog()!!.window!!.setGravity(Gravity.CENTER_HORIZONTAL or Gravity.TOP)
             val parentLayout =
                 bottomSheetDialog.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet)
             parentLayout?.let { it ->
                 val behaviour = BottomSheetBehavior.from(it)
                 behaviour.expandedOffset = 50
-                setupFullHeight(it)
+               setupFullHeight(it)
                 behaviour.state = BottomSheetBehavior.STATE_EXPANDED
             }
 
@@ -80,8 +83,8 @@ class SortAndFilterScreen(var callback:RealEstateFragment): BottomSheetDialogFra
         var dMetrics = resources.displayMetrics
         val h = Math.round(dMetrics.heightPixels / dMetrics.density)
         val w = Math.round(dMetrics.widthPixels / dMetrics.density)
-        layoutParams.height = (h*2).toInt()
-        layoutParams.width= (w * 2.5).toInt()
+        layoutParams.height = (h*1.9).toInt()
+        layoutParams.width= (w * 1.9).toInt()
         bottomSheet.layoutParams = layoutParams
 
     }
@@ -90,6 +93,7 @@ override fun onCreateView(
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         filterViewModel = ViewModelProvider(this)[RealEstateViewModel::class.java]
         multipleFiltersBinding = DataBindingUtil.inflate(inflater, R.layout.multiple_filters,container,false)
 //        tabLayout = multipleFiltersBinding.filterType
@@ -97,6 +101,7 @@ override fun onCreateView(
         multipleFiltersBinding.realEstateViewModel = filterViewModel
         filterViewModel.iFilterViewHandler = this
         iniView()
+
     chipGroup = multipleFiltersBinding.cgFilterGroup
         return multipleFiltersBinding.root
     }
