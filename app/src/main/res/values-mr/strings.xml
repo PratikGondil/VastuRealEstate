@@ -377,18 +377,27 @@
     <string name="home_appliances">Home Appliances</string>
     <string name="home_decor">Home Decor</string>
 
-    <string name="choose_mode_of_advertisement">Choose Mode Of Advertisement</string>
-    <string name="plan_for_video_advertisement">Plan For Video Advertisement</string>
-    <string name="facility_to_promote_your_products">Facility To Promote Your Products And Services To Customers In A Single Video Only With Vastu.</string>
-    <string name="check_demo">Check Demo</string>
-    <string name="plan_for_banner_advertisement">Plan For Banner Advertisement</string>
-    <string name="facility_to_promote_your_products_in_a_single_banner">Facility To Promote Your Products And Services To Customers In A Single Banner Only With Vastu.</string>
+    <string name="choose_mode_of_advertisement">जाहिरात मोड निवडा</string>
+    <string name="plan_for_video_advertisement">व्हिडिओ जाहिरातीसाठी योजना</string>
+    <string name="facility_to_promote_your_products">केवळ वास्तूसह एकाच व्हिडिओमध्ये ग्राहकांना तुमची उत्पादने आणि सेवांचा प्रचार करण्याची सुविधा.</string>
+    <string name="check_demo">डेमो तपासा</string>
+    <string name="plan_for_banner_advertisement">बॅनर जाहिरातीसाठी योजना</string>
+    <string name="facility_to_promote_your_products_in_a_single_banner">केवळ वास्तूसह एकाच बॅनरमध्ये ग्राहकांना तुमची उत्पादने आणि सेवांचा प्रचार करण्याची सुविधा.</string>
     <string name="plans_for_property_owners">Plans For Property Owners</string>
 
-    <string name="real_creator">Real Creator</string>
-    <string name="search_profile"><b>Search by Profile</b></string>
+    <string name="real_creator">खरा निर्माता</string>
+    <string name="search_profile"><b>प्रोफाइलनुसार शोधा</b></string>
     <string name="super_builtup">सुपर बिल्टअप \nएरिया (Sq.ft)</string>
 
+    <string name="facing">घराची दिशा</string>
+    <string name="taluka"><b>तालुका</b></string>
+    <string name="construction">बांधकाम \nस्थिती</string>
+    <string name="status">स्थिती</string>
+    <string name="area_ft">Sq.ft</string>
+    <string name="rera_no">रेरा क्रमांक</string>
+    <string name="brief_details">संक्षिप्त तपशील</string>
+    <string name="dash">-</string>
+    <string name="star">★</string>
 
 
 </resources>

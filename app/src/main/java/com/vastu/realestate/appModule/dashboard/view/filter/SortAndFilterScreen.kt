@@ -80,8 +80,8 @@ class SortAndFilterScreen(var callback:RealEstateFragment): BottomSheetDialogFra
         var dMetrics = resources.displayMetrics
         val h = Math.round(dMetrics.heightPixels / dMetrics.density)
         val w = Math.round(dMetrics.widthPixels / dMetrics.density)
-        layoutParams.height = (h*1.9).toInt()
-        layoutParams.width= (w * 1.8).toInt()
+        layoutParams.height = (h*2).toInt()
+        layoutParams.width= (w * 2.5).toInt()
         bottomSheet.layoutParams = layoutParams
 
     }
