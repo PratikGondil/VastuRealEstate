@@ -2,8 +2,10 @@ package com.vastu.realestate.appModule.dashboard.view
 
 import android.app.Dialog
 import android.graphics.Point
+import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.text.Html
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,7 +14,6 @@ import android.view.ViewGroup
 import android.view.ViewParent
 import android.view.Window
 import android.widget.ImageView
-import android.widget.ScrollView
 import androidx.annotation.RequiresApi
 import androidx.core.widget.NestedScrollView
 import androidx.databinding.DataBindingUtil
@@ -24,6 +25,8 @@ import com.aemerse.slider.listener.CarouselListener
 import com.aemerse.slider.model.CarouselItem
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.material.tabs.TabLayout
+import com.potyvideo.library.utils.PublicFunctions.Companion.getScreenHeight
+import com.potyvideo.library.utils.PublicFunctions.Companion.getScreenWidth
 import com.vastu.propertycore.model.response.AddWishlistResponse
 import com.vastu.propertycore.model.response.Amenity
 import com.vastu.propertycore.model.response.PropertyDataResponseMain
@@ -32,7 +35,6 @@ import com.vastu.propertycore.model.response.RelatedProperty
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.AmenitiesAdapter
 import com.vastu.realestate.appModule.dashboard.adapter.PropertyPhotoPlanAdapter
-import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
 import com.vastu.realestate.appModule.dashboard.adapter.RelatedPropertyAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertyDetailsListener
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IPropertySliderListener
@@ -112,8 +114,53 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
         drawerViewModel.toolbarTitle.set(getString(R.string.real_estate))
         drawerViewModel.isDashBoard.set(false)
         getPropertySlider()
-        setupView()
+       // setupView()
+        scrollViewAdclicklistner()
     }
+
+    private fun scrollViewAdclicklistner() {
+       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            realEstateDetailsBinding.scrollview.setOnScrollChangeListener(View.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+
+                if(isVisible(realEstateDetailsBinding.txtBuilderProfile!!)){
+                    scrollTabLayout(0)
+                }else if(isVisible(realEstateDetailsBinding.txtPropertyDetails!!)){
+                    scrollTabLayout(1)
+                }else if(isVisible(realEstateDetailsBinding.txtAmmenities!!)){
+                    scrollTabLayout(2)
+                }else if(isVisible(realEstateDetailsBinding.txtDescription!!)){
+                    scrollTabLayout(3)
+                }else if(isVisible(realEstateDetailsBinding.highlightsTextview!!)){
+                    scrollTabLayout(4)
+                }else if(isVisible(realEstateDetailsBinding.txtPhotos!!)){
+                    scrollTabLayout(5)
+                }else if(isVisible(realEstateDetailsBinding.txtBrochure!!)){
+                    scrollTabLayout(6)
+                }else if(isVisible(realEstateDetailsBinding.txtSimilarProjects!!)){
+                    scrollTabLayout(7)
+                }
+            })
+        }
+    }
+
+    fun isVisible(view: View?): Boolean {
+        if (view == null || !view.isShown) {
+            return false
+        }
+        val actualPosition = Rect()
+        view.getGlobalVisibleRect(actualPosition)
+        val screen = Rect(0, 0, getScreenWidth(), getScreenHeight())
+        return actualPosition.intersect(screen)
+    }
+
+    fun scrollTabLayout(i: Int) {
+
+        realEstateDetailsBinding.tabLayout.getTabAt(i)!!.select()
+       /* Handler().postDelayed(
+            Runnable {  }, 100
+        )*/
+    }
+
     private fun getPropertySlider(){
         showProgressDialog()
         propertyId?.let { realEstateDetailsViewModel.getPropertySlider(it) }
