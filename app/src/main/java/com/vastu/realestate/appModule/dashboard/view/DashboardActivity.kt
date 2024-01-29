@@ -22,6 +22,9 @@ import com.vastu.realestate.appModule.employee.fragment.EmployeeListFragment
 import com.vastu.realestate.appModule.enquiry.view.AddLoanEnquiryFragment
 import com.vastu.realestate.appModule.enquiry.view.AddPropertyEnquiryFragment
 import com.vastu.realestate.appModule.properties.view.PropertiesFragment
+import com.vastu.realestate.appModule.realCreator.creatorDetails.CreatorDetailsFragment
+import com.vastu.realestate.appModule.realCreator.creatorsList.CreatorListFragment
+import com.vastu.realestate.appModule.realCreator.infoPage.FindProfileFragment
 import com.vastu.realestate.databinding.ActivityVastuDashboardBinding
 import com.vastu.realestate.utils.PreferenceManger
 
@@ -58,7 +61,10 @@ class DashboardActivity : BaseActivity() {
         if (fragment is RealEstateFragment || fragment is LoanFragment || fragment is PrimePropertiesFragment || fragment is RealEstateDetailsFragment
             || fragment is AddLoanEnquiryFragment || fragment is AddPropertyEnquiryFragment
             || fragment is AddPropertyFragment || fragment is OffersFragment
-            || fragment is PropertiesFragment || fragment is AddPropertyFragment || fragment is OffersFragment || fragment is EmployeeDetailsFragment || fragment is EmployeeListFragment
+            || fragment is PropertiesFragment || fragment is AddPropertyFragment
+            || fragment is OffersFragment || fragment is EmployeeDetailsFragment
+            || fragment is EmployeeListFragment || fragment is FindProfileFragment
+            || fragment is CreatorListFragment || fragment is CreatorDetailsFragment
         ) {
 
             super.onBackPressed()
