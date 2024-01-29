@@ -224,24 +224,24 @@
                         android:textSize="12sp"
                         android:textStyle="bold" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/white" />
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="1dp"-->
+<!--                        android:background="@color/white" />-->
 
-                    <TextView
-                        android:id="@+id/txt_term8"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@color/button_color"
-                        android:letterSpacing="0"
-                        android:fontFamily="@font/open_sans_bold"
-                        app:fontFamily="@font/open_sans_bold"
-                        android:text="@string/term8"
-                        android:textColor="@color/white"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/txt_term8"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:background="@color/button_color"-->
+<!--                        android:letterSpacing="0"-->
+<!--                        android:fontFamily="@font/open_sans_bold"-->
+<!--                        app:fontFamily="@font/open_sans_bold"-->
+<!--                        android:text="@string/term8"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="12sp"-->
+<!--                        android:textStyle="bold" />-->
 
                     <View
                         android:layout_width="match_parent"

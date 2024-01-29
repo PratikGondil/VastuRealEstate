@@ -149,7 +149,7 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
 
     override fun onResume() {
         super.onResume()
-        drawerViewModel.toolbarTitle.set(getString(R.string.real_estate))
+        drawerViewModel.toolbarTitle.set(getString(R.string.real_creator))
         drawerViewModel.isDashBoard.set(false)
     }
 

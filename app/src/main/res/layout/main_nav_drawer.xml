@@ -459,13 +459,18 @@
                     android:textStyle="bold"
                     app:fontFamily="@font/open_sans_bold" />
             </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/dimen20dp"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:background="@color/border_color" />
             <TextView
                 android:id="@+id/followUsTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dimen20dp"
+                android:layout_marginTop="@dimen/dimen10dp"
                 android:fontFamily="@font/open_sans_bold"
                 android:text="Follow Us"
                 android:textColor="@color/black"
@@ -482,20 +487,20 @@
 
                 <!-- First Image -->
                 <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="@dimen/dimen30dp"
-                    android:layout_height="@dimen/dimen30dp"
-                    android:layout_margin="8dp"
+                    android:id="@+id/imageView3"
+                    android:layout_width="@dimen/dimen40dp"
+                    android:layout_height="@dimen/dimen40dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ic_youtube_logo"
-                    android:onClick="@{(view)->drawerViewModel.onYoutubeClick()}"/>
+                    android:layout_margin="8dp"
+                    android:src="@drawable/ic_facebook_icon_9imsd"
+                    android:onClick="@{(view)->drawerViewModel.onFBClick()}"/>
 
                 <!-- Second Image -->
                 <ImageView
                     android:id="@+id/imageView2"
-                    android:layout_width="@dimen/dimen30dp"
-                    android:layout_height="@dimen/dimen30dp"
+                    android:layout_width="@dimen/dimen40dp"
+                    android:layout_height="@dimen/dimen40dp"
                     android:layout_margin="8dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
@@ -503,17 +508,17 @@
                     android:onClick="@{(view)->drawerViewModel.onInstaClick()}"/>
 
                 <!-- Third Image -->
+
+
                 <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="@dimen/dimen30dp"
-                    android:layout_height="@dimen/dimen30dp"
+                    android:id="@+id/imageView1"
+                    android:layout_width="@dimen/dimen40dp"
+                    android:layout_height="@dimen/dimen40dp"
+                    android:layout_margin="8dp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
-                    android:layout_margin="8dp"
-                    android:src="@drawable/ic_facebook_icon_9imsd"
-                    android:onClick="@{(view)->drawerViewModel.onFBClick()}"/>
-
-                <!-- Follow Us TextView -->
+                    android:src="@drawable/ic_youtube_logo"
+                    android:onClick="@{(view)->drawerViewModel.onYoutubeClick()}"/>
 
 
             </LinearLayout>
