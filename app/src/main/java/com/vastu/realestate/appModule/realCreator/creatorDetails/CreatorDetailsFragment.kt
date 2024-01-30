@@ -3,6 +3,7 @@ package com.vastu.realestate.appModule.realCreator.creatorDetails
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.vastu.propertycore.model.response.PropertyIdData
 import com.vastu.realCreator.creatorDetails.model.ObjDetailsCreatorRes
 import com.vastu.realCreator.creatorDetails.model.SingalRealCreatorDatum
 import com.vastu.realCreator.creatorDetails.model.Slider
+import com.vastu.realCreator.rate_us.model.ObjCreatorRateUsRes
 import com.vastu.realCreator.realCreatorList.model.RealCreatorDatum
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
@@ -172,6 +174,22 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
                 Toast.LENGTH_SHORT
             ).show()
         }
+    }
+
+    override fun onSuccessGetRateUs(objcreatorRateUsRes: ObjCreatorRateUsRes.CreatorRateUsRes) {
+        showDialog(objcreatorRateUsRes.rateUsResponse.responseStatusHeader.statusDescription,true,false)
+        Handler().postDelayed({
+            hideDialog()
+        }, 750)
+    }
+
+    override fun onFailureGetRateUs(objcreatorRateUsRes: ObjCreatorRateUsRes.CreatorRateUsRes) {
+        showDialog(objcreatorRateUsRes.rateUsResponse.responseStatusHeader.statusDescription,false,false)
+
+    }
+
+    override fun onRateUsClick() {
+
     }
 
     override fun onSuccessGetRealCreatorList(objDetailsCreatorRes: ObjDetailsCreatorRes) {
