@@ -261,7 +261,8 @@ class FindProfileFragment : BaseFragment(), View.OnTouchListener, IToolbarListen
     }
 
     override fun onClickBack() {
-        findNavController().navigateUp()
+        findNavController().navigate(
+            R.id.action_findProfileFragment_to_dashboard)
     }
 
     override fun onClickMenu() {

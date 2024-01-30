@@ -227,7 +227,9 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
 
     override fun onClickBack() {
         try {
-            activity?.onBackPressed()
+            findNavController().navigate(
+                R.id.action_creatorListFragment_to_findprofile
+            )
         } catch (e: Exception) {
             e.printStackTrace()
         }

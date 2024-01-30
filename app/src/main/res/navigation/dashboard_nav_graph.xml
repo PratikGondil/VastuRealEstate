@@ -335,6 +335,11 @@
             app:destination="@+id/creatorListFragment"
             />
 
+        <action
+            android:id="@+id/action_findProfileFragment_to_dashboard"
+            app:destination="@+id/VastuDashboardFragment"
+            />
+
     </fragment>
 
     <fragment
@@ -346,6 +351,11 @@
         <action
             android:id="@+id/action_creatorListFragment_to_creatorDetailsFragment"
             app:destination="@+id/creatorDetailsFragment"
+            />
+
+        <action
+            android:id="@+id/action_creatorListFragment_to_findprofile"
+            app:destination="@+id/findProfileFragment"
             />
     </fragment>
 
