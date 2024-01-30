@@ -142,7 +142,7 @@ class PrimePropertiesFragment : BaseFragment(), IRealEstateListener, IToolbarLis
     private fun getRealEstateList() {
         try {
             realEstateBinding.loadingLayout.startShimmerAnimation()
-            userId?.let { realEstateViewModel.getPropertyList(it,ApiUrlEndPoints.GET_PRIME_PROPERTIES) }
+            userId?.let { realEstateViewModel.getPropertyList(it,ApiUrlEndPoints.GET_PRIME_NEW) }
         } catch (e: Exception) {
             e.printStackTrace()
         }

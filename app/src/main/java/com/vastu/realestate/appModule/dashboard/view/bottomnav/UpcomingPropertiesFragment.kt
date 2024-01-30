@@ -142,7 +142,7 @@ class UpcomingPropertiesFragment : BaseFragment(), IRealEstateListener, IToolbar
     private fun getRealEstateList() {
         try {
             realEstateBinding.loadingLayout.startShimmerAnimation()
-            userId?.let { realEstateViewModel.getPropertyList(it,ApiUrlEndPoints.GET_UPCOMING_PROPERTIES) }
+            userId?.let { realEstateViewModel.getPropertyList(it,ApiUrlEndPoints.GET_UPCOMING_NEW) }
         } catch (e: Exception) {
             e.printStackTrace()
         }

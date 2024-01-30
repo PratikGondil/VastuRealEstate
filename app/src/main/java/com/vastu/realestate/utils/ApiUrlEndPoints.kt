@@ -41,7 +41,9 @@ object ApiUrlEndPoints {
     const val GET_ASSINGED_LOAD_ENQUIRES = "get_assigned_loan_enquires.php"
     const val GET_ASSIGNED_PROPERTY_ENQUIRES = "get_assigned_property_enquires.php"
     const val GET_PRIME_PROPERTIES = "get_prime_properties.php"
+    const val GET_PRIME_NEW ="get_prime_property_list_sliders.php"
     const val GET_UPCOMING_PROPERTIES = "get_upcoming_schemes.php"
+    const val GET_UPCOMING_NEW ="get_upcoming_schemes_sliders.php"
     const val ADD_WISHLIST="add_wishlist.php"
     const val GET_WISHLIST ="get_wishlist.php"
 
