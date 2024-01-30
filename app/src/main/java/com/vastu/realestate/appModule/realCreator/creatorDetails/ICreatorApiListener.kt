@@ -6,4 +6,6 @@ interface ICreatorApiListener {
     fun onSuccessGetRealCreatorList(objDetailsCreatorRes: ObjDetailsCreatorRes)
     fun onFailureGetRealCreatorList(objDetailsCreatorRes: ObjDetailsCreatorRes)
 
+
+
 }
