@@ -280,7 +280,7 @@
                             android:includeFontPadding="true"
                             android:maxLength="35"
                             android:maxLines="1"
-                            android:text="@{propertyData.shortAddress}"
+                            android:text="@{propertyData.officeAddress}"
                             android:textColor="@color/gray_shade2"
                             android:textSize="@dimen/text_size_small"
                             app:fontFamily="@font/open_sans_semibold" />

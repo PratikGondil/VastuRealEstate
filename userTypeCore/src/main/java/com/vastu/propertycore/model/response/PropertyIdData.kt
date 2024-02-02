@@ -98,6 +98,8 @@ data class PropertyIdData(
     val isBuilder:Boolean,
     @SerializedName("contact_no")
     val contactNno:String,
+    @SerializedName("office_address")
+    val officeAddress:String
 
 
 
