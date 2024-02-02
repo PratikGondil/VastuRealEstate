@@ -89,5 +89,17 @@ data class PropertyIdData(
     @SerializedName("brief")
     val brief:String,
     @SerializedName("contsruction_name")
-    val contsruction_name:String
+    val contsruction_name:String,
+    @SerializedName("sub_area")
+    val subArea:String,
+    @SerializedName("builder_overview")
+    val builderOverview:String,
+    @SerializedName("is_builder")
+    val isBuilder:Boolean,
+    @SerializedName("contact_no")
+    val contactNno:String,
+
+
+
+
 ):java.io.Serializable

@@ -255,7 +255,7 @@
                             android:ellipsize="end"
                             android:maxLength="35"
                             android:maxLines="1"
-                            android:text="@{propertyData.owner}"
+                            android:text="@{propertyData.contactNno}"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
                             app:fontFamily="@font/open_sans_semibold" />
@@ -295,6 +295,35 @@
                     android:layout_marginBottom="@dimen/margin_small"
                     android:background="@color/border_color" />
 
+                <TextView
+                    android:id="@+id/txtOverview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:text="@string/real_creator_overview"
+                    android:textColor="@color/button_color"
+                    android:textSize="@dimen/text_size18sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/open_sans_bold" />
+
+                <TextView
+                    android:id="@+id/overViewTextview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/dimen10dp"
+                    android:ellipsize="end"
+                    android:minLines="2"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/text_size_small"
+                    app:fontFamily="@font/open_sans_semibold" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:layout_marginBottom="@dimen/margin_small"
+                    android:background="@color/border_color" />
                 <TextView
                     android:id="@+id/txtPropertyDetails"
                     android:layout_width="match_parent"
@@ -631,7 +660,7 @@
 
                             <TextView
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/dimen80dp"
                                 android:layout_marginTop="@dimen/dimen10dp"
                                 android:text="@string/brief_details"
                                 android:textColor="@color/white"
@@ -813,7 +842,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/dimen15dp"
                                 android:layout_weight="1"
-                                android:text="@{propertyData.shortAddress}"
+                                android:text="@{propertyData.subArea}"
                                 android:textColor="@color/text_color"
                                 android:textSize="@dimen/dimen15sp"
                                 android:textStyle="bold"

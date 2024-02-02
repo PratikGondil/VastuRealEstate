@@ -103,7 +103,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_large"
                         android:layout_marginTop="@dimen/margin_medium"
-                        android:text="@string/builder_profile"
+                        android:text="@string/real_creator_profile"
                         android:textColor="@color/blue_text"
                         android:textSize="@dimen/text_size18sp"
                         android:textStyle="bold"
@@ -190,7 +190,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_large"
                     android:layout_marginTop="@dimen/margin_medium"
-                    android:text="@string/details"
+                    android:text="@string/real_creator_overview"
                     android:textColor="@color/button_color"
                     android:textSize="@dimen/text_size18sp"
                     android:textStyle="bold"
@@ -312,7 +312,22 @@
                     app:layout_constraintTop_toBottomOf="@+id/employeeInfoLayout"
                     android:layout_marginBottom="@dimen/dimen60dp">
 
-                    <ImageButton
+                    <RatingBar
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="?android:attr/ratingBarStyleIndicator"
+                        android:progressTint="#FFCC01"
+                        android:id="@+id/smallRating"
+                        android:isIndicator="false"
+                        android:layout_marginTop="@dimen/dimen20dp"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_plz_share"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/imgRate"
+                        android:layout_marginStart="@dimen/dimen20dp"
+                        />
+                    <!--<ImageButton
                         android:id="@+id/star1Button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -351,7 +366,7 @@
                         android:layout_height="wrap_content"
                         android:padding="8dp"
                         android:background="@drawable/rate_us"
-                        />
+                        />-->
                 </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

@@ -5,7 +5,6 @@ import android.graphics.Point
 import android.graphics.Rect
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
 import android.text.Html
 import android.util.Log
 import android.view.LayoutInflater
@@ -70,6 +69,7 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
     private lateinit var drawerViewModel: DrawerViewModel
     private val REMOVE_TAGS: Pattern = Pattern.compile("<.+?>")
     lateinit var  propertyIdDataList: PropertyIdData
+    var isScrollTab = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -85,6 +85,7 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
         realEstateDetailsViewModel.iPropertySliderListener = this
         realEstateDetailsBinding.drawerViewModel = drawerViewModel
         getBundleData()
+
         return realEstateDetailsBinding.root
     }
     private fun getBundleData(){
@@ -114,14 +115,14 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
         drawerViewModel.toolbarTitle.set(getString(R.string.real_estate))
         drawerViewModel.isDashBoard.set(false)
         getPropertySlider()
-       // setupView()
+       setupView ()
         scrollViewAdclicklistner()
     }
 
     private fun scrollViewAdclicklistner() {
        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             realEstateDetailsBinding.scrollview.setOnScrollChangeListener(View.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-
+                isScrollTab = false
                 if(isVisible(realEstateDetailsBinding.txtBuilderProfile!!)){
                     scrollTabLayout(0)
                 }else if(isVisible(realEstateDetailsBinding.txtPropertyDetails!!)){
@@ -154,7 +155,7 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
     }
 
     fun scrollTabLayout(i: Int) {
-
+        isScrollTab = true
         realEstateDetailsBinding.tabLayout.getTabAt(i)!!.select()
        /* Handler().postDelayed(
             Runnable {  }, 100
@@ -195,18 +196,20 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
     fun setupView(){
         realEstateDetailsBinding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                when(tab!!.position){
-                    0 -> handleScroll(tab.text)
-                    1 ->handleScroll(tab.text)
-                    2 ->handleScroll(tab.text)
-                    3 ->handleScroll(tab.text)
-                    4 ->handleScroll(tab.text)
-                    5 ->handleScroll(tab.text)
-                    6 ->handleScroll(tab.text)
-                    7 ->handleScroll(tab.text)
-                    8 ->handleScroll(tab.text)
+                if(!isScrollTab) {
+                    when (tab!!.position) {
+                        0 -> handleScroll(tab.text)
+                        1 -> handleScroll(tab.text)
+                        2 -> handleScroll(tab.text)
+                        3 -> handleScroll(tab.text)
+                        4 -> handleScroll(tab.text)
+                        5 -> handleScroll(tab.text)
+                        6 -> handleScroll(tab.text)
+                        7 -> handleScroll(tab.text)
+                        8 -> handleScroll(tab.text)
 
 
+                    }
                 }
             }
 
@@ -219,15 +222,6 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
     }
 
     private fun handleScroll(text: CharSequence?) {
-       // realEstateDetailsBinding.scrollview.smoothScrollTo(realEstateDetailsBinding.txtAmmenities.getScrollX(),realEstateDetailsBinding.txtAmmenities.getScrollY());
-//Amenities
-        //Property Details
-        //Description
-        //Highlights
-        //Property Photo & Floor Plan
-        //Brochure
-        //Similar Projects of M/s Vinayak Construction
-
         when(text){
             "Builder Profile" -> scrollToView( realEstateDetailsBinding.scrollview,realEstateDetailsBinding.txtBuilderProfile)
             "Property Details"->scrollToView( realEstateDetailsBinding.scrollview,realEstateDetailsBinding.txtPropertyDetails)
@@ -453,6 +447,7 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onSuccessGetPropertyDetails(propertyDataResponseMain: PropertyDataResponseMain) {
         hideProgressDialog()
+        checkBuilderOROwner(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0))
         realEstateDetailsBinding.apply {
             val property = propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0)
             propertyIdDataList = property
@@ -460,10 +455,19 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
             val htmlPattern = "<[^>]*>"
             highlightsTextview.setText(Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).highlights.trim(),Html.FROM_HTML_MODE_LEGACY));
             descriptionTextview.setText(Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).description,Html.FROM_HTML_MODE_LEGACY));
-
+            facingTextview.setText(Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).flatFacing))
+            overViewTextview.setText(Html.fromHtml(propertyDataResponseMain.getPropertyIdDetailsResponse.propertyIdData.get(0).builderOverview))
             setAmenityDetails(propertyDataResponseMain.getPropertyIdDetailsResponse.amenities)
             setRelatedPropertyDetails(propertyDataResponseMain.getPropertyIdDetailsResponse.relatedProperty)
         }
+    }
+
+    private fun checkBuilderOROwner(propertyData: PropertyIdData) {
+       if(propertyData.isBuilder){
+           //realEstateDetailsBinding.tab1.text = "".toString()
+       }else{
+
+       }
     }
 
     override fun onUserNotConnected() {

@@ -379,4 +379,7 @@
     <string name="taluka"><b>Taluka</b></string>
     <string name="dash">-</string>
     <string name="star">★</string>
+    <string name="real_creator_profile">Profile</string>
+    <string name="real_creator_overview">Overview </string>
+
 </resources>
