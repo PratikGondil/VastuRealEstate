@@ -2,8 +2,11 @@ package com.vastu.realestate.appModule.dashboard.view
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
+import android.provider.Settings
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.MediaController
@@ -97,6 +100,20 @@ open class BaseFragment : Fragment() {
         cross.setOnClickListener{
             builder.dismiss()
         }
+    }
+
+    fun showErrorMessage(message: String) {
+            var gpsbuilder = AlertDialog.Builder(requireContext())
+            gpsbuilder.setMessage(message)
+            gpsbuilder.setTitle("Sorry")
+                .setCancelable(true)
+                .setPositiveButton("OK",
+                    DialogInterface.OnClickListener { dialog, id ->dialog.dismiss()
+                    }
+                )
+            var alert = gpsbuilder.create()
+            alert.show()
+
     }
 
 }

@@ -2,9 +2,11 @@ package com.vastu.realestate.appModule.realCreator.creatorsList
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.FragmentContainerView
 import androidx.lifecycle.ViewModelProvider
@@ -107,6 +109,17 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
     }
 
     override fun onFailureGetRealCreatorList(objRealCreatorListRes: ObjRealCreatorListRes) {
+        if(objRealCreatorListRes.realCreatorResponse.responseStatusHeader.statusCode.equals("0001"))
+        {
+            creatorlistFragmentBinding.apply {
+                searchFilterLayout.visibility = View.GONE
+                rvCreatorList.visibility = View.GONE
+                stopShimmerAnimation()
+                Toast.makeText(activity,objRealCreatorListRes.realCreatorResponse.responseStatusHeader.statusDescription,Toast.LENGTH_LONG).show()
+               // showErrorMessage(objRealCreatorListRes.realCreatorResponse.responseStatusHeader.statusDescription)
+            }
+
+        }
 
     }
 
