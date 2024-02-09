@@ -94,12 +94,15 @@ data class PropertyIdData(
     val subArea:String,
     @SerializedName("builder_overview")
     val builderOverview:String,
-    @SerializedName("is_builder")
-    val isBuilder:Boolean,
     @SerializedName("contact_no")
     val contactNno:String,
     @SerializedName("office_address")
-    val officeAddress:String
+    val officeAddress:String,
+    @SerializedName("is_builder")
+    val isBuilder:String,
+    @SerializedName("is_owner")
+    val isOwner:String
+
 
 
 

@@ -463,10 +463,12 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
     }
 
     private fun checkBuilderOROwner(propertyData: PropertyIdData) {
-       if(propertyData.isBuilder){
-           //realEstateDetailsBinding.tab1.text = "".toString()
-       }else{
-
+       if(propertyData.isOwner.equals("1")){
+           realEstateDetailsBinding.tabLayout.getTabAt(0)!!.text =resources.getString(R.string.owner_profile)
+           realEstateDetailsBinding.txtBuilderProfile.setText(resources.getString(R.string.owner_profile))
+           realEstateDetailsBinding.txtOverview.visibility = View.GONE
+           realEstateDetailsBinding.overViewTextview.visibility = View.GONE
+           realEstateDetailsBinding.viewOverview.visibility = View.GONE
        }
     }
 
