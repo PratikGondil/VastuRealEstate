@@ -319,6 +319,7 @@
                         android:progressTint="#FFCC01"
                         android:id="@+id/smallRating"
                         android:isIndicator="false"
+                        android:numStars=""
                         android:layout_marginTop="@dimen/dimen20dp"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintTop_toBottomOf="@+id/txt_plz_share"

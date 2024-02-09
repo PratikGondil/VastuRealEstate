@@ -2,7 +2,9 @@ package com.vastu.realestate.appModule.dashboard.adapter
 
 import android.content.Context
 import android.media.MediaPlayer
+import android.net.Uri
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.realCreator.realCreatorList.model.RealCreatorDatum
@@ -120,13 +122,65 @@ class CreatorListAdapter(
 
     override fun onBindViewHolder(holder: CreatorViewHolder, position: Int) {
         val property = realEstateListCurrent[position]
-        holder.bind(property)
-        showImageFromURL(
-            context,
-            property.thumbnail,
-            holder.binding.propertyImage,
-            R.drawable.load
-        )
+
+        if(!(realEstateListCurrent[position].isAdd)!!) {
+            binding.video.setMediaController(null);
+            binding.video.stopPlayback();
+            binding.video.clearAnimation();
+            binding.video.suspend();
+            binding.video.setVideoURI(null);
+            holder.bind(property)
+            showImageFromURL(
+                context,
+                property.thumbnail,
+                holder.binding.propertyImage,
+                R.drawable.load
+            )
+        }else{
+            if(realEstateListCurrent[position].video!!){
+                holder.binding.layoutContainer.visibility = View.GONE
+                holder.binding.video.visibility = View.VISIBLE
+                holder.binding.mute.visibility = View.VISIBLE
+                binding.video.setMediaController(null);
+                binding.video.stopPlayback();
+                binding.video.suspend();
+                binding.video.clearAnimation()
+                binding.video.setVideoURI(null);
+                binding.video.setVideoURI(Uri.parse(realEstateListCurrent[position].slider.toString()))
+                binding.video.setOnPreparedListener(MediaPlayer.OnPreparedListener { mp ->
+                    mediaPlayer = mp
+                    mp.setVolume(0f, 0f)
+                    mp.isLooping = false
+                })
+                binding.video.requestFocus()
+                binding.video.start()
+
+                holder.binding.mute.setOnClickListener {
+                    if(!isunMute) {
+                        isunMute = true
+                        holder.binding.mute.setImageResource(R.drawable.baseline_volume_up_24)
+                        setVolume(100)
+                    }else{
+                        isunMute = false
+                        holder.binding.mute.setImageResource(R.drawable.baseline_volume_off_24)
+                        setVolume(0)
+                    }
+
+                }
+            }
+            else{
+                holder.binding.imgE.visibility = View.VISIBLE
+                holder.binding.layoutContainer.visibility = View.GONE
+                showImageFromURL(
+                    context,
+                    realEstateListCurrent[position].slider,
+                    holder.binding.imgE,
+                    R.drawable.load
+                )
+            }
+
+        }
+
         holder.binding.layoutContainer.setOnClickListener {
             itemClick.onItemClick()
         }

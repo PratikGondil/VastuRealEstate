@@ -37,7 +37,19 @@ data class RealCreatorDatum(
     @SerializedName( "total_rating")
     val totalRating: String,
     @SerializedName("slug")
-    val slug: String
+    val slug: String,
+    @SerializedName("id")
+    var id       : String?  = "",
+    @SerializedName("slider")
+    var slider   : String?  = "",
+    @SerializedName("link")
+    var link     : String?  = "",
+    @SerializedName("position")
+    var position : String?  = "",
+    @SerializedName("video")
+    var video    : Boolean? = false,
+    @SerializedName("is_ad")
+    var isAdd    : Boolean? = false
 ):Serializable{
     override fun toString(): String {
         return "$profileName"

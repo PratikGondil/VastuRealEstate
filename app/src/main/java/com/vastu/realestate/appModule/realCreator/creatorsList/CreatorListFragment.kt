@@ -164,10 +164,11 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
                 if (language != null) {
                     creatorListViewModel.getRealCreatorList(
                         objSelectedProfile.profile!!,
-                        ApiUrlEndPoints.GET_REAL_CREATOR,
+                        ApiUrlEndPoints.GET_REAL_CREATOR_NEW,
                         language,
                         taluka = objSelectedProfile.taluka!!,
-                        subarea = objSelectedProfile.subArea!!
+                        subarea = objSelectedProfile.subArea!!,
+                        userID = DashboardFragment.userId!!
                     )
                 }
             }

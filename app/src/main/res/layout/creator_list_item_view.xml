@@ -43,6 +43,8 @@
                     android:layout_weight="0.75"
                     android:background="@drawable/image_view_border"
                     android:adjustViewBounds="true"
+                    android:layout_marginBottom="@dimen/dimen10dp"
+                    android:layout_marginTop="@dimen/dimen10dp"
                     android:padding="@dimen/margin_small"
                     android:scaleType="fitXY"
                     android:src="@{realCreatorDatum.thumbnail}"

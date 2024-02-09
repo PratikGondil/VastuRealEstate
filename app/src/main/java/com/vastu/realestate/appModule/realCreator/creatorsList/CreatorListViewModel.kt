@@ -21,8 +21,8 @@ class CreatorListViewModel(application: Application) : AndroidViewModel(applicat
     init {
         mContext = application
     }
-    fun getRealCreatorList(profileID:String, endpoint:String, language:String,taluka:String,subarea:String){
-        RealCreatorListRepository.callGetRealCreatorList(mContext,profileID,language,taluka,subarea,endpoint,this)
+    fun getRealCreatorList(profileID:String, endpoint:String, language:String,taluka:String,subarea:String,userID:String){
+        RealCreatorListRepository.callGetRealCreatorList(mContext,profileID,language,taluka,subarea,userID,endpoint,this)
     }
     fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 

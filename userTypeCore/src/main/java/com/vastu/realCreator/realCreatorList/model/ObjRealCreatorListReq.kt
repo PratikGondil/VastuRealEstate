@@ -11,5 +11,7 @@ data class ObjRealCreatorListReq(
     @SerializedName("taluka_id")
     val talukaID: String,
     @SerializedName("subarea_id")
-    val subareaID: String
+    val subareaID: String,
+    @SerializedName("user_id")
+    val userID: String
     ): Serializable
