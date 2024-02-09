@@ -2,7 +2,6 @@ package com.vastu.realestate.appModule.realCreator.creatorsList
 
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -226,9 +225,9 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
     }
 
 
-    override fun onItemClick() {
+    override fun onItemClick(position: String?) {
         val bundle = Bundle()
-        bundle.putSerializable(BaseConstant.PROPERTY_DETAILS, singalRealCreatorDatum.get(0))
+        bundle.putString(BaseConstant.SELECTED_REAL_CREATOR_POSITION, position.toString())
         bundle.putSerializable("profile",objSelectedProfile)
         bundle.putSerializable("slider",slider)
         findNavController().navigate(

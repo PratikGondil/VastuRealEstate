@@ -115,7 +115,7 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
         drawerViewModel.toolbarTitle.set(getString(R.string.real_estate))
         drawerViewModel.isDashBoard.set(false)
         getPropertySlider()
-       setupView ()
+        setupView ()
         scrollViewAdclicklistner()
     }
 
@@ -196,7 +196,6 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
     fun setupView(){
         realEstateDetailsBinding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                if(!isScrollTab) {
                     when (tab!!.position) {
                         0 -> handleScroll(tab.text)
                         1 -> handleScroll(tab.text)
@@ -211,15 +210,17 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
 
                     }
                 }
-            }
+
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
+
         })
     }
+
 
     private fun handleScroll(text: CharSequence?) {
         when(text){
@@ -588,4 +589,5 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
             bundle
         )
     }
+
 }

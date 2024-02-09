@@ -12,14 +12,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.aemerse.slider.model.CarouselItem
-import com.denzcoskun.imageslider.models.SlideModel
 import com.vastu.networkService.util.Constants
 import com.vastu.propertycore.model.response.PropertyIdData
 import com.vastu.realCreator.creatorDetails.model.ObjDetailsCreatorRes
 import com.vastu.realCreator.creatorDetails.model.SingalRealCreatorDatum
 import com.vastu.realCreator.creatorDetails.model.Slider
 import com.vastu.realCreator.rate_us.model.ObjCreatorRateUsRes
-import com.vastu.realCreator.realCreatorList.model.RealCreatorDatum
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
@@ -29,10 +27,6 @@ import com.vastu.realestate.appModule.realCreator.infoPage.ObjSelectedProfile
 import com.vastu.realestate.databinding.CreatorDetailsPageBinding
 import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.PreferenceManger
-import com.vastu.realestatecore.model.response.PropertyData
-import com.vastu.slidercore.model.response.realestatedetails.BrochureSlider
-import com.vastu.slidercore.model.response.realestatedetails.BuilderSlider
-import com.vastu.slidercore.model.response.realestatedetails.PropertySlider
 import java.util.regex.Pattern
 
 class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetailsListener {
@@ -50,6 +44,7 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
     lateinit var  property :SingalRealCreatorDatum
     lateinit var slider: Slider
     private val imageListCarouselProperty = ArrayList<CarouselItem>()
+    var selectedPosition :String =""
 
 
     override fun onCreateView(
@@ -85,10 +80,8 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
         }
         val args = this.arguments
         if (args != null) {
-            if (args.getSerializable(BaseConstant.PROPERTY_DETAILS) != null) {
-                property =
-                    args.getSerializable(BaseConstant.PROPERTY_DETAILS) as SingalRealCreatorDatum
-                propertyId = property.profileID
+           if (args.getString(BaseConstant.SELECTED_REAL_CREATOR_POSITION) != null) {
+               selectedPosition = args.getString(BaseConstant.SELECTED_REAL_CREATOR_POSITION)!!
             }
             if (args.getSerializable("profile") != null) {
                 selectedProfile =
@@ -102,7 +95,7 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
             }
 
         }
-        setView()
+        creatorDetailsAPICall(selectedPosition)
     }
 
 
@@ -193,13 +186,8 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
     }
 
     override fun onSuccessGetRealCreatorList(objDetailsCreatorRes: ObjDetailsCreatorRes) {
-        showDialog(
-            objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.singalRealCreatorData.toString(),
-            false,
-            false
-        )
-
-        val realEstates = objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.singalRealCreatorData
+        property = objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.singalRealCreatorData.get(0)
+        setView()
     }
 
     override fun onFailureGetRealCreatorList(objDetailsCreatorRes: ObjDetailsCreatorRes) {
@@ -209,6 +197,11 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
             false
         )
     }
+    fun creatorDetailsAPICall(selectedPosition: String) {
+        var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
+        language?.let { creatorDetailsViewModel.creatorDetailsAPICall(it, selectedPosition) }
+    }
+
 
     fun setView(){
         creatorDetailsPageBinding.name.text=property.name

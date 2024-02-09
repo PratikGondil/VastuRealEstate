@@ -60,4 +60,8 @@ class CreatorDetailsViewModel(application: Application) : AndroidViewModel(appli
         CreatorRateUsRepository.callGetRateUs(mContext,"77","5","1", ApiUrlEndPoints.GET_REAL_CREATOR_RATE_US,this)
     }
 
+    fun creatorDetailsAPICall(langauage:String,id:String){
+        DetailsCreatorRepository.callGetCreatorDetailsList(mContext,id,langauage, ApiUrlEndPoints.GET_REAL_CREATOR_DETAILS,this)
+    }
+
 }

@@ -8,12 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.realCreator.realCreatorList.model.RealCreatorDatum
-import com.vastu.realCreator.realCreatorSearch.model.ProfileDaum
 import com.vastu.realestate.R
 import com.vastu.realestate.databinding.CreatorListItemViewBinding
 import com.vastu.realestate.utils.CommonUtils.Companion.showImageFromURL
 import com.vastu.realestatecore.model.response.AdSlider
-import com.vastu.realestatecore.model.response.PropertyData
 
 
 class CreatorListAdapter(
@@ -110,7 +108,7 @@ class CreatorListAdapter(
     override fun getItemCount(): Int = realEstateListCurrent.size
 
     interface OnItemClickListener {
-        fun onItemClick()
+        fun onItemClick(position: String?)
 
     }
     private fun setVolume(amount: Int) {
@@ -182,7 +180,7 @@ class CreatorListAdapter(
         }
 
         holder.binding.layoutContainer.setOnClickListener {
-            itemClick.onItemClick()
+            itemClick.onItemClick(realEstateListCurrent.get(position).realCreatorID)
         }
     }
 

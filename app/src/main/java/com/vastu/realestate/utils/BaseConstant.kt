@@ -53,4 +53,5 @@ object BaseConstant {
   const val USER_TYPE= "USER TYPE"
   const val LANGUAGE_FLOW="drawer_language"
   var RELATED_PROPERTY_DETAILS = "Related_PROPERTY_DETAILS"
+  var SELECTED_REAL_CREATOR_POSITION = "Selected_Real_Creator"
 }
