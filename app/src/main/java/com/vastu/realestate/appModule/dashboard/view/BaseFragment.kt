@@ -92,7 +92,7 @@ open class BaseFragment : Fragment() {
             context,
             imageURL,
             imageView,
-            R.drawable.vastu_logo_splash
+            R.drawable.load
         )
         builder.setView(view)
         builder.setCanceledOnTouchOutside(false)
