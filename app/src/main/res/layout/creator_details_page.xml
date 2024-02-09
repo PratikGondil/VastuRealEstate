@@ -304,7 +304,6 @@
                     android:id="@+id/starButtonsLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
                     android:layout_marginTop="@dimen/dimen5dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -313,13 +312,13 @@
                     android:layout_marginBottom="@dimen/dimen60dp">
 
                     <RatingBar
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="?android:attr/ratingBarStyleIndicator"
                         android:progressTint="#FFCC01"
                         android:id="@+id/smallRating"
                         android:isIndicator="false"
-                        android:numStars=""
+                        android:numStars="5"
+                        android:layout_marginBottom="@dimen/dimen30dp"
                         android:layout_marginTop="@dimen/dimen20dp"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintTop_toBottomOf="@+id/txt_plz_share"
@@ -390,10 +389,10 @@
                 android:layout_margin="@dimen/dimen15dp"
                 android:layout_weight="0.5"
                 android:background="@drawable/btn_bg"
-                android:fontFamily="@font/open_sans_extra_bold"
+                app:fontFamily="@font/open_sans_bold"
                 android:text="@string/rate_us"
                 android:textColor="@color/white"
-                android:textSize="@dimen/dimen_16sp"
+                android:textSize="@dimen/text_size18sp"
                 android:onClick="@{(view)->creatorListDetailsViewModel.onRateUsClick()}"
                 android:textStyle="bold" />
         </LinearLayout>

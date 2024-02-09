@@ -107,4 +107,11 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/button_color</item>
     </style>
+
+
+    <style name="CustomRatingBarStyle" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/custom_ratingbar_selector</item>
+        <item name="android:minHeight">15dip</item>
+        <item name="android:maxHeight">100dip</item>
+    </style>
 </resources>
