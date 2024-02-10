@@ -27,4 +27,6 @@ data class ObjFilterData(
     var buildUpArea:ArrayList<String> = arrayListOf(),
     @SerializedName("sortBy")
     var sortBy: ArrayList<String> = arrayListOf(),
+    @SerializedName("language")
+    var language:String = "",
 )

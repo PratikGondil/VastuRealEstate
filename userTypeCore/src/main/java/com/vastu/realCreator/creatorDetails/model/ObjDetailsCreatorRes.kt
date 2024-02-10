@@ -16,7 +16,7 @@ data class GetSingalRealCreatorDetailsResponse(
     @SerializedName("SingalRealCreatorData")
     val singalRealCreatorData: List<SingalRealCreatorDatum>,
     @SerializedName("slider")
-    val slider: Slider
+    val slider: List<Slider>
 ):Serializable
 
 data class SingalRealCreatorDatum(

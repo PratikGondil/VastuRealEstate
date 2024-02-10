@@ -23,6 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.gson.Gson
+import com.vastu.networkService.util.Constants
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.SubAreaListAdapter
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IFilterTypeClickListener
@@ -135,9 +136,10 @@ override fun onCreateView(
     }
 
    fun getSubAreaList(){
+       var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
        objVerifyDetails = PreferenceManger.get<ObjVerifyDtls>(PreferenceKEYS.USER)!!
 
-       objSubAreaReq = ObjSubAreaReq().copy(talukaId = objVerifyDetails.city )
+       objSubAreaReq = ObjSubAreaReq().copy(talukaId = objVerifyDetails.city,language = language )
        filterViewModel.callSubAreaListApi(objSubAreaReq)
    }
     private fun prepareItems(): ArrayList<ObjFilterTypeList> {
@@ -256,7 +258,7 @@ override fun onCreateView(
                constructionStatus!!.add(chip.text as String)
             }
 
-            multipleFiltersBinding.selectedFilterView.checkOwner.text,multipleFiltersBinding.selectedFilterView.checkDealer.text,
+            multipleFiltersBinding.selectedFilterView.checkOwner.text,
             multipleFiltersBinding.selectedFilterView.checkBuilder.text->{
                 filterViewModel.listedBy.add(chip.text as String)
             }
@@ -412,17 +414,6 @@ override fun onCreateView(
                     }
                     R.id.check_owner -> {
                         if (multipleFiltersBinding.selectedFilterView.checkOwner.text.equals(
-                                filterText
-                            )
-                        ) {
-                            chipGroup.removeView(chipGroup.getChildAt(i))
-                            filterViewModel.listedBy.remove(filterText)
-                            break
-                        }
-
-                    }
-                    R.id.check_dealer -> {
-                        if (multipleFiltersBinding.selectedFilterView.checkDealer.text.equals(
                                 filterText
                             )
                         ) {
@@ -664,9 +655,10 @@ override fun onCreateView(
 
     }
     private fun observeCity(){
+        var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
         filterViewModel.selectedCity.observe(viewLifecycleOwner){city->
             if (city != null) {
-                objSubAreaReq = ObjSubAreaReq().copy(city.talukaId )
+                objSubAreaReq = ObjSubAreaReq().copy(city.talukaId, language = language )
                 filterViewModel.callSubAreaListApi(objSubAreaReq)
             }
         }
@@ -744,7 +736,7 @@ override fun onCreateView(
         }
         if(objFilterData.subAreaId[0].isNotEmpty()) {
             setListValues(objFilterData.subAreaId, filterViewModel.selectedAreaList)
-            setSelectedSubarea()
+            //setSelectedSubarea()
 
         }
         if(objFilterData.propertyType[0].isNotEmpty()) {
@@ -785,10 +777,12 @@ override fun onCreateView(
     }
     fun setSelectedSubarea(){
 
-        for(i in 0 until  filterViewModel.selectedAreaList.size){
-            for(area in filterViewModel.subAreaList.value!!){
-                if(filterViewModel.selectedAreaList[i].equals(area.areaId))
-                    addFilterChip(area.subArea)
+        for(i in 0 until  filterViewModel.selectedAreaList.size) {
+            if (filterViewModel.subAreaList.value!! !=null) {
+                for (area in filterViewModel.subAreaList.value!!) {
+                    if (filterViewModel.selectedAreaList[i].equals(area.areaId))
+                        addFilterChip(area.subArea)
+                }
             }
         }
     }
@@ -842,10 +836,6 @@ override fun onCreateView(
                 }
                 multipleFiltersBinding.selectedFilterView.checkOwner.text-> {
                     filterViewModel.isOwner.set(true)
-                    addFilterChip(list[i])
-                }
-                multipleFiltersBinding.selectedFilterView.checkDealer.text-> {
-                    filterViewModel.isDealer.set(true)
                     addFilterChip(list[i])
                 }
                 multipleFiltersBinding.selectedFilterView.checkBuilder.text-> {

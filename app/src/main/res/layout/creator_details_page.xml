@@ -170,6 +170,8 @@
                             android:ellipsize="end"
                             android:includeFontPadding="true"
                             android:maxLength="35"
+                            android:clickable="true"
+                            android:autoLink="phone"
                             android:textColor="@color/blue_text"
                             android:textSize="@dimen/text_size_normal"
                             android:textStyle="bold"

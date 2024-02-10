@@ -249,7 +249,7 @@ override fun onCreateView(
                constructionStatus!!.add(chip.text as String)
             }
 
-            multipleFiltersBinding.selectedFilterView.checkOwner.text,multipleFiltersBinding.selectedFilterView.checkDealer.text,
+            multipleFiltersBinding.selectedFilterView.checkOwner.text,
             multipleFiltersBinding.selectedFilterView.checkBuilder.text->{
                 filterViewModel.listedBy.add(chip.text as String)
             }
@@ -405,17 +405,6 @@ override fun onCreateView(
                     }
                     R.id.check_owner -> {
                         if (multipleFiltersBinding.selectedFilterView.checkOwner.text.equals(
-                                filterText
-                            )
-                        ) {
-                            chipGroup.removeView(chipGroup.getChildAt(i))
-                            filterViewModel.listedBy.remove(filterText)
-                            break
-                        }
-
-                    }
-                    R.id.check_dealer -> {
-                        if (multipleFiltersBinding.selectedFilterView.checkDealer.text.equals(
                                 filterText
                             )
                         ) {
@@ -835,10 +824,6 @@ override fun onCreateView(
                 }
                 multipleFiltersBinding.selectedFilterView.checkOwner.text-> {
                     filterViewModel.isOwner.set(true)
-                    addFilterChip(list[i])
-                }
-                multipleFiltersBinding.selectedFilterView.checkDealer.text-> {
-                    filterViewModel.isDealer.set(true)
                     addFilterChip(list[i])
                 }
                 multipleFiltersBinding.selectedFilterView.checkBuilder.text-> {

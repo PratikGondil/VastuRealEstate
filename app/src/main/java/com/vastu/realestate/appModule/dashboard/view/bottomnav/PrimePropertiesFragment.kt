@@ -18,6 +18,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout.OnRefreshListener
 import com.denzcoskun.imageslider.models.SlideModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.vastu.networkService.util.Constants
 import com.vastu.propertycore.model.response.AddWishlistResponse
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.adapter.RealEstateAdapter
@@ -311,6 +312,9 @@ class PrimePropertiesFragment : BaseFragment(), IRealEstateListener, IToolbarLis
 //            sortBy = realEstateViewModel.sortBy
 //        )
         PreferenceManger.put(objFilterData, PreferenceKEYS.FILTERDATA)
+        PreferenceManger.put(objFilterData, PreferenceKEYS.FILTERDATA)
+        var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
+        objFilterData.language = language.toString()
         realEstateViewModel.callApplyFilterApi(objFilterData)
     }
 

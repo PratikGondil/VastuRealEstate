@@ -434,7 +434,9 @@
                     android:focusable="true"
                     android:clickable="true"
                     android:enabled="false"
-                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="@dimen/dimen_16sp"
+                    android:textStyle="bold"
+                    app:fontFamily="@font/open_sans_bold"
                     android:onClick="@{(view)->addPropertyEnquiryViewModel.onSubmitPropertyEnquiry()}"
                     android:text="@string/submit_btn_text"
                     android:textColor="@color/white" />

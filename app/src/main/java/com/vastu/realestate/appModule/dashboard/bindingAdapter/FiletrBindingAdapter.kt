@@ -231,16 +231,6 @@ object FiletrBindingAdapter {
                             realEstateViewModel.removeChip(id)
                         }
                     }
-                    R.id.check_dealer->{
-                        if(isChecked){
-                            realEstateViewModel.isDealer.set(true)
-                            realEstateViewModel.addChip(text as String)
-                        }
-                        else {
-                            realEstateViewModel.isDealer.set(true)
-                            realEstateViewModel.removeChip(id)
-                        }
-                    }
                     R.id.check_builder->{
                         if(isChecked){
                             realEstateViewModel.isBuilder.set(true)

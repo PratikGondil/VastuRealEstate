@@ -52,7 +52,7 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
     lateinit var realEstatListUpdated: List<RealCreatorDatum>
     lateinit var objSelectedProfile: ObjSelectedProfile
      lateinit var singalRealCreatorDatum: List<SingalRealCreatorDatum>
-     lateinit var slider: Slider
+     lateinit var slider: List<Slider>
 
     var creatorListAdapter: CreatorListAdapter? = null
     override fun onCreateView(
@@ -199,7 +199,7 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
 
             recyclerViewRealEstate.adapter = creatorListAdapter
             recyclerViewRealEstate.layoutManager = LinearLayoutManager(activity)
-            apiCall()
+           // apiCall()
         } catch (e: Exception) {
             e.printStackTrace()
         }
@@ -229,7 +229,6 @@ class CreatorListFragment : BaseFragment(), IToolbarListener,
         val bundle = Bundle()
         bundle.putString(BaseConstant.SELECTED_REAL_CREATOR_POSITION, position.toString())
         bundle.putSerializable("profile",objSelectedProfile)
-        bundle.putSerializable("slider",slider)
         findNavController().navigate(
             R.id.action_creatorListFragment_to_creatorDetailsFragment,
             bundle

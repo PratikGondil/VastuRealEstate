@@ -126,7 +126,7 @@
                     app:boxStrokeColor="@color/black"
                     app:expandedHintEnabled="false"
                     app:hintEnabled="false"
-                    app:placeholderText="@string/search"
+                    app:placeholderText="@string/search_by_profile"
                     app:placeholderTextColor="@color/black"
                     android:paddingStart="@dimen/dimen10dp"
                     >

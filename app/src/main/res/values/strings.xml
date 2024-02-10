@@ -382,4 +382,6 @@
     <string name="real_creator_profile">Profile</string>
     <string name="real_creator_overview">Overview </string>
     <string name="owner_profile">Owner Profile</string>
+    <string name="search_by_profile"><b>Search by Profile</b></string>
+
 </resources>

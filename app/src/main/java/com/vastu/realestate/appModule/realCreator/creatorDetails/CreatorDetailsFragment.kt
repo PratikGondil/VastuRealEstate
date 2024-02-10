@@ -18,13 +18,16 @@ import com.vastu.realCreator.creatorDetails.model.ObjDetailsCreatorRes
 import com.vastu.realCreator.creatorDetails.model.SingalRealCreatorDatum
 import com.vastu.realCreator.creatorDetails.model.Slider
 import com.vastu.realCreator.rate_us.model.ObjCreatorRateUsRes
+import com.vastu.realCreator.rate_us.repository.CreatorRateUsRepository
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
+import com.vastu.realestate.appModule.dashboard.view.DashboardFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.realCreator.infoPage.ObjSelectedProfile
 import com.vastu.realestate.databinding.CreatorDetailsPageBinding
+import com.vastu.realestate.utils.ApiUrlEndPoints
 import com.vastu.realestate.utils.BaseConstant
 import com.vastu.realestate.utils.PreferenceManger
 import java.util.regex.Pattern
@@ -42,7 +45,7 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
     lateinit var propertyIdDataList: PropertyIdData
     lateinit var selectedProfile: ObjSelectedProfile
     lateinit var  property :SingalRealCreatorDatum
-    lateinit var slider: Slider
+    lateinit var slider: List<Slider>
     private val imageListCarouselProperty = ArrayList<CarouselItem>()
     var selectedPosition :String =""
 
@@ -67,6 +70,11 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
         return creatorDetailsPageBinding.root
     }
 
+    fun callPhoneNumber(){
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel:"+property.mobile)
+        startActivity(intent)
+    }
 
     override fun onResume() {
         super.onResume()
@@ -86,11 +94,6 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
             if (args.getSerializable("profile") != null) {
                 selectedProfile =
                     requireArguments().getSerializable("profile") as ObjSelectedProfile
-
-            }
-            if (args.getSerializable("slider") != null) {
-                slider =
-                    requireArguments().getSerializable("slider") as Slider
 
             }
 
@@ -118,7 +121,7 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
     }
 
     override fun onWhatsAppClick() {
-        val phoneNumber = "+91-9730004730" // Replace with the phone number without '+' or '-' or '()'
+        val phoneNumber = property.mobile
         val message = "Hello, this is a WhatsApp message from my app!"
 
         val whatsappIntent = Intent(Intent.ACTION_SENDTO, Uri.parse("smsto:$phoneNumber"))
@@ -142,7 +145,7 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
     override fun onEmailClick() {
         val emailIntent = Intent(Intent.ACTION_SENDTO)
         emailIntent.data = Uri.parse("mailto:")
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("customersupport@vastu4u.com"))
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(property.email))
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject")
         emailIntent.putExtra(Intent.EXTRA_TEXT, "")
 
@@ -154,7 +157,7 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
     }
 
     override fun onCallClick() {
-        val phoneNumber = "+91-9730004730" // Replace with the phone number you want to call
+        val phoneNumber = property.mobile// Replace with the phone number you want to call
 
         val callIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
 
@@ -182,11 +185,13 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
     }
 
     override fun onRateUsClick() {
+        creatorDetailsViewModel.callRateUsAPI(DashboardFragment.userId.toString(),creatorDetailsPageBinding.smallRating.rating.toString(),property.realCreatorID)
 
     }
 
     override fun onSuccessGetRealCreatorList(objDetailsCreatorRes: ObjDetailsCreatorRes) {
         property = objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.singalRealCreatorData.get(0)
+        slider =objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.slider
         setView()
     }
 
@@ -211,18 +216,25 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
         creatorDetailsPageBinding.mobileNumber.text=property.mobile
         creatorDetailsPageBinding.txtInfo.text=property.overview
 
+        creatorDetailsPageBinding.mobileNumber.setOnClickListener {
+            callPhoneNumber()
+
+        }
+
         var coItem  =CarouselItem()
-            if(slider.video.equals(true)){
+        for( slider in slider!!) {
+            if (slider.video.equals(true)) {
                 coItem = CarouselItem(
                     imageUrl = slider.image,
                     caption = ""
                 )
-            }else {
+            } else {
                 coItem = CarouselItem(
                     imageUrl = slider.image,
                     caption = ""
                 )
             }
+        }
           imageListCarouselProperty.add(coItem)
         creatorDetailsPageBinding.apply {
             imageSliderBuilder.setData(imageListCarouselProperty)

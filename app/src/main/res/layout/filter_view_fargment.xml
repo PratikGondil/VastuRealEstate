@@ -494,15 +494,7 @@
             android:textColor="@color/black"
             isChecked="@{realEstateViewModel}"
             android:checked="@{realEstateViewModel.isOwner}"/>
-        <androidx.appcompat.widget.AppCompatCheckBox
-            android:id="@+id/check_dealer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/dealer"
-            android:textAppearance="@style/TextAppearance"
-            android:textColor="@color/black"
-            isChecked="@{realEstateViewModel}"
-            android:checked="@{realEstateViewModel.isDealer}"/>
+
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/check_builder"
             android:layout_width="match_parent"
