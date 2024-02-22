@@ -52,23 +52,23 @@ data class PropertyData(
     @SerializedName("swimming_pool")
     val swimmingPool: String?="",
     @SerializedName("price_min_word")
-    val priceMinWord: String ="",
+    val priceMinWord: String? ="",
     @SerializedName("price_max_word")
-    val priceMaxWord: String ="",
+    val priceMaxWord: String? ="",
     @SerializedName("price_min_digit")
-    val priceMinDigit: String ="",
+    val priceMinDigit: String? ="",
     @SerializedName("price_max_digit")
-    val priceMaxDigit: String ="",
+    val priceMaxDigit: String? ="",
     @SerializedName("owner")
-    val owner: String ="",
+    val owner: String? ="",
     @SerializedName("apartment")
-    val apartment: String ="",
+    val apartment: String? ="",
     @SerializedName("building")
-    val building: String ="",
+    val building: String? ="",
     @SerializedName("short_address")
-    val shortAddress: String ="",
+    val shortAddress: String? ="",
     @SerializedName("wishlist")
-    val wishlist: Boolean =false,
+    val wishlist: Boolean? =false,
     @SerializedName("id")
     var id       : String?  = "",
     @SerializedName("slider")

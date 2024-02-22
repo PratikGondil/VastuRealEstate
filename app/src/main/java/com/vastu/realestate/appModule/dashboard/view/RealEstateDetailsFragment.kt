@@ -69,8 +69,7 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
     private lateinit var drawerViewModel: DrawerViewModel
     private val REMOVE_TAGS: Pattern = Pattern.compile("<.+?>")
     lateinit var  propertyIdDataList: PropertyIdData
-    var isScrollTab = false
-
+    var isScrollClick = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -116,13 +115,12 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
         drawerViewModel.isDashBoard.set(false)
         getPropertySlider()
         setupView ()
-        scrollViewAdclicklistner()
+        //scrollViewAdclicklistner()
     }
 
     private fun scrollViewAdclicklistner() {
        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             realEstateDetailsBinding.scrollview.setOnScrollChangeListener(View.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-                isScrollTab = false
                 if(isVisible(realEstateDetailsBinding.txtBuilderProfile!!)){
                     scrollTabLayout(0)
                 }else if(isVisible(realEstateDetailsBinding.txtPropertyDetails!!)){
@@ -155,7 +153,6 @@ class RealEstateDetailsFragment : BaseFragment(),RelatedPropertyAdapter.OnItemCl
     }
 
     fun scrollTabLayout(i: Int) {
-        isScrollTab = true
         realEstateDetailsBinding.tabLayout.getTabAt(i)!!.select()
        /* Handler().postDelayed(
             Runnable {  }, 100

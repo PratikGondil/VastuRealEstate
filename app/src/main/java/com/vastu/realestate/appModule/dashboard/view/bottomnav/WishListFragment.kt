@@ -72,6 +72,7 @@ class WishListFragment : BaseFragment(), IRealEstateListener, IToolbarListener,
 //        realEstateBinding.swipeContainer.setOnRefreshListener(this)
 //        realEstateBinding.swipeContainer.setColorSchemeResources(R.color.button_color)
 //        bottomSheetBehavior =BottomSheetBehavior.from(realEstateBinding.filterFragment)
+        realEstateBinding.filterViewLayout.visibility = View.GONE
         return realEstateBinding.root
     }
 
