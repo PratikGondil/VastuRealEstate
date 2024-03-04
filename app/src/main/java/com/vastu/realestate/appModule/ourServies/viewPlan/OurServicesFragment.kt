@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
+import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
 import com.vastu.realestate.appModule.dashboard.view.DashboardFragment
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.ourServies.planForOwner.bottomSheetRecycler.PlanForOwnerBottomSheet
@@ -45,6 +46,10 @@ class OurServicesFragment : Fragment(), IToolbarListener, IViewPlanListener {
     }
 
     fun initView() {
+        if(activity is DashboardActivity)
+        {
+            (activity as DashboardActivity).bottomNavigationView.visibility= View.GONE
+        }
         drawerViewModel.toolbarTitle.set(getString(R.string.our_services_text))
         drawerViewModel.isDashBoard.set(false)
     }

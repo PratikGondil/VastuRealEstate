@@ -29,17 +29,19 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/include"
+
                 android:orientation="vertical">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
             android:background="@drawable/bg_gradient">
         <TextView
             android:id="@+id/txt_title"
             android:fontFamily="@font/open_sans_extra_bold"
-            android:textSize="@dimen/text_size18sp"
+            app:fontFamily="@font/open_sans_extra_bold"
+            android:textSize="@dimen/dimen_16sp"
             android:textAlignment="viewStart"
             android:layout_margin="@dimen/dimen15dp"
             android:textColor="@color/gray_txt"
@@ -95,6 +97,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_regular"
+                            app:fontFamily="@font/roboto_regular"
                             android:gravity="start"
                             android:text="Affordable"
                             android:paddingStart="@dimen/dimen5dp"
@@ -106,20 +109,33 @@
 
                         <TextView
                             android:id="@+id/txtTipAmtOpt1"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen10dp"
                             android:fontFamily="@font/roboto_regular"
                             android:gravity="start"
                             android:paddingStart="@dimen/dimen5dp"
-                            android:text="₹ 7080/-"
-                            android:layout_marginTop="@dimen/dimen10dp"
+                            android:paddingEnd="@dimen/dimen30dp"
+                            android:text="midcap"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/txtTipOpt1"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="@+id/txtTipOpt1"
+                            app:fontFamily="@font/roboto_regular"
+                            app:layout_constraintEnd_toStartOf="@+id/radioButton1"
+                            app:layout_constraintHorizontal_bias="0.7"
+                            app:layout_constraintHorizontal_chainStyle="spread_inside"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTipOpt1" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="@dimen/dimen30dp"
+                            app:layout_constraintHorizontal_bias="0.3"
+                            app:layout_constraintStart_toEndOf="@+id/txtTipAmtOpt1"
+                            app:layout_constraintTop_toBottomOf="@+id/txtTipOpt1" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -154,6 +170,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_regular"
+                            app:fontFamily="@font/roboto_regular"
                             android:gravity="start"
                             android:text="midcap"
                             android:paddingStart="@dimen/dimen5dp"
@@ -196,8 +213,6 @@
                     android:layout_marginTop="@dimen/dimen10dp"
                     app:layout_constraintTop_toBottomOf="@id/cvTipOptOne"
                     app:layout_constraintStart_toStartOf="@id/cvTipOptOne"
-                    app:layout_constraintWidth_percent="0.47"
-                    app:layout_constraintHeight_percent="0.25"
                     >
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -206,8 +221,7 @@
                         android:layout_height="match_parent"
                         android:background="@color/white"
                         android:clickable="true"
-                        android:padding="@dimen/dimen5dp"
-                        >
+                        android:padding="@dimen/dimen5dp">
 
                         <TextView
                             android:id="@+id/txtTipOptThree"
@@ -215,30 +229,44 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_regular"
                             android:gravity="start"
-                            android:text="midcap"
                             android:paddingStart="@dimen/dimen5dp"
+                            android:text="midcap"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
+                            app:fontFamily="@font/roboto_regular"
                             app:layout_constraintBottom_toTopOf="@+id/txtTipAmtOptThree"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/txtTipAmtOptThree"
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen10dp"
                             android:fontFamily="@font/roboto_regular"
                             android:gravity="start"
-                            android:text="midcap"
                             android:paddingStart="@dimen/dimen5dp"
+                            android:paddingEnd="@dimen/dimen30dp"
+                            android:text="midcap"
                             android:textColor="@color/black"
-                            android:layout_marginTop="@dimen/dimen10dp"
                             android:textSize="@dimen/text_size_small"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/txtTipOptThree"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="@+id/txtTipOptThree"
+                            app:fontFamily="@font/roboto_regular"
+                            app:layout_constraintEnd_toStartOf="@+id/radioButton"
+                            app:layout_constraintHorizontal_bias="0.7"
+                            app:layout_constraintHorizontal_chainStyle="spread_inside"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtTipOptThree" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="@dimen/dimen30dp"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toEndOf="@+id/txtTipAmtOptThree"
+                            app:layout_constraintTop_toBottomOf="@+id/txtTipOptThree" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -275,6 +303,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_regular"
+                            app:fontFamily="@font/roboto_regular"
                             android:gravity="start"
                             android:text="midcap"
                             android:paddingStart="@dimen/dimen5dp"
@@ -289,6 +318,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_regular"
+                            app:fontFamily="@font/roboto_regular"
                             android:gravity="start"
                             android:text="midcap"
                             android:paddingStart="@dimen/dimen5dp"
