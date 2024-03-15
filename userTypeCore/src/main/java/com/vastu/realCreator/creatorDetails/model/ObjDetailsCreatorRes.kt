@@ -59,7 +59,8 @@ data class SingalRealCreatorDatum(
 data class Slider(
     val id: String,
     val image: String,
-    val video: Boolean
+    val video: Boolean,
+    val thumbnail:String
 ):Serializable
 
 

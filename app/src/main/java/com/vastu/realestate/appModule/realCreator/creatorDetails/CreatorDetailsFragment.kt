@@ -1,5 +1,8 @@
 package com.vastu.realestate.appModule.realCreator.creatorDetails
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -7,10 +10,13 @@ import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.aemerse.slider.listener.CarouselListener
 import com.aemerse.slider.model.CarouselItem
 import com.vastu.networkService.util.Constants
 import com.vastu.propertycore.model.response.PropertyIdData
@@ -29,6 +35,7 @@ import com.vastu.realestate.appModule.realCreator.infoPage.ObjSelectedProfile
 import com.vastu.realestate.databinding.CreatorDetailsPageBinding
 import com.vastu.realestate.utils.ApiUrlEndPoints
 import com.vastu.realestate.utils.BaseConstant
+import com.vastu.realestate.utils.CommonUtils
 import com.vastu.realestate.utils.PreferenceManger
 import java.util.regex.Pattern
 
@@ -45,7 +52,7 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
     lateinit var propertyIdDataList: PropertyIdData
     lateinit var selectedProfile: ObjSelectedProfile
     lateinit var  property :SingalRealCreatorDatum
-    lateinit var slider: List<Slider>
+    lateinit var sliderData: List<Slider>
     private val imageListCarouselProperty = ArrayList<CarouselItem>()
     var selectedPosition :String =""
 
@@ -191,7 +198,49 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
 
     override fun onSuccessGetRealCreatorList(objDetailsCreatorRes: ObjDetailsCreatorRes) {
         property = objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.singalRealCreatorData.get(0)
-        slider =objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.slider
+        sliderData =objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.slider
+
+        for( slider in sliderData!!){
+            var coItem  =CarouselItem()
+            if(slider.video){
+                coItem = CarouselItem(
+                    imageUrl = slider.thumbnail,
+                    caption = ""
+                )
+            }else {
+                coItem = CarouselItem(
+                    imageUrl = slider.image,
+                    caption = ""
+                )
+            }
+
+            imageListCarouselProperty.add(coItem)
+        }
+        creatorDetailsPageBinding.apply {
+            imageSliderBuilder.setData(imageListCarouselProperty)
+            /// imageSliderBuilder.autoPlayDelay =1000
+            //imageSliderBuilder.setIndicator(custom)
+            // imageSlider.setIndicator(custom)
+        }
+
+
+
+        creatorDetailsPageBinding.imageSliderBuilder.carouselListener = object : CarouselListener {
+            override fun onClick(position: Int, carouselItem: CarouselItem) {
+                var selectedPostition = objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.slider[position]
+                if(selectedPostition.video){
+                    createDialogDashboard( objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.slider[position].image)
+                }else{
+                    createImageDialog( objDetailsCreatorRes.getSingalRealCreatorDetailsResponse.slider[position].image)
+                }
+
+            }
+
+            override fun onLongClick(position: Int, dataObject: CarouselItem) {
+            }
+
+        }
+
         setView()
     }
 
@@ -221,25 +270,24 @@ class CreatorDetailsFragment : BaseFragment(), IToolbarListener, ICreatorDetails
 
         }
 
-        var coItem  =CarouselItem()
-        for( slider in slider!!) {
-            if (slider.video.equals(true)) {
-                coItem = CarouselItem(
-                    imageUrl = slider.image,
-                    caption = ""
-                )
-            } else {
-                coItem = CarouselItem(
-                    imageUrl = slider.image,
-                    caption = ""
-                )
-            }
+
         }
-          imageListCarouselProperty.add(coItem)
-        creatorDetailsPageBinding.apply {
-            imageSliderBuilder.setData(imageListCarouselProperty)
+
+
+    fun createDialogDashboard(link: String) {
+        val dialog = Dialog(requireContext(), android.R.style.Theme_Translucent_NoTitleBar_Fullscreen)
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setContentView(R.layout.custom_video_dialog)
+        val videoView = dialog.findViewById<com.potyvideo.library.AndExoPlayerView>(R.id.andExoPlayerViewType)
+        val closeImageView = dialog.findViewById<ImageView>(R.id.img_cross)
+        videoView.setSource(link)
+        closeImageView.setOnClickListener {
+            dialog.dismiss()
         }
-        }
+
+        dialog.show()
+    }
+
 
 
 
