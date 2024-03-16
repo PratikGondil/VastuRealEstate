@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import com.vastu.networkService.service.NetworkDaoBuilder
 import com.vastu.networkService.serviceResListener.IOnServiceResponseListener
+import com.vastu.realestate.appModule.ourServies.planForOwner.response.ObjPlanByTypeResponseMain
 import com.vastu.realestate.commoncore.utils.ErrorCode
 
 object PlanTypeRepository :IPlanTypeRequest, IOnServiceResponseListener {
@@ -11,7 +12,9 @@ object PlanTypeRepository :IPlanTypeRequest, IOnServiceResponseListener {
 
     override fun callPlansTypeApi(
         context: Context,
+        language: String,
         planTypeId: String,
+        profileId:String,
         urlEndPoint: String,
         iPlanTypeResponseListener: IPlanTypeResponseListener
     ) {
@@ -20,20 +23,20 @@ object PlanTypeRepository :IPlanTypeRequest, IOnServiceResponseListener {
             .setContext(context)
             .setIsContentTypeJSON(true)
             .setIsRequestPost(false)
-            .setRequest(buildRequest(planTypeId))
+            .setRequest(buildRequest(planTypeId,language,profileId))
             .setUrlEndPoint(urlEndPoint)
             .build()
             .sendApiRequest(this)
     }
 
-    fun buildRequest(planTypeId: String): ByteArray {
-        var objPlansTypeReq = GetPlansTypeRequest(planTypeId)
+    fun buildRequest(planTypeId: String, language: String, profileId: String): ByteArray {
+        var objPlansTypeReq = GetPlansTypeRequest(planTypeId,language,profileId)
         return Gson().toJson(objPlansTypeReq).toByteArray()
     }
 
     override fun onSuccessResponse(response: String, isError: Boolean) {
         var plansTypeRes = parseResponse(response)
-        when (plansTypeRes.objPlansTypeResponse.objResponseStatusHdr.statusCode) {
+        when (plansTypeRes.planResponse.ResponseStatusHeader.statusCode) {
             ErrorCode.success ->
                 iPlanTypeResponseListener.onGetSuccessResponse(plansTypeRes)
             ErrorCode.error_0002 ->
@@ -51,10 +54,10 @@ object PlanTypeRepository :IPlanTypeRequest, IOnServiceResponseListener {
         iPlanTypeResponseListener.networkFailure()
     }
 
-    private fun parseResponse(response: String): PlanTypeDataResponseMain {
+    private fun parseResponse(response: String): ObjPlanByTypeResponseMain {
         return Gson().fromJson(
             response,
-            PlanTypeDataResponseMain::class.java
+            ObjPlanByTypeResponseMain::class.java
         )
     }
 }

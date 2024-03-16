@@ -7,10 +7,9 @@ import com.vastu.realestate.utils.ApiUrlEndPoints.GET_PLANS
 import com.vastu.realestate.utils.ApiUrlEndPoints.GET_PLANS_TYPE
 
 class ViewPlansViewModel(application: Application) : AndroidViewModel(application),
-    IViewPlanResponseListener, IPlanTypeResponseListener {
+    IViewPlanResponseListener {
     lateinit var mContext: Application
     lateinit var iViewPlanViewListener: IViewPlanViewListener
-    lateinit var iPlansTypeViewListener: IPlansTypeViewListener
     lateinit var iViewPlanListener: IViewPlanListener
 
     init {
@@ -28,9 +27,6 @@ class ViewPlansViewModel(application: Application) : AndroidViewModel(applicatio
         ViewPlanRepository.callPlansApi(mContext, language, GET_PLANS_TYPE, this)
     }
 
-    fun callPlansTypeApi(planTypeId: String) {
-        PlanTypeRepository.callPlansTypeApi(mContext, planTypeId, GET_PLANS_TYPE, this)
-    }
 
     override fun onGetSuccessResponse(response: ObjPlanResponseMain) {
         iViewPlanViewListener.onPlanSuccesss(response)
@@ -40,13 +36,7 @@ class ViewPlansViewModel(application: Application) : AndroidViewModel(applicatio
         iViewPlanViewListener.onPlansFail(response.PlanResponse.ResponseStatusHeader.statusDescription)
     }
 
-    override fun onGetSuccessResponse(response: PlanTypeDataResponseMain) {
-        TODO("Not yet implemented")
-    }
 
-    override fun onGetFailureResponse(response: PlanTypeDataResponseMain) {
-        iPlansTypeViewListener.onPlansFail(response.objPlansTypeResponse)
-    }
 
     override fun networkFailure() {
         //      iViewPlanViewListener.onUserNotConnected()

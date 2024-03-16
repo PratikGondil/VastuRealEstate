@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.vastu.networkService.util.Constants
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
@@ -16,9 +17,12 @@ import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
 import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreen
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.ourServies.planForOwner.bottomSheetRecycler.PlanForOwnerBottomSheet
+import com.vastu.realestate.appModule.ourServies.planForOwner.response.ObjPlanByTypeResponseMain
+import com.vastu.realestate.appModule.ourServies.viewPlan.IPlansByTypeViewListener
 import com.vastu.realestate.databinding.PlanForOwnerFragmentBinding
+import com.vastu.realestate.utils.PreferenceManger
 
-class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPropertyOwner {
+class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPropertyOwner,IPlansByTypeViewListener {
 
     lateinit var planForOwnerViewModel: PlanForOwnerViewModel
     lateinit var drawerViewModel: DrawerViewModel
@@ -35,9 +39,16 @@ class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPrope
         planForOwnerFragmentBinding.planForOwnerViewModel = planForOwnerViewModel
         drawerViewModel.iToolbarListener = this
         planForOwnerViewModel.iPlanForPropertyOwner=this
+        planForOwnerViewModel.iPlansTypeViewListener= this
         planForOwnerFragmentBinding.drawerViewModel= drawerViewModel
         initView()
+        //callPlanTypeAPI()
         return planForOwnerFragmentBinding.root
+    }
+
+    private fun callPlanTypeAPI() {
+        var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
+        planForOwnerViewModel.callPlansTypeApi(language!!,"4","1")
     }
 
     fun initView(){
@@ -89,5 +100,17 @@ class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPrope
             (activity as DashboardActivity).bottomNavigationView.visibility= View.VISIBLE
         }
         super.onPause()
+    }
+
+    override fun onPlanSuccess(objPlansTypeResponse: ObjPlanByTypeResponseMain) {
+        setView(objPlansTypeResponse)
+    }
+
+    private fun setView(objPlansTypeResponse: ObjPlanByTypeResponseMain) {
+
+    }
+
+    override fun onPlansFail(objPlansTypeResponse: ObjPlanByTypeResponseMain) {
+
     }
 }

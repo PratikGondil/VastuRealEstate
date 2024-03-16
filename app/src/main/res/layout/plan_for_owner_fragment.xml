@@ -35,7 +35,7 @@
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="@dimen/dimen50dp"
             android:background="@drawable/bg_gradient">
         <TextView
             android:id="@+id/txt_title"
@@ -54,7 +54,7 @@
                 android:id="@+id/clLayout"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="@dimen/dimen30dp"
+                android:layout_marginTop="@dimen/dimen10dp"
                 android:layout_marginStart="@dimen/dimen15dp"
                 android:layout_marginEnd="@dimen/dimen15dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -93,7 +93,7 @@
 <!--                        android:onClick="@{(view)->planForOwnerViewModel.onClickDialog()}"-->
 
                         <TextView
-                            android:id="@+id/txtTipOpt1"
+                            android:id="@+id/txtFirstPlanText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_regular"
@@ -103,12 +103,12 @@
                             android:paddingStart="@dimen/dimen5dp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
-                            app:layout_constraintBottom_toTopOf="@+id/txtTipAmtOpt1"
+                            app:layout_constraintBottom_toTopOf="@+id/txtFirstPlanPrice"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/txtTipAmtOpt1"
+                            android:id="@+id/txtFirstPlanPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dimen10dp"
@@ -120,21 +120,21 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
                             app:fontFamily="@font/roboto_regular"
-                            app:layout_constraintEnd_toStartOf="@+id/radioButton1"
+                            app:layout_constraintEnd_toStartOf="@+id/txtFirstPlanCheck"
                             app:layout_constraintHorizontal_bias="0.7"
                             app:layout_constraintHorizontal_chainStyle="spread_inside"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTipOpt1" />
+                            app:layout_constraintTop_toBottomOf="@+id/txtFirstPlanText" />
 
                         <RadioButton
-                            android:id="@+id/radioButton1"
+                            android:id="@+id/txtFirstPlanCheck"
                             android:layout_width="wrap_content"
                             android:layout_height="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginStart="@dimen/dimen30dp"
                             app:layout_constraintHorizontal_bias="0.3"
-                            app:layout_constraintStart_toEndOf="@+id/txtTipAmtOpt1"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTipOpt1" />
+                            app:layout_constraintStart_toEndOf="@+id/txtFirstPlanPrice"
+                            app:layout_constraintTop_toBottomOf="@+id/txtFirstPlanText" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -166,36 +166,49 @@
                         app:layout_constraintHeight_percent="17">
 
                         <TextView
-                            android:id="@+id/txtTipOpt2"
+                            android:id="@+id/txtSecondPlanText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_regular"
                             app:fontFamily="@font/roboto_regular"
                             android:gravity="start"
-                            android:text="midcap"
+                            android:text="Affordable"
                             android:paddingStart="@dimen/dimen5dp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
-                            app:layout_constraintBottom_toTopOf="@+id/txtTipAmtOpt2"
+                            app:layout_constraintBottom_toTopOf="@+id/txtSecondPlanPrice"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/txtTipAmtOpt2"
-                            android:layout_width="0dp"
+                            android:id="@+id/txtSecondPlanPrice"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen10dp"
                             android:fontFamily="@font/roboto_regular"
                             android:gravity="start"
-                            android:text="1222/"
-                            android:textColor="@color/black"
                             android:paddingStart="@dimen/dimen5dp"
-                            android:layout_marginTop="@dimen/dimen10dp"
+                            android:paddingEnd="@dimen/dimen30dp"
+                            android:text="midcap"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/txtTipOpt2"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="@+id/txtTipOpt2"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTipOpt2" />
+                            app:fontFamily="@font/roboto_regular"
+                            app:layout_constraintEnd_toStartOf="@+id/txtSecondPlanCheck"
+                            app:layout_constraintHorizontal_bias="0.7"
+                            app:layout_constraintHorizontal_chainStyle="spread_inside"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtSecondPlanText" />
+
+                        <RadioButton
+                            android:id="@+id/txtSecondPlanCheck"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="@dimen/dimen30dp"
+                            app:layout_constraintHorizontal_bias="0.3"
+                            app:layout_constraintStart_toEndOf="@+id/txtSecondPlanPrice"
+                            app:layout_constraintTop_toBottomOf="@+id/txtSecondPlanText" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.cardview.widget.CardView>
@@ -224,22 +237,22 @@
                         android:padding="@dimen/dimen5dp">
 
                         <TextView
-                            android:id="@+id/txtTipOptThree"
+                            android:id="@+id/txtThirdPlanText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_regular"
+                            app:fontFamily="@font/roboto_regular"
                             android:gravity="start"
+                            android:text="Affordable"
                             android:paddingStart="@dimen/dimen5dp"
-                            android:text="midcap"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
-                            app:fontFamily="@font/roboto_regular"
-                            app:layout_constraintBottom_toTopOf="@+id/txtTipAmtOptThree"
+                            app:layout_constraintBottom_toTopOf="@+id/txtThirdPlanPrice"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/txtTipAmtOptThree"
+                            android:id="@+id/txtThirdPlanPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/dimen10dp"
@@ -251,21 +264,21 @@
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
                             app:fontFamily="@font/roboto_regular"
-                            app:layout_constraintEnd_toStartOf="@+id/radioButton"
+                            app:layout_constraintEnd_toStartOf="@+id/txtThirdPlanCheck"
                             app:layout_constraintHorizontal_bias="0.7"
                             app:layout_constraintHorizontal_chainStyle="spread_inside"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTipOptThree" />
+                            app:layout_constraintTop_toBottomOf="@+id/txtThirdPlanText" />
 
                         <RadioButton
-                            android:id="@+id/radioButton"
+                            android:id="@+id/txtThirdPlanCheck"
                             android:layout_width="wrap_content"
                             android:layout_height="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginStart="@dimen/dimen30dp"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toEndOf="@+id/txtTipAmtOptThree"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTipOptThree" />
+                            app:layout_constraintHorizontal_bias="0.3"
+                            app:layout_constraintStart_toEndOf="@+id/txtThirdPlanPrice"
+                            app:layout_constraintTop_toBottomOf="@+id/txtThirdPlanText" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -298,62 +311,248 @@
                         android:clickable="true"
                         >
 
+
                         <TextView
-                            android:id="@+id/txtTipOptThree1"
+                            android:id="@+id/txtFourthPlanText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_regular"
                             app:fontFamily="@font/roboto_regular"
                             android:gravity="start"
-                            android:text="midcap"
+                            android:text="Affordable"
                             android:paddingStart="@dimen/dimen5dp"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_size_small"
-                            app:layout_constraintBottom_toTopOf="@+id/txtTipAmtOptThree1"
+                            app:layout_constraintBottom_toTopOf="@+id/txtFourthPlanPrice"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
-                            android:id="@+id/txtTipAmtOptThree1"
-                            android:layout_width="0dp"
+                            android:id="@+id/txtFourthPlanPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen10dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="start"
+                            android:paddingStart="@dimen/dimen5dp"
+                            android:paddingEnd="@dimen/dimen30dp"
+                            android:text="midcap"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_small"
+                            app:fontFamily="@font/roboto_regular"
+                            app:layout_constraintEnd_toStartOf="@+id/txtFourthPlanCheck"
+                            app:layout_constraintHorizontal_bias="0.7"
+                            app:layout_constraintHorizontal_chainStyle="spread_inside"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtFourthPlanText" />
+
+                        <RadioButton
+                            android:id="@+id/txtFourthPlanCheck"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="@dimen/dimen30dp"
+                            app:layout_constraintHorizontal_bias="0.3"
+                            app:layout_constraintStart_toEndOf="@+id/txtFourthPlanPrice"
+                            app:layout_constraintTop_toBottomOf="@+id/txtFourthPlanText" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvTipOptFive"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    app:cardCornerRadius="@dimen/dimen15dp"
+                    app:cardElevation="@dimen/dimen10dp"
+                    app:cardBackgroundColor="@color/white"
+                    android:layout_marginTop="@dimen/dimen10dp"
+                    app:layout_constraintTop_toBottomOf="@id/cvTipOptThree"
+                    app:layout_constraintStart_toStartOf="@id/cvTipOptThree"
+                    >
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clTipOptFive"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:clickable="true"
+                        android:padding="@dimen/dimen5dp">
+
+                        <TextView
+                            android:id="@+id/txtFifthPlanText"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_regular"
                             app:fontFamily="@font/roboto_regular"
                             android:gravity="start"
-                            android:text="midcap"
+                            android:text="Affordable"
                             android:paddingStart="@dimen/dimen5dp"
                             android:textColor="@color/black"
-                            android:layout_marginTop="@dimen/dimen10dp"
                             android:textSize="@dimen/text_size_small"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/txtTipOptThree1"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="@+id/txtTipOptThree1"
-                            app:layout_constraintTop_toBottomOf="@+id/txtTipOptThree1" />
+                            app:layout_constraintBottom_toTopOf="@+id/txtFifthPlanPrice"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtFifthPlanPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen10dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="start"
+                            android:paddingStart="@dimen/dimen5dp"
+                            android:paddingEnd="@dimen/dimen30dp"
+                            android:text="midcap"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_small"
+                            app:fontFamily="@font/roboto_regular"
+                            app:layout_constraintEnd_toStartOf="@+id/txtFifthPlanCheck"
+                            app:layout_constraintHorizontal_bias="0.7"
+                            app:layout_constraintHorizontal_chainStyle="spread_inside"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtFifthPlanText" />
+
+                        <RadioButton
+                            android:id="@+id/txtFifthPlanCheck"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="@dimen/dimen30dp"
+                            app:layout_constraintHorizontal_bias="0.3"
+                            app:layout_constraintStart_toEndOf="@+id/txtFifthPlanPrice"
+                            app:layout_constraintTop_toBottomOf="@+id/txtFifthPlanText" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.cardview.widget.CardView>
-                <TextView
-                    android:layout_width="wrap_content"
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvNoTipOptSix"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen15dp"
-                    android:text="@string/plan_add"
+                    android:layout_gravity="center"
+                    android:gravity="start"
+                    android:orientation="horizontal"
+                    app:cardCornerRadius="@dimen/dimen15dp"
+                    app:cardElevation="@dimen/dimen10dp"
+                    app:cardBackgroundColor="@color/white"
+                    android:layout_marginTop="@dimen/dimen10dp"
                     app:layout_constraintTop_toBottomOf="@id/cvNoTipOpt"
-                    app:layout_constraintEnd_toEndOf="@id/cvNoTipOpt"
-                    app:layout_constraintStart_toStartOf="@id/cvNoTipOpt"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/dimen15dp"
-                    android:text="@string/plan_add"
-                    app:layout_constraintTop_toBottomOf="@id/cvTipOptThree"
-                    app:layout_constraintEnd_toEndOf="@id/cvTipOptThree"
-                    app:layout_constraintStart_toStartOf="@id/cvTipOptThree"/>
+                    app:layout_constraintEnd_toEndOf="@id/cvTipOptTwo"
+                    app:layout_constraintWidth_percent="0.47"
+                    app:layout_constraintHeight_percent="0.25"
+
+                    >
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/clNoTipOptSix"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        app:layout_constraintHeight_percent="17"
+                        android:padding="@dimen/dimen5dp"
+                        android:clickable="true"
+                        >
+
+                        <TextView
+                            android:id="@+id/txtSixthPlanText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            app:fontFamily="@font/roboto_regular"
+                            android:gravity="start"
+                            android:text="Affordable"
+                            android:paddingStart="@dimen/dimen5dp"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_small"
+                            app:layout_constraintBottom_toTopOf="@+id/txtSixthPlanPrice"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/txtSixthPlanPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen10dp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:gravity="start"
+                            android:paddingStart="@dimen/dimen5dp"
+                            android:paddingEnd="@dimen/dimen30dp"
+                            android:text="midcap"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_small"
+                            app:fontFamily="@font/roboto_regular"
+                            app:layout_constraintEnd_toStartOf="@+id/txtSixthPlanCheck"
+                            app:layout_constraintHorizontal_bias="0.7"
+                            app:layout_constraintHorizontal_chainStyle="spread_inside"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtSixthPlanText" />
+
+                        <RadioButton
+                            android:id="@+id/txtSixthPlanCheck"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginStart="@dimen/dimen30dp"
+                            app:layout_constraintHorizontal_bias="0.3"
+                            app:layout_constraintStart_toEndOf="@+id/txtSixthPlanPrice"
+                            app:layout_constraintTop_toBottomOf="@+id/txtSixthPlanText" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
 
 
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/clLayout"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_margin="@dimen/dimen10dp"
+                app:layout_constraintRight_toLeftOf="@+id/txtGstConditions"
+                android:id="@+id/txtTermsAndConditions"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="Terms and Conditions apply"
+                app:fontFamily="@font/open_sans_regular"
+                >
+
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/black"
+                android:layout_margin="@dimen/dimen10dp"
+                android:id="@+id/txtGstConditions"
+                app:layout_constraintTop_toBottomOf="@+id/clLayout"
+                app:layout_constraintLeft_toRightOf="@+id/txtTermsAndConditions"
+                android:text="18% GST applicable"
+                app:fontFamily="@font/open_sans_regular"
+                >
+
+
+            </TextView>
+
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
