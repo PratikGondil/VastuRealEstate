@@ -1,5 +1,9 @@
 package com.vastu.realestate.appModule.ourServies.viewPlan
 
-interface IViewPlanViewListener {
-    fun onPlansFail(objViewPlanResponse: ObjViewPlanResponse)
+import com.vastu.realestate.appModule.ourServies.viewPlan.response.ObjPlanResponseMain
+
+interface IViewPlanViewListener
+{
+    fun onPlanSuccesss(objViewPlanResponse: ObjPlanResponseMain)
+    fun onPlansFail(objViewPlanResponse: String)
 }
