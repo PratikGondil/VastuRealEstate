@@ -1,20 +1,19 @@
 package com.vastu.realestate.appModule.ourServies.planForOwner
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.vastu.networkService.util.Constants
 import com.vastu.realestate.R
 import com.vastu.realestate.appModule.dashboard.uiInterfaces.IToolbarListener
 import com.vastu.realestate.appModule.dashboard.view.BaseFragment
 import com.vastu.realestate.appModule.dashboard.view.DashboardActivity
-import com.vastu.realestate.appModule.dashboard.view.filter.SortAndFilterScreen
 import com.vastu.realestate.appModule.dashboard.viewmodel.DrawerViewModel
 import com.vastu.realestate.appModule.ourServies.planForOwner.bottomSheetRecycler.PlanForOwnerBottomSheet
 import com.vastu.realestate.appModule.ourServies.planForOwner.response.ObjPlanByTypeResponseMain
@@ -27,7 +26,10 @@ class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPrope
     lateinit var planForOwnerViewModel: PlanForOwnerViewModel
     lateinit var drawerViewModel: DrawerViewModel
     lateinit var planForOwnerFragmentBinding: PlanForOwnerFragmentBinding
-    
+    private lateinit var recyclerAdapter: RecyclerAdapter
+    private lateinit var recyclerAdapterPlans: RecyclerAdapterPlans
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,13 +44,13 @@ class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPrope
         planForOwnerViewModel.iPlansTypeViewListener= this
         planForOwnerFragmentBinding.drawerViewModel= drawerViewModel
         initView()
-        //callPlanTypeAPI()
+        callPlanTypeAPI()
         return planForOwnerFragmentBinding.root
     }
 
     private fun callPlanTypeAPI() {
         var language = PreferenceManger.get<String>(Constants.SELECTED_LANGUAGE)
-        planForOwnerViewModel.callPlansTypeApi(language!!,"4","1")
+        planForOwnerViewModel.callPlansTypeApi(language!!,"1","")
     }
 
     fun initView(){
@@ -58,6 +60,11 @@ class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPrope
         }
         drawerViewModel.toolbarTitle.set(getString(R.string.plans_for_property_owners))
         drawerViewModel.isDashBoard.set(false)
+
+        //grid layout manager
+        planForOwnerFragmentBinding.rvRecyleview.layoutManager = GridLayoutManager(requireContext(), 2)
+        planForOwnerFragmentBinding.rvPlans.layoutManager = GridLayoutManager(requireContext(), 2)
+
     }
 
 //
@@ -108,6 +115,11 @@ class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPrope
 
     private fun setView(objPlansTypeResponse: ObjPlanByTypeResponseMain) {
 
+        recyclerAdapter = RecyclerAdapter(requireContext(), objPlansTypeResponse.GetPlanDetailsResponse.planData)
+        planForOwnerFragmentBinding.rvRecyleview.adapter = recyclerAdapter
+
+        recyclerAdapterPlans = RecyclerAdapterPlans(requireContext(), objPlansTypeResponse.GetPlanDetailsResponse.planData)
+        planForOwnerFragmentBinding.rvPlans.adapter = recyclerAdapterPlans
     }
 
     override fun onPlansFail(objPlansTypeResponse: ObjPlanByTypeResponseMain) {

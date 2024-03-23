@@ -33,11 +33,11 @@ class PlanForOwnerViewModel(application: Application) : AndroidViewModel(applica
     }
 
     override fun onGetSuccessResponse(response: ObjPlanByTypeResponseMain) {
-
+        iPlansTypeViewListener.onPlanSuccess(response)
     }
 
     override fun onGetFailureResponse(response: ObjPlanByTypeResponseMain) {
-
+        iPlansTypeViewListener.onPlansFail(response)
     }
 
     override fun networkFailure() {
