@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.realestate.R
 
-class RecyclerAdapter(val context: Context, val dataList: List<com.vastu.realestate.appModule.ourServies.planForOwner.response.PlanData>) :
+class RecyclerAdapter(val context: Context, val dataList: List<String>) :
     RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -28,7 +28,7 @@ class RecyclerAdapter(val context: Context, val dataList: List<com.vastu.realest
     }
 
     override fun onBindViewHolder(holder: RecyclerAdapter.MyViewHolder, position: Int) {
-        holder.txtPlanDescription.setText(dataList.get(position).benefits)
+        holder.txtPlanDescription.setText(dataList.get(position))
         holder.itemView.setOnClickListener {
 
         }

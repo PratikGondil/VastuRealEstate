@@ -5,17 +5,20 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.vastu.realestate.R
 
-class RecyclerAdapterPlans(val context: Context, val dataList: List<com.vastu.realestate.appModule.ourServies.planForOwner.response.PlanData>) :
+class RecyclerAdapterPlans(val context: Context, val dataList: List<com.vastu.realestate.appModule.ourServies.planForOwner.response.PlanData>, var iClickPlanCheck: IClickPlanCheck) :
     RecyclerView.Adapter<RecyclerAdapterPlans.MyViewHolder>() {
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //item initalization
         var txtFirstPlanText: TextView = itemView.findViewById(R.id.txtFirstPlanText)
         var txtFirstPlanPrice: TextView = itemView.findViewById(R.id.txtFirstPlanPrice)
+        var planCheckBox: CheckBox = itemView.findViewById(R.id.txtFirstPlanCheck)
+
 
 
     }
@@ -33,8 +36,8 @@ class RecyclerAdapterPlans(val context: Context, val dataList: List<com.vastu.re
         holder.txtFirstPlanText.setText(dataList.get(position).plan_name)
         holder.txtFirstPlanPrice.setText("₹ "+dataList.get(position).price)
 
-        holder.itemView.setOnClickListener {
-
+        holder.planCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
+          iClickPlanCheck.selectedPlan(position.toString())
         }
     }
 

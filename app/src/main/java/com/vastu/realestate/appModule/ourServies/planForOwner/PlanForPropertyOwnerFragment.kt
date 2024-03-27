@@ -21,13 +21,15 @@ import com.vastu.realestate.appModule.ourServies.viewPlan.IPlansByTypeViewListen
 import com.vastu.realestate.databinding.PlanForOwnerFragmentBinding
 import com.vastu.realestate.utils.PreferenceManger
 
-class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPropertyOwner,IPlansByTypeViewListener {
+
+class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPropertyOwner,IPlansByTypeViewListener,IClickPlanCheck {
 
     lateinit var planForOwnerViewModel: PlanForOwnerViewModel
     lateinit var drawerViewModel: DrawerViewModel
     lateinit var planForOwnerFragmentBinding: PlanForOwnerFragmentBinding
     private lateinit var recyclerAdapter: RecyclerAdapter
     private lateinit var recyclerAdapterPlans: RecyclerAdapterPlans
+    lateinit var objPlansTypeResponseCopy: ObjPlanByTypeResponseMain
 
 
     override fun onCreateView(
@@ -109,20 +111,35 @@ class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPrope
         super.onPause()
     }
 
+    private fun benifitisArray(objPlansTypeResponse: ObjPlanByTypeResponseMain) {
+        val myArrayList = ArrayList<String>()
+
+    }
+
     override fun onPlanSuccess(objPlansTypeResponse: ObjPlanByTypeResponseMain) {
+        objPlansTypeResponseCopy = objPlansTypeResponse
         setView(objPlansTypeResponse)
+
+        benifitisArray(objPlansTypeResponse)
+
     }
 
     private fun setView(objPlansTypeResponse: ObjPlanByTypeResponseMain) {
 
-        recyclerAdapter = RecyclerAdapter(requireContext(), objPlansTypeResponse.GetPlanDetailsResponse.planData)
-        planForOwnerFragmentBinding.rvRecyleview.adapter = recyclerAdapter
-
-        recyclerAdapterPlans = RecyclerAdapterPlans(requireContext(), objPlansTypeResponse.GetPlanDetailsResponse.planData)
+        recyclerAdapterPlans = RecyclerAdapterPlans(requireContext(), objPlansTypeResponse.GetPlanDetailsResponse.planData,this)
         planForOwnerFragmentBinding.rvPlans.adapter = recyclerAdapterPlans
     }
 
     override fun onPlansFail(objPlansTypeResponse: ObjPlanByTypeResponseMain) {
 
+    }
+
+    override fun selectedPlan(position: String) {
+       setPlanDescription(position)
+    }
+
+    private fun setPlanDescription(position: String) {
+        recyclerAdapter = RecyclerAdapter(requireContext(), objPlansTypeResponseCopy.GetPlanDetailsResponse.planData.get(position.toInt()).benefits)
+        planForOwnerFragmentBinding.rvRecyleview.adapter = recyclerAdapter
     }
 }

@@ -2,7 +2,7 @@ package com.vastu.realestate.appModule.ourServies.planForOwner.response
 
 data class PlanData(
     val advance: String,
-    val benefits: String,
+    val benefits: List<String>,
     val discount_percent: Any,
     val duration: String,
     val gst: String,
