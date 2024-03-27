@@ -35,6 +35,11 @@ class RecyclerAdapterPlans(val context: Context, val dataList: List<com.vastu.re
     override fun onBindViewHolder(holder: RecyclerAdapterPlans.MyViewHolder, position: Int) {
         holder.txtFirstPlanText.setText(dataList.get(position).plan_name)
         holder.txtFirstPlanPrice.setText("₹ "+dataList.get(position).price)
+        if(position ==0){
+            holder.planCheckBox.isChecked =true
+        }else{
+            holder.planCheckBox.isChecked =false
+        }
 
         holder.planCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
           iClickPlanCheck.selectedPlan(position.toString())

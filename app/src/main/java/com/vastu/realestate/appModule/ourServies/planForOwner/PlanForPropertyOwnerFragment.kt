@@ -119,8 +119,7 @@ class PlanForPropertyOwnerFragment:BaseFragment(),IToolbarListener,IPlanForPrope
     override fun onPlanSuccess(objPlansTypeResponse: ObjPlanByTypeResponseMain) {
         objPlansTypeResponseCopy = objPlansTypeResponse
         setView(objPlansTypeResponse)
-
-        benifitisArray(objPlansTypeResponse)
+        setPlanDescription("0")
 
     }
 
